@@ -34,7 +34,9 @@
 \newcommand{\tableref}[1]{Table~\ref{#1}}
 \newcommand{\TES}{{\small TES}\xspace}
 \newcommand{\He}[1]{He#1\xspace}
-%\newcommand{\He4}{}
+\newcommand{\uW}{\ensuremath{\mu}W\xspace}
+\newcommand{\Ohm}{\ensuremath{\Omega}\xspace}
+
 
 \title{A 350 GHz Video Imaging System}
 \author{Dan Becker}
@@ -127,13 +129,46 @@ While \He4-sorption fridges are commercially available, our team choose to desig
 The entire refrigerator is filled with xxx moles of \He4 gas, giving a pressure of xxx psi at room temperature.
 In normal operation the heat switch between the charcoal pumping chamber (``pump'') and the \He4 condensation plate is closed, keeping the charcoal as cold as possible in order to adsorb as much \He4 as possible, keeping the temperature of the cold plate as low as possible.
 
-Cycling the refrigerator requires xxx steps. First the heat switch opened.
+Cycling the refrigerator requires four steps. First the heat switch opened.
 The \He4-sorption refrigerator uses a \He4 gas-gap heat switch manufactured by Chase Cryogenics (xxx ref), which requires 5 minutes of waiting time in order for the switch to fully open.
-Second, the pump is heated by applying xxx W of power via a xxx Ohm power resistor.
+Second, the pump is heated by applying 5 W via a 500 \Ohm power resistor.
 This power is applied until the temperature of the pump reaches 40 K, which is high enough to drive nearly all of the adsorbed \He4 off of the charcoal.
 Third, the power to the pump is turned off.
 Once the temperature of the condensation plate falls below the boiling point of \He4, \He4 will begin to condense on it's walls, dripping into the \He4 condensation pot (``pot'').
-Fourth, once the temperature of the pot has fallen to 4.0~K, the heat switch is turned back on. This cools the pump, allowing \He4 to again adsorb onto the charcoal, which has the effect of pumping strongly on the pot, and cooling the \He4 contained there to the base temperature of $\sim$ 970~mK under optical load.
+Fourth, once the temperature of the pot has fallen to 4.0~K, the heat switch is turned back on.
+This cools the pump, allowing \He4 to again adsorb onto the charcoal, which has the effect of pumping strongly on the pot, and cooling the \He4 contained there to the base temperature of $\sim$ 970~mK under optical load.
+This process is easy to automate, and a LabView program cycles the fridge automatically every night while the system is operating.
+
+Under optical load, a full cycle of the \He4-sorption refrigerator takes approximately 4 hours, reaching a base temperature of $\sim$~970~mK.
+When no additional load is applied, such as to warm the focal plane to a typical operating temperatur of 1100~mK, the hold time is 9 hours.
+Shorter hold times are observed when the operating temperature is raised. % xxx should give an exact time here
+
+\tableref{tab:fp-thermal-load} shows the predicted heat load on the \He4 sorption refrigerator.
+It excludes parasitic load inherent to the sorption refrigerator itself.
+
+\begin{table*}[ht]
+\centering
+\caption{Predicted Thermal Load on 1K Stage. These calculations assume the the readout wiring and Ti-6Al-4V spiders are running from 6.4~K to 1.0~K.}
+\label{tab:fp-thermal-load}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+ & \multicolumn{2}{c}{Predicted Thermal Load} \\
+\cmidrule(r){2-3}
+Heat Load Source & 1004 Detectors (\uW) &  251 Detectors (\uW) \\
+\midrule
+Readout Wiring 								& 50 & 125 \\
+Series Array SQUID modules 		& xxx & xxx \\
+Mux Chips 									& xxx & xxx \\
+Detectors Shunt Resistors 			& 5 & 18 \\
+Detectors (Optical + Electrical)		& 0.25 & 1 \\
+Ti-6Al-4V Spiders 							& 130 & 130 \\
+Out-of-band Optical power 			& xxx & xxx \\
+\midrule
+Total												& 184 + xxx & 273 + xxx \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
 
 \chapter{Detector Design}\label{c:det-design}
 
