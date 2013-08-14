@@ -1,31 +1,29 @@
 % !TEX TS-program = pdflatex
 % !TEX encoding = UTF-8 Unicode
 
-% Example of the Memoir class, an alternative to the default LaTeX classes such as article and book, with many added features built into the class itself.
+% for proofreading the text
+%\documentclass[10pt,twocolumn,article,draft]{memoir}
+\documentclass[10pt,twocolumn,article]{memoir}
 
-\documentclass[10pt,twocolumn,article]{memoir} % for printing/viewing for text proofreading
-
-%documentclass[12pt,letterpaper]{memoir} % closer to real thesis format
+%% closer to real thesis format
+%\documentclass[12pt,letterpaper]{memoir}
 %\settypeblocksize{9in}{6.5in}{*}
-%\setlrmargins{1in}{*}{*}
-%\setulmargins{1in}{*}{*}
+%\setlrmargins{1.0in}{*}{*}
+%\setulmargins{1.0in}{*}{*}
+%\checkandfixthelayout
+%\OnehalfSpacing
 
 \usepackage[utf8]{inputenc} % set input encoding to utf8
 
-%\usepackage{times}
+\usepackage[sc]{mathpazo} % Palatino with math support
 
-\usepackage[sc]{mathpazo}
-%\renewcommand{\familydefault}{ppl}
-
-\usepackage[cmex10]{amsmath}
-\usepackage[kerning]{microtype}
-\usepackage{cite}
-
-\usepackage{enumitem}
-\usepackage{graphicx}
-\usepackage{booktabs}
-
+\usepackage[kerning]{microtype} % better typography
+\usepackage{booktabs} % better tables
+\usepackage{cite} % manage citations
+\usepackage{enumitem} % xxx what is this for?
+\usepackage{graphicx} % including graphical figures
 \usepackage{xspace} % fix trailing spaces after abbreviation macros
+\usepackage{tikz} % drawing figures right here in this file!
 
 \setlist{nolistsep} % or \setlist{noitemsep} to leave space around whole list
 
@@ -36,7 +34,6 @@
 \newcommand{\He}[1]{He#1\xspace}
 \newcommand{\uW}{\ensuremath{\mu}W\xspace}
 \newcommand{\Ohm}{\ensuremath{\Omega}\xspace}
-
 
 \title{A 350 GHz Video Imaging System}
 \author{Dan Becker}
@@ -129,7 +126,26 @@ While \He4-sorption fridges are commercially available, our team choose to desig
 The entire refrigerator is filled with xxx moles of \He4 gas, giving a pressure of xxx psi at room temperature.
 In normal operation the heat switch between the charcoal pumping chamber (``pump'') and the \He4 condensation plate is closed, keeping the charcoal as cold as possible in order to adsorb as much \He4 as possible, keeping the temperature of the cold plate as low as possible.
 
-Cycling the refrigerator requires four steps. First the heat switch opened.
+\begin{figure*}[th]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.4\textwidth]{images/he4-sorp-fridge-cutaway.png}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+	    %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1.5,1);
+		%\foreach \x in {0,1,...,15} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+		%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+        \draw[blue,ultra thick,rounded corners] (0.10,0.56) rectangle (0.86,1.01) node[below left] {\textbf{A}}; % pump
+        \draw[blue,ultra thick,rounded corners] (0.02,0.56) rectangle (1.03,0.44) node[above left] {\textbf{B}}; % cond plate
+        \draw[blue,ultra thick,rounded corners] (0.70,0.56) rectangle (0.88,0.36) node[above left] {\textbf{C}}; % heat switch
+        \draw[blue,ultra thick,rounded corners] (0.35,0.25) rectangle (0.72,-0.02) node[above left] {\textbf{D}}; % pot
+    \end{scope}
+\end{tikzpicture}
+\caption{Cutaway view of the \He4 sorption refrigerator. \textbf{A} Charcoal pumping chamber (``pump''). The charcoal is attached to the concentric copper cylinders. Cylinders are used to maximize the surface area covered by the charcoal. \textbf{B} Condensation plate. This copper plate is kept below the boiling point of \He4 in order to provide a point in the refrigerator for \He4 to condense and drip into the condensation pot. \textbf{C} \He4 gas gap heat switch. This heat switch is used to cool the charcoal in order to pump on the \He4 bath in the condensation pot. \textbf{B} \He4 condensation pot (``pot''). The condensed \He4 accumulates here. The concentric cylinders provide additional surface area for thermal contact to the liquid \He4. Note shown is a small (xxx check size from Bob) constriction in the stainless steel tube connecting the pump and pot, intended to restrict the flow of superfluid \He4 away from the pot.}
+\label{fig:he4sorp}
+\end{figure*}
+
+Cycling the refrigerator requires four steps.
+First the heat switch is opened.
 The \He4-sorption refrigerator uses a \He4 gas-gap heat switch manufactured by Chase Cryogenics (xxx ref), which requires 5 minutes of waiting time in order for the switch to fully open.
 Second, the pump is heated by applying 5 W via a 500 \Ohm power resistor.
 This power is applied until the temperature of the pump reaches 40 K, which is high enough to drive nearly all of the adsorbed \He4 off of the charcoal.
@@ -144,7 +160,9 @@ When no additional load is applied, such as to warm the focal plane to a typical
 Shorter hold times are observed when the operating temperature is raised. % xxx should give an exact time here
 
 \tableref{tab:fp-thermal-load} shows the predicted heat load on the \He4 sorption refrigerator.
-It excludes parasitic load inherent to the sorption refrigerator itself.
+It excludes parasitic load inherent to the sorption refrigerator itself. xxx mention parasitic load here?
+
+xxx - include data on temp vs load for the fridge?
 
 \begin{table*}[ht]
 \centering
@@ -164,11 +182,10 @@ Detectors (Optical + Electrical)		& 0.25 & 1 \\
 Ti-6Al-4V Spiders 							& 130 & 130 \\
 Out-of-band Optical power 			& xxx & xxx \\
 \midrule
-Total												& 184 + xxx & 273 + xxx \\
+Total												& 185 + xxx & 274 + xxx \\
 \bottomrule
 \end{tabular}
 \end{table*}
-
 
 \chapter{Detector Design}\label{c:det-design}
 
