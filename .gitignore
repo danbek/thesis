@@ -1,6 +1,11 @@
 *.aux
 *.log
 *.synctex.gz
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*-blx.bib
 ~$*
 thesis.pdf
 Thumbs.db
