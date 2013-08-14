@@ -1,2 +1,6 @@
+*.aux
+*.log
+*.synctex.gz
+~$*
 thesis.pdf
 Thumbs.db

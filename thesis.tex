@@ -3,22 +3,38 @@
 
 % Example of the Memoir class, an alternative to the default LaTeX classes such as article and book, with many added features built into the class itself.
 
-%\documentclass[12pt]{article} % for a long document
-%\usepackage{setspace}
+\documentclass[10pt,twocolumn,article]{memoir} % for printing/viewing for text proofreading
 
-\documentclass[12pt,article]{memoir} % for a short document
+%documentclass[12pt,letterpaper]{memoir} % closer to real thesis format
+%\settypeblocksize{9in}{6.5in}{*}
+%\setlrmargins{1in}{*}{*}
+%\setulmargins{1in}{*}{*}
+
 \usepackage[utf8]{inputenc} % set input encoding to utf8
+
+%\usepackage{times}
+
+\usepackage[sc]{mathpazo}
+%\renewcommand{\familydefault}{ppl}
+
+\usepackage[cmex10]{amsmath}
+\usepackage[kerning]{microtype}
+\usepackage{cite}
 
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{booktabs}
 
-\setlist{nolistsep} % or \setlist{noitemsep} to leave space around whole list
+\usepackage{xspace} % fix trailing spaces after abbreviation macros
 
+\setlist{nolistsep} % or \setlist{noitemsep} to leave space around whole list
 
 % My macros
 \newcommand{\figref}[1]{Figure~\ref{#1}}
 \newcommand{\tableref}[1]{Table~\ref{#1}}
+\newcommand{\TES}{{\small TES}\xspace}
+\newcommand{\He}[1]{He#1\xspace}
+%\newcommand{\He4}{}
 
 \title{A 350 GHz Video Imaging System}
 \author{Dan Becker}
@@ -73,19 +89,17 @@ The Cu tube is broken into two halves, and the condensation plate (see below) of
 The first two temperature intercept stages are provided by a Cryomech PT407 Pulse Tube Cryorefrigerator (xxx reference company info).
 The PT407 has two cooling stages.
 The first stage has 25~W of cooling power at 55~K while the second stage has 0.7~W at 4.2 K.
-xxx - sentence about how PTCs work.
 Our PT407 uses a remote motor, so that the cold head attached to the cryostat has no moving parts, minimizing vibration of the cryostat.
 Vibration of the cryostat can lead to microphonic pickup either directly in the detectors themselves or in the readout circuitry, leading to much higher detector noise.
 
-
-\begin{figure}[h]
+\begin{figure*}[th]
 \centering
-\includegraphics[width=0.6\textwidth]{images/cryostat-cutaway.png}
+\includegraphics[width=0.5\textwidth]{images/cryostat-cutaway.png}
 \caption{Cutaway view of the 350 GHz Imager. xxx should probably label things here.}
 \label{fig:cryo-cutaway}
-\end{figure}
+\end{figure*}
 
-\begin{table}
+\begin{table*}[ht]
 \centering
 \caption{Temperatures Reached Under Optical Load xxx check all when temps have settled xxx should I add temps when closed optically?}
 \label{tab:temp-optical-load}
@@ -101,7 +115,25 @@ Sorption Fridge Condensation Plate 	& 3.8 \\
 Focal Plane 						& 0.970 \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
+
+There are many options for reaching temperatures below the $\sim$1.2~K transition temperature of our \TES detectors: dilution refrigerators, adiabatic magnetization refrigerators, pumped \He4 baths, \He3 and/or \He4 sorption refrigerators.
+We chose a \He4-sorption fridge because of both it's low and cost ease of operation compared to other solutions, and the fact that the typical base temperatures under no load of $sim$700~mK is well-matched to our application.
+A  \He4-sorption fridge works by using a charcoal adsorber to pump on a bath of liquid \He4, reducing the \He4 boiling point and thus the temperature of the bath.
+The \He4 is contained withing a sealed reservoir so that the refrigerator acts as a closed system requiring no \He4 replenishment. 
+While \He4-sorption fridges are commercially available, our team choose to design and build a custom fridge based on a design that has been proven in many astronomical applications (xxx ref).
+
+\figref{fig:he4sorp} shows a schematic depiction of the 350~GHz Imager's \He4-sorption refrigerator.
+The entire refrigerator is filled with xxx moles of \He4 gas, giving a pressure of xxx psi at room temperature.
+In normal operation the heat switch between the charcoal pumping chamber (``pump'') and the \He4 condensation plate is closed, keeping the charcoal as cold as possible in order to adsorb as much \He4 as possible, keeping the temperature of the cold plate as low as possible.
+
+Cycling the refrigerator requires xxx steps. First the heat switch opened.
+The \He4-sorption refrigerator uses a \He4 gas-gap heat switch manufactured by Chase Cryogenics (xxx ref), which requires 5 minutes of waiting time in order for the switch to fully open.
+Second, the pump is heated by applying xxx W of power via a xxx Ohm power resistor.
+This power is applied until the temperature of the pump reaches 40 K, which is high enough to drive nearly all of the adsorbed \He4 off of the charcoal.
+Third, the power to the pump is turned off.
+Once the temperature of the condensation plate falls below the boiling point of \He4, \He4 will begin to condense on it's walls, dripping into the \He4 condensation pot (``pot'').
+Fourth, once the temperature of the pot has fallen to 4.0~K, the heat switch is turned back on. This cools the pump, allowing \He4 to again adsorb onto the charcoal, which has the effect of pumping strongly on the pot, and cooling the \He4 contained there to the base temperature of $\sim$ 970~mK under optical load.
 
 \chapter{Detector Design}\label{c:det-design}
 
@@ -116,10 +148,10 @@ Focal Plane 						& 0.970 \\
 Placeholder for terms
 
 \begin{description}
-\item[``90~K'' Cold Plate] 
-\item[``4~K'' Cold Plate] 
-\item[Sorption Fridge] 
-\item[350~GHz Imager] 
+\item[``90~K'' Cold Plate]
+\item[``4~K'' Cold Plate]
+\item[Sorption Fridge]
+\item[350~GHz Imager]
 
 \end{description}
 
