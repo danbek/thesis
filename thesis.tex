@@ -31,12 +31,15 @@
 \addbibresource{thesis.bib}
 
 % My macros
-\newcommand{\figref}[1]{Figure~\ref{#1}}
-\newcommand{\tableref}[1]{Table~\ref{#1}}
-\newcommand{\TES}{{\small TES}\xspace}
-\newcommand{\He}[1]{$^{#1}$He\xspace}
-\newcommand{\uW}{\ensuremath{\mu}W\xspace}
-\newcommand{\Ohm}{\ensuremath{\Omega}\xspace}
+\newcommand*{\figref}[1]{Figure~\ref{#1}}
+\newcommand*{\tableref}[1]{Table~\ref{#1}}
+\newcommand*{\sectionref}[1]{Section~\ref{#1}}
+\newcommand*{\TES}{{\small TES}\xspace}
+\newcommand*{\NETD}{{\small NETD}\xspace}
+\newcommand*{\He}[1]{$^{#1}$He\xspace}
+\newcommand*{\uW}{\ensuremath{\mu}W\xspace}
+\newcommand*{\Ohm}{\ensuremath{\Omega}\xspace}
+\newcommand*{\Imager}{350~GHz Video Imager\xspace}
 
 \title{A 350 GHz Video Imaging System}
 \author{Dan Becker}
@@ -207,7 +210,27 @@ Total												& 185 + xxx & 274 + xxx \\
 \end{tabular}
 \end{table*}
 
-\section{Optical Design}\label{s-optical-design}
+\section{Optical Design}\label{s:optical-design}
+
+\section{Feedhorn Design}\label{s:feedhorn-design}
+
+Millimeter and submillimeter astronomical instruments using \TES detectors use a number of different strategies for coupling light onto detectors: filled array \cite{act,scuba}, lenslet antennas \cite{polarbear?}, phased antenna arrays \cite{jpl stuff}, corrugated feedhorns \cite{sptpol,actpol}, and smooth-walled conical feedhorns \cite{apex-sz,spt}.
+The \Imager uses smooth-walled feedhorns because they are easy to design and and easy to machine.
+Smooth-walled feedhorns do not have the nice polarization properties of corrugated feedhorns \cite{claricoats & olver?}, but this is not a concern here because the \Imager is polarization-insensitive.
+
+For an individual feedhorn, there is an size that will maximize coupling to the rest of the optics.
+\figref{f:xxx} shows a schematic of a smooth-walled conical feedhorn and it's beam, along with the parameters of the feedhorn and beam.
+The critical relationship is that as a feedhorn's opening diameter increases, the corresponding beam angle become smaller.
+If the beam angle is very small, the feedhorn will see only a small fraction of the primary mirror, worsening spatial resolution.
+If the beam angle is very large, most of the beam will spill off the primary mirror, reducing the 
+ 
+
+The goal of the \Imager is to minimize \NETD.
+As discussed in section \ref{xxx}, the more detectors a system has, the lower the \NETD will be.
+However, the diffraction-limited focal plane area is limited, and set by the design of the optics (see \sectionref{s:optical-design}).
+Under the constraint of fixed focal plane area, adding more feedhorns means making the opening diameter of each feedhorn smaller.
+But as the feedhorn opening diameter becomes smaller, the feedhorns beam 
+ 
 
 
 
