@@ -25,6 +25,9 @@
 \usepackage{graphicx} % including graphical figures
 \usepackage{xspace} % fix trailing spaces after abbreviation macros
 \usepackage{tikz} % drawing figures right here in this file!
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.8} % latest stable release
+\usepackage{standalone} % handling drawings as pdf
 
 % Bibliography
 \usepackage[backend=biber,natbib=true,style=numeric-comp]{biblatex}
@@ -36,6 +39,8 @@
 \newcommand*{\sectionref}[1]{Section~\ref{#1}}
 \newcommand*{\TES}{{\small TES}\xspace}
 \newcommand*{\NETD}{{\small NETD}\xspace}
+\newcommand*{\FWHM}{{\small FWHM}\xspace}
+
 \newcommand*{\He}[1]{$^{#1}$He\xspace}
 \newcommand*{\uW}{\ensuremath{\mu}W\xspace}
 \newcommand*{\Ohm}{\ensuremath{\Omega}\xspace}
@@ -219,10 +224,17 @@ The \Imager uses smooth-walled feedhorns because they are easy to design and and
 Smooth-walled feedhorns do not have the nice polarization properties of corrugated feedhorns \cite{claricoats & olver?}, but this is not a concern here because the \Imager is polarization-insensitive.
 
 For an individual feedhorn, there is an size that will maximize coupling to the rest of the optics.
-\figref{f:xxx} shows a schematic of a smooth-walled conical feedhorn and it's beam, along with the parameters of the feedhorn and beam.
+\figref{fig:feedhorn-parms} shows a schematic of a smooth-walled conical feedhorn and it's beam, along with the parameters of the feedhorn and beam.
 The critical relationship is that as a feedhorn's opening diameter increases, the corresponding beam angle become smaller.
 If the beam angle is very small, the feedhorn will see only a small fraction of the primary mirror, worsening spatial resolution.
 If the beam angle is very large, most of the beam will spill off the primary mirror, reducing the 
+
+\begin{figure*}
+\centering
+\input{drawings/ch4-feedhorn-parms.tex}
+\caption{Schematic showing important parameters of a feedhorn and its beam. The beam appears to emerge from the phase center, a distance $l_c$ behind the mouth of the feedhorn in this diagram. The main lobe of the beam is approximated well by a Gaussian, here characterized by a full-width-half-maximum (\FWHM) beam width. Some fraction of the beam falls off the primary mirror, here indicated by the shaded portion of the Gaussian at top.}
+\label{fig:feedhorn-parms}
+\end{figure*}
 
 The goal of the \Imager is to minimize \NETD.
 
