@@ -75,21 +75,21 @@
 
 \section{Cryostat Design}\label{s-cryo-design}
 
-The cryostat for the 350~GHz Imager was designed with the goals of simplicity, reliability and turn-key automated operation.
+The cryostat for the \Imager was designed with the goals of simplicity, reliability and turn-key automated operation.
 Highly reliable and easy-to-use cryogen-free mechanical cryocoolers are available from many vendors, but these cryocoolers are seldom capable of reaching temperatures below 2.5~K.
-Reaching sub-Kelvin temperatures requies a second refrigeration stage, which in our case is a He-4 sorption refrigerator.
+Reaching sub-Kelvin temperatures requires a second refrigeration stage, which in our case is a He-4 sorption refrigerator.
 The He-4 sorption refrigerator is based on a proven design and its use can easily be automated.
 Three temperature stages within the cryostat are provided in order to provide intercepts for heatsinking wiring and other objects that are thermal connected to room temperature. 
 The result is a reliable cryogen-free cryogenic system that can be controlled remotely.
 
-The cryostat itself was designed and built by Precision Cryogenics\footnote{Precision Cryogenics Systems, Inc. Indianapolis, IN. \url{http://www.precisioncryo.com}} to specifications provided by the 350~GHz Imager team.
+The cryostat itself was built by Precision Cryogenics\footnote{Precision Cryogenics Systems, Inc. Indianapolis, IN. \url{http://www.precisioncryo.com}} to designs provided by the \Imager team.
 \figref{fig:cryo-cutaway} shows a cutaway view of the cryostat, and \tableref{tab:temp-optical-load} lists the temperatures typically reached by different parts of the cryostat during operation when the cryostat is open optically.
 The cryostat has two main parts: a cylinder containing both the PTC and the \He4-sorption refrigerator, and a box located at the bottom of the cylinder which contains temperature intercept plates and the focal plane.
 There are three temperature stages, the ``90~K'' Cold Plate, the ``4~K'' Cold Plate, and the Focal Plane.
-The PTC 1st stage is connected to the ``90~K'' Cold Plate by a tube of Al xxx and a set of xxx copper braids.
+The PTC 1st stage is connected to the ``90~K'' Cold Plate by a tube of Al 1100 and a set of CDA-101 Cu braids.
 The combination of this long thermal path with the high heat load on the optical filters sunk to the ``90~K'' stage explains the 45~K temperature differential between the ``90~K`` cold plate and the PTC 1st stage.
-The PTC 2nd stage is connected to the ``4 K'' Cold Plate by a large (3.0 in diameter by 2.78 in long) cylinder of alloy 110 Cu\footnote{This cryostat was originally designed to work with a different cryocooler. The PTC currently installed had a shorter distance between the 1st and 2nd stages, necessitating the Cu cylinder to take up this extra space}, followed by tube of alloy 110 Cu followed by a set of xxx copper braids.
-The Cu tube is broken into two halves, and the condensation plate (see below) of the sorption fridge is clamped between these two halves. The ``90 K'' Cold Plate is stood off from the cryostat vacuum jacket by four carbon-fiber standoffs. (xxx check with Bob S). The ``4~K'' Cold Plate stands off from the ``90 K'' Cold Plate by 12 (xxx check) supports made of G-10.
+The PTC 2nd stage is connected to the ``4 K'' Cold Plate by a large (3.0 in diameter by 2.78 in long) cylinder of CDA-110 Cu\footnote{This cryostat was originally designed to work with a different cryocooler. The PTC currently installed had a shorter distance between the 1st and 2nd stages, necessitating the Cu cylinder to take up this extra space}, followed by tube of alloy CDA-101 Cu followed by a set of  CDA-101 copper braids.
+The Cu tube is broken into two halves, and the condensation plate (see below) of the sorption fridge is clamped between these two halves. The ``90 K'' Cold Plate is stood off from the cryostat vacuum jacket by four ``roll wrapped'' carbon fiber tube standoffs. The ``4~K'' Cold Plate stands off from the ``90 K'' Cold Plate by eight supports made of G-10.
 
 The first two temperature intercept stages are provided by a Cryomech PT407 Pulse Tube Cryorefrigerator\footnote{Cryomech, Inc. Syracure, NY. \url{http://www.cryomech.com}}
 The PT407 has two cooling stages.
@@ -115,7 +115,7 @@ Vibration of the cryostat can lead to microphonic pickup either directly in the 
         \draw[thick,<->] (1.05,0.04) -- +(0,0.31) node[midway,right] {18 in}; % scale bar
     \end{scope}
 \end{tikzpicture}
-\caption{Cutaway view of the 350 GHz Imager. \textbf{A} PT407 1st stage cold head \textbf{B} PT407 2nd stage cold head \textbf{c} Cu cylinder connected PT407 2ns stage cold head to Cu tube, which then connects to \He4-sorption refrigerator condensation plate. \textbf{D} \He4-sorption refrigerator \textbf{E} Focal Plane. Copper ropes connecting focal plane to 1~K cold plate are not visible in this view. xxx labels are too hard to read, need to work on D \& E.}
+\caption{Cutaway view of the 350 GHz Imager. \textbf{A} PT407 1st stage cold head \textbf{B} PT407 2nd stage cold head \textbf{c} Cu cylinder connected PT407 2ns stage cold head to Cu tube, which then connects to \He4-sorption refrigerator condensation plate. \textbf{D} \He4-sorption refrigerator \textbf{E} Focal Plane. Copper ropes connecting focal plane to 1~K cold plate are not visible in this view.}
 \label{fig:cryo-cutaway}
 \end{figure*}
 
@@ -223,16 +223,21 @@ For an individual feedhorn, there is an size that will maximize coupling to the 
 The critical relationship is that as a feedhorn's opening diameter increases, the corresponding beam angle become smaller.
 If the beam angle is very small, the feedhorn will see only a small fraction of the primary mirror, worsening spatial resolution.
 If the beam angle is very large, most of the beam will spill off the primary mirror, reducing the 
- 
 
 The goal of the \Imager is to minimize \NETD.
+
 As discussed in section \ref{xxx}, the more detectors a system has, the lower the \NETD will be.
 However, the diffraction-limited focal plane area is limited, and set by the design of the optics (see \sectionref{s:optical-design}).
 Under the constraint of fixed focal plane area, adding more feedhorns means making the opening diameter of each feedhorn smaller.
-But as the feedhorn opening diameter becomes smaller, the feedhorns beam 
+But as the feedhorn opening diameter becomes smaller, the feedhorns beam.
+Mandana Amiri and Matthew Hasselfield provided extensive, timely and invaluable support for the MCE hardware and software.
  
+\section{Acknowledgments}
 
-
+Bob Schwall and William Duncan of NIST designed the cryostat/mirror mount and the \He4 sorption refrigerator.
+The refrigerator was filled with \He4 by Simon Dicker at the University of Pennsylvania.
+Bob Schwall of NIST designed the cryostat, and provided useful advice and help in the lab during commissioning of the cryostat.
+William Duncan designed, procured, and assembled the optical system.
 
 \chapter{Detector Design}\label{c:det-design}
 
