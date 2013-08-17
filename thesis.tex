@@ -221,15 +221,19 @@ Total												& 185 + xxx & 274 + xxx \\
 
 \section{Feedhorn Design}\label{s:feedhorn-design}
 
-Millimeter and submillimeter astronomical instruments using \TES detectors use a number of different strategies for coupling light onto detectors: filled array \cite{swetz2011overview,Holland2013SCUBA-2}, lenslet antennas \cite{polarbear?}, phased antenna arrays \cite{jpl stuff}, corrugated feedhorns \cite{sptpol,actpol}, and smooth-walled conical feedhorns \cite{schwan2011invited,spt}.
+Millimeter and submillimeter astronomical instruments using \TES detectors use many different strategies for coupling light onto detectors: filled arrays of absorbers\cite{swetz2011overview,Holland2013SCUBA-2}, antennas with lenslets\cite{polarbear?}, phased antenna arrays\cite{jpl stuff}, corrugated feedhorns \cite{sptpol,actpol}, and smooth-walled conical feedhorns \cite{schwan2011invited,spt}.
 The \Imager uses smooth-walled feedhorns because they are easy to design and and easy to machine.
 Smooth-walled feedhorns do not have the nice polarization properties of corrugated feedhorns \cite{claricoats & olver?}, but this is not a concern here because the \Imager is polarization-insensitive.
 
-For an individual feedhorn, there is an size that will maximize coupling to the rest of the optics.
-\figref{fig:feedhorn-parms} shows a schematic of a smooth-walled conical feedhorn and it's beam, along with the parameters of the feedhorn and beam.
-The critical relationship is that as a feedhorn's opening diameter increases, the corresponding beam angle become smaller.
-If the beam angle is very small, the feedhorn will see only a small fraction of the primary mirror, worsening spatial resolution.
-If the beam angle is very large, most of the beam will spill off the primary mirror, reducing the 
+\figref{fig:feedhorn-parms} shows a schematic of a smooth-walled conical feedhorn, its beam and the beam's interaction with the primary mirror.
+As discussed in section \sectionref{s:optical-design}, although the optical system has a secondary mirror as well, for many purposes the secondary mirror can be ignored and the system treated as a system of feedhorns illuminating only the primary mirror.
+The ``beam'' $P(\theta, \phi)$ of a feedhorn refers to the pattern of radiation that the beam is senstive to.
+If a feedhorn is observing a radiation pattern with temperture $T_{target}(\theta,\phi)$, and it pointed in a direction $(\theta_0, \phi_0)$, then the temperature observed by the feedhorn will be
+\[
+    T_{eff} = \int \, d \Omega \, T_{target}(\theta - \theta_0,\phi - \phi_0) P(\theta,\phi)
+\].
+When using this expression one must keep in mind that the fraction of the beam that spills off the primary mirror (shaded in \figref{fig:feedhorn-parms}) will see not the temperature distribution of the target, but a temperature distribution determined by what is beyond the primary mirror\footnote{Because of the presence of the secondary mirror, some of this tempeature distribution will be in front of the system, and some will be behind.}.
+The fraction of the beam that strikes the primary mirror and proceeds to the target is called the spillover efficiency $\eta_s$.
 
 \begin{figure*}
 \centering
@@ -238,20 +242,42 @@ If the beam angle is very large, most of the beam will spill off the primary mir
 \label{fig:feedhorn-parms}
 \end{figure*}
 
-The goal of the \Imager is to minimize \NETD.
+The feedhorn opening diameter $D$ is chosen to minimize the total \NETD of the system.
+The total \NETD was given in \sectionref{xxx} as
+\[
+    NETD = \frac{NEP_{tot}}{2 k_B \Delta \nu \eta_{tot} \sqrt{2 \tau}}.
+\]
+To make the factors depending on the size of the feedhorns more clear we can break the optical efficiency $\eta_{tot}$ into a product of two factors, $\eta_s$ and $\eta_{other} = \eta_{tot} / \eta_s$.
+We then note that the integration time per pixel $\tau$ is inversely proportional to the number of detectors $N$.
+This leads to
+\[
+    NETD \propto \frac{NEP_{tot}\ sqrt{N}}{\eta_s}.
+\]
 
-As discussed in section \ref{xxx}, the more detectors a system has, the lower the \NETD will be.
-However, the diffraction-limited focal plane area is limited, and set by the design of the optics (see \sectionref{s:optical-design}).
-Under the constraint of fixed focal plane area, adding more feedhorns means making the opening diameter of each feedhorn smaller.
-But as the feedhorn opening diameter becomes smaller, the feedhorns beam.
-Mandana Amiri and Matthew Hasselfield provided extensive, timely and invaluable support for the MCE hardware and software.
- 
+The critical relationship is that as a feedhorn's opening diameter increases, the width of the beam becomes smaller.
+Small beam angles increase $\eta_s$, which improves \NETD.
+However, the diffraction-limited area on the focal plane that can be covered by feedhorns is fixed, so that increases the horn opening diameter reduces the number of detectors $N$, which which worsens \NETD.
+Choosing an optimal feedhorn size requires trading these two effect off against each other to minimize \NETD.
+
+There are three additional factors to consider.
+First, $NEP_{tot}$ is not neccesarily independent of $\eta_s$.
+In a detector-noise limited system it will be, but in a system that is photon-noise-limted, $NEP_{tot}$ may worsen, stay the same, or improve, depending on the temperature seen by the spilled over portion of the beam.
+Indoors all of the beam will see roughly the same temperature as the target, so that total photon noise will stay the same.
+Outdoors the situation is more complicated because the temperature seen by the spilled over beam will depend on the local scenery and weather conditions.
+For simplicity, the analysis of optimum feedhorn size in this chaper made the assumption that the noise seen by a detector is independent of the beam size.
+
+Second, the choice of readout system and wiring places a firm upper limit on the number of detectors in the system of 1024.
+Third, the dependence of the number of detectors $N$ on the feedhorn diameter $D$ is not a smooth function, because it is not possible to have, e.g., 1/3 of a feedhorn.
+It is more helpful to think of the feedhorn diameter as a value that can take on a discrete set of values that depends on the number of feedhorns per each side of the grid.
+
+
 \section{Acknowledgments}
 
 Bob Schwall and William Duncan of NIST designed the cryostat/mirror mount and the \He4 sorption refrigerator.
 The refrigerator was filled with \He4 by Simon Dicker at the University of Pennsylvania.
 Bob Schwall of NIST designed the cryostat, and provided useful advice and help in the lab during commissioning of the cryostat.
 William Duncan designed, procured, and assembled the optical system.
+Mandana Amiri and Matthew Hasselfield provided extensive, timely and invaluable support for the MCE hardware and software.
 
 \chapter{Detector Design}\label{c:det-design}
 
