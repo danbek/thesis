@@ -239,7 +239,7 @@ Total												& 185 + xxx & 274 + xxx \\
 % xxx would it be better to discuss number of feedhorns in terms of
 % number per side in a square grid?
 
-% xxx where do I explain the choice of a square grid?
+% xxx where do I explain the choice of a square grid? Ans: section 6.3
 % xxx where do I explain the missing 20 detectors?
 
 Millimeter and submillimeter astronomical instruments using \TES detectors use many different strategies for coupling light onto detectors: filled arrays of absorbers\cite{swetz2011overview,Holland2013SCUBA-2}, antennas with lenslets\cite{polarbear?}, phased antenna arrays\cite{jpl stuff}, corrugated feedhorns \cite{sptpol,actpol}, and smooth-walled conical feedhorns \cite{schwan2011invited,spt}.
@@ -293,7 +293,8 @@ This means that narrow beams can have poor $\eta_s$ because a large fraction of 
 
 Third, the choie of readout system and wiring places a firm upper limit on the number of detectors in the system of 1024.
 Fourth, the dependence of the number of detectors $N$ on the feedhorn diameter $D$ is not a smooth function, because it is not possible to have, e.g., 1/3 of a feedhorn.
-It is more helpful to think of the feedhorn diameter as a value that can take on a discrete set of values that depends on the number of feedhorns per each side of the grid.
+As explained in \sectionref{xxx6.3}, the \Imager's detectors are laid out on a square grid.
+So it is more helpful to think of the feedhorn diameter as a value that can take on a discrete set of values that depends on the number of feedhorns per each side of the grid.
 
 A \MATLAB program was used to find the optimum feedhorn size.
 The program uses an analytic expression for the beam pattern developed in \cite{green2006radiation,narasimhan1971modes,}.
@@ -301,7 +302,7 @@ The far-field electric field pattern takes the form
 \[
     \vect{E}(\theta,\phi) = E_{\theta} \sin{\phi} \hat{\theta} + E_{\phi}(\theta) \cos{\phi} \cos{\theta} \hat{\phi}.
 \]
-Here $E_{\theta}$ and $E_{\phi}$ are functions depending the horn diameter $D$ and opening half-angle $\theta_h$, and involving definite integrals of Bessel functions, not reproduced here.
+Here $E_{\theta}$ and $E_{\phi}$ are functions depending the horn diameter $D$ and opening half-angle $\alpha$, and involving definite integrals of Bessel functions, not reproduced here.
 This expression is for the waveguide mode polarized along the $\pi/2$ direction.
 The \Imager's detectors are unpolarized, so detect both waveguide polarizations equally (see \sectionref{xxx} for confirmation of this via simulations).
 The total power beam map is thus given by the incoherant sume
@@ -315,15 +316,15 @@ which simplifies to
 which is independent of $\phi$, as expected for an unpolarized detector.
 
 To calculate the spillover efficiency of an individual feedhorn, the \MATLAB program integrates $P$ over the angles $\theta$ that illuminate the primary mirror and reach the target: 5.3\textdegree to $\theta = $ 13.6\textdegree\footnote{see \sectionref{s:optical-design}}.
-\figref{fig:spill-vs-alpha-diam} shows a contour plot of spillover efficiency as a function of $D$ and $\theta_h$.
+\figref{fig:spill-vs-alpha-diam} shows a contour plot of spillover efficiency as a function of $D$ and $\alpha$.
 The blue asterisk matches the parameters for the feedhorns chosen for the \Imager.
-This plot makes it clear that $\eta_s$ depends much more strongly on $D$ than on $\theta_h$.
-$\theat_h = 9.4$\textdegree was chosen as a value that is easy to machine, keeps the thermal mass of the feedhorn array relatively low (small values of $\theta_h$ lead to long feedhorns and higher thermal mass), and it not too far from the maximum achievable $\eta_s$ for any fixed feedhorn diameter $D$.
+This plot makes it clear that $\eta_s$ depends much more strongly on $D$ than on $\alpha$.
+$\alpha = 9.4$\textdegree was chosen as a value that is easy to machine, keeps the thermal mass of the feedhorn array relatively low (small values of $\alpha$ lead to long feedhorns and higher thermal mass), and it not too far from the maximum achievable $\eta_s$ for any fixed feedhorn diameter $D$.
 
 \begin{figure*}[th]
 \centering
 \includegraphics[width=3.0in]{images/spill_cs_alpha_diam.pdf}
-\caption{Plot showing feedhorn spillover efficiency $\eta_s$ as a function of horn diameter $D$ and horn flare half-angle $\theta_h$. The blue asterisk shows the feedhorn parameters used in the \Imager. xxx need to replace with version that has * sign at real feedhorn values!}
+\caption{Plot showing feedhorn spillover efficiency $\eta_s$ as a function of horn diameter $D$ and horn flare half-angle $\alpha$. The blue asterisk shows the feedhorn parameters used in the \Imager. xxx need to replace with version that has * sign at real feedhorn values!}
 \label{fig:spill-vs-alpha-diam}
 \end{figure*}
 
