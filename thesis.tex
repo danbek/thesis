@@ -54,6 +54,7 @@
 \newcommand*{\Ohm}{\ensuremath{\Omega}\xspace}
 \newcommand*{\Imager}{350~GHz Video Imager\xspace}
 \newcommand{\vect}[1]{\vec{#1}}
+\newcommand*{\textdegree}{\ensuremath{^{\circ}}}
 
 
 \title{A 350 GHz Video Imaging System}
@@ -251,7 +252,7 @@ As discussed in section \sectionref{s:optical-design}, although the optical syst
 The ``beam'' $P(\theta, \phi)$ of a feedhorn refers to the pattern of radiation that the beam is senstive to.
 If a feedhorn is observing a radiation pattern with temperture $T_{target}(\theta,\phi)$, and it pointed in a direction $(\theta_0, \phi_0)$, then the temperature observed by the feedhorn will be
 \[
-    T_{eff} = \int \, d \Omega \, T_{target}(\theta - \theta_0,\phi - \phi_0) P(\theta,\phi)
+    T_{eff}(\theta_0,\phi_0) = \int \, d \Omega \, T_{target}(\theta - \theta_0,\phi - \phi_0) P(\theta,\phi)
 \].
 When using this expression one must keep in mind that the fraction of the beam that spills off the primary mirror (shaded in \figref{fig:feedhorn-parms}) will see not the temperature distribution of the target, but a temperature distribution determined by what is beyond the primary mirror\footnote{Because of the presence of the secondary mirror, some of this tempeature distribution will be in front of the system, and some will be behind.}.
 The fraction of the beam that strikes the primary mirror and proceeds to the target is called the spillover efficiency $\eta_s$.
@@ -272,7 +273,7 @@ To make the factors depending on the size of the feedhorns more clear we can bre
 We then note that the integration time per pixel $\tau$ is inversely proportional to the number of detectors $N$.
 This leads to
 \[
-    NETD \propto \frac{NEP_{tot}\ sqrt{N}}{\eta_s}.
+    NETD \propto \frac{NEP_{tot}\sqrt{N}}{\eta_s}.
 \]
 
 The critical relationship is that as a feedhorn's opening diameter increases, the width of the beam becomes smaller.
@@ -315,7 +316,7 @@ which simplifies to
 \]
 which is independent of $\phi$, as expected for an unpolarized detector.
 
-To calculate the spillover efficiency of an individual feedhorn, the \MATLAB program integrates $P$ over the angles $\theta$ that illuminate the primary mirror and reach the target: 5.3\textdegree to $\theta = $ 13.6\textdegree\footnote{see \sectionref{s:optical-design}}.
+To calculate the spillover efficiency of an individual feedhorn, the \MATLAB program integrates $P$ over the angles $\theta$ that illuminate the primary mirror and reach the target: 5.3\textdegree to 13.6\textdegree\footnote{see \sectionref{s:optical-design}}.
 \figref{fig:spill-vs-alpha-diam} shows a contour plot of spillover efficiency as a function of $D$ and $\alpha$.
 The blue asterisk matches the parameters for the feedhorns chosen for the \Imager.
 This plot makes it clear that $\eta_s$ depends much more strongly on $D$ than on $\alpha$.
@@ -323,20 +324,20 @@ $\alpha = 9.4$\textdegree was chosen as a value that is easy to machine, keeps t
 
 \begin{figure*}[th]
 \centering
-\includegraphics[width=3.0in]{images/spill_cs_alpha_diam.pdf}
+\includegraphics[width=3.0in]{images/spill_vs_alpha_diam.pdf}
 \caption{Plot showing feedhorn spillover efficiency $\eta_s$ as a function of horn diameter $D$ and horn flare half-angle $\alpha$. The blue asterisk shows the feedhorn parameters used in the \Imager. xxx need to replace with version that has * sign at real feedhorn values!}
 \label{fig:spill-vs-alpha-diam}
 \end{figure*}
 
 The feedhorn diameter chosen does not maximize $\eta_s$, because it turned out that a smaller \NETD could be achieved by using a larger number of smaller feedhorns.
-In fact, as \figref{xxx} shows, an even larger number of even smaller feedhorns is predicted to reduce \NETD by xxx \%.
+In fact, as \figref{fig:netd-num-feeds} shows, an even larger number of even smaller feedhorns is predicted to reduce \NETD by xxx \%.
 However, as mentiond above, the maximum number of detectors that can be readout by our system is 1024, so $D = xxx$ was chosen as the optimal feedhorn diameter.
 
 \begin{figure*}[th]
 \centering
 \includegraphics[width=3.0in]{images/netd_num_feeds.pdf}
-\caption{Plot showing how total number of detectors and system \NETD depend on diameter chosen for feedhorns. The number of detectors is a discrete function of the feedhorn diameter because it is not possible to have a fractional part of a feedhorn. \NETD is maximed with xxx feedhorns of diameter xxx, but the \Imager uses 1004 feedhorns of diameter xxx because of readout limitations. xxx Is this plot right? I chose 2.68 mm (cold), which leads to ~800 detectors, not 1024.}
-\label{fig:spill-vs-alpha-diam}
+\caption{Plot showing how total number of detectors and system \NETD depend on diameter chosen for feedhorns. The number of detectors is a discrete function of the feedhorn diameter because it is not possible to have a fractional part of a feedhorn. \NETD is maximized with xxx feedhorns of diameter xxx, but the \Imager uses 1004 feedhorns of diameter xxx because of readout limitations. xxx Is this plot right? I chose 2.68 mm (cold), which leads to ~800 detectors, not 1024.}
+\label{fig:netd-num-feeds}
 \end{figure*}
 
 \section{Acknowledgments}
