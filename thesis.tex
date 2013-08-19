@@ -50,11 +50,13 @@
 
 % shortcuts
 \newcommand*{\He}[1]{$^{#1}$He\xspace}
+\newcommand*{\uA}{\ensuremath{\mu}A\xspace}
 \newcommand*{\uW}{\ensuremath{\mu}W\xspace}
 \newcommand*{\Ohm}{\ensuremath{\Omega}\xspace}
 \newcommand*{\Imager}{350~GHz Video Imager\xspace}
 \newcommand{\vect}[1]{\vec{#1}}
 \newcommand*{\textdegree}{\ensuremath{^{\circ}}}
+\newcommand*{\degC}{\ensuremath{^{\circ}}C}
 
 
 \title{A 350 GHz Video Imaging System}
@@ -334,6 +336,16 @@ However, as mentiond above, the maximum number of detectors that can be readout 
 \label{fig:netd-num-feeds}
 \end{figure*}
 
+xxx - show that beam is well-approximated by a gaussian over the area of the primary mirror.
+
+%\subsection{Far-field beam pattern and system spatial resolution}
+%
+%A Fourier transform relationship exists between the electric field illuminating the aperture of an optical system and the electric field far away form the aperture\cite{xxx}.
+%\[
+%   xxx write the expression here,
+%\]
+
+
 \section{Acknowledgments}
 
 Bob Schwall and William Duncan of NIST designed the cryostat/mirror mount and the \He4 sorption refrigerator.
@@ -349,6 +361,65 @@ Mandana Amiri and Matthew Hasselfield provided extensive, timely and invaluable 
 \chapter{Detector Characterization}\label{c:det-char}
 
 \chapter{Imaging}\label{c:imaging}
+
+\section{Readout of Mirror Position}\label{s:mirror-readout}
+
+The \Imager produces a time-ordered data stream reprenting the temperature that each detector observes as a function of time.
+In order to turn this data stream into a video, we must know where the optical system is pointing at all times.
+Additionally it is neccessary to know where each detector is pointed relative to the optical system.
+This sections descibes how the \Imager readout system places the optical pointing information directly into the data stream.
+The relative detector pointing information is extracted from beam maps, as discussed in \sectionref{s:beam-maps}.
+
+The pointing of the optical system is set by the positions of the two actuators that move the secondary mirror.
+The actuator control hardware provides two voltage signal which are proportional to the positon of each actuator.
+This voltage signal is sent into the \Imager cryostat by a pair coaxial cables.
+Inside the cryostat two twisted pair wires carry the signal to the focal plane, where the signal is fed into the input coil of a 1st stage SQUID.
+A series x.xxx M\Ohm resistor is used at room temperature to reduce the current flowing through the wiresto approximately 10 \uA.
+xxx Need a schematic here?
+
+This approach allows the readout system to readout the position of the actuators in exactly the same way that it reads out the detector response.
+The actuator position is synchronized perfectly with the detector data.
+
+A natural question is whether cross-talk appears between the actuator readout and the other detectors.
+xxx show results of this measurement.
+
+An additional question is whether the actuator readout leads to higher noise.
+xxx show results of this measurement.
+
+\section{Focus Distance}\label{s:focus-distance}
+
+As described in \sectionref{s:optical-design}, the \Imager is designed to focus at distances of 16~m--30~m (xxx check 2nd distance).
+All results described in this chapter were with the \Imager configured to focus at 16~m.
+To check the actual distance to the target focal plane, beam maps as described in \sectionref{s:beam-maps} were performed with the blackbody source located at different distance from the cryostat.
+\figref{fig:beam-vs-distance} shows beam maps for the same detector taken at different distances.
+It is clear from this plot that the best focus occurs at $\sim$17~m, and the depth-of-field is approximately xxx~m.
+
+The reasons for the difference from \ZEMAX predictions are not understood.
+Possibilities include the cryostat being located too close to the primary mirror and the primary (or secondary) mirrors having an incorrect shape.
+
+\section{Beam Maps}
+
+As discussed in \sectionref{s:feedhorn-design}, the \Imager feedhorns are predicted to have beams that are circularly symmetric and well-approximated by gausiasians with FWHM of x.xx~cm at the target.
+To verify these predictions beam maps were performed by rastering the beams over a small, stationary 1030~\degC blackbody source.
+
+The blackbody source used was an IR Labs xxx\footnote{IRLabs, Inc. Tucson, AZ. USA}.
+This source reaches a maximum of 1030~\degC and has apertures ranging in size from x.xx in to x.xx in.
+Best results were achieved by covering an area around the blackbody source with Aluminum foil; this elimated hotspots in the image due to the warmth of the housing of the blackbody source itself.
+\figref{xxx} shows a picture of the blackbody source with Aluminum foil mask.
+
+The \Imager beams were rastered over the blackbody source by moving one actuator at xx~Hz while the other actuator moved much more slowly at xx~Hz.
+This produces the path shown in \figref{xxx}.
+The data stream for each detector was ``binned'' as described in \sectionref{xxx} to produce a beam map for each detector.
+xxx did I remove any polynomials?
+xxx need to discuss dimensional conversion factors
+A 2-D Gaussian allowing for ellipticity was then fit to each beam map.
+Only the points withing xxx~cm of the map peak were included in the fit.
+
+\figref{xxx} shows the resulting beam maps.
+xxx describe this plot.
+
+xxx compare to predictions.
+
 
 \chapter{Vocab}
 
