@@ -232,14 +232,6 @@ Total												& 185 + xxx & 274 + xxx \\
 
 \section{Feedhorn Design}\label{s:feedhorn-design}
 
-% xxx in general in this section I am not being clear about whether
-% I'm discussing the feedhorn in transmission or reception. It might
-% be a good idea to clarify this issue early on, and then stick to one
-% or another.
-
-% xxx would it be better to discuss number of feedhorns in terms of
-% number per side in a square grid?
-
 % xxx where do I explain the choice of a square grid? Ans: section 6.3
 % xxx where do I explain the missing 20 detectors?
 
@@ -247,20 +239,22 @@ Millimeter and submillimeter astronomical instruments using \TES detectors use m
 The \Imager uses smooth-walled feedhorns because they are easy to design and and easy to machine.
 Smooth-walled feedhorns do not have the nice polarization properties of corrugated feedhorns \cite{claricoats & olver?}, but this is not a concern here because the \Imager is polarization-insensitive.
 
-\figref{fig:feedhorn-parms} shows a schematic of a smooth-walled conical feedhorn, its beam and the beam's interaction with the primary mirror.
-As discussed in section \sectionref{s:optical-design}, although the optical system has a secondary mirror as well, for many purposes the secondary mirror can be ignored and the system treated as a system of feedhorns illuminating only the primary mirror.
-The ``beam'' $P(\theta, \phi)$ of a feedhorn refers to the pattern of radiation that the beam is senstive to.
-If a feedhorn is observing a radiation pattern with temperture $T_{target}(\theta,\phi)$, and it pointed in a direction $(\theta_0, \phi_0)$, then the temperature observed by the feedhorn will be
+\figref{fig:feedhorn-parms} depicts a smooth-walled conical feedhorn and its interaction with the optical system.
+As discussed in section \sectionref{s:optical-design}, although the optical system has a secondary mirror as well, for many purposes the secondary mirror can be ignored and the system treated as a system of feedhorns illuminating only a primary mirror with a hole in its center.
+If a feedhorn is observing a temperature distribution $T_{target}(\theta,\phi)$, and is pointed in a direction $(\theta_0, \phi_0)$, then the temperature observed by the feedhorn will be
 \[
     T_{eff}(\theta_0,\phi_0) = \int \, d \Omega \, T_{target}(\theta - \theta_0,\phi - \phi_0) P(\theta,\phi)
 \].
-When using this expression one must keep in mind that the fraction of the beam that spills off the primary mirror (shaded in \figref{fig:feedhorn-parms}) will see not the temperature distribution of the target, but a temperature distribution determined by what is beyond the primary mirror\footnote{Because of the presence of the secondary mirror, some of this tempeature distribution will be in front of the system, and some will be behind.}.
+The function $P$ is called the ``beam'' or ``beam pattern'' of the feedhorn, and describes the pattern of radiation to which the feedhorn is sensitive to.
+Although the \Imager is always receiving radiation, never transmitting, this thesis often writes about the beam pattern as if it were transmitting radiation, e.g. in decribing the portion of the ``beam'' that strikes the primary mirror.
+This is acceptable because the transmitting and receiving beam patterns are exactly the same\footnote{This is a consequence of the reciprocity relationships obeyed by the Maxwell equations. See, e.g. \cite{xxx} for a detailed explanation.}.
+When using this expression one must keep in mind that the fraction of the beam that spills off the primary mirror (shaded in \figref{fig:feedhorn-parms}) will see not the temperature distribution of the target, but a temperature distribution determined by what is beyond the primary mirror\footnote{Because of the presence of the secondary mirror, some of this temperature distribution will be in front of the system, and some will be behind.}.
 The fraction of the beam that strikes the primary mirror and proceeds to the target is called the spillover efficiency $\eta_s$.
 
 \begin{figure*}
 \centering
 \input{drawings/ch4-feedhorn-parms.tex}
-\caption{Schematic showing important parameters of a feedhorn and its beam. The beam appears to emerge from the phase center, a distance $l_c$ behind the mouth of the feedhorn in this diagram. The main lobe of the beam is approximated well by a Gaussian, here characterized by a full-width-half-maximum (\FWHM) beam width. Some fraction of the beam falls off the primary mirror, here indicated by the shaded portion of the Gaussian at top.}
+\caption{Schematic showing important parameters of a feedhorn and its beam. The beam appears to emerge from the phase center, a distance $l_c$ behind the mouth of the feedhorn in this diagram. The main lobe of the beam is approximated well by a Gaussian, here characterized by a full-width-half-maximum (\FWHM) beam width. Some fraction of the beam falls off the primary mirror, here indicated by the shaded portion of the Gaussian at top. xxx need to add central blockage to diagram.}
 \label{fig:feedhorn-parms}
 \end{figure*}
 
