@@ -40,16 +40,19 @@
 	\node at (0,\phcy+6.5) {$\Theta_{FWHM}$};
 	
 	% draw beam
-	\begin{axis}[style=smooth,axis lines=none,anchor=origin, at={(0,11.5cm)},x=1cm]
-		\addplot[fill=gray,mark=none,domain=-3.5:-8] {gauss(0,(12.5-\phcy)*2*0.3/2.35482)} \closedcycle;
-		\addplot[mark=none,domain=-3.5:3.5] {gauss(0,(12.5-\phcy)*2*0.3/2.35482)};
-		\addplot[fill=gray,mark=none,domain=3.5:8] {gauss(0,(12.5-\phcy)*2*0.3/2.35482)} \closedcycle;
+	\begin{axis}[axis lines=none,anchor=origin, at={(0,11.75cm)},x=1cm]
+		\addplot[domain=-8:-3.5] {gauss(0,(12.5-\phcy)*2*0.3/2.35482)};
+		\addplot[domain=-3.5:-0.5,fill=gray] {gauss(0,(12.5-\phcy)*2*0.3/2.35482)} \closedcycle;
+		\addplot[domain=-0.5:0.5] {gauss(0,(12.5-\phcy)*2*0.3/2.35482)};
+		\addplot[domain=0.5:3.5,fill=gray] {gauss(0,(12.5-\phcy)*2*0.3/2.35482)} \closedcycle;
+		\addplot[domain=3.5:8] {gauss(0,(12.5-\phcy)*2*0.3/2.35482)};
 	\end{axis}
-	\node at (0,16.5) {Beam Profile};
+	\node at (0,16.75) {Beam Profile};
 	
 	% draw primary mirror
-	\draw[line width=2] (0,11.2) arc (90:95:40);
-	\draw[line width=2] (0,11.2) arc (90:85:40);
+	\draw[line width=2] (-0.5,11.2) arc (91:91 + 4.32:40);
+	\draw[line width=2] (0.5,11.2) arc (89:89 - 4.32:40);
+%	\draw[line width=2] (0,11.2) arc (90:85:40);
 	\node at (0,11.45) {Primary Mirror};
 	
 \end{tikzpicture}

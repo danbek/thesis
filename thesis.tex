@@ -47,6 +47,9 @@
 \newcommand*{\NETD}{{\small NETD}\xspace}
 \newcommand*{\FWHM}{{\small FWHM}\xspace}
 \newcommand*{\MATLAB}{{\small MATLAB}\xspace}
+\newcommand*{\ZEMAX}{{\small ZEMAX}\xspace}
+\newcommand*{\SQUID}{{\small SQUID}\xspace}
+\newcommand*{\AWG}{{\small AWG}\xspace}
 
 % shortcuts
 \newcommand*{\He}[1]{$^{#1}$He\xspace}
@@ -54,9 +57,20 @@
 \newcommand*{\uW}{\ensuremath{\mu}W\xspace}
 \newcommand*{\Ohm}{\ensuremath{\Omega}\xspace}
 \newcommand*{\Imager}{350~GHz Video Imager\xspace}
-\newcommand{\vect}[1]{\vec{#1}}
+\newcommand*{\vect}[1]{\vec{#1}}
 \newcommand*{\textdegree}{\ensuremath{^{\circ}}}
 \newcommand*{\degC}{\ensuremath{^{\circ}}C}
+\newcommand*{\DISP}[1]{{\small DISP{#1}}\xspace}
+\newcommand*{\RC}[2]{R{#1}C{#2}\xspace}
+\newcommand*{\RCm}[2]{
+	\newcount\tmpR
+	\newcount\tmpC
+	\tmpR=#1
+	\tmpC=#2
+	\advance\tmpR by -1
+	\advance\tmpC by -1
+	R{\number\tmpR}C{\number\tmpC}\xspace
+} % this allows me specify row/col indices MATLAB-style
 
 
 \title{A 350 GHz Video Imaging System}
@@ -197,8 +211,8 @@ This cools the pump, allowing \He4 to again adsorb onto the charcoal, which has 
 This process is easy to automate, and a LabView program cycles the fridge automatically every night while the system is operating.
 
 Under optical load, a full cycle of the \He4-sorption refrigerator takes approximately 4 hours, reaching a base temperature of $\sim$~970~mK.
-When no additional load is applied, such as to warm the focal plane to a typical operating temperature of 1100~mK, the hold time is 9 hours.
-Shorter hold times are observed when the operating temperature is raised. % xxx should give an exact time here
+When no additional load is applied the hold time is 9 hours.
+When the temperature of the stage is held at the typical operating temperature of 1100~mK the hold time is only 3:45 hours.
 
 \tableref{tab:fp-thermal-load} shows the predicted heat load on the \He4-sorption refrigerator.
 It excludes parasitic load inherent to the sorption refrigerator itself. xxx mention parasitic load here?
@@ -216,8 +230,8 @@ xxx - include data on temp vs load for the fridge?
 Heat Load Source & 1004 Detectors (\uW) &  251 Detectors (\uW) \\
 \midrule
 Readout wiring 								& 50 & 125 \\
-Series array SQUID modules 		& xxx & xxx \\
-SQUID multiplexing chips 				& xxx & xxx \\
+Series array \SQUID modules 		& xxx & xxx \\
+\SQUID multiplexing chips 				& xxx & xxx \\
 Detectors shunt resistors 			& 5 & 18 \\
 Detectors (Optical + Electrical)		& 0.25 & 1 \\
 Ti-6Al-4V spiders 							& 130 & 130 \\
@@ -248,15 +262,15 @@ If a feedhorn is observing a temperature distribution $T_{target}(\theta,\phi)$,
     T_{eff}(\theta_0,\phi_0) = \int \, d \Omega \, T_{target}(\theta - \theta_0,\phi - \phi_0) P(\theta,\phi)
 \].
 The function $P$ is called the ``beam'' or ``beam pattern'' of the feedhorn, and describes the pattern of radiation to which the feedhorn is sensitive to.
-Although the \Imager is always receiving radiation, never transmitting, this thesis often writes about the beam pattern as if it were transmitting radiation, e.g. in decribing the portion of the ``beam'' that strikes the primary mirror.
-This is acceptable because the transmitting and receiving beam patterns are exactly the same\footnote{This is a consequence of the reciprocity relationships obeyed by the Maxwell equations. See, e.g. \cite{xxx} for a detailed explanation.}.
-When using this expression one must keep in mind that the fraction of the beam that spills off the primary mirror (shaded in \figref{fig:feedhorn-parms}) will see not the temperature distribution of the target, but a temperature distribution determined by what is beyond the primary mirror\footnote{Because of the presence of the secondary mirror, some of this temperature distribution will be in front of the system, and some will be behind.}.
+Although the \Imager is always receiving radiation, never transmitting, this thesis often writes about the beam pattern as if it were transmitting radiation, e.g.\ in decribing the portion of the ``beam'' that strikes the primary mirror.
+This is acceptable because the transmitting and receiving beam patterns are exactly the same\footnote{This is a consequence of the reciprocity relationships obeyed by the Maxwell equations. See, e.g.\ \cite{xxx} for a detailed explanation.}.
+When using this expression one must keep in mind that the fraction of the beam that spills off the primary mirror (e.g.\ the unshaded region in \figref{fig:feedhorn-parms}) will see not the temperature distribution of the target, but a temperature distribution determined by what is beyond the primary mirror\footnote{Because of the presence of the secondary mirror, some of this temperature distribution will be in front of the system, and some will be behind.}.
 The fraction of the beam that strikes the primary mirror and proceeds to the target is called the spillover efficiency $\eta_s$.
 
 \begin{figure*}
 \centering
 \input{drawings/ch4-feedhorn-parms.tex}
-\caption{Schematic showing important parameters of a feedhorn and its beam. The beam appears to emerge from the phase center, a distance $l_c$ behind the mouth of the feedhorn in this diagram. The main lobe of the beam is approximated well by a Gaussian, here characterized by a full-width-half-maximum (\FWHM) beam width. Some fraction of the beam falls off the primary mirror, here indicated by the shaded portion of the Gaussian at top. xxx need to add central blockage to diagram.}
+\caption{Schematic showing important parameters of a feedhorn and its beam. The beam appears to emerge from the phase center, a distance $l_c$ behind the mouth of the feedhorn in this diagram. The main lobe of the beam is approximated well by a Gaussian, here characterized by a full-width-half-maximum (\FWHM) beam width. The shaded fraction of the Gaussian represents the part of the beam that falls onto the primary mirror and reaches the target.}
 \label{fig:feedhorn-parms}
 \end{figure*}
 
@@ -364,27 +378,35 @@ Mandana Amiri and Matthew Hasselfield provided extensive, timely and invaluable 
 
 \section{Readout of Mirror Position}\label{s:mirror-readout}
 
-The \Imager produces a time-ordered data stream reprenting the temperature that each detector observes as a function of time.
+The \Imager produces a time-ordered data stream containing the output of each detector as a function of time.
 In order to turn this data stream into a video, we must know where the optical system is pointing at all times.
-Additionally it is neccessary to know where each detector is pointed relative to the optical system.
-This sections descibes how the \Imager readout system places the optical pointing information directly into the data stream.
-The relative detector pointing information is extracted from beam maps, as discussed in \sectionref{s:beam-maps}.
+This pointing information is placed directly into the timestream by the \Imager, as described in this section.
+It is also necessary to know where each detector is pointed relative to the optical system; this relative detector pointing information is extracted from beam maps, as discussed in \sectionref{s:beam-maps}.
 
-The pointing of the optical system is set by the positions of the two actuators that move the secondary mirror.
-The actuator control hardware provides two voltage signal which are proportional to the positon of each actuator.
+The pointing of the optical system is set by the positions of the two actuators --- \DISP1 and \DISP2 --- that move the secondary mirror.
+The actuator control hardware provides two voltage signal which are proportional to the positions of the actuators.
 This voltage signal is sent into the \Imager cryostat by a pair coaxial cables.
-Inside the cryostat two twisted pair wires carry the signal to the focal plane, where the signal is fed into the input coil of a 1st stage SQUID.
-A series x.xxx M\Ohm resistor is used at room temperature to reduce the current flowing through the wiresto approximately 10 \uA.
-xxx Need a schematic here?
+Inside the cryostat two 1-m long PhBr \AWG36 twisted pair wires carry the signal to the focal plane, where the signal is fed into the input coil of a 1st stage \SQUID.
+Series resistors (4.23~M\Ohm for \DISP1, 4.36~M\Ohm for \DISP2) are used at room temperature to reduce the current flowing through the wires to a value appropriate for the 1st stage \SQUID input; approximately 10~\uA.
 
 This approach allows the readout system to readout the position of the actuators in exactly the same way that it reads out the detector response.
 The actuator position is synchronized perfectly with the detector data.
 
 A natural question is whether cross-talk appears between the actuator readout and the other detectors.
-xxx show results of this measurement.
+To test this both actuator were moved in a 0.1~Hz sine-wave pattern over their maximum displacement range of +/- 3.5~mm, while the detectors were in the superconducting state.
+Both actuators were moved at the same time, roughly 135\textdegree out of phase.
+Crosstalk can be found by fitting each detector timestream $\vect{d}_{rc}$ to the model
+\[
+	 \vect{d}_{rc} = A_1 \vect{d}_{\DISP1} + A_2 \vect{d}_{\DISP2}.
+\]
+Here $\vect{d}_{\DISP1}$ and $\vect{d}_{\DISP2}$ are the measured outputs for each actuator.
+The maximum values of $|A_1|$  and $|A_2|$ are 0.0011 and 0.0014, respectively.
+\figref{xxx} contains a plot summarizing these results.
 
 An additional question is whether the actuator readout leads to higher noise.
 xxx show results of this measurement.
+
+% xxx - I get 500 uW for the load from these four wires (300 K - 1K). Can this be correct? I'm sure I did this calculation in the past and got a much smaller number. Did I screw up in the past? Is today's calculation in error? Am I intercepting this load at 50~K or 4~K, and I forgot about that? Did I use a much longer wire than 1~m? This could be a big cryogenic problem!
 
 \section{Focus Distance}\label{s:focus-distance}
 
@@ -430,6 +452,7 @@ Placeholder for terms
 \item[``4~K'' Cold Plate]
 \item[Sorption Fridge]
 \item[350~GHz Imager]
+\item[PhBr]
 
 \end{description}
 
