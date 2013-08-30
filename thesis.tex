@@ -393,8 +393,12 @@ To determine which detectors show no response when in the superconducting state,
 The \TES bias current was ramped, and data was then acquired while running the readout system open-loop.
 \figref{fig:tes-bias-ramp} shows the resulting data for rows 0 -- 4 of all columns.
 Most row/column combinations show a response that maps out the $V$-$\Phi$ curve for the SQUID amplifier chain.
-The row/column combinations that show no response indicate either a broken detector line, a broken SQUID on a mux chip, or some other problem in the readout system.
+The row/column combinations that show no response indicate either a broken detector line, a broken SQUID on a mux chip, broken wirebonds, or some other problem in the readout system.
 \tableref{tab:det-cuts} lists all detectors cut due to a failure to respond to \TES bias ramps.
+
+Another group of detectors remain superconducting at the chosen bias point and operating temperature of 1100~mK.
+This could be caused by an abnormally high $G$ value, or by a short somewhere in the \TES circuit.
+\tableref{tab:det-cuts} also lists these detectors.
 
 \begin{figure*}[th]
 \centering
@@ -407,7 +411,7 @@ The row/column combinations that show no response indicate either a broken detec
 \centering
 \caption{Summary of Detector Cuts. }
 \label{tab:det-cuts}
-\begin{tabular}{l l l l}
+\begin{tabular}{p{2.6in} l l l}
 \toprule
 Cut Reason &  MCE Row/Column & Detector Label & Notes \\
 \midrule
@@ -426,7 +430,32 @@ No SQUID response to TES bias ramp
  	& \RC{31}{4} & n/a & Bose \DISP1 \\
  	& \RC{31}{5} & n/a & Bose \DISP2 \\
  	& \RC{31}{7} &  & \\
-\bottomrule
+SQUID response to \TES bias ramp is  & \RC{0}{1} & 9--5 &  \\
+the same when biased at 1100~mK as & \RC{2}{5} & 6--16 &  \\
+with zero bias at 975~mK & \RC{3}{4} & 6--13 &  \\
+    & \RC{4}{4} &  &  \\
+ 	& \RC{5}{4} &  &  \\
+ 	& \RC{6}{5} &  &  \\
+ 	& \RC{7}{7} &  &  \\
+ 	& \RC{8}{4} &  &  \\
+ 	& \RC{9}{4} &  &  \\
+ 	& \RC{9}{5} &  &  \\
+ 	& \RC{10}{5} &  &  \\
+ 	& \RC{11}{3} &  &  \\
+ 	& \RC{11}{6} &  &  \\
+ 	& \RC{15}{3} &  &  \\
+ 	& \RC{17}{1} &  &  \\
+ 	& \RC{17}{6} &  &  \\
+ 	& \RC{19}{1} &  &  \\
+ 	& \RC{21}{6} &  &  \\
+ 	& \RC{21}{7} &  &  \\
+ 	& \RC{23}{0} &  &  \\
+ 	& \RC{26}{7} &  &  \\
+ 	& \RC{27}{7} &  &  \\
+ 	& \RC{28}{7} &  &  \\
+ 	& \RC{29}{6} &  &  \\
+ 	& \RC{30}{2} &  &  \\
+ \bottomrule
 \end{tabular}
 \end{table*}
 
