@@ -41,6 +41,7 @@
 \newcommand*{\figref}[1]{Figure~\ref{#1}}
 \newcommand*{\tableref}[1]{Table~\ref{#1}}
 \newcommand*{\sectionref}[1]{Section~\ref{#1}}
+\newcommand*{\chapterref}[1]{Chapter~\ref{#1}}
 
 % acronyms
 \newcommand*{\TES}{{\small TES}\xspace}
@@ -159,12 +160,12 @@ Vibration of the cryostat can lead to microphonic pickup either directly in the 
 \toprule
 Temperature Stage &  Temperature (K)\\
 \midrule
-PTC 1st Stage Cold Head 			& 52 \\
-PTC 2st Stage Cold Head 			& 3.6 \\
-Cryostat ``50 K'' Cold Plate 		& 96 \\
-Cryostat ``4 K'' Cold Plate 			& 6.4 \\
-Sorption Fridge Condensation Plate 	& 3.8 \\
-Focal Plane 						& 0.970 \\
+PTC 1st Stage Cold Head 			& 48 \\
+PTC 2st Stage Cold Head 			& 3.5 \\
+Cryostat ``50 K'' Cold Plate 		& 84 \\
+Cryostat ``4 K'' Cold Plate 			& 5.8 \\
+Sorption Fridge Condensation Plate 	& 3.7 \\
+Focal Plane 						& 0.962 \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -269,6 +270,7 @@ The fraction of the beam that strikes the primary mirror and proceeds to the tar
 
 \begin{figure*}
 \centering
+%\includegraphics{drawings/ch4-feedhorn-parms.pdf}
 \input{drawings/ch4-feedhorn-parms.tex}
 \caption{Schematic showing important parameters of a feedhorn and its beam. The beam appears to emerge from the phase center, a distance $l_c$ behind the mouth of the feedhorn in this diagram. The main lobe of the beam is approximated well by a Gaussian, here characterized by a full-width-half-maximum (\FWHM) beam width. The shaded fraction of the Gaussian represents the part of the beam that falls onto the primary mirror and reaches the target.}
 \label{fig:feedhorn-parms}
@@ -372,7 +374,67 @@ Mandana Amiri and Matthew Hasselfield provided extensive, timely and invaluable 
 
 \chapter{Focal Plane Design}\label{c:fp-design}
 
-\chapter{Detector Characterization}\label{c:det-char}
+\chapter{Array Characterization}\label{c:det-char}
+
+There are many measurements that can be taken to characterize the full 251-detector array.
+All of the measurements reported in \chapterref{xxx} could be repeated for the array, other than those that require the use of a heater.
+However, this thesis only describes the measurements required to verify that that array was working properly and to create images.
+
+\section{Detector Cuts}
+
+Approximately xxx \% of the detectors in the array can not be used to generate images.
+For some the detector membranes are broken.
+Other appear intact upon visual inspection, but show no response to applied current even in the superconducting state.
+Others work as expected while superconducting, but can not be biased so as to show a response to changes in optical power. 
+And some are extremely noisy or show other problems in the data stream.
+This section summarizes which detectors have each of these problems.
+
+To determine which detectors show no response when in the superconducting state, the temperature of the focal plane was set to 975~mK, well below the $T_c$ of the detectors.
+The \TES bias current was ramped, and data was then acquired while running the readout system open-loop.
+\figref{fig:tes-bias-ramp} shows the resulting data for rows 0 -- 4 of all columns.
+Most row/column combinations show a response that maps out the $V$-$\Phi$ curve for the SQUID amplifier chain.
+The row/column combinations that show no response indicate either a broken detector line, a broken SQUID on a mux chip, or some other problem in the readout system.
+\tableref{tab:det-cuts} lists all detectors cut due to a failure to respond to \TES bias ramps.
+
+\begin{figure*}[th]
+\centering
+\includegraphics[width=\textwidth]{images/1377812876_RCs_sq1ramptes_00.png}
+\caption{Plot showing response of SQUID amplifier chain to ramp in TES bias current. Data is shown for rows 0--4 for all eight columns. \RC{0}{2}, \RC{0}{3}, \RC{1}{3}, \RC{1}{7} all show no response, only noise (note the change in vertical scale for these row/columns). xxx need to explain units on axes?}
+\label{fig:tes-bias-ramp}
+\end{figure*}
+
+\begin{table*}[t]
+\centering
+\caption{Summary of Detector Cuts. }
+\label{tab:det-cuts}
+\begin{tabular}{l l l l}
+\toprule
+Cut Reason &  MCE Row/Column & Detector Label & Notes \\
+\midrule
+No SQUID response to TES bias ramp 
+ 	& \RC{0}{2} & n/a & No detector connected \\
+ 	& \RC{0}{3} & n/a &  No detector connected \\
+ 	& \RC{1}{3} & n/a &  No detector connected \\
+ 	& \RC{1}{7} & & \\
+ 	& \RC{5}{6} & & \\
+ 	& \RC{6}{4} & & \\
+ 	& \RC{11}{5} & & \\
+ 	& \RC{14}{4} & & \\
+ 	& \RC{21}{2} & & \\
+ 	& \RC{23}{2} & & \\
+ 	& \RC{31}{3} & & \\
+ 	& \RC{31}{4} & n/a & Bose \DISP1 \\
+ 	& \RC{31}{5} & n/a & Bose \DISP2 \\
+ 	& \RC{31}{7} &  & \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+
+
+\section{Measurement of Heater Resistors}
+
+\section{Direct Measurement of Detector Responsivity}
 
 \chapter{Imaging}\label{c:imaging}
 
@@ -395,7 +457,7 @@ The actuator position is synchronized perfectly with the detector data.
 A natural question is whether cross-talk appears between the actuator readout and the other detectors.
 To test this both actuator were moved in a 0.1~Hz sine-wave pattern over their maximum displacement range of +/- 3.5~mm, while the detectors were in the superconducting state.
 Both actuators were moved at the same time, roughly 135\textdegree out of phase.
-Crosstalk can be found by fitting each detector timestream $\vect{d}_{rc}$ to the model
+The level of crosstalk present can be quantified by performing a least-squares fit of each detector timestream $\vect{d}_{rc}$ to the model
 \[
 	 \vect{d}_{rc} = A_1 \vect{d}_{\DISP1} + A_2 \vect{d}_{\DISP2}.
 \]
@@ -410,7 +472,7 @@ xxx show results of this measurement.
 
 \section{Focus Distance}\label{s:focus-distance}
 
-As described in \sectionref{s:optical-design}, the \Imager is designed to focus at distances of 16~m--30~m (xxx check 2nd distance).
+As described in \sectionref{s:optical-design}, the \Imager is designed to focus at distances of 16~m -- 30~m (xxx check 2nd distance).
 All results described in this chapter were with the \Imager configured to focus at 16~m.
 To check the actual distance to the target focal plane, beam maps as described in \sectionref{s:beam-maps} were performed with the blackbody source located at different distance from the cryostat.
 \figref{fig:beam-vs-distance} shows beam maps for the same detector taken at different distances.
@@ -421,12 +483,12 @@ Possibilities include the cryostat being located too close to the primary mirror
 
 \section{Beam Maps}
 
-As discussed in \sectionref{s:feedhorn-design}, the \Imager feedhorns are predicted to have beams that are circularly symmetric and well-approximated by gausiasians with FWHM of x.xx~cm at the target.
+As discussed in \sectionref{s:feedhorn-design}, the \Imager feedhorns are predicted to have beams that are circularly symmetric and well-approximated by Gaussians with \FWHM of x.xx~cm at the target.
 To verify these predictions beam maps were performed by rastering the beams over a small, stationary 1030~\degC blackbody source.
 
 The blackbody source used was an IR Labs xxx\footnote{IRLabs, Inc. Tucson, AZ. USA}.
 This source reaches a maximum of 1030~\degC and has apertures ranging in size from x.xx in to x.xx in.
-Best results were achieved by covering an area around the blackbody source with Aluminum foil; this elimated hotspots in the image due to the warmth of the housing of the blackbody source itself.
+Best results were achieved by covering an area around the blackbody source with Aluminum foil; this eliminated hotspots in the image due to the warmth of the housing of the blackbody source itself.
 \figref{xxx} shows a picture of the blackbody source with Aluminum foil mask.
 
 The \Imager beams were rastered over the blackbody source by moving one actuator at xx~Hz while the other actuator moved much more slowly at xx~Hz.
