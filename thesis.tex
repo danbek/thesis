@@ -100,6 +100,9 @@
 
 \chapter{Introduction}\label{c:intro}
 
+% http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6005328
+% Instead, the image is dominated by speckle that is characteristic for coherent imaging. Speckle comes from the large variations in the intensity of backscattered radiation coming from the diversity in angles of the beam-target incidence, and it dominates any difference in the intrinsic reﬂectivity of, say, PVC pipe material, clothing, and skin.
+
 \chapter{System Specifications, Challenges and Solutions}\label{c:specs}
 
 \chapter{TES Bolometer Theory}\label{c:tes}
@@ -388,13 +391,14 @@ Other appear intact upon visual inspection, but show no response to applied curr
 Others work as expected while superconducting, but can not be biased so as to show a response to changes in optical power. 
 And some are extremely noisy or show other problems in the data stream.
 This section summarizes which detectors have each of these problems.
+\figref{fig:detector-cuts} and \tableref{tab:det-cuts} summarize this information as well.
 
 To determine which detectors show no response when in the superconducting state, the temperature of the focal plane was set to 975~mK, well below the $T_c$ of the detectors.
 The \TES bias current was ramped, and data was then acquired while running the readout system open-loop.
 \figref{fig:tes-bias-ramp} shows the resulting data for rows 0 -- 4 of all columns.
 Most row/column combinations show a response that maps out the $V$-$\Phi$ curve for the SQUID amplifier chain.
 The row/column combinations that show no response indicate either a broken detector line, a broken SQUID on a mux chip, broken wirebonds, or some other problem in the readout system.
-\tableref{tab:det-cuts} lists all detectors cut due to a failure to respond to \TES bias ramps.
+
 
 Another group of detectors remain superconducting at the chosen bias point and operating temperature of 1100~mK.
 This could be caused by an abnormally high $G$ value, or by a short somewhere in the \TES circuit.
@@ -405,6 +409,17 @@ This could be caused by an abnormally high $G$ value, or by a short somewhere in
 \includegraphics[width=\textwidth]{images/1377812876_RCs_sq1ramptes_00.png}
 \caption{Plot showing response of SQUID amplifier chain to ramp in TES bias current. Data is shown for rows 0--4 for all eight columns. \RC{0}{2}, \RC{0}{3}, \RC{1}{3}, \RC{1}{7} all show no response, only noise (note the change in vertical scale for these row/columns). xxx need to explain units on axes?}
 \label{fig:tes-bias-ramp}
+\end{figure*}
+
+\begin{figure*}
+\centering
+\input{drawings/ch9-detector-cuts.tex}
+\caption{
+Figure showing detector layout, highlighting which detectors have problems and which are working.
+Each detector is labeled (below) with its row/column.
+The x and y positions of the detectors on the wafer are also given, often given in this thesis in the format X-Y, where X give the x position of the detector (labeled along the bottom) and Y the y position (labeled along the left).
+}
+\label{fig:detector-cuts}
 \end{figure*}
 
 \begin{table*}[t]
@@ -433,8 +448,8 @@ No SQUID response to TES bias ramp
 SQUID response to \TES bias ramp is  & \RC{0}{1} & 9--5 &  \\
 the same when biased at 1100~mK as & \RC{2}{5} & 6--16 &  \\
 with zero bias at 975~mK & \RC{3}{4} & 6--13 &  \\
-    & \RC{4}{4} &  &  \\
- 	& \RC{5}{4} &  &  \\
+    & \RC{4}{4} & 6--11 &  \\
+ 	& \RC{5}{4} & 6--9 &  \\
  	& \RC{6}{5} &  &  \\
  	& \RC{7}{7} &  &  \\
  	& \RC{8}{4} &  &  \\
