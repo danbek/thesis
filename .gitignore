@@ -9,3 +9,5 @@
 ~$*
 thesis.pdf
 Thumbs.db
+drawings/*.dvi
+drawings/*.pdf
