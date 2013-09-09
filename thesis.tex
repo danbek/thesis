@@ -391,7 +391,7 @@ Other appear intact upon visual inspection, but show no response to applied curr
 Others work as expected while superconducting, but can not be biased so as to show a response to changes in optical power. 
 And some are extremely noisy or show other problems in the data stream.
 This section summarizes which detectors have each of these problems.
-\figref{fig:detector-cuts} and \tableref{tab:det-cuts} summarize this information as well.
+\figref{fig:detector-cuts-wafer} and \figref{fig:detector-cuts-rc} summarize this information as well.
 
 To determine which detectors show no response when in the superconducting state, the temperature of the focal plane was set to 975~mK, well below the $T_c$ of the detectors.
 The \TES bias current was ramped, and data was then acquired while running the readout system open-loop.
@@ -402,7 +402,6 @@ The row/column combinations that show no response indicate either a broken detec
 
 Another group of detectors remain superconducting at the chosen bias point and operating temperature of 1100~mK.
 This could be caused by an abnormally high $G$ value, or by a short somewhere in the \TES circuit.
-\tableref{tab:det-cuts} also lists these detectors.
 
 \begin{figure*}[th]
 \centering
@@ -413,68 +412,21 @@ This could be caused by an abnormally high $G$ value, or by a short somewhere in
 
 \begin{figure*}
 \centering
-\input{drawings/ch9-detector-cuts.tex}
+\input{drawings/ch9-detector-cuts-wafer.tex}
 \caption{
 Figure showing detector layout, highlighting which detectors have problems and which are working.
 Each detector is labeled (below) with its row/column.
-The x and y positions of the detectors on the wafer are also given, often given in this thesis in the format X-Y, where X give the x position of the detector (labeled along the bottom) and Y the y position (labeled along the left).
+The x and y positions of the detectors on the wafer are also given, given in this thesis in the format X-Y, where X give the x position of the detector (labeled along the bottom) and Y the y position (labeled along the left).
 }
-\label{fig:detector-cuts}
+\label{fig:detector-cuts-wafer}
 \end{figure*}
 
-\begin{table*}[t]
+\begin{figure*}
 \centering
-\caption{Summary of Detector Cuts. }
-\label{tab:det-cuts}
-\begin{tabular}{p{2.6in} l l l}
-\toprule
-Cut Reason &  MCE Row/Column & Detector Label & Notes \\
-\midrule
-No SQUID response to TES bias ramp 
- 	& \RC{0}{2} & n/a & No detector connected \\
- 	& \RC{0}{3} & n/a &  No detector connected \\
- 	& \RC{1}{3} & n/a &  No detector connected \\
- 	& \RC{1}{7} & & \\
- 	& \RC{5}{6} & & \\
- 	& \RC{6}{4} & & \\
- 	& \RC{11}{5} & & \\
- 	& \RC{14}{4} & & \\
- 	& \RC{21}{2} & & \\
- 	& \RC{23}{2} & & \\
- 	& \RC{31}{3} & & \\
- 	& \RC{31}{4} & n/a & Bose \DISP1 \\
- 	& \RC{31}{5} & n/a & Bose \DISP2 \\
- 	& \RC{31}{7} &  & \\
-SQUID response to \TES bias ramp is  & \RC{0}{1} & 9--5 &  \\
-the same when biased at 1100~mK as & \RC{2}{5} & 6--16 &  \\
-with zero bias at 975~mK & \RC{3}{4} & 6--13 &  \\
-    & \RC{4}{4} & 6--11 &  \\
- 	& \RC{5}{4} & 6--9 &  \\
- 	& \RC{6}{5} &  &  \\
- 	& \RC{7}{7} &  &  \\
- 	& \RC{8}{4} &  &  \\
- 	& \RC{9}{4} &  &  \\
- 	& \RC{9}{5} &  &  \\
- 	& \RC{10}{5} &  &  \\
- 	& \RC{11}{3} &  &  \\
- 	& \RC{11}{6} &  &  \\
- 	& \RC{15}{3} &  &  \\
- 	& \RC{17}{1} &  &  \\
- 	& \RC{17}{6} &  &  \\
- 	& \RC{19}{1} &  &  \\
- 	& \RC{21}{6} &  &  \\
- 	& \RC{21}{7} &  &  \\
- 	& \RC{23}{0} &  &  \\
- 	& \RC{26}{7} &  &  \\
- 	& \RC{27}{7} &  &  \\
- 	& \RC{28}{7} &  &  \\
- 	& \RC{29}{6} &  &  \\
- 	& \RC{30}{2} &  &  \\
- \bottomrule
-\end{tabular}
-\end{table*}
-
-
+\input{drawings/ch9-detector-cuts-rc.tex}
+\caption{Figure showing same information as \figref{fig:detector-cuts-wafer}, but organized in term of readout rows/columns. Each detector is labeled (below) with it's position on the detector wafer. The rows/columns are labeled on the left and top. Unused row/columns as well as the row/columns used to readout the position of the secondary mirror are also indicated. }
+\label{fig:detector-cuts-rc}
+\end{figure*}
 
 \section{Measurement of Heater Resistors}
 
