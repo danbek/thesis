@@ -5,15 +5,14 @@
 
 \begin{document}
 \begin{tikzpicture}
-	
-	
+
 \begin{axis}[ymin=0, title={Measured Shunt Resistances}, xlabel={$R_{sh}$ ($\mu\Omega$)}, ylabel={Quantity} ]
-\addplot [
-hist,
-fill=blue!75,
-draw=blue!50!black]
-file{ch-rsh-hist.dat};
+
+\addplot [hist={data min=125,data max=165,bins=20},
+          fill=blue!75]
+	table[y index=0]{drawings/ch8-rsh-hist.dat};
+
 \end{axis}
-	
+
 \end{tikzpicture}
 \end{document}

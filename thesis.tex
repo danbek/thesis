@@ -75,7 +75,7 @@
 	\advance\tmpC by -1
 	R{\number\tmpR}C{\number\tmpC}\xspace
 } % this allows me specify row/col indices MATLAB-style
-\newcommand*{\Rsh}{\ensuremath{$R_{sh}$}}
+\newcommand*{\Rsh}{\ensuremath{R_{sh}}}
 
 
 
@@ -420,8 +420,12 @@ $L$ has a mean of 574~nH with a standard deviation of 87~nH.
 This $L$ includes the Nyquist inductance on the interface chip, the input inductance of the first-stage \SQUID\ of the multiplexed readout system, as well as any parasitic inductance in the circuit.
 Using this measurement it is not possible to extract the inductance of the Nyqust inductor itself, but this is not a problem because the total inductance is the relevant  quantity for understanding the behavior of the detector and it's circuit.
 
-
-
+\begin{figure*}
+\centering
+\input{drawings/ch8-rsh-hist.tex}
+\caption{xxx}
+\label{fig:rsh-hist}
+\end{figure*}
 
 \section{Heater Characterization}
 
