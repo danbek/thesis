@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.8} % latest stable release
+
+\begin{document}
+\begin{tikzpicture}
+	
+	
+\begin{axis}[ymin=0, title={Measured Shunt Resistances}, xlabel={$R_{sh}$ ($\mu\Omega$)}, ylabel={Quantity} ]
+\addplot [
+hist,
+fill=blue!75,
+draw=blue!50!black]
+file{ch-rsh-hist.dat};
+\end{axis}
+	
+\end{tikzpicture}
+\end{document}

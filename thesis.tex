@@ -52,12 +52,14 @@
 \newcommand*{\ZEMAX}{{\small ZEMAX}\xspace}
 \newcommand*{\SQUID}{{\small SQUID}\xspace}
 \newcommand*{\AWG}{{\small AWG}\xspace}
+\newcommand*{\FFT}{{\small FFT}}
 
 % shortcuts
 \newcommand*{\He}[1]{$^{#1}$He\xspace}
 \newcommand*{\uA}{\ensuremath{\mu}A\xspace}
 \newcommand*{\uW}{\ensuremath{\mu}W\xspace}
 \newcommand*{\Ohm}{\ensuremath{\Omega}\xspace}
+\newcommand*{\uOhm}{\ensuremath{\mu\Omega}}
 \newcommand*{\Imager}{350~GHz Video Imager\xspace}
 \newcommand*{\vect}[1]{\vec{#1}}
 \newcommand*{\textdegree}{\ensuremath{^{\circ}}}
@@ -73,6 +75,8 @@
 	\advance\tmpC by -1
 	R{\number\tmpR}C{\number\tmpC}\xspace
 } % this allows me specify row/col indices MATLAB-style
+\newcommand*{\Rsh}{\ensuremath{$R_{sh}$}}
+
 
 
 \title{A 350 GHz Video Imaging System}
@@ -378,7 +382,64 @@ Mandana Amiri and Matthew Hasselfield provided extensive, timely and invaluable 
 
 \chapter{Focal Plane Design}\label{c:fp-design}
 
-\chapter{Array Characterization}\label{c:det-char}
+\chapter{Subarray Characterization}\label{c:det-array}
+
+The first 251-detector subarray has not yet been characterized as thoroughly as the prototype detectors.
+In particular, only good detectors with working heaters have been characterized.
+The reason for this is that the saturation power of the detectors is xxx time higher than expected, which means that only some detectors be driven normal, and only at bath temperatures very close to Tc.
+In particular, none of the detector can be driven normal at the operating bath temperature for the array of 1100~mK.
+This means that we do not have IV curves for any detectors at operating conditions, which limits the characterization than can be performed.
+
+Fourteen detectors used in taking images have working heaters.
+These heaters allow us to take full IV curves at all bath temperatures, and to directly measure detector responsivity and time constants, and thus to measure detector noise referred to optical power incident on the detector.
+This chapter describes these measurements on these fourteen detectors.
+% xxx list the specific measurements
+
+\section{Shunt Resistance Measurements}
+
+Our shunt resistors are located on interface chips that contain both shunt resistors and Nyquist inductors.
+The specific chips used were extra chips leftover from the ABS\cite{xxx} project.
+The design resistance of the shunts was 180~\uOhm, and the design inductance was 645~nH\cite{xxxSuzanne personal communication}.
+Each chips contains 32 shunt resistors and 32 inductors.
+
+To measure $R_{sh}$ and $L$ for these chips I took noise measurements using zero detector bias current at two different bath temperature: 980~mK and 1160~mK.
+At these bath temperatures and at zero detector bias the detectors are superconducting, so that measured noise is due to the shunt resistor, and parasitic resistance, and SQUID noise in the multiplexed readout system itself.
+Data was collected at 3030.3~Hz, and 20 data acquisitions lasting 33 seconds were taken at each bath temperature.
+
+A power spectrum was estimated for each detector for each data acquisition using \MATLAB's \texttt{pwelch} function, using a \FFT size of $2^12$.
+Each resulting power spectrum was fit to a function of the form
+\[
+	\frac{4 k_B T_b}{R_{sh}} \frac{1}{1 + (2 \pi f (L/R_{sh}))^2} + SQ,
+\]
+where $k_B$ is Boltzmann's constant, $T_b$ is the bath temperature for the measurement, and $f$ is the frequency.
+The shunt resistance $R_{sh}$, inductance $L$, and readout chain white noise level $SQ$ are the values extracted from the fit.
+
+\figref{xxx} shows histogram plots of the resulting \Rsh\ and $L$ values.
+\Rsh\ has a mean of 149~\uOhm\ with standard deviation 6~\uOhm.
+$L$ has a mean of 574~nH with a standard deviation of 87~nH.
+This $L$ includes the Nyquist inductance on the interface chip, the input inductance of the first-stage \SQUID\ of the multiplexed readout system, as well as any parasitic inductance in the circuit.
+Using this measurement it is not possible to extract the inductance of the Nyqust inductor itself, but this is not a problem because the total inductance is the relevant  quantity for understanding the behavior of the detector and it's circuit.
+
+
+
+
+\section{Heater Characterization}
+
+Only 23 of the 251 detectors have heaters wired up.
+Of these 23, there are five detectors which show no response to applied heater power, but the detectors are on the cut  list, so this is not surprising.
+But four detectors can be biased into the transition and work well, but show no response to applied heater power (\RC{4}{7}, \RC{5}{7}, \RC{6}{6}, \RC{7}{6}).
+The reasons for these detectors not showing a response to heater power are not understood.
+This leaves 14 working detectors that also show a response to applied heater power.
+
+
+\section{Measurement of Heater Resistors}
+
+\section{Direct Measurement of Detector Responsivity}
+
+
+
+
+\chapter{Imaging}\label{c:imaging}
 
 \section{Detector Cuts}
 
@@ -437,20 +498,6 @@ The x and y positions of the detectors on the wafer are also given, given in thi
 \label{fig:detector-cuts-rc}
 \end{figure*}
 
-\section{Heater Characteriziation}
-
-Only 23 of the 251 detectors have heaters wired up.
-Of these 23, there are five detectors which show no response to applied heater power, but the detectors are on the cut  list, so this is not surprising.
-But four detectors can be biased into the transition and work well, but show no response to applied heater power (\RC{4}{7}, \RC{5}{7}, \RC{6}{6}, \RC{7}{6}).
-The reasons for these detectors not showing a response to heater power are not understood.
-This leaves 14 working detectors that also show a response to applied heater power.
-
-
-\section{Measurement of Heater Resistors}
-
-\section{Direct Measurement of Detector Responsivity}
-
-\chapter{Imaging}\label{c:imaging}
 
 \section{Readout of Mirror Position}\label{s:mirror-readout}
 
