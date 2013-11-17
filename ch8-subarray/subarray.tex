@@ -22,7 +22,7 @@ To measure $R_{sh}$ and $L$ for these chips I took noise measurements using zero
 At these bath temperatures and at zero detector bias the detectors are superconducting, so that measured noise is due to the shunt resistor, and parasitic resistance, and SQUID noise in the multiplexed readout system itself.
 Data was collected at 3030.3~Hz, and 20 data acquisitions lasting 33 seconds were taken at each bath temperature.
 
-A power spectrum was estimated for each detector for each data acquisition using \MATLAB's \texttt{pwelch} function, using a \FFT size of $2^12$.
+A power spectrum was estimated for each detector for each data acquisition using \MATLAB's \texttt{pwelch} function, using a \FFT\ size of $2^12$.
 Each resulting power spectrum was fit to a function of the form
 \[
 	\frac{4 k_B T_b}{R_{sh}} \frac{1}{1 + (2 \pi f (L/R_{sh}))^2} + SQ,

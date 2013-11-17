@@ -23,7 +23,6 @@
 \usepackage[kerning]{microtype} % better typography
 \usepackage{booktabs} % better tables
 \usepackage{graphicx} % including graphical figures
-\usepackage{xspace} % fix trailing spaces after abbreviation macros
 \usepackage{tikz} % drawing figures right here in this file!
 \usepackage{pgfplots} % drawing plots right here in this file!
 \pgfplotsset{compat=1.8} % latest stable release
@@ -44,28 +43,28 @@
 \newcommand*{\chapterref}[1]{Chapter~\ref{#1}}
 
 % acronyms
-\newcommand*{\TES}{{\small TES}\xspace}
-\newcommand*{\TESs}{{\small TES}s\xspace}
-\newcommand*{\NETD}{{\small NETD}\xspace}
-\newcommand*{\FWHM}{{\small FWHM}\xspace}
-\newcommand*{\MATLAB}{{\small MATLAB}\xspace}
-\newcommand*{\ZEMAX}{{\small ZEMAX}\xspace}
-\newcommand*{\SQUID}{{\small SQUID}\xspace}
-\newcommand*{\AWG}{{\small AWG}\xspace}
+\newcommand*{\TES}{{\small TES}}
+\newcommand*{\TESs}{{\small TES}s}
+\newcommand*{\NETD}{{\small NETD}}
+\newcommand*{\FWHM}{{\small FWHM}}
+\newcommand*{\MATLAB}{{\small MATLAB}}
+\newcommand*{\ZEMAX}{{\small ZEMAX}}
+\newcommand*{\SQUID}{{\small SQUID}}
+\newcommand*{\AWG}{{\small AWG}}
 \newcommand*{\FFT}{{\small FFT}}
 
 % shortcuts
-\newcommand*{\He}[1]{$^{#1}$He\xspace}
-\newcommand*{\uA}{\ensuremath{\mu}A\xspace}
-\newcommand*{\uW}{\ensuremath{\mu}W\xspace}
-\newcommand*{\Ohm}{\ensuremath{\Omega}\xspace}
+\newcommand*{\He}[1]{$^{#1}$He}
+\newcommand*{\uA}{\ensuremath{\mu}A}
+\newcommand*{\uW}{\ensuremath{\mu}W}
+\newcommand*{\Ohm}{\ensuremath{\Omega}}
 \newcommand*{\uOhm}{\ensuremath{\mu\Omega}}
-\newcommand*{\Imager}{350~GHz Video Imager\xspace}
+\newcommand*{\Imager}{350~GHz Video Imager}
 \newcommand*{\vect}[1]{\vec{#1}}
 \newcommand*{\textdegree}{\ensuremath{^{\circ}}}
 \newcommand*{\degC}{\ensuremath{^{\circ}}C}
-\newcommand*{\DISP}[1]{{\small DISP{#1}}\xspace}
-\newcommand*{\RC}[2]{R{#1}C{#2}\xspace}
+\newcommand*{\DISP}[1]{{\small DISP{#1}}}
+\newcommand*{\RC}[2]{R{#1}C{#2}}
 \newcommand*{\RCm}[2]{
 	\newcount\tmpR
 	\newcount\tmpC
@@ -73,7 +72,7 @@
 	\tmpC=#2
 	\advance\tmpR by -1
 	\advance\tmpC by -1
-	R{\number\tmpR}C{\number\tmpC}\xspace
+	R{\number\tmpR}C{\number\tmpC}
 } % this allows me specify row/col indices MATLAB-style
 \newcommand*{\Rsh}{\ensuremath{R_{sh}}}
 

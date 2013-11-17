@@ -2,14 +2,14 @@
 
 \section{Cryostat Design}\label{s-cryo-design}
 
-The cryostat for the \Imager was designed with the goals of simplicity, reliability and turn-key automated operation.
+The cryostat for the \Imager\ was designed with the goals of simplicity, reliability and turn-key automated operation.
 Highly reliable and easy-to-use cryogen-free mechanical cryocoolers are available from many vendors, but these cryocoolers are seldom capable of reaching temperatures below 2.5~K.
 Reaching sub-Kelvin temperatures requires a second refrigeration stage, which in our case is a He-4 sorption refrigerator.
 The He-4 sorption refrigerator is based on a proven design and its use can easily be automated.
 Three temperature stages within the cryostat are provided in order to provide intercepts for heatsinking wiring and other objects that are thermal connected to room temperature. 
 The result is a reliable cryogen-free cryogenic system that can be controlled remotely.
 
-The cryostat itself was built by Precision Cryogenics\footnote{Precision Cryogenics Systems, Inc. Indianapolis, IN. \url{http://www.precisioncryo.com}} to designs provided by the \Imager team.
+The cryostat itself was built by Precision Cryogenics\footnote{Precision Cryogenics Systems, Inc. Indianapolis, IN. \url{http://www.precisioncryo.com}} to designs provided by the \Imager\ team.
 \figref{fig:cryo-cutaway} shows a cutaway view of the cryostat, and \tableref{tab:temp-optical-load} lists the temperatures typically reached by different parts of the cryostat during operation when the cryostat is open optically.
 The cryostat has two main parts: a cylinder containing both the PTC and the \He4-sorption refrigerator, and a box located at the bottom of the cylinder which contains temperature intercept plates and the focal plane.
 There are three temperature stages, the ``90~K'' Cold Plate, the ``4~K'' Cold Plate, and the Focal Plane.
@@ -64,7 +64,7 @@ Focal Plane 						& 0.962 \\
 \end{tabular}
 \end{table*}
 
-Options for reaching temperatures below the $\sim$1.2~K transition temperature of our \TES detectors include: dilution refrigerators, adiabatic magnetization refrigerators, pumped \He4 baths, and \He3- and/or \He4-sorption refrigerators.
+Options for reaching temperatures below the $\sim$1.2~K transition temperature of our \TES\ detectors include: dilution refrigerators, adiabatic magnetization refrigerators, pumped \He4 baths, and \He3- and/or \He4-sorption refrigerators.
 We chose a \He4-sorption fridge because of both it's low and cost ease of operation compared to other solutions, and the fact that the typical base temperatures under no load of $\sim$700~mK is well-matched to our application.
 A  \He4-sorption fridge works by using a charcoal adsorber to pump on a bath of liquid \He4, reducing the \He4 boiling point and thus the temperature of the bath.
 The \He4 is contained withing a sealed reservoir so that the refrigerator acts as a closed system requiring no \He4 replenishment. 
@@ -97,7 +97,7 @@ In normal operation the heat switch between the charcoal pumping chamber (``pump
 Cycling the refrigerator requires four steps.
 First the heat switch is opened.
 The \He4-sorption refrigerator uses a \He4 gas-gap heat switch manufactured by Chase Cryogenics\footnote{Chase Research Cryogenics, Ltd. Sheffield, UK}, which requires 5 minutes of waiting time in order for the switch to fully open.
-Second, the pump is heated by applying 5 W via a 500 \Ohm power resistor.
+Second, the pump is heated by applying 5 W via a 500 \Ohm\ power resistor.
 This power is applied until the temperature of the pump reaches 40 K, which is high enough to drive nearly all of the adsorbed \He4 off of the charcoal.
 Third, the power to the pump is turned off.
 Once the temperature of the condensation plate falls below the boiling point of \He4, \He4 will begin to condense on it's walls, dripping into the \He4 condensation pot (``pot'').
@@ -125,8 +125,8 @@ xxx - include data on temp vs load for the fridge?
 Heat Load Source & 1004 Detectors (\uW) &  251 Detectors (\uW) \\
 \midrule
 Readout wiring 								& 50 & 125 \\
-Series array \SQUID modules 		& xxx & xxx \\
-\SQUID multiplexing chips 				& xxx & xxx \\
+Series array \SQUID\ modules 		& xxx & xxx \\
+\SQUID\ multiplexing chips 				& xxx & xxx \\
 Detectors shunt resistors 			& 5 & 18 \\
 Detectors (Optical + Electrical)		& 0.25 & 1 \\
 Ti-6Al-4V spiders 							& 130 & 130 \\
@@ -146,9 +146,9 @@ Total												& 185 + xxx & 274 + xxx \\
 % xxx where do I explain the choice of a square grid? Ans: section 6.3
 % xxx where do I explain the missing 20 detectors?
 
-Millimeter and submillimeter astronomical instruments using \TES detectors use many different strategies for coupling light onto detectors: filled arrays of absorbers\cite{swetz2011overview,Holland2013SCUBA-2}, antennas with lenslets\cite{polarbear?}, phased antenna arrays\cite{jpl stuff}, corrugated feedhorns \cite{sptpol,actpol}, and smooth-walled conical feedhorns \cite{schwan2011invited,spt}.
-The \Imager uses smooth-walled feedhorns because they are easy to design and and easy to machine.
-Smooth-walled feedhorns do not have the nice polarization properties of corrugated feedhorns \cite{claricoats & olver?}, but this is not a concern here because the \Imager is polarization-insensitive.
+Millimeter and submillimeter astronomical instruments using \TES\ detectors use many different strategies for coupling light onto detectors: filled arrays of absorbers\cite{swetz2011overview,Holland2013SCUBA-2}, antennas with lenslets\cite{polarbear?}, phased antenna arrays\cite{jpl stuff}, corrugated feedhorns \cite{sptpol,actpol}, and smooth-walled conical feedhorns \cite{schwan2011invited,spt}.
+The \Imager\ uses smooth-walled feedhorns because they are easy to design and and easy to machine.
+Smooth-walled feedhorns do not have the nice polarization properties of corrugated feedhorns \cite{claricoats & olver?}, but this is not a concern here because the \Imager\ is polarization-insensitive.
 
 \figref{fig:feedhorn-parms} depicts a smooth-walled conical feedhorn and its interaction with the optical system.
 As discussed in section \sectionref{s:optical-design}, although the optical system has a secondary mirror as well, for many purposes the secondary mirror can be ignored and the system treated as a system of feedhorns illuminating only a primary mirror with a hole in its center.
@@ -157,7 +157,7 @@ If a feedhorn is observing a temperature distribution $T_{target}(\theta,\phi)$,
     T_{eff}(\theta_0,\phi_0) = \int \, d \Omega \, T_{target}(\theta - \theta_0,\phi - \phi_0) P(\theta,\phi)
 \].
 The function $P$ is called the ``beam'' or ``beam pattern'' of the feedhorn, and describes the pattern of radiation to which the feedhorn is sensitive to.
-Although the \Imager is always receiving radiation, never transmitting, this thesis often writes about the beam pattern as if it were transmitting radiation, e.g.\ in decribing the portion of the ``beam'' that strikes the primary mirror.
+Although the \Imager\ is always receiving radiation, never transmitting, this thesis often writes about the beam pattern as if it were transmitting radiation, e.g.\ in decribing the portion of the ``beam'' that strikes the primary mirror.
 This is acceptable because the transmitting and receiving beam patterns are exactly the same\footnote{This is a consequence of the reciprocity relationships obeyed by the Maxwell equations. See, e.g.\ \cite{xxx} for a detailed explanation.}.
 When using this expression one must keep in mind that the fraction of the beam that spills off the primary mirror (e.g.\ the unshaded region in \figref{fig:feedhorn-parms}) will see not the temperature distribution of the target, but a temperature distribution determined by what is beyond the primary mirror\footnote{Because of the presence of the secondary mirror, some of this temperature distribution will be in front of the system, and some will be behind.}.
 The fraction of the beam that strikes the primary mirror and proceeds to the target is called the spillover efficiency $\eta_s$.
@@ -170,8 +170,8 @@ The fraction of the beam that strikes the primary mirror and proceeds to the tar
 \label{fig:feedhorn-parms}
 \end{figure*}
 
-The feedhorn opening diameter $D$ is chosen to minimize the total \NETD of the system.
-The total \NETD was given in \sectionref{xxx} as
+The feedhorn opening diameter $D$ is chosen to minimize the total \NETD\ of the system.
+The total \NETD\ was given in \sectionref{xxx} as
 \[
     NETD = \frac{NEP_{tot}}{2 k_B \Delta \nu \eta_{tot} \sqrt{2 \tau}}.
 \]
@@ -203,7 +203,7 @@ Fourth, the dependence of the number of detectors $N$ on the feedhorn diameter $
 As explained in \sectionref{xxx6.3}, the \Imager's detectors are laid out on a square grid.
 So it is more helpful to think of the feedhorn diameter as a value that can take on a discrete set of values that depends on the number of feedhorns per each side of the grid.
 
-A \MATLAB program was used to find the optimum feedhorn size.
+A \MATLAB\ program was used to find the optimum feedhorn size.
 The program uses an analytic expression for the beam pattern developed in \cite{green2006radiation,narasimhan1971modes,}.
 The far-field electric field pattern takes the form
 \[
@@ -222,7 +222,7 @@ which simplifies to
 \]
 which is independent of $\phi$, as expected for an unpolarized detector.
 
-To calculate the spillover efficiency of an individual feedhorn, the \MATLAB program integrates $P$ over the angles $\theta$ that illuminate the primary mirror and reach the target: 5.3\textdegree to 13.6\textdegree\footnote{see \sectionref{s:optical-design}}.
+To calculate the spillover efficiency of an individual feedhorn, the \MATLAB\ program integrates $P$ over the angles $\theta$ that illuminate the primary mirror and reach the target: 5.3\textdegree to 13.6\textdegree\footnote{see \sectionref{s:optical-design}}.
 \figref{fig:spill-vs-alpha-diam} shows a contour plot of spillover efficiency as a function of $D$ and $\alpha$.
 The blue asterisk matches the parameters for the feedhorns chosen for the \Imager.
 This plot makes it clear that $\eta_s$ depends much more strongly on $D$ than on $\alpha$.
@@ -235,14 +235,14 @@ $\alpha = 9.4$\textdegree was chosen as a value that is easy to machine, keeps t
 \label{fig:spill-vs-alpha-diam}
 \end{figure*}
 
-The feedhorn diameter chosen does not maximize $\eta_s$, because it turned out that a smaller \NETD could be achieved by using a larger number of smaller feedhorns.
-In fact, as \figref{fig:netd-num-feeds} shows, an even larger number of even smaller feedhorns is predicted to reduce \NETD by xxx \%.
+The feedhorn diameter chosen does not maximize $\eta_s$, because it turned out that a smaller \NETD\ could be achieved by using a larger number of smaller feedhorns.
+In fact, as \figref{fig:netd-num-feeds} shows, an even larger number of even smaller feedhorns is predicted to reduce \NETD\ by xxx \%.
 However, as mentiond above, the maximum number of detectors that can be readout by our system is 1024, so $D = xxx$ was chosen as the optimal feedhorn diameter.
 
 \begin{figure*}[th]
 \centering
 \includegraphics[width=3.0in]{\here/../images/netd_num_feeds.pdf}
-\caption{Plot showing how total number of detectors and system \NETD depend on diameter chosen for feedhorns. The number of detectors is a discrete function of the feedhorn diameter because it is not possible to have a fractional part of a feedhorn. \NETD is maximized with xxx feedhorns of diameter xxx, but the \Imager uses 1004 feedhorns of diameter xxx because of readout limitations. xxx Is this plot right? I chose 2.68 mm (cold), which leads to ~800 detectors, not 1024.}
+\caption{Plot showing how total number of detectors and system \NETD\ depend on diameter chosen for feedhorns. The number of detectors is a discrete function of the feedhorn diameter because it is not possible to have a fractional part of a feedhorn. \NETD\ is maximized with xxx feedhorns of diameter xxx, but the \Imager\ uses 1004 feedhorns of diameter xxx because of readout limitations. xxx Is this plot right? I chose 2.68 mm (cold), which leads to ~800 detectors, not 1024.}
 \label{fig:netd-num-feeds}
 \end{figure*}
 
