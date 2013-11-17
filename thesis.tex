@@ -77,8 +77,11 @@
 } % this allows me specify row/col indices MATLAB-style
 \newcommand*{\Rsh}{\ensuremath{R_{sh}}}
 
-\providecommand*{\DataDir}{ch8-subarray}
-
+% A command that refers to the directory in which we are compiling.
+% Must be set prior to inluding chapters.
+% See these TeX Stackexchange questions:
+% [1]: http://tex.stackexchange.com/questions/123058/subimport-and-includeonly
+% [2]: http://tex.stackexchange.com/questions/102055/standalone-pgfplot-with-extra-include-in-subdirectory-no-output
 \newcommand*{\here}{here}
 
 \title{A 350 GHz Video Imaging System}
