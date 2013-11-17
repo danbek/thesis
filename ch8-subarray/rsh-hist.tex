@@ -3,6 +3,8 @@
 \usepackage{pgfplots} % drawing plots right here in this file!
 \pgfplotsset{compat=1.8} % latest stable release
 
+\providecommand*{\here}{.}
+
 \begin{document}
 \begin{tikzpicture}
 
@@ -10,7 +12,7 @@
 
 \addplot [hist={data min=125,data max=165,bins=20},
           fill=blue!75]
-	table[y index=0]{drawings/ch8-rsh-hist.dat};
+	table[y index=0]{\here/rsh-hist.dat};
 
 \end{axis}
 

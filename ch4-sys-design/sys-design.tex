@@ -1,0 +1,265 @@
+\chapter{System Design Overview}\label{c:sys-design}
+
+\section{Cryostat Design}\label{s-cryo-design}
+
+The cryostat for the \Imager was designed with the goals of simplicity, reliability and turn-key automated operation.
+Highly reliable and easy-to-use cryogen-free mechanical cryocoolers are available from many vendors, but these cryocoolers are seldom capable of reaching temperatures below 2.5~K.
+Reaching sub-Kelvin temperatures requires a second refrigeration stage, which in our case is a He-4 sorption refrigerator.
+The He-4 sorption refrigerator is based on a proven design and its use can easily be automated.
+Three temperature stages within the cryostat are provided in order to provide intercepts for heatsinking wiring and other objects that are thermal connected to room temperature. 
+The result is a reliable cryogen-free cryogenic system that can be controlled remotely.
+
+The cryostat itself was built by Precision Cryogenics\footnote{Precision Cryogenics Systems, Inc. Indianapolis, IN. \url{http://www.precisioncryo.com}} to designs provided by the \Imager team.
+\figref{fig:cryo-cutaway} shows a cutaway view of the cryostat, and \tableref{tab:temp-optical-load} lists the temperatures typically reached by different parts of the cryostat during operation when the cryostat is open optically.
+The cryostat has two main parts: a cylinder containing both the PTC and the \He4-sorption refrigerator, and a box located at the bottom of the cylinder which contains temperature intercept plates and the focal plane.
+There are three temperature stages, the ``90~K'' Cold Plate, the ``4~K'' Cold Plate, and the Focal Plane.
+The PTC 1st stage is connected to the ``90~K'' Cold Plate by a tube of Al 1100 and a set of CDA-101 Cu braids.
+The combination of this long thermal path with the high heat load on the optical filters sunk to the ``90~K'' stage explains the 45~K temperature differential between the ``90~K`` cold plate and the PTC 1st stage.
+The PTC 2nd stage is connected to the ``4 K'' Cold Plate by a large (3.0 in diameter by 2.78 in long) cylinder of CDA-110 Cu\footnote{This cryostat was originally designed to work with a different cryocooler. The PTC currently installed had a shorter distance between the 1st and 2nd stages, necessitating the Cu cylinder to take up this extra space}, followed by tube of alloy CDA-101 Cu followed by a set of  CDA-101 copper braids.
+The Cu tube is broken into two halves, and the condensation plate (see below) of the sorption fridge is clamped between these two halves. The ``90 K'' Cold Plate is stood off from the cryostat vacuum jacket by four ``roll wrapped'' carbon fiber tube standoffs. The ``4~K'' Cold Plate stands off from the ``90 K'' Cold Plate by eight supports made of G-10.
+
+The first two temperature intercept stages are provided by a Cryomech PT407 Pulse Tube Cryorefrigerator\footnote{Cryomech, Inc. Syracure, NY. \url{http://www.cryomech.com}}
+The PT407 has two cooling stages.
+The first stage has 25~W of cooling power at 55~K while the second stage has 0.7~W at 4.2 K.
+Our PT407 uses a remote motor, so that the cold head attached to the cryostat has no moving parts, minimizing vibration of the cryostat.
+Vibration of the cryostat can lead to microphonic pickup either directly in the detectors themselves or in the readout circuitry, leading to much higher detector noise.
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=2.6in]{\here/../images/cryostat-cutaway.png}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+	    %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1.5,1);
+		%\foreach \x in {0,1,...,15} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+		%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+		
+        \draw[red,ultra thick,rounded corners] (0.50,0.7) rectangle (0.85,0.75) node[below left] {\textbf{A}}; % PTC407 1st stage CH
+        \draw[red,ultra thick,rounded corners] (0.56,0.595) rectangle (0.71,0.64) node[below left] {\textbf{B}}; % PTC407 2st stage CH
+        \draw[red,ultra thick,rounded corners] (0.53,0.55) rectangle (0.78,0.595) node[below left] {\textbf{C}}; % Cu Cylinder
+        \draw[red,ultra thick,rounded corners] (0.505,0.32) rectangle (0.75,0.55) node at +(-0.1,-0.03) {\textbf{D}}; % sorp fridge
+        \draw[red,ultra thick,rounded corners] (0.4,0.06) rectangle (0.70,0.26) node[red,below left] {\textbf{E}}; % Focal Plane
+        
+        \draw[thick,<->] (1.05,0.04) -- +(0,0.31) node[midway,right] {18 in}; % scale bar
+    \end{scope}
+\end{tikzpicture}
+\caption{Cutaway view of the 350 GHz Imager. \textbf{A} PT407 1st stage cold head \textbf{B} PT407 2nd stage cold head \textbf{c} Cu cylinder connected PT407 2ns stage cold head to Cu tube, which then connects to \He4-sorption refrigerator condensation plate. \textbf{D} \He4-sorption refrigerator \textbf{E} Focal Plane. Copper ropes connecting focal plane to 1~K cold plate are not visible in this view.}
+\label{fig:cryo-cutaway}
+\end{figure*}
+
+\begin{table*}[t]
+\centering
+\caption{Temperatures Reached Under Optical Load xxx should I add temps when closed optically?}
+\label{tab:temp-optical-load}
+\begin{tabular}{l r}
+\toprule
+Temperature Stage &  Temperature (K)\\
+\midrule
+PTC 1st Stage Cold Head 			& 48 \\
+PTC 2st Stage Cold Head 			& 3.5 \\
+Cryostat ``50 K'' Cold Plate 		& 84 \\
+Cryostat ``4 K'' Cold Plate 			& 5.8 \\
+Sorption Fridge Condensation Plate 	& 3.7 \\
+Focal Plane 						& 0.962 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Options for reaching temperatures below the $\sim$1.2~K transition temperature of our \TES detectors include: dilution refrigerators, adiabatic magnetization refrigerators, pumped \He4 baths, and \He3- and/or \He4-sorption refrigerators.
+We chose a \He4-sorption fridge because of both it's low and cost ease of operation compared to other solutions, and the fact that the typical base temperatures under no load of $\sim$700~mK is well-matched to our application.
+A  \He4-sorption fridge works by using a charcoal adsorber to pump on a bath of liquid \He4, reducing the \He4 boiling point and thus the temperature of the bath.
+The \He4 is contained withing a sealed reservoir so that the refrigerator acts as a closed system requiring no \He4 replenishment. 
+While \He4-sorption fridges are commercially available, our team choose to design and build a custom fridge based on a design that has been proven in astronomical applications\cite{devlin2004high}.
+
+\figref{fig:he4sorp} shows a schematic depiction of the 350~GHz Imager's \He4-sorption refrigerator.
+The entire refrigerator is filled with 2.07~moles of \He4 gas, giving a pressure of 900~psi at room temperature.
+In normal operation the heat switch between the charcoal pumping chamber (``pump'') and the \He4 condensation plate is closed, keeping the charcoal as cold as possible in order to adsorb as much \He4 as possible, keeping the temperature of the cold plate as low as possible.
+
+\begin{figure*}[th]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=3.0in]{\here/../images/he4-sorp-fridge-cutaway.png}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+	    %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1.5,1);
+		%\foreach \x in {0,1,...,15} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+		%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+        \draw[blue,ultra thick,rounded corners] (0.10,0.56) rectangle (0.86,1.01) node[below left] {\textbf{A}}; % pump
+        \draw[blue,ultra thick,rounded corners] (0.02,0.56) rectangle (1.03,0.44) node[above left] {\textbf{B}}; % cond plate
+        \draw[blue,ultra thick,rounded corners] (0.70,0.56) rectangle (0.88,0.36) node[above left] {\textbf{C}}; % heat switch
+        \draw[blue,ultra thick,rounded corners] (0.35,0.25) rectangle (0.72,-0.02) node[above left] {\textbf{D}}; % pot
+        
+		\draw[thick,<->] (0.9,0.02) -- ++(0,0.21875) node[midway,right] {3 in}; % scale bar
+    \end{scope}
+\end{tikzpicture}
+\caption{Cutaway view of the \He4-sorption refrigerator. \textbf{A} Charcoal pumping chamber (``pump''). The charcoal is attached to the concentric copper cylinders. Cylinders are used to maximize the surface area covered by the charcoal. \textbf{B} Condensation plate. This copper plate is kept below the boiling point of \He4 in order to provide a point in the refrigerator for \He4 to condense and drip into the condensation pot. \textbf{C} \He4 gas gap heat switch. This heat switch is used to cool the charcoal in order to pump on the \He4 bath in the condensation pot. \textbf{B} \He4 condensation pot (``pot''). The condensed \He4 accumulates here. The concentric cylinders provide additional surface area for thermal contact to the liquid \He4. Not shown is a small (xxx check size from Bob) constriction in the stainless steel tube connecting the pump and pot, intended to restrict the flow of superfluid \He4 away from the pot.}
+\label{fig:he4sorp}
+\end{figure*}
+
+Cycling the refrigerator requires four steps.
+First the heat switch is opened.
+The \He4-sorption refrigerator uses a \He4 gas-gap heat switch manufactured by Chase Cryogenics\footnote{Chase Research Cryogenics, Ltd. Sheffield, UK}, which requires 5 minutes of waiting time in order for the switch to fully open.
+Second, the pump is heated by applying 5 W via a 500 \Ohm power resistor.
+This power is applied until the temperature of the pump reaches 40 K, which is high enough to drive nearly all of the adsorbed \He4 off of the charcoal.
+Third, the power to the pump is turned off.
+Once the temperature of the condensation plate falls below the boiling point of \He4, \He4 will begin to condense on it's walls, dripping into the \He4 condensation pot (``pot'').
+Fourth, once the temperature of the pot has fallen to 4.0~K, the heat switch is turned back on.
+This cools the pump, allowing \He4 to again adsorb onto the charcoal, which has the effect of pumping strongly on the pot, and cooling the \He4 contained there to the base temperature of $\sim$ 970~mK under optical load.
+This process is easy to automate, and a LabView program cycles the fridge automatically every night while the system is operating.
+
+Under optical load, a full cycle of the \He4-sorption refrigerator takes approximately 4 hours, reaching a base temperature of $\sim$~970~mK.
+When no additional load is applied the hold time is 9 hours.
+When the temperature of the stage is held at the typical operating temperature of 1100~mK the hold time is only 3:45 hours.
+
+\tableref{tab:fp-thermal-load} shows the predicted heat load on the \He4-sorption refrigerator.
+It excludes parasitic load inherent to the sorption refrigerator itself. xxx mention parasitic load here?
+
+xxx - include data on temp vs load for the fridge?
+
+\begin{table*}[ht]
+\centering
+\caption{Predicted Thermal Load on 1~K Stage. These calculations assume that the readout wiring and Ti-6Al-4V spiders are running from 6.4~K to 1.0~K.}
+\label{tab:fp-thermal-load}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+ & \multicolumn{2}{c}{Predicted Thermal Load} \\
+\cmidrule(r){2-3}
+Heat Load Source & 1004 Detectors (\uW) &  251 Detectors (\uW) \\
+\midrule
+Readout wiring 								& 50 & 125 \\
+Series array \SQUID modules 		& xxx & xxx \\
+\SQUID multiplexing chips 				& xxx & xxx \\
+Detectors shunt resistors 			& 5 & 18 \\
+Detectors (Optical + Electrical)		& 0.25 & 1 \\
+Ti-6Al-4V spiders 							& 130 & 130 \\
+Out-of-band optical power 			& xxx & xxx \\
+\midrule
+Total												& 185 + xxx & 274 + xxx \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{Optical Design}\label{s:optical-design}
+
+% xxx diagram like fig 4in schwan2011 would be good
+
+\section{Feedhorn Design}\label{s:feedhorn-design}
+
+% xxx where do I explain the choice of a square grid? Ans: section 6.3
+% xxx where do I explain the missing 20 detectors?
+
+Millimeter and submillimeter astronomical instruments using \TES detectors use many different strategies for coupling light onto detectors: filled arrays of absorbers\cite{swetz2011overview,Holland2013SCUBA-2}, antennas with lenslets\cite{polarbear?}, phased antenna arrays\cite{jpl stuff}, corrugated feedhorns \cite{sptpol,actpol}, and smooth-walled conical feedhorns \cite{schwan2011invited,spt}.
+The \Imager uses smooth-walled feedhorns because they are easy to design and and easy to machine.
+Smooth-walled feedhorns do not have the nice polarization properties of corrugated feedhorns \cite{claricoats & olver?}, but this is not a concern here because the \Imager is polarization-insensitive.
+
+\figref{fig:feedhorn-parms} depicts a smooth-walled conical feedhorn and its interaction with the optical system.
+As discussed in section \sectionref{s:optical-design}, although the optical system has a secondary mirror as well, for many purposes the secondary mirror can be ignored and the system treated as a system of feedhorns illuminating only a primary mirror with a hole in its center.
+If a feedhorn is observing a temperature distribution $T_{target}(\theta,\phi)$, and is pointed in a direction $(\theta_0, \phi_0)$, then the temperature observed by the feedhorn will be
+\[
+    T_{eff}(\theta_0,\phi_0) = \int \, d \Omega \, T_{target}(\theta - \theta_0,\phi - \phi_0) P(\theta,\phi)
+\].
+The function $P$ is called the ``beam'' or ``beam pattern'' of the feedhorn, and describes the pattern of radiation to which the feedhorn is sensitive to.
+Although the \Imager is always receiving radiation, never transmitting, this thesis often writes about the beam pattern as if it were transmitting radiation, e.g.\ in decribing the portion of the ``beam'' that strikes the primary mirror.
+This is acceptable because the transmitting and receiving beam patterns are exactly the same\footnote{This is a consequence of the reciprocity relationships obeyed by the Maxwell equations. See, e.g.\ \cite{xxx} for a detailed explanation.}.
+When using this expression one must keep in mind that the fraction of the beam that spills off the primary mirror (e.g.\ the unshaded region in \figref{fig:feedhorn-parms}) will see not the temperature distribution of the target, but a temperature distribution determined by what is beyond the primary mirror\footnote{Because of the presence of the secondary mirror, some of this temperature distribution will be in front of the system, and some will be behind.}.
+The fraction of the beam that strikes the primary mirror and proceeds to the target is called the spillover efficiency $\eta_s$.
+
+\begin{figure*}
+\centering
+%\includegraphics{drawings/ch4-feedhorn-parms.pdf}
+\input{\here/../drawings/ch4-feedhorn-parms.tex}
+\caption{Schematic showing important parameters of a feedhorn and its beam. The beam appears to emerge from the phase center, a distance $l_c$ behind the mouth of the feedhorn in this diagram. The main lobe of the beam is approximated well by a Gaussian, here characterized by a full-width-half-maximum (\FWHM) beam width. The shaded fraction of the Gaussian represents the part of the beam that falls onto the primary mirror and reaches the target.}
+\label{fig:feedhorn-parms}
+\end{figure*}
+
+The feedhorn opening diameter $D$ is chosen to minimize the total \NETD of the system.
+The total \NETD was given in \sectionref{xxx} as
+\[
+    NETD = \frac{NEP_{tot}}{2 k_B \Delta \nu \eta_{tot} \sqrt{2 \tau}}.
+\]
+To make the factors depending on the size of the feedhorns more clear we can break the optical efficiency $\eta_{tot}$ into a product of two factors, $\eta_s$ and $\eta_{other} = \eta_{tot} / \eta_s$.
+We then note that the integration time per pixel $\tau$ is inversely proportional to the number of detectors $N$.
+This leads to
+\[
+    NETD \propto \frac{NEP_{tot}\sqrt{N}}{\eta_s}.
+\]
+
+The critical relationship is that as a feedhorn's opening diameter increases, the width of the beam becomes smaller.
+Small beam angles increase $\eta_s$, which improves \NETD.
+However, the diffraction-limited area on the focal plane that can be covered by feedhorns is fixed, so that increases the horn opening diameter reduces the number of detectors $N$, which which worsens \NETD.
+Choosing an optimal feedhorn size requires trading these two effect off against each other to minimize \NETD.
+
+There are four additional factors to consider.
+First, $NEP_{tot}$ is not neccesarily independent of $\eta_s$.
+In a detector-noise limited system it will be, but in a system that is photon-noise-limted, $NEP_{tot}$ may worsen, stay the same, or improve, depending on the temperature seen by the spilled over portion of the beam.
+Indoors all of the beam will see roughly the same temperature as the target, so that total photon noise will stay the same.
+Outdoors the situation is more complicated because the temperature seen by the spilled over beam will depend on the local scenery and weather conditions.
+For simplicity, the analysis of optimum feedhorn size in this chaper made the assumption that the noise seen by a detector is independent of the beam size.
+
+Second, for a Cassegraine optical system, $\eta_s$ is not a monotonic function of $D$.
+The secondary mirrr obstructs the central part of the beam, preventing it from reaching the target.
+This means that narrow beams can have poor $\eta_s$ because a large fraction of the main lobe of the beam will be blocked.
+
+Third, the choie of readout system and wiring places a firm upper limit on the number of detectors in the system of 1024.
+Fourth, the dependence of the number of detectors $N$ on the feedhorn diameter $D$ is not a smooth function, because it is not possible to have, e.g., 1/3 of a feedhorn.
+As explained in \sectionref{xxx6.3}, the \Imager's detectors are laid out on a square grid.
+So it is more helpful to think of the feedhorn diameter as a value that can take on a discrete set of values that depends on the number of feedhorns per each side of the grid.
+
+A \MATLAB program was used to find the optimum feedhorn size.
+The program uses an analytic expression for the beam pattern developed in \cite{green2006radiation,narasimhan1971modes,}.
+The far-field electric field pattern takes the form
+\[
+    \vect{E}(\theta,\phi) = E_{\theta} \sin{\phi} \hat{\theta} + E_{\phi}(\theta) \cos{\phi} \cos{\theta} \hat{\phi}.
+\]
+Here $E_{\theta}$ and $E_{\phi}$ are functions depending the horn diameter $D$ and opening half-angle $\alpha$, and involving definite integrals of Bessel functions, not reproduced here.
+This expression is for the waveguide mode polarized along the $\pi/2$ direction.
+The \Imager's detectors are unpolarized, so detect both waveguide polarizations equally (see \sectionref{xxx} for confirmation of this via simulations).
+The total power beam map is thus given by the incoherant sume
+\[
+    P(\theta, \phi) = (|\vect{E}(\theta, \phi)|^2 + |\vect{E}(\theta, \phi+\pi/2)|^2,
+\] 
+which simplifies to 
+\[
+    P(\theta) = |E_{\theta}(\theta)|^2 + |E_{\phi}(\theta)|^2 \cos{\theta}^2,
+\]
+which is independent of $\phi$, as expected for an unpolarized detector.
+
+To calculate the spillover efficiency of an individual feedhorn, the \MATLAB program integrates $P$ over the angles $\theta$ that illuminate the primary mirror and reach the target: 5.3\textdegree to 13.6\textdegree\footnote{see \sectionref{s:optical-design}}.
+\figref{fig:spill-vs-alpha-diam} shows a contour plot of spillover efficiency as a function of $D$ and $\alpha$.
+The blue asterisk matches the parameters for the feedhorns chosen for the \Imager.
+This plot makes it clear that $\eta_s$ depends much more strongly on $D$ than on $\alpha$.
+$\alpha = 9.4$\textdegree was chosen as a value that is easy to machine, keeps the thermal mass of the feedhorn array relatively low (small values of $\alpha$ lead to long feedhorns and higher thermal mass), and it not too far from the maximum achievable $\eta_s$ for any fixed feedhorn diameter $D$.
+
+\begin{figure*}[th]
+\centering
+\includegraphics[width=3.0in]{\here/../images/spill_vs_alpha_diam.pdf}
+\caption{Plot showing feedhorn spillover efficiency $\eta_s$ as a function of horn diameter $D$ and horn flare half-angle $\alpha$. The blue asterisk shows the feedhorn parameters used in the \Imager. xxx need to replace with version that has * sign at real feedhorn values!}
+\label{fig:spill-vs-alpha-diam}
+\end{figure*}
+
+The feedhorn diameter chosen does not maximize $\eta_s$, because it turned out that a smaller \NETD could be achieved by using a larger number of smaller feedhorns.
+In fact, as \figref{fig:netd-num-feeds} shows, an even larger number of even smaller feedhorns is predicted to reduce \NETD by xxx \%.
+However, as mentiond above, the maximum number of detectors that can be readout by our system is 1024, so $D = xxx$ was chosen as the optimal feedhorn diameter.
+
+\begin{figure*}[th]
+\centering
+\includegraphics[width=3.0in]{\here/../images/netd_num_feeds.pdf}
+\caption{Plot showing how total number of detectors and system \NETD depend on diameter chosen for feedhorns. The number of detectors is a discrete function of the feedhorn diameter because it is not possible to have a fractional part of a feedhorn. \NETD is maximized with xxx feedhorns of diameter xxx, but the \Imager uses 1004 feedhorns of diameter xxx because of readout limitations. xxx Is this plot right? I chose 2.68 mm (cold), which leads to ~800 detectors, not 1024.}
+\label{fig:netd-num-feeds}
+\end{figure*}
+
+xxx - show that beam is well-approximated by a gaussian over the area of the primary mirror.
+
+%\subsection{Far-field beam pattern and system spatial resolution}
+%
+%A Fourier transform relationship exists between the electric field illuminating the aperture of an optical system and the electric field far away form the aperture\cite{xxx}.
+%\[
+%   xxx write the expression here,
+%\]
+
+
+\section{Acknowledgments}
+
+Bob Schwall and William Duncan of NIST designed the cryostat/mirror mount and the \He4 sorption refrigerator.
+The refrigerator was filled with \He4 by Simon Dicker at the University of Pennsylvania.
+Bob Schwall of NIST designed the cryostat, and provided useful advice and help in the lab during commissioning of the cryostat.
+William Duncan designed, procured, and assembled the optical system.
+Mandana Amiri and Matthew Hasselfield provided extensive, timely and invaluable support for the MCE hardware and software.
