@@ -16,63 +16,60 @@
 \providecommand*{\here}{.}
 
 \begin{document}
-\begin{tikzpicture}
-\pgfplotsset{small}
-\matrix{
 
-\begin{axis}[ymin=0, width=8cm,
-	title={Measured Nyquist Inductances},
-	%title={Measured Shunt Resistances},
-	xlabel={$R_{sh}$ ($\mu\Omega$)}, ylabel={Quantity} ]
+%\pgfplotsset{small}
 
-\addplot [hist={data min=125,data max=165,bins=20},
-          fill=blue!75]
-	table[y=Rsh]{\here/rsh-L.dat};
+\begin{tabular}{rl}
 
-\end{axis}
-
-&
-
-\begin{axis}[ymin=0, width=8cm,
-	title={Measured Nyquist Inductances},
-	xlabel={$L_{ny}$ (nH)}, ylabel={Quantity} ]
-
-\addplot [hist={data min=180,data max=640,bins=23},
-          fill=blue!75]
-	table[y=L]{\here/rsh-L.dat};
-
-\end{axis}
-
-\\
-
-\begin{axis}[ width=8cm,
-	title={Measured $R_{sh}$ vs $L_{ny}$},
-	xlabel={$R_{sh}$ ($\mu\Omega$)}, ylabel={$L_{ny}$ (nH)} ]
-
-\addplot+[only marks]
-	table[x=Rsh,y=L]{\here/rsh-L.dat};
-
-\end{axis}
+	\begin{tikzpicture}[baseline,trim axis left]
+	\begin{axis}[ymin=0, 
+						title={Measured Shunt Resistance},
+						xlabel={$R_{sh}$ ($\mu\Omega$)}, ylabel={Quantity} ]
+		\addplot [hist={data min=125,data max=165,bins=20},
+			   fill=blue!75]
+			table[y=Rsh]{\here/rsh-L.dat};
+	\end{axis}
+	\end{tikzpicture}
 
 &
 
-\begin{loglogaxis}[clip mode=individual,xmin=4e-1,xmax=2e3,width=8cm, legend pos=north east,
-	title={\RCm{20}{6} Superconducting Current Noise},
-	xlabel={Frequency (Hz)}, ylabel={Current Noise (A/$\sqrt{\mbox{Hz}}$)} ]
-
-\addplot+[only marks,mark size=1.0pt]
-	table[x=f,y=Pxx]{\here/rsh-pxx.dat};
-\addlegendentry{Data}
-
-%\addplot[mark=none,domain=4e-1:2e3,line width=1pt] {1.38e-23 * 4 * 0.980  / 1.5922e-04 / (1 + (2*3.14159*x*3.9929e-3)^2) + 1.3763e-20};
-
-\addplot[mark=none,domain=4e-1:2e3,line width=1pt] {1.38e-23 * 4 * 0.980  / 1.5290e-04 / (1 + (2*3.14159*x*5.0658e-3)^2) + 1.4308e-20};
-\addlegendentry{Fit}
-
-\end{loglogaxis}
+	\begin{tikzpicture}[baseline]
+	\begin{axis}[ymin=0, %yticklabel pos=right,
+						title={Measured Nyquist Inductance},
+						xlabel={$L_{ny}$ (nH)}, ylabel={Quantity} ]
+		\addplot [hist={data min=180,data max=640,bins=23},
+			          fill=blue!75]
+			table[y=L]{\here/rsh-L.dat};
+	\end{axis}
+	\end{tikzpicture}
 
 \\
-};
-\end{tikzpicture}
+	\begin{tikzpicture}[baseline,trim axis left]
+	\begin{axis}[ 
+						title={Measured $R_{sh}$ vs $L_{ny}$},
+						xlabel={$R_{sh}$ ($\mu\Omega$)}, ylabel={$L_{ny}$ (nH)} ]
+		\addplot+[only marks]
+			table[x=Rsh,y=L]{\here/rsh-L.dat};
+	\end{axis}
+	\end{tikzpicture}
+
+&
+	\begin{tikzpicture}[baseline]
+	\begin{loglogaxis}[ %yticklabel pos=right,
+								clip mode=individual,xmin=4e-1,xmax=2e3,
+								title={\RCm{20}{6} Superconducting Current Noise},
+								xlabel={Frequency (Hz)}, ylabel={Current Noise (A/$\sqrt{\mbox{Hz}}$)} ]
+
+		\addplot+[only marks,mark size=1.0pt]
+			table[x=f,y expr=sqrt(\thisrow{Pxx})]{\here/rsh-pxx.dat};
+		\addlegendentry{Data}
+
+		\addplot[mark=none,domain=4e-1:2e3,line width=1pt]
+			{sqrt(1.38e-23 * 4 * 0.980  / 1.5290e-04 / (1 + (2*3.14159*x*5.0658e-3)^2) + 1.4308e-20)};
+		\addlegendentry{Fit}
+	\end{loglogaxis}
+	\end{tikzpicture}
+\\
+\end{tabular}
 
 \end{document}
