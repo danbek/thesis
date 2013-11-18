@@ -11,3 +11,6 @@ thesis.pdf
 Thumbs.db
 drawings/*.dvi
 drawings/*.pdf
+ch8-subarray/*.pdf
+ch4-sys-design/*.pdf
+ch9-imaging/*.pdf

@@ -52,20 +52,52 @@ It is not known whether this correlation is a real physical effect or an artifac
 \textbf{Upper Right} Histogram of total inductance in circuit, which includes the interface chip Nyquist inductor, the inductance of the SQ1 input coil, and any parasitic inductance.
 \textbf{Lower Left} Scatterplot showing all measured Rsh and L values. A correlation is clearly visible, the explanation for which is not understood.
 \textbf{Lower Right} Plot showing current noise power spectrum extracted from a single data acquisition for \RCm{20}{6}, along with predicted power spectrum based on best fit across all data acquisitions. The best fit values are \Rsh\ = 153 \uOhm, $L$ = 622 nH, and \SQUID\ white noise level of 1.2e-10~ A/$\sqrt{\mbox{Hz}}$.}
-
 \label{fig:rsh-l-plots}
 \end{figure*}
 
-\section{Heater Characterization}
+\section{Measurement of Heater Resistors}
 
 Only 23 of the 251 detectors have heaters wired up.
-Of these 23, there are five detectors which show no response to applied heater power, but the detectors are on the cut  list, so this is not surprising.
+Of these 23, there are nine detectors which show no response to applied heater power.
+Five of these nine are on the cut list (xxx see ch xxx), so this is not surprising.
 But four detectors can be biased into the transition and work well, but show no response to applied heater power (\RC{4}{7}, \RC{5}{7}, \RC{6}{6}, \RC{7}{6}).
 The reasons for these detectors not showing a response to heater power are not understood.
 This leaves 14 working detectors that also show a response to applied heater power.
+The heaters on these 14 detectors can be used to directly measure the detector responsivity, noise referred to input optical power, time constants and thermal conductance $G$.
+But all of these measurements require knowing the resistance of the heaters.
+This section describes my measurement of the heater resistances.
+
+To measure the heater resitances, I took a set of \IV\ curves at constant bath temperature.
+For each \IV\ curve I applied a different heater current, so that a different amount of heater power was applied to the \TES\ for each curve.
+I make the assumption that at the start of the superconducting transition, the dissipated joule power depends only on the resistance of the \TES, and is independent of the applied optical and heater power.
+Under this assumption, the difference in Joule power at resistance very close to the \TES\ normal resistance must be due to heater power.
+Given knowledge of the current applied to the heater, this can be used to find the heater resistance.
+
+\figref{fig:heater-r-plots} explains this idea further by a series of plots.
+The upper left plot shows the \TES\ \IV curves.
+The upper right plot shows the same data, but transformed into \TES\ Joule power and \TES\ resistance.
+As applied heater current decreases, the Joule power at the start of the transition decreases.
+In the lower left, the Joule power at 99 \% $R_{n}$ is plotted vs applie heater current.
+A fit to a funciton of the form
+\[
+P_{Joule} = P_{sat} + I_{htr}^2 R_{htr}
+\]
+is also plotted.
+Finally, the lower right plot show the $R$ vs $P$ plots after the heater power has been added to each curve.
+This plots shows that the powers are equalized very high in the transition, where the assumption of Joule power dependent only on \TES\ resistance holds.
+It also shows that this assumption breaks down deeper in the transition.
+
+\begin{figure*}
+\input{\here/heater-r-plots.tex}
+\caption{Plots heater measurements, for the case of \RCm{29}{1}.
+\textbf{Upper Left} \IV\ curves. The \IV\ curves should turn completely vertial when the detector becomes fully superconducting at zero voltage, but these curves shown a non-infinite slope. The reason for this is that the readout system as configured for these \IV\ curves was unable keep up with the rapid change of current in the superconducting branch.
+\textbf{Upper Right} Same data as in upper left plot, but represented in terms of \TES\ Joule power and resistance. As the bias current for the heaters is increased, the curves shift to the left.
+\textbf{Lower Left} Measured $P_{Joule}$ vs heater current at 99\% $R_n$, as well as fit to eqn xxx.
+\textbf{Lower Right} Same plot as upper right, but the heater power based on $R_{htr} = 23.6 \Ohm$ has been added to each curve.}
+\label{fig:heater-r-plots}
+\end{figure*}
 
 
-\section{Measurement of Heater Resistors}
 
 \section{Direct Measurement of Detector Responsivity}
 
