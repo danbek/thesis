@@ -3,6 +3,16 @@
 \usepackage{pgfplots} % drawing plots right here in this file!
 \pgfplotsset{compat=1.8} % latest stable release
 
+\newcommand*{\RCm}[2]{
+	\newcount\tmpR
+	\newcount\tmpC
+	\tmpR=#1
+	\tmpC=#2
+	\advance\tmpR by -1
+	\advance\tmpC by -1
+	R{\number\tmpR}C{\number\tmpC}
+} % this allows me specify row/col indices MATLAB-style
+
 \providecommand*{\here}{.}
 
 \begin{document}
@@ -10,7 +20,7 @@
 \pgfplotsset{small}
 \matrix{
 
-\begin{axis}[ymin=0, width=5.4cm,
+\begin{axis}[ymin=0, width=8cm,
 	title={Measured Nyquist Inductances},
 	%title={Measured Shunt Resistances},
 	xlabel={$R_{sh}$ ($\mu\Omega$)}, ylabel={Quantity} ]
@@ -23,7 +33,7 @@
 
 &
 
-\begin{axis}[ymin=0, width=5.4cm,
+\begin{axis}[ymin=0, width=8cm,
 	title={Measured Nyquist Inductances},
 	xlabel={$L_{ny}$ (nH)}, ylabel={Quantity} ]
 
@@ -33,9 +43,9 @@
 
 \end{axis}
 
-&
+\\
 
-\begin{axis}[ width=5.4cm,
+\begin{axis}[ width=8cm,
 	title={Measured $R_{sh}$ vs $L_{ny}$},
 	xlabel={$R_{sh}$ ($\mu\Omega$)}, ylabel={$L_{ny}$ (nH)} ]
 
@@ -43,6 +53,24 @@
 	table[x=Rsh,y=L]{\here/rsh-L.dat};
 
 \end{axis}
+
+&
+
+\begin{loglogaxis}[clip mode=individual,xmin=4e-1,xmax=2e3,width=8cm, legend pos=north east,
+	title={\RCm{20}{6} Superconducting Current Noise},
+	xlabel={Frequency (Hz)}, ylabel={Current Noise (A/$\sqrt{\mbox{Hz}}$)} ]
+
+\addplot+[only marks,mark size=1.0pt]
+	table[x=f,y=Pxx]{\here/rsh-pxx.dat};
+\addlegendentry{Data}
+
+%\addplot[mark=none,domain=4e-1:2e3,line width=1pt] {1.38e-23 * 4 * 0.980  / 1.5922e-04 / (1 + (2*3.14159*x*3.9929e-3)^2) + 1.3763e-20};
+
+\addplot[mark=none,domain=4e-1:2e3,line width=1pt] {1.38e-23 * 4 * 0.980  / 1.5290e-04 / (1 + (2*3.14159*x*5.0658e-3)^2) + 1.4308e-20};
+\addlegendentry{Fit}
+
+\end{loglogaxis}
+
 \\
 };
 \end{tikzpicture}
