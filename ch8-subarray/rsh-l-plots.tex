@@ -1,0 +1,50 @@
+\documentclass{standalone}
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.8} % latest stable release
+
+\providecommand*{\here}{.}
+
+\begin{document}
+\begin{tikzpicture}
+\pgfplotsset{small}
+\matrix{
+
+\begin{axis}[ymin=0, width=5.4cm,
+	title={Measured Nyquist Inductances},
+	%title={Measured Shunt Resistances},
+	xlabel={$R_{sh}$ ($\mu\Omega$)}, ylabel={Quantity} ]
+
+\addplot [hist={data min=125,data max=165,bins=20},
+          fill=blue!75]
+	table[y=Rsh]{\here/rsh-L.dat};
+
+\end{axis}
+
+&
+
+\begin{axis}[ymin=0, width=5.4cm,
+	title={Measured Nyquist Inductances},
+	xlabel={$L_{ny}$ (nH)}, ylabel={Quantity} ]
+
+\addplot [hist={data min=180,data max=640,bins=23},
+          fill=blue!75]
+	table[y=L]{\here/rsh-L.dat};
+
+\end{axis}
+
+&
+
+\begin{axis}[ width=5.4cm,
+	title={Measured $R_{sh}$ vs $L_{ny}$},
+	xlabel={$R_{sh}$ ($\mu\Omega$)}, ylabel={$L_{ny}$ (nH)} ]
+
+\addplot+[only marks]
+	table[x=Rsh,y=L]{\here/rsh-L.dat};
+
+\end{axis}
+\\
+};
+\end{tikzpicture}
+
+\end{document}

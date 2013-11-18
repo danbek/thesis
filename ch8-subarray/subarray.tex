@@ -30,17 +30,25 @@ Each resulting power spectrum was fit to a function of the form
 where $k_B$ is Boltzmann's constant, $T_b$ is the bath temperature for the measurement, and $f$ is the frequency.
 The shunt resistance $R_{sh}$, inductance $L$, and readout chain white noise level $SQ$ are the values extracted from the fit.
 
-\figref{xxx} shows histogram plots of the resulting \Rsh\ and $L$ values.
+\figref{fig:rsh-l-plots} shows histogram plots of the resulting \Rsh\ and $L$ values.
 \Rsh\ has a mean of 149~\uOhm\ with standard deviation 6~\uOhm.
 $L$ has a mean of 574~nH with a standard deviation of 87~nH.
 This $L$ includes the Nyquist inductance on the interface chip, the input inductance of the first-stage \SQUID\ of the multiplexed readout system, as well as any parasitic inductance in the circuit.
 Using this measurement it is not possible to extract the inductance of the Nyqust inductor itself, but this is not a problem because the total inductance is the relevant  quantity for understanding the behavior of the detector and it's circuit.
 
+The measured L values include two sets of clear outliers.
+All values for row 4 are clustered around 200~nH, and all values for row xxx are clustered around 425~nH (xxx check against means).
+The reason for low inductances for these rows is not understood.
+These outliers are more clearly visible in the rightmost plot in \figref{fig:rsh-l-plots}, which also shows a small correlation between Rsh and L.
+It is not understood whether this is a real physical effect, or whether it is an artifact of the measurement process.
+
 \begin{figure*}
-\centering
-\input{\here/rsh-hist.tex}
-\caption{xxx}
-\label{fig:rsh-hist}
+\input{\here/rsh-l-plots.tex}
+\caption{Plots summary results of measurements of shunts and Nyqust inductors.
+\textbf{Left} Histogram of shunt resistance \Rsh.
+\textbf{Middle} Histogram of total inductance in circuit, which includes the interface chip Nyquist inductor, the inductance of the SQ1 input coil, and any parasitic inductance.
+\textbf{Right} Scatterplot showing all measured Rsh and L values. A correlation is clearly visible, the explanation for which is not understood.}
+\label{fig:rsh-l-plots}
 \end{figure*}
 
 \section{Heater Characterization}
