@@ -22,11 +22,11 @@ To measure $R_{sh}$ and $L$ for these chips I took noise measurements using zero
 At these bath temperatures and at zero detector bias the detectors are superconducting, so that measured noise is due to the shunt resistor, and parasitic resistance, and SQUID noise in the multiplexed readout system itself.
 Data was collected at 3030.3~Hz, and 20 data acquisitions lasting 33 seconds were taken at each bath temperature.
 
-A power spectrum was estimated for each detector for each data acquisition using \MATLAB's \texttt{pwelch} function, using a \FFT\ size of $2^12$.
+A power spectrum was estimated for each detector for each data acquisition using \MATLAB's \texttt{pwelch} function, using a \FFT\ size of $2^{12}$.
 Each resulting power spectrum was fit to a function of the form
-\[
+\begin{eqnarray}\label{eq:scnoise-fit}
 	\frac{4 k_B T_b}{R_{sh}} \frac{1}{1 + (2 \pi f (L/R_{sh}))^2} + SQ,
-\]
+\end{eqnarray}
 where $k_B$ is Boltzmann's constant, $T_b$ is the bath temperature for the measurement, and $f$ is the frequency.
 The shunt resistance $R_{sh}$, inductance $L$, and readout chain white noise level $SQ$ are the values extracted from the fit.
 
@@ -51,7 +51,7 @@ It is not known whether this correlation is a real physical effect or an artifac
 \textbf{Upper Left} Histogram of shunt resistance \Rsh.
 \textbf{Upper Right} Histogram of total inductance in circuit, which includes the interface chip Nyquist inductor, the inductance of the SQ1 input coil, and any parasitic inductance.
 \textbf{Lower Left} Scatterplot showing all measured Rsh and L values. A correlation is clearly visible, the explanation for which is not understood.
-\textbf{Lower Right} Plot showing current noise power spectrum extracted from a single data acquisition for \RCm{20}{6}, along with predicted power spectrum based on best fit across all data acquisitions. The best fit values are \Rsh\ = 153 \uOhm, $L$ = 622 nH, and \SQUID\ white noise level of 1.2e-10~ A/$\sqrt{\mbox{Hz}}$.}
+\textbf{Lower Right} Plot showing current noise power spectrum extracted from a single data acquisition for \RCm{20}{6}, along with predicted power spectrum based on best fit to \eqref{eq:scnoise-fit} across all data acquisitions. The best fit values are \Rsh\ = 153 \uOhm, $L$ = 622 nH, and \SQUID\ white noise level of 1.2e-10~ A/$\sqrt{\mbox{Hz}}$.}
 \label{fig:rsh-l-plots}
 \end{figure*}
 
@@ -69,21 +69,26 @@ This section describes my measurement of the heater resistances.
 
 To measure the heater resitances, I took a set of \IV\ curves at constant bath temperature.
 For each \IV\ curve I applied a different heater current, so that a different amount of heater power was applied to the \TES\ for each curve.
-I make the assumption that at the start of the superconducting transition, the dissipated joule power depends only on the resistance of the \TES, and is independent of the applied optical and heater power.
-Under this assumption, the difference in Joule power at resistance very close to the \TES\ normal resistance must be due to heater power.
-Given knowledge of the current applied to the heater, this can be used to find the heater resistance.
+The total amount of power flowing through the \TES\ thermal conductance $G$ is then given by
+\begin{equation}
+P_{tot} = K(T^n - T_b^2) = P_{opt} + P_{htr} + I^2 R(T,I),
+\end{equation}
+where $T$ is the temperature of the \TES, $R$ is the resistance of the \TES, and $I$ is the current flowing through the \TES.
+I make the assumption that at the start of the superconducting transition $\beta_I = 0$, i.e.\ the resistance of the \TES\ depends only on the \TES\ temperature, and not on the current through the \TES.
+This implies that each time the \TES\ reaches, e.g.\ 99 \% of $R_n$, the temperature of the \TES\ is the same, and therefore $P_{tot}$ will be the same.
+A relationship of the following form must therefore hold:
+\begin{equation}\label{eq:rhtr-fit}
+P_{J} = (P_{tot} - P_{opt}) - I_{htr}^2 R_{htr}.
+\end{equation}
+A fit can be made to this function, with the quantities $R_{htr}$ and $P_{x} \equiv P_{tot} - P_{opt}$ to be solved for.
 
 \figref{fig:heater-r-plots} explains this idea further by a series of plots.
 The upper left plot shows the \TES\ \IV curves.
 The upper right plot shows the same data, but transformed into \TES\ Joule power and \TES\ resistance.
 As applied heater current decreases, the Joule power at the start of the transition decreases.
-In the lower left, the Joule power at 99 \% $R_{n}$ is plotted vs applie heater current.
-A fit to a funciton of the form
-\[
-P_{J} = P_{sat} + I_{htr}^2 R_{htr}
-\]
-is also plotted.
-Finally, the lower right plot show the $R$ vs $P$ plots after the heater power has been added to each curve.
+In the lower left, the Joule power at 99 \% $R_{n}$ is plotted vs applied heater current.
+A fit to \eqref{eq:rhtr-fit} is also plotted.
+Finally, the lower right plot show the $R$ vs $P_J$ plots after the heater power has been added to each curve.
 This plots shows that the powers are equalized very high in the transition, where the assumption of Joule power dependent only on \TES\ resistance holds.
 It also shows that this assumption breaks down deeper in the transition.
 
@@ -92,14 +97,15 @@ It also shows that this assumption breaks down deeper in the transition.
 \caption{Plots heater measurements, for the case of \RCm{29}{1}.
 \textbf{Upper Left} \IV\ curves. The \IV\ curves should turn completely vertial when the detector becomes fully superconducting at zero voltage, but these curves shown a non-infinite slope. The reason for this is that the readout system as configured for these \IV\ curves was unable keep up with the rapid change of current in the superconducting branch.
 \textbf{Upper Right} Same data as in upper left plot, but represented in terms of \TES\ Joule power and resistance. As the bias current for the heaters is increased, the curves shift to the left.
-\textbf{Lower Left} Measured $P_{J}$ vs heater current at 99\% $R_n$, as well as fit to eqn xxx.
+\textbf{Lower Left} Measured $P_{J}$ vs heater current at 99\% $R_n$, as well as fit to \eqref{eq:rhtr-fit}.
 \textbf{Lower Right} Same plot as upper right, but the heater power based on $R_{htr} = 23.6 \Ohm$ has been added to each curve.}
 \label{fig:heater-r-plots}
 \end{figure*}
 
 \tableref{tab:all-heater-r} lists all measured heater resistors.
-The seven heaters for columns 0 and 1 have a mean of 23.8~\Ohm with a standard deviation of 0.26~\Ohm.
-The seven heaters for column 6 and 7 exhibit much more scatter, with a mean of 28.6~\Ohm with a standard deviation of 4.16~\Ohm.
+The seven heaters for columns 0 and 1 have a mean of 23.8~\Ohm\ with a standard deviation of 0.26~\Ohm.
+The seven heaters for column 6 and 7 exhibit much more scatter, with a mean of 28.6~\Ohm\ with a standard deviation of 4.16~\Ohm.
+The reason for the difference between the columns pairs is unknown.
 
 \begin{table*}[t]
 \centering
@@ -107,7 +113,7 @@ The seven heaters for column 6 and 7 exhibit much more scatter, with a mean of 2
 \label{tab:all-heater-r}
 \begin{tabular}{l r}
 \toprule
-Detecotr &  $R_{htr}$ (\Ohm) \\
+Detector &  $R_{htr}$ (\Ohm) \\
 \midrule
 \RCm{1}{7}   & 27.7 \\
 \RCm{2}{7}   & 31.6 \\

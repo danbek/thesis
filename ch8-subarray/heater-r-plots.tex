@@ -77,14 +77,14 @@
 	\begin{tikzpicture}[baseline,trim axis left]
 	\begin{axis}[xmin=2.8,xmax=5,
 						title={\TES\ $P_{J}$ vs Heater Current},
-						xlabel={$I_{htr}$ (\uA)}, ylabel={$P_{tes}$ (pW)} ]
+						xlabel={$I_{htr}$ (\uA)}, ylabel={$P_{J}$ (pW)} ]
 		\addplot+[only marks]
 			table[x=Ihtr,y=Psat]{\here/heater-r-pows.dat};
 		\addlegendentry {Data}
 
 		\addplot+[mark=none,domain=2.8:5] {597.7 - 23.5927*x^2)}
 			node[right] at (axis cs:3,150) {$R_{htr}$ = 23.6 \Ohm}
-			node[right] at (axis cs:3,100) {$P_{sat}$ = 598 pW}
+			node[right] at (axis cs:3,100) {$P_{x}$ = 598 pW}
 			;
 		\addlegendentry{Fit}
 
