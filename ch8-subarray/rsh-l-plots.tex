@@ -3,17 +3,9 @@
 \usepackage{pgfplots} % drawing plots right here in this file!
 \pgfplotsset{compat=1.8} % latest stable release
 
-\newcommand*{\RCm}[2]{
-	\newcount\tmpR
-	\newcount\tmpC
-	\tmpR=#1
-	\tmpC=#2
-	\advance\tmpR by -1
-	\advance\tmpC by -1
-	R{\number\tmpR}C{\number\tmpC}
-} % this allows me specify row/col indices MATLAB-style
-
 \providecommand*{\here}{.}
+
+\input{\here/../dtb-macros}
 
 \begin{document}
 
@@ -24,7 +16,7 @@
 	\begin{tikzpicture}[baseline,trim axis left]
 	\begin{axis}[ymin=0, 
 						title={Measured Shunt Resistance},
-						xlabel={$R_{sh}$ ($\mu\Omega$)}, ylabel={Quantity} ]
+						xlabel={\Rsh\ (\uOhm)}, ylabel={Quantity} ]
 		\addplot [hist={data min=125,data max=165,bins=20},
 			   fill=blue!75]
 			table[y=Rsh]{\here/rsh-L.dat};
@@ -46,8 +38,8 @@
 \\
 	\begin{tikzpicture}[baseline,trim axis left]
 	\begin{axis}[ 
-						title={Measured $R_{sh}$ vs $L_{ny}$},
-						xlabel={$R_{sh}$ ($\mu\Omega$)}, ylabel={$L_{ny}$ (nH)} ]
+						title={Measured \Rsh\ vs $L_{ny}$},
+						xlabel={\Rsh\ (\uOhm)}, ylabel={$L_{ny}$ (nH)} ]
 		\addplot+[only marks]
 			table[x=Rsh,y=L]{\here/rsh-L.dat};
 	\end{axis}

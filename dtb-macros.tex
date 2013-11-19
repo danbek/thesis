@@ -1,0 +1,47 @@
+%
+% My macros
+%
+
+% references
+\newcommand*{\figref}[1]{Figure~\ref{#1}}
+\newcommand*{\tableref}[1]{Table~\ref{#1}}
+\newcommand*{\sectionref}[1]{Section~\ref{#1}}
+\newcommand*{\chapterref}[1]{Chapter~\ref{#1}}
+\newcommand*{\eqref}[1]{Equation~\ref{#1}}
+
+% acronyms
+\newcommand*{\TES}{{\small TES}}
+\newcommand*{\TESs}{{\small TES}s}
+\newcommand*{\NETD}{{\small NETD}}
+\newcommand*{\FWHM}{{\small FWHM}}
+\newcommand*{\MATLAB}{{\small MATLAB}}
+\newcommand*{\ZEMAX}{{\small ZEMAX}}
+\newcommand*{\SQUID}{{\small SQUID}}
+\newcommand*{\AWG}{{\small AWG}}
+\newcommand*{\FFT}{{\small FFT}}
+\newcommand*{\IV}{{\small IV}}
+
+% shortcuts
+\newcommand*{\He}[1]{$^{#1}$He}
+\newcommand*{\uA}{\ensuremath{\mu}A}
+\newcommand*{\uV}{\ensuremath{\mu}V}
+\newcommand*{\uW}{\ensuremath{\mu}W}
+\newcommand*{\Ohm}{\ensuremath{\Omega}}
+\newcommand*{\mOhm}{m\ensuremath{\Omega}}
+\newcommand*{\uOhm}{\ensuremath{\mu\Omega}}
+\newcommand*{\Imager}{350~GHz Video Imager}
+\newcommand*{\vect}[1]{\vec{#1}}
+\newcommand*{\textdegree}{\ensuremath{^{\circ}}}
+\newcommand*{\degC}{\ensuremath{^{\circ}}C}
+\newcommand*{\DISP}[1]{{\small DISP{#1}}}
+\newcommand*{\RC}[2]{R{#1}C{#2}}
+\newcommand*{\RCm}[2]{
+	\newcount\tmpR
+	\newcount\tmpC
+	\tmpR=#1
+	\tmpC=#2
+	\advance\tmpR by -1
+	\advance\tmpC by -1
+	R{\number\tmpR}C{\number\tmpC}
+} % this allows me specify row/col indices MATLAB-style
+\newcommand*{\Rsh}{\ensuremath{R_{sh}}}
