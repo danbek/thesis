@@ -80,7 +80,7 @@ As applied heater current decreases, the Joule power at the start of the transit
 In the lower left, the Joule power at 99 \% $R_{n}$ is plotted vs applie heater current.
 A fit to a funciton of the form
 \[
-P_{Joule} = P_{sat} + I_{htr}^2 R_{htr}
+P_{J} = P_{sat} + I_{htr}^2 R_{htr}
 \]
 is also plotted.
 Finally, the lower right plot show the $R$ vs $P$ plots after the heater power has been added to each curve.
@@ -92,12 +92,40 @@ It also shows that this assumption breaks down deeper in the transition.
 \caption{Plots heater measurements, for the case of \RCm{29}{1}.
 \textbf{Upper Left} \IV\ curves. The \IV\ curves should turn completely vertial when the detector becomes fully superconducting at zero voltage, but these curves shown a non-infinite slope. The reason for this is that the readout system as configured for these \IV\ curves was unable keep up with the rapid change of current in the superconducting branch.
 \textbf{Upper Right} Same data as in upper left plot, but represented in terms of \TES\ Joule power and resistance. As the bias current for the heaters is increased, the curves shift to the left.
-\textbf{Lower Left} Measured $P_{Joule}$ vs heater current at 99\% $R_n$, as well as fit to eqn xxx.
+\textbf{Lower Left} Measured $P_{J}$ vs heater current at 99\% $R_n$, as well as fit to eqn xxx.
 \textbf{Lower Right} Same plot as upper right, but the heater power based on $R_{htr} = 23.6 \Ohm$ has been added to each curve.}
 \label{fig:heater-r-plots}
 \end{figure*}
 
+\tableref{tab:all-heater-r} lists all measured heater resistors.
+The seven heaters for columns 0 and 1 have a mean of 23.8~\Ohm with a standard deviation of 0.26~\Ohm.
+The seven heaters for column 6 and 7 exhibit much more scatter, with a mean of 28.6~\Ohm with a standard deviation of 4.16~\Ohm.
 
+\begin{table*}[t]
+\centering
+\caption{Measured Heater Resistances}
+\label{tab:all-heater-r}
+\begin{tabular}{l r}
+\toprule
+Detecotr &  $R_{htr}$ (\Ohm) \\
+\midrule
+\RCm{1}{7}   & 27.7 \\
+\RCm{2}{7}   & 31.6 \\
+\RCm{3}{7}   & 31.2 \\
+\RCm{3}{8}   & 19.8 \\
+\RCm{4}{7}   & 28.4 \\
+\RCm{4}{8}   & 31.0 \\
+\RCm{5}{7}   & 30.5 \\
+\RCm{29}{1}   & 23.6 \\
+\RCm{29}{2}   & 23.8 \\
+\RCm{30}{1}   & 23.5 \\
+\RCm{31}{1}   & 24.3 \\
+\RCm{31}{2}   & 23.6 \\
+\RCm{32}{1}   & 23.9 \\
+\RCm{32}{2}   & 23.8 \\
+\bottomrule
+\end{tabular}
+\end{table*}
 
 \section{Direct Measurement of Detector Responsivity}
 
