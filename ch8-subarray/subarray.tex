@@ -70,8 +70,8 @@ This section describes my measurement of the heater resistances.
 To measure the heater resitances, I took a set of \IV\ curves at constant bath temperature.
 For each \IV\ curve I applied a different heater current, so that a different amount of heater power was applied to the \TES\ for each curve.
 The total amount of power flowing through the \TES\ thermal conductance $G$ is then given by
-\begin{equation}
-P_{tot} = K(T^n - T_b^2) = P_{opt} + P_{htr} + I^2 R(T,I),
+\begin{equation}\ref{eq:tes-ptot}
+P_{tot} = K(T^n - T_b^n) = P_{opt} + P_{htr} + I^2 R(T,I),
 \end{equation}
 where $T$ is the temperature of the \TES, $R$ is the resistance of the \TES, and $I$ is the current flowing through the \TES.
 I make the assumption that at the start of the superconducting transition $\beta_I = 0$, i.e.\ the resistance of the \TES\ depends only on the \TES\ temperature, and not on the current through the \TES.
@@ -133,5 +133,20 @@ Detector &  $R_{htr}$ (\Ohm) \\
 \end{tabular}
 \end{table*}
 
-\section{Direct Measurement of Detector Responsivity}
+\section{Measurement of \TES\ $G$}
+
+With knowledge of the heater resistances, \IV\ curves can be taken over a wide range of bath temperatures, which enables a measurement of the \TES\ thermal conductance $G$.
+Similarly to \sectionref{xxx}, I took \IV\ curves at bath temperatures ranging from xxx mK -- xxx mK, while adjusting the applied heater power so that each \IV\ curve had a clear normal branch.
+I again used the asumption that high in the transition the \TES\ resistance depends on only the \TES\ temperature, so that the Joule power $P_J$ disippated in the \TES\ at 99 \% $R_n$ depends only on the bath temperature $T_b$ and the applied heater power $P_{htr} = I_{htr}^2 R_{htr}$. A fit can then be made to \eqnref{eq:tes-ptot} in the form
+\begin{equation}\ref{eq:g-fit}
+P_{htr} + P_J + P_{opt}= \frac{G T_c}{n}(1 - \left(\frac{T_b}{T_c}\right)^n).
+\end{equation}
+The parameters to be fit to are $G$, $T_c$, and $n$.
+
+A problem arrises because the data described in this section were taken when the cryostat was open, so that $P_{opt}$ was non-zero, with an unknown value.
+Because $P_{opt}$ is a simple additive constant, it is not possible to fit for this value unless another constraint (such as the value of $T_c$) is known.
+However, the value of $P_{opt}$ can be estimated in two different ways. 
+First, the predicted optical load of 165~pW from \sectionref{xxx} can be used.
+Second, the measured optical load of 
+
 
