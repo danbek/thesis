@@ -153,9 +153,9 @@ Smooth-walled feedhorns do not have the nice polarization properties of corrugat
 \figref{fig:feedhorn-parms} depicts a smooth-walled conical feedhorn and its interaction with the optical system.
 As discussed in section \sectionref{s:optical-design}, although the optical system has a secondary mirror as well, for many purposes the secondary mirror can be ignored and the system treated as a system of feedhorns illuminating only a primary mirror with a hole in its center.
 If a feedhorn is observing a temperature distribution $T_{target}(\theta,\phi)$, and is pointed in a direction $(\theta_0, \phi_0)$, then the temperature observed by the feedhorn will be
-\[
-    T_{eff}(\theta_0,\phi_0) = \int \, d \Omega \, T_{target}(\theta - \theta_0,\phi - \phi_0) P(\theta,\phi)
-\].
+\begin{equation}
+    T_{eff}(\theta_0,\phi_0) = \int \, d \Omega \, T_{target}(\theta - \theta_0,\phi - \phi_0) P(\theta,\phi).
+\end{equation}
 The function $P$ is called the ``beam'' or ``beam pattern'' of the feedhorn, and describes the pattern of radiation to which the feedhorn is sensitive to.
 Although the \Imager\ is always receiving radiation, never transmitting, this thesis often writes about the beam pattern as if it were transmitting radiation, e.g.\ in decribing the portion of the ``beam'' that strikes the primary mirror.
 This is acceptable because the transmitting and receiving beam patterns are exactly the same\footnote{This is a consequence of the reciprocity relationships obeyed by the Maxwell equations. See, e.g.\ \cite{xxx} for a detailed explanation.}.
@@ -172,15 +172,15 @@ The fraction of the beam that strikes the primary mirror and proceeds to the tar
 
 The feedhorn opening diameter $D$ is chosen to minimize the total \NETD\ of the system.
 The total \NETD\ was given in \sectionref{xxx} as
-\[
+\begin{equation}
     NETD = \frac{NEP_{tot}}{2 k_B \Delta \nu \eta_{tot} \sqrt{2 \tau}}.
-\]
+\end{equation}
 To make the factors depending on the size of the feedhorns more clear we can break the optical efficiency $\eta_{tot}$ into a product of two factors, $\eta_s$ and $\eta_{other} = \eta_{tot} / \eta_s$.
 We then note that the integration time per pixel $\tau$ is inversely proportional to the number of detectors $N$.
 This leads to
-\[
+\begin{equation}
     NETD \propto \frac{NEP_{tot}\sqrt{N}}{\eta_s}.
-\]
+\end{equation}
 
 The critical relationship is that as a feedhorn's opening diameter increases, the width of the beam becomes smaller.
 Small beam angles increase $\eta_s$, which improves \NETD.
@@ -206,20 +206,20 @@ So it is more helpful to think of the feedhorn diameter as a value that can take
 A \MATLAB\ program was used to find the optimum feedhorn size.
 The program uses an analytic expression for the beam pattern developed in \cite{green2006radiation,narasimhan1971modes,}.
 The far-field electric field pattern takes the form
-\[
+\begin{equation}
     \vect{E}(\theta,\phi) = E_{\theta} \sin{\phi} \hat{\theta} + E_{\phi}(\theta) \cos{\phi} \cos{\theta} \hat{\phi}.
-\]
+\end{equation}
 Here $E_{\theta}$ and $E_{\phi}$ are functions depending the horn diameter $D$ and opening half-angle $\alpha$, and involving definite integrals of Bessel functions, not reproduced here.
 This expression is for the waveguide mode polarized along the $\pi/2$ direction.
 The \Imager's detectors are unpolarized, so detect both waveguide polarizations equally (see \sectionref{xxx} for confirmation of this via simulations).
 The total power beam map is thus given by the incoherant sume
-\[
+\begin{equation}
     P(\theta, \phi) = (|\vect{E}(\theta, \phi)|^2 + |\vect{E}(\theta, \phi+\pi/2)|^2,
-\] 
+\end{equation}
 which simplifies to 
-\[
+\begin{equation}
     P(\theta) = |E_{\theta}(\theta)|^2 + |E_{\phi}(\theta)|^2 \cos{\theta}^2,
-\]
+\end{equation}
 which is independent of $\phi$, as expected for an unpolarized detector.
 
 To calculate the spillover efficiency of an individual feedhorn, the \MATLAB\ program integrates $P$ over the angles $\theta$ that illuminate the primary mirror and reach the target: 5.3\textdegree to 13.6\textdegree\footnote{see \sectionref{s:optical-design}}.
