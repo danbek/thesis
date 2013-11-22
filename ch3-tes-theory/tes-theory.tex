@@ -30,13 +30,13 @@ Because the \TES\ is voltage-biased, the Joule heating is inversely proportional
 \begin{figure*}
 \input{\here/elec-thermal-circuit}
 \caption{Electrical and thermal \TES\ circuits.
-\textbf{Upper Left} Electrical \TES\ circuit.
+\textbf{Left} Electrical \TES\ circuit.
 The \TES\ is biased by a stiff current $I_{bias}$ shunted across a resistor $R_{sh}$ that is much smaller than the normal-state resistance of the \TES.
 The \TES\ is represented by a variable resistance $R$, and $R_{par}$ represents any parasitic resistance in the circuit.
 The current through the \TES\ is inductively coupled into a \SQUID\ for readout.
 The inductance $L$ represents the sum of the input inductance of the \SQUID, a Nyquist Inductor, and any parasitic inductance present in the circuit.
-\textbf{Upper Right} Thevenin-equivalent \TES\ circuit, used in analysis of the \TES\ and derivation of the linearized electrical and thermal equations for the \TES.
-\textbf{Lower Left} Thermal \TES\ circuit. The \TES\ is thermally sunk to a heat capacity $C$ which absorbs optical power. The heat capacity $C$ is connected to a heat bath $T_b$ by a weak thermal link $G$, so that its temperature is elevated above $T_b$ to $T$.}
+\textbf{Middle} Thevenin-equivalent \TES\ circuit, used in analysis of the \TES\ and derivation of the linearized electrical and thermal equations for the \TES.
+\textbf{Right} Thermal \TES\ circuit. The \TES\ is thermally sunk to a heat capacity $C$ which absorbs optical power. The heat capacity $C$ is connected to a heat bath $T_b$ by a weak thermal link $G$, so that its temperature is elevated above $T_b$ to $T$.}
 \label{fig:elec-thermal-circuit}
 \end{figure*}
 
@@ -60,9 +60,9 @@ where
 G \equiv \frac{d P_{bath}}{dT} = K n T^{n-1}.
 \end{equation}
 
-With these definitions it can be shown that the behavior of the \TES\ is described by a pair of coupled first-order differential equations:
+With these definitions it can be shown\cite{irwin2005transition} that the behavior of the \TES\ is described by a pair of coupled first-order differential equations:
 \begin{equation}
-\frac{d}{\mathop{dt}} \begin{pmatrix}	\delta I \\	\delta T \end{pmatrix}
+\frac{d}{\mathop{dt}} \begin{pmatrix} \delta I \\ \delta T \end{pmatrix}
 	= - \mathcal{M} \begin{pmatrix}	\delta I \\	\delta T \end{pmatrix}
       + \begin{pmatrix} \delta V / L \\ \delta P /C \end{pmatrix},
 \end{equation}
@@ -75,6 +75,57 @@ where the matrix $\mathcal{M}$ is
     \end{pmatrix}.
 \end{equation}
 \tableref{tab:tes-theory-summary} describes all symbols use in these equations and the rest of the chapter.
+
+These coupled equations can be solved under different initial conditions and applied forces $\delta V$ and $\delta P$.
+Discussion of several cases follows.
+
+\textbf{\TES\ Power-to-Current Responsivity}
+Driving the \TES\ with a sinusoidal $\delta P$ term, holding detector bias constant, leads to the following complicated expression for the detector power-to-current responsivity:
+\begin{equation}
+xxx
+\end{equation}
+xxx commentary
+
+\textbf{\TES\ Response to Step Function in Power}
+Heater resistors can be used to apply step function in power to the detectors.
+Solving the equations under the conditions
+\begin{equation}
+\begin{pmatrix} \delta I(0) \\ \delta T(0) \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+\end{equation}
+with constant driving force starting at time zero of
+\begin{equation}
+\begin{pmatrix} 0 \\ \delta P_{htr} / C \end{pmatrix}
+\end{equation}
+leads to the following expression for the \TES\ current as a function of time:
+\begin{equation}
+xxx
+\end{equation}
+xxx commentary
+
+\textbf{\TES\ Response to Step Function in Bias Current}
+To derive the behavior of the \TES\ after a step function in applied bias, we solve the equations under the conditions
+\begin{equation}
+\begin{pmatrix} \delta I(0) \\ \delta T(0) \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+\end{equation}
+with constant driving force starting at time zero of
+\begin{equation}
+\begin{pmatrix} \delta I_{bias} R_{sh} / L \\ 0 \end{pmatrix}
+\end{equation}
+Solving this system leads to the following expression for the \TES\ current as a function of time:
+\begin{equation}\label{eqn:bias-step-resp}
+xxx
+\end{equation}
+This expression is complicated, but the behavior can be understood as follows.
+Immediately after an increase in bias current the current flowing through the \TES\ begins to increase, with a time constant of $\tau_{el}$.
+As the current through the \TES increases, the Joule power in the \TES\ will also begin to increase, which warms the \TES.
+This warming increases the resistance of the \TES.
+Because the \TES is voltage-biased, this reduces Joule power in the \TES, which tends to cool the detector as well as reduce current through the detector.
+This negative electrothermal feedback effect occurs with a time constant of $\tau_{eff}$.
+Whether the final current through the \TES\ is higher or lower than the original currents depends on the loop gain.
+For $\Loop < 1$ the current increases, for $\Loop > 1$ it decreases and for $\Loop = 0$ the current through the \TES\ remains unchanged.
+
+\eqnref{eqn:bias-step-resp} depends on \Loop and $\beta_I$ in a complicated way. Nevertheless, if the response of a \TES\ to a bias step can be measured with sufficient bandwidth to track the initial fast electrical response, bias steps can be used to measure \Loop and $\beta_I$ by performing non-linear parameter fitting to \eqnref{eqn:bias-step-resp}.
+Measurements \Loop and $\beta_I$ using this technique are described in \sectionref{xxx}.
 
 \begin{table*}[t]
 \centering
@@ -94,15 +145,20 @@ $T_b$ & Thermal bath temperature \\
 $I_0$ & \TES\ current at bias point \\
 $IR_0$ & \TES\ resistance at bias point \\
 $P_{bath} = K(T^n - T_{bath}^n)$ & Total heat flow from \TES\ island to heat bath \\
+$P_{opt}$ & Optical power falling onto \TES\ heat capacity \\
+$P_{htr}$ & Power applied to \TES\ by heater resistor \\
+$P_{J}$ & Joule power dissipated by \TES\ \\
 $C$ & Heat capacity of \TES\ island \\
 $G \equiv \frac{d \P_{bath}}{d T} = K n T^{n-1}$ & Weak-link differential thermal conductance \\
 $\tau \equiv \frac{C}{G}$ & \TES\ natural time constant \\
 $\tau_{el} \equiv \frac{L}{R_L + R_0(1 + \beta_I)}$ & \TES\ electrical time constant \\
 $\tau_I \equiv \frac{\tau}{1-\Loop}$ & \TES\ constant-current time constant \\
 $\tau_{eff} \equiv \frac{\tau}{1 + \frac{1 - R_L / R_0}{1 + \beta_I + R_L / R_0}\Loop}$ & \TES\ effective time constant \\
-\alpha \equiv \frac{T_0}{R_0} \frac{\partial R}{\partial T} & \\
-\beta_I \equiv \frac{I_0}{R_0} \frac{\partial R}{\partial I} & \\
-\Loop \equiv \frac{I_0^2 R_0 \alpha}{G T_0} & Loop gain \\
+$\alpha \equiv \frac{T_0}{R_0} \frac{\partial R}{\partial T}$ & \\
+$\beta_I \equiv \frac{I_0}{R_0} \frac{\partial R}{\partial I}$ & \\
+$\Loop \equiv \frac{I_0^2 R_0 \alpha}{G T_0}$ & Loop gain \\
+$\delta V = \delta I_{bias} R_{sh}$ & Change in bias applied to \TES\ \\
+$\delta P$ & Change in power (optical or heater) falling on \TES\ \\
 \bottomrule
 \end{tabular}
 \end{table*}
