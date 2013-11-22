@@ -27,6 +27,7 @@
 \usepackage{pgfplots} % drawing plots right here in this file!
 \pgfplotsset{compat=1.8} % latest stable release
 \usepackage{standalone} % handling drawings as pdf
+\usepackage[americaninductors]{circuitikz} % Draw nice electrical circuits
 
 % Bibliography
 \usepackage[backend=biber,natbib=true,style=numeric-comp]{biblatex}
@@ -72,7 +73,8 @@
 
 \chapter{System Specifications, Challenges and Solutions}\label{c:specs}
 
-\chapter{TES Bolometer Theory}\label{c:tes}
+\renewcommand{\here}{ch3-tes-theory}
+\include{\here/tes-theory}
 
 %\renewcommand{\here}{ch4-sys-design}
 %\include{\here/sys-design}
@@ -83,8 +85,8 @@
 
 \chapter{Prototype Detector Characterization}\label{c:proto-det}
 
-\renewcommand{\here}{ch8-subarray}
-\include{\here/subarray}
+%\renewcommand{\here}{ch8-subarray}
+%\include{\here/subarray}
 
 %\renewcommand{\here}{ch9-imaging}
 %\include{\here/imaging}

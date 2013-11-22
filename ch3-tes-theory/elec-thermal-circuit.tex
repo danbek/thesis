@@ -1,0 +1,45 @@
+\documentclass{standalone}
+\usepackage[americaninductors]{circuitikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.8} % latest stable release
+
+\providecommand*{\here}{.}
+
+\input{\here/../dtb-macros}
+
+\begin{document}
+
+\begin{tikzpicture}
+\matrix{
+	\draw
+	(0,5) to[american current source, l_=$I_{bias}$] (0,3)
+	      to[R, l=$R_{par}$] (3,3)
+	      to[vR, l=$R$] (3,0)
+	      to[L, l_=$L$] (0,0)
+	      to[R, l=$R_{sh}$] (0,3)
+	(0,0) node[ground] {}
+	(0.5, -1.25) to[squid] (2.5,-1.25);
+ 	& 
+	\draw
+	(0,3) to[R, l={$R_L \equiv R_{sh} + R_{par}$}] (4,3)
+	      to[vR, l=$R$] (4,0)
+	      to[L, l_=$L$] (0,0)
+	      to[battery1, l_=$V \equiv I_{bias} R_{sh}$] (0,3)
+	(1.25, -1.25) to[squid] (3.25,-1.25);
+	&
+    \draw (0,2) to[R, l=$G$] (0,0);
+    \draw (-0.75,2) rectangle (0.75,2.75) node[midway] {$C$} node[below right] {$T$};
+    \draw (-1,0) -- (1,0) node[below right] {$T_b$};
+    \draw (-1.00,-0.25) -- (-0.75,0);
+    \draw (-0.75,-0.25) -- (-0.50,0);
+    \draw (-0.50,-0.25) -- (-0.25,0);
+    \draw (-0.25,-0.25) -- (-0.00,0);
+    \draw ( 0.00,-0.25) -- ( 0.25,0);
+    \draw ( 0.25,-0.25) -- ( 0.50,0);
+    \draw ( 0.50,-0.25) -- ( 0.75,0);
+    \draw ( 0.75,-0.25) -- ( 1.00,0);
+    \\
+	};
+\end{tikzpicture}
+
+\end{document}

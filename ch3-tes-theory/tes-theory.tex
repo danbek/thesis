@@ -1,0 +1,43 @@
+\chapter{TES Bolometer Theory}\label{c:tes}
+
+This chapter summarizes the \TES\ theory used in this thesis.
+I start by describing the \TES electrical and thermal circuits, defining relevant parameters, and stating the linearized \TES\ equations.
+For reference I then summarize the import consequences of these equations, including expressions for detector responsivity, detector response to step functions in applied power and bias current, and detector noise.
+I do not derive most of these results, because excellent references for these results are available\cite{irwin2005transition}.
+
+I discuss the derivation of two results in detail.
+First, I describe a new approach for measuring the natural detector time constant $\tau$ by extrapolating several measurements of the effective detector time constant $\tau_{eff}$ high in the transition. 
+Second, I give an expression for the time-domain response to a step function in applied detector bias current.
+
+\section{\TES\ Electrical And Thermal Circuits}
+
+\figref{fig:elec-thermal-circuit} shows the electrical and thermal circuits for a \TES\ bolometer.
+The bolometer is voltage-biased by passing a bias current $I_{bias}$ through a shunt resistor \Rsh\ which has a much lower resistance than the normal-state resistance $R_n$ of the \TES.
+The current through the \TES\ is inductively coupled into a \SQUID\ for readout.
+The inductance $L$ in the diagram represents the sum of the input inductance of the \SQUID, a Nyquist Inductor, and any parasitic inductance present in the circuit.
+
+The \TES\ itself is represented by a variable resistance $R$, which depends on both the current through the \TES\ and the temperature of the \TES.
+The \TES\ is thermally connected heat capacity $C$ which is weakly linked to a temperature bath $T_b$ through a thermal conductance $G$.
+Optical power falls onto the heat capacity, causing the temperature $T$ of the heat capacity and the \TES\ to rise above $T_b$.
+Joule power dissipated in the \TES\ also contributes to this temperature rise, as does power dissipated in any heater resistor present on the \TES\footnote{As described in \sectionref{xxx}, 31~detectors have heater resistors.}.
+
+Because the resistance of the \TES\ depends on the temperature of the \TES, and the temperature of the \TES depends on the resistance of the \TES through Joule heating, the electrical and thermal behavior of the \TES are coupled.
+This coupling acts as feedback, termed ``negative electrothermal feedback'', first described in the context of \TES\ detectors by Irwin\cite{irwin1995application}.
+That this coupling acts as negative feedback can be seen as follows.
+As the optical power falling on the \TES\ increases, the temperature of the \TES\ increases, which causes the resistance of the \TES\ to increase as well.
+Because the \TES\ is voltage-biased, the Joule heating is inversely proportional to the resistance, so the Joule heating decreases, which causes the temperature of the \TES\ to decrease, opposing the effect of the increased optical power.
+
+\begin{figure*}
+\input{\here/elec-thermal-circuit}
+\caption{Electrical and thermal \TES\ circuits.
+\textbf{Upper Left} Electrical \TES\ circuit.
+The \TES\ is biased by a stiff current $I_{bias}$ shunted across a resistor $R_{sh}$ that is much smaller than the normal-state resistance of the \TES.
+The \TES\ is represented by a variable resistance $R$, and $R_{par}$ represents any parasitic resistance in the circuit.
+The current through the \TES\ is inductively coupled into a \SQUID\ for readout.
+The inductance $L$ represents the sum of the input inductance of the \SQUID, a Nyquist Inductor, and any parasitic inductance present in the circuit.
+\textbf{Upper Right} Thevenin-equivalent \TES\ circuit, used in analysis of the \TES\ and derivation of the linearized electrical and thermal equations for the \TES.
+\textbf{Lower Left} Thermal \TES\ circuit. The \TES\ is thermally sunk to a heat capacity $C$ which absorbs optical power. The heat capacity $C$ is connected to a heat bath $T_b$ by a weak thermal link $G$, so that its temperature is elevated above $T_b$ to $T$.}
+\label{fig:elec-thermal-circuit}
+\end{figure*}
+
+
