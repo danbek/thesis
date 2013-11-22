@@ -40,4 +40,39 @@ The inductance $L$ represents the sum of the input inductance of the \SQUID, a N
 \label{fig:elec-thermal-circuit}
 \end{figure*}
 
+\section{Linearized Electrical and Thermal Circuits}
+
+In the limit of small changes in \TES\ current and temperature, the resistance of te \TES\ can be expressed as
+\begin{equation}
+R(T_0+\delta T,I_0+\delta I) = R_0 + \alpha \frac{R_0}{T_0} \delta T + %
+									 \beta_I \frac{R_0}{I_0} \delta I.
+\end{equation}
+The power flowing through the thermal link $G$ is assumed to follow a power law of the form
+\begin{eqnarray}
+P_{bath} = K(T^n - T^n_{bath}),
+\end{eqnarray}
+which can also be written in the form
+\begin{eqnarray}
+P_{bath} = \frac{GT}{n}\left(1 - \left(\frac{T_{bath}}{T}\right)^2\right),
+\end{eqnarray}
+where
+\begin{equation}
+G \equiv \frac{d P_{bath}}{dT} = K n T^{n-1}.
+\end{equation}
+
+With these definitions it can be shown that the behavior of the \TES\ is described by a pair of coupled first-order differential equations:
+\begin{equation}
+\frac{d}{\mathop{dt}} \begin{pmatrix}	\delta I \\	\delta T \end{pmatrix}
+	= - \mathcal{M} \begin{pmatrix}	\delta I \\	\delta T \end{pmatrix}
+      + \begin{pmatrix} \delta V / L \\ \delta P /C \end{pmatrix},
+\end{equation}
+where the matrix $\mathcal{M}$ is
+\begin{equation}
+% For spacing see http://tex.stackexchange.com/questions/14071/how-can-i-increase-the-line-spacing-in-a-matrix
+\mathcal{M} = \begin{pmatrix}
+		\frac{1}{\tau_{el}} & \frac{\Loop G}{I_0 L} \\[0.75em] 
+		-\frac{I_0 R_0(2 + \beta_I)}{C} & \frac{1}{\tau_I}
+    \end{pmatrix}.
+\end{equation}
+\tableref{xxx} describes all symbols use in these equations and the rest of the chapter.
 
