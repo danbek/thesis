@@ -74,5 +74,35 @@ where the matrix $\mathcal{M}$ is
 		-\frac{I_0 R_0(2 + \beta_I)}{C} & \frac{1}{\tau_I}
     \end{pmatrix}.
 \end{equation}
-\tableref{xxx} describes all symbols use in these equations and the rest of the chapter.
+\tableref{tab:tes-theory-summary} describes all symbols use in these equations and the rest of the chapter.
 
+\begin{table*}[t]
+\centering
+\caption{Symbols and parameters used in describing behavior of \TES\ circuits.}
+\label{tab:tes-theory-summary}
+\begin{tabular}{l l}
+\toprule
+Symbol &  Explanation \\
+\midrule
+$R$ & \TES\ resistance (depends on temperature \& current) \\
+$R_n$ & \TES\ normal-state resistance \\
+$R_{sh}$ & Shunt resitance \\
+$R_{par}$ & Represents any parasitic resitance in \TES\ circuit \\
+$R_L \equiv R_{sh} + R_{par}$ & Load resistance used in analysis of \TES\ circuit \\
+$T$ & \TES\ temperature \\
+$T_b$ & Thermal bath temperature \\
+$I_0$ & \TES\ current at bias point \\
+$IR_0$ & \TES\ resistance at bias point \\
+$P_{bath} = K(T^n - T_{bath}^n)$ & Total heat flow from \TES\ island to heat bath \\
+$C$ & Heat capacity of \TES\ island \\
+$G \equiv \frac{d \P_{bath}}{d T} = K n T^{n-1}$ & Weak-link differential thermal conductance \\
+$\tau \equiv \frac{C}{G}$ & \TES\ natural time constant \\
+$\tau_{el} \equiv \frac{L}{R_L + R_0(1 + \beta_I)}$ & \TES\ electrical time constant \\
+$\tau_I \equiv \frac{\tau}{1-\Loop}$ & \TES\ constant-current time constant \\
+$\tau_{eff} \equiv \frac{\tau}{1 + \frac{1 - R_L / R_0}{1 + \beta_I + R_L / R_0}\Loop}$ & \TES\ effective time constant \\
+\alpha \equiv \frac{T_0}{R_0} \frac{\partial R}{\partial T} & \\
+\beta_I \equiv \frac{I_0}{R_0} \frac{\partial R}{\partial I} & \\
+\Loop \equiv \frac{I_0^2 R_0 \alpha}{G T_0} & Loop gain \\
+\bottomrule
+\end{tabular}
+\end{table*}
