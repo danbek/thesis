@@ -125,7 +125,11 @@ with constant driving force starting at time zero of
 \end{equation}
 Solving this system leads to the following expression for the \TES\ current as a function of time:
 \begin{equation}\label{eqn:bias-step-resp}
-xxx
+\delta I (t)
+   = - \frac{\delta I_{bias} R_{sh}}{R_0} 
+       \frac{\Loop - 1}{1 + \beta_I + R_L/R_0 + \Loop(1 - R_L/R_0)}
+       \left(1 - \frac{\tau_{eff} - \tau_I}{\tau_{eff} - \tau_{el}} e^{-t/\tau_{eff}}
+    	       + \frac{\tau_{el} - \tau_I}{\tau_{eff} - \tau_{el}} e^{-t/\tau_{el}} \right).
 \end{equation}
 This expression is complicated, but the behavior can be understood as follows.
 Immediately after an increase in bias current the current flowing through the \TES\ begins to increase, with a time constant of $\tau_{el}$.
@@ -136,8 +140,24 @@ This negative electrothermal feedback effect occurs with a time constant of $\ta
 Whether the final current through the \TES\ is higher or lower than the original currents depends on the loop gain.
 For $\Loop < 1$ the current increases, for $\Loop > 1$ it decreases and for $\Loop = 0$ the current through the \TES\ remains unchanged.
 
-\eqnref{eqn:bias-step-resp} depends on \Loop and $\beta_I$ in a complicated way. Nevertheless, if the response of a \TES\ to a bias step can be measured with sufficient bandwidth to track the initial fast electrical response, bias steps can be used to measure \Loop and $\beta_I$ by performing non-linear parameter fitting to \eqnref{eqn:bias-step-resp}.
+\eqnref{eqn:bias-step-resp} depends on \Loop and $\beta_I$ in a complicated way through $\tau_{eff}$, $\tau_I$, $\tau_{el}$, and the prefactor.
+Nevertheless, if the response of a \TES\ to a bias step can be measured with sufficient bandwidth to track the initial fast electrical response, bias steps can be used to measure \Loop and $\beta_I$ by performing non-linear parameter fitting to \eqnref{eqn:bias-step-resp}.
 Measurements \Loop and $\beta_I$ using this technique are described in \sectionref{xxx}.
+
+When the \TES\ is superconducting, \eqnref{eqn:bias-step-resp} takes on a much simpler form.
+Setting $R_0 = \Loop = \beta_I = 0$, the result is
+\begin{equation}\label{eqn:bias-step-resp-sc}
+\delta I(t)
+   = - \frac{\delta I_{bias} R_{sh}}{R_{L}} 
+       \left(1 - e^{-t/(L/R_L)} \right).
+\end{equation}
+Similarly, when the detector is fully normal, so that $\Loop = \beta_I = $, \eqnref{eqn:bias-step-resp} becomes
+\begin{equation}\label{eqn:bias-step-resp-normal}
+\delta I(t)
+   = - \frac{\delta I_{bias} R_{sh}}{R_n + R_{L}} 
+       \left(1 - e^{-t/(L/(R_n+R_L))} \right).
+\end{equation}
+The \TES\ response to bias steps in the superconducting and normal states can thus be used as measurements of $L$ and $R_n$.
 
 \begin{table*}[t]
 \centering
