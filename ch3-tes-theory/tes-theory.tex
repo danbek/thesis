@@ -81,7 +81,7 @@ Discussion of several cases follows.
 
 \textbf{\TES\ Power-to-Current Responsivity}
 Driving the \TES\ with a sinusoidal $\delta P$ term, holding detector bias constant, leads to the following expression for the detector power-to-current responsivity:
-\begin{equation}
+\begin{equation}\label{eqn:si-full}
 s_I(\omega) = 
 - \frac{ \frac{1}{V0} \frac{1}{\gamma} \frac{\Loop}{\Loop + 1} }
        { 1 + j \omega \left( \tau_{eff} - \frac{1}{\gamma}\frac{\Loop}{\Loop + 1} \frac{L}{R_0}\right) - \omega^2 \frac{L}{R_0}\frac{\tau_{eff}}{1 + \beta_I + R_L / R_0}},
@@ -94,7 +94,7 @@ In this limit the power-to-current responsivity becomes
 \begin{equation}
 s_I(\omega) = -\frac{1}{V_0} \frac{\Loop}{1+\beta_I + \Loop} \frac{1}{1 + j \omega \frac{\tau}{1 +\Loop/(1+\beta_I)}}
 \end{equation}
-The detector response time is given by the natural detector time constant $\tau$, sped up by a factor of $1 + \Loop(1+\beta_I)$; for $\beta_I \ll 1$, this factor is typical of negative feedback, and justifies calling \Loop the ``loop gain'' of the detector.
+The detector response time is given by the natural detector time constant $\tau$, sped up by a factor of $1 + \Loop(1+\beta_I)$; for $\beta_I \ll 1$, this factor is typical of negative feedback, and justifies calling \Loop\ the ``loop gain'' of the detector.
 In the further limit of strong electrothermal feedback ($\Loop \gg 1, \gg \beta_I$), the \DC responsivity is simply the inverse of the voltage bias.
 This represents that fact that under strong strong electrothermal an increase in applied optical power is exactly canceled by a decrease in detector Joule heating, so that the \TES\ temperature remains unchanged.
 
@@ -140,9 +140,9 @@ This negative electrothermal feedback effect occurs with a time constant of $\ta
 Whether the final current through the \TES\ is higher or lower than the original currents depends on the loop gain.
 For $\Loop < 1$ the current increases, for $\Loop > 1$ it decreases and for $\Loop = 0$ the current through the \TES\ remains unchanged.
 
-\eqnref{eqn:bias-step-resp} depends on \Loop and $\beta_I$ in a complicated way through $\tau_{eff}$, $\tau_I$, $\tau_{el}$, and the prefactor.
+\eqnref{eqn:bias-step-resp} depends on \Loop\ and $\beta_I$ in a complicated way through $\tau_{eff}$, $\tau_I$, $\tau_{el}$, and the prefactor.
 Nevertheless, if the response of a \TES\ to a bias step can be measured with sufficient bandwidth to track the initial fast electrical response, bias steps can be used to measure \Loop and $\beta_I$ by performing non-linear parameter fitting to \eqnref{eqn:bias-step-resp}.
-Measurements \Loop and $\beta_I$ using this technique are described in \sectionref{xxx}.
+Measurements of \Loop\ and $\beta_I$ using this technique are described in \sectionref{xxx}.
 
 When the \TES\ is superconducting, \eqnref{eqn:bias-step-resp} takes on a much simpler form.
 Setting $R_0 = \Loop = \beta_I = 0$, the result is
@@ -167,21 +167,21 @@ The \TES\ response to bias steps in the superconducting and normal states can th
 \toprule
 Symbol &  Explanation \\
 \midrule
+$I_{bias}$ & Current applied across shunt to bias \TES. \\
 $R$ & \TES\ resistance (depends on temperature \& current) \\
 $R_n$ & \TES\ normal-state resistance \\
-$R_{sh}$ & Shunt resitance \\
+$R_{sh}$ & Shunt resistance \\
 $R_{par}$ & Represents any parasitic resitance in \TES\ circuit \\
 $R_L \equiv R_{sh} + R_{par}$ & Load resistance used in analysis of \TES\ circuit \\
 $T$ & \TES\ temperature \\
 $T_b$ & Thermal bath temperature \\
-$I_0$ & \TES\ current at bias point \\
-$IR_0$ & \TES\ resistance at bias point \\
+$I_0, R_0$ & \TES\ current and resistance at bias point \\
 $P_{bath} = K(T^n - T_{bath}^n)$ & Total heat flow from \TES\ island to heat bath \\
 $P_{opt}$ & Optical power falling onto \TES\ heat capacity \\
 $P_{htr}$ & Power applied to \TES\ by heater resistor \\
 $P_{J}$ & Joule power dissipated by \TES\ \\
 $C$ & Heat capacity of \TES\ island \\
-$G \equiv \frac{d \P_{bath}}{d T} = K n T^{n-1}$ & Weak-link differential thermal conductance \\
+$G \equiv \frac{d P_{bath}}{d T} = K n T^{n-1}$ & Weak-link differential thermal conductance \\
 $\tau \equiv \frac{C}{G}$ & \TES\ natural time constant \\
 $\tau_{el} \equiv \frac{L}{R_L + R_0(1 + \beta_I)}$ & \TES\ electrical time constant \\
 $\tau_I \equiv \frac{\tau}{1-\Loop}$ & \TES\ constant-current time constant \\
@@ -194,3 +194,49 @@ $\delta P$ & Change in power (optical or heater) falling on \TES\ \\
 \bottomrule
 \end{tabular}
 \end{table*}
+
+\section{Measurement of Natural Time Constant}
+
+Near the top of the superconducting transition, $\Loop < 1$, so that $\tau_{eff} > 0.5 \tau$.
+Detectors circuits are always design so that $\tau \gg L/_n$, so that \eqnref{eqn:si-full} simplifies to
+\begin{equation}
+s_I(\omega) = - \frac{1}{V_0 \gamma}\frac{\Loop}{\Loop + 1}
+                       \left(1 + j \omega \tau_{eff}\right)^{-1}.
+\end{equation} \label{eqn:htr-step-resp-high}
+This implies that the time-domain response to step in applied power, for example from a heater, is
+\begin{equation}
+\delta I(t) = - \frac{\delta P}{V_0 \gamma}\frac{\Loop}{\Loop + 1}
+                (1 - e^{-t/\tau_{eff}}).
+\end{equation}
+As the fully normal state is approached, $\tau_{eff}$ approaches $\tau$, so that measuring the time constant very high in the transition will give a mesurement of $\tau$.
+However, the power-to-current  responsivity becomes smaller and smaller high in the transition, so that this measurement becomes more and more difficult.
+If we knew \Loop\ and $\beta_I$ high in the transition we could extract $\tau$ from $\tau_{eff}$, but we do not always know these values.
+
+However, it turns out that an expression can be obtained linking $\tau$ and $\tau_{eff}$ that holds independent of location in the transition, as long as the assumption $\tau_{eff} \gg L/R_0$ holds.
+The \DC\ response to a step in applied power $\delta $ is given by
+\begin{equation}
+\delta I = \frac{\delta P}{I R}\frac{\Loop}{1 + \beta_I + R_L/R_0 + (1 - R_L / R_0)\Loop}.
+\end{equation}
+This equation can solved for \Loop, and then subsituted into the expression for $\tau_{eff}$.
+This leads to
+\begin{equation}\label{eqn:teff-from-tau}
+\tau_{eff} = \tau - \tau \mathcal{K} I_{bias} \delta I,
+\end{equation}
+\begin{equation}
+\mathcal{K} \equiv \frac{R_{sh}}{\delta P} \frac{R_0 - R_L}{R_0 + R_L}.
+\end{equation}
+Here the relation
+\begin{equation}
+I = I_{bias}\frac{R_{sh}}{R + R_L}
+\end{equation}
+has also been used.
+
+\eqnref{eqn:teff-from-tau} holds independent of \Loop\ and $\beta_I$.
+The factor $\mathcal{K}$ depends on the bias point, but high in the transition this dependence is very weak, so that it can be treated as a constant.
+
+To use \eqnref{eqn:teff-from-tau} to mesure $\tau$, steps in heater power are applied to the \TES\ at a set of bias points close to the normal state.
+At each bias point the \DC\ change in \TES\ current $\delta I$ and $\tau_{eff}$ are measured by fitting the \TES\ response to \eqnref{eqn:htr-step-resp-high}, and the bias current $I_{bias}$ is recorded.
+A non-linear curve fit can then be applied to \eqnref{eqn:teff-from-tau} to solve for $\tau$ and $\mathcal{K}$.
+Alternately, $\mathcal{K}$ can be calculated if all factors feeding into it is known, and then \eqnref{eqn:teff-from-tau} can be solved directly for $\tau$.
+
+\sectionref{xxx} Presents measurements of the $\tau$ of xxx detectors using this technique.
