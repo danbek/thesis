@@ -208,7 +208,7 @@ This implies that the time-domain response to step in applied power, for example
 \delta I(t) = - \frac{\delta P}{V_0 \gamma}\frac{\Loop}{\Loop + 1}
                 (1 - e^{-t/\tau_{eff}}).
 \end{equation}
-As the fully normal state is approached, $\tau_{eff}$ approaches $\tau$, so that measuring the time constant very high in the transition will give a mesurement of $\tau$.
+As the fully normal state is approached, $\tau_{eff}$ approaches $\tau$, so that measuring the time constant very high in the transition will give a measurement of $\tau$.
 However, the power-to-current  responsivity becomes smaller and smaller high in the transition, so that this measurement becomes more and more difficult.
 If we knew \Loop\ and $\beta_I$ high in the transition we could extract $\tau$ from $\tau_{eff}$, but we do not always know these values.
 
@@ -239,4 +239,41 @@ At each bias point the \DC\ change in \TES\ current $\delta I$ and $\tau_{eff}$ 
 A non-linear curve fit can then be applied to \eqnref{eqn:teff-from-tau} to solve for $\tau$ and $\mathcal{K}$.
 Alternately, $\mathcal{K}$ can be calculated if all factors feeding into it is known, and then \eqnref{eqn:teff-from-tau} can be solved directly for $\tau$.
 
+xxx reference Mather for explanation of feedback suppressing johnson noise?
+
 \sectionref{xxx} Presents measurements of the $\tau$ of xxx detectors using this technique.
+
+\section{\TES\ Bolometer Noise}
+
+There are three sources of noise in \TES\ bolometers: Johnson noise in the \TES\ resistance, Johnson noise in the load resistor $R_L$, and thermal fluctuation noise (\TFN) across the weak thermal link $G$.
+Expressions for these sources of noise are shown in \tableref{tab:tes-noise}, both in terms of current noise and in noise referred to power incident on the detector.
+
+For typical operating conditions of \TES\ bolometers, the low-frequency noise is dominated by thermal fluctuation noise.
+This can be see by taking the ratio of $S_{I_{TES}}$ to $S_{TFN}}$ (ignoring factors of order unity):
+\begin{equation}
+\frac{S_{I_{TES}}}{S_{TFN}} = \frac{1}{\alpha \Loop} (1 + (\omega \tau)^2)
+\end{equation}
+At low frequencies the \TES\ resistor current noise is suppressed below \TFN\ noise by a factor of $1/\alpha \Loop$.
+\TES\ detectors are always biased so that $\Loop > 1$, and values for $\alpha$ in the transition are 100--1000.
+Examination of \tableref{tab:tes-noise} shows that current noise from the load resistor is lower than that from the \TES\ resistor by a factor of $(\Loop-1)^2 (R_0 / R_L) (T_0/T_L)$.
+All this points to the conclusion that noise in \TES\ bolometers is dominated by \TFN\ noise.
+
+xxx need to discuss $F(T_0, T_b)$.
+
+\begin{table*}[t]
+\centering
+\caption{Noise in \TES\ bolometers}
+\label{tab:tes-noise}
+\begin{tabular}{l l l}
+\toprule
+Noise Source &  Current Noise & Power-referred Noise \\
+\midrule
+\TES\ Resistor & $S_{I_{TES}} = 4 k_B T_0 I_0^2 R_0 \xi(I_0) \frac{(1 + (\omega \tau)^2) } {\Loop^2} |s_I(\omega)|^2$  & $4 k_B T_0 I_0^2 R_0 \xi(I_0) \frac{(1 + (\omega \tau)^2)} {\Loop^2}$ \\
+Load Resistor & $S_{I_{L}} = 4 k_B T_L I_0^2 R_L \frac{(1 + (\omega \tau_I)^2) (\Loop -1)^2} {\Loop^2} |s_I(\omega)|^2$  & $4 k_B T_L I_0^2 R_L \xi(I_0) \frac{(1 + (\omega \tau_I)^2) (\Loop -1)^2} {\Loop^2}$   \\
+Thermal Fluctuation Noise & $S_{TFN} = 4 k_B T_0^2 G F(T_0, T_b) |s_I(\omega)|^2$ & $4 k_B T_0^2 G F(T_0, T_bath)$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{\IV\ Curve Analysis}
+
