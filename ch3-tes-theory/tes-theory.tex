@@ -28,7 +28,7 @@ As the optical power falling on the \TES\ increases, the temperature of the \TES
 Because the \TES\ is voltage-biased, the Joule heating is inversely proportional to the resistance, so the Joule heating decreases, which causes the temperature of the \TES\ to decrease, opposing the effect of the increased optical power.
 
 \begin{figure*}
-\input{\here/elec-thermal-circuit}
+%\input{\here/elec-thermal-circuit}
 \caption{Electrical and thermal \TES\ circuits.
 \textbf{Left} Electrical \TES\ circuit.
 The \TES\ is biased by a stiff current $I_{bias}$ shunted across a resistor $R_{sh}$ that is much smaller than the normal-state resistance of the \TES.
@@ -80,11 +80,23 @@ These coupled equations can be solved under different initial conditions and app
 Discussion of several cases follows.
 
 \textbf{\TES\ Power-to-Current Responsivity}
-Driving the \TES\ with a sinusoidal $\delta P$ term, holding detector bias constant, leads to the following complicated expression for the detector power-to-current responsivity:
+Driving the \TES\ with a sinusoidal $\delta P$ term, holding detector bias constant, leads to the following expression for the detector power-to-current responsivity:
 \begin{equation}
-xxx
+s_I(\omega) = 
+- \frac{ \frac{1}{V0} \frac{1}{\gamma} \frac{\Loop}{\Loop + 1} }
+       { 1 + j \omega \left( \tau_{eff} - \frac{1}{\gamma}\frac{\Loop}{\Loop + 1} \frac{L}{R_0}\right) - \omega^2 \frac{L}{R_0}\frac{\tau_{eff}}{1 + \beta_I + R_L / R_0}},
 \end{equation}
-xxx commentary
+\begin{equation}
+\gamma \equiv 1 + \frac{\beta_I}{1+\Loop} - \frac{\Loop - 1}{\Loop + 1}\frac{R_L}{R_0}.
+\end{equation}
+While imposing, these expressions are much simpler in the limit which generally hold for operating \TES\ detectors: strong voltage bias ($R_L \ll R_0$), and $\tau \ll L/R$. 
+In this limit the power-to-current responsivity becomes
+\begin{equation}
+s_I(\omega) = -\frac{1}{V_0} \frac{\Loop}{1+\beta_I + \Loop} \frac{1}{1 + j \omega \frac{\tau}{1 +\Loop/(1+\beta_I)}}
+\end{equation}
+The detector response time is given by the natural detector time constant $\tau$, sped up by a factor of $1 + \Loop(1+\beta_I)$; for $\beta_I \ll 1$, this factor is typical of negative feedback, and justifies calling \Loop the ``loop gain'' of the detector.
+In the further limit of strong electrothermal feedback ($\Loop \gg 1, \gg \beta_I$), the \DC responsivity is simply the inverse of the voltage bias.
+This represents that fact that under strong strong electrothermal an increase in applied optical power is exactly canceled by a decrease in detector Joule heating, so that the \TES\ temperature remains unchanged.
 
 \textbf{\TES\ Response to Step Function in Power}
 Heater resistors can be used to apply step function in power to the detectors.
