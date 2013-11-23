@@ -77,7 +77,7 @@ where the matrix $\mathcal{M}$ is
 \tableref{tab:tes-theory-summary} describes all symbols use in these equations and the rest of the chapter.
 
 These coupled equations can be solved under different initial conditions and applied forces $\delta V$ and $\delta P$.
-Discussion of several cases follows.
+Discussion of three cases follows.
 
 \textbf{\TES\ Power-to-Current Responsivity}
 Driving the \TES\ with a sinusoidal $\delta P$ term, holding detector bias constant, leads to the following expression for the detector power-to-current responsivity:
@@ -96,7 +96,7 @@ s_I(\omega) = -\frac{1}{V_0} \frac{\Loop}{1+\beta_I + \Loop} \frac{1}{1 + j \ome
 \end{equation}
 The detector response time is given by the natural detector time constant $\tau$, sped up by a factor of $1 + \Loop(1+\beta_I)$; for $\beta_I \ll 1$, this factor is typical of negative feedback, and justifies calling \Loop\ the ``loop gain'' of the detector.
 In the further limit of strong electrothermal feedback ($\Loop \gg 1, \gg \beta_I$), the \DC responsivity is simply the inverse of the voltage bias.
-This represents that fact that under strong strong electrothermal an increase in applied optical power is exactly canceled by a decrease in detector Joule heating, so that the \TES\ temperature remains unchanged.
+This represents that fact that under strong electrothermal an increase in applied optical power is exactly canceled by a decrease in detector Joule heating, so that the \TES\ temperature remains unchanged.
 
 \textbf{\TES\ Response to Step Function in Power}
 Heater resistors can be used to apply step function in power to the detectors.
@@ -127,9 +127,11 @@ Solving this system leads to the following expression for the \TES\ current as a
 \begin{equation}\label{eqn:bias-step-resp}
 \delta I (t)
    = - \frac{\delta I_{bias} R_{sh}}{R_0} 
-       \frac{\Loop - 1}{1 + \beta_I + R_L/R_0 + \Loop(1 - R_L/R_0)}
-       \left(1 - \frac{\tau_{eff} - \tau_I}{\tau_{eff} - \tau_{el}} e^{-t/\tau_{eff}}
-    	       + \frac{\tau_{el} - \tau_I}{\tau_{eff} - \tau_{el}} e^{-t/\tau_{el}} \right).
+       \frac{(\Loop - 1)
+             \left(1 - \frac{\tau_{eff} - \tau_I}{\tau_{eff} - \tau_{el}} e^{-t/\tau_{eff}}
+                 	       + \frac{\tau_{el} - \tau_I}{\tau_{eff} - \tau_{el}} e^{-t/\tau_{el}} \right)}
+            {1 + \beta_I + R_L/R_0 + \Loop(1 - R_L/R_0)}
+       .
 \end{equation}
 This expression is complicated, but the behavior can be understood as follows.
 Immediately after an increase in bias current the current flowing through the \TES\ begins to increase, with a time constant of $\tau_{el}$.
@@ -232,14 +234,12 @@ I = I_{bias}\frac{R_{sh}}{R + R_L}
 has also been used.
 
 \eqnref{eqn:teff-from-tau} holds independent of \Loop\ and $\beta_I$.
-The factor $\mathcal{K}$ depends on the bias point, but high in the transition this dependence is very weak, so that it can be treated as a constant.
+The factor $\mathcal{K}$ depends on the bias point, but high in the transition this dependence is weak, so that $\mathcal{K}$ can be treated as a constant.
 
 To use \eqnref{eqn:teff-from-tau} to mesure $\tau$, steps in heater power are applied to the \TES\ at a set of bias points close to the normal state.
 At each bias point the \DC\ change in \TES\ current $\delta I$ and $\tau_{eff}$ are measured by fitting the \TES\ response to \eqnref{eqn:htr-step-resp-high}, and the bias current $I_{bias}$ is recorded.
 A non-linear curve fit can then be applied to \eqnref{eqn:teff-from-tau} to solve for $\tau$ and $\mathcal{K}$.
 Alternately, $\mathcal{K}$ can be calculated if all factors feeding into it is known, and then \eqnref{eqn:teff-from-tau} can be solved directly for $\tau$.
-
-xxx reference Mather for explanation of feedback suppressing johnson noise?
 
 \sectionref{xxx} Presents measurements of the $\tau$ of xxx detectors using this technique.
 
@@ -260,17 +260,19 @@ All this points to the conclusion that noise in \TES\ bolometers is dominated by
 
 xxx need to discuss $F(T_0, T_b)$.
 
+xxx reference Mather for explanation of feedback suppressing johnson noise?
+
 \begin{table*}[t]
 \centering
-\caption{Noise in \TES\ bolometers}
+\caption{Noise in \TES\ bolometers. To obtain noise reffered to power incident on the bolometer, divide each power spectral density by $|s_I(\omega)|^2$}
 \label{tab:tes-noise}
-\begin{tabular}{l l l}
+\begin{tabular}{l l}
 \toprule
-Noise Source &  Current Noise & Power-referred Noise \\
+Noise Source &  Current Noise \\
 \midrule
-\TES\ Resistor & $S_{I_{TES}} = 4 k_B T_0 I_0^2 R_0 \xi(I_0) \frac{(1 + (\omega \tau)^2) } {\Loop^2} |s_I(\omega)|^2$  & $4 k_B T_0 I_0^2 R_0 \xi(I_0) \frac{(1 + (\omega \tau)^2)} {\Loop^2}$ \\
-Load Resistor & $S_{I_{L}} = 4 k_B T_L I_0^2 R_L \frac{(1 + (\omega \tau_I)^2) (\Loop -1)^2} {\Loop^2} |s_I(\omega)|^2$  & $4 k_B T_L I_0^2 R_L \xi(I_0) \frac{(1 + (\omega \tau_I)^2) (\Loop -1)^2} {\Loop^2}$   \\
-Thermal Fluctuation Noise & $S_{TFN} = 4 k_B T_0^2 G F(T_0, T_b) |s_I(\omega)|^2$ & $4 k_B T_0^2 G F(T_0, T_bath)$ \\
+\TES\ Resistor & $S_{I_{TES}} = 4 k_B T_0 I_0^2 R_0 \xi(I_0) \frac{(1 + (\omega \tau)^2) } {\Loop^2} |s_I(\omega)|^2$ \\
+Load Resistor & $S_{I_{L}} = 4 k_B T_L I_0^2 R_L \frac{(1 + (\omega \tau_I)^2) (\Loop -1)^2} {\Loop^2} |s_I(\omega)|^2$ \\
+Thermal Fluctuation Noise & $S_{TFN} = 4 k_B T_0^2 G F(T_0, T_b) |s_I(\omega)|^2$ \\
 \bottomrule
 \end{tabular}
 \end{table*}
