@@ -27,7 +27,7 @@ Vibration of the cryostat can lead to microphonic pickup either directly in the 
 \begin{figure*}[t]
 \centering
 \begin{tikzpicture}
-    \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=2.6in]{\here/../images/cryostat-cutaway.png}};
+    \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=2.6in]{./images/cryostat-cutaway.png}};
     \begin{scope}[x={(image.south east)},y={(image.north west)}]
 	    %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1.5,1);
 		%\foreach \x in {0,1,...,15} { \node [anchor=north] at (\x/10,0) {0.\x}; }
@@ -77,7 +77,7 @@ In normal operation the heat switch between the charcoal pumping chamber (``pump
 \begin{figure*}[th]
 \centering
 \begin{tikzpicture}
-    \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=3.0in]{\here/../images/he4-sorp-fridge-cutaway.png}};
+    \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=3.0in]{./images/he4-sorp-fridge-cutaway.png}};
     \begin{scope}[x={(image.south east)},y={(image.north west)}]
 	    %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1.5,1);
 		%\foreach \x in {0,1,...,15} { \node [anchor=north] at (\x/10,0) {0.\x}; }
@@ -164,8 +164,7 @@ The fraction of the beam that strikes the primary mirror and proceeds to the tar
 
 \begin{figure*}
 \centering
-%\includegraphics{drawings/ch4-feedhorn-parms.pdf}
-\input{\here/../drawings/ch4-feedhorn-parms.tex}
+\includegraphics{drawings/ch4-feedhorn-parms-sag.pdf}
 \caption{Schematic showing important parameters of a feedhorn and its beam. The beam appears to emerge from the phase center, a distance $l_c$ behind the mouth of the feedhorn in this diagram. The main lobe of the beam is approximated well by a Gaussian, here characterized by a full-width-half-maximum (\FWHM) beam width. The shaded fraction of the Gaussian represents the part of the beam that falls onto the primary mirror and reaches the target.}
 \label{fig:feedhorn-parms}
 \end{figure*}
@@ -230,7 +229,7 @@ $\alpha = 9.4$\textdegree was chosen as a value that is easy to machine, keeps t
 
 \begin{figure*}[th]
 \centering
-\includegraphics[width=3.0in]{\here/../images/spill_vs_alpha_diam.pdf}
+\includegraphics[width=3.0in]{./images/spill_vs_alpha_diam.pdf}
 \caption{Plot showing feedhorn spillover efficiency $\eta_s$ as a function of horn diameter $D$ and horn flare half-angle $\alpha$. The blue asterisk shows the feedhorn parameters used in the \Imager. xxx need to replace with version that has * sign at real feedhorn values!}
 \label{fig:spill-vs-alpha-diam}
 \end{figure*}
@@ -241,7 +240,7 @@ However, as mentiond above, the maximum number of detectors that can be readout 
 
 \begin{figure*}[th]
 \centering
-\includegraphics[width=3.0in]{\here/../images/netd_num_feeds.pdf}
+\includegraphics[width=3.0in]{./images/netd_num_feeds.pdf}
 \caption{Plot showing how total number of detectors and system \NETD\ depend on diameter chosen for feedhorns. The number of detectors is a discrete function of the feedhorn diameter because it is not possible to have a fractional part of a feedhorn. \NETD\ is maximized with xxx feedhorns of diameter xxx, but the \Imager\ uses 1004 feedhorns of diameter xxx because of readout limitations. xxx Is this plot right? I chose 2.68 mm (cold), which leads to ~800 detectors, not 1024.}
 \label{fig:netd-num-feeds}
 \end{figure*}

@@ -6,7 +6,7 @@ PDFLATEX = pdflatex -interaction=batchmode
 PDFCROP  = pdfcrop
 RM       = /usr/bin/rm
 
-InputTeXFiles = ch3-tes-theory.tex 
+InputTeXFiles = ch3-tes-theory.tex ch4-sys-design.tex 
 SAGFiles = $(wildcard drawings/*-sag.tex)
 PDFSAGFiles = $(SAGFiles:.tex=.pdf) 
 ImageFiles = images/*
@@ -20,7 +20,8 @@ drawings/%-sag.pdf: drawings/%-sag.tex
 	cd drawings && $(PDFLATEX) $(notdir $<)
 
 clean : .PHONY
-	$(RM) -f -- *.aux *.bbl *.blg *.log *.bcf *.synctex.gz *.fls *.fdb_latexmk
+	find . -regex ".*\(aux\|bbl\|blg\|log\|bcf\|synctex\.gz\|fls\|fdb_latexmk\)" -type f -delete
+	$(RM) -fr -- drawings/*.pdf
 
 distclean : clean
 	$(RM) -f -- thesis.pdf
