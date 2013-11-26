@@ -3,7 +3,7 @@
 This chapter summarizes the \TES\ theory used in this thesis.
 I start by describing the \TES electrical and thermal circuits, defining relevant parameters, and stating the linearized \TES\ equations.
 For reference I then summarize the import consequences of these equations, including expressions for detector responsivity, detector response to step functions in applied power and bias current, and detector noise.
-I do not derive most of these results, because excellent references for these results are available\cite{irwin2005transition}.
+I do not derive most of these results, because excellent references for these results are available\cite{irwin_transition-edge_2005}.
 
 I discuss the derivation of two results in detail.
 First, I describe a new approach for measuring the natural detector time constant $\tau$ by extrapolating several measurements of the effective detector time constant $\tau_{eff}$ high in the transition. 
@@ -22,7 +22,7 @@ Optical power falls onto the heat capacity, causing the temperature $T$ of the h
 Joule power dissipated in the \TES\ also contributes to this temperature rise, as does power dissipated in any heater resistor present on the \TES\footnote{As described in \sectionref{xxx}, 31~detectors have heater resistors.}.
 
 Because the resistance of the \TES\ depends on the temperature of the \TES, and the temperature of the \TES depends on the resistance of the \TES through Joule heating, the electrical and thermal behavior of the \TES are coupled.
-This coupling acts as feedback, termed ``negative electrothermal feedback'', first described in the context of \TES\ detectors by Irwin\cite{irwin1995application}.
+This coupling acts as feedback, termed ``negative electrothermal feedback'', first described in the context of \TES\ detectors by Irwin\cite{irwin_application_1995}.
 That this coupling acts as negative feedback can be seen as follows.
 As the optical power falling on the \TES\ increases, the temperature of the \TES\ increases, which causes the resistance of the \TES\ to increase as well.
 Because the \TES\ is voltage-biased, the Joule heating is inversely proportional to the resistance, so the Joule heating decreases, which causes the temperature of the \TES\ to decrease, opposing the effect of the increased optical power.
@@ -61,7 +61,7 @@ where
 G \equiv \frac{d P_{bath}}{dT} = K n T^{n-1}.
 \end{equation}
 
-With these definitions it can be shown\cite{irwin2005transition} that the behavior of the \TES\ is described by a pair of coupled first-order differential equations:
+With these definitions it can be shown\cite{irwin_transition-edge_2005} that the behavior of the \TES\ is described by a pair of coupled first-order differential equations:
 \begin{equation}
 \frac{d}{\mathop{dt}} \begin{pmatrix} \delta I \\ \delta T \end{pmatrix}
 	= - \mathcal{M} \begin{pmatrix}	\delta I \\	\delta T \end{pmatrix}

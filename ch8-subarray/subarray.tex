@@ -14,7 +14,7 @@ This chapter describes these measurements on these fourteen detectors.
 \section{Shunt Resistance Measurements}
 
 Our shunt resistors are located on interface chips that contain both shunt resistors and Nyquist inductors.
-The specific chips used were extra chips leftover from the ABS\cite{EssingerHileman:2010hh} project.
+The specific chips used were extra chips leftover from the ABS\cite{kusaka_modulation_2013} project.
 The design resistance of the shunts was 180~\uOhm, and the design inductance was 609~nH\footnote{John Appel, personal communication}.
 Each chips contains 32 shunt resistors and 32 inductors.
 
@@ -24,7 +24,7 @@ Data was collected at 3030.3~Hz, and 20 data acquisitions lasting 33 seconds wer
 
 A power spectrum was estimated for each detector for each data acquisition using \MATLAB's \texttt{pwelch} function, using a \FFT\ size of $2^{12}$.
 Each resulting power spectrum was fit to a function of the form
-\begin{eqnarray}\label{eq:scnoise-fit}
+\begin{eqnarray}\label{eqn:scnoise-fit}
 	\frac{4 k_B T_b}{R_{sh}} \frac{1}{1 + (2 \pi f (L/R_{sh}))^2} + SQ,
 \end{eqnarray}
 where $k_B$ is Boltzmann's constant, $T_b$ is the bath temperature for the measurement, and $f$ is the frequency.
@@ -70,7 +70,7 @@ This section describes my measurement of the heater resistances.
 To measure the heater resistances, I took a set of \IV\ curves at constant bath temperature.
 For each \IV\ curve I applied a different heater current, so that a different amount of heater power was applied to the \TES\ for each curve.
 The total amount of power flowing through the \TES\ thermal conductance $G$ is then given by
-\begin{equation}\ref{eqn:tes-ptot}
+\begin{equation}\label{eqn:tes-ptot}
 P_{tot} = K(T^n - T_b^n) = P_{opt} + P_{htr} + I^2 R(T,I),
 \end{equation}
 where $T$ is the temperature of the \TES, $R$ is the resistance of the \TES, and $I$ is the current flowing through the \TES.

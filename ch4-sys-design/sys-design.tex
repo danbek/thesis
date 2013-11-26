@@ -68,7 +68,7 @@ Options for reaching temperatures below the $\sim$1.2~K transition temperature o
 We chose a \He4-sorption fridge because of both it's low and cost ease of operation compared to other solutions, and the fact that the typical base temperatures under no load of $\sim$700~mK is well-matched to our application.
 A  \He4-sorption fridge works by using a charcoal adsorber to pump on a bath of liquid \He4, reducing the \He4 boiling point and thus the temperature of the bath.
 The \He4 is contained withing a sealed reservoir so that the refrigerator acts as a closed system requiring no \He4 replenishment. 
-While \He4-sorption fridges are commercially available, our team choose to design and build a custom fridge based on a design that has been proven in astronomical applications\cite{devlin2004high}.
+While \He4-sorption fridges are commercially available, our team choose to design and build a custom fridge based on a design that has been proven in astronomical applications\cite{devlin_high_2004}.
 
 \figref{fig:he4sorp} shows a schematic depiction of the 350~GHz Imager's \He4-sorption refrigerator.
 The entire refrigerator is filled with 2.07~moles of \He4 gas, giving a pressure of 900~psi at room temperature.
@@ -146,9 +146,9 @@ Total												& 185 + xxx & 274 + xxx \\
 % xxx where do I explain the choice of a square grid? Ans: section 6.3
 % xxx where do I explain the missing 20 detectors?
 
-Millimeter and submillimeter astronomical instruments using \TES\ detectors use many different strategies for coupling light onto detectors: filled arrays of absorbers\cite{swetz2011overview,Holland2013SCUBA-2}, antennas with lenslets\cite{polarbear?}, phased antenna arrays\cite{jpl stuff}, corrugated feedhorns \cite{sptpol,actpol}, and smooth-walled conical feedhorns \cite{schwan2011invited,spt}.
+Millimeter and submillimeter astronomical instruments using \TES\ detectors use many different strategies for coupling light onto detectors: filled arrays of absorbers\cite{swetz_overview_2011,holland_scuba-2:_2013}, antennas with lenslets\cite{keating_ultra_2011}, phased antenna arrays\cite{obrient_antenna-coupled_2012}, corrugated feedhorns \cite{austermann_sptpol:_2012,niemack_actpol:_2010}, and smooth-walled conical feedhorns \cite{schwan_invited_2011,spt}.
 The \Imager\ uses smooth-walled feedhorns because they are easy to design and easy to machine.
-Smooth-walled feedhorns do not have the nice polarization properties of corrugated feedhorns \cite{claricoats & olver?}, but this is not a concern here because the \Imager\ is polarization-insensitive.
+Smooth-walled feedhorns do not have the nice polarization properties of corrugated feedhorns \cite{clarricoats_corrugated_1984}, but this is not a concern here because the \Imager\ is polarization-insensitive.
 
 \figref{fig:feedhorn-parms} depicts a smooth-walled conical feedhorn and its interaction with the optical system.
 As discussed in section \sectionref{s:optical-design}, although the optical system has a secondary mirror as well, for many purposes the secondary mirror can be ignored and the system treated as a system of feedhorns illuminating only a primary mirror with a hole in its center.
@@ -158,7 +158,7 @@ If a feedhorn is observing a temperature distribution $T_{target}(\theta,\phi)$,
 \end{equation}
 The function $P$ is called the ``beam'' or ``beam pattern'' of the feedhorn, and describes the pattern of radiation to which the feedhorn is sensitive to.
 Although the \Imager\ is always receiving radiation, never transmitting, this thesis often writes about the beam pattern as if it were transmitting radiation, e.g.\ in decribing the portion of the ``beam'' that strikes the primary mirror.
-This is acceptable because the transmitting and receiving beam patterns are exactly the same\footnote{This is a consequence of the reciprocity relationships obeyed by the Maxwell equations. See, e.g.\ \cite{xxx} for a detailed explanation.}.
+This is acceptable because the transmitting and receiving beam patterns are exactly the same\footnote{This is a consequence of the reciprocity relationships obeyed by the Maxwell equations. See, e.g.\ \cite{balanis_antenna_2005} for a detailed explanation.}.
 When using this expression one must keep in mind that the fraction of the beam that spills off the primary mirror (e.g.\ the unshaded region in \figref{fig:feedhorn-parms}) will see not the temperature distribution of the target, but a temperature distribution determined by what is beyond the primary mirror\footnote{Because of the presence of the secondary mirror, some of this temperature distribution will be in front of the system, and some will be behind.}.
 The fraction of the beam that strikes the primary mirror and proceeds to the target is called the spillover efficiency $\eta_s$.
 
@@ -204,7 +204,7 @@ As explained in \sectionref{xxx6.3}, the \Imager's detectors are laid out on a s
 So it is more helpful to think of the feedhorn diameter as a value that can take on a discrete set of values that depends on the number of feedhorns per each side of the grid.
 
 A \MATLAB\ program was used to find the optimum feedhorn size.
-The program uses an analytic expression for the beam pattern developed in \cite{green2006radiation,narasimhan1971modes,}.
+The program uses an analytic expression for the beam pattern developed in \cite{green_radiation_2006,narasimhan_modes_1971,}.
 The far-field electric field pattern takes the form
 \begin{equation}
     \vect{E}(\theta,\phi) = E_{\theta} \sin{\phi} \hat{\theta} + E_{\phi}(\theta) \cos{\phi} \cos{\theta} \hat{\phi}.
