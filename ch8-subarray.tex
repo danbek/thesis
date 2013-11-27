@@ -50,7 +50,7 @@ It is not known whether this correlation is a real physical effect or an artifac
 \caption{Plots summarizing results of measurements of shunts and Nyqust inductors.
 \textbf{Upper Left} Histogram of shunt resistance \Rsh.
 \textbf{Upper Right} Histogram of total inductance in circuit, which includes the interface chip Nyquist inductor, the inductance of the SQ1 input coil, and any parasitic inductance.
-\textbf{Lower Left} Scatterplot showing all measured Rsh and L values. A correlation is clearly visible, the explanation for which is not understood.
+\textbf{Lower Left} Scatterplot showing all measured Rsh and L values. A correlation is apparent, the reason for which is not understood.
 \textbf{Lower Right} Plot showing current noise power spectrum extracted from a single data acquisition for \RCm{20}{6}, along with predicted power spectrum based on best fit to \eqnref{eqn:scnoise-fit} across all data acquisitions. The best fit values are \Rsh\ = 153 \uOhm, $L$ = 622 nH, and \SQUID\ white noise level of 1.2e-10~ A$/ \sqrt{\mbox{Hz}}$.}
 \label{fig:rsh-l-plots}
 \end{figure*}
@@ -75,7 +75,7 @@ P_{tot} = K(T^n - T_b^n) = P_{opt} + P_{htr} + I^2 R(T,I),
 \end{equation}
 where $T$ is the temperature of the \TES, $R$ is the resistance of the \TES, and $I$ is the current flowing through the \TES.
 I make the assumption that at the start of the superconducting transition $\beta_I = 0$, i.e.\ the resistance of the \TES\ depends only on the \TES\ temperature, and not on the current through the \TES.
-This implies that each time the \TES\ reaches, e.g.\ 99 \% of $R_n$, the temperature of the \TES\ is the same, and therefore $P_{tot}$ will be the same.
+This implies that each time the \TES\ reaches, e.g.\ $0.99R_n$, the temperature of the \TES\ is the same, and therefore $P_{tot}$ will be the same.
 A relationship of the following form must therefore hold:
 \begin{equation}\label{eqn:rhtr-fit}
 P_{J} = (P_{tot} - P_{opt}) - I_{htr}^2 R_{htr}.
@@ -86,7 +86,7 @@ A fit can be made to this function, with the quantities $R_{htr}$ and $P_{x} \eq
 The upper left plot shows the \TES\ \IV curves.
 The upper right plot shows the same data, but transformed into \TES\ Joule power and \TES\ resistance.
 As applied heater current decreases, the Joule power at the start of the transition decreases.
-In the lower left, the Joule power at 99 \% $R_{n}$ is plotted vs applied heater current.
+In the lower left, the Joule power at $0.99R_{n}$ is plotted vs applied heater current.
 A fit to \eqnref{eqn:rhtr-fit} is also plotted.
 Finally, the lower right plot show the $R$ vs $P_J$ plots after the heater power has been added to each curve.
 This plots shows that the powers are equalized very high in the transition, where the assumption of Joule power dependent only on \TES\ resistance holds.
@@ -97,8 +97,8 @@ It also shows that this assumption breaks down deeper in the transition.
 \caption{Plots heater measurements, for the case of \RCm{29}{1}.
 \textbf{Upper Left} \IV\ curves. The \IV\ curves should turn completely vertial when the detector becomes fully superconducting at zero voltage, but these curves shown a non-infinite slope. The reason for this is that the readout system as configured for these \IV\ curves was unable keep up with the rapid change of current in the superconducting branch.
 \textbf{Upper Right} Same data as in upper left plot, but represented in terms of \TES\ Joule power and resistance. As the bias current for the heaters is increased, the curves shift to the left.
-\textbf{Lower Left} Measured $P_{J}$ vs heater current at 99\% $R_n$, as well as fit to \eqnref{eqn:rhtr-fit}.
-\textbf{Lower Right} Same plot as upper right, but the heater power based on $R_{htr} = 23.6 \Ohm$ has been added to each curve.}
+\textbf{Lower Left} Measured $P_{J}$ vs heater current at $0.99R_n$, as well as fit to \eqnref{eqn:rhtr-fit}.
+\textbf{Lower Right} Same plot as upper right, but the heater power based on $R_{htr} = 23.6$~\Ohm has been added to each curve.}
 \label{fig:heater-r-plots}
 \end{figure*}
 
@@ -137,7 +137,7 @@ Detector &  $R_{htr}$ (\Ohm) \\
 
 With knowledge of the heater resistances, \IV\ curves can be taken over a wide range of bath temperatures, which enables a measurement of the \TES\ thermal conductance $G$.
 Similarly to \sectionref{xxx}, I took \IV\ curves at bath temperatures ranging from xxx mK -- xxx mK, while adjusting the applied heater power so that each \IV\ curve had a clear normal branch.
-I again used the assumption that high in the transition the \TES\ resistance depends on only the \TES\ temperature, so that the Joule power $P_J$ dissipated in the \TES\ at 99 \% $R_n$ depends only on the bath temperature $T_b$ and the applied heater power $P_{htr} = I_{htr}^2 R_{htr}$. A fit can then be made to \eqnref{eqn:tes-ptot} in the form
+I again used the assumption that high in the transition the \TES\ resistance depends on only the \TES\ temperature, so that the Joule power $P_J$ dissipated in the \TES\ at $0.99R_n$ depends only on the bath temperature $T_b$ and the applied heater power $P_{htr} = I_{htr}^2 R_{htr}$. A fit can then be made to \eqnref{eqn:tes-ptot} in the form
 \begin{equation}\label{eqn:g-fit}
 P_{htr} + P_J + P_{opt}= \frac{G T_c}{n}\left(1 - \left(\frac{T_b}{T_c}\right)^n\right).
 \end{equation}
