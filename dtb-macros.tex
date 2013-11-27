@@ -38,14 +38,8 @@
 \newcommand*{\DISP}[1]{{\small DISP{#1}}}
 \newcommand*{\RC}[2]{R{#1}C{#2}}
 \newcommand*{\RCm}[2]{
-	\newcount\tmpR
-	\newcount\tmpC
-	\tmpR=#1
-	\tmpC=#2
-	\advance\tmpR by -1
-	\advance\tmpC by -1
-	R{\number\tmpR}C{\number\tmpC}
+  R\number\numexpr#1-1\relax
+  C\number\numexpr#2-1\relax
 } % this allows me specify row/col indices MATLAB-style
 \newcommand*{\Rsh}{\ensuremath{R_{sh}}}
 \newcommand*{\Loop}{\ensuremath{\mathcal{L}_I}}
-
