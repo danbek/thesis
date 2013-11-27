@@ -6,8 +6,8 @@ PDFLATEX = pdflatex -interaction=batchmode
 PDFCROP  = pdfcrop
 RM       = /usr/bin/rm
 
-InputTeXFiles = ch3-tes-theory.tex ch4-sys-design.tex ch9-imaging.tex
-SAGFiles = $(wildcard drawings/*-sag.tex)
+InputTeXFiles = ch3-tes-theory.tex ch4-sys-design.tex ch8-subarray.tex ch9-imaging.tex
+SAGFiles = $(wildcard drawings/*.tex)
 PDFSAGFiles = $(SAGFiles:.tex=.pdf) 
 ImageFiles = images/*
 
@@ -16,7 +16,7 @@ default : thesis.pdf
 thesis.pdf : thesis.tex $(InputTeXFiles) $(ImageFiles) $(PDFSAGFiles)
 	$(PDFLATEX) $<
 
-drawings/%-sag.pdf: drawings/%-sag.tex
+drawings/%.pdf: drawings/%.tex
 	cd drawings && $(PDFLATEX) $(notdir $<)
 
 clean : .PHONY

@@ -46,12 +46,12 @@ The outlier $L$ values are more clearly visible in the lower left plot in \figre
 It is not known whether this correlation is a real physical effect or an artifact of the measurement process.
 
 \begin{figure*}
-\input{\here/rsh-l-plots.tex}
+\includegraphics{drawings/ch8-rsh-l-plots.pdf}
 \caption{Plots summarizing results of measurements of shunts and Nyqust inductors.
 \textbf{Upper Left} Histogram of shunt resistance \Rsh.
 \textbf{Upper Right} Histogram of total inductance in circuit, which includes the interface chip Nyquist inductor, the inductance of the SQ1 input coil, and any parasitic inductance.
 \textbf{Lower Left} Scatterplot showing all measured Rsh and L values. A correlation is clearly visible, the explanation for which is not understood.
-\textbf{Lower Right} Plot showing current noise power spectrum extracted from a single data acquisition for \RCm{20}{6}, along with predicted power spectrum based on best fit to \eqnref{eqn:scnoise-fit} across all data acquisitions. The best fit values are \Rsh\ = 153 \uOhm, $L$ = 622 nH, and \SQUID\ white noise level of 1.2e-10~ A/$\sqrt{\mbox{Hz}}$.}
+\textbf{Lower Right} Plot showing current noise power spectrum extracted from a single data acquisition for \RCm{20}{6}, along with predicted power spectrum based on best fit to \eqnref{eqn:scnoise-fit} across all data acquisitions. The best fit values are \Rsh\ = 153 \uOhm, $L$ = 622 nH, and \SQUID\ white noise level of 1.2e-10~ A$/ \sqrt{\mbox{Hz}}$.}
 \label{fig:rsh-l-plots}
 \end{figure*}
 
@@ -93,7 +93,7 @@ This plots shows that the powers are equalized very high in the transition, wher
 It also shows that this assumption breaks down deeper in the transition.
 
 \begin{figure*}
-\input{\here/heater-r-plots.tex}
+\includegraphics{drawings/ch8-heater-r-plots.pdf}
 \caption{Plots heater measurements, for the case of \RCm{29}{1}.
 \textbf{Upper Left} \IV\ curves. The \IV\ curves should turn completely vertial when the detector becomes fully superconducting at zero voltage, but these curves shown a non-infinite slope. The reason for this is that the readout system as configured for these \IV\ curves was unable keep up with the rapid change of current in the superconducting branch.
 \textbf{Upper Right} Same data as in upper left plot, but represented in terms of \TES\ Joule power and resistance. As the bias current for the heaters is increased, the curves shift to the left.

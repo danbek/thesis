@@ -24,10 +24,6 @@
 \usepackage{booktabs} % better tables
 \usepackage{graphicx} % including graphical figures
 \usepackage{tikz} % drawing figures right here in this file!
-\usepackage{pgfplots} % drawing plots right here in this file!
-\pgfplotsset{compat=1.8} % latest stable release
-\usepackage{standalone} % handling drawings as pdf
-\usepackage[americaninductors]{circuitikz} % Draw nice electrical circuits
 \usepackage{amsmath} % Better math
 
 % number equations by chapter
@@ -39,16 +35,8 @@
 
 \input{dtb-macros}
 
-% A command that refers to the directory in which we are compiling.
-% Must be set prior to inluding chapters.
-% See these TeX Stackexchange questions:
-% [1]: http://tex.stackexchange.com/questions/123058/subimport-and-includeonly
-% [2]: http://tex.stackexchange.com/questions/102055/standalone-pgfplot-with-extra-include-in-subdirectory-no-output
-\newcommand*{\here}{here}
-
 \title{A 350 GHz Video Imaging System}
 \author{Dan Becker}
-%\date{} % Delete this line to display the current date
 
 %%% BEGIN DOCUMENT
 \begin{document}
@@ -77,9 +65,9 @@
 
 % \chapter{System Specifications, Challenges and Solutions}\label{c:specs}
 
-%\include{ch3-tes-theory}
+\include{ch3-tes-theory}
 
-%\include{ch4-sys-design}
+\include{ch4-sys-design}
 
 % \chapter{Detector Design}\label{c:det-design}
 
@@ -87,8 +75,7 @@
 
 % \chapter{Prototype Detector Characterization}\label{c:proto-det}
 
-%\renewcommand{\here}{ch8-subarray}
-%\include{\here/subarray}
+\include{ch8-subarray}
 
 \include{ch9-imaging}
 
