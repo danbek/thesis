@@ -6,7 +6,7 @@ PDFLATEX = pdflatex -interaction=batchmode
 PDFCROP  = pdfcrop
 RM       = /usr/bin/rm
 
-InputTeXFiles = ch3-tes-theory.tex ch4-sys-design.tex 
+InputTeXFiles = ch3-tes-theory.tex ch4-sys-design.tex ch9-imaging.tex
 SAGFiles = $(wildcard drawings/*-sag.tex)
 PDFSAGFiles = $(SAGFiles:.tex=.pdf) 
 ImageFiles = images/*
