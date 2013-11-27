@@ -17,7 +17,7 @@ thesis.pdf : thesis.tex $(InputTeXFiles) $(ImageFiles) $(PDFSAGFiles)
 	$(PDFLATEX) $<
 
 drawings/%.pdf: drawings/%.tex
-	cd drawings && $(PDFLATEX) $(notdir $<)
+	cd drawings && $(PDFLATEX) $(notdir $<) && $(PDFCROP) $(notdir $@) $(notdir $@)
 
 clean : .PHONY
 	find . -regex ".*\(aux\|bbl\|blg\|log\|bcf\|synctex\.gz\|fls\|fdb_latexmk\)" -type f -delete

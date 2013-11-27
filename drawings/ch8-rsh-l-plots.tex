@@ -1,65 +1,79 @@
-\documentclass{standalone}
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc} % set input encoding to utf8
+\usepackage[sc]{mathpazo} % Palatino with math support
 \usepackage{tikz} 
 \usepackage{pgfplots} % drawing plots right here in this file!
-\pgfplotsset{compat=1.8} % latest stable release
+\pgfplotsset{compat=1.9} % latest stable release
 
 \input{../dtb-macros}
 
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.3in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
 \begin{document}
 
-%\pgfplotsset{small}
+\pagestyle{empty}
 
-\begin{tabular}{rl}
+\begin{tabular}{rr}
 
-	\begin{tikzpicture}[baseline,trim axis left]
-	\begin{axis}[ymin=0, 
-						title={Measured Shunt Resistance},
-						xlabel={\Rsh\ (\uOhm)}, ylabel={Quantity} ]
-		\addplot [hist={data min=125,data max=165,bins=20},
-			   fill=blue!75]
-			table[y=Rsh]{../data/ch8-rsh-L.dat};
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[
+        ymin=0, 
+		title={Measured Shunt Resistance},
+		xlabel={\Rsh\ (\uOhm)}, ylabel={Quantity} ]
+	  \addplot [hist={data min=125,data max=165,bins=20},
+		        fill=blue!75]
+	  table[y=Rsh]{../data/ch8-rsh-L.dat};
 	\end{axis}
-	\end{tikzpicture}
+  \end{tikzpicture}
 
-&
+  &
 
-	\begin{tikzpicture}[baseline]
-	\begin{axis}[ymin=0, %yticklabel pos=right,
-						title={Measured Nyquist Inductance},
-						xlabel={$L_{ny}$ (nH)}, ylabel={Quantity} ]
-		\addplot [hist={data min=180,data max=640,bins=23},
-			          fill=blue!75]
-			table[y=L]{../data/ch8-rsh-L.dat};
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[ymin=0,
+		title={Measured Nyquist Inductance},
+		xlabel={$L_{ny}$ (nH)}, ylabel={Quantity} ]
+	  \addplot [hist={data min=180,data max=640,bins=23},
+		        fill=blue!75]
+	    table[y=L]{../data/ch8-rsh-L.dat};
 	\end{axis}
-	\end{tikzpicture}
+  \end{tikzpicture}
 
-\\
-	\begin{tikzpicture}[baseline,trim axis left]
-	\begin{axis}[ 
-						title={Measured \Rsh\ vs $L_{ny}$},
-						xlabel={\Rsh\ (\uOhm)}, ylabel={$L_{ny}$ (nH)} ]
-		\addplot+[only marks]
-			table[x=Rsh,y=L]{../data/ch8-rsh-L.dat};
+  \\
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[
+		title={Measured \Rsh\ vs $L_{ny}$},
+		xlabel={\Rsh\ (\uOhm)}, ylabel={$L_{ny}$ (nH)} ]
+	  \addplot+[only marks]
+	    table[x=Rsh,y=L]{../data/ch8-rsh-L.dat};
 	\end{axis}
-	\end{tikzpicture}
+  \end{tikzpicture}
 
-&
-	\begin{tikzpicture}[baseline]
-	\begin{loglogaxis}[ %yticklabel pos=right,
-								clip mode=individual,xmin=4e-1,xmax=2e3,
-								title={\RCm{20}{6} Superconducting Current Noise},
-								xlabel={Frequency (Hz)}, ylabel={Current Noise (A/$\sqrt{\mbox{Hz}}$)} ]
+  &
+  \begin{tikzpicture}[trim axis right]
+	\begin{loglogaxis}[
+		clip mode=individual,xmin=4e-1,xmax=2e3,
+		title={\RCm{20}{6} Superconducting Current Noise},
+		xlabel={Frequency (Hz)}, ylabel={Current Noise (A/$\sqrt{\mbox{Hz}}$)} ]
 
-		\addplot+[only marks,mark size=1.0pt]
-			table[x=f,y expr=sqrt(\thisrow{Pxx})]{../data/ch8-rsh-pxx.dat};
-		\addlegendentry{Data}
+	  \addplot+[only marks,mark size=1.0pt]
+	    table[x=f,y expr=sqrt(\thisrow{Pxx})]{../data/ch8-rsh-pxx.dat};
+	  \addlegendentry{Data}
 
-		\addplot[mark=none,domain=4e-1:2e3,line width=1pt]
-			{sqrt(1.38e-23 * 4 * 0.980  / 1.5290e-04 / (1 + (2*3.14159*x*5.0658e-3)^2) + 1.4308e-20)};
-		\addlegendentry{Fit}
+	  \addplot[mark=none,domain=4e-1:2e3,line width=1pt]
+			  {sqrt(1.38e-23 * 4 * 0.980  / 1.5290e-04 / (1 + (2*3.14159*x*5.0658e-3)^2) + 1.4308e-20)};
+      \addlegendentry{Fit}
 	\end{loglogaxis}
-	\end{tikzpicture}
-\\
+  \end{tikzpicture}
+  \\
 \end{tabular}
 
 \end{document}
