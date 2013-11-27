@@ -1,15 +1,19 @@
 \chapter{Subarray Characterization}\label{c:det-array}
 
 The first 251-detector subarray has not yet been characterized as thoroughly as the prototype detectors.
-In particular, only good detectors with working heaters have been characterized.
-The reason for this is that the saturation power of the detectors is xxx time higher than expected, which means that only some detectors be driven normal, and only at bath temperatures very close to Tc.
+In particular, only seven good have been characterized.
+The reason for this is that the saturation power of the detectors is xxx time higher than expected, which means that only some detectors be driven normal, and only at bath temperatures very close to $T_c$.
 In particular, none of the detector can be driven normal at the operating bath temperature for the array of 1100~mK.
-This means that we do not have IV curves for any detectors at operating conditions, which limits the characterization than can be performed.
+This means that we do not have \IV\ curves for any detectors at operating conditions, which limits the characterization than can be performed.
 
-Fourteen detectors used in taking images have working heaters.
-These heaters allow us to take full IV curves at all bath temperatures, and to directly measure detector responsivity and time constants, and thus to measure detector noise referred to optical power incident on the detector.
-This chapter describes these measurements on these fourteen detectors.
-% xxx list the specific measurements
+Seven detectors used in taking images have working heaters and no other problems.
+These heaters allow us to take full \IV\ curves at all bath temperatures, allowing estimate of the detector thermal conductance $G$.
+The heaters also allow a direct measurement of detector responsivity and time constants, and thus allow a measurement of detector noise referred to optical power incident on the detector.
+This chapter describes these measurements on these seven detectors, as well as measurements of shunt resistor an inductances for all detectors.
+
+Note that this lack of detector characterization does not prevent the array from working.
+It merely limits our understanding of the behavior of the detectors.
+A more detailed characterization of more detectors will be carried out prior to fabrication of any additional arrays.
 
 \section{Shunt Resistance Measurements}
 
@@ -61,9 +65,14 @@ Only 23 of the 251 detectors have heaters wired up.
 Of these 23, there are nine detectors which show no response to applied heater power.
 Five of these nine are on the cut list (xxx see ch xxx), so this is not surprising.
 But four detectors can be biased into the transition and work well, but show no response to applied heater power (\RC{4}{7}, \RC{5}{7}, \RC{6}{6}, \RC{7}{6}).
-The reasons for these detectors not showing a response to heater power are not understood.
+The reasons for these detectors not showing a response to heater power are not fully understood.
 This leaves 14 working detectors that also show a response to applied heater power.
-The heaters on these 14 detectors can be used to directly measure the detector responsivity, noise referred to input optical power, time constants and thermal conductance $G$.
+However, a short between one of the \TES\ bias lines and the heater bias line means that ramping the current bias for some of the \TES\ detectors also ramps the heater bias.
+This means that for seven of the 14 working detectors that show a response to applied heate power, interpreting \IV\ curves is difficult because a different amount of heater power is applied at each detector bias value.
+This means that for these seven detectors it is not possible to measure $G$ or to calibrate the power being applied by the resistors.
+
+This leaves seven detectors with heaters for which \IV\ curves can be taken, and $G$ measured.
+The heaters on these seven detectors can be used to directly measure the detector responsivity, noise referred to input optical power, time constants and thermal conductance $G$.
 But all of these measurements require knowing the resistance of the heaters.
 This section describes my measurement of the heater resistances.
 
@@ -83,7 +92,7 @@ P_{J} = (P_{tot} - P_{opt}) - I_{htr}^2 R_{htr}.
 A fit can be made to this function, with the quantities $R_{htr}$ and $P_{x} \equiv P_{tot} - P_{opt}$ to be solved for.
 
 \figref{fig:heater-r-plots} explains this idea further by a series of plots.
-The upper left plot shows the \TES\ \IV curves.
+The upper left plot shows the \TES\ \IV\ curves.
 The upper right plot shows the same data, but transformed into \TES\ Joule power and \TES\ resistance.
 As applied heater current decreases, the Joule power at the start of the transition decreases.
 In the lower left, the Joule power at $0.99R_{n}$ is plotted vs applied heater current.
@@ -102,33 +111,28 @@ It also shows that this assumption breaks down deeper in the transition.
 \label{fig:heater-r-plots}
 \end{figure*}
 
-\tableref{tab:all-heater-r} lists all measured heater resistors.
+\tableref{tab:all-det-props} lists all measured heater resistors.
 The seven heaters for columns 0 and 1 have a mean of 23.8~\Ohm\ with a standard deviation of 0.26~\Ohm.
-The seven heaters for column 6 and 7 exhibit much more scatter, with a mean of 28.6~\Ohm\ with a standard deviation of 4.16~\Ohm.
-The reason for the difference between the columns pairs is unknown.
+
+It is worth noting that determining the values of $R_{htr}$ requires knowing the current through the heaters.
+But because $R_{htr}$ is determined through the power disspiated in the resistor, an incorrect assumption about will lead to a an incorrect value of $R_{htr}$ which leaves $I_{htr}^2 R_{htr}$ unchanged.
+So whenever the value $R_{htr}$ is used to calculated a power, the power value will be correct even in the face of an incorrect assumption about the current through the heater.
 
 \begin{table*}[t]
 \centering
-\caption{Measured Heater Resistances}
-\label{tab:all-heater-r}
-\begin{tabular}{l r}
+\caption{Measured Detector Properties. Uncertainties are 95 \% confidence intervals.}
+\label{tab:all-det-props}
+\begin{tabular}{l l l l l}
 \toprule
-Detector &  $R_{htr}$ (\Ohm) \\
+Detector &  $R_{htr}$ (\Ohm) & $G$ (nW/K) & $n$ & $T_c$ (mK) \\
 \midrule
-\RCm{1}{7}   & 27.7 \\
-\RCm{2}{7}   & 31.6 \\
-\RCm{3}{7}   & 31.2 \\
-\RCm{3}{8}   & 19.8 \\
-\RCm{4}{7}   & 28.4 \\
-\RCm{4}{8}   & 31.0 \\
-\RCm{5}{7}   & 30.5 \\
-\RCm{29}{1}   & 23.6 \\
-\RCm{29}{2}   & 23.8 \\
-\RCm{30}{1}   & 23.5 \\
-\RCm{31}{1}   & 24.3 \\
-\RCm{31}{2}   & 23.6 \\
-\RCm{32}{1}   & 23.9 \\
-\RCm{32}{2}   & 23.8 \\
+\RCm{29}{1} & 23.6 & 7.63 $\pm$ 0.08 & 3.52 $\pm$ 0.10 & 1209.4 $\pm$ 0.6 \\
+\RCm{30}{1} & 23.5 & 7.67 $\pm$ 0.07 & 3.54 $\pm$ 0.09 & 1213.9 $\pm$ 0.6 \\
+\RCm{31}{1} & 24.3 & 7.78 $\pm$ 0.09 & 3.64 $\pm$ 0.11 & 1214.7 $\pm$ 0.7 \\
+\RCm{32}{1} & 23.9 & 7.01 $\pm$ 0.44 & 3.18 $\pm$ 0.61 & 1211.6 $\pm$ 3.8 \\
+\RCm{29}{2} & 23.8 & 7.70 $\pm$ 0.09 & 3.62 $\pm$ 0.12 & 1213.7 $\pm$ 0.7 \\
+\RCm{31}{2} & 23.6 & 7.32 $\pm$ 0.17 & 3.45 $\pm$ 0.22 & 1211.3 $\pm$ 1.4 \\
+\RCm{32}{2} & 23.8 & 7.50 $\pm$ 0.28 & 3.74 $\pm$ 0.36 & 1215.6 $\pm$ 2.3 \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -147,6 +151,30 @@ A problem arises because the data described in this section were taken when the 
 Because $P_{opt}$ is a simple additive constant, it is not possible to fit for this value unless another constraint (such as the value of $T_c$) is known.
 However, the value of $P_{opt}$ can be estimated in two different ways. 
 First, the predicted optical load of 165~pW from \sectionref{xxx} can be used.
-Second, the measured optical load of 
+Second, optical load on the prototype detectors was estimated to be in the range 135~pW--165~pW (xxx ref some section).
+In this analysis I assumed $P_{opt} = 150 pW$, while also showing how different assumptions change the values of  $G$, $T_c$, and $n$.
 
+\tableref{tab:all-det-props} lists the resulting values for $G$, $T_c$ adn $n$.
+\figref{fig:heater-g-plots} contains plots summarizing and explaining this data.
+The uncertainties in $G$, $T_c$ and $n$ introduced by the unknown value of $P_{opt}$ are different.
+$G$'s uncertainty from $P_{opt}$ is no lager than the statistical uncertainty due to the fit, while $T_c$'s uncertainity from $P_{opt}$ is larger than the statistical uncertainty.
+Both of these uncertainties should be taken into account when predicting measurement of detector noise.
+$n$ shows no apparent trend with $P_{opt}$.
 
+\begin{figure*}
+\includegraphics{drawings/ch8-g-plots.pdf}
+\caption{Plots summarizing results of $G$, $T_c$ and $n$ measurements for seven detectors with good heaters.
+All error bars are 95 \% confidence intervals for statisical error; any systematic error is not included.
+\textbf{Upper Left} Plot showing $P_{sat}$ vs $T_b$ for \RCm{31}{2}, assuming $P_{opt} = 150$~pW.
+The red line shows the best fit to \eqnref{eqn:g-fit}.
+The data covers 25 temperatures from 995~mK--1160~mK, and 11 different heater biases.
+\textbf{Upper Right} Scatter plot showing correlation between $G$ and $n$, as well as error bars for both.
+There is no apparent correlation between $G$ and $T_c$ or $n$ and $T_c$.
+\textbf{Lower Left} Plot showing variation of $G$ for \RCm{31}{2} vs assumed value of $P_{opt}$.
+The statistical uncertainty in $G$ for this detector is approximately the same as the systematic uncertainty that results from the estimation of $P_{opt}$.
+\textbf{Lower Right} Plot showing variation of $T_c$ for \RCm{31}{2} vs assumed value of $P_{opt}$.
+In this case the systematic uncertainty is larger than the statistical uncertainity.
+The value of $n$ shows no trend with $P_{opt}$.
+} 
+\label{fig:heater-g-plots}
+\end{figure*}

@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc} % set input encoding to utf8
+\usepackage[sc]{mathpazo} % Palatino with math support
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\input{../dtb-macros}
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.4in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{rr}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[ymin=0,xmin=950,xmax=1250,
+		title={$P_{sat}$ vs $T_{b}$ (\RCm{31}{2})},
+		xlabel={$T_b$ (mk)}, ylabel={$P_{sat}$ (pW)} ]
+	  \addplot+[only marks]
+	    table[x=temp,y=Psat]{../data/ch8-g-psat-vs-temp.dat};
+      \addlegendentry {Data}
+      \addplot+[mark=non,domain=900:1250] { 7321.7 * 1.2113 / 3.4518 * (1 - (x / 1211.3)^3.4518 }; 
+      \addlegendentry {Fit}
+	\end{axis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[
+		title={$G$ vs $n$},
+		xlabel={$G$ (nW/K)}, ylabel={$n$} ]
+	  \addplot+[only marks, error bars/.cd, x dir=both,y dir=both, x explicit, y explicit] table[x=G,y=n,x error=Gerr,y error=nerr]{../data/ch8-g-parms.dat};
+
+	\end{axis}
+  \end{tikzpicture}
+
+  \\
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[
+		title={$G$ vs Assumed $P_{opt}$},
+		xlabel={$P_{sat}$ (pW)}, ylabel={$G$ (nW/K)} ]
+	  \addplot+[only marks, error bars/.cd, y dir=both, y explicit]
+        table[x=Popt,y=G,y error=Gerr]{../data/ch8-g-variation.dat};
+
+	\end{axis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[
+		title={$T_c$ vs Assumed $P_{opt}$},
+		xlabel={$P_{sat}$ (pW)}, ylabel={$T_c$ (mK)} ]
+	  \addplot+[only marks, error bars/.cd, y dir=both, y explicit]
+        table[x=Popt,y=Tc,y error=Tcerr]{../data/ch8-g-variation.dat};
+
+	\end{axis}
+  \end{tikzpicture}
+  \\
+\end{tabular}
+
+\end{document}
