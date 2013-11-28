@@ -27,7 +27,7 @@
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[ymin=0,xmin=950,xmax=1250,
 		title={$P_{sat}$ vs $T_{b}$ (\RCm{31}{2})},
-		xlabel={$T_b$ (mk)}, ylabel={$P_{sat}$ (pW)} ]
+		xlabel={$T_b$ (mK)}, ylabel={$P_{sat}$ (pW)} ]
 	  \addplot+[only marks]
 	    table[x=temp,y=Psat]{../data/ch8-g-psat-vs-temp.dat};
       \addlegendentry {Data}
@@ -52,7 +52,7 @@
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[
 		title={$G$ vs Assumed $P_{opt}$},
-		xlabel={$P_{sat}$ (pW)}, ylabel={$G$ (nW/K)} ]
+		xlabel={$P_{opt}$ (pW)}, ylabel={$G$ (nW/K)} ]
 	  \addplot+[only marks, error bars/.cd, y dir=both, y explicit]
         table[x=Popt,y=G,y error=Gerr]{../data/ch8-g-variation.dat};
 
