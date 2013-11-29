@@ -11,7 +11,7 @@
 \pgfplotsset{
   every axis/.append style={
     scale only axis,
-    width=2.4in,
+    width=2.4in, height=2.0in,
   },
   /tikz/every picture/.append style={
     baseline
@@ -39,10 +39,18 @@
   &
 
   \begin{tikzpicture}[trim axis right]
-	\begin{axis}[
-		title={$G$ vs $n$},
+	\begin{axis}[xmin=6.5,xmax=8.0,ymin=2.5,ymax = 4.25,
+		title={$n$ vs $G$},
 		xlabel={$G$ (nW/K)}, ylabel={$n$} ]
-	  \addplot+[only marks, error bars/.cd, x dir=both,y dir=both, x explicit, y explicit] table[x=G,y=n,x error=Gerr,y error=nerr]{../data/ch8-g-parms.dat};
+
+      \draw[rotate around={-3.767707e+01:(axis cs:7.633085e+00,3.522662e+00)}] (axis cs:7.633085e+00,3.522662e+00) ellipse [x radius=1.232017e-02,y radius=1.569403e-01];
+      \draw[rotate around={-3.852786e+01:(axis cs:7.671974e+00,3.542294e+00)}] (axis cs:7.671974e+00,3.542294e+00) ellipse [x radius=1.060114e-02,y radius=1.390605e-01];
+      \draw[rotate around={-3.888021e+01:(axis cs:7.782604e+00,3.641888e+00)}] (axis cs:7.782604e+00,3.641888e+00) ellipse [x radius=1.300192e-02,y radius=1.717537e-01];
+      \draw[rotate around={-3.634981e+01:(axis cs:7.014722e+00,3.176079e+00)}] (axis cs:7.014722e+00,3.176079e+00) ellipse [x radius=6.928964e-02,y radius=9.006036e-01];
+      \draw[rotate around={-3.847088e+01:(axis cs:7.702447e+00,3.622472e+00)}] (axis cs:7.702447e+00,3.622472e+00) ellipse [x radius=1.350649e-02,y radius=1.774881e-01];
+      \draw[rotate around={-3.700074e+01:(axis cs:7.321729e+00,3.451816e+00)}] (axis cs:7.321729e+00,3.451816e+00) ellipse [x radius=2.578279e-02,y radius=3.351925e-01];
+      \draw[rotate around={-3.785747e+01:(axis cs:7.497633e+00,3.742396e+00)}] (axis cs:7.497633e+00,3.742396e+00) ellipse [x radius=4.041582e-02,y radius=5.447489e-01];
+	  \addplot+[only marks] table[x=G,y=n]{../data/ch8-g-parms.dat};
 
 	\end{axis}
   \end{tikzpicture}
@@ -64,7 +72,7 @@
   \begin{tikzpicture}[trim axis right]
 	\begin{axis}[
 		title={$T_c$ vs Assumed $P_{opt}$},
-		xlabel={$P_{sat}$ (pW)}, ylabel={$T_c$ (mK)} ]
+		xlabel={$P_{opt}$ (pW)}, ylabel={$T_c$ (mK)} ]
 	  \addplot+[only marks, error bars/.cd, y dir=both, y explicit]
         table[x=Popt,y=Tc,y error=Tcerr]{../data/ch8-g-variation.dat};
 

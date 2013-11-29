@@ -120,7 +120,9 @@ So whenever the value $R_{htr}$ is used to calculated a power, the power value w
 
 \begin{table*}[t]
 \centering
-\caption{Measured Detector Properties. Uncertainties are 95 \% confidence intervals.}
+\caption{Detector Properties.
+$P_{opt} = 150$~pW is assumed everywhere.
+Uncertainties are 95 \% confidence intervals after marginalizing over other fit parameters, and do not include systematic uncertainties due to the unknown value of $P_{opt}$ or uncertainty in the value of the shunt resistors.}
 \label{tab:all-det-props}
 \begin{tabular}{l l l l l}
 \toprule
@@ -129,10 +131,10 @@ Detector &  $R_{htr}$ (\Ohm) & $G$ (nW/K) & $n$ & $T_c$ (mK) \\
 \RCm{29}{1} & 23.6 & 7.63 $\pm$ 0.08 & 3.52 $\pm$ 0.10 & 1209.4 $\pm$ 0.6 \\
 \RCm{30}{1} & 23.5 & 7.67 $\pm$ 0.07 & 3.54 $\pm$ 0.09 & 1213.9 $\pm$ 0.6 \\
 \RCm{31}{1} & 24.3 & 7.78 $\pm$ 0.09 & 3.64 $\pm$ 0.11 & 1214.7 $\pm$ 0.7 \\
-\RCm{32}{1} & 23.9 & 7.01 $\pm$ 0.44 & 3.18 $\pm$ 0.61 & 1211.6 $\pm$ 3.8 \\
-\RCm{29}{2} & 23.8 & 7.70 $\pm$ 0.09 & 3.62 $\pm$ 0.12 & 1213.7 $\pm$ 0.7 \\
-\RCm{31}{2} & 23.6 & 7.32 $\pm$ 0.17 & 3.45 $\pm$ 0.22 & 1211.3 $\pm$ 1.4 \\
-\RCm{32}{2} & 23.8 & 7.50 $\pm$ 0.28 & 3.74 $\pm$ 0.36 & 1215.6 $\pm$ 2.3 \\
+\RCm{32}{1} & 23.9 & 7.01 $\pm$ 0.43 & 3.18 $\pm$ 0.60 & 1211.6 $\pm$ 3.8 \\
+\RCm{29}{2} & 23.8 & 7.70 $\pm$ 0.09 & 3.62 $\pm$ 0.11 & 1213.7 $\pm$ 0.7 \\
+\RCm{31}{2} & 23.6 & 7.32 $\pm$ 0.16 & 3.45 $\pm$ 0.22 & 1211.3 $\pm$ 1.4 \\
+\RCm{32}{2} & 23.8 & 7.50 $\pm$ 0.27 & 3.74 $\pm$ 0.35 & 1215.6 $\pm$ 2.3 \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -140,7 +142,7 @@ Detector &  $R_{htr}$ (\Ohm) & $G$ (nW/K) & $n$ & $T_c$ (mK) \\
 \section{Measurement of \TES\ $G$}
 
 With knowledge of the heater resistances, \IV\ curves can be taken over a wide range of bath temperatures, which enables a measurement of the \TES\ thermal conductance $G$.
-Similarly to \sectionref{xxx}, I took \IV\ curves at bath temperatures ranging from xxx mK -- xxx mK, while adjusting the applied heater power so that each \IV\ curve had a clear normal branch.
+Similarly to \sectionref{xxx}, I took \IV\ curves at bath temperatures ranging from 995~mK -- 1160~mK, while adjusting the applied heater power so that each \IV\ curve had a clear normal branch.
 I again used the assumption that high in the transition the \TES\ resistance depends on only the \TES\ temperature, so that the Joule power $P_J$ dissipated in the \TES\ at $0.99R_n$ depends only on the bath temperature $T_b$ and the applied heater power $P_{htr} = I_{htr}^2 R_{htr}$. A fit can then be made to \eqnref{eqn:tes-ptot} in the form
 \begin{equation}\label{eqn:g-fit}
 P_{htr} + P_J + P_{opt}= \frac{G T_c}{n}\left(1 - \left(\frac{T_b}{T_c}\right)^n\right).
@@ -164,12 +166,11 @@ $n$ shows no apparent trend with $P_{opt}$.
 \begin{figure*}
 \includegraphics{drawings/ch8-g-plots.pdf}
 \caption{Plots summarizing results of $G$, $T_c$ and $n$ measurements for seven detectors with good heaters.
-All error bars are 95 \% confidence intervals for statisical error; any systematic error is not included.
+All error bars and ellipses are 95 \% confidence intervals for statisical error; any systematic error is not included.
 \textbf{Upper Left} Plot showing $P_{sat}$ vs $T_b$ for \RCm{31}{2}, assuming $P_{opt} = 150$~pW.
 The red line shows the best fit to \eqnref{eqn:g-fit}.
 The data covers 25 temperatures from 995~mK--1160~mK, and 11 different heater biases.
-\textbf{Upper Right} Scatter plot showing correlation between $G$ and $n$, as well as error bars for both.
-There is no apparent correlation between $G$ and $T_c$ or $n$ and $T_c$.
+\textbf{Upper Right} Scatter plot showing correlation between $G$ and $n$, as well as error ellipses showing covariance between the estimated $G$ and $n$ vales.
 \textbf{Lower Left} Plot showing variation of $G$ for \RCm{31}{2} vs assumed value of $P_{opt}$.
 The statistical uncertainty in $G$ for this detector is approximately the same as the systematic uncertainty that results from the estimation of $P_{opt}$.
 \textbf{Lower Right} Plot showing variation of $T_c$ for \RCm{31}{2} vs assumed value of $P_{opt}$.
@@ -184,5 +185,8 @@ Comparison of these G values to those expected from prototype detectors and chan
 Prediction of detector G noise
 
 xxx - need to account for correlation between G, n, Tc that arrises from the fit.
+Answer: there is a strong correlationbetween G and n, should plot these ellipses on G vs n plot. ALso covariance with Tc, which you can account for in noise predcitions, but makes little difference.
+
+should at least look at all psat vs temp plots.
 
 should work out $P_{sat}$ vs $T_b$ expansion to order $(\Delta T)^2$ - might help with above.
