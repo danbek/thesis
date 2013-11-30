@@ -18,8 +18,10 @@
 \usepackage{thesis}
 \usepackage{tikz} % drawing figures right here in this file!
 
-% number equations by chapter
+% number equations, tables, and figures by chapter
 \numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
 
 % Bibliography
 \usepackage[backend=biber,style=numeric-comp]{biblatex}
@@ -57,7 +59,7 @@
 
 \include{ch3-tes-theory}
 
-\include{ch4-sys-design}
+%%%\include{ch4-sys-design}
 
 % \chapter{Detector Design}\label{c:det-design}
 
@@ -65,9 +67,9 @@
 
 % \chapter{Prototype Detector Characterization}\label{c:proto-det}
 
-\include{ch8-subarray}
+%%%\include{ch8-subarray}
 
-\include{ch9-imaging}
+%%%\include{ch9-imaging}
 
 \chapter{Vocab}
 
