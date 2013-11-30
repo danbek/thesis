@@ -135,6 +135,8 @@ Detector &  $R_{htr}$ (\Ohm) & $G$ (nW/K) & $n$ & $T_c$ (mK) \\
 \RCm{29}{2} & 23.8 & 7.70 $\pm$ 0.09 & 3.62 $\pm$ 0.11 & 1213.7 $\pm$ 0.7 \\
 \RCm{31}{2} & 23.6 & 7.32 $\pm$ 0.16 & 3.45 $\pm$ 0.22 & 1211.3 $\pm$ 1.4 \\
 \RCm{32}{2} & 23.8 & 7.50 $\pm$ 0.27 & 3.74 $\pm$ 0.35 & 1215.6 $\pm$ 2.3 \\
+\midrule
+Mean & 23.8 & 7.52 & 3.53 & 1212.9 \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -154,12 +156,12 @@ Because $P_{opt}$ is a simple additive constant, it is not possible to fit for t
 However, the value of $P_{opt}$ can be estimated in two different ways. 
 First, the predicted optical load of 165~pW from \sectionref{xxx} can be used.
 Second, optical load on the prototype detectors was estimated to be in the range 135~pW--165~pW (xxx ref some section).
-In this analysis I assumed $P_{opt} = 150 pW$, while also showing how different assumptions change the values of  $G$, $T_c$, and $n$.
+In this analysis I assume $P_{opt} = 150$~pW, while also showing how different assumptions change the values of  $G$, $T_c$, and $n$.
 
-\tableref{tab:all-det-props} lists the resulting values for $G$, $T_c$ adn $n$.
+\tableref{tab:all-det-props} lists the resulting values for $G$, $T_c$ and $n$.
 \figref{fig:heater-g-plots} contains plots summarizing and explaining this data.
 The uncertainties in $G$, $T_c$ and $n$ introduced by the unknown value of $P_{opt}$ are different.
-$G$'s uncertainty from $P_{opt}$ is no lager than the statistical uncertainty due to the fit, while $T_c$'s uncertainity from $P_{opt}$ is larger than the statistical uncertainty.
+$G$'s uncertainty from $P_{opt}$ is about the same size as the statistical uncertainty due to the fit, while $T_c$'s uncertainity from $P_{opt}$ is much larger than the statistical uncertainty.
 Both of these uncertainties should be taken into account when predicting measurement of detector noise.
 $n$ shows no apparent trend with $P_{opt}$.
 
@@ -180,7 +182,12 @@ The value of $n$ shows no trend with $P_{opt}$.
 \label{fig:heater-g-plots}
 \end{figure*}
 
-Comparison of these G values to those expected from prototype detectors and changes to legs.
+As discussed in \sectionref{xxx}, the target $G$ value for these detectors was 3.7~nW/K.
+The mean value for the seven measured detectors is 7.52~nW/K, 2.0 times larger than the target.
+The reason for this discrepancy is not known.
+%thz5 high g - 67 um 
+%thz5 high g - 80 um 
+%thz4 proto - 40 um
 
 Prediction of detector G noise
 
