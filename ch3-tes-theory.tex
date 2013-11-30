@@ -249,6 +249,19 @@ Alternately, $\mathcal{K}$ can be calculated if all factors feeding into it is k
 There are three sources of noise in \TES\ bolometers: Johnson noise in the \TES\ resistance, Johnson noise in the load resistor $R_L$, and thermal fluctuation noise (\TFN) across the weak thermal link $G$.
 Expressions for these sources of noise are shown in \tableref{tab:tes-noise}, both in terms of current noise and in noise referred to power incident on the detector.
 
+The function $F$ that enters into the \TFN\ noise accounts for the temperature difference between the \TES\ and the bath.
+The form of $F$ depends on whether the mean free path of phonons crossing the thermal conductance is long or short compared with the conductance.
+In the case of a short mean free path, $F$ depends on $n$ and is given by \cite{mather_bolometer_1982}
+\begin{equation}
+  F(T0,Tb) = \frac{n}{2n+1} \frac{1 - (T_b/T_0)^{2n+1}}{1 - (T_b/T_0)^{n}}.
+\end{equation}
+In the case of a long mean free path, $F$ is independent of $n$ and is given by \cite{boyle_performance_1959}
+\begin{equation}
+  F(T_0, T_b) = \frac{1}{2} (1 + (T_b/T_0)^5)
+\end{equation}
+For the detectors described in this thesis, $n \approx 3.5$, $T_0 \approx 1.2$~K, and $T_b \approx 1.1$~K.
+Under these conditions, both expressions for $F$ have approximately the same value, 0.83.
+
 For typical operating conditions of \TES\ bolometers, the low-frequency noise is dominated by thermal fluctuation noise.
 This can be see by taking the ratio of $S_{I_{TES}}$ to $S_{TFN}$ (ignoring factors of order unity):
 \begin{equation}
@@ -258,10 +271,6 @@ At low frequencies the \TES\ resistor current noise is suppressed below \TFN\ no
 \TES\ detectors are always biased so that $\Loop > 1$, and values for $\alpha$ in the transition are 100--1000.
 Examination of \tableref{tab:tes-noise} shows that current noise from the load resistor is lower than that from the \TES\ resistor by a factor of $(\Loop-1)^2 (R_0 / R_L) (T_0/T_L)$.
 All this points to the conclusion that noise in \TES\ bolometers is dominated by \TFN\ noise.
-
-xxx need to discuss $F(T_0, T_b)$.
-
-xxx reference Mather for explanation of feedback suppressing johnson noise?
 
 \begin{table*}[t]
 \centering
