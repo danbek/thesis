@@ -13,10 +13,10 @@ ImageFiles = images/*
 
 default : thesis.pdf
 
-thesis.pdf : thesis.tex $(InputTeXFiles) $(ImageFiles) $(PDFSAGFiles)
+thesis.pdf : thesis.tex $(InputTeXFiles) $(ImageFiles) $(PDFSAGFiles) thesis.sty
 	$(PDFLATEX) $<
 
-drawings/%.pdf: drawings/%.tex
+drawings/%.pdf: drawings/%.tex thesis.sty
 	cd drawings && $(PDFLATEX) $(notdir $<) && $(PDFCROP) $(notdir $@) $(notdir $@)
 
 clean : .PHONY
