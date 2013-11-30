@@ -54,7 +54,7 @@ P_{bath} = K(T^n - T^n_{bath}),
 \end{eqnarray}
 which can also be written in the form
 \begin{eqnarray}
-P_{bath} = \frac{GT}{n}\left(1 - \left(\frac{T_{bath}}{T}\right)^2\right),
+P_{bath} = \frac{GT}{n}\left(1 - \left(\frac{T_{b}}{T}\right)^2\right),
 \end{eqnarray}
 where
 \begin{equation}
@@ -154,7 +154,7 @@ Setting $R_0 = \Loop = \beta_I = 0$, the result is
    = - \frac{\delta I_{bias} R_{sh}}{R_{L}} 
        \left(1 - e^{-t/(L/R_L)} \right).
 \end{equation}
-Similarly, when the detector is fully normal, so that $\Loop = \beta_I = $, \eqnref{eqn:bias-step-resp} becomes
+Similarly, when the detector is fully normal, so that $\Loop = \beta_I = 0$, \eqnref{eqn:bias-step-resp} becomes
 \begin{equation}\label{eqn:bias-step-resp-normal}
 \delta I(t)
    = - \frac{\delta I_{bias} R_{sh}}{R_n + R_{L}} 
@@ -201,7 +201,7 @@ $\delta P$ & Change in power (optical or heater) falling on \TES\ \\
 \section{Measurement of Natural Time Constant}
 
 Near the top of the superconducting transition, $\Loop < 1$, so that $\tau_{eff} > 0.5 \tau$.
-Detectors circuits are always design so that $\tau \gg L/_n$, so that \eqnref{eqn:si-full} simplifies to
+Detectors circuits are always designed so that $\tau \gg L/R_n$, so that \eqnref{eqn:si-full} simplifies to
 \begin{equation}
 s_I(\omega) = - \frac{1}{V_0 \gamma}\frac{\Loop}{\Loop + 1}
                        \left(1 + j \omega \tau_{eff}\right)^{-1}.
