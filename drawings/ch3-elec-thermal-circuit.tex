@@ -49,10 +49,8 @@
     \draw ( 0.75,-0.25) -- ( 1.00,0);
     
     % now the heater resistor
-    \ctikzset{bipoles/length=0.6cm}
-    \draw (-1.5,3.0) to[american current source, l^=$I_{htr}$] (-0.6,3.0);
-    \ctikzset{bipoles/length=0.4cm}
-    \draw (-0.6,3.0) to[R, l_=$R_{htr}$] (-0.6, 1.75) to (-1.5,1.75);
+    \draw (-1.5,3.0) to[american current source, l^=$I_{htr}$, bipoles/length=0.6cm] (-0.6,3.0);
+    \draw (-0.6,3.0) to[R, l_=$R_{htr}$, bipoles/length=0.4cm] (-0.6, 1.75) to (-1.5,1.75);
     \\
 	};
 \end{tikzpicture}
