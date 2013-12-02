@@ -122,21 +122,22 @@ So whenever the value $R_{htr}$ is used to calculated a power, the power value w
 \centering
 \caption{Detector Properties.
 $P_{opt} = 150$~pW is assumed everywhere.
-Uncertainties are 95 \% confidence intervals after marginalizing over other fit parameters, and do not include systematic uncertainties due to the unknown value of $P_{opt}$ or uncertainty in the value of the shunt resistors.}
+Uncertainties are 95 \% confidence intervals after marginalizing over other fit parameters, and do not include systematic uncertainties due to the unknown value of $P_{opt}$ or uncertainty in the value of the shunt resistors.
+Values for $\tau_{eff}$, $s_I(0)$ are for detector biased at normal operating conditions of $T-b = 1100$~mK and detector bias of 27000.}
 \label{tab:all-det-props}
-\begin{tabular}{l l l l l}
+\begin{tabular}{l l l l l l l}
 \toprule
-Detector &  $R_{htr}$ (\Ohm) & $G$ (nW/K) & $n$ & $T_c$ (mK) \\
+Detector &  $R_{htr}$ (\Ohm) & $G$ (nW/K) & $n$ & $T_c$ (mK) & $\tau_{eff}$ (ms) & $s_I(0)$ (\uV$^{-1}$) \\
 \midrule
-\RCm{29}{1} & 23.6 & 7.63 $\pm$ 0.08 & 3.52 $\pm$ 0.10 & 1209.4 $\pm$ 0.6 \\
-\RCm{30}{1} & 23.5 & 7.67 $\pm$ 0.07 & 3.54 $\pm$ 0.09 & 1213.9 $\pm$ 0.6 \\
-\RCm{31}{1} & 24.3 & 7.78 $\pm$ 0.09 & 3.64 $\pm$ 0.11 & 1214.7 $\pm$ 0.7 \\
-\RCm{32}{1} & 23.9 & 7.01 $\pm$ 0.43 & 3.18 $\pm$ 0.60 & 1211.6 $\pm$ 3.8 \\
-\RCm{29}{2} & 23.8 & 7.70 $\pm$ 0.09 & 3.62 $\pm$ 0.11 & 1213.7 $\pm$ 0.7 \\
-\RCm{31}{2} & 23.6 & 7.32 $\pm$ 0.16 & 3.45 $\pm$ 0.22 & 1211.3 $\pm$ 1.4 \\
-\RCm{32}{2} & 23.8 & 7.50 $\pm$ 0.27 & 3.74 $\pm$ 0.35 & 1215.6 $\pm$ 2.3 \\
+\RCm{29}{1} & 23.6 & 7.63 $\pm$ 0.08 & 3.52 $\pm$ 0.10 & 1209.4 $\pm$ 0.6 & 3.29 $\pm$ 0.02 & 1.010 $\pm$ 4.8e-04 \\
+\RCm{30}{1} & 23.5 & 7.67 $\pm$ 0.07 & 3.54 $\pm$ 0.09 & 1213.9 $\pm$ 0.6 & 2.68 $\pm$ 0.03 & 1.124 $\pm$ 6.2e-04 \\
+\RCm{31}{1} & 24.3 & 7.78 $\pm$ 0.09 & 3.64 $\pm$ 0.11 & 1214.7 $\pm$ 0.7 & 3.36 $\pm$ 0.02 & 1.007 $\pm$ 4.7e-04 \\
+\RCm{32}{1} & 23.9 & 7.01 $\pm$ 0.43 & 3.18 $\pm$ 0.60 & 1211.6 $\pm$ 3.8 & 3.28 $\pm$ 0.04 & 1.159 $\pm$ 1.1e-03 \\
+\RCm{29}{2} & 23.8 & 7.70 $\pm$ 0.09 & 3.62 $\pm$ 0.11 & 1213.7 $\pm$ 0.7 & 3.16 $\pm$ 0.04 & 1.109 $\pm$ 9.6e-04 \\
+\RCm{31}{2} & 23.6 & 7.32 $\pm$ 0.16 & 3.45 $\pm$ 0.22 & 1211.3 $\pm$ 1.4 & 2.52 $\pm$ 0.03 & 1.235 $\pm$ 7.1e-04 \\
+\RCm{32}{2} & 23.8 & 7.50 $\pm$ 0.27 & 3.74 $\pm$ 0.35 & 1215.6 $\pm$ 2.3 & 3.29 $\pm$ 0.02 & 1.139 $\pm$ 4.8e-04 \\
 \midrule
-Mean & 23.8 & 7.52 & 3.53 & 1212.9 \\
+Mean & 23.8 & 7.52 & 3.53 & 1212.9 & & \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -197,3 +198,28 @@ Answer: there is a strong correlationbetween G and n, should plot these ellipses
 should at least look at all psat vs temp plots.
 
 should work out $P_{sat}$ vs $T_b$ expansion to order $(\Delta T)^2$ - might help with above.
+
+\section{Direct Measurement of Detector Responsivity and $\tau_{eff}$}
+
+Knowledge of $R_{htr}$ allows a direct measurement of the DC responsivity of $\tau_{eff}$ for the seven detectors with heaters.
+Steps is heater bias current were applied to these detectors while bias at typically operating conditions ($T_b = 1100$~mK, DAC$_{bias}$ = 27000).
+The step size was made small so as the keep the detector response linear, and the response to many steps was averaged together to reduce noise.
+The result was fit to an equation of the form
+\begin{equation} \label{eqn:ch8-heater-step-trans}
+  \delta I(t) = - \delta P_{htr} s_I(0) (1 - e^{-t/\tau_{eff}}),
+\end{equation}
+which is just \eqnref{eqn:htr-step-resp-high-time} with the the \DC\ responsivity explicitly inserted.
+
+\figref{fig:ch8-heater-step-trans} shows a sample fit to \eqnref{eqn:ch8-heater-step-trans}.
+\tableref{tab:all-det-props} lists the best-fit values of $s_I(0)$ and $\tau_{eff}$.
+
+\begin{figure*}
+\includegraphics{drawings/ch8-heater-step-trans.pdf}
+\caption{Plots showing response of detector to step in applied heater power. Plots are for \RCm{30}{1} biased into normal operating conditions. Data acquired at 3125~Hz.
+\textbf{Left} Data averaged over 32 steps (16 up and 16 down) along with best fit to \eqnref{eqn:ch8-heater-step-trans}.
+The step in applied power begins at $t \approx 1$~ms, not $t = 0$~ms.
+\textbf{Right} Residuals from fit of plat to left. The error early in the fit may indicate the presense of another time constant.
+} 
+\label{fig:ch8-heater-step-trans}
+\end{figure*}
+
