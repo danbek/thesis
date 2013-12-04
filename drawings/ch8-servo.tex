@@ -1,0 +1,145 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.4in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{rr}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[ymin=0,%xmin=950,xmax=1250,
+		title={Dark \SQUID\ Noise},
+		xlabel={Servo gain $I$}, ylabel={Current Noise (A/$\sqrt{\mbox{Hz}})$},
+        legend columns=-1,
+        legend entries={Col 0,Col 1,Col 2,Col 3,Col 4,Col 5,Col 6,Col 7},
+        legend to name=thelegend,]
+	  \addplot+[only marks] table[x=gain,y=Noise00]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 0}
+	  \addplot+[only marks] table[x=gain,y=Noise01]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 1}
+	  \addplot+[only marks] table[x=gain,y=Noise02]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 2}
+	  \addplot+[only marks] table[x=gain,y=Noise03]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 3}
+	  \addplot+[only marks] table[x=gain,y=Noise04]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 4}
+	  \addplot+[only marks] table[x=gain,y=Noise05]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 5}
+	  \addplot+[only marks] table[x=gain,y=Noise06]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 6}
+	  \addplot+[only marks] table[x=gain,y=Noise07]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 7}
+	\end{axis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{semilogyaxis}[%ymin=0,%xmin=950,xmax=1250,
+		title={Dark \SQUID\ Noise Rolloff},
+		xlabel={Servo gain $I$}, ylabel={$\tau_{servo}$ (s)},
+        legend pos=north west]
+	  \addplot+[only marks] table[x=gain,y=tau00]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 0}
+	  \addplot+[only marks] table[x=gain,y=tau01]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 1}
+	  \addplot+[only marks] table[x=gain,y=tau02]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 2}
+	  \addplot+[only marks] table[x=gain,y=tau03]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 3}
+	  \addplot+[only marks] table[x=gain,y=tau04]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 4}
+	  \addplot+[only marks] table[x=gain,y=tau05]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 5}
+	  \addplot+[only marks] table[x=gain,y=tau06]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 6}
+	  \addplot+[only marks] table[x=gain,y=tau07]{../data/ch8-servo.dat};
+      %\addlegendentry {Col 7}
+	\end{semilogyaxis}
+  \end{tikzpicture}
+
+  \\
+
+  %% \begin{tikzpicture}[trim axis left]
+  %%   \begin{semilogxaxis}[xmin=5e-7,
+  %%       ymin=0, 
+  %%   	title={Measured Shunt Resistance},
+  %%   	xlabel={\Rsh\ (\uOhm)}, ylabel={Quantity} ]
+  %%     \addplot [hist={data min=1e-7,data max=1e-3,bins=80},
+  %%   	        fill=blue!75]
+  %%     table[y=tau40]{../data/ch8-servo-sc.dat};
+  %%   \end{semilogxaxis}
+  %% \end{tikzpicture}
+
+  \begin{tikzpicture}[trim axis left]
+    \begin{semilogyaxis}[ymin=1e-11,ymax=1e-2,
+    	title={\SQUID\ Noise Rolloff ($I$ = 40)},
+    	xlabel={Readout Row}, ylabel={$\tau_{servo}$ (s)},
+        legend pos=north west]
+      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc0.dat};
+      %\addlegendentry {Col 0}
+      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc1.dat};
+      %\addlegendentry {Col 1}
+      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc2.dat};
+      %\addlegendentry {Col 2}
+      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc3.dat};
+      %\addlegendentry {Col 3}
+      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc4.dat};
+      %\addlegendentry {Col 4}
+      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc5.dat};
+      %\addlegendentry {Col 5}
+      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc6.dat};
+      %\addlegendentry {Col 6}
+      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc7.dat};
+      %\addlegendentry {Col 7}
+    \end{semilogyaxis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{semilogyaxis}[ymin=1e-11,ymax=1e-2,
+		title={\SQUID\ Noise Rolloff ($I$ = 60)},
+		xlabel={Readout Row}, ylabel={$\tau_{servo}$ (s)},
+        legend pos=north west]
+	  \addplot+[only marks] table[x=R,y=tau60]{../data/ch8-servo-sc0.dat};
+      %\addlegendentry {Col 0}
+	  \addplot+[only marks] table[x=R,y=tau60]{../data/ch8-servo-sc1.dat};
+      %\addlegendentry {Col 1}
+	  \addplot+[only marks] table[x=R,y=tau60]{../data/ch8-servo-sc2.dat};
+      %\addlegendentry {Col 2}
+	  \addplot+[only marks] table[x=R,y=tau60]{../data/ch8-servo-sc3.dat};
+      %\addlegendentry {Col 3}
+	  \addplot+[only marks] table[x=R,y=tau60]{../data/ch8-servo-sc4.dat};
+      %\addlegendentry {Col 4}
+	  \addplot+[only marks] table[x=R,y=tau60]{../data/ch8-servo-sc5.dat};
+      %\addlegendentry {Col 5}
+	  \addplot+[only marks] table[x=R,y=tau60]{../data/ch8-servo-sc6.dat};
+      %\addlegendentry {Col 6}
+	  \addplot+[only marks] table[x=R,y=tau60]{../data/ch8-servo-sc7.dat};
+      %\addlegendentry {Col 7}
+	\end{semilogyaxis}
+  \end{tikzpicture}
+
+  \\
+\end{tabular}
+% xxx need vertical whitespace here
+\centering
+\ref{thelegend}
+\end{document}

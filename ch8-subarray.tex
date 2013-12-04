@@ -15,6 +15,78 @@ Note that this lack of detector characterization does not prevent the array from
 It merely limits our understanding of the behavior of the detectors.
 A more detailed characterization of more detectors will be carried out prior to fabrication of any additional arrays.
 
+\section{Choice of \MCE\ Servo Gain Parameters}
+
+As described in \sectionref{xxx}, the \MCE\ operates the \SQUID\ multiplexing system.
+It supports extensive configuration options ranging from \SQUID\ bias current values to mulitplexing speed, to the order in which rows should be reported to client software. xx need reference to MCE stuff
+This thesis does not describe the process of chosing most of these parameters.
+The one exception is the choice of \PID\ parameters for the flux-locked-loop servo that linearizes the output of the \SQUID\ amplifier chain.
+This section describes the choice of these parameters for different readout situations.
+
+The feedback applied to an \SQ1 during frame $n+1$ is defined as \cite{mce_team_data_2013}
+\begin{equation}
+  FB_{n+1} = \frac{1}{2^{12}} \left[P q_n + I \sum_{i=1}^n e_i + D (e_n - e_{n-1}) \right].
+\end{equation}
+Here $e_n$ is the error observed during frame $n$, $q_n \equiv e_n + b q_n$ (where $b$ is some number small than 1), and $P$, $I$, and $D$ are the proportional, integral, and derivatve terms of the PID loop, respectively.
+The $FB$ values are expressed in terms of \DAC\ counter units applied to the \SQ1 feedback, and the errors $e$ are in terms of \ADC\ values for the output of the readout chain.
+The \Imager is operated with $P = D = 0$, so that the feedback simplifies to
+\begin{equation} \label{eqn:mce-pid-i-only}
+  FB_{n+1} = \frac{I}{2^{12}} \sum_{i=1}^n e_i.
+\end{equation}
+
+Using only $I$, the \MCE\ servo loop acts like a 1-pole filter.
+Higher values of $I$ increase the bandwidth of this filter until a ``critical gain'' is reached, as which point the feedback loop becomes unstable and begins to oscillate.
+$I$ should be chosen so that the the bandwidth of this filter is greater than that of the detectors themselves, but $I$ should not approach the critical gain too closely.
+
+To choose $I$ values, I acquired data at the fastest multiplexing rate possible for 33 rows, \SI{15151.5}{Hz}, while the detectors were superconducting at a temperature of \SI{974}{mK}.
+The 33 reported rows included the 32 rows with detectors and a single ``Dark \SQUID'' row, which had nothing connected to it's input coil.
+
+For each column's dark \SQUID\ I took power spectra and fit the noise power spectral density to an equation of the form
+\begin{equation}
+  \frac{N_{SQ}}{1 + (2 \pi \tau_{servo})^2},
+\end{equation}
+Where $N_{SQ}$ is the white noise level for the dark \SQUID\ and $\tau_{servo}$ gives the bandwidth of the servo loop.
+
+\figref{fig:ch8-servo} shows the resulting white noise levels and $\tau_{servo}$ values for a range of servo gain values $I$.
+The \SQUID\ white noise level is higher when operating with negative $I$ values, and there is a larger spread of $\tau_{servo}$ across the 8 dark \SQUIDs.
+For this reason we have chosen to use positive $I$ values.
+Colums 0 and 2 -- 7 all have time constants at or below \SI{0.1}{ms} at $I = 40$, while column 1 goes below \SI{0.1}{ms} at $I = 70$.
+All columns are below \SI{1.0}{ms} at $I = 20$.
+For these reasons, while taking taking data in which the full readout bandwidth of \abt~\SI{3}{kHz} is required, $I = 40$ is used for all columns except 1, for which we use $I=70$.
+When taking images, $I=10$ has often been used; the impact of this choice on image quality is discussed in \sectionref{xxx}.
+
+When operating the array in normal conditions, the data readout rate is either \SI{3125}{Hz} or \SI{3030.3}{Hz}, depending on whether the dark \SQUID\ is read out.
+The time constant for the associated Nyquist frequencies are \abt~\SI{0.1}{ms}, so there is no need to use $I$ values with more bandwidth than this\footnote{In fact doing so is counter-productive, because it will alias \SQUID\ noise into the detector band}.
+The minimum usable value of $I$ depends on the measurement taken.
+Electrical detector time constants are \abt~\SI{3.7}{ms} in the superconducting state, and \abt~\SI{0.1}{ms} in the normal state.
+While biased into the transition, $\tau_{eff}$ is in the range xxx to xxx.
+For accurate measurement of detector time constants, $\tau_{servo}$ near \SI{0.1}{ms} is desirable, while values up to \SI{1.0}{ms} are acceptable while making images.
+
+\begin{figure*}
+\includegraphics{drawings/ch8-servo.pdf}
+\caption{Plots summarizing beahavior using different servo gain $I$s.
+\textbf{Upper Left} Plot of dark \SQUID\ white noise level vs. servo gain $I$ for each column. Positive gains consistently give lower dark \SQUID\ noise levels.
+\textbf{Upper Right} Plot of dark \SQUID\ $\tau_{servo}$ vs servo gain $I$. Column 1 shows significantly slower response for $I > 0$, but this appears to be an anomoly for the dark \SQUID. The very small values at high $|I|$ indicated either a rolloff above the bandwith of the measurement, or the begining of an unstable servo loop.
+\textbf{Lower Left} Servo response times for $I = 40$ for all detectors.
+\textbf{Lower Right} Servo response times for $I = 60$ for all detectors.
+}
+\label{fig:ch8-servo}
+\end{figure*}
+
+If the slope of the $V-\Phi$ curve for the \SQUID\ amplifier chain at the lock point is $m$, then examination of \eqnref{eqn:mce-pid-i-only} shows that the \PID\ loop is expected to become unstable when
+\begin{equation}
+  \frac{I}{2^{12}} m < -1,
+\end{equation}
+so that the critical gain $I_{crit}$ is given by
+\begin{equation} \label{eqn:crit-gain}
+  I_{crit} = - \frac{2^{12}}{m}.
+\end{equation}
+
+After performing a \SQUID\ tune the \MCE\ reports the slopes at all lockpoints, and these slopes can be used to find the critical gains and this choose value for $I$.
+\figref{fig:ch8-servo} shows histograms of critical gains for all 256 row/columns of our array, as calculated using \eqnref{crit-gain} and the reported slopes.
+
+The \MCE\ supports setting a different $I$ value for every row and every column.
+
 \section{Shunt Resistance Measurements}
 
 Our shunt resistors are located on interface chips that contain both shunt resistors and Nyquist inductors.
