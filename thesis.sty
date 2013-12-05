@@ -9,6 +9,12 @@
 \usepackage{booktabs} % better tables
 \usepackage{graphicx} % including graphical figures
 \usepackage{amsmath} % Better math
+\usepackage{siunitx} % better number formatting, esp. with units
+
+%
+% Configure siunitx
+% 
+\DeclareSIUnit\uohm{\micro\ohm}
 
 %
 % My macros
@@ -41,17 +47,9 @@
 
 % shortcuts
 \newcommand*{\SQ}[1]{{\small SQ}#1}
-\newcommand*{\He}[1]{$^{#1}$He}
-\newcommand*{\uA}{\ensuremath{\mu}A}
-\newcommand*{\uV}{\ensuremath{\mu}V}
-\newcommand*{\uW}{\ensuremath{\mu}W}
-\newcommand*{\Ohm}{\ensuremath{\Omega}}
-\newcommand*{\mOhm}{m\ensuremath{\Omega}}
-\newcommand*{\uOhm}{\ensuremath{\mu\Omega}}
-\newcommand*{\Imager}{350~GHz Video Imager}
+\newcommand*{\He}[1][]{$^{#1}$He}
+\newcommand*{\Imager}{350\,GHz Video Imager}
 \newcommand*{\vect}[1]{\vec{#1}}
-\newcommand*{\textdegree}{\ensuremath{^{\circ}}}
-\newcommand*{\degC}{\ensuremath{^{\circ}}C}
 \newcommand*{\DISP}[1]{{\small DISP{#1}}}
 \newcommand*{\RC}[2]{R{#1}C{#2}}
 \newcommand*{\RCm}[2]{
@@ -61,3 +59,4 @@
 \newcommand*{\Rsh}{\ensuremath{R_{sh}}}
 \newcommand*{\Loop}{\ensuremath{\mathcal{L}_I}}
 \newcommand*{\abt}{\raise.17ex\hbox{$\scriptstyle\sim$}}
+\newcommand{\Inoise}[1]{\SI[mode=math,per-mode=symbol]{#1}{\A\per\sqrt{Hz}}}

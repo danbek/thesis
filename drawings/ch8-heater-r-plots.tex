@@ -25,7 +25,7 @@
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[xmin=-0.05,ymin=0, 
 		title={IV Curves for \RCm{29}{1}},
-		xlabel={Voltage Across \TES\ (\uV)}, ylabel={Current Through \TES\ (\uA)} ]
+		xlabel={Voltage Across \TES\ (\si{\uV})}, ylabel={Current Through \TES\ (\si{\uA})} ]
 	  \addplot+[mark=none] table[x=Vtes01,y=Ites01]{../data/ch8-heater-r.dat};
 	  \addplot+[mark=none] table[x=Vtes02,y=Ites02]{../data/ch8-heater-r.dat};
 	  \addplot+[mark=none] table[x=Vtes03,y=Ites03]{../data/ch8-heater-r.dat};
@@ -49,7 +49,7 @@
   \begin{tikzpicture}[trim axis right]
 	\begin{axis}[ymin=0, 
 		title={$R$ vs $P_{J}$ for \RCm{29}{1}},
-		xlabel={Joule Power Dissipated in \TES\ (pW)}, ylabel={\TES\ Resistance (\mOhm)} ]
+		xlabel={Joule Power Dissipated in \TES\ (pW)}, ylabel={\TES\ Resistance (\si{\milli\ohm})} ]
 	  \addplot+[mark=none] table[x=Ptes01,y=Rtes01]{../data/ch8-heater-r.dat};
 	  \addplot+[mark=none] table[x=Ptes02,y=Rtes02]{../data/ch8-heater-r.dat};
 	  \addplot+[mark=none] table[x=Ptes03,y=Rtes03]{../data/ch8-heater-r.dat};
@@ -73,14 +73,14 @@
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[xmin=2.8,xmax=5,
 		title={\TES\ $P_{J}$ vs Heater Current},
-		xlabel={$I_{htr}$ (\uA)}, ylabel={$P_{J}$ (pW)} ]
+		xlabel={$I_{htr}$ (\si{\uA})}, ylabel={$P_{J}$ (pW)} ]
 	  \addplot+[only marks]
 	  table[x=Ihtr,y=Psat]{../data/ch8-heater-r-pows.dat};
 	  \addlegendentry {Data}
 
 	  \addplot+[mark=none,domain=2.8:5] {597.7 - 23.5927*x^2)}
-	  node[right] at (axis cs:3,150) {$R_{htr}$ = 23.6 \Ohm}
-	  node[right] at (axis cs:3,100) {$P_{x}$ = 598 pW}
+	  node[right] at (axis cs:3,150) {$R_{htr} = \SI{23.6}{\ohm}$}
+	  node[right] at (axis cs:3,100) {$P_{x} = \SI{598}{\pico\W}$}
 	  ;
 	  \addlegendentry{Fit}
 
@@ -92,7 +92,7 @@
   \begin{tikzpicture}[trim axis right]
 	\begin{axis}[ymin=0, 
 		title={$R$ vs $P_{J} + P_{htr}$ for \RCm{29}{1}},
-		xlabel={Total Power Dissipated in \TES\ (pW)}, ylabel={\TES\ Resistance (\mOhm)} ]
+		xlabel={Total Power Dissipated in \TES\ (pW)}, ylabel={\TES\ Resistance (\si{\milli\ohm})} ]
 	  \addplot+[mark=none] table[x=Ptot01,y=Rtes01]{../data/ch8-heater-r.dat};
 	  \addplot+[mark=none] table[x=Ptot02,y=Rtes02]{../data/ch8-heater-r.dat};
 	  \addplot+[mark=none] table[x=Ptot03,y=Rtes03]{../data/ch8-heater-r.dat};

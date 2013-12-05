@@ -100,7 +100,7 @@ When taking images, $I=10$ has often been used; the impact of this choice on ima
 
 Our shunt resistors are located on interface chips that contain both shunt resistors and Nyquist inductors.
 The specific chips used were extra chips leftover from the ABS\cite{kusaka_modulation_2013} project.
-The design resistance of the shunts was 180~\uOhm, and the design inductance was 609~nH\footnote{John Appel, personal communication}.
+The design resistance of the shunts was \SI{180}{\uohm}, and the design inductance was 609~nH\footnote{John Appel, personal communication}.
 Each chips contains 32 shunt resistors and 32 inductors.
 
 To measure $R_{sh}$ and $L$ for these chips I took noise measurements using zero detector bias current at two different bath temperature: 980~mK and 1160~mK.
@@ -116,7 +116,7 @@ where $k_B$ is Boltzmann's constant, $T_b$ is the bath temperature for the measu
 The shunt resistance $R_{sh}$, inductance $L$, and readout chain white noise level $SQ$ are the values extracted from the fit.
 
 \figref{fig:rsh-l-plots} shows histogram plots of the resulting \Rsh\ and $L$ values.
-\Rsh\ has a mean of 149~\uOhm\ with standard deviation 6~\uOhm.
+\Rsh\ has a mean of \SI{149}{\uohm} with standard deviation \SI{6}{\uohm}.
 The meassured value for \Rsh\ also includes any parasitic resistance in the circuit, but no evidence for significant parasitic resistance has ever been seen, so this parasitic resistance is assumed to be zero.
 
 The measured value for $L$ includes the Nyquist inductance on the interface chip, the input inductance of the first-stage \SQUID\ of the multiplexed readout system, as well as any parasitic inductance in the circuit.
@@ -136,7 +136,7 @@ It is not known whether this correlation is a real physical effect or an artifac
 \textbf{Upper Left} Histogram of shunt resistance \Rsh.
 \textbf{Upper Right} Histogram of total inductance in circuit, which includes the interface chip Nyquist inductor, the inductance of the SQ1 input coil, and any parasitic inductance.
 \textbf{Lower Left} Scatterplot showing all measured Rsh and L values. A correlation is apparent, the reason for which is not understood.
-\textbf{Lower Right} Plot showing current noise power spectrum extracted from a single data acquisition for \RCm{20}{6}, along with predicted power spectrum based on best fit to \eqnref{eqn:scnoise-fit} across all data acquisitions. The best fit values are \Rsh\ = 153 \uOhm, $L$ = 622 nH, and \SQUID\ white noise level of 1.2e-10~ A$/ \sqrt{\mbox{Hz}}$.}
+\textbf{Lower Right} Plot showing current noise power spectrum extracted from a single data acquisition for \RCm{20}{6}, along with predicted power spectrum based on best fit to \eqnref{eqn:scnoise-fit} across all data acquisitions. The best fit values are $\Rsh=\SI{153}{\uohm}$, $L = \SI{622}{nH}$, and \SQUID\ white noise level of \Inoise{1.2e-10}.}
 \label{fig:rsh-l-plots}
 \end{figure*}
 
@@ -188,12 +188,12 @@ It also shows that this assumption breaks down deeper in the transition.
 \textbf{Upper Left} \IV\ curves. The \IV\ curves should turn completely vertial when the detector becomes fully superconducting at zero voltage, but these curves shown a non-infinite slope. The reason for this is that the readout system as configured for these \IV\ curves was unable keep up with the rapid change of current in the superconducting branch.
 \textbf{Upper Right} Same data as in upper left plot, but represented in terms of \TES\ Joule power and resistance. As the bias current for the heaters is increased, the curves shift to the left.
 \textbf{Lower Left} Measured $P_{J}$ vs heater current at $0.99R_n$, as well as fit to \eqnref{eqn:rhtr-fit}.
-\textbf{Lower Right} Same plot as upper right, but the heater power based on $R_{htr} = 23.6$~\Ohm has been added to each curve.}
+\textbf{Lower Right} Same plot as upper right, but the heater power based on $R_{htr} = \SI{23.6}{\ohm}$ has been added to each curve.}
 \label{fig:heater-r-plots}
 \end{figure*}
 
 \tableref{tab:all-det-props} lists all measured heater resistors.
-The seven heaters for columns 0 and 1 have a mean of 23.8~\Ohm\ with a standard deviation of 0.26~\Ohm.
+The seven heaters for columns 0 and 1 have a mean of \SI{23.8}{\ohm} with a standard deviation of \SI{0.26}{\ohm}.
 
 It is worth noting that determining the values of $R_{htr}$ requires knowing the current through the heaters.
 But because $R_{htr}$ is determined through the power disspiated in the resistor, an incorrect assumption about will lead to a an incorrect value of $R_{htr}$ which leaves $I_{htr}^2 R_{htr}$ unchanged.
@@ -208,7 +208,7 @@ Values for $\tau_{eff}$, $s_I(0)$ are for detector biased at normal operating co
 \label{tab:all-det-props}
 \begin{tabular}{l l l l l l l}
 \toprule
-Detector &  $R_{htr}$ (\Ohm) & $G$ (nW/K) & $n$ & $T_c$ (mK) & $\tau_{eff}$ (ms) & $s_I(0)$ (\uV$^{-1}$) \\
+Detector &  $R_{htr}$ (\si{\ohm}) & $G$ (\si{\nano\W\per\K}) & $n$ & $T_c$ (mK) & $\tau_{eff}$ (\si{\ms}) & $s_I(0)$ (\si{\per\uV}) \\
 \midrule
 \RCm{29}{1} & 23.6 & 7.63 $\pm$ 0.08 & 3.52 $\pm$ 0.10 & 1209.4 $\pm$ 0.6 & 3.29 $\pm$ 0.02 & 1.010 $\pm$ 4.8e-04 \\
 \RCm{30}{1} & 23.5 & 7.67 $\pm$ 0.07 & 3.54 $\pm$ 0.09 & 1213.9 $\pm$ 0.6 & 2.68 $\pm$ 0.03 & 1.124 $\pm$ 6.2e-04 \\

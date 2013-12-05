@@ -69,14 +69,14 @@ The pointing of the optical system is set by the positions of the two actuators 
 The actuator control hardware provides two voltage signal which are proportional to the positions of the actuators.
 This voltage signal is sent into the \Imager\ cryostat by a pair coaxial cables.
 Inside the cryostat two 1-m long PhBr \AWG36 twisted pair wires carry the signal to the focal plane, where the signal is fed into the input coil of a 1st stage \SQUID.
-Series resistors (4.23~M\Ohm\ for \DISP1, 4.36~M\Ohm\ for \DISP2) are used at room temperature to reduce the current flowing through the wires to a value appropriate for the 1st stage \SQUID\ input; approximately 10~\uA.
+Series resistors (\SI{4.23}{\mega\ohm} for \DISP1, \SI{4.36}{\mega\ohm} for \DISP2) are used at room temperature to reduce the current flowing through the wires to a value appropriate for the 1st stage \SQUID\ input; approximately \SI{10}{\uA}.
 
 This approach allows the readout system to readout the position of the actuators in exactly the same way that it reads out the detector response.
 The actuator position is synchronized perfectly with the detector data.
 
 A natural question is whether cross-talk appears between the actuator readout and the other detectors.
 To test this both actuator were moved in a 0.1~Hz sine-wave pattern over their maximum displacement range of +/- 3.5~mm, while the detectors were in the superconducting state.
-Both actuators were moved at the same time, roughly 135\textdegree out of phase.
+Both actuators were moved at the same time, roughly \SI{135}{\degree} out of phase.
 The level of crosstalk present can be quantified by performing a least-squares fit of each detector timestream $\vect{d}_{rc}$ to the model
 \begin{equation}
 	 \vect{d}_{rc} = A_1 \vect{d}_{\DISP1} + A_2 \vect{d}_{\DISP2}.
@@ -96,7 +96,7 @@ As described in \sectionref{s:optical-design}, the \Imager\ is designed to focus
 All results described in this chapter were with the \Imager\ configured to focus at 16~m.
 To check the actual distance to the target focal plane, beam maps as described in \sectionref{s:beam-maps} were performed with the blackbody source located at different distance from the cryostat.
 \figref{fig:beam-vs-distance} shows beam maps for the same detector taken at different distances.
-It is clear from this plot that the best focus occurs at $\sim$17~m, and the depth-of-field is approximately xxx~m.
+It is clear from this plot that the best focus occurs at \abt \SI{17}{m}, and the depth-of-field is approximately xxx~m.
 
 The reasons for the difference from \ZEMAX\ predictions are not understood.
 Possibilities include the cryostat being located too close to the primary mirror and the primary (or secondary) mirrors having an incorrect shape.
@@ -104,10 +104,10 @@ Possibilities include the cryostat being located too close to the primary mirror
 \section{Beam Maps}
 
 As discussed in \sectionref{s:feedhorn-design}, the \Imager\ feedhorns are predicted to have beams that are circularly symmetric and well-approximated by Gaussians with \FWHM\ of x.xx~cm at the target.
-To verify these predictions beam maps were performed by rastering the beams over a small, stationary 1030~\degC\ blackbody source.
+To verify these predictions beam maps were performed by rastering the beams over a small, stationary \SI{1030}{\celsius} blackbody source.
 
 The blackbody source used was an IR Labs xxx\footnote{IRLabs, Inc. Tucson, AZ. USA}.
-This source reaches a maximum of 1030~\degC\ and has apertures ranging in size from x.xx in to x.xx in.
+This source reaches a maximum of \SI{1030}{\celsius} and has apertures ranging in size from x.xx in to x.xx in.
 Best results were achieved by covering an area around the blackbody source with Aluminum foil; this eliminated hotspots in the image due to the warmth of the housing of the blackbody source itself.
 \figref{xxx} shows a picture of the blackbody source with Aluminum foil mask.
 

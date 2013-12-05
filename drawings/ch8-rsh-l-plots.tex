@@ -26,7 +26,7 @@
 	\begin{axis}[
         ymin=0, 
 		title={Measured Shunt Resistance},
-		xlabel={\Rsh\ (\uOhm)}, ylabel={Quantity} ]
+		xlabel={\Rsh\ (\si{\uohm})}, ylabel={Quantity} ]
 	  \addplot [hist={data min=125,data max=165,bins=20},
 		        fill=blue!75]
 	  table[y=Rsh]{../data/ch8-rsh-L.dat};
@@ -49,7 +49,7 @@
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[
 		title={Measured \Rsh\ vs $L_{ny}$},
-		xlabel={\Rsh\ (\uOhm)}, ylabel={$L_{ny}$ (nH)} ]
+		xlabel={\Rsh\ (\si{\uohm})}, ylabel={$L_{ny}$ (nH)} ]
 	  \addplot+[only marks]
 	    table[x=Rsh,y=L]{../data/ch8-rsh-L.dat};
 	\end{axis}
@@ -60,7 +60,7 @@
 	\begin{loglogaxis}[
 		clip mode=individual,xmin=4e-1,xmax=2e3,
 		title={\RCm{20}{6} Superconducting Current Noise},
-		xlabel={Frequency (Hz)}, ylabel={Current Noise (A/$\sqrt{\mbox{Hz}}$)} ]
+		xlabel={Frequency (Hz)}, ylabel={Current Noise (\Inoise{})} ]
 
 	  \addplot+[only marks,mark size=1.0pt]
 	    table[x=f,y expr=sqrt(\thisrow{Pxx})]{../data/ch8-rsh-pxx.dat};

@@ -25,15 +25,15 @@
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[xmin=0,xmax=25,
 		title={Response to Step in Heater Power (\RCm{30}{1})},
-		xlabel={$t$ (ms)}, ylabel={$\delta I$ (\uA)},
+		xlabel={$t$ (ms)}, ylabel={$\delta I$ (\si{\uA})},
         legend pos=south east]
 	  \addplot+[only marks]
 	    table[x=time,y=dI]{../data/ch8-heater-step-trans.dat};
       \addlegendentry {Data}
       \addplot+[mark=none,domain=1:25] { 2.360232e+00 * (1 - exp(-(x-1)/2.677559e+00)) }
         node[right,align=left] at (axis cs:5,1) 
-             {$s_I(0) = 1.12$~$\uV^{-1}$ \\ 
-              $\tau_{eff} = 2.68$~(ms) };
+             {$s_I(0) = \SI{1.12}{\per\uV}$ \\ 
+              $\tau_{eff} = \SI{2.68}{ms}$ };
       \addlegendentry {Fit}
 	\end{axis}
   \end{tikzpicture}

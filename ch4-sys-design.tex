@@ -42,7 +42,7 @@ Vibration of the cryostat can lead to microphonic pickup either directly in the 
         \draw[thick,<->] (1.05,0.04) -- +(0,0.31) node[midway,right] {18 in}; % scale bar
     \end{scope}
 \end{tikzpicture}
-\caption{Cutaway view of the 350 GHz Imager. \textbf{A} PT407 1st stage cold head \textbf{B} PT407 2nd stage cold head \textbf{c} Cu cylinder connected PT407 2ns stage cold head to Cu tube, which then connects to \He4-sorption refrigerator condensation plate. \textbf{D} \He4-sorption refrigerator \textbf{E} Focal Plane. Copper ropes connecting focal plane to 1~K cold plate are not visible in this view.}
+\caption{Cutaway view of the \Imager. \textbf{A} PT407 1st stage cold head \textbf{B} PT407 2nd stage cold head \textbf{c} Cu cylinder connected PT407 2ns stage cold head to Cu tube, which then connects to \He4-sorption refrigerator condensation plate. \textbf{D} \He4-sorption refrigerator \textbf{E} Focal Plane. Copper ropes connecting focal plane to 1~K cold plate are not visible in this view.}
 \label{fig:cryo-cutaway}
 \end{figure*}
 
@@ -70,7 +70,7 @@ A  \He4-sorption fridge works by using a charcoal adsorber to pump on a bath of 
 The \He4 is contained withing a sealed reservoir so that the refrigerator acts as a closed system requiring no \He4 replenishment. 
 While \He4-sorption fridges are commercially available, our team choose to design and build a custom fridge based on a design that has been proven in astronomical applications\cite{devlin_high_2004}.
 
-\figref{fig:he4sorp} shows a schematic depiction of the 350~GHz Imager's \He4-sorption refrigerator.
+\figref{fig:he4sorp} shows a schematic depiction of the \Imager's \He4-sorption refrigerator.
 The entire refrigerator is filled with 2.07~moles of \He4 gas, giving a pressure of 900~psi at room temperature.
 In normal operation the heat switch between the charcoal pumping chamber (``pump'') and the \He4 condensation plate is closed, keeping the charcoal as cold as possible in order to adsorb as much \He4 as possible, keeping the temperature of the cold plate as low as possible.
 
@@ -97,7 +97,7 @@ In normal operation the heat switch between the charcoal pumping chamber (``pump
 Cycling the refrigerator requires four steps.
 First the heat switch is opened.
 The \He4-sorption refrigerator uses a \He4 gas-gap heat switch manufactured by Chase Cryogenics\footnote{Chase Research Cryogenics, Ltd. Sheffield, UK}, which requires 5 minutes of waiting time in order for the switch to fully open.
-Second, the pump is heated by applying 5 W via a 500 \Ohm\ power resistor.
+Second, the pump is heated by applying \SI{5}{\W} via a \SI{500}{\ohm} power resistor.
 This power is applied until the temperature of the pump reaches 40 K, which is high enough to drive nearly all of the adsorbed \He4 off of the charcoal.
 Third, the power to the pump is turned off.
 Once the temperature of the condensation plate falls below the boiling point of \He4, \He4 will begin to condense on it's walls, dripping into the \He4 condensation pot (``pot'').
@@ -122,7 +122,7 @@ xxx - include data on temp vs load for the fridge?
 \toprule
  & \multicolumn{2}{c}{Predicted Thermal Load} \\
 \cmidrule(r){2-3}
-Heat Load Source & 1004 Detectors (\uW) &  251 Detectors (\uW) \\
+Heat Load Source & 1004 Detectors (\si{\uW}) &  251 Detectors (\si{\uW}) \\
 \midrule
 Readout wiring 								& 50 & 125 \\
 Series array \SQUID\ modules 		& xxx & xxx \\
@@ -221,11 +221,11 @@ which simplifies to
 \end{equation}
 which is independent of $\phi$, as expected for an unpolarized detector.
 
-To calculate the spillover efficiency of an individual feedhorn, the \MATLAB\ program integrates $P$ over the angles $\theta$ that illuminate the primary mirror and reach the target: 5.3\textdegree to 13.6\textdegree\footnote{see \sectionref{s:optical-design}}.
+To calculate the spillover efficiency of an individual feedhorn, the \MATLAB\ program integrates $P$ over the angles $\theta$ that illuminate the primary mirror and reach the target: \SIrange{5.3}{13.6}{\degree}\footnote{see \sectionref{s:optical-design}}.
 \figref{fig:spill-vs-alpha-diam} shows a contour plot of spillover efficiency as a function of $D$ and $\alpha$.
 The blue asterisk matches the parameters for the feedhorns chosen for the \Imager.
 This plot makes it clear that $\eta_s$ depends much more strongly on $D$ than on $\alpha$.
-$\alpha = 9.4$\textdegree was chosen as a value that is easy to machine, keeps the thermal mass of the feedhorn array relatively low (small values of $\alpha$ lead to long feedhorns and higher thermal mass), and it not too far from the maximum achievable $\eta_s$ for any fixed feedhorn diameter $D$.
+$\alpha = \SI{9.4}{\degree}$ was chosen as a value that is easy to machine, keeps the thermal mass of the feedhorn array relatively low (small values of $\alpha$ lead to long feedhorns and higher thermal mass), and it not too far from the maximum achievable $\eta_s$ for any fixed feedhorn diameter $D$.
 
 \begin{figure*}[th]
 \centering
