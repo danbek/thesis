@@ -63,7 +63,7 @@ However, if the bath temperature is raised above $T_c$ for the Al wirebonds conn
 This high resistance drives the Johnson noise of the load resistor below the \SQUID\ noise, and pushes the $L/R$ rolloff of the Johnson noise to \SI{3e-5}{s} or faster (\SI{3}{\dB} frequency of \SI{5}{\kilo\Hz} or higher), making a measurement of the servo bandwidth much easier.
 
 To choose $I$ values, I acquired data at the fastest multiplexing rate possible for 33 rows\footnote{This rate is achieved by only reporting one of the eight columns to the readout computer. The limiting factor in how fast the entire array can be multiplexed is packaging and sending the data to the readout computer.}, \SI{15151.5}{Hz} while the system was at a temperature of \SI{1.3}{\K}.
-For evern row and column that has a detector that responds in the superconducting step, I fit the resulting noise power spectrum to an equation of the form
+For evern row and column that has a detector that responds in the superconducting state, I fit the resulting noise power spectrum to an equation of the form
 \begin{equation}
   \frac{N_{SQ}}{1 + (2 \pi \tau_{servo})^2},
 \end{equation}
@@ -71,16 +71,20 @@ Where $N_{SQ}$ is the white noise level and $\tau_{servo}$ gives the bandwidth o
 
 \figref{fig:ch8-servo} shows the resulting white noise levels and $\tau_{servo}$ values for a range of servo gain values $I$.
 The \SQUID\ white noise level is higher when operating with negative $I$ values, so we have chosen to use positive $I$ values.
+When measuring time constants $I=50$ has been used for all columns, to maximize the number of detectors below the $\tau_{servo} =$ \SIrange{2e-4}{5e-5}{s} range.
+This also places most detectors in a region where \SQUID\ noise will be aliased into the measurement band, but because I always average over many measurements, this is not a major concern.
 
-xxx summarize results!
+For taking video images, the servo does not need to be run as aggresively. Servo gain $I = \num{20}$ is sufficient for these measurements. (xxx justify this based on measured time constants later).
 
 \begin{figure*}
 \includegraphics{drawings/ch8-servo.pdf}
-\caption{Plots summarizing beahavior using different servo gain $I$s.
-\textbf{Upper Left} Plot of dark \SQUID\ white noise level vs. servo gain $I$ for each column. Positive gains consistently give lower dark \SQUID\ noise levels.
-\textbf{Upper Right} Plot of dark \SQUID\ $\tau_{servo}$ vs servo gain $I$. Column 1 shows significantly slower response for $I > 0$, but this appears to be an anomoly for the dark \SQUID. The very small values at high $|I|$ indicated either a rolloff above the bandwith of the measurement, or the begining of an unstable servo loop.
+\caption{Plots summarizing beahavior using different servo gains $I$.
+  Box plot boxes represent the \SIrange{5}{95}{\percent} quantiless, middle line the median, upper and lower whiskers the maximum/minimum values, across all rows/columns with detectors that respond in the superconducting state.
+\textbf{Upper} Plot of \SQUID\ $\tau_{servo}$ vs servo gain $I$.
+Servo bandwidth increases with $I$.
+At $I \ge \num{60}$, very small $\tau_{servo}$ begin to appear. This indicates either a rolloff above the bandwith of the measurement, or the begining of an unstable servo loop.
 \textbf{Lower Left} Servo response times for $I = 40$ for all detectors.
-\textbf{Lower Right} Servo response times for $I = 60$ for all detectors.
+\textbf{Lower Right} Plot of median \SQUID\ white noise level vs. servo gain $I$. Positive gains consistently give lower dark \SQUID\ noise levels.
 }
 \label{fig:ch8-servo}
 \end{figure*}
