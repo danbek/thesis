@@ -25,27 +25,11 @@
 
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[ymin=0,%xmin=950,xmax=1250,
-		title={Dark \SQUID\ Noise},
-		xlabel={Servo gain $I$}, ylabel={Current Noise (\Inoise{})},
-        legend columns=-1,
-        legend entries={Col 0,Col 1,Col 2,Col 3,Col 4,Col 5,Col 6,Col 7},
-        legend to name=thelegend,]
-	  \addplot+[only marks] table[x=gain,y=Noise00]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 0}
-	  \addplot+[only marks] table[x=gain,y=Noise01]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 1}
-	  \addplot+[only marks] table[x=gain,y=Noise02]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 2}
-	  \addplot+[only marks] table[x=gain,y=Noise03]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 3}
-	  \addplot+[only marks] table[x=gain,y=Noise04]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 4}
-	  \addplot+[only marks] table[x=gain,y=Noise05]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 5}
-	  \addplot+[only marks] table[x=gain,y=Noise06]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 6}
-	  \addplot+[only marks] table[x=gain,y=Noise07]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 7}
+		title={\SQUID\ Noise},
+		xlabel={Servo gain $I$}, ylabel={Median Noise (\Inoise{})},
+        ]
+	  \addplot+[only marks] table[x=gain,y=noise]{../data/ch8-servo-noise-vs-gain.dat};
+	  %\addplot+[only marks] table[x=gain,y=noise]{../data/ch8-servo-ds.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -56,18 +40,18 @@
 		title={Servo Rolloff},
 		xlabel={Servo gain $I$}, ylabel={$\tau_{servo}$ (s)},
         boxplot/draw direction=y,]
-        \addplot[boxplot prepared={draw position=1,box extend=4,lower whisker=2.527756e-03,lower quartile=3.924531e-03,median=8.595879e-03,upper quartile=2.100258e-02,upper whisker=8.373186e-02,},] coordinates {};
-        \addplot[boxplot prepared={draw position=5,box extend=4,lower whisker=6.960332e-04,lower quartile=8.623733e-04,median=1.181428e-03,upper quartile=1.939235e-03,upper whisker=2.759733e-03,},] coordinates {};
-        \addplot[boxplot prepared={draw position=10,box extend=4,lower whisker=3.261403e-04,lower quartile=3.941530e-04,median=5.544398e-04,upper quartile=9.588822e-04,upper whisker=1.418181e-03,},] coordinates {};
-        \addplot[boxplot prepared={draw position=20,box extend=4,lower whisker=1.397812e-04,lower quartile=1.769493e-04,median=2.435628e-04,upper quartile=4.533192e-04,upper whisker=6.031656e-04,},] coordinates {};
-        \addplot[boxplot prepared={draw position=30,box extend=4,lower whisker=7.250511e-05,lower quartile=1.017003e-04,median=1.435996e-04,upper quartile=3.006577e-04,upper whisker=3.903013e-04,},] coordinates {};
-        \addplot[boxplot prepared={draw position=40,box extend=4,lower whisker=3.912787e-05,lower quartile=6.016685e-05,median=9.174674e-05,upper quartile=2.029726e-04,upper whisker=2.666014e-04,},] coordinates {};
-        \addplot[boxplot prepared={draw position=50,box extend=4,lower whisker=1.897719e-05,lower quartile=3.441397e-05,median=6.095562e-05,upper quartile=1.496216e-04,upper whisker=2.185083e-04,},] coordinates {};
-        \addplot[boxplot prepared={draw position=60,box extend=4,lower whisker=8.880600e-11,lower quartile=1.647136e-05,median=3.987910e-05,upper quartile=1.175163e-04,upper whisker=1.827573e-04,},] coordinates {};
-        \addplot[boxplot prepared={draw position=70,box extend=4,lower whisker=1.755270e-11,lower quartile=9.462149e-10,median=2.423482e-05,upper quartile=9.386413e-05,upper whisker=1.397686e-04,},] coordinates {};
-        \addplot[boxplot prepared={draw position=80,box extend=4,lower whisker=2.593788e-12,lower quartile=1.974243e-10,median=1.079830e-05,upper quartile=7.071626e-05,upper whisker=1.102265e-04,},] coordinates {};
-        \addplot[boxplot prepared={draw position=90,box extend=4,lower whisker=4.877739e-13,lower quartile=9.775761e-11,median=1.830483e-09,upper quartile=5.689166e-05,upper whisker=9.565394e-05,},] coordinates {};
-        \addplot[boxplot prepared={draw position=100,box extend=4,lower whisker=5.761899e-13,lower quartile=9.156079e-11,median=1.215986e-09,upper quartile=5.090068e-05,upper whisker=1.918065e-04,},] coordinates {};
+        \addplot[boxplot prepared={draw position=1,box extend=4,lower whisker=2.527756e-03,lower quartile=3.926641e-03,median=8.583072e-03,upper quartile=2.097231e-02,upper whisker=8.373186e-02,},] coordinates {};
+        \addplot[boxplot prepared={draw position=5,box extend=4,lower whisker=6.960332e-04,lower quartile=8.624233e-04,median=1.183870e-03,upper quartile=2.002728e-03,upper whisker=2.759733e-03,},] coordinates {};
+        \addplot[boxplot prepared={draw position=10,box extend=4,lower whisker=3.261403e-04,lower quartile=3.943302e-04,median=5.551368e-04,upper quartile=9.875646e-04,upper whisker=1.418181e-03,},] coordinates {};
+        \addplot[boxplot prepared={draw position=20,box extend=4,lower whisker=1.397812e-04,lower quartile=1.776975e-04,median=2.437888e-04,upper quartile=4.560549e-04,upper whisker=6.031656e-04,},] coordinates {};
+        \addplot[boxplot prepared={draw position=30,box extend=4,lower whisker=7.250511e-05,lower quartile=1.017245e-04,median=1.436788e-04,upper quartile=3.071162e-04,upper whisker=3.903013e-04,},] coordinates {};
+        \addplot[boxplot prepared={draw position=40,box extend=4,lower whisker=3.912787e-05,lower quartile=6.020131e-05,median=9.202824e-05,upper quartile=2.075595e-04,upper whisker=2.666014e-04,},] coordinates {};
+        \addplot[boxplot prepared={draw position=50,box extend=4,lower whisker=1.897719e-05,lower quartile=3.445664e-05,median=6.100964e-05,upper quartile=1.539548e-04,upper whisker=2.185083e-04,},] coordinates {};
+        \addplot[boxplot prepared={draw position=60,box extend=4,lower whisker=8.880600e-11,lower quartile=1.652902e-05,median=4.002564e-05,upper quartile=1.229701e-04,upper whisker=1.827573e-04,},] coordinates {};
+        \addplot[boxplot prepared={draw position=70,box extend=4,lower whisker=1.755270e-11,lower quartile=9.542594e-10,median=2.435035e-05,upper quartile=9.756506e-05,upper whisker=1.397686e-04,},] coordinates {};
+        \addplot[boxplot prepared={draw position=80,box extend=4,lower whisker=2.593788e-12,lower quartile=2.047951e-10,median=1.087006e-05,upper quartile=7.457268e-05,upper whisker=1.102265e-04,},] coordinates {};
+        \addplot[boxplot prepared={draw position=90,box extend=4,lower whisker=4.877739e-13,lower quartile=9.832435e-11,median=1.889502e-09,upper quartile=6.005101e-05,upper whisker=9.565394e-05,},] coordinates {};
+        \addplot[boxplot prepared={draw position=100,box extend=4,lower whisker=5.761899e-13,lower quartile=9.181211e-11,median=1.220353e-09,upper quartile=5.130300e-05,upper whisker=1.918065e-04,},] coordinates {};
 	\end{semilogyaxis}
   \end{tikzpicture}
 
@@ -78,11 +62,11 @@
 		title={Servo Rolloff},
 		xlabel={Servo gain $I$}, ylabel={$\tau_{servo}$ (s)},
         boxplot/draw direction=y,]
-        \addplot[boxplot prepared={draw position=10,box extend=4,lower whisker=3.261403e-04,lower quartile=3.941530e-04,median=5.544398e-04,upper quartile=9.588822e-04,upper whisker=1.418181e-03,},] coordinates {};
-        \addplot[boxplot prepared={draw position=20,box extend=4,lower whisker=1.397812e-04,lower quartile=1.769493e-04,median=2.435628e-04,upper quartile=4.533192e-04,upper whisker=6.031656e-04,},] coordinates {};
-        \addplot[boxplot prepared={draw position=30,box extend=4,lower whisker=7.250511e-05,lower quartile=1.017003e-04,median=1.435996e-04,upper quartile=3.006577e-04,upper whisker=3.903013e-04,},] coordinates {};
-        \addplot[boxplot prepared={draw position=40,box extend=4,lower whisker=3.912787e-05,lower quartile=6.016685e-05,median=9.174674e-05,upper quartile=2.029726e-04,upper whisker=2.666014e-04,},] coordinates {};
-        \addplot[boxplot prepared={draw position=50,box extend=4,lower whisker=1.897719e-05,lower quartile=3.441397e-05,median=6.095562e-05,upper quartile=1.496216e-04,upper whisker=2.185083e-04,},] coordinates {};
+        \addplot[boxplot prepared={draw position=10,box extend=4,lower whisker=3.261403e-04,lower quartile=3.943302e-04,median=5.551368e-04,upper quartile=9.875646e-04,upper whisker=1.418181e-03,},] coordinates {};
+        \addplot[boxplot prepared={draw position=20,box extend=4,lower whisker=1.397812e-04,lower quartile=1.776975e-04,median=2.437888e-04,upper quartile=4.560549e-04,upper whisker=6.031656e-04,},] coordinates {};
+        \addplot[boxplot prepared={draw position=30,box extend=4,lower whisker=7.250511e-05,lower quartile=1.017245e-04,median=1.436788e-04,upper quartile=3.071162e-04,upper whisker=3.903013e-04,},] coordinates {};
+        \addplot[boxplot prepared={draw position=40,box extend=4,lower whisker=3.912787e-05,lower quartile=6.020131e-05,median=9.202824e-05,upper quartile=2.075595e-04,upper whisker=2.666014e-04,},] coordinates {};
+        \addplot[boxplot prepared={draw position=50,box extend=4,lower whisker=1.897719e-05,lower quartile=3.445664e-05,median=6.100964e-05,upper quartile=1.539548e-04,upper whisker=2.185083e-04,},] coordinates {};
 	\end{semilogyaxis}
   \end{tikzpicture}
 
