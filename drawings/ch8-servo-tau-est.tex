@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+\usepgfplotslibrary{statistics}
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.4in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{rr}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[xmin=0,ymin=0,xmax=25,
+		title={Impact of Servo Rolloff},
+		xlabel={t (ms)}, ylabel={Response (arb. units)},
+        legend entries={Exact, Filtered, Fit to Filtered},
+        legend pos=south east
+        ]
+	  \addplot+[only marks, mark size=1pt] table[x=t,y=exact]{../data/ch8-servo-est-tau-example.dat};
+	  \addplot+[only marks, mark size=1pt] table[x=t,y=filtered]{../data/ch8-servo-est-tau-example.dat};
+	  \addplot+[mark=none, line width=2pt] table[x=t,y=fit]{../data/ch8-servo-est-tau-example.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{loglogaxis}[xmin=1e-2,xmax=1,ymin=1e-5,ymax=1,
+		title={Error in Estimated $\tau$},
+		xlabel={$\tau_{servo} / \tau$}, ylabel={$(\tau_{est} - \tau) / \tau$},
+        ]
+	  \addplot+[mark=none,line width=2pt] table[x=tauratio,y=err]{../data/ch8-servo-est-tau-err.dat};
+	\end{loglogaxis}
+  \end{tikzpicture}
+
+  \\
+
+
+  \\
+\end{tabular}
+% xxx need vertical whitespace here
+\centering
+\ref{thelegend}
+\end{document}

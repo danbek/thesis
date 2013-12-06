@@ -44,7 +44,19 @@ When operating the array in normal conditions, the data readout rate is either \
 The time constant for the associated Nyquist frequencies are \abt~\SI{0.1}{ms}, so there is no need to use $I$ values with more bandwidth than this\footnote{In fact doing so is counter-productive, because it will alias \SQUID\ noise into the detector band}.
 Electrical detector time constants are \abt~\SI{4}{ms} in the superconducting state, and \abt~\SI{0.14}{ms} in the normal state.
 While biased into the transition, $\tau_{eff}$ is in the range \SIrange{1}{4}{ms}.
-For accurate measurement of detector time constants, $\tau_{servo}$ near \SI{0.1}{ms} is desirable, while values up to \SI{1.0}{ms} are acceptable while making images.
+\figref{fig:ch8-servo-tau-est} shows the impact of the servo rolloff on estimation of time constants from single-pole response functions.
+To reduce the error in the estimated time constant below \SI{2}{\percent}, the servo time constant should be below \SI{5}{\percent} of the time constant to be measured.
+This criteria corresponds to \SI{2e-4}{s} for the superconducting state and as fast as \SI{5e-5}{s} for detectors operating in the transition.
+
+\begin{figure*}
+\includegraphics{drawings/ch8-servo-tau-est.pdf}
+\caption{Plots summarizing requirements on $\tau_{servo}$ for accurate measurements of detector time constants.
+\textbf{Left} Plot showing exact response to step function of a detector with $\tau = \SI{4}{ms}$, the response as filtered by a servo with $\tau_{servo} = \SI{1}{ms}$, and the best fit to the filtered response. The estimated $\tau$ is \SI{23}{\percent} too high.
+\textbf{Right} Plot showing fraction overestimate of $\tau$ vs. relative size of $\tau_{servo}$.
+For less than \SI{2}{\percent} error, $\tau_{servo}/\tau < \num{0.05}$ is required.
+}
+\label{fig:ch8-servo-tau-est}
+\end{figure*}
 
 Measuring the bandwidth of the servo loop is challenging because when the detectors are in the superconducting state the Johnson noise of the shunt resistor is higher than the \SQUID\ noise and the Johnson noise rolloff is \abt \SI{4}{\ms}, both factors which make it difficult to identify the servo rolloff from power spectra.
 However, if the bath temperature is raised above $T_c$ for the Al wirebonds connecting the \TES\ circuit to the input coils of the 1st stage \SQUIDs, the total resistance of the \TES\ circuit is raised from \SI{150}{\uohm} to \SIrange{20}{50}{\mohm}.
