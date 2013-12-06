@@ -5,6 +5,7 @@
 \usepackage{tikz} 
 \usepackage{pgfplots} % drawing plots right here in this file!
 \pgfplotsset{compat=1.9} % latest stable release
+\usepgfplotslibrary{statistics}
 
 \pgfplotsset{
   every axis/.append style={
@@ -52,63 +53,48 @@
 
   \begin{tikzpicture}[trim axis right]
 	\begin{semilogyaxis}[%ymin=0,%xmin=950,xmax=1250,
-		title={Dark \SQUID\ Noise Rolloff},
+		title={Noise Rolloff},
 		xlabel={Servo gain $I$}, ylabel={$\tau_{servo}$ (s)},
-        legend pos=north west]
-	  \addplot+[only marks] table[x=gain,y=tau00]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 0}
-	  \addplot+[only marks] table[x=gain,y=tau01]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 1}
-	  \addplot+[only marks] table[x=gain,y=tau02]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 2}
-	  \addplot+[only marks] table[x=gain,y=tau03]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 3}
-	  \addplot+[only marks] table[x=gain,y=tau04]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 4}
-	  \addplot+[only marks] table[x=gain,y=tau05]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 5}
-	  \addplot+[only marks] table[x=gain,y=tau06]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 6}
-	  \addplot+[only marks] table[x=gain,y=tau07]{../data/ch8-servo-ds.dat};
-      %\addlegendentry {Col 7}
+        boxplot/draw direction=y,
+        xtick={1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100},]
+      %yticklabels={10,20,30,40,50,60,70,80,90,100}]
+\addplot+[boxplot prepared={lower whisker=2.527756e-03,lower quartile=3.924531e-03,median=8.595879e-03,upper quartile=2.100258e-02,upper whisker=8.373186e-02,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=1.875372e-03,lower quartile=2.302369e-03,median=3.400499e-03,upper quartile=6.125187e-03,upper whisker=2.086869e-02,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=1.306064e-03,lower quartile=1.507086e-03,median=2.086498e-03,upper quartile=3.486302e-03,upper whisker=6.624207e-03,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=8.764870e-04,lower quartile=1.127343e-03,median=1.490557e-03,upper quartile=2.584466e-03,upper whisker=4.904263e-03,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=6.960332e-04,lower quartile=8.623733e-04,median=1.181428e-03,upper quartile=1.939235e-03,upper whisker=2.759733e-03,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=6.225472e-04,lower quartile=7.133017e-04,median=9.799995e-04,upper quartile=1.605760e-03,upper whisker=2.401596e-03,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=5.124000e-04,lower quartile=6.116341e-04,median=8.043080e-04,upper quartile=1.320890e-03,upper whisker=2.104692e-03,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=4.460031e-04,lower quartile=5.250616e-04,median=7.081118e-04,upper quartile=1.217300e-03,upper whisker=1.831346e-03,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=3.891404e-04,lower quartile=4.516697e-04,median=6.211535e-04,upper quartile=1.061917e-03,upper whisker=1.449837e-03,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=3.261403e-04,lower quartile=3.941530e-04,median=5.544398e-04,upper quartile=9.588822e-04,upper whisker=1.418181e-03,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=1.397812e-04,lower quartile=1.769493e-04,median=2.435628e-04,upper quartile=4.533192e-04,upper whisker=6.031656e-04,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=7.250511e-05,lower quartile=1.017003e-04,median=1.435996e-04,upper quartile=3.006577e-04,upper whisker=3.903013e-04,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=3.912787e-05,lower quartile=6.016685e-05,median=9.174674e-05,upper quartile=2.029726e-04,upper whisker=2.666014e-04,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=1.897719e-05,lower quartile=3.441397e-05,median=6.095562e-05,upper quartile=1.496216e-04,upper whisker=2.185083e-04,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=8.880600e-11,lower quartile=1.647136e-05,median=3.987910e-05,upper quartile=1.175163e-04,upper whisker=1.827573e-04,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=1.755270e-11,lower quartile=9.462149e-10,median=2.423482e-05,upper quartile=9.386413e-05,upper whisker=1.397686e-04,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=2.593788e-12,lower quartile=1.974243e-10,median=1.079830e-05,upper quartile=7.071626e-05,upper whisker=1.102265e-04,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=4.877739e-13,lower quartile=9.775761e-11,median=1.830483e-09,upper quartile=5.689166e-05,upper whisker=9.565394e-05,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=5.761899e-13,lower quartile=9.156079e-11,median=1.215986e-09,upper quartile=5.090068e-05,upper whisker=1.918065e-04,},] coordinates {};
 	\end{semilogyaxis}
   \end{tikzpicture}
 
   \\
 
-  %% \begin{tikzpicture}[trim axis left]
-  %%   \begin{semilogxaxis}[xmin=5e-7,
-  %%       ymin=0, 
-  %%   	title={Measured Shunt Resistance},
-  %%   	xlabel={\Rsh\ (\uOhm)}, ylabel={Quantity} ]
-  %%     \addplot [hist={data min=1e-7,data max=1e-3,bins=80},
-  %%   	        fill=blue!75]
-  %%     table[y=tau40]{../data/ch8-servo-sc.dat};
-  %%   \end{semilogxaxis}
-  %% \end{tikzpicture}
-
   \begin{tikzpicture}[trim axis left]
-    \begin{semilogyaxis}[ymin=1e-11,ymax=1e-2,
-    	title={\SQUID\ Noise Rolloff ($I$ = 40)},
-    	xlabel={Readout Row}, ylabel={$\tau_{servo}$ (s)},
-        legend pos=north west]
-      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc0.dat};
-      %\addlegendentry {Col 0}
-      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc1.dat};
-      %\addlegendentry {Col 1}
-      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc2.dat};
-      %\addlegendentry {Col 2}
-      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc3.dat};
-      %\addlegendentry {Col 3}
-      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc4.dat};
-      %\addlegendentry {Col 4}
-      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc5.dat};
-      %\addlegendentry {Col 5}
-      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc6.dat};
-      %\addlegendentry {Col 6}
-      \addplot+[only marks] table[x=R,y=tau40]{../data/ch8-servo-sc7.dat};
-      %\addlegendentry {Col 7}
-    \end{semilogyaxis}
+	\begin{semilogyaxis}[%ymin=0,%xmin=950,xmax=1250,
+		title={Noise Rolloff},
+		xlabel={Servo gain $I$}, ylabel={$\tau_{servo}$ (s)},
+        boxplot/draw direction=y,
+        xtick={1,2,3,4,5},
+        xticklabels={10,20,30,40,50}]
+\addplot+[boxplot prepared={lower whisker=3.261403e-04,lower quartile=3.941530e-04,median=5.544398e-04,upper quartile=9.588822e-04,upper whisker=1.418181e-03,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=1.397812e-04,lower quartile=1.769493e-04,median=2.435628e-04,upper quartile=4.533192e-04,upper whisker=6.031656e-04,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=7.250511e-05,lower quartile=1.017003e-04,median=1.435996e-04,upper quartile=3.006577e-04,upper whisker=3.903013e-04,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=3.912787e-05,lower quartile=6.016685e-05,median=9.174674e-05,upper quartile=2.029726e-04,upper whisker=2.666014e-04,},] coordinates {};
+\addplot+[boxplot prepared={lower whisker=1.897719e-05,lower quartile=3.441397e-05,median=6.095562e-05,upper quartile=1.496216e-04,upper whisker=2.185083e-04,},] coordinates {};
+	\end{semilogyaxis}
   \end{tikzpicture}
 
   &

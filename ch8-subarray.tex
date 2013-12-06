@@ -38,37 +38,29 @@ Using only $I$, the \MCE\ servo loop acts like a 1-pole filter.
 Higher values of $I$ increase the bandwidth of this filter until a ``critical gain'' is reached, as which point the feedback loop becomes unstable and begins to oscillate.
 $I$ should be chosen so that the the bandwidth of this filter is greater than that of the detectors themselves, but $I$ should not approach the critical gain too closely.
 
-To choose $I$ values, I acquired data at the fastest multiplexing rate possible for 33 rows, \SI{15151.5}{Hz}, while the detectors were superconducting at a temperature of \SI{974}{mK}.
-The 33 reported rows included the 32 rows with detectors and a single ``Dark \SQUID'' row, which had nothing connected to it's input coil.
-
-For each column's dark \SQUID\ I took power spectra and fit the noise power spectral density to an equation of the form
-\begin{equation}
-  \frac{N_{SQ}}{1 + (2 \pi \tau_{servo})^2},
-\end{equation}
-Where $N_{SQ}$ is the white noise level for the dark \SQUID\ and $\tau_{servo}$ gives the bandwidth of the servo loop.
-
-\figref{fig:ch8-servo} shows the resulting white noise levels and $\tau_{servo}$ values for a range of servo gain values $I$.
-The \SQUID\ white noise level is higher when operating with negative $I$ values, and there is a larger spread of $\tau_{servo}$ across the 8 dark \SQUIDs.
-For this reason we have chosen to use positive $I$ values.
-Colums 0 and 2 -- 7 all have time constants at or below \SI{0.1}{ms} at $I = 40$, while column 1 goes below \SI{0.1}{ms} at $I = 70$.
-All dark \SQUIDs are faster than \SI{1.0}{ms} at $I = 20$.
-
-For the other 32 columns I fit noise power spectra to an equation of the form
-\begin{equation}
-  \frac{\frac{N_{L}}{1+(2 \pi \tau_L)^2} + N_{SQ}}{1 + (2 \pi \tau_{servo})^2},
-\end{equation}
-where $N_L$ and $\tau_L$ represent the white noise level and rolloff due johnson noise in the load resistor.
-The bottom plots in \figref{fig:ch8-servo} show the resulting values of $\tau_{servo}$ for all rows and all columns, for $I = 40$ and $I = 60$.
-
+The servo $I$ parameter was chosen to minimize \SQUID\ noise and allow sufficient bandwidth to readout the full bandwidth of the detectors.
+The target servo bandwidth depends on the measurement being made.
 When operating the array in normal conditions, the data readout rate is either \SI{3125}{Hz} or \SI{3030.3}{Hz}, depending on whether the dark \SQUID\ is read out.
 The time constant for the associated Nyquist frequencies are \abt~\SI{0.1}{ms}, so there is no need to use $I$ values with more bandwidth than this\footnote{In fact doing so is counter-productive, because it will alias \SQUID\ noise into the detector band}.
-The minimum usable value of $I$ depends on the measurement taken.
 Electrical detector time constants are \abt~\SI{4}{ms} in the superconducting state, and \abt~\SI{0.14}{ms} in the normal state.
 While biased into the transition, $\tau_{eff}$ is in the range \SIrange{1}{4}{ms}.
 For accurate measurement of detector time constants, $\tau_{servo}$ near \SI{0.1}{ms} is desirable, while values up to \SI{1.0}{ms} are acceptable while making images.
 
-For these reasons, while taking taking data in which the full readout bandwidth of \abt~\SI{3}{kHz} is required, $I = 40$ is used for all columns except 1, for which we use $I=70$.
-When taking images, $I=10$ has often been used; the impact of this choice on image quality is discussed in \sectionref{xxx}.
+Measuring the bandwidth of the servo loop is challenging because when the detectors are in the superconducting state the Johnson noise of the shunt resistor is higher than the \SQUID\ noise and the Johnson noise rolloff is \abt \SI{4}{\ms}, both factors which make it difficult to identify the servo rolloff from power spectra.
+However, if the bath temperature is raised above $T_c$ for the Al wirebonds connecting the \TES\ circuit to the input coils of the 1st stage \SQUIDs, the total resistance of the \TES\ circuit is raised from \SI{150}{\uohm} to \SIrange{20}{50}{\mohm}.
+This high resistance drives the Johnson noise of the load resistor below the \SQUID\ noise, and pushes the $L/R$ rolloff of the Johnson noise to \SI{3e-5}{s} or faster (\SI{3}{\dB} frequency of \SI{5}{\kilo\Hz} or higher), making a measurement of the servo bandwidth much easier.
+
+To choose $I$ values, I acquired data at the fastest multiplexing rate possible for 33 rows\footnote{This rate is achieved by only reporting one of the eight columns to the readout computer. The limiting factor in how fast the entire array can be multiplexed is packaging and sending the data to the readout computer.}, \SI{15151.5}{Hz} while the system was at a temperature of \SI{1.3}{\K}.
+For evern row and column that has a detector that responds in the superconducting step, I fit the resulting noise power spectrum to an equation of the form
+\begin{equation}
+  \frac{N_{SQ}}{1 + (2 \pi \tau_{servo})^2},
+\end{equation}
+Where $N_{SQ}$ is the white noise level and $\tau_{servo}$ gives the bandwidth of the servo loop.
+
+\figref{fig:ch8-servo} shows the resulting white noise levels and $\tau_{servo}$ values for a range of servo gain values $I$.
+The \SQUID\ white noise level is higher when operating with negative $I$ values, so we have chosen to use positive $I$ values.
+
+xxx summarize results!
 
 \begin{figure*}
 \includegraphics{drawings/ch8-servo.pdf}
