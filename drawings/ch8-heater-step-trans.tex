@@ -30,10 +30,10 @@
 	  \addplot+[only marks]
 	    table[x=time,y=dI]{../data/ch8-heater-step-trans.dat};
       \addlegendentry {Data}
-      \addplot+[mark=none,line width=2,domain=5.902930e-01:25] { 9.352239e-01 * (1 - exp(-(x-5.902930e-01)/2.651823e+00)) }
-        node[right,align=left] at (axis cs:5,1) 
-             {$s_I(0) = \SI{0.45}{\per\uV}$ \\ 
-              $\tau_{eff} = 2.65$~(ms) };
+      \addplot+[mark=none,line width=2,domain=5.731788e-01:25] { 9.738966e-01 * (1 - exp(-(x-5.731788e-01)/2.419908e+00)) }
+        node[right,align=left] at (axis cs:5,0.5) 
+             {$s_I(0) = \SI{0.46}{\per\uV}$ \\ 
+              $\tau_{eff} = \SI{2.42}{ms}$ };
       \addlegendentry {Fit}
 	\end{axis}
   \end{tikzpicture}
