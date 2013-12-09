@@ -9,7 +9,7 @@
 \pgfplotsset{
   every axis/.append style={
     scale only axis,
-    width=2.2in, height=2.0in,
+    width=3.5in, 
   },
   /tikz/every picture/.append style={
     baseline
@@ -20,8 +20,6 @@
 
 \pagestyle{empty}
 
-\begin{tabular}{rr}
-
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[xmin=0,xmax=25,
 		title={Response to Step in Heater Power (\RCm{30}{1})},
@@ -30,26 +28,12 @@
 	  \addplot+[only marks]
 	    table[x=time,y=dI]{../data/ch8-heater-step-trans.dat};
       \addlegendentry {Data}
-      \addplot+[mark=none,line width=2,domain=5.731788e-01:25] { 9.738966e-01 * (1 - exp(-(x-5.731788e-01)/2.419908e+00)) }
+      \addplot+[mark=none,line width=2,domain=5.642729e-01:25] { 9.743001e-01 * (1 - exp(-(x-5.642729e-01)/2.435975e+00)) }
         node[right,align=left] at (axis cs:5,0.5) 
-             {$s_I(0) = \SI{0.46}{\per\uV}$ \\ 
-              $\tau_{eff} = \SI{2.42}{ms}$ };
+             {$s_I(0) = \SI{0.69}{\per\uV}$ \\ \\
+              $\tau_{eff} = \SI{2.44}{ms}$ };
       \addlegendentry {Fit}
 	\end{axis}
   \end{tikzpicture}
-
-  &
-
-  \begin{tikzpicture}[trim axis right]
-	\begin{axis}[xmin=0,xmax=25,
-		title={Residuals},
-		xlabel={$t$ (ms)}, ylabel={Residual $\delta I$ (nA)} ]
-	  \addplot+[only marks] table[x=time,y=resid]{../data/ch8-heater-step-trans.dat};
-	\end{axis}
-  \end{tikzpicture}
-
-  \\
-
-\end{tabular}
 
 \end{document}
