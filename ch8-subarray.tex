@@ -1,15 +1,15 @@
 \chapter{Subarray Characterization}\label{c:det-array}
 
 The first 251-detector subarray has not yet been characterized as thoroughly as the prototype detectors.
-In particular, only seven good have been characterized.
+In particular, only seven good detectors have been characterized.
 The reason for this is that the saturation power of the detectors is xxx time higher than expected, which means that only some detectors be driven normal, and only at bath temperatures very close to $T_c$.
-In particular, none of the detector can be driven normal at the operating bath temperature for the array of 1100~mK.
+In particular, none of the detectors can be driven normal at the operating bath temperature for the array of 1100~mK.
 This means that we do not have \IV\ curves for any detectors at operating conditions, which limits the characterization than can be performed.
 
 Seven detectors used in taking images have working heaters and no other problems.
 These heaters allow us to take full \IV\ curves at all bath temperatures, allowing estimate of the detector thermal conductance $G$.
 The heaters also allow a direct measurement of detector responsivity and time constants, and thus allow a measurement of detector noise referred to optical power incident on the detector.
-This chapter describes these measurements on these seven detectors, as well as measurements of shunt resistor an inductances for all detectors.
+This chapter describes these measurements on these seven detectors, as well as measurements of shunt resistors and inductors for all detectors.
 
 Note that this lack of detector characterization does not prevent the array from working.
 It merely limits our understanding of the behavior of the detectors.
@@ -18,8 +18,8 @@ A more detailed characterization of more detectors will be carried out prior to 
 \section{Choice of \MCE\ Servo Gain Parameters}
 
 As described in \sectionref{xxx}, the \MCE\ operates the \SQUID\ multiplexing system.
-It supports extensive configuration options ranging from \SQUID\ bias current values to mulitplexing speed, to the order in which rows should be reported to client software. xx need reference to MCE stuff
-This thesis does not describe the process of chosing most of these parameters.
+It supports extensive configuration options ranging from \SQUID\ bias current values to multiplexing speed, to the order in which rows should be reported to client software. xx need reference to \MCE\ stuff
+This thesis does not describe the process of choosing most of these parameters.
 The one exception is the choice of \PID\ parameters for the flux-locked-loop servo that linearizes the output of the \SQUID\ amplifier chain.
 This section describes the choice of these parameters for different readout situations.
 
@@ -27,7 +27,7 @@ The feedback applied to an \SQ1 during frame $n+1$ is defined as \cite{mce_team_
 \begin{equation}
   FB_{n+1} = \frac{1}{2^{12}} \left[P q_n + I \sum_{i=1}^n e_i + D (e_n - e_{n-1}) \right].
 \end{equation}
-Here $e_n$ is the error observed during frame $n$, $q_n \equiv e_n + b q_n$ (where $b$ is some number small than 1), and $P$, $I$, and $D$ are the proportional, integral, and derivatve terms of the PID loop, respectively.
+Here $e_n$ is the error observed during frame $n$, $q_n \equiv e_n + b q_n$ (where $b$ is some number small than 1), and $P$, $I$, and $D$ are the proportional, integral, and derivative terms of the PID loop, respectively.
 The $FB$ values are expressed in terms of \DAC\ counter units applied to the \SQ1 feedback, and the errors $e$ are in terms of \ADC\ values for the output of the readout chain.
 The \Imager is operated with $P = D = 0$, so that the feedback simplifies to
 \begin{equation} \label{eqn:mce-pid-i-only}
@@ -36,7 +36,7 @@ The \Imager is operated with $P = D = 0$, so that the feedback simplifies to
 
 Using only $I$, the \MCE\ servo loop acts like a 1-pole filter.
 Higher values of $I$ increase the bandwidth of this filter until a ``critical gain'' is reached, as which point the feedback loop becomes unstable and begins to oscillate.
-$I$ should be chosen so that the the bandwidth of this filter is greater than that of the detectors themselves, but $I$ should not approach the critical gain too closely.
+$I$ should be chosen so that the bandwidth of this filter is greater than that of the detectors themselves, but $I$ should not approach the critical gain too closely.
 
 The servo $I$ parameter was chosen to minimize \SQUID\ noise and allow sufficient bandwidth to readout the full bandwidth of the detectors.
 The target servo bandwidth depends on the measurement being made.
@@ -63,7 +63,7 @@ However, if the bath temperature is raised above $T_c$ for the Al wirebonds conn
 This high resistance drives the Johnson noise of the load resistor below the \SQUID\ noise, and pushes the $L/R$ rolloff of the Johnson noise to \SI{3e-5}{s} or faster (\SI{3}{\dB} frequency of \SI{5}{\kilo\Hz} or higher), making a measurement of the servo bandwidth much easier.
 
 To choose $I$ values, I acquired data at the fastest multiplexing rate possible for 33 rows\footnote{This rate is achieved by only reporting one of the eight columns to the readout computer. The limiting factor in how fast the entire array can be multiplexed is packaging and sending the data to the readout computer.}, \SI{15151.5}{Hz} while the system was at a temperature of \SI{1.3}{\K}.
-For evern row and column that has a detector that responds in the superconducting state, I fit the resulting noise power spectrum to an equation of the form
+For every row and column that has a detector that responds in the superconducting state, I fit the resulting noise power spectrum to an equation of the form
 \begin{equation}
   \frac{N_{SQ}}{1 + (2 \pi \tau_{servo})^2},
 \end{equation}
@@ -74,15 +74,15 @@ The \SQUID\ white noise level is higher when operating with negative $I$ values,
 When measuring time constants $I=50$ has been used for all columns, to maximize the number of detectors below the $\tau_{servo} =$ \SIrange{2e-4}{5e-5}{s} range.
 This also places most detectors in a region where \SQUID\ noise will be aliased into the measurement band, but because I always average over many measurements, this is not a major concern.
 
-For taking video images, the servo does not need to be run as aggresively. Servo gain $I = \num{20}$ is sufficient for these measurements. (xxx justify this based on measured time constants later).
+For taking video images, the servo does not need to be run as aggressively. Servo gain $I = \num{20}$ is sufficient for these measurements. (xxx justify this based on measured time constants later).
 
 \begin{figure*}
 \includegraphics{drawings/ch8-servo.pdf}
-\caption{Plots summarizing beahavior using different servo gains $I$.
-  Box plot boxes represent the \SIrange{5}{95}{\percent} quantiless, middle line the median, upper and lower whiskers the maximum/minimum values, across all rows/columns with detectors that respond in the superconducting state.
+\caption{Plots summarizing behavior using different servo gains $I$.
+  Box plot boxes represent the \SIrange{5}{95}{\percent} quantiles, middle line the median, upper and lower whiskers the maximum/minimum values, across all rows/columns with detectors that respond in the superconducting state.
 \textbf{Upper} Plot of \SQUID\ $\tau_{servo}$ vs servo gain $I$.
 Servo bandwidth increases with $I$.
-At $I \ge \num{60}$, very small $\tau_{servo}$ begin to appear. This indicates either a rolloff above the bandwith of the measurement, or the begining of an unstable servo loop.
+At $I \ge \num{60}$, very small $\tau_{servo}$ begin to appear. This indicates either a rolloff above the bandwidth of the measurement, or the beginning of an unstable servo loop.
 \textbf{Lower Left} Servo response times for $I = 40$ for all detectors.
 \textbf{Lower Right} Plot of median \SQUID\ white noise level vs. servo gain $I$. Positive gains consistently give lower dark \SQUID\ noise levels.
 }
@@ -112,7 +112,7 @@ The design resistance of the shunts was \SI{180}{\uohm}, and the design inductan
 Each chips contains 32 shunt resistors and 32 inductors.
 
 To measure $R_{sh}$ and $L$ for these chips I took noise measurements using zero detector bias current at two different bath temperature: 980~mK and 1160~mK.
-At these bath temperatures and at zero detector bias the detectors are superconducting, so that measured noise is due to the shunt resistor, and parasitic resistance, and SQUID noise in the multiplexed readout system itself.
+At these bath temperatures and at zero detector bias the detectors are superconducting, so that measured noise is due to the shunt resistor, any parasitic resistance, and SQUID noise in the multiplexed readout system itself.
 Data was collected at 3030.3~Hz, and 20 data acquisitions lasting 33 seconds were taken at each bath temperature.
 
 A power spectrum was estimated for each detector for each data acquisition using \MATLAB's \texttt{pwelch} function, using a \FFT\ size of $2^{12}$.
@@ -125,10 +125,10 @@ The shunt resistance $R_{sh}$, inductance $L$, and readout chain white noise lev
 
 \figref{fig:rsh-l-plots} shows histogram plots of the resulting \Rsh\ and $L$ values.
 \Rsh\ has a mean of \SI{149}{\uohm} with standard deviation \SI{6}{\uohm}.
-The meassured value for \Rsh\ also includes any parasitic resistance in the circuit, but no evidence for significant parasitic resistance has ever been seen, so this parasitic resistance is assumed to be zero.
+The measured value for \Rsh\ also includes any parasitic resistance in the circuit, but no evidence for significant parasitic resistance has ever been seen, so this parasitic resistance is assumed to be zero.
 
 The measured value for $L$ includes the Nyquist inductance on the interface chip, the input inductance of the first-stage \SQUID\ of the multiplexed readout system, as well as any parasitic inductance in the circuit.
-Using this measurement it is not possible to extract the inductance of the Nyqust inductor itself, but this is not a problem because the total inductance is the relevant  quantity for understanding the behavior of the detector and it's circuit.
+Using this measurement it is not possible to extract the inductance of the Nyqust inductor itself, but this is not a problem because the total inductance is the relevant  quantity for understanding the behavior of the detector and its circuit.
 
 $L$ has a mean of 574~nH with a standard deviation of 87~nH.
 However, this mean includes two sets of clear outliers: all values for multiplexing row 4 are clustered around 200~nH, and all values for multiplexing row 25 are clustered around 440~nH.
@@ -140,7 +140,7 @@ It is not known whether this correlation is a real physical effect or an artifac
 
 \begin{figure*}
 \includegraphics{drawings/ch8-rsh-l-plots.pdf}
-\caption{Plots summarizing results of measurements of shunts and Nyqust inductors.
+\caption{Plots summarizing results of measurements of shunts and Nyquist inductors.
 \textbf{Upper Left} Histogram of shunt resistance \Rsh.
 \textbf{Upper Right} Histogram of total inductance in circuit, which includes the interface chip Nyquist inductor, the inductance of the SQ1 input coil, and any parasitic inductance.
 \textbf{Lower Left} Scatterplot showing all measured Rsh and L values. A correlation is apparent, the reason for which is not understood.
@@ -157,7 +157,7 @@ But four detectors can be biased into the transition and work well, but show no 
 The reasons for these detectors not showing a response to heater power are not fully understood.
 This leaves 14 working detectors that also show a response to applied heater power.
 However, a short between one of the \TES\ bias lines and the heater bias line means that ramping the current bias for some of the \TES\ detectors also ramps the heater bias.
-This means that for seven of the 14 working detectors that show a response to applied heate power, interpreting \IV\ curves is difficult because a different amount of heater power is applied at each detector bias value.
+This means that for seven of the 14 working detectors that show a response to applied heater power, interpreting \IV\ curves is difficult because a different amount of heater power is applied at each detector bias value.
 This means that for these seven detectors it is not possible to measure $G$ or to calibrate the power being applied by the resistors.
 
 This leaves seven detectors with heaters for which \IV\ curves can be taken, and $G$ measured.
@@ -187,13 +187,13 @@ As applied heater current decreases, the Joule power at the start of the transit
 In the lower left, the Joule power at $0.99R_{n}$ is plotted vs applied heater current.
 A fit to \eqnref{eqn:rhtr-fit} is also plotted.
 Finally, the lower right plot show the $R$ vs $P_J$ plots after the heater power has been added to each curve.
-This plots shows that the powers are equalized very high in the transition, where the assumption of Joule power dependent only on \TES\ resistance holds.
+This plot shows that the powers are equalized very high in the transition, where the assumption of Joule power dependent only on \TES\ resistance holds.
 It also shows that this assumption breaks down deeper in the transition.
 
 \begin{figure*}
 \includegraphics{drawings/ch8-heater-r-plots.pdf}
 \caption{Plots heater measurements, for the case of \RCm{29}{1}.
-\textbf{Upper Left} \IV\ curves. The \IV\ curves should turn completely vertial when the detector becomes fully superconducting at zero voltage, but these curves shown a non-infinite slope. The reason for this is that the readout system as configured for these \IV\ curves was unable keep up with the rapid change of current in the superconducting branch.
+\textbf{Upper Left} \IV\ curves. The \IV\ curves should turn vertical when the detector becomes fully superconducting at zero voltage, but these curves shown a non-infinite slope. The reason for this is that the readout system as configured for these \IV\ curves was unable keep up with the rapid change of current in the superconducting branch.
 \textbf{Upper Right} Same data as in upper left plot, but represented in terms of \TES\ Joule power and resistance. As the bias current for the heaters is increased, the curves shift to the left.
 \textbf{Lower Left} Measured $P_{J}$ vs heater current at $0.99R_n$, as well as fit to \eqnref{eqn:rhtr-fit}.
 \textbf{Lower Right} Same plot as upper right, but the heater power based on $R_{htr} = \SI{23.6}{\ohm}$ has been added to each curve.}
@@ -204,7 +204,7 @@ It also shows that this assumption breaks down deeper in the transition.
 The seven heaters for columns 0 and 1 have a mean of \SI{23.8}{\ohm} with a standard deviation of \SI{0.26}{\ohm}.
 
 It is worth noting that determining the values of $R_{htr}$ requires knowing the current through the heaters.
-But because $R_{htr}$ is determined through the power disspiated in the resistor, an incorrect assumption about will lead to a an incorrect value of $R_{htr}$ which leaves $I_{htr}^2 R_{htr}$ unchanged.
+But because $R_{htr}$ is determined through the power dissipated in the resistor, an incorrect assumption about the current will lead to a an incorrect value of $R_{htr}$ which leaves $I_{htr}^2 R_{htr}$ unchanged.
 So whenever the value $R_{htr}$ is used to calculated a power, the power value will be correct even in the face of an incorrect assumption about the current through the heater.
 
 \begin{table*}[t]
@@ -251,14 +251,14 @@ In this analysis I assume $P_{opt} = 150$~pW, while also showing how different a
 \tableref{tab:basic-det-props} lists the resulting values for $G$, $T_c$ and $n$.
 \figref{fig:heater-g-plots} contains plots summarizing and explaining this data.
 The uncertainties in $G$, $T_c$ and $n$ introduced by the unknown value of $P_{opt}$ are different.
-$G$'s uncertainty from $P_{opt}$ is about the same size as the statistical uncertainty due to the fit, while $T_c$'s uncertainity from $P_{opt}$ is much larger than the statistical uncertainty.
+$G$'s uncertainty from $P_{opt}$ is about the same size as the statistical uncertainty due to the fit, while $T_c$'s uncertainty from $P_{opt}$ is much larger than the statistical uncertainty.
 Both of these uncertainties should be taken into account when predicting measurement of detector noise.
 $n$ shows no apparent trend with $P_{opt}$.
 
 \begin{figure*}
 \includegraphics{drawings/ch8-g-plots.pdf}
 \caption{Plots summarizing results of $G$, $T_c$ and $n$ measurements for seven detectors with good heaters.
-All error bars and ellipses are 95 \% confidence intervals for statisical error; any systematic error is not included.
+All error bars and ellipses are 95 \% confidence intervals for statistical error; any systematic error is not included.
 \textbf{Upper Left} Plot showing $P_{sat}$ vs $T_b$ for \RCm{31}{2}, assuming $P_{opt} = 150$~pW.
 The red line shows the best fit to \eqnref{eqn:g-fit}.
 The data covers 25 temperatures from 995~mK--1160~mK, and 11 different heater biases.
@@ -266,7 +266,7 @@ The data covers 25 temperatures from 995~mK--1160~mK, and 11 different heater bi
 \textbf{Lower Left} Plot showing variation of $G$ for \RCm{31}{2} vs assumed value of $P_{opt}$.
 The statistical uncertainty in $G$ for this detector is approximately the same as the systematic uncertainty that results from the estimation of $P_{opt}$.
 \textbf{Lower Right} Plot showing variation of $T_c$ for \RCm{31}{2} vs assumed value of $P_{opt}$.
-In this case the systematic uncertainty is larger than the statistical uncertainity.
+In this case the systematic uncertainty is larger than the statistical uncertainty.
 The value of $n$ shows no trend with $P_{opt}$.
 } 
 \label{fig:heater-g-plots}
@@ -281,8 +281,8 @@ The reason for this discrepancy is not known.
 
 Prediction of detector G noise
 
-xxx - need to account for correlation between G, n, Tc that arrises from the fit.
-Answer: there is a strong correlationbetween G and n, should plot these ellipses on G vs n plot. ALso covariance with Tc, which you can account for in noise predcitions, but makes little difference.
+xxx - need to account for correlation between G, n, Tc that arises from the fit.
+Answer: there is a strong correlation between G and n, should plot these ellipses on G vs n plot. Also covariance with Tc, which you can account for in noise predictions, but makes little difference.
 
 should at least look at all psat vs temp plots.
 
@@ -297,7 +297,7 @@ The result was fit to an equation of the form
 \begin{equation} \label{eqn:ch8-heater-step-trans}
   \delta I(t) = - \delta P_{htr} s_I(0) (1 - e^{-t/\tau_{eff}}),
 \end{equation}
-which is just \eqnref{eqn:htr-step-resp-high-time} with the the \DC\ responsivity explicitly inserted.
+which is just \eqnref{eqn:htr-step-resp-high-time} with the \DC\ responsivity explicitly inserted.
 
 \figref{fig:ch8-heater-step-trans} shows a sample fit to \eqnref{eqn:ch8-heater-step-trans}.
 \tableref{tab:trans-det-props} lists the best-fit values of $s_I(0)$ and $\tau_{eff}$.
