@@ -27,7 +27,10 @@
 \numberwithin{table}{chapter}
 
 % Bibliography
-\usepackage[backend=biber,style=numeric-comp]{biblatex}
+\usepackage[backend=biber,
+    style=numeric-comp,
+    sorting=none,
+    url=false]{biblatex}
 \addbibresource{thesis.bib}
 
 \title{A 350 GHz Video Imaging System}
@@ -60,7 +63,7 @@
 
 % \chapter{System Specifications, Challenges and Solutions}\label{c:specs}
 
-%\include{ch3-tes-theory}
+\include{ch3-tes-theory}
 
 %\include{ch4-sys-design}
 
@@ -74,18 +77,18 @@
 
 %\include{ch9-imaging}
 
-\chapter{Vocab}
+% \chapter{Vocab}
 
-Placeholder for terms
+% Placeholder for terms
 
-\begin{description}
-\item[``90~K'' Cold Plate]
-\item[``4~K'' Cold Plate]
-\item[Sorption Fridge]
-\item[350~GHz Imager]
-\item[PhBr]
+% \begin{description}
+% \item[``90~K'' Cold Plate]
+% \item[``4~K'' Cold Plate]
+% \item[Sorption Fridge]
+% \item[350~GHz Imager]
+% \item[PhBr]
 
-\end{description}
+% \end{description}
 
 \printbibliography
 
