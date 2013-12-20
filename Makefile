@@ -3,6 +3,7 @@
 # [1]: http://tex.stackexchange.com/questions/45/how-can-i-speed-up-latex-compilation
 
 PDFLATEX = pdflatex -interaction=batchmode
+LUALATEX = lualatex -interaction=batchmode
 PDFCROP  = pdfcrop
 RM       = /usr/bin/rm
 
@@ -15,6 +16,9 @@ default : thesis.pdf
 
 thesis.pdf : thesis.tex $(InputTeXFiles) $(ImageFiles) $(PDFSAGFiles) thesis.sty
 	$(PDFLATEX) $<
+
+drawings/ch8-cm-plots.pdf: drawings/ch8-cm-plots.tex thesis.sty
+	cd drawings && $(LUALATEX) $(notdir $<) && $(PDFCROP) $(notdir $@) $(notdir $@)
 
 drawings/%.pdf: drawings/%.tex thesis.sty
 	cd drawings && $(PDFLATEX) $(notdir $<) && $(PDFCROP) $(notdir $@) $(notdir $@)
