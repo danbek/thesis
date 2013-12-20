@@ -335,3 +335,65 @@ Detector &  $s_I(0)$ (\si{\per\uV}) & $\tau_{eff}$ (\si{\ms}) \\
 \bottomrule
 \end{tabular}
 \end{table*}
+
+
+\section{Common Mode Signal and $1/f$ noise}
+
+Our detectors have significant $1/f$ noise, with a \SI{3}{\decibel} knee of $\abt\SI{0.7}{\hertz}$.
+Most of this noise is due to bath temperature fluctuations which are uncontrolled by the Cryocon \PID\ loop.
+\figref{fig:ch8-cm-plots} contains several plots relating to this.
+The upper left plot shows raw 10 minute detector timestreams for 15 detectors.
+The common mode signal is evident in these plots, and is much stronger than the white noise at frequencies of \SI{1}{\Hz} and faster.
+The upper right plot shows the same detector timestreams after removal of the mean of all ``good'' timestreams for columns 0 and 1 (the only columns which were biased for this test).
+The large reduction of $1/f$ noise is evident in this plot.
+The lower left plot shows direct evidence for this via the current noise power spectral density both before and after subtracting the common mode.
+Also plotted is the power spectral density after subtracting the best-fit 4th order polynomial.
+This does reduce noise at very low frequencies, but the effect is small.
+
+The power spectral density plot has two important features.
+First, a strong noise peak is located at \SI{1.411}{\Hz}.
+This is caused by the \abt \SI{1.4}{\Hz} cycle of the \PTC; the physical mechanism could either by microphonic pickup of the vibrations caused by the \PTC\ cycle, or actual variation in bath temperature induced by the cycle.
+This signal can be removed either through a common-mode substraction scheme or a notch filter.
+Second, the detector noise signal is completely unaffected by the common mode signal at frequencies faster than \SI{2}{\Hz}.
+Because the frame rate of the video system is 6 FPS or faster, this indicated that the only impact of the strong common-mode noise signal on videos is the need to account for a time-varying detector offset.
+Out approach to dealing with this offset is covered in \sectionref{xxx}.
+
+The lower right plot in \figref{ch8-cm-plots} shows the detector timestream for \RCm{29}{1}, translated into variation in bath temperature.
+We can define a differential thermal conductance relative to changes in bath temperature $G_b$ via
+\begin{equation}
+  G_b \equiv \frac{dP_b}{d T_nb} = G \left( \frac{T_b}{T} \right)^{n-1}.
+\end{equation}
+Then the equivalant bath temperature change for a given \TES\ current change will be given by
+\begin{equation}
+  \Delta T_b = \frac{\delta I}{s_I G_b}.
+\end{equation}
+For this temp the bath temperature was set to \SI{1100}{\mK}, so the temperature variations over several-minute timescales are a few parts in $10^{4}$.
+
+\begin{figure*}
+\includegraphics{drawings/ch8-cm-plots.pdf}
+\caption{Plots summarizing common mode signal and $1/f$ noise.
+\textbf{Upper Left}
+Plow showing raw detector output for 15 detectors over a 10-minute data acquisition.
+Only every 100th data point is plotted, which makes the white noise level appear somewhat smaller than it really is. 
+\textbf{Upper Right} 
+The same data after removal of the mean signal.
+\textbf{Upper Left} 
+Current noise power spectral density for the raw data, the raw data minues the common mode (``No CM''), the raw data minus the common modea and the best-fit 4th-order polynomial (``No CM, Poly''), and the common mode itself.
+The strong noise peak at \SI{1.411}{\Hz} is due to the \PTC, as explained in the text.
+\textbf{Lower Right} 
+Raw datastream for \RCm{29}{1}, after conversion to a bath temperature variation, as described in the text.
+}
+\label{fig:ch8-cm-plots}
+\end{figure*}
+\section{MicroPhonic Pickup}
+
+Some \TES\ detectors have been prone to microphonic pickup.
+The earliest verion of the cryostat used for this project used a Gifford-McMahon (\GM) cryocooler, which vibrates the cryostate significantly more than a \PTC\ does.
+Prototype detectors had significantly higher noise levels with the \GM\ cooler running than when it was out; in addition the dector noise could be directly increased by striking the side of the cryostat with a soft mallet while the \GM\ cooler was turned off.
+We interpreted this behavior as evidence for microphic pickup, and as a result replaced the \GM\ cooler with a \PTC\ cooler.
+
+To check whether microphonic pickup was present for the production detectors and the \PTC\ cooler, I took noise data both with the \PTC\ running and turned off.
+In both cases the bath temperature was held steady at \SI{1100}{\mK} using the Cryocon temperature controller.
+
+\figref{fig:xxx} shows current noise power spectra for the four detectors with good heaters on column 0, with the \PTC\ both on and off.
+

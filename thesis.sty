@@ -45,6 +45,8 @@
 \newcommand*{\PID}{{\small PID}}
 \newcommand*{\DAC}{{\small DAC}}
 \newcommand*{\ADC}{{\small ADC}}
+\newcommand*{\GM}{{\small PTC}}
+\newcommand*{\PTC}{{\small GM}}
 
 % shortcuts
 \newcommand*{\SQ}[1]{{\small SQ}#1}
@@ -59,5 +61,5 @@ C\number\numexpr#2-1\relax
 } % this allows me specify row/col indices MATLAB-style
 \newcommand*{\Rsh}{\ensuremath{R_{sh}}}
 \newcommand*{\Loop}{\ensuremath{\mathcal{L}_I}}
-\newcommand*{\abt}{\raise.17ex\hbox{$\scriptstyle\sim$}}
+\newcommand*{\abt}{\raise.17ex\hbox{\ensuremath{\scriptstyle\sim}}}
 \newcommand{\Inoise}[1]{\SI[mode=math,per-mode=symbol]{#1}{\A\per\sqrt{Hz}}}
