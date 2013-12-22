@@ -405,12 +405,18 @@ where $S_{I,\textsc{ptc}}$ and $S_{I,\mbox{\tiny{No}}\textsc{ ptc}}$ are the mea
 
 \figref{fig:ch8-ptc-plots} shows a histogram of this excess noise. Most detectors have higher noise with the \PTC\ on, but this excess noise is typically only a few percent. 
 The mean excess noise is \SI{1}{\percent}.
+The figure also contains a plot of the power spectral density for \RCm{29}{1} with the \PTC\ on and off.
 
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch8-ptc-plots.pdf}
-\caption{Histogram showing excess noise due to \PTC, defined as ratio of total noise above \SI{6}{\Hz} (see text for precise definition).
+\caption{%
+\textbf{Top}
+Histogram showing excess noise due to \PTC, defined as ratio of total noise above \SI{6}{\Hz} (see text for precise definition).
 More detectors have higher noise with \PTC\ on than off, but the mean exces noise is only \SI{1}{\percent}.
+\textbf{Bottom}
+Current noise for \RCm{29}{1} with \PTC\ on and off, after subtracting common mode noise.
+The noise below \SI{30}{\Hz} is 1.5--2.5 times higher with the \PTC\ on, but the total standard deviation of the relevant frequencies of $f >= \SI{6}{\Hz}$ is only \SI{2.6}{\percent}.
 }
 \label{fig:ch8-ptc-plots}
 \end{figure*}

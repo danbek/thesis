@@ -9,7 +9,7 @@
 \pgfplotsset{
   every axis/.append style={
     scale only axis,
-    width=4.0in,
+    width=4.0in, height=2.0in
   },
   /tikz/every picture/.append style={
     baseline
@@ -30,5 +30,17 @@
 	  table[y=6up]{../data/ch8-ptc-plots.dat};
 	\end{axis}
   \end{tikzpicture}
+  
+  \vspace{0.25 in}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{loglogaxis}[%xmin=2.8,xmax=5,
+		title={Current Noise PSD \RCm{29}{1}},
+		xlabel={Frequency (\si{\hertz})}, ylabel={Noise Power (\Inoise{})} ]
+	  \addplot+[mark=none] table[x=fs,y=Pxxs]{../data/ch8-ptc-ps-plots.dat}; \addlegendentry {\PTC\ On}
+	  \addplot+[mark=none] table[x=fs,y=Pxxnos]{../data/ch8-ptc-ps-plots.dat}; \addlegendentry {\PTC\ Off}
+	\end{loglogaxis}
+  \end{tikzpicture}
+
 
 \end{document}
