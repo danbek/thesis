@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=4.0in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[
+        ymin=0, 
+		title={Excess Noise with \PTC\ On},
+		xlabel={Fractional Excess Noise}, ylabel={Quantity} ]
+	  \addplot [hist={data min=0.9,data max=1.15,bins=20},
+		        fill=blue!75]
+	  table[y=6up]{../data/ch8-ptc-plots.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+\end{document}
