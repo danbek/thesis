@@ -405,7 +405,7 @@ Then the excess noise for each detector was calculated as
   \sqrt{  \frac{ \sum_{f >= \SI{6}{\Hz}} S_{I,\textsc{ptc}}(f) }
                { \sum_{f >= \SI{6}{\Hz}} S_{I,\mbox{\tiny{No}}\textsc{ ptc}}(f) }},
 \end{equation}
-where $S_{I,\textsc{ptc}}$ and $S_{I,\mbox{\tiny{No}}\textsc{ ptc}}$ are the measured current noise power spectral densities wit the \PTC\ turned on and off, expressed in units of \si{\A^2 \per \Hz}.
+where $S_{I,\textsc{ptc}}$ and $S_{I,\mbox{\tiny{No}}\textsc{ ptc}}$ are the measured current noise power spectral densities with the \PTC\ turned on and off, expressed in units of \si{\A^2 \per \Hz}.
 
 \figref{fig:ch8-ptc-plots} shows a histogram of this excess noise. Most detectors have higher noise with the \PTC\ on, but this excess noise is typically only a few percent. 
 The mean excess noise is \SI{1}{\percent}.
@@ -423,4 +423,33 @@ Current noise for \RCm{29}{1} with \PTC\ on and off, after subtracting common mo
 The noise below \SI{30}{\Hz} is 1.5--2.5 times higher with the \PTC\ on, but the total standard deviation of the relevant frequencies of $f >= \SI{6}{\Hz}$ is only \SI{2.9}{\percent}.
 }
 \label{fig:ch8-ptc-plots}
+\end{figure*}
+
+\section{Noise Aliasing}
+
+As explained in \sectionref{xxx}, the \MCE\ takes data at \SI{15625}{\hertz}, but is only capable of sending data for the full array of 251~detectors to the readout computer at \SI{3125}{\hertz}.
+This raises the question of how much noise is aliased from the \SIrange{3125}{15625}{\hertz} band to below \SI{3125}{\hertz}.
+To check this I acquired data for the full array at the normal rate of \SI{3125}{\hertz} and for column 0 at \SI{15625}{\hertz}.
+5 data files were acquired for each case. For each row in column 0 for each data file a power spectrum was taken after subtracting the common mode signal, and the excess noise was calculated as
+\begin{equation}
+  \sqrt{  \frac{ \sum S_{I,\SI{3125}{\Hz}}(f) \Delta f }
+               { \sum S_{I,\SI{15625}{\Hz}}(f) \Delta f }},
+\end{equation}
+where $S_{I,\SI{3125}{\Hz}}$ and $S_{I,\SI{15625}{\Hz}}$ are the measured current noise power spectral densities at the two different multiplexig rate, expressed in units of \si{\A^2 \per \Hz}.
+The sums are performed only over those frequency components in the range \SIrange{3125}{15625}{\Hz}, and note that $\Delta f$ is different for the two sampling rates.
+
+\figref{fig:ch8-noise-aliasing} summarizes the results.
+
+\begin{figure*}
+  \centering
+\includegraphics{drawings/ch8-noise-aliasing.pdf}
+\caption{%
+\textbf{Top}
+Plot showing fractional excess noise (see text for definition) due to noise aliasing for all rows of column 0.
+The error bars are for \SI{95}{\percent} confidence intervals, and the average excess noise is \SI{15}{\percent}.
+\textbf{Bottom}
+Sample power spectra at \SI{3125}{\hertz} and \SI{15625}{\hertz} for \RCm{5}{1}.
+For this detector the excess noise is \SI{17}{\percent}.
+}
+\label{fig:ch8-noise-aliasing}
 \end{figure*}
