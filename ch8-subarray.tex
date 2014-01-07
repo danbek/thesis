@@ -429,16 +429,22 @@ The noise below \SI{30}{\Hz} is 1.5--2.5 times higher with the \PTC\ on, but the
 
 As explained in \sectionref{xxx}, the \MCE\ takes data at \SI{15625}{\hertz}, but is only capable of sending data for the full array of 251~detectors to the readout computer at \SI{3125}{\hertz}.
 This raises the question of how much noise is aliased from the \SIrange{3125}{15625}{\hertz} band to below \SI{3125}{\hertz}.
-To check this I acquired data for the full array at the normal rate of \SI{3125}{\hertz} and for column 0 at \SI{15625}{\hertz}.
+To check this I acquired data for the full array, under standard operating conditions, at the normal rate of \SI{3125}{\hertz} and for column 0 at \SI{15625}{\hertz}.
 5 data files were acquired for each case. For each row in column 0 for each data file a power spectrum was taken after subtracting the common mode signal, and the excess noise was calculated as
 \begin{equation}
   \sqrt{  \frac{ \sum S_{I,\SI{3125}{\Hz}}(f) \Delta f }
                { \sum S_{I,\SI{15625}{\Hz}}(f) \Delta f }},
 \end{equation}
-where $S_{I,\SI{3125}{\Hz}}$ and $S_{I,\SI{15625}{\Hz}}$ are the measured current noise power spectral densities at the two different multiplexig rate, expressed in units of \si{\A^2 \per \Hz}.
-The sums are performed only over those frequency components in the range \SIrange{3125}{15625}{\Hz}, and note that $\Delta f$ is different for the two sampling rates.
+where $S_{I,\SI{3125}{\Hz}}$ and $S_{I,\SI{15625}{\Hz}}$ are the measured current noise power spectral densities at the two different multiplexing rates, averaged over all 5 data files, expressed in units of \si{\A^2 \per \Hz}.
+The sums are performed only over those frequency components in the range \SIrange{6}{1562.5}{\Hz}, and note that $\Delta f$ is different for the two sampling rates.
 
 \figref{fig:ch8-noise-aliasing} summarizes the results.
+The average aliased noise is \SI{14}{\percent}, but some detectors have statistically significant higher levels of aliased noise; for example, \RCm{20}{1} has \SI{28}{\percent} excess noise.
+Note that for some detectors the large error bars are due to changes over time of the noise level (for both rates of data acquisition).
+
+The \MCE\ can be configured to apply a 4-pole digital lowpass filter to the the \SI{15625}{\Hz} data stream \cite{mce_team_digital_????}.
+An appropriate choice of the cutoff frequency for this filter can greatly reduce aliased noise.
+We have not yet implemented this filter, but plan to do for future operation of the system.
 
 \begin{figure*}
   \centering
@@ -446,7 +452,7 @@ The sums are performed only over those frequency components in the range \SIrang
 \caption{%
 \textbf{Top}
 Plot showing fractional excess noise (see text for definition) due to noise aliasing for all rows of column 0.
-The error bars are for \SI{95}{\percent} confidence intervals, and the average excess noise is \SI{15}{\percent}.
+The error bars are for \SI{95}{\percent} confidence intervals, and the average excess noise is \SI{14}{\percent}.
 \textbf{Bottom}
 Sample power spectra at \SI{3125}{\hertz} and \SI{15625}{\hertz} for \RCm{5}{1}.
 For this detector the excess noise is \SI{17}{\percent}.
