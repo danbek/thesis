@@ -1,0 +1,36 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=5in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[xmin=0,xmax=3500, 
+		title={},
+		xlabel={$I_{bias} \delta I$ (\si{\uA^2})}, ylabel={$\tau_{meas}$ (ms)} ]
+	  \addplot+[only marks, error bars/.cd, y dir=both, y explicit]
+        table[x=x, y=teff, y error=teff_err]{../data/ch8-tau-nat-fit.dat};
+      \addlegendentry {Data}
+	  \addplot+[mark=none,domain=0:3500] {9.446261 - 9.446261*1.160892e-04*x};
+      \addlegendentry {Fit}
+	\end{axis}
+  \end{tikzpicture}
+
+
+\end{document}

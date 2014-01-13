@@ -148,7 +148,7 @@ It is not known whether this correlation is a real physical effect or an artifac
 \label{fig:rsh-l-plots}
 \end{figure*}
 
-\section{Measurement of Heater Resistors}
+\section{Measurement of Heater Resistors} \label{sec:heater-r}
 
 Only 23 of the 251 detectors have heaters wired up.
 Of these 23, there are nine detectors which show no response to applied heater power.
@@ -214,22 +214,45 @@ $P_{opt} = 150$~pW is assumed everywhere.
 Uncertainties are 95 \% confidence intervals after marginalizing over other fit parameters, and do not include systematic uncertainties due to the unknown value of $P_{opt}$ or uncertainty in the value of the shunt resistors.
 }
 \label{tab:basic-det-props}
-\begin{tabular}{l l l l l}
+\begin{tabular}{l l l l l l}
 \toprule
-Detector &  $R_{htr}$ (\si{\ohm}) & $G$ (\si{\nano\W\per\K}) & $n$ & $T_c$ (mK) \\
+Detector &  $R_{htr}$ (\si{\ohm}) & $G$ (\si{\nano\W\per\K}) & $n$ & $T_c$ (mK) & $\tau$ (ms) \\
+\RCm{29}{1} & 23.6 & 7.63 $\pm$ 0.08 & 3.52 $\pm$ 0.10 & 1209.4 $\pm$ 0.6 & 8.94 $\pm$ 0.1 \\
+\RCm{30}{1} & 23.5 & 7.67 $\pm$ 0.07 & 3.54 $\pm$ 0.09 & 1213.9 $\pm$ 0.6 & 8.82 $\pm$ 0.2 \\
+\RCm{31}{1} & 24.3 & 7.78 $\pm$ 0.09 & 3.64 $\pm$ 0.11 & 1214.7 $\pm$ 0.7 & 9.45 $\pm$ 0.1 \\
+\RCm{32}{1} & 23.9 & 7.01 $\pm$ 0.43 & 3.18 $\pm$ 0.60 & 1211.6 $\pm$ 3.8 & 10.22 $\pm$ 0.1 \\
+\RCm{29}{2} & 23.8 & 7.70 $\pm$ 0.09 & 3.62 $\pm$ 0.11 & 1213.7 $\pm$ 0.7 & 9.01 $\pm$ 0.1 \\
+\RCm{31}{2} & 23.6 & 7.32 $\pm$ 0.16 & 3.45 $\pm$ 0.22 & 1211.3 $\pm$ 1.4 & 9.51 $\pm$ 0.1 \\
+\RCm{32}{2} & 23.8 & 7.50 $\pm$ 0.27 & 3.74 $\pm$ 0.35 & 1215.6 $\pm$ 2.3 & 10.98 $\pm$ 0.1 \\
 \midrule
-\RCm{29}{1} & 23.6 & 7.63 $\pm$ 0.08 & 3.52 $\pm$ 0.10 & 1209.4 $\pm$ 0.6 \\
-\RCm{30}{1} & 23.5 & 7.67 $\pm$ 0.07 & 3.54 $\pm$ 0.09 & 1213.9 $\pm$ 0.6 \\
-\RCm{31}{1} & 24.3 & 7.78 $\pm$ 0.09 & 3.64 $\pm$ 0.11 & 1214.7 $\pm$ 0.7 \\
-\RCm{32}{1} & 23.9 & 7.01 $\pm$ 0.43 & 3.18 $\pm$ 0.60 & 1211.6 $\pm$ 3.8 \\
-\RCm{29}{2} & 23.8 & 7.70 $\pm$ 0.09 & 3.62 $\pm$ 0.11 & 1213.7 $\pm$ 0.7 \\
-\RCm{31}{2} & 23.6 & 7.32 $\pm$ 0.16 & 3.45 $\pm$ 0.22 & 1211.3 $\pm$ 1.4 \\
-\RCm{32}{2} & 23.8 & 7.50 $\pm$ 0.27 & 3.74 $\pm$ 0.35 & 1215.6 $\pm$ 2.3 \\
-\midrule
-Mean & 23.8 & 7.52 & 3.53 & 1212.9 \\
+Mean & 23.8 & 7.52 & 3.53 & 1212.9 & 9.56 \\
 \bottomrule
 \end{tabular}
 \end{table*}
+
+\section{Measurement of Natural Time Constant $\tau$}
+
+%% run thesis/ana_tau_nat.m for results
+
+The approach described in \sectionref{sec:tau-nat-theory} was used to measured the natural time constant tau.
+The response to a step-function change in applied heater power was measured while the detectors were at $T_{bath} = \SI{1100}{\mK}$.
+As described in \sectionref{sec:heater-r} the response to multiple steps was averaged together prior to making a fit.
+For each bias point the measured time constant $\tau_{meas}$ and change in \TES\ current $\delta I$ was measured. A fit was then performed to \eqnref{eqn:teff-from-tau}:
+\begin{equation} \label{eqn:tau-nat-fit}
+  \tau_{meas} = \tau - \tau \mathcal{K} (I_{bias} \delta I).
+\end{equation}
+In this fit, $\tau_{meas}$ is considered the dependent variable, the product $(I_{bias} \delta I)$ is the independent variable, and both $\tau$ and $\mathcal{K}$ are fit for.
+
+\figref{fig:tau-nat-plots} shows an example of fitting to \eqnref{eqn:tau-nat-fit}, and the measured values of $\tau$ are listed in \tableref{tab:basic-det-props}.
+
+\begin{figure*}
+  \centering
+\includegraphics{drawings/ch8-tau-nat-plots.pdf}
+\caption{
+  Plot showing example of fit to \eqnref{eqn:tau-nat-fit}, for \RCm{31}{1}.
+} 
+\label{fig:tau-nat-plots}
+\end{figure*}
 
 \section{Measurement of \TES\ $G$}
 
