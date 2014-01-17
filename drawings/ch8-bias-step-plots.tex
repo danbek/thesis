@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.5in,
+    mark size=1,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{rr}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[xmin=0,
+		title={Bias Step Response (\RCm{31}{1})},
+		xlabel={Time (\si{\ms})}, ylabel={Current Through \TES\ (\si{\uA})} ]
+	  \addplot+[mark=none] table[x=t,y=ydata32k]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot+[mark=none] table[x=t,y=ydata31k]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot+[mark=none] table[x=t,y=ydata30k]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot+[mark=none] table[x=t,y=ydata29k]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot+[mark=none] table[x=t,y=ydata28k]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot+[mark=none] table[x=t,y=ydata27k]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot+[mark=none] table[x=t,y=ydata26k]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot+[mark=none] table[x=t,y=ydata25k]{../data/ch8-bias-step-resp-r31.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[xmin=0,xmax=6,
+		title={Bias Step Response (\RCm{31}{1})},
+		xlabel={Time (\si{\ms})}, ylabel={Current Through \TES\ (\si{\uA})} ]
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit32k} + 0.0}]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit31k} + 0.1}]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit30k} + 0.2}]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit29k} + 0.3}]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit28k} + 0.4}]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit27k} + 0.5}]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit26k} + 0.6}]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit25k} + 0.7}]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata32k} + 0.0}]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata31k} + 0.1}]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata30k} + 0.2}]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata29k} + 0.3}]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata28k} + 0.4}]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata27k} + 0.5}]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata26k} + 0.6}]{../data/ch8-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata25k} + 0.7}]{../data/ch8-bias-step-resp-r31.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+  %   \end{axis}
+  % \end{tikzpicture}
+
+  \\
+
+  % \begin{tikzpicture}[trim axis left]
+  %   \begin{axis}[xmin=2.8,xmax=5,
+  %   	title={\TES\ $P_{J}$ vs Heater Current},
+  %   	xlabel={$I_{htr}$ (\si{\uA})}, ylabel={$P_{J}$ (pW)} ]
+  %     \addplot+[only marks]
+  %     table[x=Ihtr,y=Psat]{../data/ch8-heater-r-pows.dat};
+  %     \addlegendentry {Data}
+
+  %     \addplot+[mark=none,domain=2.8:5] {597.7 - 23.5927*x^2)}
+  %     node[right] at (axis cs:3,150) {$R_{htr} = \SI{23.6}{\ohm}$}
+  %     node[right] at (axis cs:3,100) {$P_{x} = \SI{598}{\pico\W}$}
+  %     ;
+  %     \addlegendentry{Fit}
+
+  %   \end{axis}
+  % \end{tikzpicture}
+
+  &
+
+  % \begin{tikzpicture}[trim axis right]
+  %   \begin{axis}[ymin=0, 
+  %   	title={$R$ vs $P_{J} + P_{htr}$ for \RCm{29}{1}},
+  %   	xlabel={Total Power Dissipated in \TES\ (pW)}, ylabel={\TES\ Resistance (\si{\milli\ohm})} ]
+  %     \addplot+[mark=none] table[x=Ptot01,y=Rtes01]{../data/ch8-heater-r.dat};
+  %     \addplot+[mark=none] table[x=Ptot02,y=Rtes02]{../data/ch8-heater-r.dat};
+  %     \addplot+[mark=none] table[x=Ptot03,y=Rtes03]{../data/ch8-heater-r.dat};
+  %     \addplot+[mark=none] table[x=Ptot04,y=Rtes04]{../data/ch8-heater-r.dat};
+  %     \addplot+[mark=none] table[x=Ptot05,y=Rtes05]{../data/ch8-heater-r.dat};
+  %     \addplot+[mark=none] table[x=Ptot06,y=Rtes06]{../data/ch8-heater-r.dat};
+  %     \addplot+[mark=none] table[x=Ptot07,y=Rtes07]{../data/ch8-heater-r.dat};
+  %     \addplot+[mark=none] table[x=Ptot08,y=Rtes08]{../data/ch8-heater-r.dat};
+  %     \addplot+[mark=none] table[x=Ptot09,y=Rtes09]{../data/ch8-heater-r.dat};
+  %     \addplot+[mark=none] table[x=Ptot10,y=Rtes10]{../data/ch8-heater-r.dat};
+  %     \addplot+[mark=none] table[x=Ptot11,y=Rtes11]{../data/ch8-heater-r.dat};
+  %     \addplot+[mark=none] table[x=Ptot12,y=Rtes12]{../data/ch8-heater-r.dat};
+  %     \addplot+[mark=none] table[x=Ptot13,y=Rtes13]{../data/ch8-heater-r.dat};
+  %     \addplot+[mark=none] table[x=Ptot14,y=Rtes14]{../data/ch8-heater-r.dat};
+
+  %   \end{axis}
+  % \end{tikzpicture}
+  \\
+\end{tabular}
+
+\end{document}
