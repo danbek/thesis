@@ -1,0 +1,95 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.5in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{rr}
+
+  \begin{tikzpicture}[trim axis left]
+    \begin{axis}[%ymin=0,
+        legend pos=north west,
+    	title={Measured $\tau_{eff}$},
+    	xlabel={$R$ / $R_n$}, ylabel={$\tau_{eff}$ (\si{ms})} ]
+      \addplot+[only marks] table[x=prn29,y=teff29]{../data/ch8-heater-step-pred-parms.dat};
+      \addlegendentry{\RCm{29}{1}}
+      \addplot+[only marks] table[x=prn30,y=teff30]{../data/ch8-heater-step-pred-parms.dat};
+      \addlegendentry{\RCm{30}{1}}
+      \addplot+[only marks] table[x=prn31,y=teff31]{../data/ch8-heater-step-pred-parms.dat};
+      \addlegendentry{\RCm{31}{1}}
+      \addplot+[only marks] table[x=prn32,y=teff32]{../data/ch8-heater-step-pred-parms.dat};
+      \addlegendentry{\RCm{32}{1}}
+    \end{axis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis right]
+    \begin{axis}[%ymin=0,
+    	title={Measured \TES\ Responsivity},
+    	xlabel={$R$ / $R_n$}, ylabel={$s_I$ (\si{\per\uV})} ]
+      \addplot+[only marks] table[x=prn29,y=sI_pred29]{../data/ch8-heater-step-pred-parms.dat};
+      \addlegendentry{\RCm{29}{1}}
+      \addplot+[only marks] table[x=prn30,y=sI_pred30]{../data/ch8-heater-step-pred-parms.dat};
+      \addlegendentry{\RCm{30}{1}}
+      \addplot+[only marks] table[x=prn31,y=sI_pred31]{../data/ch8-heater-step-pred-parms.dat};
+      \addlegendentry{\RCm{31}{1}}
+      \addplot+[only marks] table[x=prn32,y=sI_pred32]{../data/ch8-heater-step-pred-parms.dat};
+      \addlegendentry{\RCm{32}{1}}
+    \end{axis}
+  \end{tikzpicture}
+
+  \\
+
+   \begin{tikzpicture}[trim axis left]
+    \begin{axis}[ymin=0,
+    	title={Measured \Loop},
+    	xlabel={$R$ / $R_n$}, ylabel={\Loop} ]
+      \addplot+[only marks] table[x=prn29,y=Loop29]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{29}{1}}
+      \addplot+[only marks] table[x=prn30,y=Loop30]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{30}{1}}
+      \addplot+[only marks] table[x=prn31,y=Loop31]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{31}{1}}
+      \addplot+[only marks] table[x=prn32,y=Loop32]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{32}{1}}
+    \end{axis}
+  \end{tikzpicture}
+
+  &
+
+   \begin{tikzpicture}[trim axis right]
+    \begin{axis}[ymin=0,
+    	title={Measured $\beta_I$},
+    	xlabel={$R$ / $R_n$}, ylabel={$\beta_I$} ]
+      \addplot+[only marks] table[x=prn29,y=beta29]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{29}{1}}
+      \addplot+[only marks] table[x=prn30,y=beta30]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{30}{1}}
+      \addplot+[only marks] table[x=prn31,y=beta31]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{31}{1}}
+      \addplot+[only marks] table[x=prn32,y=beta32]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{32}{1}}
+    \end{axis}
+  \end{tikzpicture}
+
+  \\
+\end{tabular}
+
+\end{document}
