@@ -486,6 +486,17 @@ For this detector the excess noise is \SI{17}{\percent}.
 
 \section{Bias Step Analysis: \Loop\ and $\beta_I$}
 
+As described in \sectionref{xxx}, steps in the applied bias current can be used to measure \Loop, $\beta_I$ and $R$ for a detector.
+In order to make this measurement, the data acquisition rate must be fast enough to track the fast electrical response of the \TES.
+In addition, the servo rolloff must be either fast enough to not affect the electrical response, or the effect of the servo rolloff must be included in the fit.
+
+I took measurements at \SI{15625}{\hertz}, which is fast enough to track the electrical response.
+I found that the servo rolloff too slow to be ignored, so the fuction to be fit to is \eqnref{xxx} after being passed through a single pole lowpass filter with time constant $\tau_{servo}$, so that $\tau_{servo}$ is one of the parameter to be fit.
+
+\figref{fig:ch8-bias-step-plots} shows the result of these measurements being taken at a range of bias point for the four detectors on column 0 with good heaters.
+The fits are generally good, but it is evident that at some bias points a damped oscillatory response is present on top of the expected \eqnref{xxx} response.
+The source of this is not understood; one possible explanation would be the presence of a dangling heat capacity \cite{xxx}.
+
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch8-bias-step-plots.pdf}
@@ -505,3 +516,26 @@ $\beta_I$ obtained from the fits shown in upper right.
 \label{fig:ch8-bias-step-plots}
 \end{figure*}
 
+Once values for \Loop, $\beta_I$ and $R$ are known, the \DC\ responsivity $s_I(0)$ and $\tau_{eff}$ can be calculated from \eqnref{xxx} and \eqnref{xxx} respectively.
+To check the accuracy of these calculations, I also measured the response of the detectors to steps in applied heater power at the same bias points for these four detectors.
+The results of these measurements, as well the ratio of the predicted to measured values, are shown in \figref{fig:ch8-heater-step-pred-plots}.
+The agreement between the predicted and measured values is good, indicating that response to detector bias steps can be used to predict $\S_I(0)$ and $\tau_{eff}$ with good accuracy.
+This is important because only a few detectors have working heaters, making direct measurements of responsivity impossible for most detectors.
+
+
+\begin{figure*}
+  \centering
+\includegraphics{drawings/ch8-heater-step-pred-plots.pdf}
+\caption{%
+  Plots showing measurements of detector response times $\tau_{eff}$ and responsivity $s_I(0)$ for the four detectors of column 0 with good heaters.
+\textbf{Upper Left}
+Measurements of $\tau_{eff}$ for a range of bias points.
+\textbf{Upper Right}
+Measurements of $s_I(0)$ for a range of bias points.
+\textbf{Lower Left}
+Comparison of predicted and measured $\tau_{eff}$ for the same detectors.
+\textbf{Lower Right}
+Comparison of predicted and measured $s_I(0)$ for the same detectors.
+}
+\label{fig:ch8-heater-step-pred-plots}
+\end{figure*}
