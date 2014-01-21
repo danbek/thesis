@@ -57,7 +57,7 @@
 
   &
   \begin{tikzpicture}[trim axis right]
-	\begin{loglogaxis}[
+	\begin{loglogaxis}[ymax=1.2e-9,
 		clip mode=individual,xmin=4e-1,xmax=2e3,
 		title={\RCm{20}{6} Superconducting Current Noise},
 		xlabel={Frequency (Hz)}, ylabel={Current Noise (\Inoise{})} ]
@@ -67,7 +67,7 @@
 	  \addlegendentry{Data}
 
 	  \addplot[mark=none,domain=4e-1:2e3,line width=1pt]
-			  {sqrt(1.38e-23 * 4 * 0.980  / 1.5290e-04 / (1 + (2*3.14159*x*5.0658e-3)^2) + 1.4308e-20)};
+			  {sqrt(1.38e-23 * 4 * 0.980  / 1.5481e-04 / (1 + (2*3.14159*x*3.9761e-3)^2) + 1.4193e-20)};
       \addlegendentry{Fit}
 	\end{loglogaxis}
   \end{tikzpicture}
