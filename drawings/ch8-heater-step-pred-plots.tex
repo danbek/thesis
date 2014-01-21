@@ -58,16 +58,16 @@
   \\
 
    \begin{tikzpicture}[trim axis left]
-    \begin{axis}[ymin=0,
-    	title={Measured \Loop},
-    	xlabel={$R$ / $R_n$}, ylabel={\Loop} ]
-      \addplot+[only marks] table[x=prn29,y=Loop29]{../data/ch8-bias-step-parms.dat};
+    \begin{axis}[ymin=0.8,ymax=1.2,
+    	title={Accuracy of Predicted $\tau_{eff}$},
+    	xlabel={$R$ / $R_n$}, ylabel={$\tau_{eff,pred} / \tau_{eff,meas}$} ]
+      \addplot+[only marks] table[x=prn29,y=teff_rat29]{../data/ch8-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{29}{1}}
-      \addplot+[only marks] table[x=prn30,y=Loop30]{../data/ch8-bias-step-parms.dat};
+      \addplot+[only marks] table[x=prn30,y=teff_rat30]{../data/ch8-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{30}{1}}
-      \addplot+[only marks] table[x=prn31,y=Loop31]{../data/ch8-bias-step-parms.dat};
+      \addplot+[only marks] table[x=prn31,y=teff_rat31]{../data/ch8-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{31}{1}}
-      \addplot+[only marks] table[x=prn32,y=Loop32]{../data/ch8-bias-step-parms.dat};
+      \addplot+[only marks] table[x=prn32,y=teff_rat32]{../data/ch8-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{32}{1}}
     \end{axis}
   \end{tikzpicture}
@@ -75,16 +75,17 @@
   &
 
    \begin{tikzpicture}[trim axis right]
-    \begin{axis}[ymin=0,
-    	title={Measured $\beta_I$},
-    	xlabel={$R$ / $R_n$}, ylabel={$\beta_I$} ]
-      \addplot+[only marks] table[x=prn29,y=beta29]{../data/ch8-bias-step-parms.dat};
+    \begin{axis}[ymin=0.8,ymax=1.2,
+        legend pos=south east,
+    	title={Accuracy of Predicted $s_I$},
+    	xlabel={$R$ / $R_n$}, ylabel={$s_{I,pred} / s_{I,meas}$} ]
+      \addplot+[only marks] table[x=prn29,y=sI_rat29]{../data/ch8-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{29}{1}}
-      \addplot+[only marks] table[x=prn30,y=beta30]{../data/ch8-bias-step-parms.dat};
+      \addplot+[only marks] table[x=prn30,y=sI_rat30]{../data/ch8-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{30}{1}}
-      \addplot+[only marks] table[x=prn31,y=beta31]{../data/ch8-bias-step-parms.dat};
+      \addplot+[only marks] table[x=prn31,y=sI_rat31]{../data/ch8-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{31}{1}}
-      \addplot+[only marks] table[x=prn32,y=beta32]{../data/ch8-bias-step-parms.dat};
+      \addplot+[only marks] table[x=prn32,y=sI_rat32]{../data/ch8-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{32}{1}}
     \end{axis}
   \end{tikzpicture}
