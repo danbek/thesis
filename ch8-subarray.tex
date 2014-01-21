@@ -522,7 +522,6 @@ The results of these measurements, as well the ratio of the predicted to measure
 The agreement between the predicted and measured values is good, indicating that response to detector bias steps can be used to predict $\S_I(0)$ and $\tau_{eff}$ with good accuracy.
 This is important because only a few detectors have working heaters, making direct measurements of responsivity impossible for most detectors.
 
-
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch8-heater-step-pred-plots.pdf}
@@ -539,3 +538,21 @@ Comparison of predicted and measured $s_I(0)$ for the same detectors.
 }
 \label{fig:ch8-heater-step-pred-plots}
 \end{figure*}
+
+%\figref{fig:ch8-all-loop-plots} summarizes measurements of \Loop, $\beta_I$, and $R$ for all working detectors
+
+\begin{figure*}
+  \centering
+\includegraphics{drawings/ch8-all-loop-plots.pdf}
+\caption{
+  Plots summarizing results of bias step measurements for all working detectors.
+All data taken at normal operating conditions of $T_{bath} = \SI{1100}{\mK}$ and bias dac = 27000.
+\textbf{Left Plots}
+Histograms showing measured values of \Loop, $\beta_I$ and $R$.
+\textbf{Right Plots}
+Scatterplots showing how each of the three paramters \Loop, $\beta_I$ and $R$ correlate with each other.
+Note that $R$ is plotting, the $R/R_n$. This is beacuse $R_n$ is known only for those detectors on columns 0 and 1 with working heaters (see \sectionref{xxx}).
+}
+\label{fig:ch8-all-loop-plots}
+\end{figure*}
+% $T_{bath} = \SI{1100}{\mK}$
