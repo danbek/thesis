@@ -1,0 +1,161 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.5in,height=1.6in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{rr}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{loglogaxis}[xmin=1,
+		title={},
+		xlabel={}, ylabel={} ]
+	  \addplot+[mark=none] table[x=f,y=Pxx32k]{../data/ch8-bias-step-noise-r29.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx31k]{../data/ch8-bias-step-noise-r29.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx30k]{../data/ch8-bias-step-noise-r29.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx29k]{../data/ch8-bias-step-noise-r29.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx28k]{../data/ch8-bias-step-noise-r29.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx27k]{../data/ch8-bias-step-noise-r29.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx26k]{../data/ch8-bias-step-noise-r29.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx25k]{../data/ch8-bias-step-noise-r29.dat};
+	\end{loglogaxis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{loglogaxis}[xmin=1,
+		title={},
+		xlabel={}, ylabel={} ]
+	  \addplot+[mark=none] table[x=f,y=Pxx_pow32k]{../data/ch8-bias-step-noise-r29.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow31k]{../data/ch8-bias-step-noise-r29.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow30k]{../data/ch8-bias-step-noise-r29.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow29k]{../data/ch8-bias-step-noise-r29.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow28k]{../data/ch8-bias-step-noise-r29.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow27k]{../data/ch8-bias-step-noise-r29.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow26k]{../data/ch8-bias-step-noise-r29.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow25k]{../data/ch8-bias-step-noise-r29.dat};
+	\end{loglogaxis}
+  \end{tikzpicture}
+
+  \\
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{loglogaxis}[xmin=1,
+		title={},
+		xlabel={}, ylabel={} ]
+	  %\addplot+[mark=none] table[x=f,y=Pxx32k]{../data/ch8-bias-step-noise-r30.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx31k]{../data/ch8-bias-step-noise-r30.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx30k]{../data/ch8-bias-step-noise-r30.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx29k]{../data/ch8-bias-step-noise-r30.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx28k]{../data/ch8-bias-step-noise-r30.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx27k]{../data/ch8-bias-step-noise-r30.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx26k]{../data/ch8-bias-step-noise-r30.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx25k]{../data/ch8-bias-step-noise-r30.dat};
+	\end{loglogaxis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{loglogaxis}[xmin=1,
+		title={},
+		xlabel={}, ylabel={} ]
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow32k]{../data/ch8-bias-step-noise-r30.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow31k]{../data/ch8-bias-step-noise-r30.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow30k]{../data/ch8-bias-step-noise-r30.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow29k]{../data/ch8-bias-step-noise-r30.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow28k]{../data/ch8-bias-step-noise-r30.dat};
+	  %%\addplot+[mark=none] table[x=f,y=Pxx_pow27k]{../data/ch8-bias-step-noise-r30.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow26k]{../data/ch8-bias-step-noise-r30.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow25k]{../data/ch8-bias-step-noise-r30.dat};
+	\end{loglogaxis}
+  \end{tikzpicture}
+
+  \\
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{loglogaxis}[xmin=1,
+		title={},
+		xlabel={}, ylabel={} ]
+	  %\addplot+[mark=none] table[x=f,y=Pxx32k]{../data/ch8-bias-step-noise-r31.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx31k]{../data/ch8-bias-step-noise-r31.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx30k]{../data/ch8-bias-step-noise-r31.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx29k]{../data/ch8-bias-step-noise-r31.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx28k]{../data/ch8-bias-step-noise-r31.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx27k]{../data/ch8-bias-step-noise-r31.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx26k]{../data/ch8-bias-step-noise-r31.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx25k]{../data/ch8-bias-step-noise-r31.dat};
+	\end{loglogaxis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{loglogaxis}[xmin=1,
+		title={},
+		xlabel={}, ylabel={} ]
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow32k]{../data/ch8-bias-step-noise-r31.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow31k]{../data/ch8-bias-step-noise-r31.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow30k]{../data/ch8-bias-step-noise-r31.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow29k]{../data/ch8-bias-step-noise-r31.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow28k]{../data/ch8-bias-step-noise-r31.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow27k]{../data/ch8-bias-step-noise-r31.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow26k]{../data/ch8-bias-step-noise-r31.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow25k]{../data/ch8-bias-step-noise-r31.dat};
+	\end{loglogaxis}
+  \end{tikzpicture}
+
+  \\
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{loglogaxis}[xmin=1,
+		title={},
+		xlabel={}, ylabel={} ]
+	  %\addplot+[mark=none] table[x=f,y=Pxx32k]{../data/ch8-bias-step-noise-r32.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx31k]{../data/ch8-bias-step-noise-r32.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx30k]{../data/ch8-bias-step-noise-r32.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx29k]{../data/ch8-bias-step-noise-r32.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx28k]{../data/ch8-bias-step-noise-r32.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx27k]{../data/ch8-bias-step-noise-r32.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx26k]{../data/ch8-bias-step-noise-r32.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx25k]{../data/ch8-bias-step-noise-r32.dat};
+	\end{loglogaxis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{loglogaxis}[xmin=1,
+		title={},
+		xlabel={}, ylabel={} ]
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow32k]{../data/ch8-bias-step-noise-r32.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow31k]{../data/ch8-bias-step-noise-r32.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow30k]{../data/ch8-bias-step-noise-r32.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow29k]{../data/ch8-bias-step-noise-r32.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow28k]{../data/ch8-bias-step-noise-r32.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow27k]{../data/ch8-bias-step-noise-r32.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow26k]{../data/ch8-bias-step-noise-r32.dat};
+	  %\addplot+[mark=none] table[x=f,y=Pxx_pow25k]{../data/ch8-bias-step-noise-r29.dat};
+	\end{loglogaxis}
+  \end{tikzpicture}
+
+\end{tabular}
+
+\end{document}
