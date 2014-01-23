@@ -255,7 +255,7 @@ The total amount of power flowing through the \TES\ thermal conductance $G$ is g
 P_{tot} = K(T^n - T_b^n) = P_{opt} + P_{htr} + I^2 R(T,I).
 \end{equation}
 We can make the assumption that at the start of the superconducting transition, where $R \approx R_n$, $\beta_I = 0$, i.e.\ the resistance of the \TES\ depends only on the \TES\ temperature, and not on the current through the \TES.
-This assumption has been observed to hold empirically for many different types of \TES\ detectors, and there are also theoretical reasons to expect it to be true\cite{xxx ref from doug}.
+This assumption has been observed to hold empirically for many different types of \TES\ detectors, and there are also theoretical reasons to expect it to be true\cite{bennett_resistance_2013}.
 Under this assumption, each time the \TES\ reaches, e.g.\ $R = 0.99R_n$, the temperature of the \TES\ is the same, and therefore $P_{tot}$ will be the same.
 A relationship of the following form must therefore hold:
 \begin{equation}\label{eqn:ch3-tes-99Rn}
@@ -354,11 +354,17 @@ Examination of \tableref{tab:tes-noise} shows that current noise from the load r
 All this points to the conclusion that detector noise in \TES\ bolometers is dominated by thermal fluctuation noise.
 
 Photon noise arrises due to quantum fluctuations in the number of photons arriving during a given time interval.
-xxx perhaps start with Zmuidzinas 44 with $(hv)^2$ added for bolometers, then $\bar{n} = k_B T / h \nu$ leading to
-This noise is expressed as
+This noise is expressed as \cite{zmuidzinas_thermal_2003}
 \begin{equation}\label{eqn:photon-noise}
-  S_{ph} = 2 h \nu P_{opt} (1 + \eta \bar{n})
+  S_{ph} = 2 h \nu P_{opt} (1 + \eta \bar{n}),
 \end{equation}
+where $\bar{n}$ is the photon occupation number, given by
+\begin{equation}
+  \bar{n} = \frac{k_B T}{h \nu}
+\end{equation}
+
+\sectionref{sec:predicted-noise} discusses predicted noise levels for our detectors.
+\sectionref{sec:det-noise} discusses measurements of detector noise.
 
 \begin{table*}[t]
 \centering
