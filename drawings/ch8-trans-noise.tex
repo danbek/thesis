@@ -17,6 +17,11 @@
     baseline
   }
 }
+\pgfplotscreateplotcyclelist{my color list}{%
+    blue,red,black,yellow,brown,teal,orange,violet,cyan,}
+
+\pgfplotscreateplotcyclelist{color list doubled}{%
+    blue,blue,red,red,black,black,yellow,yellow,brown,brown,teal,teal,orange,orange,violet,violet,cyan,cyan,}
 
 \begin{document}
 
@@ -31,7 +36,7 @@
                  horizontal sep=0.5in,
                  x descriptions at=edge bottom,
                  },
-    width=2.0in,height=1.6in,
+    width=2.25in,height=1.6in,
     xmode=log,ymode=log,
     xmin=1,xmax=2e4,
     ymin=3e-11,ymax=2e-8,
@@ -39,49 +44,29 @@
     xlabel={Freqency (\si{\hertz})}
     ]
 
-  \nextgroupplot[]
+  \nextgroupplot[cycle list name=my color list]
 
-	  \addplot+[mark=none] table[x=f,y=Pxx32k]{../data/ch8-bias-step-noise-r29.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx31k]{../data/ch8-bias-step-noise-r29.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx30k]{../data/ch8-bias-step-noise-r29.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx29k]{../data/ch8-bias-step-noise-r29.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx28k]{../data/ch8-bias-step-noise-r29.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx27k]{../data/ch8-bias-step-noise-r29.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx26k]{../data/ch8-bias-step-noise-r29.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx25k]{../data/ch8-bias-step-noise-r29.dat};
+    \foreach \yindex in {1,...,8} {
+	  \addplot table[x=f,y index=\yindex]{../data/ch8-bias-step-noise-r29.dat};
+    }
 
-  \nextgroupplot[]
+  \nextgroupplot[cycle list name=my color list]
 
-	  \addplot+[mark=none] table[x=f,y=Pxx32k]{../data/ch8-bias-step-noise-r30.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx31k]{../data/ch8-bias-step-noise-r30.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx30k]{../data/ch8-bias-step-noise-r30.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx29k]{../data/ch8-bias-step-noise-r30.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx28k]{../data/ch8-bias-step-noise-r30.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx27k]{../data/ch8-bias-step-noise-r30.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx26k]{../data/ch8-bias-step-noise-r30.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx25k]{../data/ch8-bias-step-noise-r30.dat};
+    \foreach \yindex in {1,...,8} {
+	  \addplot table[x=f,y index=\yindex]{../data/ch8-bias-step-noise-r30.dat};
+    }
 
-  \nextgroupplot[]
-  
-	  \addplot+[mark=none] table[x=f,y=Pxx32k]{../data/ch8-bias-step-noise-r31.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx31k]{../data/ch8-bias-step-noise-r31.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx30k]{../data/ch8-bias-step-noise-r31.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx29k]{../data/ch8-bias-step-noise-r31.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx28k]{../data/ch8-bias-step-noise-r31.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx27k]{../data/ch8-bias-step-noise-r31.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx26k]{../data/ch8-bias-step-noise-r31.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx25k]{../data/ch8-bias-step-noise-r31.dat};
+  \nextgroupplot[cycle list name=my color list]
 
-  \nextgroupplot[]
-  
-	  \addplot+[mark=none] table[x=f,y=Pxx32k]{../data/ch8-bias-step-noise-r32.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx31k]{../data/ch8-bias-step-noise-r32.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx30k]{../data/ch8-bias-step-noise-r32.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx29k]{../data/ch8-bias-step-noise-r32.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx28k]{../data/ch8-bias-step-noise-r32.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx27k]{../data/ch8-bias-step-noise-r32.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx26k]{../data/ch8-bias-step-noise-r32.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx25k]{../data/ch8-bias-step-noise-r32.dat};
+    \foreach \yindex in {1,...,8} {
+	  \addplot table[x=f,y index=\yindex]{../data/ch8-bias-step-noise-r31.dat};
+    }
+    
+  \nextgroupplot[cycle list name=my color list]
+
+    \foreach \yindex in {1,...,8} {
+	  \addplot table[x=f,y index=\yindex]{../data/ch8-bias-step-noise-r32.dat};
+    }
 
 \end{groupplot}
 
@@ -97,56 +82,41 @@
                  horizontal sep=0.5in,
                  x descriptions at=edge bottom,
                  },
-    width=2.0in,height=1.6in,
+    width=2.25in,height=1.6in,
     xmode=log,ymode=log,
     xmin=1,xmax=2e4,
     ymin=1e-16,ymax=2e-14,
-    ylabel={$S_{P_{opt}}$ (\Pnoise{})},
-    xlabel={Freqency (\si{\hertz})}
+    ylabel={$S_{P_{bolo}}$ (\Pnoise{})},
+    xlabel={Freqency (\si{\hertz}),}
     ]
 
-  \nextgroupplot[]
-  
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow32k]{../data/ch8-bias-step-noise-r29.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow31k]{../data/ch8-bias-step-noise-r29.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow30k]{../data/ch8-bias-step-noise-r29.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow29k]{../data/ch8-bias-step-noise-r29.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow28k]{../data/ch8-bias-step-noise-r29.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow27k]{../data/ch8-bias-step-noise-r29.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow26k]{../data/ch8-bias-step-noise-r29.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow25k]{../data/ch8-bias-step-noise-r29.dat};
+  \nextgroupplot[cycle list name=color list doubled]
 
-  \nextgroupplot[]
-  
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow32k]{../data/ch8-bias-step-noise-r30.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow31k]{../data/ch8-bias-step-noise-r30.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow30k]{../data/ch8-bias-step-noise-r30.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow29k]{../data/ch8-bias-step-noise-r30.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow28k]{../data/ch8-bias-step-noise-r30.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow27k]{../data/ch8-bias-step-noise-r30.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow26k]{../data/ch8-bias-step-noise-r30.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow25k]{../data/ch8-bias-step-noise-r30.dat};
+    \foreach \yindex in {9,...,16} {
+	  \addplot table[x=f,y index=\yindex]{../data/ch8-bias-step-noise-r29.dat};
+	  \addplot table[x=f,y index=\yindex]{../data/ch8-bias-step-noise-model-r29.dat};
+    }
 
-  \nextgroupplot[]
+  \nextgroupplot[cycle list name=color list doubled]
   
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow32k]{../data/ch8-bias-step-noise-r31.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow31k]{../data/ch8-bias-step-noise-r31.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow30k]{../data/ch8-bias-step-noise-r31.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow29k]{../data/ch8-bias-step-noise-r31.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow28k]{../data/ch8-bias-step-noise-r31.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow27k]{../data/ch8-bias-step-noise-r31.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow26k]{../data/ch8-bias-step-noise-r31.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow25k]{../data/ch8-bias-step-noise-r31.dat};
+    \foreach \yindex in {9,...,16} {
+	  \addplot table[x=f,y index=\yindex]{../data/ch8-bias-step-noise-r30.dat};
+	  \addplot table[x=f,y index=\yindex]{../data/ch8-bias-step-noise-model-r30.dat};
+    }
 
-  \nextgroupplot[]
+  \nextgroupplot[cycle list name=color list doubled]
   
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow31k]{../data/ch8-bias-step-noise-r32.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow30k]{../data/ch8-bias-step-noise-r32.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow29k]{../data/ch8-bias-step-noise-r32.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow28k]{../data/ch8-bias-step-noise-r32.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow27k]{../data/ch8-bias-step-noise-r32.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow26k]{../data/ch8-bias-step-noise-r32.dat};
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow25k]{../data/ch8-bias-step-noise-r29.dat};
+    \foreach \yindex in {9,...,16} {
+	  \addplot table[x=f,y index=\yindex]{../data/ch8-bias-step-noise-r31.dat};
+	  \addplot table[x=f,y index=\yindex]{../data/ch8-bias-step-noise-model-r31.dat};
+    }
+
+  \nextgroupplot[cycle list name=color list doubled]
+  
+    \foreach \yindex in {9,...,16} {
+	  \addplot table[x=f,y index=\yindex]{../data/ch8-bias-step-noise-r32.dat};
+	  \addplot table[x=f,y index=\yindex]{../data/ch8-bias-step-noise-model-r32.dat};
+    }
 
 \end{groupplot}
 
