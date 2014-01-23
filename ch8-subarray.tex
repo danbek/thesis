@@ -1,21 +1,47 @@
 \chapter{Subarray Characterization}\label{c:det-array}
 
-The first 251-detector subarray has not yet been characterized as thoroughly as the prototype detectors.
-In particular, only seven good detectors have been characterized.
-The reason for this is that the saturation power of the detectors is xxx time higher than expected, which means that only some detectors be driven normal, and only at bath temperatures very close to $T_c$.
+The detectors in the first 251-detector subarray have not all been characterized to the same extent.
+Partly this is due to manpower and time constraints.
+Additionally, as desribed in \sectionref{sec:g-psat}, the saturation power of the detectors is xxx time higher than expected, which means that only some detectors be driven normal, and only at bath temperatures very close to $T_c$.
 In particular, none of the detectors can be driven normal at the operating bath temperature for the array of 1100~mK.
 This means that we do not have \IV\ curves for any detectors at operating conditions, which limits the characterization than can be performed.
 
 Seven detectors used in taking images have working heaters and no other problems.
 These heaters allow us to take full \IV\ curves at all bath temperatures, allowing estimate of the detector thermal conductance $G$.
 The heaters also allow a direct measurement of detector responsivity and time constants, and thus allow a measurement of detector noise referred to optical power incident on the detector.
-This chapter describes these measurements on these seven detectors, as well as measurements of shunt resistors and inductors for all detectors.
+These later measurements have been carried out on four of the seven detectors.
+Additioanally, \Loop, $beta_I$ and $R$ at operating conditions have been measured for all working detectors.
+This chapter describes all these measurements, as well as measurements of shunt resistors and inductors for all detectors.
+\tableref{tab:measurements} summarizes all of the measurement that have been performed and described in this chapter.
+Sections discussing common mode noise, microphonic pickup and noise aliasing are also included.
 
 Note that this lack of detector characterization does not prevent the array from working.
 It merely limits our understanding of the behavior of the detectors.
 A more detailed characterization of more detectors will be carried out prior to fabrication of any additional arrays.
 
-\section{Choice of \MCE\ Servo Gain Parameters}
+\begin{table*}[t]
+\centering
+\caption{Summary of measurments made on first 251-detector subarray}
+\label{tab:measurements}
+\begin{tabular}{l l l}
+\toprule
+Measurement &  Section & Which Detectors  \\
+  \midrule
+Choice of Optimal \MCE\ servo gain parameters & \ref{sec:mce-servo-gain} & All columns \\
+$R_{sh}$ and $L_{ny}$ & \ref{sec:shunt-nyquist} & All working detectors \\
+Heater Resistors & \ref{sec:heater-r} & Seven detectors with good heaters on column 0 and 1 \\
+$\tau$ & \ref{sec:tau-nat} & Four detectors with good heaters on column 0 \\
+$G$, $T_c$, $n$, $P_{sat}$ & \ref{sec:g-psat} & Seven detectors with good heaters on column 0 and 1 \\
+$\tau_{eff}$ and \DC\ responsivity & \ref{sec:teff-resp} & Seven detectors with good heaters on column 0 and 1 \\
+\Loop, $\beta_I$, $R$ at a range of bias points & \ref{sec:bias-step} & Seven detectors with good heaters on column 0 and 1 \\
+\Loop, $\beta_I$, $R$ at standard operating conditions & \ref{sec:bias-step} & All working detectors\\
+Detector noise at a range of bias points & \ref{sec:det-noise} & Four detectors with good heaters on column 0 and 1 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+
+\section{Choice of \MCE\ Servo Gain Parameters}\label{sec:mce-servo-gain}
 
 As described in \sectionref{xxx}, the \MCE\ operates the \SQUID\ multiplexing system.
 It supports extensive configuration options ranging from \SQUID\ bias current values to multiplexing speed, to the order in which rows should be reported to client software. xx need reference to \MCE\ stuff
@@ -105,7 +131,7 @@ The few high $\tau_{servo}$ values at gains of 80 and 100 are a result of the fi
 
 %% The \MCE\ supports setting a different $I$ value for every row and every column.
 
-\section{Shunt Resistance Measurements}
+\section{Shunt Resistance Measurements}\label{sec:shunt-nyquist}
 
 Our shunt resistors are located on interface chips that contain both shunt resistors and Nyquist inductors.
 The specific chips used were extra chips leftover from the ABS\cite{kusaka_modulation_2013} project.
@@ -231,7 +257,7 @@ Mean & 23.8 & 7.52 & 3.53 & 1212.9 & 9.56 \\
 \end{tabular}
 \end{table*}
 
-\section{Measurement of Natural Time Constant $\tau$}
+\section{Measurement of Natural Time Constant $\tau$} \label{sec:tau-nat}
 
 %% run thesis/ana_tau_nat.m for results
 
@@ -255,7 +281,7 @@ In this fit, $\tau_{meas}$ is considered the dependent variable, the product $(I
 \label{fig:tau-nat-plots}
 \end{figure*}
 
-\section{Measurement of \TES\ $G$}
+\section{Measurement of \TES\ $G$} \label{sec:g-psat}
 
 With knowledge of the heater resistances, \IV\ curves can be taken over a wide range of bath temperatures, which enables a measurement of the \TES\ thermal conductance $G$.
 Similarly to \sectionref{xxx}, I took \IV\ curves at bath temperatures ranging from 995~mK -- 1160~mK, while adjusting the applied heater power so that each \IV\ curve had a clear normal branch.
@@ -312,7 +338,7 @@ should at least look at all psat vs temp plots.
 
 should work out $P_{sat}$ vs $T_b$ expansion to order $(\Delta T)^2$ - might help with above.
 
-\section{Direct Measurement of Detector Responsivity and $\tau_{eff}$}
+\section{Direct Measurement of Detector Responsivity and $\tau_{eff}$} \label{sec:teff-resp}
 
 Knowledge of $R_{htr}$ allows a direct measurement of the DC responsivity of $\tau_{eff}$ for the seven detectors with heaters.
 Steps in heater bias current were applied to these detectors while bias at typically operating conditions ($T_b = \SI{1100}{\mK}$, DAC$_{bias}$ = 27000).
@@ -484,7 +510,7 @@ For this detector the excess noise is \SI{17}{\percent}.
 \label{fig:ch8-noise-aliasing}
 \end{figure*}
 
-\section{Bias Step Analysis: \Loop\ and $\beta_I$}
+\section{Bias Step Analysis: \Loop\ and $\beta_I$} \label{sec:bias-step}
 
 As described in \sectionref{xxx}, steps in the applied bias current can be used to measure \Loop, $\beta_I$ and $R$ for a detector.
 In order to make this measurement, the data acquisition rate must be fast enough to track the fast electrical response of the \TES.
@@ -568,7 +594,7 @@ xxx comment on whether getting below 2 ms is good enough
 \label{fig:ch8-teff-si-pred}
 \end{figure*}
 
-\section{Detector Noise}
+\section{Detector Noise} \label{sec:det-noise}
 
 While taking the measurements described in the previous section, I also took noise data for the four detectors with working heaters on column 0.
 This data was taken at bias \DAC\ values of 25000, 26000, 27000, 28000, 29000, 30000, 31000 and 32000.
