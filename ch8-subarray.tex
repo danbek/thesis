@@ -180,7 +180,8 @@ It is not known whether this correlation is a real physical effect or an artifac
 
 \section{Measurement of Heater Resistors} \label{sec:heater-r}
 
-Only 23 of the 251 detectors have heaters wired up.
+Thirty-one detectors have heater resistors connected to bond pads.
+Twenty-three of these have the heaters wired to the heater bias line.
 Of these 23, there are nine detectors which show no response to applied heater power.
 Five of these nine are on the cut list (xxx see ch xxx), so this is not surprising.
 But four detectors can be biased into the transition and work well, but show no response to applied heater power (\RC{4}{7}, \RC{5}{7}, \RC{6}{6}, \RC{7}{6}).
@@ -210,7 +211,7 @@ P_{J} = (P_{tot} - P_{opt}) - I_{htr}^2 R_{htr}.
 \end{equation}
 A fit can be made to this function, with the quantities $R_{htr}$ and $P_{x} \equiv P_{tot} - P_{opt}$ to be solved for.
 
-\figref{fig:heater-r-plots} explains this idea further by a series of plots.
+\figref{fig:ch8-heater-r-plots} explains this idea further by a series of plots.
 The upper left plot shows the \TES\ \IV\ curves.
 The upper right plot shows the same data, but transformed into \TES\ Joule power and \TES\ resistance.
 As applied heater current decreases, the Joule power at the start of the transition decreases.
@@ -227,7 +228,7 @@ It also shows that this assumption breaks down deeper in the transition.
 \textbf{Upper Right} Same data as in upper left plot, but represented in terms of \TES\ Joule power and resistance. As the bias current for the heaters is increased, the curves shift to the left.
 \textbf{Lower Left} Measured $P_{J}$ vs heater current at $0.99R_n$, as well as fit to \eqnref{eqn:rhtr-fit}.
 \textbf{Lower Right} Same plot as upper right, but the heater power based on $R_{htr} = \SI{23.6}{\ohm}$ has been added to each curve.}
-\label{fig:heater-r-plots}
+\label{fig:ch8-heater-r-plots}
 \end{figure*}
 
 \tableref{tab:basic-det-props} lists all measured heater resistors.
