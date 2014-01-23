@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    small,
+    width=1.58in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{rrr}
+
+   \begin{tikzpicture}[trim axis left]
+    \begin{axis}[ymin=0,
+    	title={Measured \Loop},
+    	xlabel={$R$ / $R_n$}, ylabel={\Loop} ]
+      \addplot+[only marks] table[x=prn29,y=Loop29]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{29}{1}}
+      \addplot+[only marks] table[x=prn30,y=Loop30]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{30}{1}}
+      \addplot+[only marks] table[x=prn31,y=Loop31]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{31}{1}}
+      \addplot+[only marks] table[x=prn32,y=Loop32]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{32}{1}}
+    \end{axis}
+  \end{tikzpicture}
+
+  &
+
+   \begin{tikzpicture}[trim axis right]
+    \begin{axis}[ymin=0,
+    	title={Measured $\alpha$},
+    	xlabel={$R$ / $R_n$}, ylabel={$\alpha$} ]
+      \addplot+[only marks] table[x=prn29,y=alpha29]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{29}{1}}
+      \addplot+[only marks] table[x=prn30,y=alpha30]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{30}{1}}
+      \addplot+[only marks] table[x=prn31,y=alpha31]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{31}{1}}
+      \addplot+[only marks] table[x=prn32,y=alpha32]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{32}{1}}
+    \end{axis}
+  \end{tikzpicture}
+   
+  & 
+
+  \begin{tikzpicture}[trim axis right]
+    \begin{axis}[ymin=0,
+    	title={Measured $\beta_I$},
+    	xlabel={$R$ / $R_n$}, ylabel={$\beta_I$} ]
+      \addplot+[only marks] table[x=prn29,y=beta29]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{29}{1}}
+      \addplot+[only marks] table[x=prn30,y=beta30]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{30}{1}}
+      \addplot+[only marks] table[x=prn31,y=beta31]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{31}{1}}
+      \addplot+[only marks] table[x=prn32,y=beta32]{../data/ch8-bias-step-parms.dat};
+      \addlegendentry{\RCm{32}{1}}
+    \end{axis}
+  \end{tikzpicture}
+   
+   \\
+
+   \end{tabular}
+\end{document}
