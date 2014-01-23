@@ -67,7 +67,7 @@ $I$ should be chosen so that the bandwidth of this filter is greater than that o
 The servo $I$ parameter was chosen to minimize \SQUID\ noise and allow sufficient bandwidth to readout the full bandwidth of the detectors.
 The target servo bandwidth depends on the measurement being made.
 When operating the array in normal conditions, the data readout rate is either \SI{3125}{Hz} or \SI{3030.3}{Hz}, depending on whether the dark \SQUID\ is read out.
-The time constant for the associated Nyquist frequencies are \abt~\SI{0.1}{ms}, so there is no need to use $I$ values with more bandwidth than this\footnote{In fact doing so is counter-productive, because it will alias \SQUID\ noise into the detector band}.
+The time constant for the associated Nyquist frequencies are \abt~\SI{0.1}{ms}, so there is no need to use $I$ values with more bandwidth than this\footnote{Doing so is counter-productive, because it will alias \SQUID\ noise into the detector band}.
 Electrical detector time constants are \abt~\SI{4}{ms} in the superconducting state, and \abt~\SI{0.14}{ms} in the normal state.
 While biased into the transition, $\tau_{eff}$ is in the range \SIrange{1}{4}{ms}.
 \figref{fig:ch8-servo-tau-est} shows the impact of the servo rolloff on estimation of time constants from single-pole response functions.
@@ -112,7 +112,7 @@ Even operating with a servo gain of 10 puts \SI{95}{\percent} of the $\tau_{serv
 \textbf{Upper} Plot of \SQUID\ $\tau_{servo}$ vs servo gain $I$.
 Servo bandwidth increases with $I$.
 At $I \ge \num{60}$, very small $\tau_{servo}$ begin to appear. This indicates either a rolloff above the bandwidth of the measurement, or the beginning of an unstable servo loop.
-The few high $\tau_{servo}$ values at gains of 80 and 100 are a result of the fitting routine failing.
+The few high $\tau_{servo}$ values at gains of 80 and 100 are a result of the fitting routine failing, probably due to an unstable servo loop.
 \textbf{Lower Left} Close-up view of upper plot for gains from 10 to 50.
 \textbf{Lower Right} Plot of median \SQUID\ white noise level vs. servo gain $I$. Positive gains consistently give lower dark \SQUID\ noise levels.
 }
@@ -174,7 +174,7 @@ It is not known whether this correlation is a real physical effect or an artifac
 \textbf{Upper Left} Histogram of shunt resistance \Rsh.
 \textbf{Upper Right} Histogram of total inductance in circuit, which includes the interface chip Nyquist inductor, the inductance of the SQ1 input coil, and any parasitic inductance.
 \textbf{Lower Left} Scatterplot showing all measured Rsh and L values. A correlation is apparent, the reason for which is not understood.
-\textbf{Lower Right} Plot showing current noise power spectrum extracted from a single data acquisition for \RCm{20}{6}, along with predicted power spectrum based on best fit to \eqnref{eqn:scnoise-fit} across all data acquisitions. The best fit values are $\Rsh=\SI{153}{\uohm}$, $L = \SI{622}{nH}$, and \SQUID\ white noise level of \Inoise{1.2e-10}.}
+\textbf{Lower Right} Plot showing current noise power spectrum extracted from a single data acquisition for \RCm{20}{6}, along with predicted power spectrum based on best fit to \eqnref{eqn:scnoise-fit} across all data acquisitions. The best fit values are $\Rsh=\SI{155}{\uohm}$, $L = \SI{616}{nH}$, and \SQUID\ white noise level of \Inoise{1.2e-10}.}
 \label{fig:rsh-l-plots}
 \end{figure*}
 
