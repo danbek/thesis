@@ -344,9 +344,9 @@ For the detectors described in this thesis, $n \approx 3.5$, $T_0 \approx 1.2$~K
 Under these conditions, both expressions for $F$ have approximately the same value, 0.83.
 
 For typical operating conditions of \TES\ bolometers, thermal fluctuation noise dominates Johnson noise at low frequencies.
-This can be see by taking the ratio of $S_{I_{TES}}$ to $S_{TFN}$ (ignoring factors of order unity):
+This can be see by taking the ratio of $S^2_{TES}$ to $S^2_{TFN}$ (ignoring factors of order unity):
 \begin{equation}
-\frac{S_{I_{TES}}}{S_{TFN}} \approx \frac{1}{\alpha \Loop} (1 + (\omega \tau)^2)
+\frac{S^2_{TES}}{S^2_{TFN}} \approx \frac{1}{\alpha \Loop} (1 + (\omega \tau)^2)
 \end{equation}
 At low frequencies the \TES\ resistor current noise is suppressed below thermal fluctuation noise by a factor of $1/\alpha \Loop$.
 \TES\ detectors are always biased so that $\Loop > 1$, and values for $\alpha$ in the transition for our detectors are 20--400 (see \figref{fig:ch8-bias-step-results} in \sectionref{sec:bias-step}).
@@ -356,7 +356,7 @@ All this points to the conclusion that detector noise in \TES\ bolometers is dom
 Photon noise arrises due to quantum fluctuations in the number of photons arriving during a given time interval.
 This noise is expressed as \cite{zmuidzinas_thermal_2003}
 \begin{equation}\label{eqn:photon-noise}
-  S_{ph} = 2 h \nu P_{opt} (1 + \eta \bar{n}),
+  S^2_{ph} = 2 h \nu P_{opt} (1 + \eta \bar{n}),
 \end{equation}
 where $\bar{n}$ is the photon occupation number, given by
 \begin{equation}
@@ -368,15 +368,15 @@ where $\bar{n}$ is the photon occupation number, given by
 
 \begin{table*}[t]
 \centering
-\caption{Noise in \TES\ bolometers, referred to power incident on bolometer. To obtain current noise passing through the bolometer, multiply each power spectral density by $|s_I(\omega)|^2$.}
+\caption{Noise in \TES\ bolometers, referred to power absorbed in bolometer. To obtain current noise passing through the bolometer, multiply each power spectral density by $|s_I(\omega)|^2$.}
 \label{tab:tes-noise}
 \begin{tabular}{l l}
 \toprule
-Noise Source &  Current Noise \\
+Noise Source &  Noise Power Spectral Density \\
 \midrule
-\TES\ Resistor & $S_{I_{TES}} = 4 k_B T_0 I_0^2 R_0 \xi(I_0) \frac{(1 + (\omega \tau)^2) } {\Loop^2}$ \\
-Load Resistor & $S_{I_{L}} = 4 k_B T_L I_0^2 R_L \frac{(1 + (\omega \tau_I)^2) (\Loop -1)^2} {\Loop^2}$ \\
-Thermal Fluctuation Noise & $S_{TFN} = 4 k_B T_0^2 G F(T_0, T_b)$ \\
+\TES\ Resistor & $S^2_{TES} = 4 k_B T_0 I_0^2 R_0 \xi(I_0) \frac{(1 + (\omega \tau)^2) } {\Loop^2}$ \\
+Load Resistor & $S^2_{L} = 4 k_B T_L I_0^2 R_L \frac{(1 + (\omega \tau_I)^2) (\Loop -1)^2} {\Loop^2}$ \\
+Thermal Fluctuation Noise & $S^2_{TFN} = 4 k_B T_0^2 G F(T_0, T_b)$ \\
 \bottomrule
 \end{tabular}
 \end{table*}

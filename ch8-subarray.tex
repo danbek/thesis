@@ -456,10 +456,10 @@ In both cases the bath temperature was held steady at \SI{1100}{\mK} using the C
 Common mode noise was removed and power spectra for each detector were calculated.
 Then the excess noise for each detector was calculated as
 \begin{equation}
-  \sqrt{  \frac{ \sum_{f >= \SI{6}{\Hz}} S_{I,\textsc{ptc}}(f) }
-               { \sum_{f >= \SI{6}{\Hz}} S_{I,\mbox{\tiny{No}}\textsc{ ptc}}(f) }},
+  \sqrt{  \frac{ \sum_{f >= \SI{6}{\Hz}} S^2_{I,\textsc{ptc}}(f) }
+               { \sum_{f >= \SI{6}{\Hz}} S^2_{I,\mbox{\tiny{No}}\textsc{ ptc}}(f) }},
 \end{equation}
-where $S_{I,\textsc{ptc}}$ and $S_{I,\mbox{\tiny{No}}\textsc{ ptc}}$ are the measured current noise power spectral densities with the \PTC\ turned on and off, expressed in units of \si{\A^2 \per \Hz}.
+where $S^2_{I,\textsc{ptc}}$ and $S^2_{I,\mbox{\tiny{No}}\textsc{ ptc}}$ are the measured current noise power spectral densities with the \PTC\ turned on and off, expressed in units of \si{\A^2 \per \Hz}.
 
 \figref{fig:ch8-ptc-plots} shows a histogram of this excess noise. Most detectors have higher noise with the \PTC\ on, but this excess noise is typically only a few percent. 
 The mean excess noise is \SI{1}{\percent}.
@@ -486,10 +486,10 @@ This raises the question of how much noise is aliased from the \SIrange{3125}{15
 To check this I acquired data for the full array, under standard operating conditions, at the normal rate of \SI{3125}{\hertz} and for column 0 at \SI{15625}{\hertz}.
 5 data files were acquired for each case. For each row in column 0 for each data file a power spectrum was taken after subtracting the common mode signal, and the excess noise was calculated as
 \begin{equation}
-  \sqrt{  \frac{ \sum S_{I,\SI{3125}{\Hz}}(f) \Delta f }
-               { \sum S_{I,\SI{15625}{\Hz}}(f) \Delta f }},
+  \sqrt{  \frac{ \sum S^2_{I,\SI{3125}{\Hz}}(f) \Delta f }
+               { \sum S^2_{I,\SI{15625}{\Hz}}(f) \Delta f }},
 \end{equation}
-where $S_{I,\SI{3125}{\Hz}}$ and $S_{I,\SI{15625}{\Hz}}$ are the measured current noise power spectral densities at the two different multiplexing rates, averaged over all 5 data files, expressed in units of \si{\A^2 \per \Hz}.
+where $S^2_{I,\SI{3125}{\Hz}}$ and $S^2_{I,\SI{15625}{\Hz}}$ are the measured current noise power spectral densities at the two different multiplexing rates, averaged over all 5 data files, expressed in units of \si{\A^2 \per \Hz}.
 The sums are performed only over those frequency components in the range \SIrange{6}{1562.5}{\Hz}, and note that $\Delta f$ is different for the two sampling rates.
 
 \figref{fig:ch8-noise-aliasing} summarizes the results.
@@ -554,7 +554,7 @@ At some bias points a damped oscillatory response is present on top of the \eqnr
 Once values for \Loop, $\beta_I$ and $R$ are known, the \DC\ responsivity $s_I(0)$ and $\tau_{eff}$ can be calculated from \eqnref{xxx} and \eqnref{xxx} respectively.
 To check the accuracy of these calculations, I also measured the response of the detectors to steps in applied heater power at the same bias points for these four detectors.
 The results of these measurements, as well the ratio of the predicted to measured values, are shown in \figref{fig:ch8-heater-step-pred-plots}.
-The agreement between the predicted and measured values is good, indicating that response to detector bias steps can be used to predict $\S_I(0)$ and $\tau_{eff}$ with good accuracy.
+The agreement between the predicted and measured values is good, indicating that response to detector bias steps can be used to predict $s_I(0)$ and $\tau_{eff}$ with good accuracy.
 This is important because only a few detectors have working heaters, making direct measurements of responsivity impossible for most detectors.
 
 \begin{figure*}
@@ -608,10 +608,10 @@ xxx comment on whether getting below 2 ms is good enough
 While taking the measurements described in the previous section, I also took noise data for the four detectors with working heaters on column 0.
 This data was taken at bias \DAC\ values of 25000, 26000, 27000, 28000, 29000, 30000, 31000 and 32000.
 For each data acquisition the common mode signal was subtracted and the power spectra calculated using \MATLAB's \texttt{pwelch} function.
-\figref{fig:ch8-trans-noise} shows the resulting power spectra, both in terms of the directly measured current noise $S_I$, as well as in terms of noise referred to power absorbed in the bolometer, $S_{P_{bolo}}$.
-$S_{P_{bolo}}$ is calculated via
+\figref{fig:ch8-trans-noise} shows the resulting power spectra, both in terms of the directly measured current noise $S^2_I$, as well as in terms of noise referred to power absorbed in the bolometer, $S^2_{P_{bolo}}$.
+$S^2_{P_{bolo}}$ is calculated via
 \begin{equation}
- S_{P_{bolo}} = S_I / s_I(0),
+ S^2_{P_{bolo}} = S^2_I / s_I(0),
 \end{equation}
 where here the \DC\ detector responsivity $s_I(0)$ is calculated using the measurements described in \sectionref{xxx}.
 Also plotted in the predicted detector noise level for each detector at each bias point, including the predicted photon noise level of \Pnoise{0.5e-15} from \sectionref{xxx}.
