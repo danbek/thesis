@@ -45,7 +45,7 @@ The \TES\ is warmed to temperature $T$ by applied optical power $P_{opt}$, power
 \label{fig:elec-thermal-circuit}
 \end{figure*}
 
-\section{Linearized Electrical and Thermal Circuits}
+\section{Linearized Electrical and Thermal Circuits}\label{sec:lin-tes-eqn}
 
 In the limit of small changes in \TES\ current and temperature, the resistance of the \TES\ can be expressed as
 \begin{equation}
@@ -94,6 +94,11 @@ s_I(\omega) =
 \begin{equation}
 \gamma \equiv 1 + \frac{\beta_I}{1+\Loop} - \frac{\Loop - 1}{\Loop + 1}\frac{R_L}{R_0}.
 \end{equation}
+Here $\tau_{eff}$ is given by
+\begin{equation} \label{eqn:teff}
+  \tau_{eff} = \frac{\tau}{1 + \frac{1 - R_L / R_0}{1 + \beta_I + R_L / R_0} \Loop}.
+\end{equation}
+
 While imposing, these expressions are much simpler in the limit which generally hold for operating \TES\ detectors: strong voltage bias ($R_L \ll R_0$), and $\tau \ll L/R$. 
 In this limit the power-to-current responsivity becomes
 \begin{equation}

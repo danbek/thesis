@@ -183,7 +183,7 @@ It is not known whether this correlation is a real physical effect or an artifac
 Thirty-one detectors have heater resistors connected to bond pads.
 Twenty-three of these have the heaters wired to the heater bias line.
 Of these 23, there are nine detectors which show no response to applied heater power.
-Five of these nine are on the cut list (xxx see ch xxx), so this is not surprising.
+Five of these nine are on the cut list (see \sectionref{sec:ch9-det-cuts}), so this is not surprising.
 But four detectors can be biased into the transition and work well, but show no response to applied heater power (\RC{4}{7}, \RC{5}{7}, \RC{6}{6}, \RC{7}{6}).
 The reasons for these detectors not showing a response to heater power are not fully understood.
 This leaves 14 working detectors that also show a response to applied heater power.
@@ -288,7 +288,7 @@ In this fit, $\tau_{meas}$ is considered the dependent variable, the product $(I
 \section{Measurement of \textsc{TES} $G$} \label{sec:g-psat}
 
 With knowledge of the heater resistances, \IV\ curves can be taken over a wide range of bath temperatures, which enables a measurement of the \TES\ thermal conductance $G$.
-Similarly to \sectionref{xxx}, I took \IV\ curves at bath temperatures ranging from 995~mK -- 1160~mK, while adjusting the applied heater power so that each \IV\ curve had a clear normal branch.
+Similarly to \sectionref{sec:heater-r}, I took \IV\ curves at bath temperatures ranging from 995~mK -- 1160~mK, while adjusting the applied heater power so that each \IV\ curve had a clear normal branch.
 I again used the assumption that high in the transition the \TES\ resistance depends on only the \TES\ temperature, so that the Joule power $P_J$ dissipated in the \TES\ at $0.99R_n$ depends only on the bath temperature $T_b$ and the applied heater power $P_{htr} = I_{htr}^2 R_{htr}$. A fit can then be made to \eqnref{eqn:tes-ptot} in the form
 \begin{equation}\label{eqn:g-fit}
 P_{htr} + P_J + P_{opt}= \frac{G T_c}{n}\left(1 - \left(\frac{T_b}{T_c}\right)^n\right).
@@ -414,7 +414,7 @@ Second, the detector noise signal is completely unaffected by the common mode si
 Because the frame rate of the video system is 6 FPS or faster, this indicated that the only impact of the strong common-mode noise signal on videos is the need to account for a time-varying detector offset.
 Out approach to dealing with this offset is covered in \sectionref{xxx}.
 
-The lower right plot in \figref{ch8-cm-plots} shows the detector timestream for \RCm{29}{1}, translated into variation in bath temperature.
+The lower right plot in \figref{fig:ch8-cm-plots} shows the detector timestream for \RCm{29}{1}, translated into variation in bath temperature.
 We can define a differential thermal conductance relative to changes in bath temperature $G_b$ via
 \begin{equation}
   G_b \equiv \frac{dP_b}{d T_nb} = G \left( \frac{T_b}{T} \right)^{n-1}.
@@ -481,7 +481,7 @@ The noise below \SI{30}{\Hz} is 1.5--2.5 times higher with the \PTC\ on, but the
 
 \section{Noise Aliasing}
 
-As explained in \sectionref{xxx}, the \MCE\ takes data at \SI{15625}{\hertz}, but is only capable of sending data for the full array of 251~detectors to the readout computer at \SI{3125}{\hertz}.
+As explained in \sectionref{sec:det-readout}, the \MCE\ takes data at \SI{15625}{\hertz}, but is only capable of sending data for the full array of 251~detectors to the readout computer at \SI{3125}{\hertz}.
 This raises the question of how much noise is aliased from the \SIrange{3125}{15625}{\hertz} band to below \SI{3125}{\hertz}.
 To check this I acquired data for the full array, under standard operating conditions, at the normal rate of \SI{3125}{\hertz} and for column 0 at \SI{15625}{\hertz}.
 5 data files were acquired for each case. For each row in column 0 for each data file a power spectrum was taken after subtracting the common mode signal, and the excess noise was calculated as
@@ -516,15 +516,15 @@ For this detector the excess noise is \SI{17}{\percent}.
 
 \section{Bias Step Analysis: \Loop\ and $\beta_I$} \label{sec:bias-step}
 
-As described in \sectionref{xxx}, steps in the applied bias current can be used to measure \Loop, $\beta_I$ and $R$ for a detector.
+As described in \sectionref{sec:lin-tes-eqn}, steps in the applied bias current can be used to measure \Loop, $\beta_I$ and $R$ for a detector.
 In order to make this measurement, the data acquisition rate must be fast enough to track the fast electrical response of the \TES.
 In addition, the servo rolloff must be either fast enough to not affect the electrical response, or the effect of the servo rolloff must be included in the fit.
 
 I took measurements at \SI{15625}{\hertz}, which is fast enough to track the electrical response.
-I found that the servo rolloff too slow to be ignored, so the function to be fit to is \eqnref{xxx} after being passed through a single pole lowpass filter with time constant $\tau_{servo}$, so that $\tau_{servo}$ is one of the parameter to be fit.
+I found that the servo rolloff too slow to be ignored, so the function to be fit to is \eqnref{eqn:bias-step-resp} after being passed through a single pole lowpass filter with time constant $\tau_{servo}$, so that $\tau_{servo}$ is one of the parameter to be fit.
 
 \figref{fig:ch8-bias-step-plots} shows the result of these measurements being taken at a range of bias point for the four detectors on column 0 with good heaters.
-The fits are generally good, but it is evident that at some bias points a damped oscillatory response is present on top of the expected \eqnref{xxx} response.
+The fits are generally good, but it is evident that at some bias points a damped oscillatory response is present on top of the expected \eqnref{eqn:bias-step-resp} response.
 The source of this is not understood; one possible explanation would be the presence of a dangling heat capacity \cite{xxx}.
 
 \begin{figure*}
@@ -536,8 +536,8 @@ The source of this is not understood; one possible explanation would be the pres
 Response of \RCm{31}{1} to step in applied bias current, at a range of bias points. In all cases there is a fast increase in the \TES\ current followed by a slow decay to the final current, which for these bias points is always less than the initial current. As the detector is biased deeper into the transition the decrease in current becomes larger, indicating that loop gain increases deeper in the transition. 
 \textbf{Upper Right}
 Close-up view of initial stage of detector response.
-Both the data and the best-fit curve to \eqnref{xxx} are shown, and the responses are offset vertically for clarity.
-At some bias points a damped oscillatory response is present on top of the \eqnref{xxx} response; the source of this is not understood.
+Both the data and the best-fit curve to \eqnref{eqn:bias-step-resp} are shown, and the responses are offset vertically for clarity.
+At some bias points a damped oscillatory response is present on top of the \eqnref{eqn:bias-step-resp} response; the source of this is not understood.
 }
 \label{fig:ch8-bias-step-plots}
 \end{figure*}
@@ -551,7 +551,7 @@ At some bias points a damped oscillatory response is present on top of the \eqnr
 \label{fig:ch8-bias-step-results}
 \end{figure*}
 
-Once values for \Loop, $\beta_I$ and $R$ are known, the \DC\ responsivity $s_I(0)$ and $\tau_{eff}$ can be calculated from \eqnref{xxx} and \eqnref{xxx} respectively.
+Once values for \Loop, $\beta_I$ and $R$ are known, the \DC\ responsivity $s_I(0)$ and $\tau_{eff}$ can be calculated from \eqnref{eqn:si-full} and \eqnref{eqn:teff} respectively.
 To check the accuracy of these calculations, I also measured the response of the detectors to steps in applied heater power at the same bias points for these four detectors.
 The results of these measurements, as well the ratio of the predicted to measured values, are shown in \figref{fig:ch8-heater-step-pred-plots}.
 The agreement between the predicted and measured values is good, indicating that response to detector bias steps can be used to predict $s_I(0)$ and $\tau_{eff}$ with good accuracy.
@@ -586,7 +586,7 @@ All data taken at normal operating conditions of $T_{b} = \SI{1100}{\mK}$ and bi
 Histograms showing measured values of \Loop, $\beta_I$ and $R$.
 \textbf{Right Plots}
 Scatterplots showing how each of the three parameters \Loop, $\beta_I$ and $R$ correlate with each other.
-Note that $R$ is plotting, the $R/R_n$. This is because $R_n$ is known only for those detectors on columns 0 and 1 with working heaters (see \sectionref{xxx}).
+Note that $R$ is plotting, the $R/R_n$. This is because $R_n$ is known only for those detectors on columns 0 and 1 with working heaters (see \sectionref{sec:heater-r}).
 }
 \label{fig:ch8-all-loop-plots}
 \end{figure*}
@@ -597,7 +597,7 @@ Note that $R$ is plotting, the $R/R_n$. This is because $R_n$ is known only for 
   \centering
 \includegraphics{drawings/ch8-teff-si-pred.pdf}
 \caption{
-  Plots showing distribution of predicted $\tau_{eff}$ and $s_I(0)$. The predictions use the values for $R$, \Loop and $\beta_I$ shown in \figref{fig:ch8-all-loop-plots}, and $R_{sh}$ values from \sectionref{xxx}. $R_p$ is assumed to be zero in all cases.
+  Plots showing distribution of predicted $\tau_{eff}$ and $s_I(0)$. The predictions use the values for $R$, \Loop and $\beta_I$ shown in \figref{fig:ch8-all-loop-plots}, and $R_{sh}$ values from \sectionref{sec:shunt-nyquist}. $R_p$ is assumed to be zero in all cases.
 xxx comment on whether getting below 2 ms is good enough
 }
 \label{fig:ch8-teff-si-pred}
@@ -613,8 +613,8 @@ $S^2_{P_{bolo}}$ is calculated via
 \begin{equation}
  S^2_{P_{bolo}} = S^2_I / s_I(0),
 \end{equation}
-where here the \DC\ detector responsivity $s_I(0)$ is calculated using the measurements described in \sectionref{xxx}.
-Also plotted in the predicted detector noise level for each detector at each bias point, including the predicted photon noise level of \Pnoise{0.5e-15} from \sectionref{xxx}.
+where here the \DC\ detector responsivity $s_I(0)$ is calculated using the measurements described in \sectionref{sec:bias-step}.
+Also plotted in the predicted detector noise level for each detector at each bias point, including the predicted photon noise level of \Pnoise{0.5e-15} from \sectionref{sec:predicted-noise}.
 
 Several important features are visible in these plots.
 First, \RCm{30}{1} shows several noise lines, the origin of which is not understood.
@@ -650,7 +650,7 @@ The left column plots the directly measured current noise, after removing a comm
 The right column shows the same noise spectra, but referred to power absorbed in the bolometer.
 For all four detectors, there is less spread in the low-frequency noise levels than in the current noise, suggesting that the dominant source of noise at these frequencies deposits power on the bolometers.
 This behavior is expected of either thermal fluctuation noise or photon noise.
-Also plotted in the right column is the predicted noise spectrum, using parameters taken from \sectionref{xxx}, included \Pnoise{0.5e-15} of photon noise.
+Also plotted in the right column is the predicted noise spectrum, using parameters taken from \sectionref{sec:bias-step}, including \Pnoise{0.5e-15} of photon noise.
 For all four detectors, the measured noise is higher than predicted by the noise model.
 }
 \label{fig:ch8-trans-noise}
@@ -665,5 +665,5 @@ The red line is the basic detector noise model using measured values for all det
 The black line is for a noise model that include enough excess ``power'' noise to match the measured white noise level at low frequencies.
 This excess ``power'' noise could be due to a high level of photon noise (3.2 times higher than predicted) or a larger-than-measured value of $G$ (5.3 times higher than measured).
 }
-\label{fig:ch8-trans-noise-model-plotsn}
+\label{fig:ch8-trans-noise-model-plots}
 \end{figure*}
