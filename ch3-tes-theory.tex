@@ -116,13 +116,11 @@ s_I(\omega) = - \frac{1}{V_0 \gamma}\frac{\Loop}{\Loop + 1}
                        \left(1 + j \omega \tau_{eff}\right)^{-1}.
 \end{equation}
 This implies that the time-domain response to step in applied power, for example from a heater, is
-\begin{equation} \label{eqn:htr-step-resp-high-time}
-  \begin{split}
+\begin{align} \label{eqn:htr-step-resp-high-time}
     \delta I(t) & = - \delta P s_I(0) (1 - e^{-t/\tau_{eff}}) \\
                 & = - \frac{\delta P}{V_0 \gamma}\frac{\Loop}{\Loop + 1}
                       (1 - e^{-t/\tau_{eff}}).
-  \end{split}
-\end{equation}
+\end{align}
 This can be used to measure $\tau_{eff}$ directly as well as \DC\ responsivity once heater power has been calibrated (\sectionref{sec:teff-resp}).
 As described in\sectionref{sec:tau-nat-theory}, it can also be used to measure the detector natural time constant $\tau$.
 These measurements are described further in \sectionref{sec:tau-nat}.
