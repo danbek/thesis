@@ -8,6 +8,9 @@
 *-blx.bib
 ~$*
 thesis.pdf
+thesis.lof
+thesis.lot
+thesis.toc
 Thumbs.db
 drawings/*.dvi
 drawings/*.pdf
