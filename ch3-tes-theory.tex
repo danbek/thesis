@@ -173,6 +173,7 @@ The \TES\ response to bias steps in the superconducting and normal states can th
 \centering
 \caption{Symbols and parameters used in describing behavior of \TES\ detectors.}
 \label{tab:tes-theory-summary}
+{\renewcommand{\arraystretch}{1.5}%
 \begin{tabular}{l l}
 \toprule
 Symbol &  Explanation \\
@@ -204,6 +205,7 @@ $\delta V = \delta I_{bias} R_{sh}$ & Change in bias voltage applied to \TES\ \\
 $\delta P$ & Change in power (optical or heater) falling on \TES\ \\
 \bottomrule
 \end{tabular}
+}
 \end{table*}
 
 \section{Measurement of Natural Time Constant}\label{sec:tau-nat-theory}
@@ -370,6 +372,7 @@ where $\bar{n}$ is the photon occupation number, given by
 \centering
 \caption{Noise in \TES\ bolometers, referred to power absorbed in bolometer. To obtain current noise passing through the bolometer, multiply each power spectral density by $|s_I(\omega)|^2$.}
 \label{tab:tes-noise}
+{\renewcommand{\arraystretch}{2.0}%
 \begin{tabular}{l l}
 \toprule
 Noise Source &  Noise Power Spectral Density \\
@@ -379,4 +382,5 @@ Load Resistor & $S^2_{L} = 4 k_B T_L I_0^2 R_L \frac{(1 + (\omega \tau_I)^2) (\L
 Thermal Fluctuation Noise & $S^2_{TFN} = 4 k_B T_0^2 G F(T_0, T_b)$ \\
 \bottomrule
 \end{tabular}
+}
 \end{table*}
