@@ -1,4 +1,4 @@
-\chapter{TES Bolometer Theory}\label{c:tes}
+\chapter{\textsc{TES} Bolometer Theory}\label{c:tes}
 
 This chapter summarizes the \TES\ theory used in this thesis.
 I start by describing the \TES\ electrical and thermal circuits, defining relevant parameters, and stating the linearized \TES\ equations.
@@ -9,7 +9,7 @@ I discuss the derivation of two results in more detail.
 First, I give an expression for the time-domain response to a step function in applied detector bias current.
 Second, I describe a new approach for measuring the natural detector time constant $\tau$ by extrapolating several measurements of the effective detector time constant $\tau_{eff}$ high in the transition. 
 
-\section{\TES\ Electrical And Thermal Circuits}
+\section{\textsc{TES} Electrical And Thermal Circuits}
 
 \figref{fig:elec-thermal-circuit} shows the electrical and thermal circuits for a \TES\ bolometer.
 The bolometer is voltage-biased by passing a bias current $I_{bias}$ through a shunt resistor \Rsh\ which has a much lower resistance than the normal-state resistance $R_n$ of the \TES.
@@ -28,7 +28,7 @@ This coupling acts as feedback, termed ``negative electrothermal feedback'', fir
 This coupling acts as negative feedback.
 As the optical power falling on the \TES\ increases, the temperature of the \TES\ increases, which causes the resistance of the \TES\ to increase as well.
 Because the \TES\ is voltage-biased, the Joule heating is inversely proportional to the resistance, so the Joule heating decreases, which causes the temperature of the \TES\ to decrease, opposing the effect of the increased optical power.
-The negative electro-thermal feedback speeds up the response time of the detector and allows the detector to self-bias into the superconducting transition.
+The negative electrothermal feedback speeds up the response time of the detector and allows the detector to self-bias into the superconducting transition.
 
 \begin{figure*}
 \centering
@@ -45,7 +45,7 @@ The \TES\ is warmed to temperature $T$ by applied optical power $P_{opt}$, power
 \label{fig:elec-thermal-circuit}
 \end{figure*}
 
-\section{Linearized Electrical and Thermal Circuits}
+\section{Linearized Electrical and Thermal Circuits}\label{sec:lin-tes-eqn}
 
 In the limit of small changes in \TES\ current and temperature, the resistance of the \TES\ can be expressed as
 \begin{equation}
@@ -94,6 +94,11 @@ s_I(\omega) =
 \begin{equation}
 \gamma \equiv 1 + \frac{\beta_I}{1+\Loop} - \frac{\Loop - 1}{\Loop + 1}\frac{R_L}{R_0}.
 \end{equation}
+Here $\tau_{eff}$ is given by
+\begin{equation} \label{eqn:teff}
+  \tau_{eff} = \frac{\tau}{1 + \frac{1 - R_L / R_0}{1 + \beta_I + R_L / R_0} \Loop}.
+\end{equation}
+
 While imposing, these expressions are much simpler in the limit which generally hold for operating \TES\ detectors: strong voltage bias ($R_L \ll R_0$), and $\tau \ll L/R$. 
 In this limit the power-to-current responsivity becomes
 \begin{equation}
@@ -120,7 +125,7 @@ This implies that the time-domain response to step in applied power, for example
 \end{equation}
 This can be used to measure $\tau_{eff}$ directly as well as \DC\ responsivity once heater power has been calibrated (\sectionref{sec:teff-resp}).
 As described in\sectionref{sec:tau-nat-theory}, it can also be used to measure the detector natural time constant $\tau$.
-These measurements are desribed further in \sectionref{sec:tau-nat}.
+These measurements are described further in \sectionref{sec:tau-nat}.
 
 \textbf{\TES\ Response to Step Function in Bias Current}
 To derive the behavior of the \TES\ after a step function in applied bias, we solve the equations under the conditions
@@ -131,7 +136,7 @@ with constant driving force starting at time zero of
 \begin{equation}
 \begin{pmatrix} \delta I_{bias} R_{sh} / L \\ 0 \end{pmatrix}
 \end{equation}
-Solving this system leads to the following expression for the \TES\ current as a function of time:
+Solving this system leads to the following expression for the \TES\ current as a function of time:\footnote{A Mathematica notebook which verifies this solution, as well as other solutions to the linearized \TES\ equations, can be found at https://gist.github.com/danbek/8591076}
 \begin{equation}\label{eqn:bias-step-resp}
 \delta I (t)
    = - \frac{\delta I_{bias} R_{sh}}{R_0} 
@@ -173,6 +178,7 @@ The \TES\ response to bias steps in the superconducting and normal states can th
 \centering
 \caption{Symbols and parameters used in describing behavior of \TES\ detectors.}
 \label{tab:tes-theory-summary}
+{\renewcommand{\arraystretch}{1.5}%
 \begin{tabular}{l l}
 \toprule
 Symbol &  Explanation \\
@@ -187,7 +193,7 @@ $R_L \equiv R_{sh} + R_{par}$ & Load resistance used in analysis of \TES\ circui
 $T$ & \TES\ temperature \\
 $T_b$ & Thermal bath temperature \\
 $I_0$, $R_0$, $V_0$, $T_0$ & \TES\ current, resistance, voltage, and temperature at bias point \\
-$P_{bath} = K(T^n - T_{bath}^n)$ & Total heat flow from \TES\ island to heat bath \\
+$P_{bath} = K(T^n - T_{b}^n)$ & Total heat flow from \TES\ island to heat bath \\
 $P_{opt}$ & Optical power falling onto \TES\ heat capacity \\
 $P_{htr}$ & Power applied to \TES\ by heater resistor \\
 $P_{J}$ & Joule power dissipated by \TES\ \\
@@ -204,6 +210,7 @@ $\delta V = \delta I_{bias} R_{sh}$ & Change in bias voltage applied to \TES\ \\
 $\delta P$ & Change in power (optical or heater) falling on \TES\ \\
 \bottomrule
 \end{tabular}
+}
 \end{table*}
 
 \section{Measurement of Natural Time Constant}\label{sec:tau-nat-theory}
@@ -244,18 +251,18 @@ Alternately, $\mathcal{K}$ can be calculated if all factors feeding into it are 
 
 \sectionref{sec:tau-nat} presents measurements of $\tau$ for 4 detectors using this technique.
 
-\section{\IV\ Curve Analysis}
+\section{\textsc{IV} Curve Analysis}
 
 \TES\ detector \IV\ curves contain important information about the behavior of \TES\ detectors.
 They directly give the resistance of the \TES\ in both the normal state and throughout the superconducting transition.
-But they also allow allow other properties of the \TES\ to be measured by comparing \IV\ curves taken under different operating conditions, in particular at different bath temperatures and applied heater and/or optical power loads.
+But they also allow other properties of the \TES\ to be measured by comparing \IV\ curves taken under different operating conditions, in particular at different bath temperatures and applied heater and/or optical power loads.
 
 The total amount of power flowing through the \TES\ thermal conductance $G$ is given by
 \begin{equation}\label{eqn:ch3-tes-ptot}
 P_{tot} = K(T^n - T_b^n) = P_{opt} + P_{htr} + I^2 R(T,I).
 \end{equation}
 We can make the assumption that at the start of the superconducting transition, where $R \approx R_n$, $\beta_I = 0$, i.e.\ the resistance of the \TES\ depends only on the \TES\ temperature, and not on the current through the \TES.
-This assumption has been observed to hold empirically for many different types of \TES\ detectors, and there are also theoretical reasons to expect it to be true\cite{xxx ref from doug}.
+This assumption has been observed to hold empirically for many different types of \TES\ detectors, and there are also theoretical reasons to expect it to be true\cite{bennett_resistance_2013}.
 Under this assumption, each time the \TES\ reaches, e.g.\ $R = 0.99R_n$, the temperature of the \TES\ is the same, and therefore $P_{tot}$ will be the same.
 A relationship of the following form must therefore hold:
 \begin{equation}\label{eqn:ch3-tes-99Rn}
@@ -293,7 +300,7 @@ This means that whenever the value $R_{htr}$ is used to calculated a power, the 
 \begin{figure*}
 \includegraphics{drawings/ch8-heater-r-plots.pdf}
 \caption{Plots describing heater measurements, for the case of \RCm{29}{1}.
-\textbf{Upper Left} \IV\ curves. The \IV\ curves should turn completely vertical when the detector becomes fully superconducting at zero voltage, but these curves shows a non-infinite slope. The reason for this is that the readout system as configured for these \IV\ curves was unable keep up with the rapid change of current in the superconducting branch.
+\textbf{Upper Left} \IV\ curves. The \IV\ curves should become vertical when the detector becomes fully superconducting at zero voltage, but these curves shows a non-infinite slope. The reason for this is that the readout system as configured for these \IV\ curves was unable keep up with the rapid change of current in the superconducting branch.
 \textbf{Upper Right} Same data as in upper left plot, but represented in terms of \TES\ Joule power and resistance. As the bias current for the heaters is increased, the curves shift to the left.
 \textbf{Lower Left} Measured $P_{J}$ vs heater current at $0.99R_n$, as well as fit to \eqnref{eqn:ch3-rhtr-fit}.
 \textbf{Lower Right} Same plot as upper right, but the heater power based on $R_{htr} = \SI{23.6}{\ohm}$ has been added to each curve.
@@ -301,7 +308,7 @@ This demonstrates that $\beta_I = 0$ does not hold below the very top of the tra
 \label{fig:ch3-heater-r-plots}
 \end{figure*}
 
-\subsection{Measurement of \TES\ Differential Thermal Conductance $G$}
+\subsection{Measurement of \textsc{TES} Differential Thermal Conductance $G$}
 
 With knowledge of the heater resistances, \IV\ curves can be taken over a wide range of bath temperatures, which enables a measurement of the \TES\ thermal conductance $G$ and transition temperature $T_c$.
 In this case $P_{tot}$ will different for each \IV\ curve, so that \eqnref{eqn:ch3-tes-ptot} can be used in the form
@@ -324,10 +331,10 @@ The data cover 36 data points including 25 temperatures from \SIrange{995}{1160}
 \label{fig:ch3-g-plots}
 \end{figure*}
 
-\section{\TES\ Bolometer Noise}
+\section{\textsc{TES} Bolometer Noise}
 
 There are three sources of detector noise in \TES\ bolometers: Johnson noise in the \TES\ resistance, Johnson noise in the load resistor $R_L$, and thermal fluctuation noise across the weak thermal link $G$.
-Addionally intrinsic fluctuations in the number of arriving photons leads to photon noise, which can be significant source of noise for some \TES\ bolometers.
+Additionally intrinsic fluctuations in the number of arriving photons leads to photon noise, which can be significant source of noise for some \TES\ bolometers.
 Expressions for these sources of noise are shown in \tableref{tab:tes-noise}.
 
 The function $F$ that enters into the thermal fluctuation noise accounts for the temperature gradient between the \TES\ and the bath.
@@ -344,33 +351,41 @@ For the detectors described in this thesis, $n \approx 3.5$, $T_0 \approx 1.2$~K
 Under these conditions, both expressions for $F$ have approximately the same value, 0.83.
 
 For typical operating conditions of \TES\ bolometers, thermal fluctuation noise dominates Johnson noise at low frequencies.
-This can be see by taking the ratio of $S_{I_{TES}}$ to $S_{TFN}$ (ignoring factors of order unity):
+This can be see by taking the ratio of $S^2_{TES}$ to $S^2_{TFN}$ (ignoring factors of order unity):
 \begin{equation}
-\frac{S_{I_{TES}}}{S_{TFN}} \approx \frac{1}{\alpha \Loop} (1 + (\omega \tau)^2)
+\frac{S^2_{TES}}{S^2_{TFN}} \approx \frac{1}{\alpha \Loop} (1 + (\omega \tau)^2)
 \end{equation}
 At low frequencies the \TES\ resistor current noise is suppressed below thermal fluctuation noise by a factor of $1/\alpha \Loop$.
-\TES\ detectors are always biased so that $\Loop > 1$, and values for $\alpha$ in the transition are 100--1000.
+\TES\ detectors are always biased so that $\Loop > 1$, and values for $\alpha$ in the transition for our detectors are 20--400 (see \figref{fig:ch8-bias-step-results} in \sectionref{sec:bias-step}).
 Examination of \tableref{tab:tes-noise} shows that current noise from the load resistor is lower than that from the \TES\ resistor by a factor of $(\Loop-1)^2 (R_0 / R_L) (T_0/T_L)$.
 All this points to the conclusion that detector noise in \TES\ bolometers is dominated by thermal fluctuation noise.
 
-Photon noise arrises due to quantum fluctuations in the number of photons arriving during a given time interval.
-xxx perhaps start with Zmuidzinas 44 with $(hv)^2$ added for bolometers, then $\bar{n} = k_B T / h \nu$ leading to
-This noise is expressed as
+Photon noise arises due to quantum fluctuations in the number of photons arriving during a given time interval.
+This noise is expressed as \cite{zmuidzinas_thermal_2003}
 \begin{equation}\label{eqn:photon-noise}
-  S_{ph} = 2 h \nu P_{opt} (1 + \eta \bar{n})
+  S^2_{ph} = 2 h \nu P_{opt} (1 + \eta \bar{n}),
 \end{equation}
+where $\bar{n}$ is the photon occupation number, given by
+\begin{equation}
+  \bar{n} = \frac{k_B T}{h \nu}
+\end{equation}
+
+\sectionref{sec:predicted-noise} discusses predicted noise levels for our detectors.
+\sectionref{sec:det-noise} discusses measurements of detector noise.
 
 \begin{table*}[t]
 \centering
-\caption{Noise in \TES\ bolometers, referred to power incident on bolometer. To obtain current noise passing through the bolometer, multiply each power spectral density by $|s_I(\omega)|^2$.}
+\caption{Noise in \TES\ bolometers, referred to power absorbed in bolometer. To obtain current noise passing through the bolometer, multiply each power spectral density by $|s_I(\omega)|^2$.}
 \label{tab:tes-noise}
+{\renewcommand{\arraystretch}{2.0}%
 \begin{tabular}{l l}
 \toprule
-Noise Source &  Current Noise \\
+Noise Source &  Noise Power Spectral Density \\
 \midrule
-\TES\ Resistor & $S_{I_{TES}} = 4 k_B T_0 I_0^2 R_0 \xi(I_0) \frac{(1 + (\omega \tau)^2) } {\Loop^2}$ \\
-Load Resistor & $S_{I_{L}} = 4 k_B T_L I_0^2 R_L \frac{(1 + (\omega \tau_I)^2) (\Loop -1)^2} {\Loop^2}$ \\
-Thermal Fluctuation Noise & $S_{TFN} = 4 k_B T_0^2 G F(T_0, T_b)$ \\
+\TES\ Resistor & $S^2_{TES} = 4 k_B T_0 I_0^2 R_0 \xi(I_0) \frac{(1 + (\omega \tau)^2) } {\Loop^2}$ \\
+Load Resistor & $S^2_{L} = 4 k_B T_L I_0^2 R_L \frac{(1 + (\omega \tau_I)^2) (\Loop -1)^2} {\Loop^2}$ \\
+Thermal Fluctuation Noise & $S^2_{TFN} = 4 k_B T_0^2 G F(T_0, T_b)$ \\
 \bottomrule
 \end{tabular}
+}
 \end{table*}
