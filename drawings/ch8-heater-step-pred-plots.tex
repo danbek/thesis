@@ -7,6 +7,28 @@
 \pgfplotsset{compat=1.9} % latest stable release
 
 \pgfplotsset{
+    discard if/.style 2 args={
+        x filter/.code={
+            \edef\tempa{\thisrow{#1}}
+            \edef\tempb{#2}
+            \ifx\tempa\tempb
+                \def\pgfmathresult{inf}
+            \fi
+        }
+    },
+    discard if not/.style 2 args={
+        x filter/.code={
+            \edef\tempa{\thisrow{#1}}
+            \edef\tempb{#2}
+            \ifx\tempa\tempb
+            \else
+                \def\pgfmathresult{inf}
+            \fi
+        }
+    }
+}
+
+\pgfplotsset{
   every axis/.append style={
     scale only axis,
     width=2.5in,
@@ -21,14 +43,16 @@
 \pagestyle{empty}
 
 \begin{tabular}{rr}
-
   \begin{tikzpicture}[trim axis left]
-    \begin{axis}[%ymin=0,
+    \begin{axis}[ymin=0,ymax=10,
         legend pos=north west,
     	title={Measured $\tau_{eff}$},
     	xlabel={$R$ / $R_n$}, ylabel={$\tau_{eff}$ (\si{ms})} ]
       \addplot+[only marks] table[x=prn29,y=teff29]{../data/ch8-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{29}{1}}
+      %\addplot[only marks, mark size=5,mark=circle, discard if not={bias_dac}{2.700000e+04}]
+      %  table[x=prn29,y=teff29]{../data/ch8-heater-step-pred-parms.dat};
+      % would be nice to get this working
       \addplot+[only marks] table[x=prn30,y=teff30]{../data/ch8-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{30}{1}}
       \addplot+[only marks] table[x=prn31,y=teff31]{../data/ch8-heater-step-pred-parms.dat};
@@ -41,9 +65,9 @@
   &
 
   \begin{tikzpicture}[trim axis right]
-    \begin{axis}[%ymin=0,
+    \begin{axis}[ymin=0,ymax=1,
     	title={Measured \TES\ Responsivity},
-    	xlabel={$R$ / $R_n$}, ylabel={$s_I$ (\si{\per\uV})} ]
+    	xlabel={$R$ / $R_n$}, ylabel={$s_I(0)$ (\si{\per\uV})} ]
       \addplot+[only marks] table[x=prn29,y=sI_pred29]{../data/ch8-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{29}{1}}
       \addplot+[only marks] table[x=prn30,y=sI_pred30]{../data/ch8-heater-step-pred-parms.dat};
@@ -78,7 +102,7 @@
     \begin{axis}[ymin=0.8,ymax=1.2,
         legend pos=south east,
     	title={Accuracy of Predicted $s_I$},
-    	xlabel={$R$ / $R_n$}, ylabel={$s_{I,pred} / s_{I,meas}$} ]
+    	xlabel={$R$ / $R_n$}, ylabel={$s_{I,pred}(0) / s_{I,meas}(0)$} ]
       \addplot+[only marks] table[x=prn29,y=sI_rat29]{../data/ch8-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{29}{1}}
       \addplot+[only marks] table[x=prn30,y=sI_rat30]{../data/ch8-heater-step-pred-parms.dat};
