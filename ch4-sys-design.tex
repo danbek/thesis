@@ -139,11 +139,11 @@ Total												& 185 + xxx & 274 + xxx \\
 \end{tabular}
 \end{table*}
 
-\section{Optical Design}\label{s:optical-design}
+\section{Optical Design}\label{sec:optical-design}
 
 % xxx diagram like fig 4in schwan2011 would be good
 
-\section{Feedhorn Design}\label{s:feedhorn-design}
+\section{Feedhorn Design}\label{sec:feedhorn-design}
 
 % xxx where do I explain the choice of a square grid? Ans: section 6.3
 % xxx where do I explain the missing 20 detectors?
@@ -153,7 +153,7 @@ The \Imager\ uses smooth-walled feedhorns because they are easy to design and ea
 Smooth-walled feedhorns do not have the nice polarization properties of corrugated feedhorns \cite{clarricoats_corrugated_1984}, but this is not a concern here because the \Imager\ is polarization-insensitive.
 
 \figref{fig:feedhorn-parms} depicts a smooth-walled conical feedhorn and its interaction with the optical system.
-As discussed in section \sectionref{s:optical-design}, although the optical system has a secondary mirror as well, for many purposes the secondary mirror can be ignored and the system treated as a system of feedhorns illuminating only a primary mirror with a hole in its center.
+As discussed in section \sectionref{sec:optical-design}, although the optical system has a secondary mirror as well, for many purposes the secondary mirror can be ignored and the system treated as a system of feedhorns illuminating only a primary mirror with a hole in its center.
 If a feedhorn is observing a temperature distribution $T_{target}(\theta,\phi)$, and is pointed in a direction $(\theta_0, \phi_0)$, then the temperature observed by the feedhorn will be
 \begin{equation}
     T_{eff}(\theta_0,\phi_0) = \int \, d \Omega \, T_{target}(\theta - \theta_0,\phi - \phi_0) P(\theta,\phi).
@@ -223,7 +223,7 @@ which simplifies to
 \end{equation}
 which is independent of $\phi$, as expected for an unpolarized detector.
 
-To calculate the spillover efficiency of an individual feedhorn, the \MATLAB\ program integrates $P$ over the angles $\theta$ that illuminate the primary mirror and reach the target: \SIrange{5.3}{13.6}{\degree}\footnote{see \sectionref{s:optical-design}}.
+To calculate the spillover efficiency of an individual feedhorn, the \MATLAB\ program integrates $P$ over the angles $\theta$ that illuminate the primary mirror and reach the target: \SIrange{5.3}{13.6}{\degree}\footnote{see \sectionref{sec:optical-design}}.
 \figref{fig:spill-vs-alpha-diam} shows a contour plot of spillover efficiency as a function of $D$ and $\alpha$.
 The blue asterisk matches the parameters for the feedhorns chosen for the \Imager.
 This plot makes it clear that $\eta_s$ depends much more strongly on $D$ than on $\alpha$.
