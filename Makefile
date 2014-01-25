@@ -7,7 +7,7 @@ LUALATEX = lualatex -interaction=batchmode
 PDFCROP  = pdfcrop
 RM       = /usr/bin/rm
 
-InputTeXFiles = ch3-tes-theory.tex ch4-sys-design.tex ch8-subarray.tex ch9-imaging.tex
+InputTeXFiles = ch3-tes-theory.tex ch4-sys-design.tex ch7-subarray.tex ch9-imaging.tex
 SAGFiles = $(wildcard drawings/*.tex)
 PDFSAGFiles = $(SAGFiles:.tex=.pdf) 
 ImageFiles = images/*
@@ -17,7 +17,7 @@ default : thesis.pdf
 thesis.pdf : thesis.tex $(InputTeXFiles) $(ImageFiles) $(PDFSAGFiles) thesis.sty
 	$(PDFLATEX) $<
 
-drawings/ch8-cm-plots.pdf: drawings/ch8-cm-plots.tex thesis.sty
+drawings/ch7-cm-plots.pdf: drawings/ch7-cm-plots.tex thesis.sty
 	cd drawings && $(LUALATEX) $(notdir $<) && $(PDFCROP) $(notdir $@) $(notdir $@)
 
 drawings/%.pdf: drawings/%.tex thesis.sty

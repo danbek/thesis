@@ -1,0 +1,77 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.3in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{rr}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[
+        ymin=0, 
+		title={Measured Shunt Resistance},
+		xlabel={\Rsh\ (\si{\uohm})}, ylabel={Quantity} ]
+	  \addplot [hist={data min=125,data max=165,bins=20},
+		        fill=blue!75]
+	  table[y=Rsh]{../data/ch7-rsh-L.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[ymin=0,
+		title={Measured Nyquist Inductance},
+		xlabel={$L_{ny}$ (nH)}, ylabel={Quantity} ]
+	  \addplot [hist={data min=180,data max=640,bins=23},
+		        fill=blue!75]
+	    table[y=L]{../data/ch7-rsh-L.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+  \\
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[
+		title={Measured \Rsh\ vs $L_{ny}$},
+		xlabel={\Rsh\ (\si{\uohm})}, ylabel={$L_{ny}$ (nH)} ]
+	  \addplot+[only marks]
+	    table[x=Rsh,y=L]{../data/ch7-rsh-L.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+  &
+  \begin{tikzpicture}[trim axis right]
+	\begin{loglogaxis}[ymax=1.2e-9,
+		clip mode=individual,xmin=4e-1,xmax=2e3,
+		title={\RCm{20}{6} Superconducting Current Noise},
+		xlabel={Frequency (Hz)}, ylabel={Current Noise (\Inoise{})} ]
+
+	  \addplot+[only marks,mark size=1.0pt]
+	    table[x=f,y expr=sqrt(\thisrow{Pxx})]{../data/ch7-rsh-pxx.dat};
+	  \addlegendentry{Data}
+
+	  \addplot[mark=none,domain=4e-1:2e3,line width=1pt]
+			  {sqrt(1.38e-23 * 4 * 0.980  / 1.5481e-04 / (1 + (2*3.14159*x*3.9761e-3)^2) + 1.4193e-20)};
+      \addlegendentry{Fit}
+	\end{loglogaxis}
+  \end{tikzpicture}
+  \\
+\end{tabular}
+
+\end{document}
