@@ -229,18 +229,18 @@ $P_{opt} = 150$~pW is assumed everywhere.
 Uncertainties are 95 \% confidence intervals after marginalizing over other fit parameters, and do not include systematic uncertainties due to the unknown value of $P_{opt}$ or uncertainty in the value of the shunt resistors.
 }
 \label{tab:basic-det-props}
-\begin{tabular}{l l l l l l}
+\begin{tabular}{l l l l l l l}
 \toprule
-Detector &  $R_{htr}$ (\si{\ohm}) & $G$ (\si{\nano\W\per\K}) & $n$ & $T_c$ (mK) & $\tau$ (ms) \\
-\RCm{29}{1} & 23.6 & 7.63 $\pm$ 0.08 & 3.52 $\pm$ 0.10 & 1209.4 $\pm$ 0.6 & 8.94 $\pm$ 0.1 \\
-\RCm{30}{1} & 23.5 & 7.67 $\pm$ 0.07 & 3.54 $\pm$ 0.09 & 1213.9 $\pm$ 0.6 & 8.82 $\pm$ 0.2 \\
-\RCm{31}{1} & 24.3 & 7.78 $\pm$ 0.09 & 3.64 $\pm$ 0.11 & 1214.7 $\pm$ 0.7 & 9.45 $\pm$ 0.1 \\
-\RCm{32}{1} & 23.9 & 7.01 $\pm$ 0.43 & 3.18 $\pm$ 0.60 & 1211.6 $\pm$ 3.8 & 10.22 $\pm$ 0.1 \\
-\RCm{29}{2} & 23.8 & 7.70 $\pm$ 0.09 & 3.62 $\pm$ 0.11 & 1213.7 $\pm$ 0.7 & 9.01 $\pm$ 0.1 \\
-\RCm{31}{2} & 23.6 & 7.32 $\pm$ 0.16 & 3.45 $\pm$ 0.22 & 1211.3 $\pm$ 1.4 & 9.51 $\pm$ 0.1 \\
-\RCm{32}{2} & 23.8 & 7.50 $\pm$ 0.27 & 3.74 $\pm$ 0.35 & 1215.6 $\pm$ 2.3 & 10.98 $\pm$ 0.1 \\
+Detector &  $R_{htr}$ (\si{\ohm}) & $G$ (\si{\nano\W\per\K}) & $n$ & $T_c$ (mK) & $\tau$ (ms) & $R_n$ (\si{\mOhm}) \\
+\RCm{29}{1} & 23.9 & 7.78 $\pm$ 0.08 & 3.55 $\pm$ 0.10 & 1209.0 $\pm$ 0.6 & 8.94 $\pm$ 0.1 & 4.39 \\
+\RCm{30}{1} & 23.5 & 7.73 $\pm$ 0.07 & 3.57 $\pm$ 0.09 & 1213.8 $\pm$ 0.6 & 8.82 $\pm$ 0.2 & 4.35 \\
+\RCm{31}{1} & 23.4 & 7.56 $\pm$ 0.10 & 3.67 $\pm$ 0.13 & 1215.4 $\pm$ 0.8 & 9.45 $\pm$ 0.1 & 4.32 \\
+\RCm{32}{1} & 23.0 & 6.89 $\pm$ 0.36 & 3.35 $\pm$ 0.50 & 1212.4 $\pm$ 3.2 & 10.22 $\pm$ 0.1 & 4.28 \\
+\RCm{29}{2} & 23.8 & 7.71 $\pm$ 0.08 & 3.58 $\pm$ 0.10 & 1213.6 $\pm$ 0.7 & 9.01 $\pm$ 0.1 & 4.36 \\
+\RCm{31}{2} & 20.4 & 6.35 $\pm$ 0.16 & 3.41 $\pm$ 0.24 & 1214.5 $\pm$ 1.6 & 9.51 $\pm$ 0.1 & 3.78 \\
+\RCm{32}{2} & 23.5 & 7.41 $\pm$ 0.25 & 3.70 $\pm$ 0.32 & 1215.8 $\pm$ 2.1 & 10.98 $\pm$ 0.1 & 4.38 \\
 \midrule
-Mean & 23.8 & 7.52 & 3.53 & 1212.9 & 9.56 \\
+Mean & 25.7 & 7.35 & 3.55 & 1213.5 & 9.56 & 4.27 \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -353,7 +353,7 @@ The step in applied power begins at $t \approx \SI{0.6}{\ms}$, not $t = \SI{0}{\
 $P_{opt} = 150$~pW is assumed everywhere.
 Uncertainties are 95 \% confidence intervals after marginalizing over other fit parameters, and do not include systematic uncertainties due to the unknown value of $P_{opt}$ or uncertainty in the value of the shunt resistors.
 Values are for detectors biased at normal operating conditions of $T_b = \SI{1100}{\milli\kelvin}$ and detector bias of 27000.
-``N/A'' indicated a property that has not been measured for that detector.
+``N/A'' indicates a property that has not been measured for that detector.
 }
 \label{tab:trans-det-props}
 \begin{tabular}{l l l l l l l l}

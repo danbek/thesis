@@ -29,7 +29,7 @@
 	  \addplot+[only marks]
 	    table[x=temp,y=Psat]{../data/ch7-g-psat-vs-temp.dat};
       \addlegendentry {Data}
-      \addplot+[mark=non,domain=900:1250] { 7321.7 * 1.2113 / 3.4518 * (1 - (x / 1211.3)^3.4518 }; 
+      \addplot+[mark=non,domain=900:1250] { 6.350062e+03 * 1.214539e+00 / 3.410728e+00 * (1 - (x / 1.214539e+03)^3.410728e+00 };
       \addlegendentry {Fit}
 	\end{axis}
   \end{tikzpicture}
@@ -41,14 +41,15 @@
 		title={$n$ vs $G$},
 		xlabel={$G$ (nW/K)}, ylabel={$n$} ]
 
-      \draw[rotate around={-3.767707e+01:(axis cs:7.633085e+00,3.522662e+00)}] (axis cs:7.633085e+00,3.522662e+00) ellipse [x radius=1.232017e-02,y radius=1.569403e-01];
-      \draw[rotate around={-3.852786e+01:(axis cs:7.671974e+00,3.542294e+00)}] (axis cs:7.671974e+00,3.542294e+00) ellipse [x radius=1.060114e-02,y radius=1.390605e-01];
-      \draw[rotate around={-3.888021e+01:(axis cs:7.782604e+00,3.641888e+00)}] (axis cs:7.782604e+00,3.641888e+00) ellipse [x radius=1.300192e-02,y radius=1.717537e-01];
-      \draw[rotate around={-3.634981e+01:(axis cs:7.014722e+00,3.176079e+00)}] (axis cs:7.014722e+00,3.176079e+00) ellipse [x radius=6.928964e-02,y radius=9.006036e-01];
-      \draw[rotate around={-3.847088e+01:(axis cs:7.702447e+00,3.622472e+00)}] (axis cs:7.702447e+00,3.622472e+00) ellipse [x radius=1.350649e-02,y radius=1.774881e-01];
-      \draw[rotate around={-3.700074e+01:(axis cs:7.321729e+00,3.451816e+00)}] (axis cs:7.321729e+00,3.451816e+00) ellipse [x radius=2.578279e-02,y radius=3.351925e-01];
-      \draw[rotate around={-3.785747e+01:(axis cs:7.497633e+00,3.742396e+00)}] (axis cs:7.497633e+00,3.742396e+00) ellipse [x radius=4.041582e-02,y radius=5.447489e-01];
-	  \addplot+[only marks] table[x=G,y=n]{../data/ch7-g-parms.dat};
+      \draw[rotate around={-3.809091e+01:(axis cs:7.780784e+00,3.550559e+00)}] (axis cs:7.780784e+00,3.550559e+00) ellipse [x radius=1.186306e-02,y radius=1.502480e-01];
+      \draw[rotate around={-3.865878e+01:(axis cs:7.726239e+00,3.570413e+00)}] (axis cs:7.726239e+00,3.570413e+00) ellipse [x radius=1.058724e-02,y radius=1.387731e-01];
+      \draw[rotate around={-3.815490e+01:(axis cs:7.560540e+00,3.671516e+00)}] (axis cs:7.560540e+00,3.671516e+00) ellipse [x radius=1.471422e-02,y radius=1.968318e-01];
+      \draw[rotate around={-3.574036e+01:(axis cs:6.892879e+00,3.345445e+00)}] (axis cs:6.892879e+00,3.345445e+00) ellipse [x radius=5.686227e-02,y radius=7.535873e-01];
+      \draw[rotate around={-3.855224e+01:(axis cs:7.711462e+00,3.581020e+00)}] (axis cs:7.711462e+00,3.581020e+00) ellipse [x radius=1.214686e-02,y radius=1.591290e-01];
+      \draw[rotate around={-3.384468e+01:(axis cs:6.350062e+00,3.410728e+00)}] (axis cs:6.350062e+00,3.410728e+00) ellipse [x radius=2.565867e-02,y radius=3.560103e-01];
+      \draw[rotate around={-3.764475e+01:(axis cs:7.411579e+00,3.697532e+00)}] (axis cs:7.411579e+00,3.697532e+00) ellipse [x radius=3.659019e-02,y radius=4.939734e-01];
+
+      \addplot+[only marks] table[x=G,y=n]{../data/ch7-g-parms.dat};
 
 	\end{axis}
   \end{tikzpicture}
