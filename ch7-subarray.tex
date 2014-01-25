@@ -168,7 +168,7 @@ It is not known whether this correlation is a real physical effect or an artifac
 Thirty-one detectors have heater resistors connected to bond pads.
 Twenty-three of these have the heaters wired to the heater bias line.
 Of these 23, there are nine detectors which show no response to applied heater power.
-Five of these nine are on the cut list (see \sectionref{sec:ch9-det-cuts}), so this is not surprising.
+Five of these nine are on the cut list (see \sectionref{sec:ch8-det-cuts}), so this is not surprising.
 But four detectors can be biased into the transition and work well, but show no response to applied heater power (\RC{4}{7}, \RC{5}{7}, \RC{6}{6}, \RC{7}{6}).
 The reasons for these detectors not showing a response to heater power are not fully understood.
 This leaves 14 working detectors that also show a response to applied heater power.
@@ -393,7 +393,7 @@ This is caused by the \abt \SI{1.4}{\Hz} cycle of the \PTC; the physical mechani
 This signal can be removed either through a common-mode subtraction scheme or a notch filter.
 Second, the detector noise signal is completely unaffected by the common mode signal at frequencies faster than \SI{2}{\Hz}.
 Because the frame rate of the video system is 6 FPS or faster, this indicates that the only impact of the strong common-mode noise signal on videos is the need to account for a time-varying detector offset.
-Our approach to dealing with this offset is covered in \sectionref{sec:ch9-algo}.
+Our approach to dealing with this offset is covered in \sectionref{sec:ch8-algo}.
 
 The lower right plot in \figref{fig:ch7-cm-plots} shows the detector timestream for \RCm{29}{1}, translated into variation in bath temperature.
 We can define a differential thermal conductance relative to changes in bath temperature $G_b$ via
