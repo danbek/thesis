@@ -30,4 +30,9 @@ clean : .PHONY
 distclean : clean
 	$(RM) -f -- thesis.pdf
 
+full: default
+	biber thesis
+	$(PDFLATEX) thesis.tex
+	$(PDFLATEX) thesis.tex
+
 .PHONY :
