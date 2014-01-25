@@ -69,7 +69,7 @@ When operating the array in normal conditions, the data readout rate is either \
 The time constant for the associated Nyquist frequencies are \abt~\SI{0.1}{ms}, so there is no need to use $I$ values with more bandwidth than this\footnote{Doing so is counter-productive, because it will alias \SQUID\ noise into the detector band}.
 Electrical detector time constants are \abt~\SI{4}{ms} in the superconducting state, and \abt~\SI{0.14}{ms} in the normal state.
 While biased into the transition, $\tau_{eff}$ is in the range \SIrange{1}{4}{ms}.
-\figref{fig:ch7-servo-tau-est} shows the impact of the servo rolloff on estimation of time constants from single-pole response functions.
+\figref{fig:ch7-servo-tau-est} shows the impact of the servo roll-off on estimation of time constants from single-pole response functions.
 To reduce the error in the estimated time constant below \SI{2}{\percent}, the servo time constant should be below \SI{5}{\percent} of the time constant to be measured.
 This criteria corresponds to \SI{2e-4}{s} for the superconducting state and as fast as \SI{5e-5}{s} for detectors operating in the transition.
 
@@ -83,9 +83,9 @@ For less than \SI{2}{\percent} error, $\tau_{servo}/\tau < \num{0.05}$ is requir
 \label{fig:ch7-servo-tau-est}
 \end{figure*}
 
-Measuring the bandwidth of the servo loop is challenging because when the detectors are in the superconducting state the Johnson noise of the shunt resistor is higher than the \SQUID\ noise and the Johnson noise rolloff is \abt \SI{4}{\ms}, both factors which make it difficult to identify the servo rolloff from power spectra.
+Measuring the bandwidth of the servo loop is challenging because when the detectors are in the superconducting state the Johnson noise of the shunt resistor is higher than the \SQUID\ noise and the Johnson noise roll-off is \abt \SI{4}{\ms}, both factors which make it difficult to identify the servo roll-off from power spectra.
 However, if the bath temperature is raised above $T_c$ for the Al wirebonds connecting the \TES\ circuit to the input coils of the 1st stage \SQUIDs, the total resistance of the \TES\ circuit is raised from \SI{150}{\uohm} to \SIrange{20}{50}{\mohm}.
-This high resistance drives the Johnson noise of the load resistor below the \SQUID\ noise, and pushes the $L/R$ rolloff of the Johnson noise to \SI{3e-5}{s} or faster (\SI{3}{\dB} frequency of \SI{5}{\kilo\Hz} or higher), making a measurement of the servo bandwidth much easier.
+This high resistance drives the Johnson noise of the load resistor below the \SQUID\ noise, and pushes the $L/R$ roll-off of the Johnson noise to \SI{3e-5}{s} or faster (\SI{3}{\dB} frequency of \SI{5}{\kilo\Hz} or higher), making a measurement of the servo bandwidth much easier.
 
 To choose $I$ values, I acquired data at the fastest multiplexing rate possible for 33 rows\footnote{This rate is achieved by only reporting one of the eight columns to the readout computer. The limiting factor in how fast the entire array can be multiplexed is packaging and sending the data to the readout computer.}, \SI{15151.5}{Hz} while the system was at a temperature of \SI{1.3}{\K}.
 For every row and column that has a detector that responds in the superconducting state, I fit the resulting noise power spectrum to an equation of the form
@@ -110,7 +110,7 @@ Even operating with a servo gain of 10 puts \SI{95}{\percent} of the $\tau_{serv
   Box plot boxes represent the \SIrange{5}{95}{\percent} quantiles, middle line the median, upper and lower whiskers the maximum/minimum values, across all rows/columns with detectors that respond in the superconducting state.
 \textbf{Upper} Plot of \SQUID\ $\tau_{servo}$ vs servo gain $I$.
 Servo bandwidth increases with $I$.
-At $I \ge \num{60}$, very small $\tau_{servo}$ begin to appear. This indicates either a rolloff above the bandwidth of the measurement, or the beginning of an unstable servo loop.
+At $I \ge \num{60}$, very small $\tau_{servo}$ begin to appear. This indicates either a roll-off above the bandwidth of the measurement, or the beginning of an unstable servo loop.
 The few high $\tau_{servo}$ values at gains of 80 and 100 are a result of the fitting routine failing, probably due to an unstable servo loop.
 \textbf{Lower Left} Close-up view of upper plot for gains from 10 to 50.
 \textbf{Lower Right} Plot of median \SQUID\ white noise level vs. servo gain $I$. Positive gains consistently give lower dark \SQUID\ noise levels.
@@ -157,7 +157,7 @@ It is not known whether this correlation is a real physical effect or an artifac
 \caption{Plots summarizing results of measurements of shunts and Nyquist inductors.
 \textbf{Upper Left} Histogram of shunt resistance \Rsh.
 \textbf{Upper Right} Histogram of total inductance in circuit, which includes the interface chip Nyquist inductor, the inductance of the SQ1 input coil, and any parasitic inductance.
-\textbf{Lower Left} Scatterplot showing all measured Rsh and L values. A correlation is apparent, the reason for which is not understood.
+\textbf{Lower Left} Scatterplot showing all measured \Rsh and $L$ values. A correlation is apparent, the reason for which is not understood.
 \textbf{Lower Right} Plot showing current noise power spectrum extracted from a single data acquisition for \RCm{20}{6}, along with predicted power spectrum based on best fit to \eqnref{eqn:scnoise-fit} across all data acquisitions. The best fit values are $\Rsh=\SI{155}{\uohm}$, $L = \SI{616}{nH}$, and \SQUID\ white noise level of \Inoise{1.2e-10}.}
 \label{fig:rsh-l-plots}
 \end{figure*}
@@ -377,7 +377,7 @@ Detector &  $s_I(0)$ (\si{\per\uV}) & $\tau_{eff}$ (\si{\ms}) & $R$ (\si{\mOhm})
 
 Our detectors have significant $1/f$ noise, with a \SI{3}{\decibel} knee of $\abt\SI{0.7}{\hertz}$.
 Most of this noise is due to bath temperature fluctuations which are uncontrolled by the Cryocon \PID\ loop.
-\figref{fig:ch7-cm-plots} contains several plots relating to this.
+\figref{fig:ch7-cm-plots} contains plots relating to this.
 The upper left plot shows raw 10 minute detector timestreams for 15 detectors.
 The common mode signal is evident in these plots, and is much stronger than the white noise at frequencies of \SI{1}{\Hz} and slower.
 The upper right plot shows the same detector timestreams after removal of the mean of all ``good'' timestreams for columns 0 and 1 (the only columns which were biased for this test).
@@ -390,7 +390,7 @@ The power spectral density plot has two important features.
 First, a strong noise peak is located at \SI{1.411}{\Hz}.
 This is caused by the \abt \SI{1.4}{\Hz} cycle of the \PTC; the physical mechanism could either by microphonic pickup of the vibrations caused by the \PTC\ cycle, or actual variation in bath temperature induced by the cycle.
 This signal can be removed either through a common-mode subtraction scheme or a notch filter.
-Second, the detector noise signal is completely unaffected by the common mode signal at frequencies faster than \SI{2}{\Hz}.
+Second, the detector noise signal is unaffected by the common mode signal at frequencies faster than \SI{2}{\Hz}.
 Because the frame rate of the video system is 6 FPS or faster, this indicates that the only impact of the strong common-mode noise signal on videos is the need to account for a time-varying detector offset.
 Our approach to dealing with this offset is covered in \sectionref{sec:ch8-algo}.
 
@@ -417,7 +417,7 @@ The same data after removal of the common mode signal (as defined in the text).
 Current noise power spectral density for the raw data, the raw data minus the common mode (``No CM''), the raw data minus the common mode and the best-fit 4th-order polynomial (``No CM, Poly''), and the common mode itself.
 The strong noise peak at \SI{1.411}{\Hz} is due to the \PTC, as explained in the text.
 \textbf{Lower Right} 
-Raw datastream for \RCm{29}{1}, after conversion to an equivalent bath temperature variation, as described in the text.
+Raw timestream for \RCm{29}{1}, after conversion to an equivalent bath temperature variation, as described in the text.
 }
 \label{fig:ch7-cm-plots}
 \end{figure*}
@@ -475,7 +475,7 @@ The sums are performed only over those frequency components in the range \SIrang
 \figref{fig:ch7-noise-aliasing} summarizes the results.
 The average aliased noise is \SI{14}{\percent}, but some detectors have statistically significant higher levels of aliased noise; for example, \RCm{20}{1} has \SI{28}{\percent} excess noise.
 
-The \MCE\ can be configured to apply a 4-pole digital lowpass filter to the the \SI{15625}{\Hz} data stream \cite{mce_team_digital_????}.
+The \MCE\ can be configured to apply a 4-pole digital lowpass filter to the \SI{15625}{\Hz} data stream \cite{mce_team_digital_????}.
 An appropriate choice of the cutoff frequency for this filter can greatly reduce aliased noise.
 We have not yet implemented this filter, but plan to do for future operation of the system.
 
@@ -497,10 +497,10 @@ For this detector the excess noise is \SI{17}{\percent}.
 
 As described in \sectionref{sec:lin-tes-eqn}, steps in the applied bias current can be used to measure \Loop, $\beta_I$ and $R$ for a detector.
 In order to make this measurement, the data acquisition rate must be fast enough to track the fast electrical response of the \TES.
-In addition, the servo rolloff must be either fast enough to not affect the electrical response, or the effect of the servo rolloff must be included in the fit.
+In addition, the servo roll-off must be either fast enough to not affect the electrical response, or the effect of the servo roll-off must be included in the fit.
 
 I took measurements at \SI{15625}{\hertz}, which is fast enough to track the electrical response.
-I found that the servo rolloff too slow to be ignored for many detectors, so the function to be fit to is \eqnref{eqn:bias-step-resp} after being passed through a single pole lowpass filter with time constant $\tau_{servo}$; $\tau_{servo}$ is thus one of the parameter to be fit.
+I found that the servo roll-off too slow to be ignored for many detectors, so the function to be fit to is \eqnref{eqn:bias-step-resp} after being passed through a single pole lowpass filter with time constant $\tau_{servo}$; $\tau_{servo}$ is thus one of the parameter to be fit.
 The data was taken at bias \DAC\ values of 25000, 26000, 27000, 28000, 29000, 30000, 31000 and 32000.
 
 \figref{fig:ch7-bias-step-plots} and \figref{fig:ch7-bias-step-results} show the result of these measurements being taken for the four detectors on column 0 with good heaters.
@@ -561,7 +561,7 @@ Comparison of predicted and measured $s_I(0)$ for the same detectors.
 Bias steps were also taken for all working detectors at standard operating conditions.
 \figref{fig:ch7-all-loop-plots} summarizes these measurements of \Loop, $\beta_I$, and $R$,both in terms of histograms for each parameter as well as scatterplots showing covariance between them.
 \figref{fig:ch7-teff-si-pred} shows histograms of the resulting predictions for $\tau_{eff}$ and $s_I(0)$.
-\SI{78}{\percent} of thw working detectors have $\tau_{eff} < \SI{2}{ms}$
+\SI{78}{\percent} of the working detectors have $\tau_{eff} < \SI{2}{ms}$
 xxx comment on this speed compared to required.
 
 \begin{figure*}
@@ -569,7 +569,7 @@ xxx comment on this speed compared to required.
 \includegraphics{drawings/ch7-all-loop-plots.pdf}
 \caption{
   Plots summarizing results of bias step measurements for all working detectors.
-All data taken at normal operating conditions of $T_{b} = \SI{1100}{\mK}$ and bias dac = 27000.
+All data taken at normal operating conditions of $T_{b} = \SI{1100}{\mK}$ and bias \DAC\ = 27000.
 \textbf{Left Plots}
 Histograms showing measured values of \Loop, $\beta_I$ and $R$.
 \textbf{Right Plots}
@@ -608,7 +608,7 @@ Several important features are visible in these plots.
 First, \RCm{30}{1} shows several noise lines, the origin of which is not understood.
 Second, for all four detectors the spread of noise levels in the \SIrange{1}{20}{\hertz} is much smaller when referred to power absorbed on the bolometer than in terms of current noise.
 This is the expected behavior for a noise source that adds power directly to the bolometer, such as thermal fluctuation noise or photon noise, and is a result of changing detector responsivity with bias point.
-Third, the shape of the noise curves are roughly as expected, with noise rolloffs happening at approximately the correct frequencies.
+Third, the shape of the noise curves are roughly as expected, with noise roll-offs happening at approximately the correct frequencies.
 Fourth, the measured noise levels are much higher than the predicted noise levels.
 \RCm{29}{1} is 2.4 times higher, \RCm{30}{1} is 7.4 times higher (dominated by the noise spikes), \RCm{31}{1} is 2.1 times higher and \RCm{32}{1} is 2.0 times higher.
 
@@ -625,7 +625,7 @@ Excess photon noise seems a more likely explanation, and could be due to the opt
 Even a small amount of \IR\ power can increase noise levels through the $\nu$ factor in \eqnref{eqn:photon-noise}.
 
 Another possible explanation is a poor calibration of the readout system, so that the ``real'' current noise is \abt\ 2 times lower than measured.
-However, this would reduce the measured values of $R_{sh}$ and $L_{ny}$ by a factor of $2^2=4$; as the design values for these were quite close to the measured values, and these design values have been confirmed by measurements for other interface chips \cite{appel pers comm}, this explanation is unlikely. 
+However, this would reduce the measured values of $R_{sh}$ and $L_{ny}$ by a factor of $2^2=4$; as the design values for these were close to the measured values, and these design values have been confirmed by measurements for other interface chips \cite{appel pers comm}, this explanation is unlikely. 
 
 All this points to the conclusion that the high level of detector noise are real, but we do not yet have a full explanation for the high values.
 
