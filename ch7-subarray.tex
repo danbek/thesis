@@ -196,9 +196,8 @@ It also shows that this assumption breaks down deeper in the transition.
 \caption{Plots related to heater measurements, for the case of \RCm{29}{1}.
 \textbf{Upper Left} \IV\ curves. The \IV\ curves should turn vertical when the detector becomes fully superconducting at zero voltage, but these curves shown a non-infinite slope. The reason for this is that the readout system as configured for these \IV\ curves was unable keep up with the rapid change of current in the superconducting branch.
 \textbf{Upper Right} Same data as in upper left plot, but represented in terms of \TES\ Joule power and resistance. As the bias current for the heaters is increased, the curves shift to the left.
-\textbf{Lower Left} Measured $P_{J}$ vs heater current at $0.99R_n$, as well as fit to \eqnref{eqn:rhtr-fit}.
+\textbf{Lower Left} Measured $P_{J}$ vs heater current at $0.99R_n$, as well as fit to \eqnref{eqn:ch3-rhtr-fit}.
 \textbf{Lower Right} Same plot as upper right, but the heater power based on $R_{htr} = \SI{23.6}{\ohm}$ has been added to each curve.
-xxx arrows showing direction of increasing heater power?
 }
 \label{fig:ch7-heater-r-plots}
 \end{figure*}
@@ -373,7 +372,7 @@ The data was taken at bias \DAC\ values of 25000, 26000, 27000, 28000, 29000, 30
 \figref{fig:ch7-bias-step-plots} and \figref{fig:ch7-bias-step-results} show the results of these measurements for the four detectors on column 0 with good heaters.
 The response to many steps is averaged together.
 The fits are generally good, but at some bias points a damped oscillatory response is present on top of the expected \eqnref{eqn:bias-step-resp} response.
-The source of this is not understood; one possible explanation would be the presence of a dangling heat capacity \cite{xxx}.
+The source of this is not understood; two possible explanations are the presence of an additional ``dangling'' heat capacity in the electrothermal circuit of \figref{fig:elec-thermal-circuit} \cite{hoevers_thermal_2000,zink_array-compatible_2006,maasilta_complex_2012}, or non-smooth structure in the detector's $R(T,I)$ curve.
 
 \begin{figure*}
   \centering
@@ -431,7 +430,7 @@ Bias steps were also taken for all working detectors at \SOC.
 \figref{fig:ch7-all-loop-plots} summarizes these measurements of \Loop, $\beta_I$, and $R$, both in terms of histograms for each parameter as well as scatter plots showing covariance between them.
 \figref{fig:ch7-teff-si-pred} shows histograms of the resulting predictions for $\tau_{eff}$ and $s_I(0)$.
 \SI{78}{\percent} of the working detectors have $\tau_{eff} < \SI{2}{ms}$
-xxx comment on this speed compared to required.
+%xxx comment on this speed compared to required.
 
 \begin{figure*}
   \centering
@@ -611,7 +610,6 @@ Both of these possibilities would affect the noise spectrum in the same way, so 
 This could be due to a value of $G$ that in reality is 5.3 times higher than what was measured, or a photon noise level that is 3.2 times higher than predicted.
 
 One problem with explaining the noise spectra this way is that the measured spectrum shows a shelf at \SIrange{100}{1000}{\hertz} which is not present in any of the models.
-This shelf could possibly be explained by excess detector noise due to a dangling heat capacity \cite{xxx}, but this possibility has not been investigated.
 A second problem is that it is difficult to understand how the measured value of $G$ could be so far off.
 Excess photon noise seems a more likely explanation, and could be due to \IR\ power leaking onto the detectors.
 Even a small amount of \IR\ power can increase noise levels through the $\nu$ factor in \eqnref{eqn:photon-noise}.
