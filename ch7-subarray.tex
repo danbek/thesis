@@ -362,6 +362,103 @@ Detector &  $s_I(0)$ (\si{\per\uV}) & $\tau_{eff}$ (\si{\ms}) & $R$ (\si{\mOhm})
 \end{tabular}
 \end{table*}
 
+\section{Bias Step Analysis: \Loop\ and $\beta_I$} \label{sec:bias-step}
+
+As described in \sectionref{sec:lin-tes-eqn}, steps in the applied bias current can be used to measure \Loop, $\beta_I$ and $R$ for a detector.
+In order to make this measurement, the data acquisition rate must be fast enough to track the fast electrical response of the \TES.
+In addition, the servo roll-off must be either fast enough to not affect the electrical response, or the effect of the servo roll-off must be included in the fit.
+
+I took measurements at \SI{15625}{\hertz}, which is fast enough to track the electrical response.
+I found that the servo roll-off too slow to be ignored for many detectors, so the function to be fit to is \eqnref{eqn:bias-step-resp} after being passed through a single pole lowpass filter with time constant $\tau_{servo}$; $\tau_{servo}$ is thus one of the parameter to be fit.
+The data was taken at bias \DAC\ values of 25000, 26000, 27000, 28000, 29000, 30000, 31000 and 32000.
+
+\figref{fig:ch7-bias-step-plots} and \figref{fig:ch7-bias-step-results} show the result of these measurements being taken for the four detectors on column 0 with good heaters.
+The response to many steps is averaged together.
+The fits are generally good, but at some bias points a damped oscillatory response is present on top of the expected \eqnref{eqn:bias-step-resp} response.
+The source of this is not understood; one possible explanation would be the presence of a dangling heat capacity \cite{xxx}.
+
+\begin{figure*}
+  \centering
+\includegraphics{drawings/ch7-bias-step-plots.pdf}
+\caption{%
+  Plots summarizing bias step measurements.
+\textbf{Left}
+Response of \RCm{31}{1} to step in applied bias current, at a range of bias points.
+In all cases there is a fast increase in the \TES\ current followed by a slow decay to the final current, which for these bias points is always less than the initial current.
+This drop in current is a result of electrothermal feedback.
+As the detector is biased deeper into the transition the decrease in current becomes larger, as a consequence of increasing loop gain and decreasing bias voltage; see \eqnref{eqn:si-full}.
+\textbf{Upper Right}
+Close-up view of initial stage of detector response.
+Both the data and the best-fit curve to \eqnref{eqn:bias-step-resp} are shown, and the responses are offset vertically for clarity.
+At some bias points a damped oscillatory response is present on top of the \eqnref{eqn:bias-step-resp} response; the source of this is not understood.
+}
+\label{fig:ch7-bias-step-plots}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+\includegraphics{drawings/ch7-bias-step-results.pdf}
+\caption{%
+  Plots showing results of fits for the four detectors tested at varying bias points in this section.
+  The circled points are for the standard operating conditions.
+}
+\label{fig:ch7-bias-step-results}
+\end{figure*}
+
+Once values for \Loop, $\beta_I$ and $R$ are known, the \DC\ responsivity $s_I(0)$ and $\tau_{eff}$ can be calculated from \eqnref{eqn:si-full} and \eqnref{eqn:teff} respectively.
+To check the accuracy of these calculations, I also measured the response of the detectors to steps in applied heater power at the same bias points for these four detectors.
+The results of these measurements, as well the ratio of the calculated to measured values, are shown in \figref{fig:ch7-heater-step-pred-plots}.
+The agreement between the calculated and measured values is good, indicating that response to detector bias steps can be used to predict $s_I(0)$ and $\tau_{eff}$ with good accuracy.
+This is important because only a few detectors have working heaters, making direct measurements of responsivity impossible for most detectors.
+
+\begin{figure*}
+  \centering
+\includegraphics{drawings/ch7-heater-step-pred-plots.pdf}
+\caption{%
+  Plots showing measurements of detector response times $\tau_{eff}$ and responsivity $s_I(0)$ for the four detectors of column 0 with good heaters.
+  The circled points are for the standard operating conditions.
+\textbf{Upper Left}
+Measurements of $\tau_{eff}$ for a range of bias points.
+\textbf{Upper Right}
+Measurements of $s_I(0)$ for a range of bias points.
+\textbf{Lower Left}
+Comparison of predicted and measured $\tau_{eff}$ for the same detectors.
+\textbf{Lower Right}
+Comparison of predicted and measured $s_I(0)$ for the same detectors.
+}
+\label{fig:ch7-heater-step-pred-plots}
+\end{figure*}
+
+Bias steps were also taken for all working detectors at standard operating conditions.
+\figref{fig:ch7-all-loop-plots} summarizes these measurements of \Loop, $\beta_I$, and $R$,both in terms of histograms for each parameter as well as scatterplots showing covariance between them.
+\figref{fig:ch7-teff-si-pred} shows histograms of the resulting predictions for $\tau_{eff}$ and $s_I(0)$.
+\SI{78}{\percent} of the working detectors have $\tau_{eff} < \SI{2}{ms}$
+xxx comment on this speed compared to required.
+
+\begin{figure*}
+  \centering
+\includegraphics{drawings/ch7-all-loop-plots.pdf}
+\caption{
+  Plots summarizing results of bias step measurements for all working detectors.
+All data taken at normal operating conditions of $T_{b} = \SI{1100}{\mK}$ and bias \DAC\ = 27000.
+\textbf{Left Plots}
+Histograms showing measured values of \Loop, $\beta_I$ and $R$.
+\textbf{Right Plots}
+Scatterplots showing how the three parameters \Loop, $\beta_I$ and $R$ correlate with each other.
+Note that $R$ is plotted, not $R/R_n$. This is because $R_n$ is known only for those detectors on columns 0 and 1 with working heaters (see \sectionref{sec:heater-r}).
+}
+\label{fig:ch7-all-loop-plots}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+\includegraphics{drawings/ch7-teff-si-pred.pdf}
+\caption{
+  Plots showing distribution of predicted $\tau_{eff}$ and $s_I(0)$. The predictions use the values for $R$, \Loop and $\beta_I$ shown in \figref{fig:ch7-all-loop-plots}, and $R_{sh}$ values from \sectionref{sec:shunt-nyquist}. $R_p$ is assumed to be zero in all cases.
+}
+\label{fig:ch7-teff-si-pred}
+\end{figure*}
+
 \section{Common Mode Signal and $1/f$ noise}
 
 % thesis/ana_common_mode for all numbers
@@ -482,103 +579,6 @@ Sample power spectra at \SI{3125}{\hertz} and \SI{15625}{\hertz} for \RCm{5}{1}.
 For this detector the excess noise is \SI{17}{\percent}.
 }
 \label{fig:ch7-noise-aliasing}
-\end{figure*}
-
-\section{Bias Step Analysis: \Loop\ and $\beta_I$} \label{sec:bias-step}
-
-As described in \sectionref{sec:lin-tes-eqn}, steps in the applied bias current can be used to measure \Loop, $\beta_I$ and $R$ for a detector.
-In order to make this measurement, the data acquisition rate must be fast enough to track the fast electrical response of the \TES.
-In addition, the servo roll-off must be either fast enough to not affect the electrical response, or the effect of the servo roll-off must be included in the fit.
-
-I took measurements at \SI{15625}{\hertz}, which is fast enough to track the electrical response.
-I found that the servo roll-off too slow to be ignored for many detectors, so the function to be fit to is \eqnref{eqn:bias-step-resp} after being passed through a single pole lowpass filter with time constant $\tau_{servo}$; $\tau_{servo}$ is thus one of the parameter to be fit.
-The data was taken at bias \DAC\ values of 25000, 26000, 27000, 28000, 29000, 30000, 31000 and 32000.
-
-\figref{fig:ch7-bias-step-plots} and \figref{fig:ch7-bias-step-results} show the result of these measurements being taken for the four detectors on column 0 with good heaters.
-The response to many steps is averaged together.
-The fits are generally good, but at some bias points a damped oscillatory response is present on top of the expected \eqnref{eqn:bias-step-resp} response.
-The source of this is not understood; one possible explanation would be the presence of a dangling heat capacity \cite{xxx}.
-
-\begin{figure*}
-  \centering
-\includegraphics{drawings/ch7-bias-step-plots.pdf}
-\caption{%
-  Plots summarizing bias step measurements.
-\textbf{Left}
-Response of \RCm{31}{1} to step in applied bias current, at a range of bias points.
-In all cases there is a fast increase in the \TES\ current followed by a slow decay to the final current, which for these bias points is always less than the initial current.
-This drop in current is a result of electrothermal feedback.
-As the detector is biased deeper into the transition the decrease in current becomes larger, as a consequence of increasing loop gain and decreasing bias voltage; see \eqnref{eqn:si-full}.
-\textbf{Upper Right}
-Close-up view of initial stage of detector response.
-Both the data and the best-fit curve to \eqnref{eqn:bias-step-resp} are shown, and the responses are offset vertically for clarity.
-At some bias points a damped oscillatory response is present on top of the \eqnref{eqn:bias-step-resp} response; the source of this is not understood.
-}
-\label{fig:ch7-bias-step-plots}
-\end{figure*}
-
-\begin{figure*}
-  \centering
-\includegraphics{drawings/ch7-bias-step-results.pdf}
-\caption{%
-  Plots showing results of fits for the four detectors tested at varying bias points in this section.
-  The circled points are for the standard operating conditions.
-}
-\label{fig:ch7-bias-step-results}
-\end{figure*}
-
-Once values for \Loop, $\beta_I$ and $R$ are known, the \DC\ responsivity $s_I(0)$ and $\tau_{eff}$ can be calculated from \eqnref{eqn:si-full} and \eqnref{eqn:teff} respectively.
-To check the accuracy of these calculations, I also measured the response of the detectors to steps in applied heater power at the same bias points for these four detectors.
-The results of these measurements, as well the ratio of the calculated to measured values, are shown in \figref{fig:ch7-heater-step-pred-plots}.
-The agreement between the calculated and measured values is good, indicating that response to detector bias steps can be used to predict $s_I(0)$ and $\tau_{eff}$ with good accuracy.
-This is important because only a few detectors have working heaters, making direct measurements of responsivity impossible for most detectors.
-
-\begin{figure*}
-  \centering
-\includegraphics{drawings/ch7-heater-step-pred-plots.pdf}
-\caption{%
-  Plots showing measurements of detector response times $\tau_{eff}$ and responsivity $s_I(0)$ for the four detectors of column 0 with good heaters.
-  The circled points are for the standard operating conditions.
-\textbf{Upper Left}
-Measurements of $\tau_{eff}$ for a range of bias points.
-\textbf{Upper Right}
-Measurements of $s_I(0)$ for a range of bias points.
-\textbf{Lower Left}
-Comparison of predicted and measured $\tau_{eff}$ for the same detectors.
-\textbf{Lower Right}
-Comparison of predicted and measured $s_I(0)$ for the same detectors.
-}
-\label{fig:ch7-heater-step-pred-plots}
-\end{figure*}
-
-Bias steps were also taken for all working detectors at standard operating conditions.
-\figref{fig:ch7-all-loop-plots} summarizes these measurements of \Loop, $\beta_I$, and $R$,both in terms of histograms for each parameter as well as scatterplots showing covariance between them.
-\figref{fig:ch7-teff-si-pred} shows histograms of the resulting predictions for $\tau_{eff}$ and $s_I(0)$.
-\SI{78}{\percent} of the working detectors have $\tau_{eff} < \SI{2}{ms}$
-xxx comment on this speed compared to required.
-
-\begin{figure*}
-  \centering
-\includegraphics{drawings/ch7-all-loop-plots.pdf}
-\caption{
-  Plots summarizing results of bias step measurements for all working detectors.
-All data taken at normal operating conditions of $T_{b} = \SI{1100}{\mK}$ and bias \DAC\ = 27000.
-\textbf{Left Plots}
-Histograms showing measured values of \Loop, $\beta_I$ and $R$.
-\textbf{Right Plots}
-Scatterplots showing how the three parameters \Loop, $\beta_I$ and $R$ correlate with each other.
-Note that $R$ is plotted, not $R/R_n$. This is because $R_n$ is known only for those detectors on columns 0 and 1 with working heaters (see \sectionref{sec:heater-r}).
-}
-\label{fig:ch7-all-loop-plots}
-\end{figure*}
-
-\begin{figure*}
-  \centering
-\includegraphics{drawings/ch7-teff-si-pred.pdf}
-\caption{
-  Plots showing distribution of predicted $\tau_{eff}$ and $s_I(0)$. The predictions use the values for $R$, \Loop and $\beta_I$ shown in \figref{fig:ch7-all-loop-plots}, and $R_{sh}$ values from \sectionref{sec:shunt-nyquist}. $R_p$ is assumed to be zero in all cases.
-}
-\label{fig:ch7-teff-si-pred}
 \end{figure*}
 
 \section{Detector Noise} \label{sec:det-noise}
