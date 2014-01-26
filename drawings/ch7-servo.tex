@@ -30,7 +30,7 @@
 	\begin{semilogyaxis}[xmin=-2,xmax=105,ymin=1e-13,ymax=1e-1,
         width=5.7in, height=2.5in,
 		title={Servo Rolloff},
-		xlabel={Servo gain $I$}, ylabel={$\tau_{servo}$ (s)},
+		xlabel={Servo gain $I_{FB}$}, ylabel={$\tau_{servo}$ (s)},
         boxplot/draw direction=y,]
         \addplot[boxplot prepared={draw position=1,box extend=3,lower whisker=2.527966e-03,lower quartile=3.112274e-03,median=6.669761e-03,upper quartile=1.046858e-02,upper whisker=2.037296e-02,},] coordinates {};
         \addplot[boxplot prepared={draw position=5,box extend=3,lower whisker=7.608340e-04,lower quartile=8.631669e-04,median=1.155960e-03,upper quartile=2.027295e-03,upper whisker=2.840552e-03,},] coordinates {};
@@ -52,7 +52,7 @@
   \begin{tikzpicture}[trim axis left]
 	\begin{semilogyaxis}[%ymin=0,%xmin=950,xmax=1250,
 		title={Servo Rolloff},
-		xlabel={Servo gain $I$}, ylabel={$\tau_{servo}$ (s)},
+		xlabel={Servo gain $I_{FB}$}, ylabel={$\tau_{servo}$ (s)},
         boxplot/draw direction=y,]
         \addplot[boxplot prepared={draw position=10,box extend=4,lower whisker=3.614452e-04,lower quartile=4.228051e-04,median=5.587304e-04,upper quartile=1.006356e-03,upper whisker=1.325214e-03,},] coordinates {};
         \addplot[boxplot prepared={draw position=20,box extend=4,lower whisker=1.600547e-04,lower quartile=1.933650e-04,median=2.569559e-04,upper quartile=4.838363e-04,upper whisker=6.206078e-04,},] coordinates {};
@@ -67,7 +67,7 @@
   \begin{tikzpicture}[trim axis right]
 	\begin{axis}[ymin=0,%xmin=950,xmax=1250,
 		title={\SQUID\ Noise},
-		xlabel={Servo gain $I$}, ylabel={Median Noise (\Inoise{})},
+		xlabel={Servo gain $I_{FB}$}, ylabel={Median Noise (\Inoise{})},
         ]
 	  \addplot+[only marks] table[x=gain,y=noise]{../data/ch7-servo-noise-vs-gain.dat};
 	\end{axis}
