@@ -271,26 +271,41 @@ Second, optical load on the prototype detectors was estimated to be in the range
 In this analysis I assume $P_{opt} = 150$~pW, while also showing how different assumptions change the values of  $G$, $T_c$, and $n$.
 
 \tableref{tab:basic-det-props} lists the resulting values for $G$, $T_c$ and $n$.
-\figref{fig:heater-g-plots} contains plots summarizing and explaining this data.
-The uncertainties in $G$, $T_c$ and $n$ introduced by the unknown value of $P_{opt}$ are different.
+\figref{fig:heater-g-plots} contains a plot of the data and fit for \RCm{31}{2}, as well as scatterplots showing measurements of $G$, $T_c$ and $n$.
+\figref{fig:heater-g-popt-plots} shows the effect of different assumptions for $P_{opt}$ on measurements of $G$ and $T_c$.
+The effects on $G$, $T_c$ and $n$ introduced by the unknown value of $P_{opt}$ are different.
 $G$'s uncertainty from $P_{opt}$ is about the same size as the statistical uncertainty due to the fit, while $T_c$'s uncertainty from $P_{opt}$ is much larger than the statistical uncertainty.
 $n$ shows no apparent trend with $P_{opt}$.
+xxx quote \% impacts.
 
 \begin{figure*}
 \includegraphics{drawings/ch7-g-plots.pdf}
 \caption{Plots summarizing results of $G$, $T_c$ and $n$ measurements for seven detectors with good heaters.
 All error bars and ellipses are 95 \% confidence intervals for statistical error; any systematic error is not included.
-\textbf{Upper Left} Plot showing $P_{sat}$ vs $T_b$ for \RCm{31}{2}, assuming $P_{opt} = \SI{150}{\pW}$.
+\textbf{Left} Plot showing $P_{sat}$ vs $T_b$ for \RCm{31}{2}, assuming $P_{opt} = \SI{150}{\pW}$.
 The red line shows the best fit to \eqnref{eqn:g-fit}.
 The data covers 25 temperatures from \SIrange{995}{1160}{\mK}, and 11 different heater biases.
-\textbf{Upper Right} Scatter plot showing correlation between $G$ and $n$, as well as error ellipses showing covariance between the estimated $G$ and $n$ vales.
-\textbf{Lower Left} Plot showing variation of $G$ for \RCm{31}{2} vs assumed value of $P_{opt}$.
-The statistical uncertainty in $G$ for this detector is approximately the same as the systematic uncertainty that results from the estimation of $P_{opt}$.
-\textbf{Lower Right} Plot showing variation of $T_c$ for \RCm{31}{2} vs assumed value of $P_{opt}$.
-In this case the systematic uncertainty is larger than the statistical uncertainty.
-The value of $n$ shows no trend with $P_{opt}$.
+\textbf{Center} Scatter plot showing correlation between $G$ and $n$, as well as error ellipses showing covariance between the estimated $G$ and $n$ vales.
+\textbf{Right} Scatter plot showing correlation between $G$ and $T_c$, as well as error ellipses showing covariance between the estimated $G$ and $T_c$ vales.
+xxx add error ellipses
 } 
 \label{fig:heater-g-plots}
+\end{figure*}
+
+
+\begin{figure*}
+\includegraphics{drawings/ch7-g-popt-plots.pdf}
+\caption{
+Plots showing effect of $P_{opt}$ assumptions on $G$ and $T_c$ measurements.
+\textbf{Left} Plot showing variation of $G$ for \RCm{31}{2} vs assumed value of $P_{opt}$.
+The statistical uncertainty in $G$ for this detector is approximately the same as the systematic uncertainty that results from the estimation of $P_{opt}$.
+xxx \% change with popt
+\textbf{Right} Plot showing variation of $T_c$ for \RCm{31}{2} vs assumed value of $P_{opt}$.
+In this case the systematic uncertainty is larger than the statistical uncertainty.
+The value of $n$ shows no trend with $P_{opt}$.
+xxx \% change with popt
+} 
+\label{fig:heater-g-popt-plots}
 \end{figure*}
 
 As discussed in \sectionref{sec:det-parm-choice}, the target $G$ value for these detectors was 3.7~nW/K.

@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.4in, height=2.0in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{rr}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[
+		title={$G$ vs Assumed $P_{opt}$},
+		xlabel={$P_{opt}$ (pW)}, ylabel={$G$ (nW/K)} ]
+	  \addplot+[only marks, error bars/.cd, y dir=both, y explicit]
+        table[x=Popt,y=G,y error=Gerr]{../data/ch7-g-variation.dat};
+
+	\end{axis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[
+		title={$T_c$ vs Assumed $P_{opt}$},
+		xlabel={$P_{opt}$ (pW)}, ylabel={$T_c$ (mK)} ]
+	  \addplot+[only marks, error bars/.cd, y dir=both, y explicit]
+        table[x=Popt,y=Tc,y error=Tcerr]{../data/ch7-g-variation.dat};
+
+	\end{axis}
+  \end{tikzpicture}
+
+\end{tabular}
+
+\end{document}
