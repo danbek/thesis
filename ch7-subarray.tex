@@ -4,16 +4,19 @@ The detectors in the first 251-detector subarray have not all been characterized
 Partly this is due to manpower and time constraints.
 Additionally, as described in \sectionref{sec:g-psat}, the saturation power of the detectors is \abt{2} times higher than expected, which means that only some detectors can be driven normal using bias current alone --- even under optical load --- and then only at bath temperatures very close to $T_c$.
 In particular, none of the detectors can be driven normal at the operating bath temperature for the array of 1100~mK.
-This means that we do not have \IV\ curves for any detectors at operating conditions, which limits the characterization than can be performed.
+This means that we do not have \IV\ curves for any detectors at standard operating conditions, which limits the characterization than can be performed.
 
 Seven detectors used in taking images have working heaters and no other problems.
 Once calibrated, these heaters allow us to take full \IV\ curves at all bath temperatures, allowing measurements of the detector thermal conductance $G$, critical temperature $T_c$ and xxx $n$.
 The heaters also allow a direct measurement of detector responsivity and time constants, and thus allow a measurement of detector noise referred to optical power absorbed on the detector.
 These later measurements have been carried out on four of the seven detectors.
-Additionally, \Loop, $\beta_I$ and $R$ at operating conditions have been measured for all working detectors.
+Additionally, \Loop, $\beta_I$ and $R$ at standard operating conditions have been measured for all working detectors.
 This chapter describes all these measurements, as well as measurements of shunt resistors and inductors for all detectors.
 \tableref{tab:measurements} summarizes all of the measurement that have been performed and described in this chapter.
 Sections discussing common mode noise, microphonic pickup and noise aliasing are also included.
+
+Several measurements are taken at ``standard operating conditions'' (\SOC), which are the conditions under which the array is operated while acquiring video images.
+These conditions are bath temperature $T_b = \SI{1100}{\mK}$ and detector bias $\mbox{\DAC} = \num{27000}$.
 
 \begin{table*}[t]
 \centering
@@ -29,7 +32,7 @@ $\tau$ & \ref{sec:tau-nat} & Four detectors with good heaters on column 0 \\
 $G$, $T_c$, $n$, $P_{sat}$ & \ref{sec:g-psat} & Seven detectors with good heaters on column 0 and 1 \\
 $\tau_{eff}$ and \DC\ responsivity & \ref{sec:teff-resp} & Seven detectors with good heaters on column 0 and 1 \\
 \Loop, $\beta_I$, $R$ at a range of bias points & \ref{sec:bias-step} & Seven detectors with good heaters on column 0 and 1 \\
-\Loop, $\beta_I$, $R$ at standard operating conditions & \ref{sec:bias-step} & All working detectors\\
+\Loop, $\beta_I$, $R$ at \SOC\ & \ref{sec:bias-step} & All working detectors\\
 Detector noise at a range of bias points & \ref{sec:det-noise} & Four detectors with good heaters on column 0 and 1 \\
 \bottomrule
 \end{tabular}
@@ -317,7 +320,7 @@ The reason for this discrepancy is not known.
 \section{Direct Measurement of Detector Responsivity and $\tau_{eff}$} \label{sec:teff-resp}
 
 Knowledge of $R_{htr}$ allows a direct measurement of the DC responsivity of $\tau_{eff}$ for the seven detectors with heaters.
-Steps in heater bias current were applied to these detectors while bias at typically operating conditions ($T_b = \SI{1100}{\mK}$, DAC$_{bias}$ = 27000).
+Steps in heater bias current were applied to these detectors under \SOC.
 The step size was made small so as the keep the detector response linear, and the response to many steps was averaged together to reduce noise.
 The result was fit to \eqnref{eqn:htr-step-resp-high-time}:
 \begin{equation} \label{eqn:ch7-heater-step-trans}
@@ -330,7 +333,7 @@ The result was fit to \eqnref{eqn:htr-step-resp-high-time}:
 \centering
 \includegraphics{drawings/ch7-heater-step-trans.pdf}
 \caption{Plot showing response of detector \RCm{30}{1} to step in applied heater power of \SI{1.41}{\pico\watt}.
-Plots are for \RCm{30}{1} biased into normal operating conditions.
+Plots are for \RCm{30}{1} biased into \SOC.
 Data acquired at \SI{3125}{\Hz}.
 Data averaged over 32 steps (16 up and 16 down) along with best fit to \eqnref{eqn:ch7-heater-step-trans}.
 The step in applied power begins at $t \approx \SI{0.6}{\ms}$, not $t = \SI{0}{\ms}$.
@@ -343,7 +346,7 @@ The step in applied power begins at $t \approx \SI{0.6}{\ms}$, not $t = \SI{0}{\
 \caption{Detector properties while biased into transition.
 $P_{opt} = 150$~pW is assumed everywhere.
 Uncertainties are 95 \% confidence intervals after marginalizing over other fit parameters, and do not include systematic uncertainties due to the unknown value of $P_{opt}$ or uncertainty in the value of the shunt resistors.
-Values are for detectors biased at normal operating conditions of $T_b = \SI{1100}{\milli\kelvin}$ and detector bias of 27000.
+Values are for detectors under \SOC.
 ``N/A'' indicates a property that has not been measured for that detector.
 }
 \label{tab:trans-det-props}
@@ -400,7 +403,7 @@ At some bias points a damped oscillatory response is present on top of the \eqnr
 \includegraphics{drawings/ch7-bias-step-results.pdf}
 \caption{%
   Plots showing results of fits for the four detectors tested at varying bias points in this section.
-  The circled points are for the standard operating conditions.
+  The circled points are for \SOC.
 }
 \label{fig:ch7-bias-step-results}
 \end{figure*}
@@ -416,7 +419,7 @@ This is important because only a few detectors have working heaters, making dire
 \includegraphics{drawings/ch7-heater-step-pred-plots.pdf}
 \caption{%
   Plots showing measurements of detector response times $\tau_{eff}$ and responsivity $s_I(0)$ for the four detectors of column 0 with good heaters.
-  The circled points are for the standard operating conditions.
+  The circled points are for the \SOC.
 \textbf{Upper Left}
 Measurements of $\tau_{eff}$ for a range of bias points.
 \textbf{Upper Right}
@@ -429,7 +432,7 @@ Comparison of predicted and measured $s_I(0)$ for the same detectors.
 \label{fig:ch7-heater-step-pred-plots}
 \end{figure*}
 
-Bias steps were also taken for all working detectors at standard operating conditions.
+Bias steps were also taken for all working detectors at \SOC.
 \figref{fig:ch7-all-loop-plots} summarizes these measurements of \Loop, $\beta_I$, and $R$,both in terms of histograms for each parameter as well as scatterplots showing covariance between them.
 \figref{fig:ch7-teff-si-pred} shows histograms of the resulting predictions for $\tau_{eff}$ and $s_I(0)$.
 \SI{78}{\percent} of the working detectors have $\tau_{eff} < \SI{2}{ms}$
@@ -440,7 +443,7 @@ xxx comment on this speed compared to required.
 \includegraphics{drawings/ch7-all-loop-plots.pdf}
 \caption{
   Plots summarizing results of bias step measurements for all working detectors.
-All data taken at normal operating conditions of $T_{b} = \SI{1100}{\mK}$ and bias \DAC\ = 27000.
+All data taken at \SOC.
 \textbf{Left Plots}
 Histograms showing measured values of \Loop, $\beta_I$ and $R$.
 \textbf{Right Plots}
@@ -551,7 +554,7 @@ The noise below \SI{30}{\Hz} is 1.5--2.5 times higher with the \PTC\ on, but the
 
 As explained in \sectionref{sec:det-readout}, the \MCE\ takes data at \SI{15625}{\hertz}, but is only capable of sending data for the full array of 251~detectors to the readout computer at \SI{3125}{\hertz}.
 This raises the question of how much noise is aliased from the \SIrange{3125}{15625}{\hertz} band to below \SI{3125}{\hertz}.
-To check this I acquired data under standard operating conditions for column 0 at the normal rate of \SI{3125}{\hertz} as well as at \SI{15625}{\hertz}.
+To check this I acquired data under \SOC\ for column 0 at the normal rate of \SI{3125}{\hertz} as well as at \SI{15625}{\hertz}.
 5 data files were acquired for each case. For each row in column 0 for each data file a power spectrum was taken after subtracting the common mode signal, and the excess noise was calculated as
 \begin{equation}
   \sqrt{  \frac{ \sum S^2_{I,\SI{3125}{\Hz}}(f) \Delta f }
@@ -609,7 +612,7 @@ Fourth, the measured noise levels are much higher than the predicted noise level
 The reason for this high level of noise is not known.
 Two possible culprits are a higher than expected level of photon noise or a much larger value of $G$ than was measured.
 Both of these possibilities would affect the noise spectrum in the same way, so they can not be distinguished.
-\figref{fig:ch7-trans-noise-model-plots} plots the measured noise spectrum for \RCm{31}{1} at normal operating conditions, along with the basic model spectrum and a spectrum that includes enough additional ``power'' noise to match the measured whit noise level at low frequencies.
+\figref{fig:ch7-trans-noise-model-plots} plots the measured noise spectrum for \RCm{31}{1} at \SOC.
 This could be due to a value of $G$ that in reality is 5.3 times higher than what was measured, or a photon noise level that is 3.2 times higher than predicted.
 
 One problem with explaining the noise spectra this way is that the measured spectrum shows a shelf at \SIrange{100}{1000}{\hertz} which is not present in any of the models.
