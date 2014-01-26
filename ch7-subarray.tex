@@ -15,10 +15,6 @@ This chapter describes all these measurements, as well as measurements of shunt 
 \tableref{tab:measurements} summarizes all of the measurement that have been performed and described in this chapter.
 Sections discussing common mode noise, microphonic pickup and noise aliasing are also included.
 
-Note that this lack of detector characterization does not prevent the array from working.
-It merely limits our understanding of the behavior of the detectors.
-A more detailed characterization of more detectors will be carried out prior to fabrication of any additional arrays.
-
 \begin{table*}[t]
 \centering
 \caption{Summary of measurements made on first 251-detector subarray}
@@ -38,7 +34,6 @@ Detector noise at a range of bias points & \ref{sec:det-noise} & Four detectors 
 \bottomrule
 \end{tabular}
 \end{table*}
-
 
 \section{Choice of \textsc{MCE} Servo Gain Parameters}\label{sec:mce-servo-gain}
 
@@ -291,7 +286,6 @@ In this analysis I assume $P_{opt} = 150$~pW, while also showing how different a
 \figref{fig:heater-g-plots} contains plots summarizing and explaining this data.
 The uncertainties in $G$, $T_c$ and $n$ introduced by the unknown value of $P_{opt}$ are different.
 $G$'s uncertainty from $P_{opt}$ is about the same size as the statistical uncertainty due to the fit, while $T_c$'s uncertainty from $P_{opt}$ is much larger than the statistical uncertainty.
-Both of these uncertainties should be taken into account when predicting measurement of detector noise.
 $n$ shows no apparent trend with $P_{opt}$.
 
 \begin{figure*}
@@ -317,11 +311,6 @@ The reason for this discrepancy is not known.
 %thz5 high g - 67 um 
 %thz5 high g - 80 um 
 %thz4 proto - 40 um
-
-Prediction of detector G noise
-
-xxx - need to account for correlation between G, n, Tc that arises from the fit.
-Answer: Also covariance with Tc, which you can account for in noise predictions, but makes little difference.
 
 \section{Direct Measurement of Detector Responsivity and $\tau_{eff}$} \label{sec:teff-resp}
 
@@ -609,7 +598,8 @@ The predicted photon noise level of \Pnoise{0.5e-15} from \sectionref{sec:ch5-pr
 Several important features are visible in these plots.
 First, \RCm{30}{1} shows several noise lines, the origin of which is not understood.
 Second, for all four detectors the spread of noise levels in the \SIrange{1}{20}{\hertz} is much smaller when referred to power absorbed on the bolometer than in terms of current noise.
-This is the expected behavior for a noise source that adds power directly to the bolometer, such as thermal fluctuation noise or photon noise, and is a result of changing detector responsivity with bias point.
+This is the expected behavior for a noise source that adds power directly to the bolometer.
+Such noise will be constant across bias points when expressed in terms of power absorbed in the bolometer, but because of the changing detector responsivity with bias point will be different when expressed in terms of current.
 Third, the shape of the noise curves are roughly as expected, with noise roll-offs happening at approximately the correct frequencies.
 Fourth, the measured noise levels are much higher than the predicted noise levels.
 \RCm{29}{1} is 2.4 times higher, \RCm{30}{1} is 7.4 times higher (dominated by the noise spikes), \RCm{31}{1} is 2.1 times higher and \RCm{32}{1} is 2.0 times higher.
@@ -625,9 +615,11 @@ This shelf could possibly be explained by excess detector noise due to a danglin
 A second problem is that it is difficult to understand how the measured value of $G$ could be so far off.
 Excess photon noise seems a more likely explanation, and could be due to the optical load including \IR\ power leaking onto the detectors.
 Even a small amount of \IR\ power can increase noise levels through the $\nu$ factor in \eqnref{eqn:photon-noise}.
+It is also possible that a much higher level in-band optical power is falling on the detector.
+This would both increase the photon noise directly, as well as increasing the predicted thermal fluctuation noise because of the link between assumed optical power and my measurements of $G$ and $T_c$ as discussed in \sectionref{sec:g-psat}.
 
 Another possible explanation is a poor calibration of the readout system, so that the ``real'' current noise is \abt\ 2 times lower than measured.
-However, this would reduce the measured values of $R_{sh}$ and $L_{ny}$ by a factor of $2^2=4$; as the design values for these were close to the measured values, and these design values have been confirmed by measurements for other interface chips \cite{appel pers comm}, this explanation is unlikely. 
+However, this would reduce the measured values of $R_{sh}$ and $L_{ny}$ by a factor of $2^2=4$; as the design values for these were close to the measured values, and these design values have been confirmed by measurements for other interface chips of the same design\footnote{John Appel, personal communication}. 
 
 All this points to the conclusion that the high level of detector noise are real, but we do not yet have a full explanation for the high values.
 
