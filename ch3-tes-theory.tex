@@ -2,8 +2,8 @@
 
 This chapter summarizes the \TES\ theory used in this thesis.
 I start by describing the \TES\ electrical and thermal circuits, defining relevant parameters, and stating the linearized \TES\ equations.
-For reference I then summarize the import consequences of these equations, including expressions for detector responsivity, detector response to step functions in applied power and bias current, and detector noise.
-I do not derive most of these results, because excellent references are available\cite{irwin_application_1995,irwin_transition-edge_2005, mather_bolometer_1982}.
+For reference, I then summarize the important consequences of these equations, including expressions for detector responsivity, detector response to step functions in applied power and bias current, and detector noise.
+I do not derive most of these results, because excellent references are available \cite{irwin_application_1995,irwin_transition-edge_2005, mather_bolometer_1982}.
 
 I discuss the derivation of two results in more detail.
 First, I give an expression for the time-domain response to a step function in applied detector bias current.
@@ -20,7 +20,7 @@ The inductance $L$ in the diagram represents the sum of the input inductance of 
 The \TES\ itself is represented by a variable resistance $R$, which depends on both the current through the \TES\ and the temperature of the \TES.
 The \TES\ is thermally sunk to a heat capacity $C$ which is weakly linked to a temperature bath $T_b$ through a thermal conductance $G$.
 Optical power falls onto the heat capacity, causing the temperature $T$ of the heat capacity and the \TES\ to rise above $T_b$.
-Joule power dissipated in the \TES\ also contributes to this temperature rise, as does power dissipated in any heater resistor present on the \TES\footnote{As described in \sectionref{sec:heater-r}, 31~detectors have heater resistors.}.
+Power dissipated in any heater resistor\footnote{As described in \sectionref{sec:heater-r}, 31~detectors have heater resistors} present on the \TES\ also contributes to this temperature rise.
 
 Because the resistance of the \TES\ depends on the temperature of the \TES, and the temperature of the \TES\ depends on the resistance of the \TES\ through Joule heating, the electrical and thermal behavior of the \TES\ are coupled.
 This coupling acts as feedback, termed ``negative electrothermal feedback'', first described in the context of \TES\ detectors by Irwin\cite{irwin_application_1995}.
@@ -105,7 +105,7 @@ In this limit the power-to-current responsivity becomes
 s_I(\omega) = -\frac{1}{V_0} \frac{\Loop}{1+\beta_I + \Loop} \frac{1}{1 + j \omega \frac{\tau}{1 +\Loop/(1+\beta_I)}}
 \end{equation}
 The detector response time is given by the natural detector time constant $\tau$, sped up by a factor of $1 + \Loop(1+\beta_I)$; for $\beta_I \ll 1$, this factor is typical of negative feedback, and justifies calling \Loop\ the ``loop gain'' of the detector.
-In the further limit of strong electrothermal feedback ($\Loop \gg 1, \gg \beta_I$), the \DC responsivity is simply the inverse of the voltage bias.
+In the further limit of strong electrothermal feedback ($\Loop \gg 1, \gg \beta_I$), the \DC\ responsivity is simply the inverse of the voltage bias.
 This represents that fact that under strong electrothermal an increase in applied optical power is exactly canceled by a decrease in detector Joule heating, so that the \TES\ temperature remains unchanged.
 
 \textbf{\TES\ Response to Step Function in Power}
@@ -122,7 +122,7 @@ This implies that the time-domain response to step in applied power, for example
                       (1 - e^{-t/\tau_{eff}}).
 \end{align}
 This can be used to measure $\tau_{eff}$ directly as well as \DC\ responsivity once heater power has been calibrated (\sectionref{sec:teff-resp}).
-As described in\sectionref{sec:tau-nat-theory}, it can also be used to measure the detector natural time constant $\tau$.
+As described in \sectionref{sec:tau-nat-theory}, it can also be used to measure the detector natural time constant $\tau$.
 These measurements are described further in \sectionref{sec:tau-nat}.
 
 \textbf{\TES\ Response to Step Function in Bias Current}
@@ -253,7 +253,7 @@ Alternately, $\mathcal{K}$ can be calculated if all factors feeding into it are 
 
 \TES\ detector \IV\ curves contain important information about the behavior of \TES\ detectors.
 They directly give the resistance of the \TES\ in both the normal state and throughout the superconducting transition.
-But they also allow other properties of the \TES\ to be measured by comparing \IV\ curves taken under different operating conditions, in particular at different bath temperatures and applied heater and/or optical power loads.
+But they also allow other properties of the \TES\ to be measured by comparing \IV\ curves taken under different operating conditions, such as different bath temperatures and applied heater and/or optical power loads.
 
 The total amount of power flowing through the \TES\ thermal conductance $G$ is given by
 \begin{equation}\label{eqn:ch3-tes-ptot}
@@ -332,7 +332,7 @@ The data cover 36 data points including 25 temperatures from \SIrange{995}{1160}
 \section{\textsc{TES} Bolometer Noise} \label{sec:ch3-tes-noise}
 
 There are three sources of detector noise in \TES\ bolometers: Johnson noise in the \TES\ resistance, Johnson noise in the load resistor $R_L$, and thermal fluctuation noise across the weak thermal link $G$.
-Additionally intrinsic fluctuations in the number of arriving photons leads to photon noise, which can be significant source of noise for some \TES\ bolometers.
+Additionally, intrinsic fluctuations in the number of arriving photons leads to photon noise, which can be significant source of noise for some \TES\ bolometers.
 Expressions for these sources of noise are shown in \tableref{tab:tes-noise}.
 
 The function $F$ that enters into the thermal fluctuation noise accounts for the temperature gradient between the \TES\ and the bath.
