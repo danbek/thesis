@@ -64,6 +64,10 @@
 	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata27k} + 0.5}]{../data/ch7-bias-step-resp-r31.dat};
 	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata26k} + 0.6}]{../data/ch7-bias-step-resp-r31.dat};
 	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata25k} + 0.7}]{../data/ch7-bias-step-resp-r31.dat};
+
+      \draw[->,thick] (axis cs:5.7, 0) -- (axis cs:5.7, 0.8);
+      \node[anchor=east] at (axis cs:5.7, 0.8) {Lower in transition};
+      
 	\end{axis}
   \end{tikzpicture}
 

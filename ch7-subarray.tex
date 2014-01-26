@@ -7,7 +7,7 @@ In particular, none of the detectors can be driven normal at the operating bath 
 This means that we do not have \IV\ curves for any detectors at standard operating conditions, which limits the characterization than can be performed.
 
 Seven detectors used in taking images have working heaters and no other problems.
-Once calibrated, these heaters allow us to take full \IV\ curves at all bath temperatures, allowing measurements of the detector thermal conductance $G$, critical temperature $T_c$ and xxx $n$.
+Once calibrated, these heaters allow us to take full \IV\ curves at all bath temperatures, allowing measurements of the detector thermal conductance $G$, critical temperature $T_c$ and power-flow index $n$.
 The heaters also allow a direct measurement of detector responsivity and time constants, and thus allow a measurement of detector noise referred to optical power absorbed on the detector.
 These later measurements have been carried out on four of the seven detectors.
 Additionally, \Loop, $\beta_I$ and $R$ at standard operating conditions have been measured for all working detectors.
@@ -204,7 +204,7 @@ xxx arrows showing direction of increasing heater power?
 \end{figure*}
 
 \tableref{tab:basic-det-props} lists all measured heater resistors.
-The seven heaters for columns 0 and 1 have a mean of \SI{23.8}{\ohm} with a standard deviation of \SI{0.26}{\ohm} xxx check values
+The seven heaters for columns 0 and 1 have a mean of \SI{23.1}{\ohm} with a standard deviation of \SI{1.2}{\ohm}.
 
 \begin{table*}[t]
 \centering
@@ -224,8 +224,7 @@ Detector &  $R_{htr}$ (\si{\ohm}) & $G$ (\si{\nano\W\per\K}) & $n$ & $T_c$ (mK) 
 \RCm{31}{2} & 20.4 & 6.35 $\pm$ 0.16 & 3.41 $\pm$ 0.24 & 1214.5 $\pm$ 1.6 & 9.51 $\pm$ 0.1 & 3.78 \\
 \RCm{32}{2} & 23.5 & 7.41 $\pm$ 0.25 & 3.70 $\pm$ 0.32 & 1215.8 $\pm$ 2.1 & 10.98 $\pm$ 0.1 & 4.38 \\
 \midrule
-xxx check
-Mean & 25.7 & 7.35 & 3.55 & 1213.5 & 9.56 & 4.27 \\
+Mean & 23.1 & 7.35 & 3.55 & 1213.5 & 9.56 & 4.27 \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -257,7 +256,7 @@ In this fit, $\tau_{meas}$ is considered the dependent variable, the product $(I
 
 \section{Measurement of \textsc{TES} $G$} \label{sec:g-psat}
 
-With knowledge of the heater resistances, \IV\ curves can be taken over a wide range of bath temperatures, which enables a measurement of the \TES\ thermal conductance $G$, critical temperature $T_C$ and xxx $n$.
+With knowledge of the heater resistances, \IV\ curves can be taken over a wide range of bath temperatures, which enables a measurement of the \TES\ thermal conductance $G$, critical temperature $T_C$ and power-flow index $n$.
 Similarly to \sectionref{sec:heater-r}, I took \IV\ curves at bath temperatures ranging from \SIrange{995}{1160}{\mK}, while adjusting the applied heater power so that each \IV\ curve had a clear normal branch.
 Fits were performed against \eqnref{eqn:ch3-g-fit}:
 \begin{equation}\label{eqn:g-fit}
@@ -278,7 +277,7 @@ In this analysis I assume $P_{opt} = 150$~pW, while also showing how different a
 The effects on $G$, $T_c$ and $n$ introduced by the unknown value of $P_{opt}$ are different.
 $G$'s uncertainty from $P_{opt}$ is about the same size as the statistical uncertainty due to the fit, while $T_c$'s uncertainty from $P_{opt}$ is much larger than the statistical uncertainty.
 $n$ shows no apparent trend with $P_{opt}$.
-xxx quote \% impacts.
+Specifically, a change in $P_{opt}$ from \SI{100}{\pW} to \SI{300}{\pW} increases $G$ by \SI{5.7}{\percent}, increases $T_c$ by \SI{2.2}{\percent}, and leaves $n$ unchanged.
 
 \begin{figure*}
 \includegraphics{drawings/ch7-g-plots.pdf}
@@ -289,11 +288,9 @@ The red line shows the best fit to \eqnref{eqn:g-fit}.
 The data covers 25 temperatures from \SIrange{995}{1160}{\mK}, and 11 different heater biases.
 \textbf{Center} Scatter plot showing correlation between $G$ and $n$, as well as error ellipses showing covariance between the estimated $G$ and $n$ vales.
 \textbf{Right} Scatter plot showing correlation between $G$ and $T_c$, as well as error ellipses showing covariance between the estimated $G$ and $T_c$ vales.
-xxx add error ellipses
 } 
 \label{fig:heater-g-plots}
 \end{figure*}
-
 
 \begin{figure*}
 \includegraphics{drawings/ch7-g-popt-plots.pdf}
@@ -301,11 +298,9 @@ xxx add error ellipses
 Plots showing effect of $P_{opt}$ assumptions on $G$ and $T_c$ measurements.
 \textbf{Left} Plot showing variation of $G$ for \RCm{31}{2} vs assumed value of $P_{opt}$.
 The statistical uncertainty in $G$ for this detector is approximately the same as the systematic uncertainty that results from the estimation of $P_{opt}$.
-xxx \% change with popt
 \textbf{Right} Plot showing variation of $T_c$ for \RCm{31}{2} vs assumed value of $P_{opt}$.
-In this case the systematic uncertainty is larger than the statistical uncertainty.
+In this case the systematic uncertainty is larger than the statistical uncertainty, although the change is only \SI{2.2}{\percent} as $P_{opt}$ increases from \SI{100}{\pW} to \SI{300}{\pW}.
 The value of $n$ shows no trend with $P_{opt}$.
-xxx \% change with popt
 } 
 \label{fig:heater-g-popt-plots}
 \end{figure*}
@@ -394,7 +389,6 @@ As the detector is biased deeper into the transition the decrease in current bec
 Close-up view of initial stage of detector response.
 Both the data and the best-fit curve to \eqnref{eqn:bias-step-resp} are shown, and the responses are offset vertically for clarity.
 At some bias points a damped oscillatory response is present on top of the \eqnref{eqn:bias-step-resp} response; the source of this is not understood.
-xxx which dir is lower in trans? add to plot!
 }
 \label{fig:ch7-bias-step-plots}
 \end{figure*}
@@ -493,7 +487,7 @@ We can define a differential thermal conductance relative to changes in bath tem
 \end{equation}
 Then the equivalent bath temperature change for a given \TES\ current change will be given by
 \begin{equation}
-  \Delta T_b = \frac{\delta I}{s_I G_b}.
+  \Delta T_b = \frac{\delta I}{s_I(0) G_b}.
 \end{equation}
 For this test the bath temperature was set to \SI{1100}{\mK}, so the implied temperature variations over several-minute timescales are a few parts in $10^{4}$.
 
@@ -506,7 +500,7 @@ The data was acquired at \SI{15625}{\Hz}, but only every 100th data point is plo
 \textbf{Upper Right} 
 The same data after removal of the common mode signal (as defined in the text).
 \textbf{Upper Left} 
-Current noise power spectral density for the raw data, the raw data minus the common mode (``No CM''), the raw data minus the common mode and the best-fit 4th-order polynomial (``No CM, Poly''), and the common mode itself.
+Current noise power spectral density for the raw data, the raw data minus the common mode (``No CM''), the raw data minus the common mode and the best-fit 4th-order polynomial (``No CM, Poly''), and the common mode itself (``CM'').
 The strong noise peak at \SI{1.411}{\Hz} is due to the \PTC, as explained in the text.
 \textbf{Lower Right} 
 Raw timestream for \RCm{29}{1}, after conversion to an equivalent bath temperature variation, as described in the text.
@@ -587,7 +581,7 @@ For this detector the excess noise is \SI{17}{\percent}.
 
 \section{Detector Noise} \label{sec:det-noise}
 
-While taking the measurements described in the previous section, I also took noise data for the four detectors with working heaters on column 0.
+While taking the measurements described in \sectionref{sec:bias-step}, I also took noise data for the four detectors with working heaters on column 0.
 For each data acquisition the common mode signal was subtracted and the power spectra calculated using \MATLAB's \texttt{pwelch} function.
 \figref{fig:ch7-trans-noise} shows the resulting power spectra, both in terms of the directly measured current noise $S^2_I$, as well as in terms of noise referred to power absorbed in the bolometer, $S^2_{P}$.
 $S^2_{P}$ is calculated via
@@ -613,15 +607,15 @@ Fourth, the measured noise levels are much higher than the predicted noise level
 The reason for this high level of noise is not known.
 Two possible culprits are a higher than expected level of photon noise or a much larger value of $G$ than was measured.
 Both of these possibilities would affect the noise spectrum in the same way, so they can not be distinguished.
-\figref{fig:ch7-trans-noise-model-plots} plots the measured noise spectrum for \RCm{31}{1} at \SOC.
+\figref{fig:ch7-trans-noise-model-plots} plots the measured noise spectrum for \RCm{31}{1} at \SOC, along with the basic noide model and a noise model that includes enough additional power noise to match the measured white noise level at low frequencies.
 This could be due to a value of $G$ that in reality is 5.3 times higher than what was measured, or a photon noise level that is 3.2 times higher than predicted.
 
 One problem with explaining the noise spectra this way is that the measured spectrum shows a shelf at \SIrange{100}{1000}{\hertz} which is not present in any of the models.
 This shelf could possibly be explained by excess detector noise due to a dangling heat capacity \cite{xxx}, but this possibility has not been investigated.
 A second problem is that it is difficult to understand how the measured value of $G$ could be so far off.
-Excess photon noise seems a more likely explanation, and could be due to the optical load including \IR\ power leaking onto the detectors.
+Excess photon noise seems a more likely explanation, and could be due to \IR\ power leaking onto the detectors.
 Even a small amount of \IR\ power can increase noise levels through the $\nu$ factor in \eqnref{eqn:photon-noise}.
-It is also possible that a much higher level in-band optical power is falling on the detector.
+It is also possible that a much higher level in-band optical power is falling on the detector than predicted.
 This would both increase the photon noise directly, as well as increasing the predicted thermal fluctuation noise because of the link between assumed optical power and my measurements of $G$ and $T_c$ as discussed in \sectionref{sec:g-psat}.
 
 Another possible explanation is a poor calibration of the readout system, so that the ``real'' current noise is \abt{2} times lower than measured.
@@ -651,7 +645,7 @@ For all four detectors, the measured noise is higher than predicted by the noise
   Plot showing measured noise for \RCm{31}{1}, referred to power absorbed in bolometer, along with two noise models.
 The red line is the basic detector noise model using measured values for all detector parameters as described in this chapter, including predicted \Pnoise{0.5e-15} of photon noise.
 The black line is for a noise model that include enough excess ``power'' noise to match the measured white noise level at low frequencies.
-This excess ``power'' noise could be due to a high level of photon noise (3.2 times higher than predicted) or a larger-than-measured value of $G$ (5.3 times higher than measured).
+This excess ``power'' noise could be due to a high level of photon noise (3.2 times higher than predicted) or a larger-than-measured value of $G$ (5.3 times higher than measured), or some combination of the two.
 }
 \label{fig:ch7-trans-noise-model-plots}
 \end{figure*}
