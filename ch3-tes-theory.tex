@@ -15,7 +15,7 @@ Second, I describe a new approach for measuring the natural detector time consta
 The bolometer is voltage-biased by passing a bias current $I_{bias}$ through a shunt resistor \Rsh\ which has a much lower resistance than the normal-state resistance $R_n$ of the \TES.
 Because $R_{sh} \ll R_n$, the \TES\ itself is under a voltage bias.
 The current through the \TES\ is inductively coupled into a \SQUID\ for readout.
-The inductance $L$ in the diagram represents the sum of the input inductance of the \SQUID, a Nyquist inductor, and any parasitic inductance present in the circuit.
+The inductance $L$ in the diagram represents the sum of the input inductance of the \SQUID, a Nyquist inductor used to limit the noise bandwidth of the detector circuit, and any parasitic inductance present in the circuit.
 
 The \TES\ itself is represented by a variable resistance $R$, which depends on both the current through the \TES\ and the temperature of the \TES.
 The \TES\ is thermally sunk to a heat capacity $C$ which is weakly linked to a temperature bath $T_b$ through a thermal conductance $G$.
@@ -38,7 +38,7 @@ The negative electrothermal feedback speeds up the response time of the detector
 The \TES\ is biased by a stiff current $I_{bias}$ shunted across a resistor $R_{sh}$ that is much smaller than the normal-state resistance of the \TES.
 The \TES\ is represented by a variable resistance $R$, and $R_{par}$ represents any parasitic resistance in the circuit.
 The current through the \TES\ is inductively coupled into a \SQUID\ for readout.
-The inductance $L$ represents the sum of the input inductance of the \SQUID, a Nyquist Inductor, and any parasitic inductance present in the circuit.
+The inductance $L$ represents the sum of the input inductance of the \SQUID, a Nyquist inductor, and any parasitic inductance present in the circuit.
 \textbf{Middle} Thevenin-equivalent \TES\ circuit used in derivation of the linearized electrical and thermal equations for the \TES.
 \textbf{Right} Thermal \TES\ circuit. The \TES\ is thermally sunk to a heat capacity $C$ which absorbs optical power. The heat capacity $C$ is connected to a heat bath $T_b$ by a weak thermal link $G$, so that its temperature is elevated above $T_b$ to $T$.
 The \TES\ is warmed to temperature $T$ by applied optical power $P_{opt}$, power dissipated in a heater via $I_{htr}$ (if present), and Joule heating of the \TES\ itself.}
@@ -106,7 +106,7 @@ s_I(\omega) = -\frac{1}{V_0} \frac{\Loop}{1+\beta_I + \Loop} \frac{1}{1 + j \ome
 \end{equation}
 The detector response time is given by the natural detector time constant $\tau$, sped up by a factor of $1 + \Loop(1+\beta_I)$; for $\beta_I \ll 1$, this factor is typical of negative feedback, and justifies calling \Loop\ the ``loop gain'' of the detector.
 In the further limit of strong electrothermal feedback ($\Loop \gg 1, \gg \beta_I$), the \DC\ responsivity is simply the inverse of the voltage bias.
-This represents that fact that under strong electrothermal an increase in applied optical power is exactly canceled by a decrease in detector Joule heating, so that the \TES\ temperature remains unchanged.
+This means that because of the strong electrothermal coupling, an increase in applied optical power is exactly canceled by a decrease in detector Joule heating, so that the \TES\ temperature remains unchanged.
 
 \textbf{\TES\ Response to Step Function in Power}
 As demonstrated in \sectionref{sec:bias-step}, our detectors are always operated in a regime where $\tau_{eff} \gg \tau_{el}$.
@@ -333,7 +333,7 @@ The data cover 36 data points including 25 temperatures from \SIrange{995}{1160}
 \section{\textsc{TES} Bolometer Noise} \label{sec:ch3-tes-noise}
 
 There are three sources of detector noise in \TES\ bolometers: Johnson noise in the \TES\ resistance, Johnson noise in the load resistor $R_L$, and thermal fluctuation noise across the weak thermal link $G$.
-Additionally, intrinsic fluctuations in the number of arriving photons leads to photon noise, which can be significant source of noise for some \TES\ bolometers.
+Additionally, intrinsic fluctuations in the number of arriving photons leads to photon noise, which can be significant source of noise for low-temperature \TES\ bolometers.
 Expressions for these sources of noise are shown in \tableref{tab:tes-noise}.
 
 The function $F$ that enters into the thermal fluctuation noise accounts for the temperature gradient between the \TES\ and the bath.
