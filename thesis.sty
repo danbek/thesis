@@ -65,6 +65,6 @@ C\number\numexpr#2-1\relax
 } % this allows me specify row/col indices MATLAB-style
 \newcommand*{\Rsh}{\ensuremath{R_{sh}}}
 \newcommand*{\Loop}{\ensuremath{\mathcal{L}_I}}
-\newcommand*{\abt}{\raise.17ex\hbox{\ensuremath{\scriptstyle\sim}}}
+\newcommand*{\abt}[1]{{\raise.17ex\hbox{\ensuremath{\scriptstyle\sim}}}\,{#1}}
 \newcommand{\Inoise}[1]{\SI[mode=math,per-mode=symbol]{#1}{\A\per\sqrt{Hz}}}
 \newcommand{\Pnoise}[1]{\SI[mode=math,per-mode=symbol]{#1}{\W\per\sqrt{Hz}}}
