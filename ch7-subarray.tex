@@ -164,50 +164,36 @@ It is not known whether this correlation is a real physical effect or an artifac
 
 \section{Measurement of Heater Resistors} \label{sec:heater-r}
 
-Thirty-one detectors have heater resistors connected to bond pads.
+Thirty-one detectors have heater resistors.
 Twenty-three of these have the heaters wired to the heater bias line.
 Of these 23, there are nine detectors which show no response to applied heater power.
 Five of these nine are on the cut list (see \sectionref{sec:ch8-det-cuts}), so this is not surprising.
 But four detectors can be biased into the transition and work well, but show no response to applied heater power (\RC{4}{7}, \RC{5}{7}, \RC{6}{6}, \RC{7}{6}).
 The reasons for these detectors not showing a response to heater power are not fully understood.
 This leaves 14 working detectors that also show a response to applied heater power.
-However, a short between one of the \TES\ bias lines and the heater bias line means that ramping the current bias for some of the \TES\ detectors also ramps the heater bias.
-This means that for seven of the 14 working detectors that show a response to applied heater power, interpreting \IV\ curves is difficult because a different amount of heater power is applied at each detector bias value.
+
+However, a short between one of the \TES\ bias lines and the heater bias line means that ramping the current bias for columns 6 and 7 also ramps the heater bias for all detectors.
+This means that for the seven working heaters on columns 6 and 7, interpreting \IV\ curves is difficult because a different amount of heater power is applied at each detector bias value.
 This means that for these seven detectors it is not possible to measure $G$ or to calibrate the power being applied by the resistors.
 
-This leaves seven detectors with heaters for which \IV\ curves can be taken, and $G$ measured.
+This leaves seven detectors on columns 0 and 1 with heaters for which good \IV\ curves can be taken, and $G$ measured.
 The heaters on these seven detectors can be used to directly measure the detector responsivity, noise referred to input optical power, time constants and thermal conductance $G$.
 But all of these measurements require knowing the resistance of the heaters.
-This section describes my measurement of the heater resistances.
 
-To measure the heater resistances, I took a set of \IV\ curves at constant bath temperature.
-For each \IV\ curve I applied a different heater current, so that a different amount of heater power was applied to the \TES\ for each curve.
-The total amount of power flowing through the \TES\ thermal conductance $G$ is then given by
-\begin{equation}\label{eqn:tes-ptot}
-P_{tot} = K(T^n - T_b^n) = P_{opt} + P_{htr} + I^2 R(T,I),
-\end{equation}
-where $T$ is the temperature of the \TES, $R$ is the resistance of the \TES, and $I$ is the current flowing through the \TES.
-I make the assumption that at the start of the superconducting transition $\beta_I = 0$, i.e.\ the resistance of the \TES\ depends only on the \TES\ temperature, and not on the current through the \TES.
-This implies that each time the \TES\ reaches, e.g.\ $0.99R_n$, the temperature of the \TES\ is the same, and therefore $P_{tot}$ will be the same.
-A relationship of the following form must therefore hold:
-\begin{equation}\label{eqn:rhtr-fit}
-P_{J} = (P_{tot} - P_{opt}) - I_{htr}^2 R_{htr}.
-\end{equation}
-A fit can be made to this function, with the quantities $R_{htr}$ and $P_{x} \equiv P_{tot} - P_{opt}$ to be solved for.
-
-\figref{fig:ch7-heater-r-plots} explains this idea further by a series of plots.
+Following the procedure outlined in \sectionref{sec:ch3-iv-curve}, I took \IV\ curves at $T_b = \SI{1100}{\mK}$ using a range of heater biases.
+\figref{fig:ch7-heater-r-plots} shows the results for \RCm{29}{1}.
 The upper left plot shows the \TES\ \IV\ curves.
 The upper right plot shows the same data, but transformed into \TES\ Joule power and \TES\ resistance.
 As applied heater current decreases, the Joule power at the start of the transition decreases.
 In the lower left, the Joule power at $0.99R_{n}$ is plotted vs applied heater current.
-A fit to \eqnref{eqn:rhtr-fit} is also plotted.
+A fit to \eqnref{eqn:ch3-rhtr-fit} is also plotted.
 Finally, the lower right plot show the $R$ vs $P_J$ plots after the heater power has been added to each curve.
 This plot shows that the powers are equalized very high in the transition, where the assumption of Joule power dependent only on \TES\ resistance holds.
 It also shows that this assumption breaks down deeper in the transition.
 
 \begin{figure*}
 \includegraphics{drawings/ch7-heater-r-plots.pdf}
-\caption{Plots heater measurements, for the case of \RCm{29}{1}.
+\caption{Plots related to heater measurements, for the case of \RCm{29}{1}.
 \textbf{Upper Left} \IV\ curves. The \IV\ curves should turn vertical when the detector becomes fully superconducting at zero voltage, but these curves shown a non-infinite slope. The reason for this is that the readout system as configured for these \IV\ curves was unable keep up with the rapid change of current in the superconducting branch.
 \textbf{Upper Right} Same data as in upper left plot, but represented in terms of \TES\ Joule power and resistance. As the bias current for the heaters is increased, the curves shift to the left.
 \textbf{Lower Left} Measured $P_{J}$ vs heater current at $0.99R_n$, as well as fit to \eqnref{eqn:rhtr-fit}.
@@ -216,17 +202,13 @@ It also shows that this assumption breaks down deeper in the transition.
 \end{figure*}
 
 \tableref{tab:basic-det-props} lists all measured heater resistors.
-The seven heaters for columns 0 and 1 have a mean of \SI{23.8}{\ohm} with a standard deviation of \SI{0.26}{\ohm}.
-
-It is worth noting that determining the values of $R_{htr}$ requires knowing the current through the heaters.
-But because $R_{htr}$ is determined through the power dissipated in the resistor, an incorrect assumption about the current will lead to a an incorrect value of $R_{htr}$ which leaves $I_{htr}^2 R_{htr}$ unchanged.
-So whenever the value $R_{htr}$ is used to calculated a power, the power value will be correct even in the face of an incorrect assumption about the current through the heater.
+The seven heaters for columns 0 and 1 have a mean of \SI{23.8}{\ohm} with a standard deviation of \SI{0.26}{\ohm} xxx check values
 
 \begin{table*}[t]
 \centering
 \caption{Basic detector properties.
 $P_{opt} = 150$~pW is assumed everywhere.
-Uncertainties are 95 \% confidence intervals after marginalizing over other fit parameters, and do not include systematic uncertainties due to the unknown value of $P_{opt}$ or uncertainty in the value of the shunt resistors.
+Uncertainties are 95 \% confidence intervals after marginalizing over other fit parameters, and do not include systematic uncertainties due to the unknown value of $P_{opt}$, uncertainty in the value of the shunt resistors, or possible errors in the calibration of the focal plane thermometer.
 }
 \label{tab:basic-det-props}
 \begin{tabular}{l l l l l l l}
@@ -240,6 +222,7 @@ Detector &  $R_{htr}$ (\si{\ohm}) & $G$ (\si{\nano\W\per\K}) & $n$ & $T_c$ (mK) 
 \RCm{31}{2} & 20.4 & 6.35 $\pm$ 0.16 & 3.41 $\pm$ 0.24 & 1214.5 $\pm$ 1.6 & 9.51 $\pm$ 0.1 & 3.78 \\
 \RCm{32}{2} & 23.5 & 7.41 $\pm$ 0.25 & 3.70 $\pm$ 0.32 & 1215.8 $\pm$ 2.1 & 10.98 $\pm$ 0.1 & 4.38 \\
 \midrule
+xxx check
 Mean & 25.7 & 7.35 & 3.55 & 1213.5 & 9.56 & 4.27 \\
 \bottomrule
 \end{tabular}
@@ -250,8 +233,8 @@ Mean & 25.7 & 7.35 & 3.55 & 1213.5 & 9.56 & 4.27 \\
 %% run thesis/ana_tau_nat.m for results
 
 The approach described in \sectionref{sec:tau-nat-theory} was used to measured the natural time constant tau.
-The response to a step-function change in applied heater power was measured while the detectors were at $T_{b} = \SI{1100}{\mK}$.
-As described in \sectionref{sec:heater-r} the response to multiple steps was averaged together prior to making a fit.
+The response to a step-function change in applied heater power was measured at bias points near the top of the transition at $T_{b} = \SI{1100}{\mK}$.
+The response to multiple steps was averaged together prior to making a fit.
 For each bias point the measured time constant $\tau_{meas}$ and change in \TES\ current $\delta I$ was measured. A fit was then performed to \eqnref{eqn:teff-from-tau}:
 \begin{equation} \label{eqn:tau-nat-fit}
   \tau_{meas} = \tau - \tau \mathcal{K} (I_{bias} \delta I).
@@ -264,17 +247,17 @@ In this fit, $\tau_{meas}$ is considered the dependent variable, the product $(I
   \centering
 \includegraphics{drawings/ch7-tau-nat-plots.pdf}
 \caption{
-  Plot showing example of fit to \eqnref{eqn:tau-nat-fit}, for \RCm{31}{1}.
-  The y-intercept at $I_{bias} \delta I = 0$ gives $\tau$, \SI{9.45}{\ms}.
+  Plot showing measurement of natural time constant $\tau$ for \RCm{31}{1}. The fit is to \eqnref{eqn:tau-nat-fit}.
+  The y-intercept at $I_{bias} \delta I = 0$ gives $\tau = \SI{9.45}{\ms}$.
 } 
 \label{fig:tau-nat-plots}
 \end{figure*}
 
 \section{Measurement of \textsc{TES} $G$} \label{sec:g-psat}
 
-With knowledge of the heater resistances, \IV\ curves can be taken over a wide range of bath temperatures, which enables a measurement of the \TES\ thermal conductance $G$.
-Similarly to \sectionref{sec:heater-r}, I took \IV\ curves at bath temperatures ranging from 995~mK -- 1160~mK, while adjusting the applied heater power so that each \IV\ curve had a clear normal branch.
-I again used the assumption that high in the transition the \TES\ resistance depends on only the \TES\ temperature, so that the Joule power $P_J$ dissipated in the \TES\ at $0.99R_n$ depends only on the bath temperature $T_b$ and the applied heater power $P_{htr} = I_{htr}^2 R_{htr}$. A fit can then be made to \eqnref{eqn:tes-ptot} in the form
+With knowledge of the heater resistances, \IV\ curves can be taken over a wide range of bath temperatures, which enables a measurement of the \TES\ thermal conductance $G$, critical temperature $T_C$ and xxx $n$.
+Similarly to \sectionref{sec:heater-r}, I took \IV\ curves at bath temperatures ranging from \SIrange{995}{1160}{\mK}, while adjusting the applied heater power so that each \IV\ curve had a clear normal branch.
+Fits were performed against \eqnref{eqn:ch3-g-fit}:
 \begin{equation}\label{eqn:g-fit}
 P_{htr} + P_J + P_{opt}= \frac{G T_c}{n}\left(1 - \left(\frac{T_b}{T_c}\right)^n\right).
 \end{equation}
@@ -311,7 +294,7 @@ The value of $n$ shows no trend with $P_{opt}$.
 \end{figure*}
 
 As discussed in \sectionref{sec:det-parm-choice}, the target $G$ value for these detectors was 3.7~nW/K.
-The mean value for the seven measured detectors is 7.52~nW/K, 2.0 times larger than the target.
+The mean value for the seven measured detectors is \SI{7.35}{\nano\watt\per\kelvin}, \abt{2} times larger than the target.
 The reason for this discrepancy is not known.
 %thz5 high g - 67 um 
 %thz5 high g - 80 um 
@@ -319,7 +302,7 @@ The reason for this discrepancy is not known.
 
 \section{Direct Measurement of Detector Responsivity and $\tau_{eff}$} \label{sec:teff-resp}
 
-Knowledge of $R_{htr}$ allows a direct measurement of the DC responsivity of $\tau_{eff}$ for the seven detectors with heaters.
+Knowledge of $R_{htr}$ allows a direct measurement of the DC responsivity and $\tau_{eff}$ for the seven detectors with heaters.
 Steps in heater bias current were applied to these detectors under \SOC.
 The step size was made small so as the keep the detector response linear, and the response to many steps was averaged together to reduce noise.
 The result was fit to \eqnref{eqn:htr-step-resp-high-time}:
@@ -335,7 +318,7 @@ The result was fit to \eqnref{eqn:htr-step-resp-high-time}:
 \caption{Plot showing response of detector \RCm{30}{1} to step in applied heater power of \SI{1.41}{\pico\watt}.
 Plots are for \RCm{30}{1} biased into \SOC.
 Data acquired at \SI{3125}{\Hz}.
-Data averaged over 32 steps (16 up and 16 down) along with best fit to \eqnref{eqn:ch7-heater-step-trans}.
+The data averaged over 32 steps (16 up and 16 down), along with best fit to \eqnref{eqn:ch7-heater-step-trans}, are plotted.
 The step in applied power begins at $t \approx \SI{0.6}{\ms}$, not $t = \SI{0}{\ms}$.
 } 
 \label{fig:ch7-heater-step-trans}
@@ -345,7 +328,7 @@ The step in applied power begins at $t \approx \SI{0.6}{\ms}$, not $t = \SI{0}{\
 \centering
 \caption{Detector properties while biased into transition.
 $P_{opt} = 150$~pW is assumed everywhere.
-Uncertainties are 95 \% confidence intervals after marginalizing over other fit parameters, and do not include systematic uncertainties due to the unknown value of $P_{opt}$ or uncertainty in the value of the shunt resistors.
+Uncertainties are 95 \% confidence intervals after marginalizing over other fit parameters, and do not include systematic uncertainties due to the unknown value of $P_{opt}$, uncertainty in the value of the shunt resistors, or possible errors in the calibration of the focal plane thermometer.
 Values are for detectors under \SOC.
 ``N/A'' indicates a property that has not been measured for that detector.
 }

@@ -22,7 +22,7 @@
 
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[xmin=0,xmax=3500, 
-		title={},
+		title={Measurement of $\tau$ for \RCm{31}{1}},
 		xlabel={$I_{bias} \delta I$ (\si{\uA^2})}, ylabel={$\tau_{meas}$ (ms)} ]
 	  \addplot+[only marks, error bars/.cd, y dir=both, y explicit]
         table[x=x, y=teff, y error=teff_err]{../data/ch7-tau-nat-fit.dat};
