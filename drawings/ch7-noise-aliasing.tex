@@ -9,7 +9,7 @@
 \pgfplotsset{
   every axis/.append style={
     scale only axis,
-    width=4.0in, height=2.0in,
+    width=2.4in,
   },
   /tikz/every picture/.append style={
     baseline
@@ -19,6 +19,8 @@
 \begin{document}
 
 \pagestyle{empty}
+
+\begin{tabular}{rr}
 
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[
@@ -30,15 +32,17 @@
 	\end{axis}
   \end{tikzpicture}
 
-  \vspace{0.25 in}
+  &
 
-  \begin{tikzpicture}[trim axis left]
-	\begin{loglogaxis}[%xmin=2.8,xmax=5,
+  \begin{tikzpicture}[trim axis right]
+	\begin{loglogaxis}[
 		title={Current Noise PSD \RCm{5}{1}},
 		xlabel={Frequency (\si{\hertz})}, ylabel={Noise Power (\Inoise{})} ]
 	  \addplot+[mark=none] table[x=f,y=Pxx]{../data/ch7-noise-aliasing-5.dat}; \addlegendentry {Data Rate = 5}
 	  \addplot+[mark=none] table[x=f,y=Pxx]{../data/ch7-noise-aliasing-f.dat}; \addlegendentry {Data Rate = 1}
 	\end{loglogaxis}
   \end{tikzpicture}
+  
+\end{tabular}
 
 \end{document}
