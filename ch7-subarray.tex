@@ -4,7 +4,7 @@ The detectors in the first 251-detector subarray have not all been characterized
 Partly this is due to manpower and time constraints.
 Additionally, as described in \sectionref{sec:g-psat}, the saturation power of the detectors is \abt{2} times higher than expected, which means that only some detectors can be driven normal using bias current alone --- even under optical load --- and then only at bath temperatures very close to $T_c$.
 In particular, none of the detectors can be driven normal at the operating bath temperature for the array of \SI{1100}{\mK}.
-This means that we do not have \IV\ curves for any detectors at standard operating conditions, which limits the characterization than can be performed.
+This means that we do not have current-vs-voltage (\IV) curves for any detectors at standard operating conditions, which limits the characterization than can be performed.
 
 Seven detectors used in taking images have working heaters and no other problems.
 Once calibrated, these heaters allow us to take full \IV\ curves at all bath temperatures, allowing measurements of the detector thermal conductance $G$, critical temperature $T_c$ and power-flow index $n$.
@@ -12,11 +12,11 @@ The heaters also allow a direct measurement of detector responsivity and time co
 These later measurements have been carried out on four of the seven detectors.
 Additionally, \Loop, $\beta_I$ and $R$ at standard operating conditions have been measured for all working detectors.
 This chapter describes all these measurements, as well as measurements of shunt resistors and inductors for all detectors.
-\tableref{tab:measurements} summarizes all of the measurement that have been performed and described in this chapter.
+\tableref{tab:measurements} summarizes all of the measurements described in this chapter.
 Sections discussing common mode noise, microphonic pickup and noise aliasing are also included.
 
 Several measurements are taken at ``standard operating conditions'' (\SOC), which are the conditions under which the array is operated while acquiring video images.
-These conditions are bath temperature $T_b = \SI{1100}{\mK}$ and detector bias $\mbox{\DAC} = \num{27000}$.
+These conditions are bath temperature $T_b = \SI{1100}{\mK}$ and detector bias $\mbox{\DAC} = \num{27000}$\footnote{The detector bias lines are controlled by Digital Analog Converter (\DAC) units as described in \sectionref{xxx}. Bias values in this chapter are in terms of \DAC\ units, where $\mbox{\DAC} = 2^{15} = 32768$ is the maximum bias that can be applied, and corresponds to $I_b \approx \SI{10}{\mA}$}.
 
 \begin{table*}[t]
 \centering
@@ -89,7 +89,7 @@ This high resistance drives the Johnson noise of the load resistor below the \SQ
 To choose $I_{FB}$ values, I acquired data at the fastest multiplexing rate possible for 33 rows\footnote{This rate is achieved by only reporting one of the eight columns to the readout computer. The limiting factor in how fast the entire array can be multiplexed is packaging and sending the data to the readout computer.}, \SI{15151.5}{Hz} while the system was at a temperature of \SI{1.3}{\K}.
 For every row and column that has a detector that responds in the superconducting state, I fit the resulting noise power spectrum to an equation of the form
 \begin{equation}
-  \frac{N_{SQ}}{1 + (2 \pi \tau_{servo})^2},
+  \frac{N_{SQ}}{1 + (2 \pi \tau_{servo})^2}
 \end{equation}
 Where $N_{SQ}$ is the white noise level and $\tau_{servo}$ gives the bandwidth of the servo loop.
 
@@ -101,7 +101,9 @@ This places most detectors in a region where \SQUID\ noise will be aliased into 
 For taking video images, the servo does not need to be run as aggressively.
 As shown in \figref{fig:ch7-teff-si-pred}, most detectors have $\tau_{eff}$ right around \SI{1.25}{\ms}, with only a few slower than this.
 A servo gain $I_{FB}$ of 20 puts $\tau_{servo}$ below \SI{0.6}{\ms} for all detectors, so there is no need to operate at a higher $I_{FB}$ when taking video images.
-Even operating with $I_{FB}$ of 10 puts \SI{95}{\percent} of the $\tau_{servo}$ below \SI{1}{\ms}, so operating at $I_{FB}$ of 10 is also acceptable, though not as ideal as 20.
+Even operating with $I_{FB}$ of 10 puts \SI{95}{\percent} of the $\tau_{servo}$ below \SI{1}{\ms}, so operating at $I_{FB}$ of 10 is also acceptable.
+% xxx - once I write the section that described required $\tau_{eff}$,
+% I may need to add comments here or expand on this.
 
 \begin{figure*}
 \includegraphics{drawings/ch7-servo.pdf}
@@ -139,10 +141,10 @@ The shunt resistance $R_{sh}$, inductance $L$, and readout chain white noise lev
 
 \figref{fig:rsh-l-plots} shows histogram plots of the resulting \Rsh\ and $L$ values.
 \Rsh\ has a mean of \SI{149}{\uohm} with standard deviation \SI{6}{\uohm}.
-The measured value for \Rsh\ also includes any parasitic resistance in the circuit, but no evidence for significant parasitic resistance has ever been seen, so this parasitic resistance is assumed to be zero througout this thesis.
+The values for \Rsh\ include any parasitic resistance in the circuit, but no evidence for significant parasitic resistance has ever been seen, so this parasitic resistance is assumed to be zero throughout this thesis.
 
-The measured value for $L$ includes the Nyquist inductance on the interface chip, the input inductance of the first-stage \SQUID\ of the multiplexed readout system, as well as any parasitic inductance in the circuit.
-Using this measurement it is not possible to extract the inductance of the Nyquist inductor itself, but this is not a problem because the total inductance is the relevant  quantity for understanding the behavior of the detector and its circuit.
+The value for $L$ includes the Nyquist inductance on the interface chip, the input inductance of the first-stage \SQUID\ of the multiplexed readout system, as well as any parasitic inductance in the circuit.
+Using this approach it is not possible to extract the inductance of the Nyquist inductor itself, but this is not a problem because the total inductance is the relevant  quantity for understanding the behavior of the detector and its circuit.
 
 $L$ has a mean of 568~nH with a standard deviation of 86~nH.
 However, this mean includes two sets of clear outliers: all values for multiplexing row 4 are clustered around 200~nH, and all values for multiplexing row 25 are clustered around 440~nH.
@@ -150,7 +152,7 @@ The reason for these low inductances is not understood.
 Excluding rows 4 and 25,  $L$ has a mean of 587~nH with a standard deviation of 44~nH.
 
 The outlier $L$ values are more clearly visible in the lower left plot in \figref{fig:rsh-l-plots}, which also shows a small correlation between \Rsh\ and $L$.
-It is not known whether this correlation is a real physical effect or an artifact of the measurement process.
+It is not known whether this correlation is a real physical effect or an artifact of the measurement and curve fitting process.
 
 \begin{figure*}
 \includegraphics{drawings/ch7-rsh-l-plots.pdf}
@@ -170,7 +172,7 @@ Of these 23, there are nine detectors which show no response to applied heater p
 Five of these nine are on the cut list (see \sectionref{sec:ch8-det-cuts}), so this is not surprising.
 But four detectors can be biased into the transition and work well, but show no response to applied heater power (\RC{4}{7}, \RC{5}{7}, \RC{6}{6}, \RC{7}{6}).
 The reasons for these detectors not showing a response to heater power are not fully understood.
-This leaves 14 working detectors that also show a response to applied heater power.
+This leaves 14 working detectors that show a response to applied heater power.
 
 However, a short between one of the \TES\ bias lines and the heater bias line means that ramping the current bias for columns 6 and 7 also ramps the heater bias for all detectors.
 This means that for the seven working heaters on columns 6 and 7, interpreting \IV\ curves is difficult because a different amount of heater power is applied at each detector bias value.
@@ -232,10 +234,11 @@ Mean & 23.1 & 7.35 & 3.55 & 1213.5 & 9.56 & 4.27 \\
 
 %% run thesis/ana_tau_nat.m for results
 
-The approach described in \sectionref{sec:tau-nat-theory} was used to measured the natural time constant tau.
+The approach described in \sectionref{sec:tau-nat-theory} was used to measure the natural time constant $\tau$.
 The response to a step-function change in applied heater power was measured at bias points near the top of the transition at $T_{b} = \SI{1100}{\mK}$.
 The response to multiple steps was averaged together prior to making a fit.
-For each bias point the measured time constant $\tau_{meas}$ and change in \TES\ current $\delta I$ was measured. A fit was then performed to \eqnref{eqn:teff-from-tau}:
+For each bias point the time constant $\tau_{meas}$ and change in \TES\ current $\delta I$ was obtained from curve fits to \eqnref{eqn:htr-step-resp-high-time}.
+A fit was then performed to \eqnref{eqn:teff-from-tau}:
 \begin{equation} \label{eqn:tau-nat-fit}
   \tau_{meas} = \tau - \tau \mathcal{K} (I_{bias} \delta I).
 \end{equation}
@@ -494,11 +497,11 @@ For this test the bath temperature was set to \SI{1100}{\mK}, so the implied tem
 \includegraphics{drawings/ch7-cm-plots.pdf}
 \caption{Plots summarizing common mode signal and $1/f$ noise.
 \textbf{Upper Left}
-Plow showing raw detector output for 15 detectors over a 10-minute data acquisition.
+Plot showing raw detector output for 15 detectors over a 10-minute data acquisition.
 The data was acquired at \SI{15625}{\Hz}, but only every 100th data point is plotted.
 \textbf{Upper Right} 
 The same data after removal of the common mode signal (as defined in the text).
-\textbf{Upper Left} 
+\textbf{Lower Left} 
 Current noise power spectral density for the raw data, the raw data minus the common mode (``No CM''), the raw data minus the common mode and the best-fit 4th-order polynomial (``No CM, Poly''), and the common mode itself (``CM'').
 The strong noise peak at \SI{1.411}{\Hz} is due to the \PTC, as explained in the text.
 \textbf{Lower Right} 
@@ -514,7 +517,7 @@ Raw timestream for \RCm{29}{1}, after conversion to an equivalent bath temperatu
 Some \TES\ detectors have been prone to microphonic pickup.
 The earliest version of the cryostat used for this project used a Gifford-McMahon (\GM) cryocooler, which vibrates the cryostat significantly more than a \PTC\ does.
 Prototype detectors had significantly higher noise levels with the \GM\ cooler running than when it was off; in addition the detector noise could be directly increased by striking the side of the cryostat with a soft mallet while the \GM\ cooler was turned off.
-We interpreted this behavior as evidence for microphonic pickup, and as a result replaced the \GM\ cooler with a \PTC.
+I interpreted this behavior as evidence for microphonic pickup, and as a result replaced the \GM\ cooler with a \PTC.
 
 To check whether microphonic pickup was present for the production detectors and the \PTC, I took noise data both with the \PTC\ running and turned off.
 In both cases the bath temperature was held steady at \SI{1100}{\mK} using the Cryocon temperature controller.
@@ -522,7 +525,7 @@ Common mode noise was removed and power spectra for each detector were calculate
 Then the excess noise for each detector was calculated as
 \begin{equation}
   \sqrt{  \frac{ \sum_{f >= \SI{6}{\Hz}} S^2_{I,\textsc{ptc}}(f) }
-               { \sum_{f >= \SI{6}{\Hz}} S^2_{I,\mbox{\tiny{No}}\textsc{ ptc}}(f) }},
+               { \sum_{f >= \SI{6}{\Hz}} S^2_{I,\mbox{\tiny{No}}\textsc{ ptc}}(f) }}
 \end{equation}
 where $S^2_{I,\textsc{ptc}}$ and $S^2_{I,\mbox{\tiny{No}}\textsc{ ptc}}$ are the measured current noise power spectral densities with the \PTC\ turned on and off, expressed in units of \si{\A^2 \per \Hz}.
 
@@ -534,10 +537,10 @@ The figure also contains a plot of the power spectral density for \RCm{29}{1} wi
   \centering
 \includegraphics{drawings/ch7-ptc-plots.pdf}
 \caption{%
-\textbf{Top}
+\textbf{Left}
 Histogram showing excess noise due to the \PTC, defined as ratio of total noise above \SI{6}{\Hz} (see text for precise definition).
 More detectors have higher noise with the \PTC\ on than off, but the mean excess noise is only \SI{1}{\percent}.
-\textbf{Bottom}
+\textbf{Right}
 Current noise for \RCm{29}{1} with \PTC\ on and off, after subtracting common mode noise.
 The noise below \SI{30}{\Hz} is 1.5--2.5 times higher with the \PTC\ on, but the total noise at the relevant frequencies of $f >= \SI{6}{\Hz}$ is only \SI{2.9}{\percent}.
 }
@@ -552,7 +555,7 @@ To check this I acquired data under \SOC\ for column 0 at the normal rate of \SI
 5 data files were acquired for each case. For each row in column 0 for each data file a power spectrum was taken after subtracting the common mode signal, and the excess noise was calculated as
 \begin{equation}
   \sqrt{  \frac{ \sum S^2_{I,\SI{3125}{\Hz}}(f) \Delta f }
-               { \sum S^2_{I,\SI{15625}{\Hz}}(f) \Delta f }},
+               { \sum S^2_{I,\SI{15625}{\Hz}}(f) \Delta f }}
 \end{equation}
 where $S^2_{I,\SI{3125}{\Hz}}$ and $S^2_{I,\SI{15625}{\Hz}}$ are the measured current noise power spectral densities at the two different multiplexing rates, averaged over all 5 data files, expressed in units of \si{\A^2 \per \Hz}.
 The sums are performed only over those frequency components in the range \SIrange{6}{1562.5}{\Hz}, and note that $\Delta f$ is different for the two sampling rates.
@@ -562,16 +565,16 @@ The average aliased noise is \SI{14}{\percent}, but some detectors have statisti
 
 The \MCE\ can be configured to apply a 4-pole digital lowpass filter to the \SI{15625}{\Hz} data stream \cite{mce_team_digital_????}.
 An appropriate choice of the cutoff frequency for this filter can greatly reduce aliased noise.
-We have not yet implemented this filter, but plan to do for future operation of the system.
+I have not yet implemented this filter, but plan to do for future operation of the system.
 
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch7-noise-aliasing.pdf}
 \caption{%
-\textbf{Top}
+\textbf{Left}
 Plot showing fractional excess noise (see text for definition) due to noise aliasing for all rows of column 0.
 The error bars are for \SI{95}{\percent} confidence intervals, and the average excess noise is \SI{14}{\percent}.
-\textbf{Bottom}
+\textbf{Right}
 Sample power spectra at \SI{3125}{\hertz} and \SI{15625}{\hertz} for \RCm{5}{1}.
 For this detector the excess noise is \SI{17}{\percent}.
 }
@@ -619,7 +622,7 @@ This would both increase the photon noise directly, as well as increasing the pr
 Another possible explanation is a poor calibration of the readout system, so that the ``real'' current noise is \abt{2} times lower than measured.
 However, this would reduce the measured values of $R_{sh}$ and $L_{ny}$ by a factor of $2^2=4$; as the design values for these were close to the measured values, and these design values have been confirmed by measurements for other interface chips of the same design\footnote{John Appel, personal communication}. 
 
-All this points to the conclusion that the high level of detector noise are real, but we do not yet have a full explanation for the high values.
+All this points to the conclusion that the high level of detector noise is real, but we do not yet have a full explanation for the high values.
 
 \begin{figure*}
   \centering
