@@ -25,7 +25,7 @@
     \begin{axis}[ymin=0,ymax=10,
         legend pos=north west,
     	title={Measured $\tau_{eff}$},
-    	xlabel={$R$ / $R_n$}, ylabel={$\tau_{eff}$ (\si{ms})} ]
+    	xlabel={$R$ / $R_n$}, ylabel={$\tau_{eff,meas}$ (\si{ms})} ]
       \addplot+[only marks] table[x=prn29,y=teff29]{../data/ch7-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{29}{1}}
       \addplot+[only marks] table[x=prn30,y=teff30]{../data/ch7-heater-step-pred-parms.dat};
@@ -52,7 +52,7 @@
   \begin{tikzpicture}[trim axis right]
     \begin{axis}[ymin=0,ymax=1,
     	title={Measured \TES\ Responsivity},
-    	xlabel={$R$ / $R_n$}, ylabel={$s_I(0)$ (\si{\per\uV})} ]
+    	xlabel={$R$ / $R_n$}, ylabel={$s_{I,meas}(0)$ (\si{\per\uV})} ]
       \addplot+[only marks] table[x=prn29,y=sI_pred29]{../data/ch7-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{29}{1}}
       \addplot+[only marks] table[x=prn30,y=sI_pred30]{../data/ch7-heater-step-pred-parms.dat};

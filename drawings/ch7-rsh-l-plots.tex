@@ -25,7 +25,7 @@
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[
         ymin=0, 
-		title={Measured Shunt Resistance},
+		title={Shunt Resistance},
 		xlabel={\Rsh\ (\si{\uohm})}, ylabel={Quantity} ]
 	  \addplot [hist={data min=125,data max=165,bins=20},
 		        fill=blue!75]
@@ -37,7 +37,7 @@
 
   \begin{tikzpicture}[trim axis right]
 	\begin{axis}[ymin=0,
-		title={Measured Nyquist Inductance},
+		title={Nyquist Inductance},
 		xlabel={$L_{ny}$ (nH)}, ylabel={Quantity} ]
 	  \addplot [hist={data min=180,data max=640,bins=23},
 		        fill=blue!75]
@@ -48,7 +48,7 @@
   \\
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[
-		title={Measured \Rsh\ vs $L_{ny}$},
+		title={\Rsh\ vs $L_{ny}$},
 		xlabel={\Rsh\ (\si{\uohm})}, ylabel={$L_{ny}$ (nH)} ]
 	  \addplot+[only marks]
 	    table[x=Rsh,y=L]{../data/ch7-rsh-L.dat};

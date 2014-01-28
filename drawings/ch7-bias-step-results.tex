@@ -25,7 +25,7 @@
 
    \begin{tikzpicture}[trim axis left]
     \begin{axis}[ymin=0,
-    	title={Measured \Loop},
+    	title={\Loop},
     	xlabel={$R$ / $R_n$}, ylabel={\Loop} ]
       \addplot+[only marks] table[x=prn29,y=Loop29]{../data/ch7-bias-step-parms.dat};
       \addlegendentry{\RCm{29}{1}}
@@ -52,7 +52,7 @@
 
    \begin{tikzpicture}[trim axis right]
     \begin{axis}[ymin=0,
-    	title={Measured $\alpha$},
+    	title={$\alpha$},
     	xlabel={$R$ / $R_n$}, ylabel={$\alpha$} ]
       \addplot+[only marks] table[x=prn29,y=alpha29]{../data/ch7-bias-step-parms.dat};
       \addlegendentry{\RCm{29}{1}}
@@ -79,7 +79,7 @@
 
   \begin{tikzpicture}[trim axis right]
     \begin{axis}[ymin=0,
-    	title={Measured $\beta_I$},
+    	title={$\beta_I$},
     	xlabel={$R$ / $R_n$}, ylabel={$\beta_I$} ]
       \addplot+[only marks] table[x=prn29,y=beta29]{../data/ch7-bias-step-parms.dat};
       \addlegendentry{\RCm{29}{1}}
