@@ -8,7 +8,7 @@ Others appear intact upon visual inspection, but show no response to applied cur
 Others work as expected while superconducting, but can not be biased so as to show a response to changes in optical power. 
 And some are extremely noisy or consistently show other problems in the data stream.
 This section summarizes which detectors have each of these problems.
-\figref{fig:detector-cuts-wafer} and \figref{fig:detector-cuts-rc} contain plots summarizing this information graphically, organized by detector position on the wafer and by readout row/column respectively..
+\figref{fig:detector-cuts-wafer} and \figref{fig:detector-cuts-rc} contain plots summarizing this information graphically, organized by detector position on the wafer and by readout row/column respectively.
 
 To determine which detectors show no response in the superconducting state, the temperature of the focal plane was set to 975~mK, well below the $T_c$ of the detectors.
 The \TES\ bias current was ramped, and data was acquired while running the readout system open-loop.
@@ -62,17 +62,16 @@ The x and y positions of the detectors on the wafer are also given, given in thi
 
 The \Imager\ produces a time-ordered data stream containing the output of each detector as a function of time.
 In order to turn this data stream into a video, we must know where the optical system is pointing at all times.
-This pointing information is placed directly into the timestream by the \Imager, as described in this section.
+This section desribed how this pointing information is placed directly into the timestream by the \Imager.
 It is also necessary to know where each detector is pointed relative to the optical system; this relative detector pointing information is extracted from beam maps, as discussed in \sectionref{s:beam-maps}.
 
 The pointing of the optical system is set by the positions of the two actuators --- \DISP1 and \DISP2 --- that move the secondary mirror.
 The actuator control hardware provides two voltage signal which are proportional to the positions of the actuators.
 This voltage signal is sent into the \Imager\ cryostat by a pair coaxial cables.
-Inside the cryostat two 1-m long Phosphur Bronze (xxx exact lakeshore name?) (PhBr) \AWG36 twisted pair wires carry the signal to the focal plane, where the signal is fed into the input coil of a 1st stage \SQUID.
+Inside the cryostat two \SI{1}{m} long Phosphur Bronze (xxx exact lakeshore name?) (PhBr) \AWG36 twisted pair wires carry the signal to the focal plane, where the signal is fed into the input coil of a 1st stage \SQUID.
 Series resistors (\SI{4.23}{\mega\ohm} for \DISP1, \SI{4.36}{\mega\ohm} for \DISP2) are used at room temperature to reduce the current flowing through the wires to a value appropriate for the 1st stage \SQUID\ input; approximately \SI{10}{\uA}.
 
-This approach allows the readout system to readout the position of the actuators in exactly the same way that it reads out the detector response.
-The actuator position is synchronized perfectly with the detector data.
+This approach synchronizes the actuator position readout with the detector response, and allows both pieces of information to be readout in the same way.
 
 A natural question is whether cross-talk appears between the actuator readout and the other detectors.
 To test this both actuator were moved in a 0.1~Hz sine-wave pattern over their maximum displacement range of +/- 3.5~mm, while the detectors were in the superconducting state.
