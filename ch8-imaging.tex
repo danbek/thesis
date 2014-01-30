@@ -102,7 +102,7 @@ Possibilities include the cryostat being located too close to the primary mirror
 
 \section{Beam Maps}
 
-As discussed in \sectionref{s:feedhorn-design}, the \Imager\ feedhorns are predicted to have beams that are circularly symmetric and well-approximated by Gaussians with \FWHM\ of x.xx~cm at the target.
+As discussed in \sectionref{sec:ch4-feedhorn-design}, the \Imager\ feedhorns are predicted to have beams that are circularly symmetric and well-approximated by Gaussians with \FWHM\ of x.xx~cm at the target.
 To verify these predictions beam maps were performed by rastering the beams over a small, stationary \SI{1030}{\celsius} blackbody source.
 
 The blackbody source used was an IR Labs xxx\footnote{IRLabs, Inc. Tucson, AZ. USA}.
@@ -111,7 +111,6 @@ Best results were achieved by covering an area around the blackbody source with 
 \figref{xxx} shows a picture of the blackbody source with Aluminum foil mask.
 
 The \Imager\ beams were rastered over the blackbody source by moving one actuator at \SI{6}{\hertz} while the other actuator moved much more slowly at \SI{0.1}{\hertz}.
-This produces the path shown in \figref{xxx}.
 Scans were taken with the blackbody in two different locations to ensure coverage of the entire subarray.
 At each blackbody positions two scans were taken with \DISP1 as the fast actuator and two with \DISP2 as the fast actuator, for a total of eight scans.
 
@@ -121,7 +120,7 @@ Actuator displacements were converted to distances in the far-field using the co
 The following 2-D Gaussian allowing for ellipticity was then fit to each beam map:
 \begin{multline}
 %\begin{split}
-  B(x,y) = O + A \exp{ \left[  - \frac{1}{2} \left( \frac{ (x-x_0) \cos{\theta} + (y-y_0) \sin{\theta}}{\sigma_1} \right)^2 
+  P(x,y) = O + A \exp{ \left[  - \frac{1}{2} \left( \frac{ (x-x_0) \cos{\theta} + (y-y_0) \sin{\theta}}{\sigma_1} \right)^2 
                                - \frac{1}{2} \left( \frac{-(x-x_0) \sin{\theta} + (y-y_0) \cos{\theta}}{\sigma_2} \right)^2
                        \right] }.
 %\end{split}
@@ -132,8 +131,10 @@ Only the points within \SI{3}{\cm} of the map peak were included in the fit.
 Beam maps at the edge of the scan were discared, as were beam maps where the fitting routine performed poorly.
 The $\theta$, $\sigma_1$, and $\sigma_2$ paremeters were all rationalized so that the conditions $\sigma_1 > \sigma_2$ and $0 < \theta < \ang{180}$ hold.
 The beam parmeter across the eight scans were then averaged together to produce final beam maps.
+\figref{fig:ch8-beam-summary} summarizes the final fit parameters for all the beams.
+The beam ellipticity and angle offset from the $x$-axis are statistically significant.
 
-\figref{xxx} shows the final beam maps.
+\figref{fig:ch8-all-beam-maps} shows the final beam maps.
 The beams are elliptical, with a mean $\sigma_1 / \sigma_2 = \si{1.6}$.
 The mean beam angle is $\ang{70}$ from the $x$-axis.
 The beam size \FWHM\ is calculated as
@@ -142,22 +143,23 @@ The beam size \FWHM\ is calculated as
 \end{equation}
 where the prefactor $2 \sqrt{2 \ln{2}}$ converts from the Gaussian parameters $\sigma$ to the gaussian \FWHM.
 
+In \sectionref{sec:ch4-feedhorn-design}, it was shown that the expected \FWHM\ beam width from this measurement is \SI{1.18}{\cm}.
+This is very close to the mean of the measured \FWHM\ of the beams.
+However, the feedhorn beam should be circular, not strongly elliptical as is observed.
+The source of this ellipticity is not known, but three possible explanations are (1) misalignment of the feedhorns with the primary and secondary mirrors (2) diffraction off the aperture stop located in the \SI{50}{\K} radiation sheild (3) errors in fabrication of the mirrors or feedhorns.
 
-xxx compare to predictions.
+Although the ellipticity of the beams is disappointing, the resolution is very close to target, and the ellipticity is not a barrier to using the system to take video images. The next section describes the algorithm use to turn detector timestreams into videos.
 
 \begin{figure*}[th]
 \centering
 \includegraphics[width=\textwidth]{images/ch8-all-beam-maps.pdf}
 \caption{
 Plot showing final beam maps.
-The ellipses represent the full-width-half-maximum of the best-fit 2-D Gaussian for each beam. The beams are elliptical, with a mean $\sigma_1/\sigma_2$ of 1.6, mean beam angle to the x-axis of \ang{70}, and beam FWHM of \SI{1.2}{\cm}.
+The ellipses represent the full-width-half-maximum of the best-fit 2-D Gaussian for each beam. The beams are elliptical, with a mean $\sigma_1/\sigma_2$ of 1.6, mean beam angle to the $x$-axis of \ang{70}, and beam FWHM of \SI{1.2}{\cm}.
 The four grid locations in the extreme upper right corner, as well as the extreme lower left grid point, have no detectors and therefore no beams. All other missing beams are for cut detectors, as discussed in \sectionref{sec:ch8-det-cuts}.
 }
 \label{fig:ch8-all-beam-maps}
 \end{figure*}
-
-\figref{fig:ch8-beam-summary} summarizes the final fit parameters for all the beams.
-The beam ellipticity and angle offset from the $x$-axis are statistically significant.
 
 \begin{figure*}[th]
 \centering
