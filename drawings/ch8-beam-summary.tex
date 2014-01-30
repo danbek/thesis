@@ -1,0 +1,94 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.5in, height=1.5in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{rr}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[
+        ymin=0, 
+		title={Beam FHWM},
+		xlabel={FWHM (\si{\cm})}, ylabel={Quantity} ]
+	  \addplot [hist={data min=1,data max=1.6,bins=20},
+		        fill=blue!75]
+	    table[y=fwhm]{../data/ch8-beam-map-parms.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[
+		title={Beam Angle vs Ellipticity},
+		xlabel={$\frac{\sigma_1}{\sigma_2}$}, ylabel={Beam Angle (Degrees)} ]
+	  \addplot+[only marks]
+	    table[x=sigma_rat,y=theta]{../data/ch8-beam-map-parms.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+  \\
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[ymin=0,
+		title={Beam Ellipticity},
+		xlabel={$\frac{\sigma_1}{\sigma_2}$}, ylabel={Quantity} ]
+	  \addplot [hist={data min=1,data max=2,bins=20},
+		        fill=blue!75]
+	    table[y=sigma_rat]{../data/ch8-beam-map-parms.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[
+		title={Beam Size vs Ellipticity},
+		xlabel={$\frac{\sigma_1}{\sigma_2}$}, ylabel={FWHM (\si{\cm})} ]
+	  \addplot+[only marks]
+	    table[x=sigma_rat,y=fwhm]{../data/ch8-beam-map-parms.dat};
+	\end{axis}
+  \end{tikzpicture}
+  \\
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[ymin=0,
+		title={Beam Angle},
+		xlabel={Beam Angle to x-axis (Degrees)}, ylabel={Quantity} ]
+	  \addplot [hist={data min=50,data max=90,bins=20},
+		        fill=blue!75]
+	    table[y=theta]{../data/ch8-beam-map-parms.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+   & 
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[
+		title={Beam Size vs Angle},
+		xlabel={Beam Angle (Degrees)}, ylabel={FWHM (\si{\cm})} ]
+	  \addplot+[only marks]
+	    table[x=theta,y=fwhm]{../data/ch8-beam-map-parms.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+\end{tabular}
+
+\end{document}

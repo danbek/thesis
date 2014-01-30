@@ -58,7 +58,7 @@ The x and y positions of the detectors on the wafer are also given, given in thi
 \end{figure*}
 
 
-\section{Readout of Mirror Position}\label{s:mirror-readout}
+\section{Readout of Mirror Position}\label{sec:ch8-mirror-readout}
 
 The \Imager\ produces a time-ordered data stream containing the output of each detector as a function of time.
 In order to turn this data stream into a video, we must know where the optical system is pointing at all times.
@@ -110,17 +110,65 @@ This source reaches a maximum of \SI{1030}{\celsius} and has apertures ranging i
 Best results were achieved by covering an area around the blackbody source with Aluminum foil; this eliminated hotspots in the image due to the warmth of the housing of the blackbody source itself.
 \figref{xxx} shows a picture of the blackbody source with Aluminum foil mask.
 
-The \Imager\ beams were rastered over the blackbody source by moving one actuator at xx~Hz while the other actuator moved much more slowly at xx~Hz.
+The \Imager\ beams were rastered over the blackbody source by moving one actuator at \SI{6}{\hertz} while the other actuator moved much more slowly at \SI{0.1}{\hertz}.
 This produces the path shown in \figref{xxx}.
-The data stream for each detector was ``binned'' as described in \sectionref{xxx} to produce a beam map for each detector.
-xxx did I remove any polynomials?
-xxx need to discuss dimensional conversion factors
-A 2-D Gaussian allowing for ellipticity was then fit to each beam map.
-Only the points within xxx~cm of the map peak were included in the fit.
+Scans were taken with the blackbody in two different locations to ensure coverage of the entire subarray.
+At each blackbody positions two scans were taken with \DISP1 as the fast actuator and two with \DISP2 as the fast actuator, for a total of eight scans.
 
-\figref{xxx} shows the resulting beam maps.
-xxx describe this plot.
+For each scan, the data stream for each detector was ``binned'' as described in \sectionref{xxx} to produce a beam map for each detector.
+No common mode or polynomial was removed from the timestreams.
+Actuator displacements were converted to distances in the far-field using the conversion factors discusssed in \sectionref{sec:ch8-mirror-readout}.
+The following 2-D Gaussian allowing for ellipticity was then fit to each beam map:
+\begin{multline}
+%\begin{split}
+  B(x,y) = O + A \exp{ \left[  - \frac{1}{2} \left( \frac{ (x-x_0) \cos{\theta} + (y-y_0) \sin{\theta}}{\sigma_1} \right)^2 
+                               - \frac{1}{2} \left( \frac{-(x-x_0) \sin{\theta} + (y-y_0) \cos{\theta}}{\sigma_2} \right)^2
+                       \right] }.
+%\end{split}
+\end{multline}
+Here $x$ and $y$ represent the position in the beam map, while $x_0$, $y_0$, $\sigma_1$, $\sigma_2$, $\theta$, $A$, and $O$ are the parameters to be fit.
+$O$ represents an overall \DC\ offset in the map level.
+Only the points within \SI{3}{\cm} of the map peak were included in the fit.
+Beam maps at the edge of the scan were discared, as were beam maps where the fitting routine performed poorly.
+The $\theta$, $\sigma_1$, and $\sigma_2$ paremeters were all rationalized so that the conditions $\sigma_1 > \sigma_2$ and $0 < \theta < \ang{180}$ hold.
+The beam parmeter across the eight scans were then averaged together to produce final beam maps.
+
+\figref{xxx} shows the final beam maps.
+The beams are elliptical, with a mean $\sigma_1 / \sigma_2 = \si{1.6}$.
+The mean beam angle is $\ang{70}$ from the $x$-axis.
+The beam size \FWHM\ is calculated as
+\begin{equation}
+  2 \sqrt{2 \ln{2}} \sqrt{\sigma_1 \sigma_2}
+\end{equation}
+where the prefactor $2 \sqrt{2 \ln{2}}$ converts from the Gaussian parameters $\sigma$ to the gaussian \FWHM.
+
 
 xxx compare to predictions.
+
+\begin{figure*}[th]
+\centering
+\includegraphics[width=\textwidth]{images/ch8-all-beam-maps.pdf}
+\caption{
+Plot showing final beam maps.
+The ellipses represent the full-width-half-maximum of the best-fit 2-D Gaussian for each beam. The beams are elliptical, with a mean $\sigma_1/\sigma_2$ of 1.6, mean beam angle to the x-axis of \ang{70}, and beam FWHM of \SI{1.2}{\cm}.
+The four grid locations in the extreme upper right corner, as well as the extreme lower left grid point, have no detectors and therefore no beams. All other missing beams are for cut detectors, as discussed in \sectionref{sec:ch8-det-cuts}.
+}
+\label{fig:ch8-all-beam-maps}
+\end{figure*}
+
+\figref{fig:ch8-beam-summary} summarizes the final fit parameters for all the beams.
+The beam ellipticity and angle offset from the $x$-axis are statistically significant.
+
+\begin{figure*}[th]
+\centering
+\includegraphics{drawings/ch8-beam-summary.pdf}
+\caption{
+  Plots summarizing final fit parameters for all beams.
+  \textbf{Left Column} Histograms of beam \FWHM\ (defined in text), beam ellipticity (defined as $\sigma_1 / \sigma_2$) and beam angle to $x$-axis.
+  \textbf{Right Column} Scatter plots showing correlation of the three parameters with each other. Beam \FWHM\ increases with ellipticity; this is to be expected give it's definition.
+}
+
+\label{fig:ch8-beam-summary}
+\end{figure*}
 
 \section{Image Processing Algorithm} \label{sec:ch8-algo}
