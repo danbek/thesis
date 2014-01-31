@@ -180,6 +180,11 @@ This is very close to the mean of the measured \FWHM\ of the beams.
 However, the feedhorn beam should be circular, not strongly elliptical as is observed.
 The source of this ellipticity is not known, but three possible explanations are (1) misalignment of the feedhorns with the primary and secondary mirrors (2) diffraction off the aperture stop located in the \SI{50}{\K} radiation sheild (3) errors in fabrication of the mirrors or feedhorns.
 
+The best-fit grid spacing between detector beams in the far field is \SI{1.72}{\cm}.
+Using the plate scale extracted from \ZEMAX\ in \sectionref{sec:ch4-optical-design}, this is equivalent to a \SI{2.81}{\mm} detector spacing on the focal plane array.
+The design detector spacing, after accounting for predicted thermal contraction of the feedhorn arrays, was \SI{2.730}{\mm}.
+Given manufacturing and alignment uncertainties, the closeness of these two numbers is encouraging, and indicates that we have a good understanding of how to map actuator displacements into distances in the farfield of the optical system.
+
 Although the ellipticity of the beams is disappointing, the resolution is very close to target, and the ellipticity is not a barrier to using the system to take video images. The next section describes the algorithm use to turn detector timestreams into videos.
 
 \begin{figure*}[th]
