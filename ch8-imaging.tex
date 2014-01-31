@@ -57,7 +57,6 @@ The x and y positions of the detectors on the wafer are also given, given in thi
 \label{fig:detector-cuts-rc}
 \end{figure*}
 
-
 \section{Readout of Mirror Position}\label{sec:ch8-mirror-readout}
 
 The \Imager\ produces a time-ordered data stream containing the output of each detector as a function of time.
@@ -69,9 +68,42 @@ The pointing of the optical system is set by the positions of the two actuators 
 The actuator control hardware provides two voltage signal which are proportional to the positions of the actuators.
 This voltage signal is sent into the \Imager\ cryostat by a pair coaxial cables.
 Inside the cryostat two \SI{1}{m} long Phosphur Bronze (xxx exact lakeshore name?) (PhBr) \AWG36 twisted pair wires carry the signal to the focal plane, where the signal is fed into the input coil of a 1st stage \SQUID.
-Series resistors (\SI{4.23}{\mega\ohm} for \DISP1, \SI{4.36}{\mega\ohm} for \DISP2) are used at room temperature to reduce the current flowing through the wires to a value appropriate for the 1st stage \SQUID\ input; approximately \SI{10}{\uA}.
+Series resistors (\SI{4.23}{\mega\ohm} for \DISP1, \SI{4.36}{\mega\ohm} for \DISP2) are used at room temperature to reduce the maximum current flowing through the wires to a value appropriate for the 1st stage \SQUID\ input; approximately \SI{2}{\uA}.
 
 This approach synchronizes the actuator position readout with the detector response, and allows both pieces of information to be readout in the same way.
+
+To convert the mirror output current (readout as en electrical current by the readout system) to actuator displacement I moved the mirror actuators in sine-wave patterns with a frequency of \SI{0.1}{\Hz} using 8 different displacement ampitudes.
+I fit the resulting output current timestream to a sine waves.
+The result are conversion factors of \SI{2.929}{\mm\per\uA} for \DISP1 and \SI{3.024}{\mm\per\uA} for \DISP2.
+% see cooldown39/ana_bose_factor.m
+
+To convert actuator displacement to displacements in the farfield of the system, I used the conversion factors produced from \ZEMAX\ listed in \sectionref{sec:ch4-optical-design}.
+A \SI{1}{\mm} movement of the actuator produces a change in angle of the secondary mirror of \ang{0.276}; a \ang{1.0} rotation of the secondary mirror displaces the beam of an on-axis detector by \SI{18.35}{\cm} at the far-field focal plane.
+The conversion factor between actuator displacement and farfield beam displacement is \SI{5.065}{\cm\per\mm}.
+
+To convert actuator displacements into locations in the farfield, three additional factors should be considered.
+First, the cassegrain optical system inverts images that it views, so that a beam from a detector in the lower left of the focal plane (as viewed from behind the detector focal plane) is pointed to the upper right on the farfield image (again as viewed from the system).
+Second, tilting the mirror displaces the beams in the same direction as the mirror is tilted; this is easily seen by thinking of the system in transmission, and imagining the way a beam of light is reflected off of a rotated mirror).
+Third, the actuators are oriented so that their rotation axes are rotated from horizontal/vertical by \ang{45}.
+This all means that --- as viewed from the cryostat --- positive displacements of the \DISP1 actuator shift beams up and to the right, while positive displacements of the \DISP2 actuator shift beams up and to the left.
+If we consider an $x$-$y$ coordinate system in the farfield, this means that the $x$ and $y$ displacement of the beams due to mirror movements are calculated as
+
+\begin{equation}
+\Delta x = \frac{\sqrt{2}}{2} \left( I_{\DISP1} \times \frac{\SI{2.929}{\mm}}{\SI{1}{\uA}} -
+                              I_{\DISP2} \times \frac{\SI{3.024}{\mm}}{\SI{1}{\uA}}  \right) \times
+    \frac{\ang{0.276}} {\SI{1}{\mm}} \times
+    \frac{\SI{18.35}{\cm}} {\ang{1}}
+\end{equation}
+\begin{equation}
+\Delta y = \frac{\sqrt{2}}{2} \left( I_{\DISP1} \times \frac{\SI{2.929}{\mm}}{\SI{1}{\uA}} +
+                              I_{\DISP2} \times \frac{\SI{3.024}{\mm}}{\SI{1}{\uA}}  \right) \times
+    \frac{\ang{0.276}} {\SI{1}{\mm}} \times
+    \frac{\SI{18.35}{\cm}} {\ang{1}}
+\end{equation}
+
+
+% pivot 14.19 mm behind mirror vertex
+% pivot 14mm in front on \BOSE\ attachment point
 
 A natural question is whether cross-talk appears between the actuator readout and the other detectors.
 To test this both actuator were moved in a 0.1~Hz sine-wave pattern over their maximum displacement range of +/- 3.5~mm, while the detectors were in the superconducting state.
