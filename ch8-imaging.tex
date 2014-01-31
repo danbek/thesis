@@ -132,7 +132,7 @@ It is clear from this plot that the best focus occurs at \abt{\SI{17}{m}}, and t
 The reasons for the difference from \ZEMAX\ predictions are not understood.
 Possibilities include the cryostat being located too close to the primary mirror and the primary (or secondary) mirrors having an incorrect shape.
 
-\section{Beam Maps}
+\section{Beam Maps} \label{sec:ch8-beam-maps}
 
 As discussed in \sectionref{sec:ch4-feedhorn-design}, the \Imager\ feedhorns are predicted to have beams that are circularly symmetric and well-approximated by Gaussians with \FWHM\ of x.xx~cm at the target.
 To verify these predictions beam maps were performed by rastering the beams over a small, stationary \SI{1030}{\celsius} blackbody source.
@@ -212,3 +212,36 @@ The offset is relative to detector \RCm{18}{4}.
 \end{figure*}
 
 \section{Image Processing Algorithm} \label{sec:ch8-algo}
+
+This section describes the algorithm used to turn raw detector timestreams into video images.
+The algorithm currently used is very simple, and processes one video frame at a time.
+
+The algorithm steps are as follows:
+\begin{enumerate}
+\item The  \MCE\ channles containing the actuator displacement (\RCm{32}{5} for \DISP1 and \RCm{32}{6} for \DISP2) are converted to displacements in the farfield as described in \sectionref{sec:ch8-mirror-readout}.
+\item Each detectors output is normalized by dividing it by the amplitude of the best-fit guassian from the beam mappings. This accounts for differences in responsivity as well as optical efficiency between detectors. At this point the units for all detector timestreams should be the same, but each detector timestream will have some unknown offset.xxx need to cover this earlier - maybe an optical efficiency section?
+\item Determine full range of farfield positions pointed to, accounting for all detectors. Define a \SI{1}{\cm} grid that covers this range in both $x$ and $y$ directions.
+\item Divide detector timestreams into sections for each video frame based on \MCE\ readout rate and frequency at which the secondary mirror is rotating.
+  If the mirror frequency is $f_m$ and the readout frequency is $f_{ro}$, then each video frame will cover $\lceil f_{ro} / f_{m} \rceil$.
+  \textbf{Example:} If the readout frequency is \SI{3125}{\Hz} and the mirror frequency is \SI{6}{\Hz}, then each video frame will cover $\lceil 520.83 \rceil = 521$ samples.
+\item For each video frame
+  \begin{enumerate}
+  \item Perform the following processing for each detector that is not on the cut list described in \sectionref{sec:ch8-det-cuts}:
+    \begin{enumerate}
+    \item If the detector's timestream shows evidence of glitches, do not include that detector's timestream for this video frame. The simply algorithm used to identify glitches is the following:
+      \begin{enumerate}
+      \item Calculate the differences between each consequtive value in the timestream.
+        If the timestream values are $f_j$, then the differences are $\Delta f_j = f_{j+1} - f_j$.
+      \item Calculate the standard deviation of the differences $\Delta f_j$.
+      \item If the absolute value of any $\Delta f_j$ is greater than five times the standard deviation, identify this detector as having a glitch, as so to be ignored for this video frame. xxx should say how often this happens, show example of glitch timestream ... maybe show a big plot with all timestreams for a frame, highlighting those with glitches?
+      \end{enumerate}
+    \item Subtract the median value for this video frame's detector timestream.
+          Although crude, this approach does a good job of accounting for the offsets in the detector timestreams, as well as accounting for the common-mode drift described in \sectionref{sec:common-mode}.
+    \item If the detector does not have a glitch, determine which image pixel the detector is pointing to at each point in time, using both the pointing position from the actuator readout described in \sectionref{sec:ch8-mirror-readout} and the beam pointing information from \sectionref{sec:ch8-beam-maps}.
+    \item Add the detector's value to that pixel for the frame
+    \item Keep track of the total number of pixels that have been aded to each pixel
+    \end{enumerate}
+  \item After each detector has been processed for the frame, divide the value for each pixel by the number of detector that have been used for that pixel
+  \end{enumerate}
+  \item After all video frames have been processed, convert the resulting 3-dimensional array to a video using \MATLAB's \texttt{VideoWriter} object.
+\end{enumerate}
