@@ -1,0 +1,32 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\usepackage{datatool}
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=5.0in,height=5.0in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tikzpicture}
+  \begin{axis}[ view={0}{90}, colorbar, colorbar/width=2cm, colormap/blackwhite]
+    \addplot3[surf,shader=interp,mesh/rows=47,mesh/cols=67,
+      %domain=0:1,y domain=-3:3
+    ] table{../data/ch8-still-frame30.dat};
+  \end{axis}
+\end{tikzpicture}
+
+\end{document}
