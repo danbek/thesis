@@ -211,6 +211,46 @@ The offset is relative to detector \RCm{18}{4}.
 \label{fig:ch8-beam-summary}
 \end{figure*}
 
+\section{Optical Efficiency} \label{sec:ch8-opt-eff}
+
+We can use the beam map measurements to estimate optical efficiency for all detectors.
+The total power falling on a bolometer pointed to position $(x,y)$ in the farfield is given by 
+\begin{equation}
+  P_{tot} = P_{spill} + \eta_{tot} 2 k_B \Delta \nu \int B(\prime{x} -x, \prime{y} - y) T(x,y) d\prime{x} d\prime{y}.
+\end{equation}
+Here $P_{spill}$ represents power falling into the detector's feedhorn from any source other than the mirror farfield; this includes both light from inside the cryostat and light making it's way into the feedhorns from outside the cryostat from sources other than the farfield (such as light spilling off of the primary and secondary mirrors.
+$P_{spill}$ is assumed to be independent of the position of the secondary mirror and of the temperature distribution in the farfield of the system.
+The second term includes all power coming from the farfield; $\eta_{tot}$ is the total optical efficiency from the farfield, $k_B$ is Boltzmann's constant, $\Delta \nu$ is the optical bandwidth of the system, $B$ is the far-field beam pattern (normalized so that it's integral over all space is unity), and $T$ is the farfield temperature distribution.
+The factor 2 accounts for the detectors being sensitive to both polarizations, as we assume that the feedhorn's waveguide reduces the system to single-moded detection.
+
+The blackbody source for these measurement was \SI{0.508}{\cm} in diameter and was set to $\SI{1030}{\celsius} = \SI{1303}{\kelvin}$.
+We assume that everythig else in the scene was at the same temperature, \SI{295}{\kelvin}.
+When the beam is pointed directly at the blackbody source the total power absorbed in the detector is given by
+\begin{equation}
+  P_{tot,on} = P_{spill} + \eta_{tot} 2 k_B \Delta \nu \left( \SI{1303}{\kelvin} \int_{r \leq \SI{0.508}{\cm}} B(x^{\prime}, y^{\prime}) dx^{\prime} dy^{\prime} + 
+                                                       \SI{295}{\kelvin} \int_{r > \SI{0.508}{\cm}} B(x^{\prime}, y^{\prime}) dx^{\prime} dy^{\prime}
+                                                \right).
+\end{equation}
+When the beam is pointed more than a few beam widths away from the blackbody source the total power absorbed in the detector is given by
+\begin{equation}
+  P_{tot,off} = P_{spill} + \eta_{tot} 2 k_B \Delta \nu \left( \SI{295}{\kelvin} \int_{r \leq \SI{0.508}{\cm}} B(x^{\prime}, y^{\prime}) dx^{\prime} dy^{\prime} + 
+                                                       \SI{295}{\kelvin} \int_{r > \SI{0.508}{\cm}} B(x^{\prime}, y^{\prime}) dx^{\prime} dy^{\prime}
+                                                \right).
+\end{equation}
+The difference between these two quantities gives the change in absorbed power moving from on to off the blackbody:
+\begin{equation}
+  \Delta P_{tot} = \eta_{tot} 2 k_B \Delta \nu \SI{1008}{\kelvin} \int_{r \leq \SI{0.508}{\cm}} B(x^{\prime}, y^{\prime}) dx^{\prime} dy^{\prime}.
+\end{equation}
+
+A change in power absorbed in a detector is related to a change in current passing through a detector by the responsivity $s_I{0}$ ($\Delta I = \Delta P s_I(0)$), so that the optical efficiency for a detector is given by
+\begin{equation}\label{eqn:opt-eff-from-beams}
+  \eta_{tot} = \Delta I \left( s_I(0) 2 k_B \Delta \nu \SI{1008}{\K} \int_{r \leq \SI{0.508}{\cm}} B(x,y) dx dy \right)^{-1}
+\end{equation}
+In \sectionref{sec:bias-step} $s_I(0)$ was estimated for all detectors.
+In this section we have found parameters for estimating the shapes $B$ of the beams for each detector.
+The estimated amplitude of the beam maps gives us $\Delta I$.
+Given these parameters the integral in \eqnref{eqn:opt-eff-from-beams} can be numerically evaluated, and $\eta_{tot}$ for each detector can be estimated.
+
 \section{Image Processing Algorithm} \label{sec:ch8-algo}
 
 This section describes the algorithm used to turn raw detector timestreams into video images.
