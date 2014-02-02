@@ -132,7 +132,7 @@ It is clear from this plot that the best focus occurs at \abt{\SI{17}{m}}, and t
 The reasons for the difference from \ZEMAX\ predictions are not understood.
 Possibilities include the cryostat being located too close to the primary mirror and the primary (or secondary) mirrors having an incorrect shape.
 
-\section{Beam Maps}
+\section{Beam Maps} \label{sec:ch8-beam-maps}
 
 As discussed in \sectionref{sec:ch4-feedhorn-design}, the \Imager\ feedhorns are predicted to have beams that are circularly symmetric and well-approximated by Gaussians with \FWHM\ of x.xx~cm at the target.
 To verify these predictions beam maps were performed by rastering the beams over a small, stationary \SI{1030}{\celsius} blackbody source.
@@ -180,6 +180,11 @@ This is very close to the mean of the measured \FWHM\ of the beams.
 However, the feedhorn beam should be circular, not strongly elliptical as is observed.
 The source of this ellipticity is not known, but three possible explanations are (1) misalignment of the feedhorns with the primary and secondary mirrors (2) diffraction off the aperture stop located in the \SI{50}{\K} radiation sheild (3) errors in fabrication of the mirrors or feedhorns.
 
+The best-fit grid spacing between detector beams in the far field is \SI{1.72}{\cm}.
+Using the plate scale extracted from \ZEMAX\ in \sectionref{sec:ch4-optical-design}, this is equivalent to a \SI{2.81}{\mm} detector spacing on the focal plane array.
+The design detector spacing, after accounting for predicted thermal contraction of the feedhorn arrays, was \SI{2.730}{\mm}.
+Given manufacturing and alignment uncertainties, the closeness of these two numbers is encouraging, and indicates that we have a good understanding of how to map actuator displacements into distances in the farfield of the optical system.
+
 Although the ellipticity of the beams is disappointing, the resolution is very close to target, and the ellipticity is not a barrier to using the system to take video images. The next section describes the algorithm use to turn detector timestreams into videos.
 
 \begin{figure*}[th]
@@ -206,4 +211,77 @@ The offset is relative to detector \RCm{18}{4}.
 \label{fig:ch8-beam-summary}
 \end{figure*}
 
+\section{Optical Efficiency} \label{sec:ch8-opt-eff}
+
+We can use the beam map measurements to estimate optical efficiency for all detectors.
+The total power falling on a bolometer pointed to position $(x,y)$ in the farfield is given by 
+\begin{equation}
+  P_{tot} = P_{spill} + \eta_{tot} 2 k_B \Delta \nu \int B(\prime{x} -x, \prime{y} - y) T(x,y) d\prime{x} d\prime{y}.
+\end{equation}
+Here $P_{spill}$ represents power falling into the detector's feedhorn from any source other than the mirror farfield; this includes both light from inside the cryostat and light making it's way into the feedhorns from outside the cryostat from sources other than the farfield (such as light spilling off of the primary and secondary mirrors.
+$P_{spill}$ is assumed to be independent of the position of the secondary mirror and of the temperature distribution in the farfield of the system.
+The second term includes all power coming from the farfield; $\eta_{tot}$ is the total optical efficiency from the farfield, $k_B$ is Boltzmann's constant, $\Delta \nu$ is the optical bandwidth of the system, $B$ is the far-field beam pattern (normalized so that it's integral over all space is unity), and $T$ is the farfield temperature distribution.
+The factor 2 accounts for the detectors being sensitive to both polarizations, as we assume that the feedhorn's waveguide reduces the system to single-moded detection.
+
+The blackbody source for these measurement was \SI{0.508}{\cm} in diameter and was set to $\SI{1030}{\celsius} = \SI{1303}{\kelvin}$.
+We assume that everythig else in the scene was at the same temperature, \SI{295}{\kelvin}.
+When the beam is pointed directly at the blackbody source the total power absorbed in the detector is given by
+\begin{equation}
+  P_{tot,on} = P_{spill} + \eta_{tot} 2 k_B \Delta \nu \left( \SI{1303}{\kelvin} \int_{r \leq \SI{0.508}{\cm}} B(x^{\prime}, y^{\prime}) dx^{\prime} dy^{\prime} + 
+                                                       \SI{295}{\kelvin} \int_{r > \SI{0.508}{\cm}} B(x^{\prime}, y^{\prime}) dx^{\prime} dy^{\prime}
+                                                \right).
+\end{equation}
+When the beam is pointed more than a few beam widths away from the blackbody source the total power absorbed in the detector is given by
+\begin{equation}
+  P_{tot,off} = P_{spill} + \eta_{tot} 2 k_B \Delta \nu \left( \SI{295}{\kelvin} \int_{r \leq \SI{0.508}{\cm}} B(x^{\prime}, y^{\prime}) dx^{\prime} dy^{\prime} + 
+                                                       \SI{295}{\kelvin} \int_{r > \SI{0.508}{\cm}} B(x^{\prime}, y^{\prime}) dx^{\prime} dy^{\prime}
+                                                \right).
+\end{equation}
+The difference between these two quantities gives the change in absorbed power moving from on to off the blackbody:
+\begin{equation}
+  \Delta P_{tot} = \eta_{tot} 2 k_B \Delta \nu \SI{1008}{\kelvin} \int_{r \leq \SI{0.508}{\cm}} B(x^{\prime}, y^{\prime}) dx^{\prime} dy^{\prime}.
+\end{equation}
+
+A change in power absorbed in a detector is related to a change in current passing through a detector by the responsivity $s_I{0}$ ($\Delta I = \Delta P s_I(0)$), so that the optical efficiency for a detector is given by
+\begin{equation}\label{eqn:opt-eff-from-beams}
+  \eta_{tot} = \Delta I \left( s_I(0) 2 k_B \Delta \nu \SI{1008}{\K} \int_{r \leq \SI{0.508}{\cm}} B(x,y) dx dy \right)^{-1}
+\end{equation}
+In \sectionref{sec:bias-step} $s_I(0)$ was estimated for all detectors.
+In this section we have found parameters for estimating the shapes $B$ of the beams for each detector.
+The estimated amplitude of the beam maps gives us $\Delta I$.
+Given these parameters the integral in \eqnref{eqn:opt-eff-from-beams} can be numerically evaluated, and $\eta_{tot}$ for each detector can be estimated.
+
 \section{Image Processing Algorithm} \label{sec:ch8-algo}
+
+This section describes the algorithm used to turn raw detector timestreams into video images.
+The algorithm currently used is very simple, and processes one video frame at a time.
+
+The algorithm steps are as follows:
+\begin{enumerate}
+\item The  \MCE\ channles containing the actuator displacement (\RCm{32}{5} for \DISP1 and \RCm{32}{6} for \DISP2) are converted to displacements in the farfield as described in \sectionref{sec:ch8-mirror-readout}.
+\item Each detectors output is normalized by dividing it by the amplitude of the best-fit guassian from the beam mappings. This accounts for differences in responsivity as well as optical efficiency between detectors. At this point the units for all detector timestreams should be the same, but each detector timestream will have some unknown offset.xxx need to cover this earlier - maybe an optical efficiency section?
+\item Determine full range of farfield positions pointed to, accounting for all detectors. Define a \SI{1}{\cm} grid that covers this range in both $x$ and $y$ directions.
+\item Divide detector timestreams into sections for each video frame based on \MCE\ readout rate and frequency at which the secondary mirror is rotating.
+  If the mirror frequency is $f_m$ and the readout frequency is $f_{ro}$, then each video frame will cover $\lceil f_{ro} / f_{m} \rceil$.
+  \textbf{Example:} If the readout frequency is \SI{3125}{\Hz} and the mirror frequency is \SI{6}{\Hz}, then each video frame will cover $\lceil 520.83 \rceil = 521$ samples.
+\item For each video frame
+  \begin{enumerate}
+  \item Perform the following processing for each detector that is not on the cut list described in \sectionref{sec:ch8-det-cuts}:
+    \begin{enumerate}
+    \item If the detector's timestream shows evidence of glitches, do not include that detector's timestream for this video frame. The simply algorithm used to identify glitches is the following:
+      \begin{enumerate}
+      \item Calculate the differences between each consequtive value in the timestream.
+        If the timestream values are $f_j$, then the differences are $\Delta f_j = f_{j+1} - f_j$.
+      \item Calculate the standard deviation of the differences $\Delta f_j$.
+      \item If the absolute value of any $\Delta f_j$ is greater than five times the standard deviation, identify this detector as having a glitch, as so to be ignored for this video frame. xxx should say how often this happens, show example of glitch timestream ... maybe show a big plot with all timestreams for a frame, highlighting those with glitches?
+      \end{enumerate}
+    \item Subtract the median value for this video frame's detector timestream.
+          Although crude, this approach does a good job of accounting for the offsets in the detector timestreams, as well as accounting for the common-mode drift described in \sectionref{sec:common-mode}.
+    \item If the detector does not have a glitch, determine which image pixel the detector is pointing to at each point in time, using both the pointing position from the actuator readout described in \sectionref{sec:ch8-mirror-readout} and the beam pointing information from \sectionref{sec:ch8-beam-maps}.
+    \item Add the detector's value to that pixel for the frame
+    \item Keep track of the total number of pixels that have been aded to each pixel
+    \end{enumerate}
+  \item After each detector has been processed for the frame, divide the value for each pixel by the number of detector that have been used for that pixel
+  \end{enumerate}
+  \item After all video frames have been processed, convert the resulting 3-dimensional array to a video using \MATLAB's \texttt{VideoWriter} object.
+\end{enumerate}
