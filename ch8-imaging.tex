@@ -283,5 +283,30 @@ The algorithm steps are as follows:
     \end{enumerate}
   \item After each detector has been processed for the frame, divide the value for each pixel by the number of detector that have been used for that pixel
   \end{enumerate}
+  \item To improve constrast, all temperature offset values below xxx K are mapped to xxx K, and all temperature values above xxx K were mapped to xxx K.
+        Any pixels in the image with no data were assigned a temperature of xxx K.
   \item After all video frames have been processed, convert the resulting 3-dimensional array to a video using \MATLAB's \texttt{VideoWriter} object.
 \end{enumerate}
+
+\figref{fig:ch8-single-frames} shows four still images from a vide that was processed according to these rules.
+They show the author with a ceramic knife hidden beneath a button-down cotton shirt.
+The ceramic knife is visible as a dark area on the left of the shirt.
+A darker line running down the center of the shirt is due to the extra layer of cotton backing the buttons; this additional cloth produces more attenuation of the warm light from the body, and so appears cooler.
+
+xxx need to give a URL to where this particular video can be viewed.
+
+xxx need to comment on temperature scale in this image!
+
+\begin{figure*}[th]
+\centering
+\includegraphics[width=\textwidth]{drawings/ch8-single-frames.pdf}
+\caption{
+Sample still images from a video taken with the \Imager.
+Time proceeds left-to-right and top-to-bottom.
+The stills are 20 frames (\SI{3.33}{\s}) apart.
+The person in the images is the author.
+A ceramic knife hidden beneath a button-down cotton shirt is visible on the left of each image.
+The darker line running down the center of the shirt is due to the extra layer of cotton backing the buttons; this additional cloth produces more attenuation of the warm light from the body.
+xxx say something about temperature scale once I get it right.}
+\label{fig:ch8-single-frames}
+\end{figure*}
