@@ -4,13 +4,18 @@
 
 \usepackage{tikz} 
 \usepackage{pgfplots} % drawing plots right here in this file!
-\usepackage{datatool}
 \pgfplotsset{compat=1.9} % latest stable release
 
 \pgfplotsset{
   every axis/.append style={
     scale only axis,
-    width=5.0in,height=5.0in,
+    %width=2.4in,height=2.4*(22.13+23.87)/(33.72+32.28)in,
+    width=2.4in,height=1.6727in,
+    % axis equal, % moved this to each axis to avoid colorbar trouble
+    xmin=-33.72,xmax=32.28,
+    ymin=-23.87,ymax=22.13,
+    xtick={-30,-20,-10,0,10,20,30},
+    ytick={-20,-10,0,10,20},
   },
   /tikz/every picture/.append style={
     baseline
@@ -21,12 +26,76 @@
 
 \pagestyle{empty}
 
-\begin{tikzpicture}
-  \begin{axis}[ view={0}{90}, colorbar, colorbar/width=2cm, colormap/blackwhite]
-    \addplot3[surf,shader=interp,mesh/rows=47,mesh/cols=67,
-      %domain=0:1,y domain=-3:3
-    ] table{../data/ch8-still-frame30.dat};
-  \end{axis}
+\begin{tabular}{rr}
+
+\begin{tikzpicture}[trim axis left]
+\begin{axis}[view={0}{90},
+    axis equal,
+    mesh/ordering=y varies,
+    colormap/blackwhite,
+    colorbar,
+    %% colorbar style={
+    %%   axis equal=false,
+    %% },
+    colorbar horizontal,
+    colorbar to name={thecolorbar},
+    xticklabels={,,},
+    xlabel={},
+    ylabel={Vertical Offset (\si{\cm})},
+    ]
+  \addplot3[surf, shader=flat, mesh/rows=47, mesh/cols=67] table{../data/ch8-still-frame30.dat};
+\end{axis}
 \end{tikzpicture}
+
+&
+
+\begin{tikzpicture}[trim axis right]
+\begin{axis}[view={0}{90},
+    axis equal,
+    mesh/ordering=y varies,
+    colormap/blackwhite,
+    xticklabels={,,},
+    yticklabels={,,},
+    xlabel={},
+    ylabel={},
+    ]
+  \addplot3[surf, shader=flat, mesh/rows=47, mesh/cols=67] table{../data/ch8-still-frame30.dat};
+\end{axis}
+\end{tikzpicture}
+
+\\
+
+\begin{tikzpicture}[trim axis left]
+\begin{axis}[view={0}{90},
+    axis equal,
+    mesh/ordering=y varies,
+    colormap/blackwhite,
+    xlabel={Horizontal Offset (\si{\cm})},
+    ylabel={Vertical Offset (\si{\cm})},
+    ]
+  \addplot3[surf, shader=flat, mesh/rows=47, mesh/cols=67] table{../data/ch8-still-frame30.dat};
+\end{axis}
+\end{tikzpicture}
+
+&
+
+\begin{tikzpicture}[trim axis right]
+\begin{axis}[view={0}{90},
+    axis equal,
+    mesh/ordering=y varies,
+    colormap/blackwhite,
+    yticklabels={,,},
+    xlabel={Horizontal Offset (\si{\cm})},
+    ylabel={},
+    ]
+  \addplot3[surf, shader=flat, mesh/rows=47, mesh/cols=67] table{../data/ch8-still-frame30.dat};
+\end{axis}
+\end{tikzpicture}
+
+\end{tabular}
+
+\centering
+
+\pgfplotscolorbarfromname{thecolorbar}
 
 \end{document}
