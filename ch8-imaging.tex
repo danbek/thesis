@@ -228,6 +228,17 @@ All distance scales in the remainder of this chapter have been adjusted to accou
 % xxx might be nice to have plots for this section, but need to move
 % on for now.
 
+% Code: imaging/ana_reso_from_stills.m
+
+\section{Direct Measurement of Resolution}
+
+Using the same cooler filled with LN2 described in \sectionreg{sec:ch8-dist-scale}, a dime (diamter \SI{17.91}{\mm}) was taped to the outside of the cooler and a still image was taken.
+\figref{fig:xxx} shows the resulting still image, as well as a close-up of the are with the dime.
+A 2-D Gaussian was fit to resulting map.
+The best-fit Gaussian has ellipticity 1.2 --- smaller than the individual beams, as expected due to convolution with the dime, which is not a point source.
+The \FWHM\ of the dime map is \SI{2.0}{\cm}; this is exactly what is expected by convolving a Gaussian with \FWHM\ \SI{1.2}{\cm} with the \SI{1.791}{\cm} dime.
+This serves as a confirmation of the beam size determined in \sectionref{sec:ch8-beam-maps}.
+
 \section{Optical Efficiency} \label{sec:ch8-opt-eff}
 
 We can use the beam map measurements to estimate optical efficiency for all detectors.
@@ -327,6 +338,4 @@ The darker line running down the center of the shirt is due to the extra layer o
 xxx say something about temperature scale once I get it right.}
 \label{fig:ch8-single-frames}
 \end{figure*}
-
-\section{Direct Measurement of Distance Scale}
 
