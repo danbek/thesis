@@ -1,0 +1,61 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{lr}
+
+\begin{tikzpicture}[trim axis right]
+\begin{axis}[
+    enlargelimits=false,
+    axis equal image,
+    axis on top,
+    height=2.7in,
+    xlabel={Horizontal Offset (\si{\cm})},
+    ylabel={Vertical Offset (\si{\cm})},
+    ]
+  \addplot graphics [xmin=-43.5829,xmax=41.8171,ymin=-28.1092,ymax=26.2908] {../data/ch8-dime-map-full.png};
+\end{axis}
+\end{tikzpicture}
+
+&
+
+\begin{tikzpicture}[trim axis right]
+\begin{axis}[
+    enlargelimits=false,
+    axis equal image,
+    axis on top,
+    width=2.7in,height=2.7in,
+    xlabel={Horizontal Offset (\si{\cm})},
+    ylabel={Vertical Offset (\si{\cm})},
+    ]
+  \addplot graphics [xmin=-3,xmax=3,ymin=-3,ymax=3] {../data/ch8-dime-map-detail.png};
+  \draw[black,thick] (axis cs:2.794205e-02,-7.848536e-02) ellipse [rotate=1.733819e+02, x radius=9.254358e-01, y radius=1.147012e+00] ;
+\end{axis}
+\end{tikzpicture}
+
+%% \begin{tikzpicture}
+%% \begin{axis}[enlargelimits=false, axis on top, axis equal image, width=2.7in]
+%% \addplot graphics [xmin=0,xmax=3,ymin=0,ymax=3] {../data/ch8-dime-map-detail.png};
+%% \end{axis}
+%% \end{tikzpicture}
+
+\end{tabular}
+
+\end{document}
