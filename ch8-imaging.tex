@@ -207,7 +207,6 @@ The offset is relative to detector \RCm{18}{4}.
   \textbf{Left Column} Histograms of beam \FWHM\ (defined in text), beam ellipticity (defined as $\sigma_1 / \sigma_2$) and beam angle to $x$-axis.
   \textbf{Right Column} Scatter plots showing correlation of the three parameters with each other. Beam \FWHM\ increases with ellipticity; this is to be expected give it's definition.
 }
-
 \label{fig:ch8-beam-summary}
 \end{figure*}
 
@@ -232,12 +231,24 @@ All distance scales in the remainder of this chapter have been adjusted to accou
 
 \section{Direct Measurement of Resolution}
 
-Using the same cooler filled with LN2 described in \sectionreg{sec:ch8-dist-scale}, a dime (diamter \SI{17.91}{\mm}) was taped to the outside of the cooler and a still image was taken.
+Using the same cooler filled with LN2 described in \sectionref{sec:ch8-dist-scale}, a dime (diamter \SI{17.91}{\mm}) was taped to the outside of the cooler and a still image was taken.
 \figref{fig:xxx} shows the resulting still image, as well as a close-up of the are with the dime.
 A 2-D Gaussian was fit to resulting map.
 The best-fit Gaussian has ellipticity 1.2 --- smaller than the individual beams, as expected due to convolution with the dime, which is not a point source.
 The \FWHM\ of the dime map is \SI{2.0}{\cm}; this is exactly what is expected by convolving a Gaussian with \FWHM\ \SI{1.2}{\cm} with the \SI{1.791}{\cm} dime.
 This serves as a confirmation of the beam size determined in \sectionref{sec:ch8-beam-maps}.
+
+\begin{figure*}[th]
+\centering
+\includegraphics{drawings/ch8-dime-map.pdf}
+\caption{
+  Plots showing still image of cooler filled with LN2, with a dime (diameter \SI{1.791}{\cm}) taped to it's outside.
+  \textbf{Left} The full map of the cooler. Red is warm, blue cold. The white rectangle shows the area of the detail on the right.
+  \textbf{Right} Detail of area within white rectangle: the dime.
+  The black ellipse shows the \FWHM of the best-fit ellipse to the map. The ellipticity is \num{1.17}, the FHWM of the principal axes are \SI{1.9}{\cm} and \SI{2.2}{\cm}, for an overall \FWHM\ of $\sqrt{1.9 \times 2.2} = \SI{2.0}{\cm}$.
+}
+\label{fig:ch8-dime-map}
+\end{figure*}
 
 \section{Optical Efficiency} \label{sec:ch8-opt-eff}
 

@@ -9,6 +9,11 @@
 \pgfplotsset{
   every axis/.append style={
     scale only axis,
+    enlargelimits=false,
+    axis equal image,
+    axis on top,
+    width={},
+    height=1.95in,
   },
   /tikz/every picture/.append style={
     baseline
@@ -23,14 +28,12 @@
 
 \begin{tikzpicture}[trim axis right]
 \begin{axis}[
-    enlargelimits=false,
-    axis equal image,
-    axis on top,
-    height=2.7in,
+    width=3.0571in,
     xlabel={Horizontal Offset (\si{\cm})},
     ylabel={Vertical Offset (\si{\cm})},
     ]
-  \addplot graphics [xmin=-43.5829,xmax=41.8171,ymin=-28.1092,ymax=26.2908] {../data/ch8-dime-map-full.png};
+  \addplot graphics [xmin=-4.370000e+01,xmax=4.190000e+01,ymin=-2.830000e+01,ymax=2.650000e+01] {../data/ch8-dime-map-full.png};
+  \draw[white,thick] (axis cs:-4.400000e+00,-3.000000e+00) rectangle (axis cs:1.400000e+00,3.200000e+00) ;
 \end{axis}
 \end{tikzpicture}
 
@@ -38,15 +41,13 @@
 
 \begin{tikzpicture}[trim axis right]
 \begin{axis}[
-    enlargelimits=false,
-    axis equal image,
-    axis on top,
-    width=2.7in,height=2.7in,
+    xtick={-4,-3,...,2},
+    ytick={-3,-2,...,3},
     xlabel={Horizontal Offset (\si{\cm})},
     ylabel={Vertical Offset (\si{\cm})},
     ]
-  \addplot graphics [xmin=-3,xmax=3,ymin=-3,ymax=3] {../data/ch8-dime-map-detail.png};
-  \draw[black,thick] (axis cs:2.794205e-02,-7.848536e-02) ellipse [rotate=1.733819e+02, x radius=9.254358e-01, y radius=1.147012e+00] ;
+  \addplot graphics [xmin=-4.500000e+00,xmax=1.500000e+00,ymin=-3.100000e+00,ymax=3.300000e+00] {../data/ch8-dime-map-detail.png};
+  \draw[black,thick] (axis cs:-1.449609e+00,1.828022e-01) ellipse [rotate=-2.009957e+00, x radius=9.405012e-01, y radius=1.095797e+00] ;
 \end{axis}
 \end{tikzpicture}
 
