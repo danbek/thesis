@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    axis equal,
+    width=2.5in,height=2.5in, 
+    xmin=-4e-3,xmax=4e-3,
+    ymin=-4e-3,ymax=4e-3,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{lr}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[
+		title={Crosstalk Correlation},
+		xlabel={$A_1$, first half}, ylabel={$A_1$, second half} ]
+	  \addplot+[only marks]
+	    table[x=A1a,y=A1b]{../data/ch8-bose-cross.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+   &
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[
+		title={Crosstalk Correlation},
+		xlabel={$A_2$, first half}, ylabel={$A_2$, second half} ]
+	  \addplot+[only marks]
+	    table[x=A2a,y=A2b]{../data/ch8-bose-cross.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+\end{tabular}
+
+\end{document}

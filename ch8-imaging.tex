@@ -106,18 +106,30 @@ If we consider an $x$-$y$ coordinate system in the farfield, this means that the
 % pivot 14mm in front on \BOSE\ attachment point
 
 A natural question is whether cross-talk appears between the actuator readout and the other detectors.
-To test this both actuator were moved in a 0.1~Hz sine-wave pattern over their maximum displacement range of +/- 3.5~mm, while the detectors were in the superconducting state.
+To test this both actuators were moved in a \SI{6}{\Hz} sine-wave pattern over their maximum displacement range of +/- 3.5~mm, while the detectors were bias at \SOC.
 Both actuators were moved at the same time, roughly \SI{135}{\degree} out of phase.
 The level of crosstalk present can be quantified by performing a least-squares fit of each detector timestream $\vect{d}_{rc}$ to the model
 \begin{equation}
 	 \vect{d}_{rc} = A_1 \vect{d}_{\DISP1} + A_2 \vect{d}_{\DISP2}.
 \end{equation}
 Here $\vect{d}_{\DISP1}$ and $\vect{d}_{\DISP2}$ are the measured outputs for each actuator.
-The maximum values of $|A_1|$  and $|A_2|$ are 0.0011 and 0.0014, respectively.
-\figref{xxx} contains a plot summarizing these results.
 
-An additional question is whether the actuator readout leads to higher noise.
-xxx show results of this measurement.
+To check whether crosstalk from the actuators is a problem for our system, I calculated the crosstalk amplitudes $A_1$ and $A_2$ for each detector twice: once of the first half of the data acquision and once for the second half.
+If crosstalk is present to a statistically significant level, a scatterplot of the crosstalk amplitudes for the two halfs of the data acquisition should show signs of correlation.
+As can be seen in \figref{fig:ch9-bose-cross}, the points are clustered about the origin, indicating no consistent crosstalk amplitude, and no correlation is apparent.
+
+\begin{figure*}[th]
+\centering
+\includegraphics[width=\textwidth]{drawings/ch8-bose-cross.pdf}
+\caption{
+Plot showing crosstalk amplitudes.
+The left plot is for \DISP1, the right for \DISP2.
+Each actuator was moved +/- \SI{3.5}{\mm} at 6 Hz while the detectors were biased at \SOC.
+The best-fit crosstalk amplitude for each actuator and detector were calculated for both the first half and the second half of the data acquisition, and these amplitudes are plotted against each other in these plots.
+The lack of correlation in the scatter plots, as well as the clustering around the origin, indicates that any crosstalk present cannot be distinguished from noise in the detectors.
+}
+\label{fig:ch8-bose-cross}
+\end{figure*}
 
 % xxx - I get 500 uW for the load from these four wires (300 K - 1K). Can this be correct? I'm sure I did this calculation in the past and got a much smaller number. Did I screw up in the past? Is today's calculation in error? Am I intercepting this load at 50~K or 4~K, and I forgot about that? Did I use a much longer wire than 1~m? This could be a big cryogenic problem!
 
