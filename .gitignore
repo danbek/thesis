@@ -7,7 +7,7 @@
 *.run.xml
 *-blx.bib
 ~$*
-thesis.pdf
+*thesis*.pdf
 thesis.lof
 thesis.lot
 thesis.toc
