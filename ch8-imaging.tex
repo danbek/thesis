@@ -190,7 +190,7 @@ where the prefactor $2 \sqrt{2 \ln{2}}$ converts from the Gaussian parameters $\
 In \sectionref{sec:ch4-feedhorn-design}, it was shown that the expected \FWHM\ beam width from this measurement is \SI{1.18}{\cm}.
 This is very close to the mean of the measured \FWHM\ of the beams.
 However, the feedhorn beam should be circular, not strongly elliptical as is observed.
-The source of this ellipticity is not known, but three possible explanations are (1) misalignment of the feedhorns with the primary and secondary mirrors (2) diffraction off the aperture stop located in the \SI{50}{\K} radiation sheild (3) errors in fabrication of the mirrors or feedhorns.
+The source of this ellipticity is not known, but three possible explanations are (1) misalignment of the feedhorns with the primary and secondary mirrors (2) diffraction off the aperture stop located in the \SI{50}{\kelvin} radiation sheild (3) errors in fabrication of the mirrors or feedhorns.
 
 The best-fit grid spacing between detector beams in the far field is \SI{1.72}{\cm}.
 Using the plate scale extracted from \ZEMAX\ in \sectionref{sec:ch4-optical-design}, this is equivalent to a \SI{2.81}{\mm} detector spacing on the focal plane array.
@@ -265,7 +265,80 @@ This serves as a confirmation of the beam size determined in \sectionref{sec:ch8
 
 \section{Optical Efficiency} \label{sec:ch8-opt-eff}
 
+To measure the total optical efficiency of the system, \IV\ curves can be taken while a detector's beam is pointing at two known temperature distributions.
+As discussed in \sectionref{xxx}, the different in Joule power at $0.99 R_n$ gives the difference in power absorbed in the bolometer.
+If the two temperatures are $T_1$ and $T_2$, then the total optical efficiency $\eta_{tot}$ is given by
+\begin{equation}
+  \eta_{tot} = \frac{P_{iv,1} - P_{iv,2}}{P_{opt}(T_2) - P_{opt}(T_2)},
+\end{equation}
+where $P_{IV}$ is the Joule power in the detector at $0.99 R_n$ and $P_{opt}(T)$ is the optical power in both polarizations emitted by the source in a single spatial mode, given by \eqnref{xxx}.
 
+For a good measurement the two temperatures $T_1$ and $T_2$ should be as far apart as possible, and the detector's farfield beam should be filled by the tmperature distribution in each case.
+I used the same ``eccosorb submerged in LN2'' setup as described in \sectionref{xxx} for the cold temperature.
+For the warm tempearute I used a sheet of AN72 Eccosorb backed by a thin sheet of Aluminum.
+``Room Temperature'' here is assumed to be \SI{295}{\kelvin} (\SI{71.3}{\fahrenheit}).
+Although the temperature of LN2 is welll known to be \SI{77}{\kelvin}, this does not mean that the temperature seen by the beams when pointed at the cooler is exactly \SI{77}{\kelvin}.
+The beams are looking through the \SI{1.625}{\in} thick styrofoam walls of the cooler, which may have some emission themselves.
+Although the eccosorb sunk in LN2 transmits no power at \SI{350}{\GHz}, it may reflect some amount of light from the surrounding room.
+It is possible that a small amount of water vapor could condense on the outside of the cooler, leading to further emission.
+For the purposes of this measurement I assumed that the eccosorb was totally black and sitting at \SI{77}{\kelvin}.
+I also assume that no water vapor was condensed on the cooler, which is consistent with a visual examination.
+I assume a non-unity transmittivity $\tau$ for the styrofoam.
+
+For each of eight detectors, four IV curves were taken under three conditions: pointing at the room-temperature eccosorb, pointing at the cold eccosorb in the cooler, and looking at the eccorb with the cooler's lid placed directly in front of the cooler.
+The lid is \SI{2}{\in} thick and the cooler's side is \SI{1.625}{\in} thick.
+I assume that the tranmitivity takes the form $e^{-t \kappa}$, where $t$ is the thickness of the material and $\kappa$ is some constant which characterizes the attenuation length of \SI{350}{\GHz} light in styrofoam.
+Given this assumption, if the transmissivity through the cooler's wall is $\tau$, then the transmittivity through the lid is given by $tau^{2/1.625} = \tau^{1.23}$.
+
+The optical powers viewed under these three conditions is then given by
+\begin{equation}
+  P_{opt,ecco} = P_{opt}(T_h)
+\end{equation}
+\begin{equation}
+  P_{opt,LN2} = \tau P_{opt}(T_c) + (1-\tau)P_{opt}(T_h) = P_{opt}(T_h) - \tau (P_{opt}(T_h) - P_{opt}(T_c)),
+\end{equation}
+\begin{equation}
+  P_{opt,LN2,lid} = \tau^{1.23} P_{opt,LN2} + (1-\tau^{1.23})P_{opt}(T_h) = P_{opt}(T_h) - \tau^{2.23}(P_{opt}(T_h) - P_{opt}(T_c)) .
+\end{equation}
+The differences in optical power absorbed in the bolometer will then be
+\begin{equation}
+  \Delta P_{b,ecco,LN2} = \eta \tau (P_{opt}(T_h) - P_{opt}(T_c)),
+\end{equation}
+and
+\begin{equation}
+  \Delta P_{b,lid,no lid} = \eta \tau (1-\tau^{1.23}) (P_{opt}(T_h) - P_{opt}(T_c)).
+\end{equation}
+These last two equations can be solved for $\eta$ and $\tau$. The results are
+\begin{equation}
+   \tau = \sqrt[1.23]{1 - \frac{\Delta P_{b,lid,no lid}}{\Delta P_{b,ecco,LN2}}},
+\end{equation}
+\begin{equation}
+   \eta = \frac{\Delta P_{b,ecco,LN2}}{ \tau ( P_{opt}(T_h) - P_{opt}(T_c) )} .
+\end{equation}
+
+The above sets of three \IV\ curves were repeated three times over the course of several hours.
+\tableref{tab:opt-eff} gives the results of these measurements averaged over all detectors and all repetitions.
+The transmitivitty $\tau$ of the cooler wall was found to be \abt{\SI{90}{\percent}} and the optical efficiency $\eta_{tot}$ was \SI{13.6}{\percent}. 
+
+\begin{table*}[t]
+\centering
+\caption{
+Results of optical efficiency measurments.
+The values are medians and the uncertainties give the \SIrange{25}{75}{\percent} range of measured values.
+}
+\label{tab:opt-eff}
+\begin{tabular}{l l}
+\toprule
+Quantity &  Value \\
+\midrule
+$\eta$ & $13.6 \pm  0.9$ \% \\ 
+$\tau$ & $90.6 \pm  4.8$ \% \\ 
+$P_{b,ecco,LN2}$   & $25.6 \pm  0.5$ pW \\ 
+$P_{b,lid,no lid}$ & $ 2.0 \pm  1.0$ pW \\
+\bottomrule
+\end{tabular}
+\end{table*}
+ 
 \section{Image Processing Algorithm} \label{sec:ch8-algo}
 
 This section describes the algorithm used to turn raw detector timestreams into video images.
