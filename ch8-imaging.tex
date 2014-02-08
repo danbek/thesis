@@ -87,20 +87,22 @@ Second, tilting the mirror displaces the beams in the same direction as the mirr
 Third, the actuators are oriented so that their rotation axes are rotated from horizontal/vertical by \ang{45}.
 This all means that --- as viewed from the cryostat --- positive displacements of the \DISP1 actuator shift beams up and to the right, while positive displacements of the \DISP2 actuator shift beams up and to the left.
 If we consider an $x$-$y$ coordinate system in the farfield, this means that the $x$ and $y$ displacement of the beams due to mirror movements are calculated as
-
 \begin{equation}
-\Delta x = \frac{\sqrt{2}}{2} \left( I_{\DISP1} \times \frac{\SI{2.929}{\mm}}{\SI{1}{\uA}} -
+\Delta x = F_d \frac{\sqrt{2}}{2} \left( I_{\DISP1} \times \frac{\SI{2.929}{\mm}}{\SI{1}{\uA}} -
                               I_{\DISP2} \times \frac{\SI{3.024}{\mm}}{\SI{1}{\uA}}  \right) \times
     \frac{\ang{0.276}} {\SI{1}{\mm}} \times
     \frac{\SI{18.35}{\cm}} {\ang{1}}
 \end{equation}
 \begin{equation}
-\Delta y = \frac{\sqrt{2}}{2} \left( I_{\DISP1} \times \frac{\SI{2.929}{\mm}}{\SI{1}{\uA}} +
+\Delta y = F_d \frac{\sqrt{2}}{2} \left( I_{\DISP1} \times \frac{\SI{2.929}{\mm}}{\SI{1}{\uA}} +
                               I_{\DISP2} \times \frac{\SI{3.024}{\mm}}{\SI{1}{\uA}}  \right) \times
     \frac{\ang{0.276}} {\SI{1}{\mm}} \times
     \frac{\SI{18.35}{\cm}} {\ang{1}}
 \end{equation}
 
+Here I have also introduced a ``fudge factor'' $F_d$, which allows us to account for any error in manufacturing of the optics, errors in the \ZEMAX\ model, or errors in the \BOSE\ actuator control system; e.g., when we tell the \BOSE\ system to move an actuator by \SI{3}{\mm}, does it really move exactly \SI{3}{\mm}?
+If none of these --- or other --- errors are present in the system, then $F_d$ will be equal to 1.0.
+The direct measurements of distances in the farfield described in \sectionref{xxx} show that $F_d = 1.16$, and this value is used in all analysis for the remainder of this chapter.
 
 % pivot 14.19 mm behind mirror vertex
 % pivot 14mm in front on \BOSE\ attachment point
@@ -145,6 +147,8 @@ The reasons for the difference from \ZEMAX\ predictions are not understood.
 Possibilities include the cryostat being located too close to the primary mirror and the primary (or secondary) mirrors having an incorrect shape.
 
 \section{Beam Maps} \label{sec:ch8-beam-maps}
+
+xxx need to update this for $F_d = 1.16$.
 
 As discussed in \sectionref{sec:ch4-feedhorn-design}, the \Imager\ feedhorns are predicted to have beams that are circularly symmetric and well-approximated by Gaussians with \FWHM\ of x.xx~cm at the target.
 To verify these predictions beam maps were performed by rastering the beams over a small, stationary \SI{1030}{\celsius} blackbody source.
@@ -224,15 +228,15 @@ The offset is relative to detector \RCm{18}{4}.
 
 \section{Direct Measurement of Distance Scale} \label{sec:ch8-dist-scale}
 
-To check the distance scale described in \sectionref{sec:ch8-mirror-readout}, I placed a styrofoam cooler filled with liquid Nitrogen (LN2) in the farfield of the system and scanned the system over it, using data acquired to create still images.
+To measure the factor $F_d$ described in \sectionref{sec:ch8-mirror-readout}, I placed a styrofoam cooler filled with liquid Nitrogen (LN2) in the farfield of the system and scanned the system over it, using data acquired to create still images.
 A sheet of Eccosorb xxx was placed in the cooler to serve as a cold black surface for the system to observe.
 Images were acquired of the cooler itself, as well as the cooler with aluminum foils strips taped to the outside.
 Each strip was \abt{\SI{4}{\cm}} tall, and the strips were \SI{14.5}{\cm}, \SI{29}{\cm}, and \SI{47.2}{\cm} long.
 The interior of the cooler is \SI{67.7}{\cm} wide.
 For each image the \FWHM width of the strip --- or the cold space inside the cooler --- was calculated by taking a cut through the still image centered n the strip or cooler.
 
-The result of these measurements is that the \FWHM\ widths were $\SI{13}{\percent} \pm \SI{3}{\percent}$ smaller than the real distances. The source of this discrepancy is not understood.
-All distance scales in the remainder of this chapter have been adjusted to account for this discrepancy, so the distace scale on all images is accurate.
+The result of these measurements is that $F_d = 1.16$.
+The source of this discrepancy is not understood.
 
 % xxx need to comment on implications for beam maps!
 
