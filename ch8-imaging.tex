@@ -77,6 +77,14 @@ I fit the resulting output current timestream to a sine waves.
 The result are conversion factors of \SI{2.929}{\mm\per\uA} for \DISP1 and \SI{3.024}{\mm\per\uA} for \DISP2.
 % see cooldown39/ana_bose_factor.m
 
+% xxx
+% I think the way to handle my distance-scale discrepancy is to
+% explicitly introduce a fudge-factor here, and state that
+% measuremnets in section whatever show that this value is foo.
+%
+% Then the big mystery becomes the grid spacing on the detector focal
+% plane. Unfortunately I don't have anything to say about what's going
+% on with this, but that's the way that it is!
 To convert actuator displacement to displacements in the farfield of the system, I used the conversion factors produced from \ZEMAX\ listed in \sectionref{sec:ch4-optical-design}.
 A \SI{1}{\mm} movement of the actuator produces a change in angle of the secondary mirror of \ang{0.276}; a \ang{1.0} rotation of the secondary mirror displaces the beam of an on-axis detector by \SI{18.35}{\cm} at the far-field focal plane.
 The conversion factor between actuator displacement and farfield beam displacement is \SI{5.065}{\cm\per\mm}.
