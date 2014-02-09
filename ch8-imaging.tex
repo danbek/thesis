@@ -352,6 +352,44 @@ $P_{b,lid,no lid}$ & $ 2.0 \pm  1.0$ pW \\
 \end{tabular}
 \end{table*}
  
+\section{Establishment of Temperature Scale} \label{sec:ch8-temp-scale}
+
+The output of the readout system gives changes in current passing through the detectors.
+In order to change this current change to a temperature change we must first convert the current changes to power changes by dividing by the power-to-current responsivity $s_I$.
+These power changes are in terms of power absorbed in the bolometer.
+To convert to temperatures changes in the farfield of the system, we must use the total optical efficiency $\eta_{tot}$, as well as the Raleigh-Jeans limit of the optical power per spatial mode from a temperature distribution (see \sectionref{xxx}).
+The result is that the conversion from current to temperature is given by
+\begin{equation} \label{eqn:ch8-I-to-T}
+  \Delta T = \frac{\Delta I}{s_I(0) 2 k_B \eta_{tot} \Delta \nu}.
+\end{equation}
+
+Ideally this temperature scale would be measured directly by allowing the detectors to observe two known temperature distributions and measuring the resulting change in current.
+However, this is easier said than done.
+As the amount of optical power absorbed in a detector changes, the point occupied by the detector on its $R(T,I)$ surface changes, so that \Loop\, $\beta_I$, and the bias voltage $V_0$ all change.
+This leads to a changing responsivity with optical load through \eqnref{xxx}.
+For small changes in load (such as we expect in images taken with the system) the changes will be small and can be ignored.
+But in order to obtain an accurate measurement of the temperature scale, it is desireable to use a large change in temperature, such as the difference between room temperature and LN2.
+For these larger temperature changes the change in responsivity may not be negligible. 
+
+To check the order of magnitude of this effect, I measured the detector responsivity directly using heaters both when the system was observing eccosorb and when the cryostat window was covered with aluminum foil.
+Covering the window with foil reducing the optical power reaching the detectors from outside the cryostat by \abt{\SI{38}{\pW}}.
+For two of the detectors this lead to an increase in responsivity of \abt{\SI{1}{\percent}}, for the other two the increase was \abt{\SI{6.5}{\percent}}.
+This makes using LN2 to establish a temperature scale that is more accurate than \abt{\SI{10}{\percent}} challenging.
+
+Changing responsivity would not be a problem if the two temperatures were close to both each other and room temperature.
+Stable, uniform temperature distributions using stirred liquid water are avalable \cite{grossman h20 standard} and should be used if a more accurate temperature mapping is desired in the future.
+
+For this thesis, however, I have not made these measurements.
+Instead I have assumed that all detectors have the same optical efficiency as was measured for eight detectors in \sectionref{sec:ch8-opt-eff}, $\eta_{tot} = 0.136$.
+For $s_I(0)$ I have use the predicted values at \SOC\ of \sectionref{sec:bias-step}, with the exception of three detectors (\RCm{25}{4}, \RCm{26}{2}, \RCm{26}{4}) for which the predicted $s_I(0)$ was clearly incorrect, as judged from looking at detector timestreams and still images.
+For these three images I have assumed a responsivity equal to the mean of all other predicted responsivities.
+
+As a check on the accuracy of this temperature scale, the still image on the left of \figref{fig:ch8-dime-map} has \abt{\SI{180}{\K}} of contrast between the coldest section at the middle of the cooler and the warm area to the left of the cooler.
+Given our estimate of transmittivity $\tau$ of the cooler walls of \num{0.9}, the expected temperature differential is $0.9(295-77) = \SI{196}{\K}$.
+Given the fact that responsivity will increase with optical loading, which leading to underestimates of temperature difference via \eqnref{eqn:ch8-I-to-T}, these numbers are fairly close.
+
+From this I conclude that while the temperature scale is likely not accurate to withing \SI{5}{\percent}, it is probably correct to within \SI{20}{\percent}.
+
 \section{Image Processing Algorithm} \label{sec:ch8-algo}
 
 This section describes the algorithm used to turn raw detector timestreams into video images.
