@@ -17,8 +17,8 @@
     xtick={-30,-20,-10,0,10,20,30},
     ytick={-20,-10,0,10,20},
     colormap/blackwhite,
-    point meta min=-12.5,
-    point meta max=11.25,
+    point meta min=-3,
+    point meta max=3,
     mesh/ordering=y varies,
     view={0}{90},
   },
@@ -93,8 +93,8 @@
     colorbar style={
         axis equal=false,
         width=3in,
-        xlabel={Temperature (K)},
-        %xtick={-12,-8,...,12}
+        xlabel={Temperature Offset (K)},
+        %xtick={-3,-1.5,...,3}
     }]
     \addplot [draw=none] coordinates {(0,0)};
 \end{axis}
