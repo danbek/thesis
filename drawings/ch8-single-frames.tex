@@ -9,18 +9,14 @@
 \pgfplotsset{
   every axis/.append style={
     scale only axis,
-    axis equal,
-    %width=2.4in,height=2.4*(22.13+23.87)/(33.72+32.28)in,
-    width=2.7in,height=1.8818in,
-    xmin=-33.72,xmax=32.28,
-    ymin=-23.87,ymax=22.13,
-    xtick={-30,-20,-10,0,10,20,30},
+    enlargelimits=false,
+    axis equal image,
+    axis on top,
+    width=2.7in,
+    xtick={-40,-30,...,30},
     ytick={-20,-10,0,10,20},
-    colormap/blackwhite,
     point meta min=-3,
     point meta max=3,
-    mesh/ordering=y varies,
-    view={0}{90},
   },
   /tikz/every picture/.append style={
     baseline
@@ -39,7 +35,7 @@
     xlabel={},
     ylabel={Vertical Offset (\si{\cm})},
     ]
-  \addplot3[surf, shader=flat, mesh/rows=47, mesh/cols=67] table{../data/ch8-still-frame25.dat};
+  \addplot[point meta min=-3.000000e+00, point meta max=3.000000e+00] graphics [xmin=-4.050000e+01,xmax=3.750000e+01,ymin=-2.850000e+01,ymax=2.650000e+01] {../images/ch8-still-frame-25.png} ;
 \end{axis}
 \end{tikzpicture}
 
@@ -52,7 +48,7 @@
     xlabel={},
     ylabel={},
     ]
-  \addplot3[surf, shader=flat, mesh/rows=47, mesh/cols=67] table{../data/ch8-still-frame45.dat};
+  \addplot[point meta min=-3.000000e+00, point meta max=3.000000e+00] graphics [xmin=-4.050000e+01,xmax=3.750000e+01,ymin=-2.850000e+01,ymax=2.650000e+01] {../images/ch8-still-frame-45.png} ;
 \end{axis}
 \end{tikzpicture}
 
@@ -63,7 +59,7 @@
     xlabel={Horizontal Offset (\si{\cm})},
     ylabel={Vertical Offset (\si{\cm})},
     ]
-  \addplot3[surf, shader=flat, mesh/rows=47, mesh/cols=67] table{../data/ch8-still-frame65.dat};
+  \addplot[point meta min=-3.000000e+00, point meta max=3.000000e+00] graphics [xmin=-4.050000e+01,xmax=3.750000e+01,ymin=-2.850000e+01,ymax=2.650000e+01] {../images/ch8-still-frame-65.png} ;
 \end{axis}
 \end{tikzpicture}
 
@@ -75,7 +71,7 @@
     xlabel={Horizontal Offset (\si{\cm})},
     ylabel={},
     ]
-  \addplot3[surf, shader=flat, mesh/rows=47, mesh/cols=67] table{../data/ch8-still-frame85.dat};
+  \addplot[point meta min=-3.000000e+00, point meta max=3.000000e+00] graphics [xmin=-4.050000e+01,xmax=3.750000e+01,ymin=-2.850000e+01,ymax=2.650000e+01] {../images/ch8-still-frame-85.png} ;
 \end{axis}
 \end{tikzpicture}
 
@@ -90,6 +86,7 @@
     height=0pt,
     width=0pt,
     colorbar horizontal,
+    colormap/blackwhite,
     colorbar style={
         axis equal=false,
         width=3in,
