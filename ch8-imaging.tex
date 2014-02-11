@@ -450,3 +450,70 @@ xxx say something about temperature scale once I get it right.}
 \label{fig:ch8-single-frames}
 \end{figure*}
 
+\section{Image Noise Model}
+
+% Noise can't be reduced very much by sampling much faster than the rolloff in your noise power spectrum.
+% But the noise is reduced by a bit, and in this section I quantify that bit.
+% An important part of that message is that naively you would think that reducing the number of pixels in an image by a factor of two would reduce noise by a factor of \sqrt{2}, but that in fact because of noise correlations between nearby samples in a detector timestream, the noise reducting will not be that great.
+
+% Noise in our images is reduced by two factors.
+% First, each pixel in the image will be visited by more than one detector.
+% To the extent that the noise in different detector is uncorrelated --- which is true to a very good approximation at the relevant frequencies of greater then \SI{6}{\Hz} as shown in \sectionref{xxx} --- this effect will reduce noise by the square root of the number of detector which have viewed the pixel.
+% Second, each detector may be pointed at a particular pixel for more than one sample.
+% If the noise in the detectors was white --- i.e. uncorrelated in time --- than these samples would also reduce noise by the square root f the number of samples.
+
+% Hwoever, as shown in \sectionref{sec:ch7-det-noise}, the detector noise is not white.
+% The sampling frequency of \SI{3125}{\Hz} is well above the $\tau_{eff}$ rolloff of the detectors, and close to or above the rolloff of the \SQUID\ servo loop (when $I_{gain}$ is equal to 10 or 20 as is typically for acquiring videos).
+% This means that consequtive values in the timestream will be much closer to each other than would be expected by considering the detector white noise level alone, and so the noise will not be reduced as quickly as the square root of the number of samples.
+
+% To account for these factors we consider a detector timestream with values $x_j$ and power spectral density $X^2(f_j)$, defined as
+% \begin{equation}
+%   X^2_k = \frac{1}{N f_s}
+%   \begin{cases}
+%     2 |\tilde{x}_k|^2 & 1 \leq k \leq \left\lfloor \frac{N+1}{2} \right\rfloor, \\
+%       |\tilde{x}_k|^2 & k = N/2, \text{(only if $n$ is even)}.
+%   \end{cases}
+% \end{equation}
+% Here $\tilde{x}_k$ are the discrete fourier components of the timestream, given by
+% \begin{equation} \label{eqn:ch8-dtf-defn}
+%   \tilde{x}_k = \sum_{i=0}^{N_1} x_i e^{- 2 \pi j \frac{i k}{N}},
+% \end{equation}
+% $N$ is the numner of samples in the timestream, and $f_s$ is the sampling frequency.
+% The power spectral density is useful because the variance of the timestream is given by\footnote{%
+% This can be shown using \eqnref{eqn:ch8-dft-defn}, Parseval's Theorem \cite{xxx} and the fact that the $x_j$ values are all pure real.}
+% \begin{equation}
+%   \sum_{k=0}^{N-1} Y^2_k \Delta f,
+% \end{equation}
+% where $\Delta f \equiv 1 / N f_s$.
+% Furthermore, it can be shown that convolving the timestream with a kernal $c_n$ results in a new timestream $y_k$ with power spectral density%
+%   \footnote{
+%     Strictly speaking this result will hold exactly only in the case of a circular convolution.
+%     For the case considered here, where the non-zero length of the kernel is much smaller than the length of the timestream, the result is an excellent approximation.}
+% \begin{equation}
+%   Y^2_k = S^2_k |\tilde{c}_k|^2.
+% \end{equation}
+% Here the $\tilde{c}_k$ are the discrete fourier components of $c_n$, as calcualted using \eqnref{eqn:dft-defn}.
+% The total variance in this timestream $y_k$ will of course be given by
+% \begin{equation}
+%   \label{eqn:ch8-convolved-variance}
+%  \sum Y^2_k \Delta f = \sum X^2_k |\tilde{c}_k|^2 \Delta f.
+% \end{equation}
+
+% We now consider a single detector scanning across a field, and being using to create a map.
+% Assume that on average about M consequtive sample fall into the same map pixel, and are averaged together.
+% This is equivalent to (1) convolving the timestream with a kernel whose first $M$ values are equal to $1/m$ and the remaining all equal to zero, and then (2) picking out only every third value in the timestream to be placed into the map.
+% The first step reduces the variance in the timestream according to equation \eqnref{eqn:ch8-convolved-variance}.
+% As long as $f_s / M$ is larger than the primary noise rolloff frequency, this reduction in noise will be by a factor that is small than $\sqrt{M}$.
+% The second step leave the variance of the convolved timestream unchanged, as undersampling always does.
+
+% To make this concrete, we consider the noise spectra acquired for all detectors in the system and summarized in \figref{xxx}.
+% At the usual readout frequency of $\SI{3125}{\Hz}$ and image pixel size of \SI{1}{\cm^2}, each pixel is visted by 3.3 consequtive detector samples on average.
+% If the detector noise was white, this would be expected to reduce the noise in the image by  factor of $1/\sqrt{3.3} \approx 0.55$.
+% However, averaging over three samples results in a frequency-space multiplication with a sinc function with main lobe width of \abt{xxx}, which is well above the rolloff frequency of the detectors.
+% Performing the numerical multiplication with the measured power spectra from \figref{xxx}, the result is an average noise reduction of a factor of 0.66 $I_{servo} = 20$ and a factor of 0.77 for $I_{servo} = 10$.
+% The mean total variance in the timestreams is nearly identical for the two cases, at \SI{18.8}{\fW} for $I_{servo} = 20$ and \SI{18.2}{\fW} for $I_{servo}$; the lower level of noise aliasing in the $I_{servo} = 20$ case compensates for the less effective averaging of consequtive samples.
+
+% With these numbers in hand we can predict an \NETD\ value for a single image.
+% Each map pixel is visted by 7.8 detectors on average.
+% This should cause the \abt{\SI{18.5}{\fW}} detector noise standard devition to drecrease by $1/\sqrt{6.7}$ to \SI{6.6}{\fW}.
+% This can be converted to an NETD via
