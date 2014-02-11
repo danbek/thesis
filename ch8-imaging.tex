@@ -452,6 +452,71 @@ xxx say something about temperature scale once I get it right.}
 
 \section{Image Noise Model}
 
+The temperature scale established in \sectionref{sec:ch8-temp-scale} allows us to convert the measured detector white-noise level of \abt{\Pnoise{2.4e-15}} to a temperature noise via
+\begin{equation}
+  S_T = \frac{S_P(0)}{2 k_B \eta_{tot} \Delta \nu}.
+\end{equation}
+This results in a temperature noise level of \abt{\Tnoise{15e-3}}, referred to the temperature viewed in the farfield of the system.
+
+To use this noise level to make a prediction for the \NETD\ in the image we can use the radiometer equation \cite{dicke-radiometer}:
+\begin{equation} \label{eqn:ch8-radiometer}
+  NETD = \frac{S_T}{\sqrt{2 t_{dwell}}},
+\end{equation}
+where $t_{dwell}$ is the total integration time including all detectors for each pixel in the image.
+In this equation the factor of 2 accounts for the fact that the noise power spectral density is defined so that the total variance in the signal is given by the integral of the power spectral density up to the one-half of the sampling frequency, i.e. up to the Nyqust frequency.
+
+All images in this chapter contain \abt{4030} pixels, each \SI{1}{\cm^2} in area%
+\footnote{
+  Although the images shown are all rectangular, due to the elliptical scanning pattern the actual area of the images that contains data is smaller than the rectangle.
+}.
+Each video frame lasts \SI{1/6}{\s}, and there are \abt{210} good detector contributing.
+$t_{dwell}$ is thus given by
+\begin{equation} \label{eqn:ch8-t-dwell}
+  t_{dwell} = \frac{210 \times \frac{1}{6}\,\si{s}}{4030} = \SI{8.7}{\ms}.
+\end{equation}
+Plugging this into \eqnref{eqn:ch8-radiometer} gives an $NETD$ of \abt{\SI{115}{\mK}}.
+
+Verifying this noise level in a video image is difficult because we do not know a-priori whether there are any regions in the image which have a flat temperature distribution.
+However, if we place a sheet of eccosorb directly in front of the cryostat window, where all detector beams are large and covering very similar areas, then all detectors should be viewing very close to the same temperature distribution.
+If data is acquired in this state, while the secondary mirror is moving, and the resulting timestreams run through the same software used to create ``real'' videos, then the standard deviation of the temperture in each frame should give a god estimate of the NETD.
+
+I carried out this proceedure, creating a ``video'' with 19 frames.
+The mean $NETD$ across the 19 frames is \SI{101}{\mK}.
+\figref{fig:ch8-flat-netd} shows a histogram of the \NETD\ distribution from all 19 frames, a histogram showing the temperature offset distribution for the second frame (which has $NETD = \SI{100}{\mK}$), the second frame, and one of the still images from \figref{fig:ch8-single-frames}.
+Both still images use the same temperature-difference-to-grayscale mapping.
+
+Comparing the two frames visually, it is clear that $NETD$ in the true video frame is dominated not by detector noise, but by artifacts of the scan, visible as elliptical arcs in the image.
+These artifacts are likely caused by the median-subtraction scheme of \sectionref{xxx} not properly accounting for the detector offsets.
+Nevertheless, in area of the video still where there appear to be few scan artifacts (such as the arem on the lower right), the level of noise in the image appears comparable to the ``flat'' still, indicating that \SI{100}{\mK} is a reasonable estimate of the $NETD$ in the image caused by detector noise.
+
+\begin{figure*}[th]
+\centering
+\includegraphics[width=\textwidth]{drawings/ch8-flat-netd.pdf}
+\caption{
+  Plots relating to measurement of \NETD\ in flat frame images.
+  \textbf{Upper Left} Histogram of \NETD\ for each of 19 frames taken from a ``flat'' video image. This \NETD\ is defined as the standard deviation of the temperatures across all pixels which were visted by at least one detector. 
+  \textbf{Upper Right} Histogram showing distribution of temperature offsets within the second video frame, which has an \NETD\ of \SI{100}{\mK}.
+                       The far left and far right bins include outliers that extend all the way to \SI{-1}{\K} on the left and \SI{1.5}{\K} on the right.
+                       Removing these outliers results in \NETD\ values that are roughly \SI{15}{\percent} smaller.
+  \textbf{Lower Left} The second frame of the flat video.
+  \textbf{Lower Right} Frame 25 of the video discussed is \sectionref{xxx}.
+These two frames use the same temperature-offset-to-color mapping to aid in visual comparison.
+}
+\label{fig:ch8-flat-netd}
+\end{figure*}
+
+The agreement between the predicted $NETD$ of \SI{115}{\mK} and the observed flat image $NETD$ of \SI{100}{\mK} is an encouraging sign that we understand the behavior of the system.
+However, there are several ways in which the noise modelling used in this section simplifies matters:
+\begin{itemize}
+\item The white noise level for each detector is different.
+\item The total integration time per pixel is not uniform. Some pixels end up recieving much more detector samples then others. (xxx quantify)
+\item The detector noise is not white.
+      \eqnref{eqn:ch8-radiometer} is strictly only true for a noise spectrum that is white, while the detector noise spectrums have rolloffs due to the detector time constant $\tau_{eff}$, \SQUID\ noise, a rolloff due to the \SQUID\ servo loop, and other features.
+      Because the noise rolloffs reduce the variance of the detector timestream, this should tend to reduce noise in the map.
+      However, the rolloffs also mean that consequtive samples in a detector timestream are correlated, so that averaging them will not reduce noise by the full ``square-root of the number of samples'' factor that is appropriate for uncorrellated noise.
+\end{itemize}
+A more careful analysis of these factors would be useful, but has not yet been performed.
+
 % Noise can't be reduced very much by sampling much faster than the rolloff in your noise power spectrum.
 % But the noise is reduced by a bit, and in this section I quantify that bit.
 % An important part of that message is that naively you would think that reducing the number of pixels in an image by a factor of two would reduce noise by a factor of \sqrt{2}, but that in fact because of noise correlations between nearby samples in a detector timestream, the noise reducting will not be that great.
