@@ -75,8 +75,7 @@ It is also necessary to know where each detector is pointed relative to the opti
 The pointing of the optical system is set by the positions of the two actuators --- \DISP1 and \DISP2 --- that move the secondary mirror.
 The actuator control hardware provides two voltage signal which are proportional to the positions of the actuators.
 This voltage signal is sent into the \Imager\ cryostat by a pair coaxial cables.
-Inside the cryostat two \SI{1}{m} long Phosphur Bronze (PhBr) \AWG36 twisted pair wires carry the signal to the focal plane, where the signal is fed into the input coil of a 1st stage \SQUID.
-% xxx get exact lakeshore name for ph-br 
+Inside the cryostat two \SI{1}{m} long Phosphor Bronze \AWG36 twisted pair wires carry the signal to the focal plane, where the signal is fed into the input coil of a 1st stage \SQUID.
 Series resistors (\SI{4.23}{\mega\ohm} for \DISP1, \SI{4.36}{\mega\ohm} for \DISP2) are used at room temperature to reduce the maximum current flowing through the wires to a value appropriate for the 1st stage \SQUID\ input; approximately \SI{2}{\uA}.
 
 % Need add figure containing nice picture of the actuators/secondary
@@ -147,8 +146,7 @@ The lack of correlation in the scatter plots, as well as the clustering around t
 
 \section{Focus Distance}\label{sec:ch8-focus-distance}
 
-As described in \sectionref{sec:ch4-optical-design}, the \Imager\ is designed to focus at distances of 16~m -- 30~m.
-% (xxx check 2nd distance).
+As described in \sectionref{sec:ch4-optical-design}, the \Imager\ is designed to focus at distances of \SIrange{16}{28}{\m}.
 All results described in this chapter were with the \Imager\ configured to focus at 16~m.
 To check the actual distance to the target focal plane, beam maps as described in \sectionref{sec:ch8-beam-maps} were performed with the black-body source located at different distance from the cryostat.
 The optimal focus was a distance of \SI{17}{\m} from the apex of the primary mirror.
@@ -177,13 +175,13 @@ Possibilities include the cryostat being located too close to the mirror system,
 
 \section{Beam Maps} \label{sec:ch8-beam-maps}
 
-As discussed in \sectionref{sec:ch4-feedhorn-design}, the \Imager\ feedhorns are predicted to have beams that are circularly symmetric and well-approximated by Gaussians with \FWHM\ of xxx~cm at the target.
+As discussed in \sectionref{sec:ch4-feedhorn-design}, the \Imager\ feedhorns are predicted to have beams that are circularly symmetric and well-approximated by Gaussians with \FWHM\ of \SI{1.2}{\cm} at the target.
 To verify these predictions beam maps were performed by rastering the beams over a stationary \SI{1030}{\celsius} black-body source.
 
-The black-body source used was an IR Labs xxx\footnote{IRLabs, Inc. Tucson, AZ. USA}.
-This source reaches a maximum of \SI{1030}{\celsius} and has apertures ranging in size from xxx in to xxx in.
+The source used was an IR Labs IR-563/301\footnote{IRLabs, Inc. Tucson, AZ. USA} black-body.
+This source reaches a maximum of \SI{1030}{\celsius} and has apertures ranging in size from \SIrange{0.1}{1.0}{\in}. % xxx check these numbers!
 Best results were achieved by covering an area around the black-body source with Aluminum foil; this eliminated hotspots in the image due to the warmth of the housing of the black-body source itself.
-\figref{xxx} shows a picture of the black-body source with Aluminum foil mask.
+% xxx find this picture and add it! \figref{xxx} shows a picture of the black-body source with Aluminum foil mask.
 The aperture diameter was set to \SI{0.2}{in} (\SI{0.51}{\cm}), which is small enough that the \FWHM\ of the resulting beam map will be larger than the beam map from a point source by an insignificant amount.
 
 The \Imager\ beams were rastered over the black-body source by moving one actuator at \SI{6}{\hertz} while the other actuator moved much more slowly at \SI{0.1}{\hertz}.
@@ -256,7 +254,7 @@ The offset is relative to detector \RCm{18}{4}.
 \section{Direct Measurement of Distance Scale and Image Resolution} \label{sec:ch8-dist-scale}
 
 To measure the factor $F_d$ described in \sectionref{sec:ch8-mirror-readout}, I placed a Styrofoam cooler filled with liquid Nitrogen (LN2) in the far-field of the system and scanned the system over it, using data acquired to create still images.
-A sheet of \ecco\footnote{xxx need company ref} was placed in the cooler to serve as a cold black surface for the system to observe.
+A sheet of \ecco\footnote{Emerson \& Cuming Microwave Products, Inc.} was placed in the cooler to serve as a cold black surface for the system to observe.
 Images were acquired of the cooler itself, as well as the cooler with aluminum foils strips taped to the outside.
 Each strip was \abt{\SI{4}{\cm}} tall, and the strips were \SI{14.5}{\cm}, \SI{29}{\cm}, and \SI{47.2}{\cm} long.
 The interior of the cooler is \SI{67.7}{\cm} wide.
@@ -264,9 +262,6 @@ For each image the \FWHM\ width of the strip --- or the cold space inside the co
 % xxx include a plot explaining this idea.
 
 The result of these measurements is that $F_d = 1.16$.
-
-% xxx might be nice to have plots for this section, but need to move
-% on for now.
 
 % Code: imaging/ana_reso_from_stills.m
 
@@ -314,13 +309,12 @@ Although the temperature of LN2 is well known to be \SI{77}{\kelvin}, this does 
   \item It is possible that a small amount of water vapor could condense on the outside of the cooler, leading to further emission.
 \end{itemize}
 For the purposes of this measurement I assumed that the cold \ecco\ was totally black and that no water vapor was condensed on the cooler, which is consistent with a visual examination.
-However, I do allow for a non-unity transmitivity $\tau$ for the Styrofoam in the analysis below.
-% xxx - transmitivity spelling
+However, I do allow for a non-unity transmittance $\tau$ for the Styrofoam in the analysis below.
 
 For each of eight detectors, four IV curves were taken under three conditions: pointing at the room-temperature \ecco\ (``ecco''), pointing at the cold \ecco\ in the cooler (``LN2''), and looking at the \ecco\ with the cooler's lid placed directly in front of the cooler (``lid'').
 The lid is \SI{2}{\in} thick and the cooler's side is \SI{1.625}{\in} thick.
-I assume that the transmitivity takes the form $e^{-d \kappa}$, where $d$ is the thickness of the material and $\kappa$ is some constant which characterizes the attenuation length of \SI{350}{\GHz} light in Styrofoam.
-Given this assumption, if the transmitivity through the cooler's wall is $\tau$, then the transmitivity through the lid is given by $\tau^{2/1.625} = \tau^{1.23}$.
+I assume that the transmittance takes the form $e^{-d \kappa}$, where $d$ is the thickness of the material and $\kappa$ is some constant which characterizes the attenuation length of \SI{350}{\GHz} light in Styrofoam.
+Given this assumption, if the transmittance through the cooler's wall is $\tau$, then the transmittance through the lid is given by $\tau^{2/1.625} = \tau^{1.23}$.
 
 The optical powers viewed under these three conditions is then given by (with $T_h = \SI{295}{\K}$ and $T_c = \SI{77}{\K}$)
 % xxx make nice multiline equations with alignment by the = sign. And
@@ -351,7 +345,7 @@ These last two equations can be solved for $\eta_{tot}$ and $\tau$. The results 
 \end{equation}
 
 The full set of three IV cuves were repeated three times over the course of several hours.
-The transmitivity $\tau$ of the cooler wall was found to be \abt{\SI{90}{\percent}} and the optical efficiency $\eta_{tot}$ was \SI{13.6}{\percent}. 
+The transmittance $\tau$ of the cooler wall was found to be \abt{\SI{90}{\percent}} and the optical efficiency $\eta_{tot}$ was \SI{13.6}{\percent}. 
 \tableref{tab:opt-eff} gives the results of these measurements averaged over all detectors and all repetitions.
 
 This optical efficiency is roughly half of the value predicted in \sectionref{sec:ch4-opt-eff}.
@@ -413,7 +407,7 @@ For $s_I(0)$ I have use the predicted values at \SOC\ of \sectionref{sec:bias-st
 For these three images I have assumed a responsivity equal to the mean of all other predicted responsivities.
 
 As a check on the accuracy of this temperature scale, the still image on the left of \figref{fig:ch8-dime-map} has \abt{\SI{180}{\K}} of contrast between the coldest section at the middle of the cooler and the warm area to the left of the cooler.
-Given our estimate of transmitivity $\tau$ of the cooler walls of \num{0.9}, the expected temperature differential is $0.9(295-77) = \SI{196}{\K}$.
+Given our estimate of transmittance $\tau$ of the cooler walls of \num{0.9}, the expected temperature differential is $0.9(295-77) = \SI{196}{\K}$.
 Given the fact that responsivity will increase with optical loading, which leading to underestimates of temperature difference via \eqnref{eqn:ch8-I-to-T}, these numbers are fairly close.
 
 From this I conclude that while the temperature scale is likely not accurate to within \SI{5}{\percent}, it is probably correct to within \SI{20}{\percent}.
