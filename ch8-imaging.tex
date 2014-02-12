@@ -151,13 +151,29 @@ As described in \sectionref{sec:ch4-optical-design}, the \Imager\ is designed to
 % (xxx check 2nd distance).
 All results described in this chapter were with the \Imager\ configured to focus at 16~m.
 To check the actual distance to the target focal plane, beam maps as described in \sectionref{sec:ch8-beam-maps} were performed with the black-body source located at different distance from the cryostat.
-\figref{fig:ch8-beam-vs-distance} shows beam maps for the same detector taken at different distances.
-It is clear from this plot that the best focus occurs at \abt{\SI{17}{m}}, and the depth-of-field is approximately xxx~m.
+The optimal focus was a distance of \SI{17}{\m} from the apex of the primary mirror.
+\figref{fig:ch8-focus} shows beam maps for the same detector taken at \SI{17}{\m} and at \SI{15.8}{\m}.
+At \SI{17}{\m} the black-body aperture is well defined and much warmed than it's surroundings.
+At \SI{15.8}{\m}, the black-body aperture is visible, but poorly defined with significant side-lobes.
+The temperature of the aperture is much closer to the background than in the \SI{17}{\m} case.
 
 The reasons for the difference from \ZEMAX\ predictions are not understood.
-Possibilities include the cryostat being located too close or errors in the manufacturing or assembly of the optical components.
+Possibilities include the cryostat being located too close to the mirror system, or errors in the manufacturing or assembly of the optical components.
 
-% xxx need to add fig:ch8-beam-vs-distance figure!
+\begin{figure*}[th]
+\centering
+\includegraphics[width=\textwidth]{drawings/ch8-focus.pdf}
+\caption{
+  Plots showing impact of observing objects not located at the far-field focal plane.
+  In both cases the \SI{1030}{\celsius} black-body source with aperture diameter set to \SI{0.4}{\in} (\SI{1.0}{\cm}) was observed. The acquisitions were taken 2.5\,minutes apart, and the only thing changed was the distance between the black-body and the primary mirror.
+  \textbf{Left} Still image taken with the black-body located \SI{17}{\m} from the primary mirror.
+  The aperture is clearly defined and \SI{80}{\K} warmer than its surroundings.
+  \textbf{Right} Still image taken with the black-body located \SI{15.8}{\m} from the primary mirror.
+  The black-body aperture is poorly defined with prominent side-lobe features.
+  The aperture is no more than \SIrange{5}{10}{\K} warmer than the surroundings.
+}
+\label{fig:ch8-focus}
+\end{figure*}
 
 \section{Beam Maps} \label{sec:ch8-beam-maps}
 

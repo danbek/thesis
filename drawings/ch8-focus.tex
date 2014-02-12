@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    enlargelimits=false,
+    axis equal image,
+    axis on top,
+    width=2.5in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{lr}
+
+\begin{tikzpicture}[trim axis left]
+\begin{axis}[
+    xlabel={Horizontal Offset (\si{\cm})},
+    ylabel={Vertical Offset (\si{\cm})},
+    colorbar horizontal,
+    colorbar style={
+      axis equal=false,
+      xlabel={Temperature Offest (K)},
+    }
+    ]
+  \addplot[point meta min=-1.715472e+01, point meta max=8.219177e+01] graphics [xmin=-3.962500e+01,xmax=3.787500e+01,ymin=-3.937500e+01,ymax=3.812500e+01] {../images/ch8-focus-good.png} ;
+\end{axis}
+\end{tikzpicture}
+
+&
+
+\begin{tikzpicture}[trim axis right]
+\begin{axis}[
+    xlabel={Horizontal Offset (\si{\cm})},
+    ylabel={Vertical Offset (\si{\cm})},
+    colorbar horizontal,
+    colorbar style={
+      axis equal=false,
+      xlabel={Temperature Offset (K)},
+    }
+    ]
+  \addplot[point meta min=-1.140878e+01, point meta max=5.143784e+00] graphics [xmin=-4.062500e+01,xmax=3.862500e+01,ymin=-4.012500e+01,ymax=3.887500e+01] {../images/ch8-focus-close.png} ;
+\end{axis}
+\end{tikzpicture}
+
+\end{tabular}
+
+\end{document}
