@@ -20,7 +20,7 @@
 
 \pagestyle{empty}
 
-\begin{tabular}{rr}
+\begin{tabular}{lr}
 
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[
@@ -36,17 +36,6 @@
   &
 
   \begin{tikzpicture}[trim axis right]
-	\begin{axis}[
-		title={Beam Angle vs Ellipticity},
-		xlabel={$\frac{\sigma_1}{\sigma_2}$}, ylabel={Beam Angle (Degrees)} ]
-	  \addplot+[only marks]
-	    table[x=sigma_rat,y=theta]{../data/ch8-beam-map-parms.dat};
-	\end{axis}
-  \end{tikzpicture}
-
-  \\
-
-  \begin{tikzpicture}[trim axis left]
 	\begin{axis}[ymin=0,
 		title={Beam Ellipticity},
 		xlabel={$\frac{\sigma_1}{\sigma_2}$}, ylabel={Quantity} ]
@@ -56,16 +45,6 @@
 	\end{axis}
   \end{tikzpicture}
 
-  &
-
-  \begin{tikzpicture}[trim axis right]
-	\begin{axis}[
-		title={Beam Size vs Ellipticity},
-		xlabel={$\frac{\sigma_1}{\sigma_2}$}, ylabel={FWHM (\si{\cm})} ]
-	  \addplot+[only marks]
-	    table[x=sigma_rat,y=fwhm]{../data/ch8-beam-map-parms.dat};
-	\end{axis}
-  \end{tikzpicture}
   \\
 
   \begin{tikzpicture}[trim axis left]
@@ -82,10 +61,11 @@
 
   \begin{tikzpicture}[trim axis right]
 	\begin{axis}[
-		title={Beam Size vs Angle},
-		xlabel={Beam Angle (Degrees)}, ylabel={FWHM (\si{\cm})} ]
+        axis equal,
+		title={$\sigma_1$ vs $\sigma_2$},
+		xlabel={$2 \sqrt{2 \ln{2}} \; \sigma_1$ (\si{\cm})}, ylabel={$2 \sqrt{2 \ln{2}} \; \sigma_2$ (\si{\cm})} ]
 	  \addplot+[only marks]
-	    table[x=theta,y=fwhm]{../data/ch8-beam-map-parms.dat};
+	    table[x expr=2.3548*\thisrow{sigmax},y expr=2.3548*\thisrow{sigmay}]{../data/ch8-beam-map-parms.dat};
 	\end{axis}
   \end{tikzpicture}
 
