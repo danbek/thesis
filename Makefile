@@ -5,7 +5,7 @@
 PDFLATEX = pdflatex -interaction=batchmode
 LUALATEX = lualatex -interaction=batchmode
 PDFCROP  = pdfcrop
-RM       = /usr/bin/rm
+RM       = rm
 
 InputTeXFiles = ch3-tes-theory.tex ch4-sys-design.tex ch5-det-design.tex ch7-subarray.tex ch8-imaging.tex
 SAGFiles = $(wildcard drawings/*.tex)
