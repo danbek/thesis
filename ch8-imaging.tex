@@ -1,5 +1,7 @@
 \chapter{Imaging}\label{c:imaging}
 
+% xxx should update all plots with latest fudge factor of 1.1457
+
 % xxx need introductory paragraph here.
 
 \section{Detector Cuts} \label{sec:ch8-det-cuts}
@@ -114,7 +116,7 @@ If we consider an $x$-$y$ coordinate system in the far-field, this means that th
 
 Here I have also introduced a ``fudge factor'' $F_d$, which allows us to account for any error in manufacturing of the optics, errors in the \ZEMAX\ model, or errors in the \BOSE\ actuator control system; e.g., when we tell the \BOSE\ system to move an actuator by \SI{3}{\mm}, does it really move exactly \SI{3}{\mm}?
 If none of these --- or other --- errors are present in the system, then $F_d$ will be equal to 1.0.
-The direct measurements of distances in the far-field described in \sectionref{sec:ch8-dist-scale} show that $F_d = 1.16$, and this value is used in all analysis for the remainder of this chapter.
+The direct measurements of distances in the far-field described in \sectionref{sec:ch8-dist-scale} show that $F_d = 1.15$, and this value is used in all analysis for the remainder of this chapter.
 
 % pivot 14.19 mm behind mirror vertex
 % pivot 14mm in front on \BOSE\ attachment point
@@ -258,10 +260,22 @@ A sheet of \ecco\footnote{Emerson \& Cuming Microwave Products, Inc.} was placed
 Images were acquired of the cooler itself, as well as the cooler with aluminum foils strips taped to the outside.
 Each strip was \abt{\SI{4}{\cm}} tall, and the strips were \SI{14.5}{\cm}, \SI{29}{\cm}, and \SI{47.2}{\cm} long.
 The interior of the cooler is \SI{67.7}{\cm} wide.
-For each image the \FWHM\ width of the strip --- or the cold space inside the cooler --- was calculated by taking a cut through the still image centered on the strip or cooler.
-% xxx include a plot explaining this idea.
+For each image the \FWHM\ width of the strip --- or the cold space inside the cooler --- was calculated by taking a cut through the still image centered on the strip or cooler (see \figref{fig:ch8-check-dist}).
 
-The result of these measurements is that $F_d = 1.16$.
+The result of these measurements is that $F_d = 1.15$.
+
+\begin{figure*}[th]
+\centering
+\includegraphics{drawings/ch8-check-dist.pdf}
+\caption{
+  Plots explaining measurement of distance scale.
+  The left plot shows a close-up of the Styrofoam cooler filled with LN2, with an \SI{14.5}{\cm} by \SI{4}{\cm} strip taped to the outside.
+  A cut of this image through the middle of strip (identified by the thin black line) is shown on the right.
+  The \FWHM of this cut is shown as the red line.
+  This measurement was repeated for two other Al foil strips, as well as the cooler without any Al foil strips, in order to establish the distance scale.
+}
+\label{fig:ch8-check-dist}
+\end{figure*}
 
 % Code: imaging/ana_reso_from_stills.m
 
