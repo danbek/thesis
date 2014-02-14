@@ -26,7 +26,7 @@ The first stage has 25~W of cooling power at 55~K while the second stage has 0.7
 Our PT407 uses a remote motor, so that the cold head attached to the cryostat has no moving parts, minimizing vibration of the cryostat.
 Vibration of the cryostat can lead to microphonic pickup either directly in the detectors themselves or in the readout circuitry, leading to much higher detector noise.
 
-\begin{figure*}[t]
+\begin{figure*}
 \centering
 \begin{tikzpicture}
     \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=2.6in]{./images/cryostat-cutaway.png}};
@@ -48,7 +48,7 @@ Vibration of the cryostat can lead to microphonic pickup either directly in the 
 \label{fig:cryo-cutaway}
 \end{figure*}
 
-\begin{table*}[t]
+\begin{table*}
 \centering
 \caption{Temperatures Reached Under Optical Load xxx should I add temps when closed optically?}
 \label{tab:temp-optical-load}
@@ -76,7 +76,7 @@ While \He4-sorption fridges are commercially available, our team choose to desig
 The entire refrigerator is filled with 2.07~moles of \He4 gas, giving a pressure of 900~psi at room temperature.
 In normal operation the heat switch between the charcoal pumping chamber (``pump'') and the \He4 condensation plate is closed, keeping the charcoal as cold as possible in order to adsorb as much \He4 as possible, keeping the temperature of the cold plate as low as possible.
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
 \begin{tikzpicture}
     \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=3.0in]{./images/he4-sorp-fridge-cutaway.png}};
@@ -235,7 +235,7 @@ xxx &  \\
 
 % xxx diagram like fig 4in schwan2011 would be good
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
 \begin{tabular}{lr}
 \includegraphics[width=3in]{images/ch4-zemax-spot-0-0.JPG}
@@ -344,7 +344,7 @@ The blue asterisk matches the parameters for the feedhorns chosen for the \Image
 This plot makes it clear that $\eta_s$ depends much more strongly on $D$ than on $\alpha$.
 $\alpha = \SI{9.4}{\degree}$ was chosen as a value that is easy to machine, keeps the thermal mass of the feedhorn array relatively low (small values of $\alpha$ lead to long feedhorns and higher thermal mass), and it not too far from the maximum achievable $\eta_s$ for any fixed feedhorn diameter $D$.
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
 \includegraphics[width=3.0in]{./images/spill_vs_alpha_diam.pdf}
 \caption{Plot showing feedhorn spillover efficiency $\eta_s$ as a function of horn diameter $D$ and horn flare half-angle $\alpha$. The blue asterisk shows the feedhorn parameters used in the \Imager. xxx need to replace with version that has * sign at real feedhorn values!}
@@ -355,14 +355,14 @@ The feedhorn diameter chosen does not maximize $\eta_s$, because it turned out t
 In fact, as \figref{fig:netd-num-feeds} shows, an even larger number of even smaller feedhorns is predicted to reduce \NETD\ by xxx \%.
 However, as mentiond above, the maximum number of detectors that can be readout by our system is 1024, so $D = xxx$ was chosen as the optimal feedhorn diameter.
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
 \includegraphics[width=3.0in]{./images/netd_num_feeds.pdf}
 \caption{Plot showing how total number of detectors and system \NETD\ depend on diameter chosen for feedhorns. The number of detectors is a discrete function of the feedhorn diameter because it is not possible to have a fractional part of a feedhorn. \NETD\ is maximized with xxx feedhorns of diameter xxx, but the \Imager\ uses 1004 feedhorns of diameter xxx because of readout limitations. xxx Is this plot right? I chose 2.68 mm (cold), which leads to ~800 detectors, not 1024.}
 \label{fig:netd-num-feeds}
 \end{figure*}
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
 \includegraphics{images/ch4-reso-comp.pdf}
 \caption{
