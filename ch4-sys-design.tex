@@ -164,17 +164,54 @@ The most important paramter is the \SI{1.3}{\m} diameter of the primary mirror; 
   Optical system specifications.
   Some of the dimenions and parameters are listed to precisions higher than achievable manufacturing tolerances.
   These dimensions and parameters were chosed by optimization rourtines in \ZEMAX\, and are kept to full precision here for archival purposes.
-  xxx add lens index refraction
+  The shape of the elliptical and hyperbolic mirrors follows the equation $z(r) = c r^2 / (1 + \sqrt{1 - (1+k) c^2 r^2})$, where $c$ is the inverse of the mirror radius, $k$ is the conic parameter, and $r$ is the radial distance from the center mirrors.
+  The lens surfaces follow the equation given in the table.
 }
 \label{tab:ch4-optical-specs}
-\begin{tabular}{l l p{0.7in} p{2in} p{2.5in}}
+\begin{tabular}{p{1.5in} p{1.5in} p{0.7in} p{4.9in} }
 \toprule
-Optical Element & Type & Outer \newline Diameter & Vertex Location & Other Properties \\
+Optical Element & Type & Outer \newline Diameter & Details \\
 \midrule
-Primary Mirror    & Elliptical Mirror    & \SI{1.3}{\m}  &  \SI{16}{\m} from farfield focalplane & yyy \\
-Secondary Mirror  & Hyperbolic Mirror    & \SI{0.44}{\m} &  \SI{626.82}{\mm} from primary mirror vertex & yyy \\
-Cryostat Window   & \HDPE\ Aspheric Lens & \SI{0.44}{\m} &  \SI{857.295}{\mm} from secondary mirror vertex & yyy \\
-Detector Focal Plane &                   & N/A           &  \SI{171.541}{\mm} from vertex of back of cryostat window &  \\
+
+Primary Mirror    & Elliptical Mirror    & \SI{1.3}{\m} 
+    &  Vertex \SI{16}{\m} from farfield focalplane \\
+& & &  \ZEMAX\ radius $c^{-1} = \SI{1801.453127}{\mm}$ \\
+& & &  \ZEMAX\ conic $k = \num{-0.878728}$ \\
+& & &  Semi-major axis: \SI{14.85}{\m} \\
+& & &  Semi-minor axis: \SI{5.17}{\m} \\
+& & &  Distances from mirror vertex to foci: \SI{0.93}{\m} and \SI{28.8}{\m} \\
+
+Secondary Mirror  & Hyperbolic Mirror    & \SI{0.44}{\m}
+    &  Veretex \SI{626.82}{\mm} from primary mirror vertex \\
+& & &  \ZEMAX\ radius $c^{-1} = \SI{937.37187}{\mm}$ \\
+& & &  \ZEMAX\ conic $k = \num{-4.466172}$ \\
+& & &  Eccentricity \num{2.11} \\
+
+Cryostat Window   & \HDPE\ Aspheric Lens & \SI{0.24}{\m}
+    &  Outer vertex location depends on focus distance; see \tableref{tab:ch4-zemax-parms} \\
+& & &  \SI{2}{\cm} thick at center \\
+& & &  Index of refraction $n = \num{1.525}$ \\
+& & &  Outer Surface: $z(k) = c r^2 / (1 + \sqrt{1 - c^2 r^2}) + \sum_{k=1}^{k=8} \beta_k r^k$, where 
+       $c^{-1} = \SI{-1052.933}{\mm}$,
+       $\beta_1 = -\SI{4724.966}{\mm}$,
+       $\beta_2 =  (\SI{0}{\mm})^{-2}$,
+       $\beta_3 =  (\SI{88.649}{\mm})^{-3}$,
+       $\beta_4 = -(\SI{67.854}{\mm})^{-4}$,
+       $\beta_5 =  (\SI{90.995}{\mm})^{-5}$,
+       $\beta_6 =  (\SI{89.966}{\mm})^{-6}$,
+       $\beta_7 = -(\SI{97.618}{\mm})^{-7}$,
+       $\beta_8 = -(\SI{191.31}{\mm})^{-8}$ \\
+& & &  Inner Surface: $z(k) = c r^2 / (1 + \sqrt{1 - c^2 r^2}) + \sum_{k=1}^{k=8} \beta_k r^k$, where 
+       $c^{-1} = \SI{-699.782}{\mm}$,
+       $\beta_1 = -\SI{62.359}{\mm}$,
+       $\beta_2 =  (\SI{0}{\mm})^{-2}$,
+       $\beta_3 = -(\SI{45.520}{\mm})^{-3}$,
+       $\beta_4 =  (\SI{59.477}{\mm})^{-4}$,
+       $\beta_5 = -(\SI{74.141}{\mm})^{-5}$,
+       $\beta_6 =  (\SI{86.306}{\mm})^{-6}$,
+       $\beta_7 = -(\SI{107.763}{\mm})^{-7}$,
+       $\beta_8 = -(\SI{124.984}{\mm})^{-8}$ \\
+Detector Focal Plane &                   & N/A           &  \SI{171.541}{\mm} from vertex of back of cryostat window \\
 \bottomrule
 \end{tabular}
 \end{sidewaystable}
