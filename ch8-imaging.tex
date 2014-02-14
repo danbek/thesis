@@ -453,7 +453,8 @@ The algorithm's steps are as follows:
       \item Calculate the differences $\Delta f_j = f_{j+1} - f_j$ between each consecutive value in the timestream.
       \item Calculate the standard deviation of the differences $\Delta f_j$.
       \item If the absolute value of any $\Delta f_j$ is greater than five times the standard deviation, identify this detector as having a glitch, so that it will be ignored for this video frame.
-            % xxx should say how often this happens, show example of glitch timestream ... maybe show a big plot with all timestreams for a frame, highlighting those with glitches?
+            On average this affects 3.2 detectors per frame.
+            % xxx show example of glitch timestream? ... maybe show a big plot with all timestreams for a frame, highlighting those with glitches?
       \end{enumerate}
     \item Subtract the median value of this detector's timestream for this video frame.
           See the commentary below for a discussion of this approach to removing the detector offsets.
@@ -477,7 +478,7 @@ The ceramic knife is visible as a dark area on the left of the shirt.
 A darker line running down the center of the shirt is due to the extra layer of cotton backing the buttons; this additional cloth produces more attenuation of the warm light from the body, and so appears cooler.
 
 The total temperature contrast in the images of \figref{fig:ch8-single-frame} is \SI{6}{\K}, but as described above higher and low values of temperature have been mapped to \SI{+3}{\K} and \SI{-3}{\K} to improve contrast for display.
-In the raw images, the mean total contrast across all frames with the person present is \SI{8.5}{\K}.
+In the raw images, the mean total contrast across all frames with the person present is \SI{8.2}{\K}.
 
 To estimate the expected contrast we can take the following into account:
 \begin{itemize}
@@ -490,7 +491,7 @@ If the coldest temperature in the images is given by the room temperature, then 
 \begin{equation} \label{eqn:ch8-pred-contrast}
   0.825 \times \SI{307}{\K} + (1 - 0.825) \times \SI{295}{\K} - \SI{295}{\K} =  \SI{9.9}{\K},
 \end{equation}
-about \SI{1.5}{\K} larger than observed.
+about \SI{1.8}{\K} larger than observed.
 Given uncertainties in the actual skin temperature of the person in the image, the true emissivity of human skin at \SI{350}{\GHz}, the true background temperature and the true temperature of the illuminating light, the closeness of the predicted and observed values gives confidence that our temperature scale is roughly correct.
 
 \begin{figure*}[th]
@@ -504,7 +505,7 @@ The person in the images is the author.
 A ceramic knife hidden beneath a button-down cotton shirt is visible on the left of each image.
 The darker line running down the center of the shirt is due to the extra layer of cotton backing the buttons; this additional cloth produces more attenuation of the warm light from the body.
 As discussed in the text, the temperature range in these images was clipped to $\pm \SI{3}{\K}$ for better contrast in display to viewers.
-The total contrast in the raw images is \SI{8.5}{\K}, about \SI{1.5}{\K} lower than expected.
+The total contrast in the raw images is \SI{8.2}{\K}, about \SI{1.8}{\K} lower than expected.
 See text for discussion.
 }
 \label{fig:ch8-single-frames}
@@ -514,7 +515,9 @@ See text for discussion.
 \centering
 \includegraphics[width=\textwidth]{drawings/ch8-beams-on-image.pdf}
 \caption{
-  xxx add this plot!
+  Plot showing where beams are pointed in farfield.
+  The background image is frame 25 from the video discussed in \sectionref{sec:ch8-algo}.
+  The beam \FWHM\ ellipses are in blue.
 }
 \label{fig:ch8-beams-on-image}
 \end{figure*}
@@ -612,13 +615,25 @@ The agreement between the predicted \NETD\ of \SI{115}{\mK} and the observed fla
 However, there are several ways in which the noise modeling used in this section simplifies matters:
 \begin{itemize}
 \item The white noise level for each detector is different.
-\item The total integration time per pixel is not uniform. Some pixels end up receiving much more detector samples then others.% (xxx quantify)
+\item The total integration time per pixel is not uniform.
+      Some pixels end up receiving much more detector samples then others, as shown in \figref{fig:ch8-flat-frame-cnt}.
 \item The detector noise is not white.
       \eqnref{eqn:ch8-radiometer} is strictly only true for a noise spectrum that is white, while the detector noise spectrums have roll-offs due to the detector time constant $\tau_{eff}$, \SQUID\ noise, a roll-off due to the \SQUID\ servo loop, and other features.
       Because the noise roll-offs reduce the variance of the detector timestream, this should tend to reduce noise in the map.
       However, the roll-offs also mean that consecutive samples in a detector timestream are correlated, so that averaging them will not reduce noise by the full ``square-root of the number of samples'' factor that is appropriate for uncorrelated noise.
 \end{itemize}
 A more careful analysis of these factors would be useful, but has not yet been performed.
+
+\begin{figure*}[th]
+\centering
+\includegraphics[width=\textwidth]{drawings/ch8-flat-frame-cnt.pdf}
+\caption{
+  Distibution of samples per pixel for flat field image shown in \figref{fig:ch8-flat-netd}.
+  Different video frames have slightly different distibutions, but the overall features are all similar to what is shown here.
+  The bins in the histogram on the right are one sample wide, so that it can be seen that a handful of pixles around the outer edge recieve only one sample.
+}
+\label{fig:ch8-flat-frame-cnt}
+\end{figure*}
 
 % Noise can't be reduced very much by sampling much faster than the rolloff in your noise power spectrum.
 % But the noise is reduced by a bit, and in this section I quantify that bit.

@@ -1,0 +1,70 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.5in, height=1.5in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{lr}
+
+\begin{tikzpicture}[trim axis left]
+  \begin{axis}[
+    title={Samples Per Pixel}
+    xlabel={Horizontal Offset (\si{\cm})},
+    ylabel={Vertical Offset (\si{\cm})},
+    enlargelimits=false,
+    axis equal image,
+    axis on top,
+    colorbar horizontal,
+    colorbar style={
+      axis equal=false,
+      colormap/jet,
+      xlabel={Samples Per Pixel},
+    }
+    ]
+  \addplot[point meta min=1.000000e+00, point meta max=8.700000e+01] graphics [xmin=-4.250000e+01,xmax=4.050000e+01,ymin=-2.950000e+01,ymax=2.750000e+01] {../images/ch8-flat-frame-cnt.png} ;
+
+\end{axis}
+\end{tikzpicture}
+
+  &  
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[
+        ymin=0,xmin=0,xmax=90, 
+		title={Distribution of Samples Per Pixel},
+		xlabel={Samples Per Pixel}, ylabel={Quantity} ]
+	  \addplot [hist={data min=0,data max=90,bins=90},
+		        fill=blue!75]
+	    table[y=cnt]{../data/ch8-flat-frame-cnt.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+  % \begin{tikzpicture}[trim axis right]
+  %   \begin{axis}[ymin=0,ymax=1.0,xmin=0,xmax=90,
+  %   	title={Cumulative Distribution},
+  %   	xlabel={Samples Per Pixel}, ylabel={Cumulative Density} ]
+  %     \addplot [hist={cumulative,density,data min=0,data max=90,bins=30},
+  %   	        fill=blue!75]
+  %       table[y=cnt]{../data/ch8-flat-frame-cnt.dat};
+  %   \end{axis}
+  % \end{tikzpicture}
+ 
+\end{tabular}
+
+\end{document}

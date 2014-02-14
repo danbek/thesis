@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\usepackage{datatool}
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+    every axis/.append style={
+    scale only axis,
+    width=3.0in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\DTLsetseparator{ }
+\DTLloaddb[noheader=false]{coordinates}{../data/ch8-beam-map-parms.dat}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tikzpicture}[trim axis left]
+  \begin{axis}[
+    xlabel={Horizontal Offset (\si{\cm})},
+    ylabel={Vertical Offset (\si{\cm})},
+    enlargelimits=false,
+    axis equal image,
+    axis on top,
+    ]
+  \addplot[point meta min=-3.000000e+00, point meta max=3.000000e+00] graphics [xmin=-4.050000e+01,xmax=3.750000e+01,ymin=-2.850000e+01,ymax=2.650000e+01] {../images/ch8-still-frame-25.png} ;
+
+  \pgfplotsextra{
+    \DTLforeach*{coordinates}{\x=x0, \y=y0, \sx=sigmax, \sy=sigmay, \theta=theta}{
+      \draw[blue,thick] (axis cs:\x,\y) ellipse [rotate=\theta, x radius=\sx, y radius=\sy] ;
+    }
+  }
+   \end{axis}
+\end{tikzpicture}
+
+\end{document}
