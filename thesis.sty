@@ -79,3 +79,7 @@ C\number\numexpr#2-1\relax
 \newcommand{\Pnoise}[1]{\SI[mode=math,per-mode=symbol]{#1}{\W\per\sqrt{Hz}}}
 \newcommand{\Tnoise}[1]{\SI[mode=math,per-mode=symbol]{#1}{\K\per\sqrt{Hz}}}
 
+% This allows you to put explicit line breaks in a table cell [1].
+% [1]: http://tex.stackexchange.com/a/19678/35130
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}

@@ -220,15 +220,21 @@ Detector Focal Plane &                   & N/A           &  \SI{171.541}{\mm} fr
 \centering
 \caption{
   Parameters of the optical system extracted \ZEMAX\ simulations.
+  ``Primary/Lens Distance'' is the distance from the outer vertex of the len to the vertex of primary.
+  ``Plate Scale'' gives the ratio of distances on the far-field focal plane to the detector focal plane.
+  ``Mirror Rotation'' give the distance that the on-axis point moves when the mirror is roated by \ang{1}.
 }
 \label{tab:ch4-zemax-parms}
-\begin{tabular}{p{5in}l}
+\begin{tabular}{cccc}
 \toprule
-Parameter & Value \\
+  \specialcell{Focus Distance \\ (\si{\m})} &
+  \specialcell{Primary/Lens Distance \\ (\si{\mm})} &
+  \specialcell{Plate Scale \\ (\si{\cm}/\si{\mm})} &
+  \specialcell{Mirror Rotation \\ (\si{\cm}/\si{\degree})} \\
 \midrule
-Plate Scale. Ratio of distance on detector focal plane to distance on farfield focal plane & \\
-Mirror Rotation. How far beam moves on the farfield focal plane as a result of mirror rotation & \\
-xxx &  \\
+16 & 230.475 &  6.111 & 18.354 \\
+17 & 197.18  &  6.638 & 19.330 \\
+28 &   8.0   & 12.589 & 30.037 \\
 \bottomrule
 \end{tabular}
 \end{table*}
