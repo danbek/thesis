@@ -28,7 +28,7 @@ Another group of detectors remain superconducting at the chosen bias point and o
 This could be caused by an abnormally high $G$ and/or $T_c$ value, or by a short somewhere in the \TES\ circuit.
 \figref{fig:tes-bias-ramp-trans} shows the result of ramping the \TES\ bias current over a small range while running the readout system open-loop, the detectors are biased at \SOC.
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
 \includegraphics[width=\textwidth]{./images/1377812876_RCs_sq1ramptes_00.png}
 \caption{Plot showing response of SQUID amplifier chain to ramp in \TES\ bias current, while \TES\ is superconducting.
@@ -40,7 +40,7 @@ This could be caused by an abnormally high $G$ and/or $T_c$ value, or by a short
 \label{fig:tes-bias-ramp-sc}
 \end{figure*}
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
 \includegraphics[width=\textwidth]{./images/1378756510_RCs_sq1ramptes_00.png}
 \caption{Plot showing response of SQUID amplifier chain to ramp in \TES\ bias current, while \TES\ is biased into transition.
@@ -140,9 +140,9 @@ To check whether these small values were nevertheless real, I calculated the cro
 If crosstalk is present to a statistically significant level, a scatter plot of the crosstalk amplitudes for the two halves of the data acquisition should show signs of correlation.
 As can be seen in \figref{fig:ch8-bose-cross}, the points are clustered about the origin and no correlation is apparent.
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
-\includegraphics[width=\textwidth]{drawings/ch8-bose-cross.pdf}
+\includegraphics{drawings/ch8-bose-cross.pdf}
 \caption{
 Plot showing crosstalk amplitudes.
 The left plot is for \DISP1, the right for \DISP2.
@@ -167,9 +167,9 @@ The temperature of the aperture is much closer to the background than in the \SI
 The reasons for the difference from \ZEMAX\ predictions are not understood.
 Possibilities include the cryostat being located too close to the mirror system, or errors in the manufacturing or assembly of the optical components.
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
-\includegraphics[width=\textwidth]{drawings/ch8-focus.pdf}
+\includegraphics{drawings/ch8-focus.pdf}
 \caption{
   Plots showing impact of observing objects not located at the far-field focal plane.
   In both cases the \SI{1030}{\celsius} black-body source with aperture diameter set to \SI{0.4}{\in} (\SI{1.0}{\cm}) was observed. The acquisitions were taken 2.5\,minutes apart, and the only thing changed was the distance between the black-body and the primary mirror.
@@ -238,7 +238,7 @@ To give a sense of the scale of the area covered directly by the beams relative 
 
 Although the ellipticity of the beams is disappointing, the resolution is close to target, and the ellipticity is not a barrier to using the system to take video images.
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
 \includegraphics{drawings/ch8-beam-summary.pdf}
 \caption{
@@ -248,9 +248,9 @@ Although the ellipticity of the beams is disappointing, the resolution is close 
 \label{fig:ch8-beam-summary}
 \end{figure*}
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
-\includegraphics[width=\textwidth]{drawings/ch8-all-beam-maps.pdf}
+\includegraphics{drawings/ch8-all-beam-maps.pdf}
 \caption{
 Plot showing final beam maps.
 The ellipses represent the full-width-half-maximum (\FWHM) of the best-fit 2-D Gaussian for each beam. The beams are elliptical, with a mean $\sigma_1/\sigma_2$ of 1.6, mean beam angle to the $x$-axis of \ang{70}, and beam \FWHM\ of \SI{1.4}{\cm}.
@@ -271,7 +271,7 @@ For each image the \FWHM\ width of the strip --- or the cold space inside the co
 
 The result of these measurements is that $F_d = 1.15$.
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
 \includegraphics{drawings/ch8-check-dist.pdf}
 \caption{
@@ -294,7 +294,7 @@ Both differences are expected from convolution of the beam with the dime, which 
 The \FWHM\ of the dime map is \SI{2.0}{\cm}; a bit larger than the dime's width of \SI{1.791}{\cm}, as expected due to convolution with the beam.
 This serves as a rough confirmation of the beam size and locations as determined in \sectionref{sec:ch8-beam-maps}.
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
 \includegraphics{drawings/ch8-dime-map.pdf}
 \caption{
@@ -494,9 +494,9 @@ If the coldest temperature in the images is given by the room temperature, then 
 about \SI{1.8}{\K} larger than observed.
 Given uncertainties in the actual skin temperature of the person in the image, the true emissivity of human skin at \SI{350}{\GHz}, the true background temperature and the true temperature of the illuminating light, the closeness of the predicted and observed values gives confidence that our temperature scale is roughly correct.
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
-\includegraphics[width=\textwidth]{drawings/ch8-single-frames.pdf}
+\includegraphics{drawings/ch8-single-frames.pdf}
 \caption{
 Sample still images from a video taken with the \Imager.
 Time proceeds left-to-right and top-to-bottom.
@@ -511,9 +511,9 @@ See text for discussion.
 \label{fig:ch8-single-frames}
 \end{figure*}
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
-\includegraphics[width=\textwidth]{drawings/ch8-beams-on-image.pdf}
+\includegraphics{drawings/ch8-beams-on-image.pdf}
 \caption{
   Plot showing where beams are pointed in farfield.
   The background image is frame 25 from the video discussed in \sectionref{sec:ch8-algo}.
@@ -595,9 +595,9 @@ Comparing the two frames visually, it is clear that \NETD\ in the true video fra
 These artifacts are likely caused by the median-subtraction scheme of \sectionref{sec:ch8-algo} not properly accounting for the detector offsets.
 Nevertheless, in area of the video still where there appear to be few scan artifacts (such as the arm on the lower right), the level of noise in the video still appears comparable to the flat still, indicating that \SI{100}{\mK} is a reasonable estimate of the \NETD\ in the image caused by detector noise.
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
-\includegraphics[width=\textwidth]{drawings/ch8-flat-netd.pdf}
+\includegraphics{drawings/ch8-flat-netd.pdf}
 \caption{
   Plots relating to measurement of \NETD\ in flat frame images.
   \textbf{Upper Left} Histogram of \NETD\ for each of 19 frames taken from a ``flat'' video image. This \NETD\ is defined as the standard deviation of the temperatures across all pixels which were visited by at least one detector. 
@@ -624,9 +624,9 @@ However, there are several ways in which the noise modeling used in this section
 \end{itemize}
 A more careful analysis of these factors would be useful, but has not yet been performed.
 
-\begin{figure*}[th]
+\begin{figure*}
 \centering
-\includegraphics[width=\textwidth]{drawings/ch8-flat-frame-cnt.pdf}
+\includegraphics{drawings/ch8-flat-frame-cnt.pdf}
 \caption{
   Distibution of samples per pixel for flat field image shown in \figref{fig:ch8-flat-netd}.
   Different video frames have slightly different distibutions, but the overall features are all similar to what is shown here.
