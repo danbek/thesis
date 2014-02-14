@@ -2,9 +2,9 @@
 
 % xxx should update all plots with latest fudge factor of 1.1457
 
-This chapter descibes the process of turning detector timesteams into videos, as well as measurements required to support that process.
+This chapter describes the process of turning detector timestreams into videos, as well as measurements required to support that process.
 I start with a brief description of which detectors are not used due to problems with their performance (\sectionref{sec:ch8-det-cuts}).
-I then desribe how we readout the position of the secondary mirror (\sectionref{sec:ch8-mirror-readout}), which controls where detectors are pointed at any time, followed by a description of how we determine the focal distance, determine where each beam is pointing in the far-field, and the distance scale (\sectionref{sec:ch8-focus-distance}--\sectionref{sec:ch8-dist-scale}.
+I then describe how we readout the position of the secondary mirror (\sectionref{sec:ch8-mirror-readout}), which controls where detectors are pointed at any time, followed by a description of how we determine the focal distance, determine where each beam is pointing in the far-field, and the distance scale (\sectionref{sec:ch8-focus-distance}--\sectionref{sec:ch8-dist-scale}.
 I also present measurements of the optical efficiency of the system (\sectionref{sec:ch8-opt-eff}) and an estimate of the temperature scale of the images it produces (\sectionref{sec:ch8-temp-scale}).
 The algorithm used to produce video (and still) images is described in \sectionref{sec:ch8-algo}, and a discussion of the \NETD\ in the images is in \sectionref{sec:ch8-noise-model}.
 I close with a discussion of directions for future work in \sectionref{sec:ch8-future-work}.
@@ -48,7 +48,7 @@ This could be caused by an abnormally high $G$ and/or $T_c$ value, or by a short
   Data is shown for rows 0--4 for all eight columns.
   \RC{0}{2}, \RC{0}{3}, \RC{1}{3}, \RC{1}{7} all show no response, only noise (note the change in vertical scale for these row/columns).
   \RC{0}{1}, \RC{2}{5} and \RC{3}{4} all respond as if they were still superconducting (see \figref{fig:tes-bias-ramp-sc}).
-  For the other detetors, the much slower mapping of the $V$-$\phi$ curve indicates a much higher resistance in the \TES\ circuit loop, due to the \TES\ sitting in the transition to the normal state.
+  For the other detectors, the much slower mapping of the $V$-$\phi$ curve indicates a much higher resistance in the \TES\ circuit loop, due to the \TES\ sitting in the transition to the normal state.
   The axis units are the same as in \figref{fig:tes-bias-ramp-sc}.
 }
 \label{fig:tes-bias-ramp-trans}
@@ -311,7 +311,7 @@ This serves as a rough confirmation of the beam size and locations as determined
 
 To measure the total optical efficiency of the system, \IV\ curves can be taken while a detector's beam is pointing at two known temperature distributions.
 As discussed in \sectionref{sec:ch3-iv-curve}, the difference in Joule power at $0.99 R_n$ gives the difference in total power dissipated in the bolometer.
-In this case, the power difference will be caused by the the different amount of power absorbed in the bolometer while observing the two temperatures.
+In this case, the power difference will be caused by the different amount of power absorbed in the bolometer while observing the two temperatures.
 If the two temperatures are $T_1$ and $T_2$, then the total optical efficiency $\eta_{tot}$ is given by
 \begin{equation}
   \eta_{tot} = \frac{P_{iv,1} - P_{iv,2}}{P_{opt}(T_2) - P_{opt}(T_2)},
@@ -363,7 +363,7 @@ These last two equations can be solved for $\eta_{tot}$ and $\tau$. The results 
    \eta_{tot} = \frac{\Delta P_{b,ecco-LN2}}{ \tau ( P_{opt}(T_h) - P_{opt}(T_c) )} .
 \end{equation}
 
-The full set of three IV cuves were repeated three times over the course of several hours.
+The full set of three IV curves were repeated three times over the course of several hours.
 The transmittance $\tau$ of the cooler wall was found to be \abt{\SI{90}{\percent}} and the optical efficiency $\eta_{tot}$ was \SI{13.6}{\percent}. 
 \tableref{tab:opt-eff} gives the results of these measurements averaged over all detectors and all repetitions.
 
@@ -386,10 +386,10 @@ The values are medians and the uncertainties give the \SIrange{25}{75}{\percent}
 \toprule
 Quantity &  Value \\
 \midrule
-$\eta_{tot}$ & $13.6 \pm  0.9$ \% \\ 
-$\tau$ & $90.6 \pm  4.8$ \% \\ 
-$P_{b,ecco-LN2}$   & $25.6 \pm  0.5$ pW \\ 
-$P_{b,lid-LN2}$ & $ 2.0 \pm  1.0$ pW \\
+$\eta_{tot}$ & $13.6 \pm  0.9$ \si{\percent} \\ 
+$\tau$ & $90.6 \pm  4.8$ \si{\percent} \\ 
+$P_{b,ecco-LN2}$   & $25.6 \pm  0.5$ \si{\pW} \\ 
+$P_{b,lid-LN2}$ & $ 2.0 \pm  1.0$ \si{\pW} \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -487,7 +487,7 @@ To estimate the expected contrast we can take the following into account:
         Interpolating between these values leads to an emissivity of \num{0.825} at \SI{350}{\GHz}.
   \item The temperature the room in which theses images were taken was \abt{\SI{295}{\K}}.
 \end{itemize}
-If the coldest temperature in the images is given by the room temperature, then the total contrast in the image is preditected as
+If the coldest temperature in the images is given by the room temperature, then the total contrast in the image is predicted as
 \begin{equation} \label{eqn:ch8-pred-contrast}
   0.825 \times \SI{307}{\K} + (1 - 0.825) \times \SI{295}{\K} - \SI{295}{\K} =  \SI{9.9}{\K}.
 \end{equation}
@@ -515,7 +515,7 @@ See text for discussion.
 \centering
 \includegraphics{drawings/ch8-beams-on-image.pdf}
 \caption{
-  Plot showing where beams are pointed in farfield.
+  Plot showing where beams are pointed in far-field.
   The background image is frame 25 from the video discussed in \sectionref{sec:ch8-algo}.
   The beam \FWHM\ ellipses are in blue.
 }
@@ -530,7 +530,7 @@ My approach for dealing with this offset is, for each video frame, to subtract f
 Although crude, this approach does a good job of accounting for the offsets in the detector timestreams, as well as accounting for the common-mode drift described in \sectionref{sec:ch7-common}.
 However, elliptical scanning artifacts are still visible in the images of \figref{fig:ch8-single-frames}.
 These artifacts arise in part because the median-subtraction scheme will work ``perfectly'' only in the case where the median temperature viewed by each detector during the frame is the same.
-If this is not true for a particular detector, then then ellipse traced out by that detector in the image will appear warmer or cooler than its surroundings (depending whether the distibution that it viewed was cooler or warmer than it's surroundings), leading to ellpitical scanning artifacts.
+If this is not true for a particular detector, then ellipse traced out by that detector in the image will appear warmer or cooler than its surroundings (depending whether the distribution that it viewed was cooler or warmer than it's surroundings), leading to elliptical scanning artifacts.
 
 An additional consequence of this approach is that the median color in each video frame will be the same; i.e., a particular color in frame 1 may not represent the same temperature in frame 10.
 This effect can be see in the early frames of the video available online.
@@ -543,13 +543,13 @@ One idea is to take a ``flat'' image of a uniform temperature distribution prior
 However, a method would still be needed to deal with common-mode drift, as well as other sources of low-frequency $1/f$ noise which could cause detector offsets to drift independently of each other.
 
 Another idea is to use the fact that the ellipse mapped out by each detector during a video frame overlaps with the ellipses of many other detectors.
-It should be possible to take advantage of this to set the offets for each detector correctly on a frame-by-frame basis.
+It should be possible to take advantage of this to set the offsets for each detector correctly on a frame-by-frame basis.
 It is possible that an approach like this could also be used to normalize the responsivity of all the detectors relative to each other.
 
 An iterative approach is also possible, based on the fact that median-subtraction evidently comes close to perfectly removing detector offsets.
 An algorithm could be developed which checks whether the points mapped out by each detector's ellipse are different than the neighboring points.
 If the difference crosses some threshold, the offset could be adjusted and the frame processed with a new set of offsets.
-This process could be repeated several times, untill a self-consistent image is created.
+This process could be repeated until a self-consistent image is created.
 
 Other algorithmic approaches are certainly possible as well, and should be a focus of future work.
 
@@ -589,7 +589,7 @@ If data is acquired in this state, while the secondary mirror is moving, and the
 I carried out this procedure, creating a ``flat'' video with 19 frames.
 The mean \NETD\ across the 19 frames is \SI{101}{\mK}.
 \figref{fig:ch8-flat-netd} shows a histogram of the \NETD\ distribution from all 19 frames, a histogram showing the temperature offset distribution for the second frame (which has $\NETD\ = \SI{100}{\mK}$), the second frame itself, and one of the still images from \figref{fig:ch8-single-frames}.
-Both still images use the same temperature-difference-to-grayscale mapping.
+Both still images use the same temperature-difference-to-gray-scale mapping.
 
 Comparing the two frames visually, it is clear that \NETD\ in the true video frame is dominated not by detector noise, but by artifacts of the scan, visible as elliptical arcs in the image.
 These artifacts are likely caused by the median-subtraction scheme of \sectionref{sec:ch8-algo} not properly accounting for the detector offsets.
@@ -628,9 +628,9 @@ A more careful analysis of these factors would be useful, but has not yet been p
 \centering
 \includegraphics{drawings/ch8-flat-frame-cnt.pdf}
 \caption{
-  Distibution of samples per pixel for flat field image shown in \figref{fig:ch8-flat-netd}.
-  Different video frames have slightly different distibutions, but the overall features are all similar to what is shown here.
-  The bins in the histogram on the right are one sample wide, so that it can be seen that a handful of pixles around the outer edge recieve only one sample.
+  Distribution of samples per pixel for flat field image shown in \figref{fig:ch8-flat-netd}.
+  Different video frames have slightly different distributions, but the overall features are all similar to what is shown here.
+  The bins in the histogram on the right are one sample wide, so that it can be seen that a handful of pixels around the outer edge receive only one sample.
 }
 \label{fig:ch8-flat-frame-cnt}
 \end{figure*}
@@ -704,3 +704,5 @@ A more careful analysis of these factors would be useful, but has not yet been p
 \section{Directions for Future Work} \label{sec:ch8-future-work}
 
 % xxx need to write this section!
+
+
