@@ -16,3 +16,6 @@ drawings/*.dvi
 drawings/*.pdf
 mwe.*
 auto
+*contourtmp0.dat
+*contourtmp0.script
+*contourtmp0.table
