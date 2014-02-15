@@ -4,23 +4,23 @@
 
 The cryostat for the \Imager\ was designed with the goals of simplicity, reliability and turn-key automated operation.
 Highly reliable and easy-to-use cryogen-free mechanical cryocoolers are commercially available, but these cryocoolers are seldom capable of reaching temperatures below 2.5~K.
-Reaching sub-Kelvin temperatures requires a second refrigeration stage, which in our case is a He-4 sorption refrigerator.
-The He-4 sorption refrigerator is based on a proven design and its use can easily be automated.
-Three temperature stages within the cryostat are provided in order to provide intercepts for heatsinking wiring and other objects that are thermal connected to room temperature. 
+Reaching sub-Kelvin temperatures requires a second refrigeration stage, which in our case is a He-4 adsorption refrigerator.
+The He-4 adsorption refrigerator is based on a proven design and its use can easily be automated.
+Three temperature stages within the cryostat are provided in order to provide intercepts for heat sinking wiring and other objects that are thermal connected to room temperature. 
 The result is a reliable cryogen-free cryogenic system that can be controlled remotely.
 
 xxx next para needs rewriting - need to explain what PTC is early on. maybe next para needs to move here, somewhat rewritten.
 
 The cryostat itself was built by Precision Cryogenics\footnote{Precision Cryogenics Systems, Inc. Indianapolis, IN. \url{http://www.precisioncryo.com}} to designs provided by the \Imager\ team.
 \figref{fig:cryo-cutaway} shows a cutaway view of the cryostat, and \tableref{tab:temp-optical-load} lists the temperatures typically reached by different parts of the cryostat during operation when the cryostat is open optically.
-The cryostat has two main parts: a cylinder containing both the PTC and the \He4-sorption refrigerator, and a box located at the bottom of the cylinder which contains temperature intercept plates and the focal plane.
+The cryostat has two main parts: a cylinder containing both the PTC and the \He4-adsorption refrigerator, and a box located at the bottom of the cylinder which contains temperature intercept plates and the focal plane.
 There are three temperature stages, the ``90~K'' Cold Plate, the ``4~K'' Cold Plate, and the Focal Plane.
 The PTC 1st stage is connected to the ``90~K'' Cold Plate by a tube of Al 1100 and a set of CDA-101 Cu braids.
 The combination of this long thermal path with the high heat load on the optical filters sunk to the ``90~K'' stage explains the 45~K temperature differential between the ``90~K`` cold plate and the PTC 1st stage.
 The PTC 2nd stage is connected to the ``4 K'' Cold Plate by a large (3.0 in diameter by 2.78 in long) cylinder of CDA-110 Cu\footnote{This cryostat was originally designed to work with a different cryocooler. The PTC currently installed had a shorter distance between the 1st and 2nd stages, necessitating the Cu cylinder to take up this extra space}, followed by tube of alloy CDA-101 Cu followed by a set of  CDA-101 copper braids.
-The Cu tube is broken into two halves, and the condensation plate (see below) of the sorption fridge is clamped between these two halves. The ``90 K'' Cold Plate is stood off from the cryostat vacuum jacket by four ``roll wrapped'' carbon fiber tube standoffs. The ``4~K'' Cold Plate stands off from the ``90 K'' Cold Plate by eight supports made of G-10.
+The Cu tube is broken into two halves, and the condensation plate (see below) of the adsorption fridge is clamped between these two halves. The ``90 K'' Cold Plate is stood off from the cryostat vacuum jacket by four ``roll wrapped'' carbon fiber tube standoffs. The ``4~K'' Cold Plate stands off from the ``90 K'' Cold Plate by eight supports made of G-10.
 
-The first two temperature intercept stages are provided by a Cryomech PT407 Pulse Tube Cryorefrigerator\footnote{Cryomech, Inc. Syracure, NY. \url{http://www.cryomech.com}}
+The first two temperature intercept stages are provided by a Cryomech PT407 Pulse Tube Cryorefrigerator\footnote{Cryomech, Inc. Syracuse, NY. \url{http://www.cryomech.com}}
 The PT407 has two cooling stages.
 The first stage has 25~W of cooling power at 55~K while the second stage has 0.7~W at 4.2 K.
 Our PT407 uses a remote motor, so that the cold head attached to the cryostat has no moving parts, minimizing vibration of the cryostat.
@@ -60,14 +60,14 @@ PTC 1st Stage Cold Head 			& 48 \\
 PTC 2st Stage Cold Head 			& 3.5 \\
 Cryostat ``50 K'' Cold Plate 		& 84 \\
 Cryostat ``4 K'' Cold Plate 			& 5.8 \\
-Sorption Fridge Condensation Plate 	& 3.7 \\
+Adsorption Fridge Condensation Plate 	& 3.7 \\
 Focal Plane 						& 0.962 \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-Options for reaching temperatures below the $\sim$1.2~K transition temperature of our \TES\ detectors include: dilution refrigerators, adiabatic magnetization refrigerators, pumped \He4 baths, and \He3- and/or \He4-sorption refrigerators.
-We chose a \He4-sorption fridge because of its low cost, ease of operation compared to other solutions, and the fact that the typical base temperatures under no load of $\sim$700~mK is well-matched to our application. xxx actually the key point is temperature - others are in addition.
+Options for reaching temperatures below the $\sim$1.2~K transition temperature of our \TES\ detectors include: dilution refrigerators, adiabatic magnetization refrigerators, pumped \He4 baths, and \He3- and/or \He4-adsorption refrigerators.
+We chose a \He4-adsorption fridge because of its low cost, ease of operation compared to other solutions, and the fact that the typical base temperatures under no load of \abt{\SI{700}{\mK}} is well-matched to our application. xxx actually the key point is temperature - others are in addition.
 A  \He4-sorption fridge works by using a charcoal adsorber to pump on a bath of liquid \He4, reducing the \He4 boiling point and thus the temperature of the bath.
 The \He4 is contained withing a sealed reservoir so that the refrigerator acts as a closed system requiring no \He4 replenishment. 
 While \He4-sorption fridges are commercially available, our team choose to design and build a custom fridge based on a design that has been proven in astronomical applications\cite{devlin_high_2004}.
