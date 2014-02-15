@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    %width=2.5in,height=1.6in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[ymin=1,xmin=1,
+      enlargelimits=false,
+		title={Feedhorn Spillover Efficiency},
+		xlabel={Horn Half-Angle (\si{\degree})}, ylabel={Horn Diameter (\si{\mm})} ]
+      \draw[blue,very thick,dotted] (axis cs:9.4,1) -- (axis cs:9.4,6) ;
+      
+      % label distance=85pt here move the labels just a bit farther
+      % apart. Without doing this, the blue dotted line and black dot
+      % end up right on top of some labels!
+	  \addplot[contour gnuplot={levels={0.1,0.2,0.3,0.4,0.45,0.5,0.55,0.57},label distance=85pt}] table{../data/ch4-feed-spill.dat};
+      \addplot[mark=*,mark size=3pt] coordinates{(9.4,2.68)} ;
+	\end{axis}
+  \end{tikzpicture}
+
+\end{document}

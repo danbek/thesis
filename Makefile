@@ -20,6 +20,9 @@ thesis.pdf : thesis.tex $(InputTeXFiles) $(ImageFiles) $(PDFSAGFiles) thesis.sty
 drawings/ch7-cm-plots.pdf: drawings/ch7-cm-plots.tex thesis.sty
 	cd drawings && $(LUALATEX) $(notdir $<) && $(PDFCROP) $(notdir $@) $(notdir $@)
 
+drawings/ch4-feed-spill.pdf: drawings/ch4-feed-spill.tex thesis.sty
+	cd drawings && $(PDFLATEX) --enable-write18 $(notdir $<) && $(PDFCROP) $(notdir $@) $(notdir $@)
+
 drawings/%.pdf: drawings/%.tex thesis.sty
 	cd drawings && $(PDFLATEX) $(notdir $<) && $(PDFCROP) $(notdir $@) $(notdir $@)
 
