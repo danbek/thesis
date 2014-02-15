@@ -98,7 +98,8 @@ The result are conversion factors of \SI{2.929}{\mm\per\uA} for \DISP1 and \SI{3
 % see cooldown39/ana_bose_factor.m
 
 To convert actuator displacement to displacements in the far-field of the system, I used the conversion factors produced from \ZEMAX\ listed in \sectionref{sec:ch4-optical-design}.
-A \SI{1}{\mm} movement of the actuator produces a change in angle of the secondary mirror of \ang{0.276}; a \ang{1.0} rotation of the secondary mirror displaces the beam of an on-axis detector by \SI{18.35}{\cm} at the far-field focal plane.
+As discussed in \sectionref{sec:ch8-focus-distance}, although the system is configured to focus at \SI{16}{\m}, the actual focal distance is \SI{17}{\m}, so I used values for that distance from \tableref{tab:ch4-zemax-parms}.
+A \SI{1}{\mm} movement of the actuator produces a change in angle of the secondary mirror of \ang{0.276}; a \ang{1.0} rotation of the secondary mirror displaces the beam of an on-axis detector by \SI{19.33}{\cm} at the far-field focal plane.
 
 To convert actuator displacements into locations in the far-field, three additional factors should be considered.
 First, the Cassegrain optical system inverts images that it views, so that a beam from a detector in the lower left of the focal plane (as viewed from behind the detector focal plane) is pointed to the upper right on the far-field image (again as viewed from the system).
@@ -110,18 +111,18 @@ If we consider an $x$-$y$ coordinate system in the far-field, this means that th
 \Delta x = F_d \frac{\sqrt{2}}{2} \left( I_{\DISP1} \times \frac{\SI{2.929}{\mm}}{\SI{1}{\uA}} -
                               I_{\DISP2} \times \frac{\SI{3.024}{\mm}}{\SI{1}{\uA}}  \right) \times
     \frac{\ang{0.276}} {\SI{1}{\mm}} \times
-    \frac{\SI{18.35}{\cm}} {\ang{1}}
+    \frac{\SI{19.33}{\cm}} {\ang{1}}
 \end{equation}
 \begin{equation}
 \Delta y = F_d \frac{\sqrt{2}}{2} \left( I_{\DISP1} \times \frac{\SI{2.929}{\mm}}{\SI{1}{\uA}} +
                               I_{\DISP2} \times \frac{\SI{3.024}{\mm}}{\SI{1}{\uA}}  \right) \times
     \frac{\ang{0.276}} {\SI{1}{\mm}} \times
-    \frac{\SI{18.35}{\cm}} {\ang{1}}
+    \frac{\SI{19.33}{\cm}} {\ang{1}}
 \end{equation}
 
 Here I have also introduced a ``fudge factor'' $F_d$, which allows us to account for any error in manufacturing of the optics, errors in the \ZEMAX\ model, or errors in the \BOSE\ actuator control system; e.g., when we tell the \BOSE\ system to move an actuator by \SI{3}{\mm}, does it really move exactly \SI{3}{\mm}?
 If none of these --- or other --- errors are present in the system, then $F_d$ will be equal to 1.0.
-The direct measurements of distances in the far-field described in \sectionref{sec:ch8-dist-scale} show that $F_d = 1.15$, and this value is used in all analysis for the remainder of this chapter.
+The direct measurements of distances in the far-field described in \sectionref{sec:ch8-dist-scale} show that $F_d = 1.098$, and this value is used in all analysis for the remainder of this chapter.
 
 % pivot 14.19 mm behind mirror vertex
 % pivot 14mm in front on \BOSE\ attachment point
@@ -230,9 +231,9 @@ In \sectionref{sec:ch4-feedhorn-design}, it was shown that the expected \FWHM\ b
 The beams should also be circular rather than strongly elliptical as observed.
 The source of the large beams and ellipticity is not known, but three possible explanations are (1) misalignment of the feedhorns with the primary and secondary mirrors (2) diffraction off the aperture stop located in the \SI{50}{\kelvin} radiation shield (3) errors in fabrication of the mirrors or feedhorns.
 
-The best-fit grid spacing between detector beams in the far field is \SI{2.0}{\cm}.
-Using the plate scale extracted from \ZEMAX\ in \sectionref{sec:ch4-optical-design}, this is equivalent to a \SI{3.2}{\mm} detector spacing on the focal plane array.
-The design detector spacing, after accounting for predicted thermal contraction of the feed-horn arrays, was \SI{2.730}{\mm}, \SI{15}{\percent} smaller than this.
+The best-fit grid spacing between detector beams in the far field is \SI{1.98}{\cm}.
+Using the plate scale extracted from \ZEMAX\ in \sectionref{sec:ch4-optical-design}, this is equivalent to a \SI{2.99}{\mm} detector spacing on the focal plane array.
+The design detector spacing, after accounting for predicted thermal contraction of the feed-horn arrays, was \SI{2.730}{\mm}, \SI{8.6}{\percent} smaller than this.
 
 To give a sense of the scale of the area covered directly by the beams relative to the field of view provided in images, \figref{fig:ch8-beams-on-image} shows the locations at which the beams are pointing when the \BOSE\ actuators are set to their zero positions.
 
@@ -269,7 +270,7 @@ Each strip was \abt{\SI{4}{\cm}} tall, and the strips were \SI{14.5}{\cm}, \SI{2
 The interior of the cooler is \SI{67.7}{\cm} wide.
 For each image the \FWHM\ width of the strip --- or the cold space inside the cooler --- was calculated by taking a cut through the still image centered on the strip or cooler (see \figref{fig:ch8-check-dist}).
 
-The result of these measurements is that $F_d = 1.15$.
+The result of these measurements is that $F_d = 1.098$.
 
 \begin{figure*}
 \centering
