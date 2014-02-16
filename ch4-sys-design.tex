@@ -354,9 +354,9 @@ A \MATLAB\ program was used to find the optimum feedhorn size.
 The program uses an analytic expression for the beam pattern developed in \cite{green_radiation_2006,narasimhan_modes_1971,}.
 The far-field electric field pattern takes the form
 \begin{equation}
-    \vect{E}(\theta,\phi) = E_{\theta} \sin{\phi} \hat{\theta} + E_{\phi}(\theta) \cos{\phi} \cos{\theta} \hat{\phi}.
+    \vect{E}(\theta,\phi) = E_{\theta}(\theta) \sin{\phi} \hat{\theta} + E_{\phi}(\theta) \cos{\phi} \hat{\phi}.
 \end{equation}
-Here $E_{\theta}$ and $E_{\phi}$ are functions depending the horn diameter $D$ and opening half-angle $\alpha_0$, and involving definite integrals of Bessel functions, not reproduced here.
+Here $E_{\theta}$ and $E_{\phi}$ are functions depending the horn diameter $D$ and opening half-angle $\alpha_0$, and involving definite integrals of Bessel functions, given in \appendixref{app:feedhorn-eqn}.
 This expression is for the waveguide mode polarized along the $\pi/2$ direction.
 The \Imager's detectors are unpolarized, so detect both waveguide polarizations equally (see \sectionref{xxx} for confirmation of this via simulations).
 The total power beam map is thus given by the incoherant sum
@@ -365,7 +365,7 @@ The total power beam map is thus given by the incoherant sum
 \end{equation}
 which simplifies to 
 \begin{equation}
-    P(\theta) = |E_{\theta}(\theta)|^2 + |E_{\phi}(\theta)|^2 \cos{\theta}^2,
+    P(\theta) = |E_{\theta}(\theta)|^2 + |E_{\phi}(\theta)|^2,
 \end{equation}
 which is independent of $\phi$, as expected for an unpolarized detector.
 
@@ -381,20 +381,25 @@ $\alpha_0 = \SI{9.4}{\degree}$ was chosen as a value that is easy to machine, ke
 \caption{
   Plot showing feedhorn spillover efficiency $\eta_s$ as a function of horn diameter $D$ and horn flare half-angle $\alpha_0$.
   The blue dotted line is for $\alpha_0 = \ang{9.4}$, the value assumed during optimization.
-  The black dot shows the feedhorn parameters used in the \Imager: $D = \SI{2.68}{\mm}$ (cold) and $\alpha_0 = \ang{9.4}
+  The black dot shows the feedhorn parameters used in the \Imager: $D = \SI{2.68}{\mm}$ (cold) and $\alpha_0 = \ang{9.4}$
 }
 \label{fig:ch4-feed-spill}
 \end{figure*}
 
 The feedhorn diameter chosen does not maximize $\eta_s$, because it turned out that a smaller \NETD\ could be achieved by using a larger number of smaller feedhorns.
-In fact, as \figref{fig:netd-num-feeds} shows, an even larger number of even smaller feedhorns is predicted to reduce \NETD\ by xxx \%.
-However, as mentiond above, the maximum number of detectors that can be readout by our system is 1024, so $D = xxx$ was chosen as the optimal feedhorn diameter.
+In fact, as \figref{fig:ch4-netd-vs-nfeeds} shows, an even larger number of even smaller feedhorns is predicted to reduce \NETD\ by \SI{3}{\percent}.
+However, as mentiond above, the maximum number of detectors that can be readout by our system is 1024, so $D = 0.108$\,mils (\SI{2.73}{\mm} cold) was chosen as the optimal feedhorn diameter.
 
 \begin{figure*}
 \centering
-\includegraphics[width=3.0in]{./images/netd_num_feeds.pdf}
-\caption{Plot showing how total number of detectors and system \NETD\ depend on diameter chosen for feedhorns. The number of detectors is a discrete function of the feedhorn diameter because it is not possible to have a fractional part of a feedhorn. \NETD\ is maximized with xxx feedhorns of diameter xxx, but the \Imager\ uses 1004 feedhorns of diameter xxx because of readout limitations. xxx Is this plot right? I chose 2.68 mm (cold), which leads to ~800 detectors, not 1024.}
-\label{fig:netd-num-feeds}
+\includegraphics[width=3.0in]{./drawings/ch4-netd-vs-nfeeds.pdf}
+\caption{
+  Plot showing how \NETD\ depends on number of feedhorns in array.
+  As discussed in the text, due to the square array the important parameter determining the total number of feedhorns is the number per side of the grid.
+  The \NETD\ is plotted relative to the \NETD\ for an array with 16 feedhorns per side, which is the value chosen for this system.
+  \NETD\ is minimized with 20 feedhorns per side, giving a total of 1580 feedhorns of diameter \SI{2.185}{\mm} (cold), but the \Imager\ uses 1004 feedhorns of diameter \SI{2.73}{\mm} (cold) because of readout limitations.
+}
+\label{fig:ch4-netd-vs-nfeeds}
 \end{figure*}
 
 \begin{figure*}

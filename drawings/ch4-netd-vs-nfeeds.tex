@@ -1,0 +1,31 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    %width=2.5in,height=1.6in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[xmin=12,xmax=25,ymin=0.95,ymax=1.25,
+		title={NETD vs Number of Detectrrs},
+		xlabel={Number of Detectors Per Array Side}, ylabel={NETD / $\text{NETD}_{16}$} ]
+	  \addplot table[x=N_side,y=NETD_rel]{../data/ch4-netd-vs-nfeeds.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+\end{document}
