@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+\usepgfplotslibrary{statistics}
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.4in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{lr}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{semilogyaxis}[
+      xmin=0,xmax=40,ymin=1e-4,ymax=1,
+		title={Conical Feedhorn Power Pattern},
+		xlabel={$\theta$ (\si{\degree})}, ylabel={$P(\theta)$},
+        legend entries={Model, Gaussian},
+        legend pos=north east
+        ]
+	  \addplot+[mark=none,line width=1.5] table[x=theta,y=pow]{../data/ch4-feed-pow.dat};
+	  \addplot+[mark=none,line width=1.5,domain=0:40] {exp(-0.5*(x/(2*4.5034))^2)};
+      \draw[blue,very thick] (axis cs:5.2678,1e-4) -- (axis cs:5.2678,1);
+      \draw[blue,very thick] (axis cs:13.6148,1e-4) -- (axis cs:13.6148,1);
+	\end{semilogyaxis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[
+      xmin=0,xmax=5,ymin=0,ymax=1,
+		title={Far-field Beam Pattern},
+		xlabel={Radial Distance (\si{cm})}, ylabel={$P$},
+        ]
+	  \addplot+[mark=none,line width=1.5] table[x=x,y=pow_psf]{../data/ch4-pred-psf.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+\end{tabular}
+\end{document}

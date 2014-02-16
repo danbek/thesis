@@ -322,15 +322,15 @@ The total \NETD\ was given in \sectionref{xxx} as
     NETD = \frac{NEP_{tot}}{2 k_B \Delta \nu \eta_{tot} \sqrt{2 \tau}}.
 \end{equation}
 To make the factors depending on the size of the feedhorns more clear we can break the optical efficiency $\eta_{tot}$ into a product of two factors, $\eta_s$ and $\eta_{other} = \eta_{tot} / \eta_s$.
-We then note that the integration time per pixel $\tau$ is inversely proportional to the number of detectors $N$.
+We then note that the integration time per pixel $\tau$ is proportional to the number of detectors $N$.
 This leads to
 \begin{equation}
-    NETD \propto \frac{NEP_{tot}\sqrt{N}}{\eta_s}.
+    NETD \propto \frac{NEP_{tot}}{\sqrt{N}\eta_s}.
 \end{equation}
 
 The critical relationship is that as a feedhorn's opening diameter increases, the width of the beam becomes smaller.
 Small beam angles increase $\eta_s$, which improves \NETD.
-However, the diffraction-limited area on the focal plane that can be covered by feedhorns is fixed, so that increases the horn opening diameter reduces the number of detectors $N$, which worsens \NETD.
+However, the diffraction-limited area on the focal plane that can be covered by feedhorns is fixed, so that increases in the horn opening diameter reduce the number of detectors $N$, which worsens \NETD.
 Choosing an optimal feedhorn size requires trading these two effect off against each other to minimize \NETD.
 
 There are four additional factors to consider.
@@ -377,7 +377,7 @@ $\alpha_0 = \SI{9.4}{\degree}$ was chosen as a value that is easy to machine, ke
 
 \begin{figure*}
 \centering
-\includegraphics[width=3.0in]{./drawings/ch4-feed-spill.pdf}
+\includegraphics{./drawings/ch4-feed-spill.pdf}
 \caption{
   Plot showing feedhorn spillover efficiency $\eta_s$ as a function of horn diameter $D$ and horn flare half-angle $\alpha_0$.
   The blue dotted line is for $\alpha_0 = \ang{9.4}$, the value assumed during optimization.
@@ -386,40 +386,52 @@ $\alpha_0 = \SI{9.4}{\degree}$ was chosen as a value that is easy to machine, ke
 \label{fig:ch4-feed-spill}
 \end{figure*}
 
-The feedhorn diameter chosen does not maximize $\eta_s$, because it turned out that a smaller \NETD\ could be achieved by using a larger number of smaller feedhorns.
-In fact, as \figref{fig:ch4-netd-vs-nfeeds} shows, an even larger number of even smaller feedhorns is predicted to reduce \NETD\ by \SI{3}{\percent}.
-However, as mentiond above, the maximum number of detectors that can be readout by our system is 1024, so $D = 0.108$\,mils (\SI{2.73}{\mm} cold) was chosen as the optimal feedhorn diameter.
+To find the number of horns per array size that minimizes \NETD\, the program assumes that the the feedhorns must cover a square \SI{43.9}{\mm} per side.
+It allows for \SI{1}{\mil} spacing between the edges of the feedorns, and also accounts for a thermal conctaction factor of 4.15 parts per thousand \cite{xxx}.
+Four horns from each subarray are assumed to be missing in order to accomodate other features on the detector wafer.
+The resulting \NETD\ estimates --- normalized to the NETD for the actual feedhorns chosen --- is shown in \figref{fig:ch4-netd-vs-nfeeds}.
+The optimal number of feedhorns per array side is 19, for a total (across all four subarrays) of 1428 feedhorns of diameter \SI{2.25}{\mm} cold.
+Because of readout limitations, the actual number of detectors per side is 16, for 1004 feedhorns with diameter \SI{2.68}{\mm} (\SI{108}{\mils} at room temperature).
+The loss in \NETD\ from this suboptimal choice is only \SI{2}{\percent}.
 
 \begin{figure*}
 \centering
-\includegraphics[width=3.0in]{./drawings/ch4-netd-vs-nfeeds.pdf}
+\includegraphics{./drawings/ch4-netd-vs-nfeeds.pdf}
 \caption{
   Plot showing how \NETD\ depends on number of feedhorns in array.
   As discussed in the text, due to the square array the important parameter determining the total number of feedhorns is the number per side of the grid.
   The \NETD\ is plotted relative to the \NETD\ for an array with 16 feedhorns per side, which is the value chosen for this system.
-  \NETD\ is minimized with 20 feedhorns per side, giving a total of 1580 feedhorns of diameter \SI{2.185}{\mm} (cold), but the \Imager\ uses 1004 feedhorns of diameter \SI{2.73}{\mm} (cold) because of readout limitations.
+  \NETD\ is minimized with 19 feedhorns per side, giving a total of 1428 feedhorns of diameter \SI{2.25}{\mm} (cold), but the \Imager\ uses 1004 feedhorns of diameter \SI{2.68}{\mm} (cold) because of readout limitations.
+  The cost in \NETD\ is only \SI{2}{\percent}.
 }
 \label{fig:ch4-netd-vs-nfeeds}
 \end{figure*}
 
+% xxx - need to re-run all data analysis after verifying the proper
+% inner angle!!!!
+
+\figref{fig:ch4-beams} contains plots of both the beam pattern for the concial feedhorn and the far-field beam pattern of the entire optical system (also called the ``point spread function'').
+The feedhorn beam pattern follows the model described above.
+The far-field beam pattern accounts for the fact that the beam is truncated by the secondary mirror in it's center and by the edge of the primary at its edge; these limits are plotted as vertical blue lines on the left plot.
+The truncation of the center of the beam is responsible for the sidelobe at \abt{\SI{}{\percent}} visible in the far-field beam pattern.
+The far-field beam has a \FWHM\ of \SI{1.38}{\cm}.
+After convolution with a \SI{0.2}{\in} circle the \FWHM\ is \SI{1.39}{\cm}, and after convolving with a \SI{1.791}{\cm} circle (same size as a dime) the \FWHM\ is \SI{1.76}{\cm}.
+
 \begin{figure*}
 \centering
-\includegraphics{images/ch4-reso-comp.pdf}
+\includegraphics{./drawings/ch4-beams.pdf}
 \caption{
-Plot showed expected beam pattern for design feedhorns. see thesis/reso-comp.m
+  Plot showed expected beam pattern for design feedhorns.
+  \textbf{Left} The unpolarized power pattern for a conical feedhorn with diameter \SI{2.68}{\mm} and opening half-angle $\alpha_0 = \ang{9.4}$, at the center frequency for our band.
+  The region between the vertical blue lines indicates the part of the beam that strikes the primary mirror and reaches the far-field focal plane.
+  Also plotted is the best-fit Gaussian within the blue lines.
+  The \FWHM beam width is \ang{10.6}.
+  \textbf{Right} Far-field unpolarized power pattern.
+  This accounts for blockage by the secondary mirror and well as the edge tape of the beam pattern on the primary.
+  The sidelobe is caused by the secondary mirror, and is \SI{5.7}{\percent} high.
 }
-\label{fig:ch4-reso-comp}
+\label{fig:ch4-beams}
 \end{figure*}
-
-xxx - show that beam is well-approximated by a gaussian over the area of the primary mirror.
-
-%\subsection{Far-field beam pattern and system spatial resolution}
-%
-%A Fourier transform relationship exists between the electric field illuminating the aperture of an optical system and the electric field far away form the aperture\cite{xxx}.
-%\[
-%   xxx write the expression here,
-%\]
-
 
 \section{Optical Coupling to Detectors}
 
