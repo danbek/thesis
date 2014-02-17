@@ -2,7 +2,7 @@
 
 % xxx consistently refer to flat vs normal videos
 
-% xxx should update all plots with latest fudge factor of 1.1457
+% xxx should update all plots with latest fudge factor of 1.098
 
 This chapter describes the process of turning detector timestreams into videos, as well as measurements required to support that process.
 I start with a brief description of which detectors are not used due to problems with their performance (\sectionref{sec:ch8-det-cuts}).
@@ -97,7 +97,7 @@ This approach synchronizes the actuator position readout with the detector respo
 
 To convert the mirror output current to actuator displacement I moved the mirror actuators in sine-wave patterns with a frequency of \SI{0.1}{\Hz} using 8 different displacement amplitudes.
 I fitted the resulting output current timestream to sine waves.
-The result are conversion factors of \SI{2.929}{\mm\per\uA} for \DISP1 and \SI{3.024}{\mm\per\uA} for \DISP2. xxx fewer sig figs?
+The result are conversion factors of \SI{2.93}{\mm\per\uA} for \DISP1 and \SI{3.02}{\mm\per\uA} for \DISP2.
 % see cooldown39/ana_bose_factor.m
 
 To convert actuator displacement to displacements in the far-field of the system, I used the conversion factors list in \tableref{tab:ch4-zemax-parms}.
@@ -111,14 +111,14 @@ Third, the actuators are oriented so that their rotation axes are rotated from h
 This all means that --- as viewed from the cryostat --- positive displacements of the \DISP1 actuator shift beams up and to the right, while positive displacements of the \DISP2 actuator shift beams up and to the left.
 If we consider an $x$-$y$ coordinate system in the far-field, this means that the $x$ and $y$ displacement of the beams due to mirror movements are calculated as
 \begin{equation}
-\Delta x = F_d \frac{\sqrt{2}}{2} \left( I_{\DISP1} \times \frac{\SI{2.929}{\mm}}{\SI{1}{\uA}} -
-                              I_{\DISP2} \times \frac{\SI{3.024}{\mm}}{\SI{1}{\uA}}  \right) \times
+\Delta x = F_d \frac{\sqrt{2}}{2} \left( I_{\DISP1} \times \frac{\SI{2.93}{\mm}}{\SI{1}{\uA}} -
+                              I_{\DISP2} \times \frac{\SI{3.02}{\mm}}{\SI{1}{\uA}}  \right) \times
     \frac{\ang{0.276}} {\SI{1}{\mm}} \times
     \frac{\SI{19.33}{\cm}} {\ang{1}}
 \end{equation}
 \begin{equation}
-\Delta y = F_d \frac{\sqrt{2}}{2} \left( I_{\DISP1} \times \frac{\SI{2.929}{\mm}}{\SI{1}{\uA}} +
-                              I_{\DISP2} \times \frac{\SI{3.024}{\mm}}{\SI{1}{\uA}}  \right) \times
+\Delta y = F_d \frac{\sqrt{2}}{2} \left( I_{\DISP1} \times \frac{\SI{2.93}{\mm}}{\SI{1}{\uA}} +
+                              I_{\DISP2} \times \frac{\SI{3.03}{\mm}}{\SI{1}{\uA}}  \right) \times
     \frac{\ang{0.276}} {\SI{1}{\mm}} \times
     \frac{\SI{19.33}{\cm}} {\ang{1}}
 \end{equation}
