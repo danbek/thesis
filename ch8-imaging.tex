@@ -2,8 +2,6 @@
 
 % xxx consistently refer to flat vs normal videos
 
-% xxx should BOSE really be all caps?
-
 % xxx should update all plots with latest fudge factor of 1.1457
 
 This chapter describes the process of turning detector timestreams into videos, as well as measurements required to support that process.
@@ -85,7 +83,8 @@ In order to turn this data stream into a video, we must know where the optical s
 This section describes how this pointing information is placed directly into the timestream by the \Imager.
 It is also necessary to know where each detector is pointed relative to the optical system; this relative detector pointing information is extracted from beam maps, as discussed in \sectionref{sec:ch8-beam-maps}.
 
-The pointing of the optical system is set by the positions of the two actuators --- \DISP1 and \DISP2 --- that move the secondary mirror.
+The pointing of the optical system is set by the positions of the two \BOSE\ actuators --- \DISP1 and \DISP2 --- that move the secondary mirror%
+\footnote{See \sectionref{sec:ch4-optical-design}}.
 The actuator control hardware provides two voltage signal which are proportional to the positions of the actuators.
 This voltage signal is sent into the \Imager\ cryostat by a pair coaxial cables.
 Inside the cryostat two \SI{1}{m} long Phosphor Bronze \AWG36 twisted pair wires carry the signal to the focal plane, where the signal is fed into the input coil of a 1st stage \SQUID.
@@ -210,9 +209,9 @@ The following 2-D Gaussian allowing for ellipticity was then fit to each beam ma
 \begin{multline}
   % Note the use of the null delimiters \left. and \right. to allow
   % the equation to be broken over lines.
-  P(x,y) = O + A \exp{ \left[  - \frac{1}{2} \left( \frac{ (x-x_0) \cos{\theta} + (y-y_0) \sin{\theta}}{\sigma_1} \right)^2 \right. \\ 
-                             \left. - \frac{1}{2} \left( \frac{-(x-x_0) \sin{\theta} + (y-y_0) \cos{\theta}}{\sigma_2} \right)^2
-                       \right] }.
+  P(x,y) = O + A \, \text{exp} \left[  - \frac{1}{2} \left( \frac{ (x-x_0) \cos{\theta} + (y-y_0) \sin{\theta}}{\sigma_1} \right)^2 \right. \\ 
+                              \left. - \frac{1}{2} \left( \frac{-(x-x_0) \sin{\theta} + (y-y_0) \cos{\theta}}{\sigma_2} \right)^2
+                       \right] .
 \end{multline}
 Here $x$ and $y$ represent the position in the beam map, while $x_0$, $y_0$, $\sigma_1$, $\sigma_2$, $\theta$, $A$, and $O$ are the parameters to be fit.
 $O$ represents an overall \DC\ offset in the map level.
