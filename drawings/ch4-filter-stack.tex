@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+%\usepackage{pgfplots} % drawing plots right here in this file!
+%\pgfplotsset{compat=1.9} % latest stable release
+
+\begin{document}
+
+\pagestyle{empty}
+
+\tikzstyle{lens}=[rectangle,inner sep=0pt,draw=black,minimum width=4cm,minimum height=0.5cm]
+\tikzstyle{thick-lp}=[rectangle,inner sep=0pt,draw=black,fill=black,minimum width=3.5cm,minimum height=0.1cm]
+\tikzstyle{shader}=[rectangle,inner sep=0pt,draw=black,fill=black,minimum width=3.5cm,minimum height=0.2mm]
+
+\tikzstyle{filtlabel}=[anchor=west,inner sep=0pt,minimum width=3in,text width=2.9in]
+\tikzstyle{templabel}=[anchor=east,inner sep=0pt,minimum width=1in,text width=0.9in,align=right]
+
+\begin{tikzpicture}
+	
+  \pgfmathsetmacro{\sdelt}{0.6} % dist b/w filts at same temp
+  \pgfmathsetmacro{\ldelt}{1.5} % dist b/w temps
+  
+  \pgfmathsetmacro{\labelx}{2.25} % x pos for labels
+  \pgfmathsetmacro{\xaps}{\labelx - 0.49} % x pos for labels
+  \pgfmathsetmacro{\xape}{0.60} % x pos for labels
+
+  \pgfmathsetmacro{\ylens}{0}
+  \pgfmathsetmacro{\ytherma}{\ylens - \sdelt}
+
+  \pgfmathsetmacro{\ythermb}{\ytherma - \ldelt}
+  \pgfmathsetmacro{\yap}{\ythermb - \sdelt}
+  \pgfmathsetmacro{\ywa}{\yap - \sdelt}
+  \pgfmathsetmacro{\ythermc}{\ywa - \sdelt}
+
+  \pgfmathsetmacro{\ythermd}{\ythermc - \ldelt}
+  \pgfmathsetmacro{\ywb}{\ythermd - \sdelt}
+  \pgfmathsetmacro{\ywc}{\ywb - \sdelt}
+
+  \pgfmathsetmacro{\ybp}{\ywc - \ldelt}
+  
+
+  \pgfmathsetmacro{\ytempa}{0.5*(\ylens +\ytherma)}
+  \pgfmathsetmacro{\ytempb}{0.5*(\ythermb +\ythermc)}
+
+  % 300 K
+  \node (window) at (0,\ylens)  [lens] {};
+  \node (therm1) at (0,\ytherma) [shader] {};
+  
+  % 50 K
+  \node (therm2) at (0,\ythermb) [shader]  {};
+  \draw [thick] (+\xaps,\yap) -- (+\xape,\yap) ;
+  \draw [thick] (-\xaps,\yap) -- (-\xape,\yap) ;
+  \node (W1428)  at (0,\ywa) [thick-lp]  {};
+  \node (therm3) at (0,\ythermc) [shader]  {};
+
+  % 4 K
+  \node (therm4) at (0,\ythermd) [shader] {};
+  \node (Wxxxx) at (0,\ywb) [thick-lp] {};
+  \node (Wxxxy) at (0,\ywc) [thick-lp] {};
+  
+  % 1 K
+  \node (bandpass) at (0,\ybp) [thick-lp] {};
+  
+  % labels
+  \node at (-\labelx,\ytempa) [templabel] {\SI{300}{\K}};
+  \node at (-\labelx,\ytempb) [templabel] {\SI{50}{\K}};
+  \node at (-\labelx,\ywb)    [templabel] {\SI{4}{\K}};
+  \node at (-\labelx,\ybp)    [templabel] {\SI{1}{\K}};
+
+  \node at (\labelx,\ylens)   [filtlabel] {HPDE Lens};
+  \node at (\labelx,\ytherma) [filtlabel] {THERM1 (xxx THz / xxx um) };
+	
+  \node at (\labelx,\ythermb) [filtlabel] {THERM2 (xxx THz / xxx um) };
+  \node at (\labelx,\yap)     [filtlabel] {Aperture Stop};
+  \node at (\labelx,\ywa)     [filtlabel] {W1428 (xxx THz / xxx um) };
+  \node at (\labelx,\ythermc) [filtlabel] {THERM3 (xxx THz / xxx um) };
+
+  \node at (\labelx,\ythermd) [filtlabel] {THERMxxx (xxx THz / xxx um) };
+  \node at (\labelx,\ywb)     [filtlabel] {WXXXX (xxx THz / xxx um) };
+  \node at (\labelx,\ywc)     [filtlabel] {WXXXX (xxx THz / xxx um) };
+
+  \node at (\labelx,\ybp)     [filtlabel] {WXXXX (bandpass fiter) };
+
+\end{tikzpicture}
+
+\end{document}
