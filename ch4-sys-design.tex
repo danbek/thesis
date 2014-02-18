@@ -380,7 +380,7 @@ This expression is for the waveguide mode polarized along the $\pi/2$ direction.
 The \Imager's detectors are unpolarized, so detect both waveguide polarizations equally (see \sectionref{xxx} for confirmation of this via simulations).
 The total power beam map is thus given by the incoherant sum
 \begin{equation}
-    P(\theta, \phi) = (|\vect{E}(\theta, \phi)|^2 + |\vect{E}(\theta, \phi+\pi/2)|^2,
+    P(\theta, \phi) = |\vect{E}(\theta, \phi)|^2 + |\vect{E}(\theta, \phi+\pi/2)|^2,
 \end{equation}
 which simplifies to 
 \begin{equation}
@@ -453,6 +453,51 @@ After convolution with a \SI{0.2}{\in} circle the \FWHM\ is \SI{1.39}{\cm}, and 
 \end{figure*}
 
 \section{Optical Coupling to Detectors}
+
+The feedhorns described in \sectionref{sec:ch4-feedhorn-design} funnel light coming into the crostat into circular waveguide.
+The waveguide carries the light to the bolometer, where it is absorbed by a Palladium Gold (PdAu) mesh.
+This section describes the waveguide and absorbing structures.
+
+The diamater of the circular waveguide was chosen to place the cutoff frequency of the first propagating mode (TE11) below the optical band of the \Imager.
+The cutoff frequency of this mode is given by \cite[Chapter~5]{harrington_time-harmonic_2001}:
+\begin{equation} \label{eqn:ch4-te11-cutoff}
+  f_c = frac{1.841 c}{2 \pi a },
+\end{equation}
+where $c$ is the speed of light in free space and $a$ is the radius of the waveguide.
+For our waveguide I choose a diameter of \SI{0.6}{\mm}, which gives a cutoff frequency of \SI{292}{\GHz}, well below the lowest frequency in the band.
+This choice was made so that the waveguide impedance was more uniform across the waveguide, which should make desinging an efficiency absorbing stucture easier.
+
+The ideal absorbing stucture for unpolarized light would be to cover the entire area of the waveguide with a sheet with a surface impedance equal to the waveguide impedance.
+The characteristic impedance at frequency $f$ for a TE mode in waveguide is
+\begin{equation} \label{eqn:ch4-wg-imp}
+  Z (f) = \frac{\eta_f}{\sqrt{1 - (f_c/f)^2}},
+\end{equation}
+where $eta_f \approx \SI{377}{\ohm}$ is the impedance of free space, $f_c$ the cuttoff frequency for the mode.
+For our waveguide, the impedance at the band-center freqency of \SI{347}{\GHz} is \SI{700}{\ohm}.
+The highest-resistance material available in the fabrication process for the \Imager's detectors is a \SI{20}{\nm} thick layer of PdAu, which for our fabrication process has a surface impedance of \SI{12}{\ohm}/sq%
+\footnote{H.M.~Cho, Galen O'Neil, personal communication}
+, far too low to serve as an effective full-width waveguide absorber.
+
+However, the \SI{12}{\ohm}/sq PdAu can still be used to create an absorbing structure with an effective sheet impedance of \abt{\SI{700}{\ohm}} by reducing the filling factor of the material, by, for example, making an absorber that consists of several thin strips.
+The design rule-of-thumb for these absorbing structures is that the effecive sheet impedance of the absorber is given by
+\begin{equation} \label{eqn:ch4-imp-fill-factor}
+  Z_{eff} = R_s \frac{A_{abs}}{A_{tot}},
+\end{equation}
+where $R_s$ is the impedance of the absorbing material, $A_{abs}$ is the area covered by the absorbing material, and $A_{tot}$ is the total area of the waveguide.
+While no solid theoretical justification of this rule-of-thumb has been published, this approach for designing waveguide absorbers has been used successfully by other millimeter and sub-millimeter wave instruments \cite{xxx}.
+
+For the \Imager, I used this rule-of-thumb as a starting point, but to design the final absorbing structure I ran simulations using \HFSS\footnote{ANSYS, Inc., Canonsburg, PA}.
+\figref{fig:ch4-hfss-model} shows a schematic of the \HFSS\ model, including the fields travelling down the waveguide. The model has the following features:
+\begin{itemize}
+\item \SI{0.6}{\mm} diameter circular waveguide leading to detector.
+\item \SI{135}{\um} ``air gap'' between back of feedhorn array and detector wafer. xxx\si{\percent} of total power is lost into this airgap.
+\item Proper backshort diameter of \SI{844}{\um} and backshort height of \SI{275}{\um}.
+\item To keep the design simple, the backshort walls are not metalized.
+      Rather, the detectors were fabricated on degenerate (Boron P-type) Si wafers with resistivity \SI{4}{\mOhm\cm}.
+      This is accounted for in the simulation.
+\item The exact PdAu mesh used in the fabrication was included.
+\item The Au heat-capacity ring (see \sectionref{xxx}) was included as well.
+\end{itemize}
 
 \section{Predicted Optical Efficiency and Optical Loading on Detectors} \label{sec:ch4-opt-eff}
 \begin{equation} \label{eqn:ch4-power-per-mode}
