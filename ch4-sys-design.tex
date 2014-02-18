@@ -494,17 +494,63 @@ where $R_s$ is the impedance of the absorbing material, $A_{abs}$ is the area co
 While no solid theoretical justification of this rule-of-thumb has been published, this approach for designing waveguide absorbers has been used successfully by other millimeter and sub-millimeter wave instruments \cite{xxx}.
 
 For the \Imager, I used this rule-of-thumb as a starting point, but to design the final absorbing structure I ran simulations using \HFSS\footnote{ANSYS, Inc., Canonsburg, PA}.
-\figref{fig:ch4-hfss-model} shows a schematic of the \HFSS\ model, including the fields travelling down the waveguide. The model has the following features:
+The model has the following features:
 \begin{itemize}
 \item \SI{0.6}{\mm} diameter circular waveguide leading to detector.
 \item \SI{135}{\um} ``air gap'' between back of feedhorn array and detector wafer. xxx\si{\percent} of total power is lost into this airgap.
 \item Proper backshort diameter of \SI{844}{\um} and backshort height of \SI{275}{\um}.
 \item To keep the design simple, the backshort walls are not metalized.
       Rather, the detectors were fabricated on degenerate (Boron P-type) Si wafers with resistivity \SI{4}{\mOhm\cm}.
-      This is accounted for in the simulation.
-\item The exact PdAu mesh used in the fabrication was included.
+      The fields inside the Si are not solved for in this model.
+      Instead, the Si is treated as (poor) conductor with a surface impedance appropriate for its conductivity.
+      The skin depth in this Si are \SI{350}{\GHz} is \SI{5.5}{\um}, justifying this approximation.
+      xxx what happens to the conductivity at low temp? Should go up, right? But does it still conduct, or does it start to act like a insulator?
+\item The exact PdAu mesh used in the fabrication was included, using \SI{12}{\ohm}/sq as the surface impedance.
 \item The Au heat-capacity ring (see \sectionref{xxx}) was included as well.
 \end{itemize}
+\figref{fig:ch4-hfss-model} shows a schematic of the \HFSS\ model, including the fields travelling down the waveguide.
+It also shows a close-up view of the current distribution on a portion of the PdAu mesh.
+
+\begin{figure*}
+\centering
+\includegraphics[width=3in]{images/ch4-hfss-model.png}
+\includegraphics[width=3in]{images/ch4-hfss-grid.png}
+\caption{
+  Screen-shots taken from the \HFSS\ model used to simulate the absorbing grid.
+  \textbf{Left}
+  View of the full model, with the magnitude of the electric field plotted on a plane bisecting the model.
+  \textbf{Right}
+  Close-up view of the absorbing grid, with the surface current density plotted.
+  The waveguide mode being excited is polarized in the up/down direction.
+  Beause the wire are thin compared to the width of the wavguide (\SI{2}{\um} vs \SI{600}{\um}), the current distribution is difficult to see in this plot.
+  But close examination shows that the wire perpendicular to the excited polarization have very low current, while those parallel have higher current.
+  The current decays towards the edges of the waveguide.
+}
+\label{fig:ch4-ch4-hfss-model}
+\end{figure*}
+
+The results of these simulations are shown in \figref{fig:ch4-coupling}.
+The band-averaged coupling efficiency of the mesh for unpolarized light is \SI{87}{\percent}.
+Although the two polarizations have different absorption curves, after averaging over the band their difference in efficiency is only \abt{\SI{1}{\percent}}.
+
+Also shown in \figref{fig:ch4-coupling} is the frequency at which the TM01 waveguide mode turns on: \SI{383}{\GHz}.
+Only \SI{0.9}{\percent} of the bandpass is located above this frequency, so I have ignored any coupling to TM01 and all higher order modes.
+
+\begin{figure*}
+\centering
+\includegraphics{./drawings/ch4-coupling.pdf}
+\caption{
+  Plot showing coupling efficiency of the detector absorbing structures.
+  The blue line is the transmission of the bandpass filter.
+  The red and brown lines show the fractional power absorbed in the grid absorber.
+  Although theses curves have different shapes, their integrated absorbtion over the band is withing \SI{1}{\percent} of each other.
+  The band-averaged absorbtion for unpolarized light is \SI{87}{\percent}.
+  The blue dashed vertical line at \SI{283}{\GHz} indicates the cutoff frequency of the next-highest-order mode, TM01; \SI{0.9}{\precent} of the bandwidth is above this frequency.
+}
+\label{fig:ch4-coupling}
+\end{figure*}
+
+% xxx could add info about impact of misalignment
 
 \section{Predicted Optical Efficiency and Optical Loading on Detectors} \label{sec:ch4-opt-eff}
 \begin{equation} \label{eqn:ch4-power-per-mode}

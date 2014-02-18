@@ -1,0 +1,41 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+\usepgfplotslibrary{statistics}
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.5in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[
+      xmin=300,xmax=400,ymin=0,ymax=1,
+		title={Detector Coupling Efficiency},
+		xlabel={Frequency (\si{\GHz})}, ylabel={Fractional Power},
+        legend entries={Bandpass, Mode 1, Mode 2},
+        legend pos=outer north east,
+        legend style={font=\small},
+        ]
+	  \addplot+[mark=none] table[x=freq,y=bp]{../data/ch4-coupling.dat};
+	  \addplot+[mark=none] table[x=freq,y=mode1_abs]{../data/ch4-coupling.dat};
+	  \addplot+[mark=none] table[x=freq,y=mode2_abs]{../data/ch4-coupling.dat};
+      \draw[blue,dashed,thick] (axis cs:382.5,0) -- (axis cs:382.5,1);
+      %\draw[blue,very thick] (axis cs:13.6148,1e-4) -- (axis cs:13.6148,1);
+	\end{axis}
+  \end{tikzpicture}
+
+\end{document}
