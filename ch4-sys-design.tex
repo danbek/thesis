@@ -349,6 +349,43 @@ Two \BOSE\ linear motors\footnote{Bose ElectroForce, Framinghamm MA} mounted \an
 \label{fig:ch4-filter-stack}
 \end{figure*}
 
+\section{Optical Filtering} \label{sec:ch4-filters}
+
+Another important component of the system are the series of optical filters located inside the cryotat.
+These filters are shown schematically in \figref{fig:ch4-filter-stack}.
+These filters include a band-defining filter located at \SI{1}{\K}, thin thermal blocking filters located at \SI{300}{\K}, \SI{50}{\K}, and \SI{4}{\K}, and multilayer low-pass filters at \SI{50}{\K} and \SI{4}{\K}.
+
+The transmission of the bandpass filter is plotted in blue in \figref{fig:ch4-coupling}.
+The integrated bandwidth of the bandpass filter is \SI{31.1}{\GHz}, with a full-width-half-maximum (\FWHM) band of \SI{35.0}{\GHz}.
+There is some ambiguity in defining the bandwidth and efficiency of a bandpass filter that does not have a top-hat shape.
+In this thesis I have chosen to described the filter as having a bandwith of \SI{35.0}{\GHz} with efficiency $35.0 / 31.1 = \SI{88.5}{\percent}$.
+
+The thermal blocking filters are sheets of \SI{3.3}{\um} polypropylene with metal (capacative) grids printed on each side.
+Because they are so thin, these filters have very little emission even at the infrared wavelengths at which polypropelene is highly absorbtive \cite{xxx}.
+xxx need to state exacty which cutoffs we are using, i.e. ``These filters act as low-pass filter with cutoffs ...''
+
+The \Imager\ also contains thicker multi-layer filters that act as low-pass filters at wavelengths closer to our observing band.
+These filters are also made of metal meshes and polypropylene, but many meshes and polypropylene layers are sandwiched together to form filters that are \abt{\SI{1}{\mm}} thick.
+These filters have excellent transmission in-band band as well as good out-of-band rejection \cite{xxx}, but the thick polypropylene substrates mean that they are also highly absorptive --- and thus also emissive -- in the near-infrared.
+Additionally polypropylene has poor thermal conductivity.
+This means that unless they are heatsunk very well, the centers of the filters will be much warmer than the stage at which they are anchored, and so they will re-radiate infrared power into the cryostat.
+
+\tableref{tab:xxx} lists all filters in the system and gives temperatures for the centers of some of the filters, taken while the cryostat was open optically.
+The outermost multi-layer filter is very warm, and this is a significant source of loading on the \SI{4}{\K} stage, which also warms the \SI{4}{\K} multilayer filters, leading to a level of loading on the \SI{1}{\K} stage that is so high that the stage can not be brough below \SI{1.2}{\K} unless the aperture is stopped down to reduce IR loading.
+This has been accomplished with a xxx in by xxx i aperture installed between the thermal blocking and multi-layer filters on the \SI{50}{\K} stage.
+With this aperture installed, the bandpass filter center reaches a temperature of xxx, low enough that only a very small level of IR loading should be reaching the detectors. xxx need to quantify this!
+
+\tableref{tab:xxx} also lists the in-band transmission of each filter.
+The total transmission of the entire filter stack is xxx.
+
+\begin{figure*}
+\centering
+\includegraphics{drawings/ch4-filter-stack.pdf}
+\caption{
+}
+\label{fig:ch4-filter-stack}
+\end{figure*}
+
 \section{Feedhorn Design}\label{sec:ch4-feedhorn-design}
 
 % xxx where do I explain the choice of a square grid? Ans: section 6.3
@@ -503,18 +540,18 @@ This section describes the waveguide and absorbing structures.
 The diamater of the circular waveguide was chosen to place the cutoff frequency of the first propagating mode (TE11) below the optical band of the \Imager.
 The cutoff frequency of this mode is given by \cite[Chapter~5]{harrington_time-harmonic_2001}:
 \begin{equation} \label{eqn:ch4-te11-cutoff}
-  f_c = frac{1.841 c}{2 \pi a },
+  f_c = \frac{1.841 c}{2 \pi a },
 \end{equation}
 where $c$ is the speed of light in free space and $a$ is the radius of the waveguide.
 For our waveguide I choose a diameter of \SI{0.6}{\mm}, which gives a cutoff frequency of \SI{292}{\GHz}, well below the lowest frequency in the band.
 This choice was made so that the waveguide impedance was more uniform across the waveguide, which should make desinging an efficiency absorbing stucture easier.
 
 The ideal absorbing stucture for unpolarized light would be to cover the entire area of the waveguide with a sheet with a surface impedance equal to the waveguide impedance.
-The characteristic impedance at frequency $f$ for a TE mode in waveguide is
+The characteristic impedance at frequency $f$ for a TE mode in waveguide is \cite[Chapter~2]{harrington_time-harmonic_2001}
 \begin{equation} \label{eqn:ch4-wg-imp}
   Z (f) = \frac{\eta_f}{\sqrt{1 - (f_c/f)^2}},
 \end{equation}
-where $eta_f \approx \SI{377}{\ohm}$ is the impedance of free space, $f_c$ the cuttoff frequency for the mode.
+where $eta_f \approx \SI{377}{\ohm}$ is the impedance of free space and $f_c$ the cuttoff frequency for the mode.
 For our waveguide, the impedance at the band-center freqency of \SI{347}{\GHz} is \SI{700}{\ohm}.
 The highest-resistance material available in the fabrication process for the \Imager's detectors is a \SI{20}{\nm} thick layer of PdAu, which for our fabrication process has a surface impedance of \SI{12}{\ohm}/sq%
 \footnote{H.M.~Cho, Galen O'Neil, personal communication}
@@ -523,7 +560,7 @@ The highest-resistance material available in the fabrication process for the \Im
 However, the \SI{12}{\ohm}/sq PdAu can still be used to create an absorbing structure with an effective sheet impedance of \abt{\SI{700}{\ohm}} by reducing the filling factor of the material, by, for example, making an absorber that consists of several thin strips.
 The design rule-of-thumb for these absorbing structures is that the effecive sheet impedance of the absorber is given by
 \begin{equation} \label{eqn:ch4-imp-fill-factor}
-  Z_{eff} = R_s \frac{A_{abs}}{A_{tot}},
+  Z_{eff} = R_s \frac{A_{tot}}{A_{abs}},
 \end{equation}
 where $R_s$ is the impedance of the absorbing material, $A_{abs}$ is the area covered by the absorbing material, and $A_{tot}$ is the total area of the waveguide.
 While no solid theoretical justification of this rule-of-thumb has been published, this approach for designing waveguide absorbers has been used successfully by other millimeter and sub-millimeter wave instruments \cite{xxx}.
@@ -532,7 +569,7 @@ For the \Imager, I used this rule-of-thumb as a starting point, but to design th
 The model has the following features:
 \begin{itemize}
 \item \SI{0.6}{\mm} diameter circular waveguide leading to detector.
-\item \SI{135}{\um} ``air gap'' between back of feedhorn array and detector wafer. xxx\si{\percent} of total power is lost into this airgap.
+\item \SI{135}{\um} ``air gap'' between back of feedhorn array and detector wafer.
 \item Proper backshort diameter of \SI{844}{\um} and backshort height of \SI{275}{\um}.
 \item To keep the design simple, the backshort walls are not metalized.
       Rather, the detectors were fabricated on degenerate (Boron P-type) Si wafers with resistivity \SI{4}{\mOhm\cm}.
@@ -566,7 +603,7 @@ It also shows a close-up view of the current distribution on a portion of the Pd
 
 The results of these simulations are shown in \figref{fig:ch4-coupling}.
 The band-averaged coupling efficiency of the mesh for unpolarized light is \SI{87}{\percent}.
-Although the two polarizations have different absorption curves, after averaging over the band their difference in efficiency is only \abt{\SI{1}{\percent}}.
+Although the two polarizations have different absorption curves, with peak asorbtion at different frequencies, after averaging over the band their difference in efficiency is only \abt{\SI{1}{\percent}}.
 
 Also shown in \figref{fig:ch4-coupling} is the frequency at which the TM01 waveguide mode turns on: \SI{383}{\GHz}.
 Only \SI{0.9}{\percent} of the bandpass is located above this frequency, so I have ignored any coupling to TM01 and all higher order modes.
