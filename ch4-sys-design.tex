@@ -341,14 +341,6 @@ Two \BOSE\ linear motors\footnote{Bose ElectroForce, Framinghamm MA} mounted \an
 \label{fig:ch4-spot-diagrams}
 \end{figure*}
 
-\begin{figure*}
-\centering
-\includegraphics{drawings/ch4-filter-stack.pdf}
-\caption{
-}
-\label{fig:ch4-filter-stack}
-\end{figure*}
-
 \section{Optical Filtering} \label{sec:ch4-filters}
 
 Another important component of the system are the series of optical filters located inside the cryotat.
@@ -361,12 +353,12 @@ There is some ambiguity in defining the bandwidth and efficiency of a bandpass f
 In this thesis I have chosen to described the filter as having a bandwith of \SI{35.0}{\GHz} with efficiency $35.0 / 31.1 = \SI{88.5}{\percent}$.
 
 The thermal blocking filters are sheets of \SI{3.3}{\um} polypropylene with metal (capacative) grids printed on each side.
-Because they are so thin, these filters have very little emission even at the infrared wavelengths at which polypropelene is highly absorbtive \cite{xxx}.
+Because they are so thin, these filters have very little emission even at the infrared wavelengths at which polypropelene is highly absorbtive \cite{tucker_thermal_2006}.
 xxx need to state exacty which cutoffs we are using, i.e. ``These filters act as low-pass filter with cutoffs ...''
 
 The \Imager\ also contains thicker multi-layer filters that act as low-pass filters at wavelengths closer to our observing band.
 These filters are also made of metal meshes and polypropylene, but many meshes and polypropylene layers are sandwiched together to form filters that are \abt{\SI{1}{\mm}} thick.
-These filters have excellent transmission in-band band as well as good out-of-band rejection \cite{xxx}, but the thick polypropylene substrates mean that they are also highly absorptive --- and thus also emissive -- in the near-infrared.
+These filters have excellent transmission in-band band as well as good out-of-band rejection \cite{ade_review_2006}, but the thick polypropylene substrates mean that they are also highly absorptive --- and thus also emissive -- in the near-infrared.
 Additionally polypropylene has poor thermal conductivity.
 This means that unless they are heatsunk very well, the centers of the filters will be much warmer than the stage at which they are anchored, and so they will re-radiate infrared power into the cryostat.
 
@@ -485,7 +477,7 @@ $\alpha_0 = \SI{9.4}{\degree}$ was chosen as a value that is easy to machine, ke
 \end{figure*}
 
 To find the number of horns per array size that minimizes \NETD\, the program assumes that the the feedhorns must cover a square \SI{43.9}{\mm} per side.
-It allows for \SI{1}{\mil} spacing between the edges of the feedorns, and also accounts for a thermal conctaction factor of 4.15 parts per thousand \cite{xxx}.
+It allows for \SI{1}{\mil} spacing between the edges of the feedorns, and also accounts for a thermal conctaction factor of 4.14 parts per thousand \cite[Appendix~A6.4]{ekin_experimental_2006}.
 Four horns from each subarray are assumed to be missing in order to accomodate other features on the detector wafer.
 The resulting \NETD\ estimates --- normalized to the NETD for the actual feedhorns chosen --- is shown in \figref{fig:ch4-netd-vs-nfeeds}.
 The optimal number of feedhorns per array side is 19, for a total (across all four subarrays) of 1428 feedhorns of diameter \SI{2.25}{\mm} cold.
