@@ -210,7 +210,7 @@ Secondary Mirror  & Hyperbolic Mirror    & \SI{0.44}{\m}
 Cryostat Window   & \HDPE\ Aspheric Lens & \SI{0.24}{\m}
     &  Outer vertex location depends on focus distance; see \tableref{tab:ch4-zemax-parms} \\
 & & &  \SI{2}{\cm} thick at center \\
-& & &  Index of refraction $n = \num{1.525}$ \\
+& & &  Index of refraction $n = \num{1.525}$ (\SI{4.3}{\percent} reflection) \\
 & & &  Outer Surface: $z(k) = c r^2 / (1 + \sqrt{1 - c^2 r^2}) + \sum_{k=1}^{k=8} \beta_k r^k$, where 
        $c^{-1} = \SI{-1052.933}{\mm}$,
        $\beta_1 = -\SI{4724.966}{\mm}$,
@@ -341,9 +341,13 @@ Two \BOSE\ linear motors\footnote{Bose ElectroForce, Framinghamm MA} mounted \an
 \label{fig:ch4-spot-diagrams}
 \end{figure*}
 
+The \HDPE\ window does not have an anti-reflection coating.
+The index of refraction of \HDPE\ is $n=1.525$ \cite{lamb_miscellaneous_1996}, so that expected reflection from the window should be $( (n-1)/(n+1) = \SI{4.3}{\percent}$.
+The absorption coeffienct for \HDPE\ at \SI{350}{\GHz} is $\alpha = \SI{0.044}{\cm^{-1}}$ \cite{lamb_miscellaneous_1996}, leading to \SI{8.5}{\percent} absorbtion in-band, due to the \SI{2}{\cm} thickness of the lens.
+
 \section{Optical Filtering} \label{sec:ch4-filters}
 
-Another important component of the system are the series of optical filters located inside the cryotat.
+Another important component of the system is the series of optical filters located inside the cryotat.
 These filters are shown schematically in \figref{fig:ch4-filter-stack}.
 These filters include a band-defining filter located at \SI{1}{\K}, thin thermal blocking filters located at \SI{300}{\K}, \SI{50}{\K}, and \SI{4}{\K}, and multilayer low-pass filters at \SI{50}{\K} and \SI{4}{\K}.
 
@@ -354,7 +358,7 @@ In this thesis I have chosen to described the filter as having a bandwith of \SI
 
 The thermal blocking filters are sheets of \SI{3.3}{\um} polypropylene with metal (capacative) grids printed on each side.
 Because they are so thin, these filters have very little emission even at the infrared wavelengths at which polypropelene is highly absorbtive \cite{tucker_thermal_2006}.
-xxx need to state exacty which cutoffs we are using, i.e. ``These filters act as low-pass filter with cutoffs ...''
+The cutoff wavelengths of these filters are listed in \tableref{tab:xxx}.
 
 The \Imager\ also contains thicker multi-layer filters that act as low-pass filters at wavelengths closer to our observing band.
 These filters are also made of metal meshes and polypropylene, but many meshes and polypropylene layers are sandwiched together to form filters that are \abt{\SI{1}{\mm}} thick.
@@ -362,21 +366,62 @@ These filters have excellent transmission in-band band as well as good out-of-ba
 Additionally polypropylene has poor thermal conductivity.
 This means that unless they are heatsunk very well, the centers of the filters will be much warmer than the stage at which they are anchored, and so they will re-radiate infrared power into the cryostat.
 
-\tableref{tab:xxx} lists all filters in the system and gives temperatures for the centers of some of the filters, taken while the cryostat was open optically.
-The outermost multi-layer filter is very warm, and this is a significant source of loading on the \SI{4}{\K} stage, which also warms the \SI{4}{\K} multilayer filters, leading to a level of loading on the \SI{1}{\K} stage that is so high that the stage can not be brough below \SI{1.2}{\K} unless the aperture is stopped down to reduce IR loading.
-This has been accomplished with a xxx in by xxx i aperture installed between the thermal blocking and multi-layer filters on the \SI{50}{\K} stage.
-With this aperture installed, the bandpass filter center reaches a temperature of xxx, low enough that only a very small level of IR loading should be reaching the detectors. xxx need to quantify this!
+\tableref{tab:ch4-filter-stack} lists all filters in the system and gives temperatures for the centers of some of the filters, taken while the cryostat was open optically.
+The outermost multi-layer filter is very warm (\SI{190}{\K}), and this is a significant source of loading on the \SI{4}{\K} stage, which also warms the \SI{4}{\K} multilayer filters, leading to a level of loading on the \SI{1}{\K} stage that is so high that the stage can not be brough below \SI{1.2}{\K} unless the aperture is stopped down to reduce IR loading.
+This has been accomplished with a \SI{2.875}{\in} by \SI{2.875}{\in} aperture installed between the thermal blocking and multi-layer filters on the \SI{50}{\K} stage.
+With this aperture installed, the bandpass filter center reaches a temperature of \SIrange{4}{8}{\K} (varying based on the size of the aperture stop).
 
-\tableref{tab:xxx} also lists the in-band transmission of each filter.
-The total transmission of the entire filter stack is xxx.
+Because there are no filters between the bandpass filters and the detectors (other than the highpass filter of the waveguide), all optical power emitted by the bandpass filters falls on the detectors.
+xxx need to comment on both total power and photon noise once I work this out.
+
+\tableref{tab:ch4-filter-stack} also lists the in-band transmission of each filter.
+The total transmission of the filter stack excluding the bandpass filter is \SI{88.8}{\percent}.
 
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch4-filter-stack.pdf}
 \caption{
+  Schemtatic showing locations of all filters in the \Imager.
+  Everything shown here is internal to the cryostat.
+  On the left the nominal tempertures for each stage are listed, and on the right the names and cuttoff wavelengths are listed.
 }
 \label{fig:ch4-filter-stack}
 \end{figure*}
+
+\begin{table*}
+\centering
+\caption{
+  Details of all filters installed in the \Imager.
+  Going down the table, the filters are listed in order from the outside of the cryostat to the inside.
+  ``Stage'' refers to the cryostat temperature stage at which the filter is located.
+  ``Cutoff'' refers to the point at which the filter transmission falls to \abt{-10}\,dB.
+  ``Transmission'' gives the band-averaged transmission of the filter.
+  ``Temperature'' gives the temperature at the center of a filter as measured by embedding a diode in a blob of Apiezon Type-N thermal grease placed on top of a layer of kapton tape, to prevent applying grease to the filter itself.
+  The temperatures of W128 was measured without the aperture stop in place while the filter was after THERM3 rather than before.
+  The temperatures of W1269 and W1275 were measured both with and without a $(\SI{2.25}{\in})^2$ aperture stop, which covers \SI{40}{\percent} less area than the stop used in all other measurements in this thesis.
+ Temperature measurements are not available for the other filters. 
+}
+\label{tab:ch4-filter-stack}
+\begin{tabular}{llcccc}
+\toprule
+  \specialcell{Stage} &
+  \specialcell{Filter Label} &
+  \specialcell{Cutoff \\ (\si{\um}) } &
+  \specialcell{Cutoff \\ (\si{\THz}) } &
+  \specialcell{Transmission} & 
+  \specialcell{Temperature \\ (\si{\K})} \\
+\midrule
+\SI{300}{\K} & THERM1 \SI{1.9}{\um}    & 1.9 & 158  & 1.00   &     \\
+\SI{50}{\K} & THERM2 \SI{4}{\um}      & 4   & 75   & 1.00   &     \\
+            & W1428 \SI{18}{\cm^{-1}} & 556 & 0.54 & 0.96   & 193 \\ % cooldown 12 6/9/10
+            & THERM3 \SI{6}{\um}      & 6   & 50   & 1.00   &     \\
+\SI{4}{\K}  & THERM4 \SI{0}{\um}      & 0   & 0    & 1.00   &     \\
+            & W1266 \SI{14}{\cm^{-1}} & 714 & 0.42 & 0.94   &     \\
+            & W1269 \SI{32}{\cm^{-1}} & 313 & 0.96 & 0.98   & 14--37   \\ % cooldowns 30 & 31
+\SI{1}{\K}  & W1275                   & N/A & N/A  & 0.885 & 3.7--7.8 \\ % cooldowns 30 & 31
+\bottomrule
+\end{tabular}
+\end{table*}
 
 \section{Feedhorn Design}\label{sec:ch4-feedhorn-design}
 
