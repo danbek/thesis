@@ -423,6 +423,9 @@ The total transmission of the filter stack excluding the bandpass filter is \SI{
 \end{tabular}
 \end{table*}
 
+% is ripple in FTS results at low frew for lowpass filters due to
+% reflection from the polypropylene?
+
 \section{Feedhorn Design}\label{sec:ch4-feedhorn-design}
 
 % xxx where do I explain the choice of a square grid? Ans: section 6.3
@@ -662,9 +665,35 @@ Only \SI{0.9}{\percent} of the bandpass is located above this frequency, so I ha
 % xxx could add info about impact of misalignment
 
 \section{Predicted Optical Efficiency and Optical Loading on Detectors} \label{sec:ch4-opt-eff}
+
 \begin{equation} \label{eqn:ch4-power-per-mode}
   \frac{2 h \nu}{e^{\frac{h \nu}{k_B T}} -1} \Delta \nu
 \end{equation}
+
+
+\begin{table*}
+\centering
+\caption{
+}
+\label{tab:ch4-opt-eff}
+\begin{tabular}{lc}
+\toprule
+  Component & Efficiency \\
+\midrule
+  Bolometer Absorbtion  & 0.87 \\
+  Feedhorn Insertion Loss  & 0.00 \\
+  Bandpass Filter & 0.885 \\
+  W1269  & 0.98 \\
+  W1266  & 0.94 \\
+  W1428  & 0.96 \\
+  Lens   & 0.876 \\
+  Spillover  & 0.00 \\
+\midrule
+  Total     & 0.00 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
 \section{Detector Readout} \label{sec:det-readout}
 
 \section{Acknowledgments}
