@@ -662,7 +662,24 @@ Only \SI{0.9}{\percent} of the bandpass is located above this frequency, so I ha
 \label{fig:ch4-coupling}
 \end{figure*}
 
-% xxx could add info about impact of misalignment
+\figref{fig:ch4-coupling-mis} contains plots showing the effect of misalignment between the feedhorns and the detectors.
+For small misaligments (less than $\SI{100}{\um} \approx \SI{4}{\mils}$) the loss in coupling efficiency is small.
+But for large misalignments the loss is efficiency will be large, and one mode will couple much worse than the other.
+Becaues the beam for each individual mode is elliptical, this differential mode-coupling will lead to ellipitcal beams.
+This could be part of the explanation for the combination of poor optical efficiency and elliptical beams desribed in \chapterref{ch:imaging}.
+
+\begin{figure*}
+\centering
+\includegraphics{./drawings/ch4-coupling-mis.pdf}
+\caption{
+  Plots showing impact of misalignment between feedhorns and detectors.
+  The left plot shows band-avereraged coupling efficiency vs misaligment, for misalignment in both $x$ and $y$ directions.
+  The right plot shows the ratio of band-avereraged coupling efficiency of the $x$-polarized mode to the $y$-polarized mode, again for misalignment in both $x$ and $y$ directions.
+  For misalignments up to \SI{100}{\um} loss in coupling efficiency is small.
+  But for large misalignments the efficiency drops substantially, and the modes couples very differently, which will lead to a ellipitcal beams.
+}
+\label{fig:ch4-coupling-mis}
+\end{figure*}
 
 \section{Predicted Optical Efficiency and Optical Loading on Detectors} \label{sec:ch4-opt-eff}
 

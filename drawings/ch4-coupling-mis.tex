@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+\usepgfplotslibrary{statistics}
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.5in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{lr}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[
+      ymin=0,ymax=1,
+      title={Detector Coupling Efficiency},
+      xlabel={Misalignment (\si{\um})}, ylabel={Coupling Efficiency},
+      legend entries={$x$-misalignment,$y$-misalignment},
+      legend pos=south west,
+      %legend style={font=\small},
+      ]
+	  \addplot+ table[x=misalign,y=x_eff]{../data/ch4-coupling-mis.dat};
+	  \addplot+ table[x=misalign,y=y_eff]{../data/ch4-coupling-mis.dat};
+	\end{axis}
+  \end{tikzpicture}
+  
+  & 
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[
+      %xmin=300,xmax=400,ymin=0,ymax=1,
+      title={Compartive Mode Coupling},
+      xlabel={Misalignment (\si{\um})}, ylabel={Coupling Ratio},
+      legend entries={$x$-misalignment,$y$-misalignment},
+      legend pos=south west,
+      %legend style={font=\small},
+      ]
+	  \addplot+ table[x=misalign,y=x_rat]{../data/ch4-coupling-mis.dat};
+	  \addplot+ table[x=misalign,y=y_rat]{../data/ch4-coupling-mis.dat};
+	\end{axis}
+  \end{tikzpicture}
+
+\end{tabular}
+
+\end{document}
