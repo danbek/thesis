@@ -210,7 +210,8 @@ Secondary Mirror  & Hyperbolic Mirror    & \SI{0.44}{\m}
 Cryostat Window   & \HDPE\ Aspheric Lens & \SI{0.24}{\m}
     &  Outer vertex location depends on focus distance; see \tableref{tab:ch4-zemax-parms} \\
 & & &  \SI{2}{\cm} thick at center \\
-& & &  Index of refraction $n = \num{1.525}$ (\SI{4.3}{\percent} reflection) \\
+& & &  Index of refraction $n = \num{1.525}$ (\SI{7.6}{\percent} band-averaged reflection) \\
+& & &  $\tan\delta = \num{4.0e-4}$ (\SI{9.1}{\percent} band-averaged absorbtion) \\
 & & &  Outer Surface: $z(k) = c r^2 / (1 + \sqrt{1 - c^2 r^2}) + \sum_{k=1}^{k=8} \beta_k r^k$, where 
        $c^{-1} = \SI{-1052.933}{\mm}$,
        $\beta_1 = -\SI{4724.966}{\mm}$,
@@ -571,6 +572,13 @@ After convolution with a \SI{0.2}{\in} circle the \FWHM\ is \SI{1.39}{\cm}, and 
 \label{fig:ch4-beams}
 \end{figure*}
 
+The feedhorns were machined out of Al-6061 and then gold plated.
+An estimate of the insertion loss of the feedhorns requires the conductivty of this gold at \SI{1}{\K}. but this quantity is not known.
+I assumed that the gold has the standard value for conductivity at room temperature of \SI{41e6}{\S\per\m}, with a residual resistivity ratio of 3.
+Using this value, and assuming a surface roughness of \SI{5}{\um}, \HFSS\ simulations predict an insertion loss of \SI{-10.5}{\dB}, including both the feedhorn and the waveguide.
+This corresponds to a feedhorn efficiency of \SI{91}{\percent}.
+\HFSS\ simulations indate that the return loss for the feedhorns is \SI{-28}{\dB}, so I ignore return loss.
+
 \section{Optical Coupling to Detectors}
 
 The feedhorns described in \sectionref{sec:ch4-feedhorn-design} funnel light coming into the crostat into circular waveguide.
@@ -683,33 +691,67 @@ This could be part of the explanation for the combination of poor optical effici
 
 \section{Predicted Optical Efficiency and Optical Loading on Detectors} \label{sec:ch4-opt-eff}
 
-\begin{equation} \label{eqn:ch4-power-per-mode}
-  \frac{2 h \nu}{e^{\frac{h \nu}{k_B T}} -1} \Delta \nu
-\end{equation}
+The waveguide behind the feedhorns in the \Imager\ causes the detectors to be sensitive to only the two degenerate TE11 waveguide modes over \SI{99}{\percent} of their bandwidth.
+Because some of the light detected by the \Imager\ is reflected, we expect the light to be polarized to some extent.
+But to simplify the analysis, I assume here that the light is unpolarized, so that the detectors are senstive to to uncorrelated waveguide modes.
 
+The optical power per unit optical bandwidth in two uncorrelated modes detected by a detector with efficiency $\eta(\nu)$ is given by \cite{zmuidzinas_thermal_2003,richards_bolometers_1994}
+\begin{equation} \label{eqn:ch4-power-per-mode}
+  2 \eta(\nu) h \nu n_0(\nu),
+\end{equation}
+where $n_0$ is the photon occupation number give by the Bose-Einstein factor
+\begin{equation} \label{eqn:ch4-photon-n}
+  n_0(\nu) = \frac{1}{e^{\frac{h \nu}{k_B T}} -1}.
+\end{equation}
+For \SI{350}{\GHz} light emitted by a \SI{300}{\K}, $n_0 \approx 17$, so the Raleigh-Jeans limit $h \nu \ll k_B T$ holds, and \eqnref{eqn:ch4-power-per-mode} simplifies to
+\begin{equation} \label{eqn:ch4-power-per-mode-rj}
+  2 \eta(\nu) k_B T.
+\end{equation}
+My calculations below assume the exact from of \eqnref{eqn:ch4-power-per-mode}, but \eqnref{eqn:ch4:power-per-mode-rj} is very useful for quick calculations and checks.
+The photon NEP per unit bandwidth is given by \cite[Equation~51]{zmuidzinas_thermal_2003}
+\begin{equation} \label{eqn:ch4-photon-nep}
+  \NEPph = 4 (h \nu)^2 \eta(\nu) n_0(\nu) (1 + \eta(\nu) n_0(\nu)).
+\end{equation}
+Here the second term represents ``photon bunching'', which only becomes important when many photons are occupying a spatial mode.
+For millimeter and sub-millimeter astronomy observing cold sources such as the Cosmic Microwave Background Radiation, this second term is often negligible, but it is important for the \Imager\ because we are observing \abt{\SI{300}{\K}} targets.
+
+% \tableref{tab:ch4-opt-eff} lists all components of the \Imager\ and their contribution to optical efficiency.
+\tableref{tab:ch4-opt-load} lists all components of the \Imager\ that contribute to optical loading.
+For each component \eqnref{eqn:ch4-power-per-mode} is integrated over the \Imager's optical band, the emmisivity factor from the table is applied uniformly over the band, and the transmission of all components after the given compoment is accounted for.
+The temperatures listed for the filters inside the cryostat are estimates based on measurements described in \tableref{tab:ch4-filter-stack}.
 
 \begin{table*}
 \centering
 \caption{
+  Optical load and photon noise from all components in the \Imager\ that contribute to optical load.
+  xxx what about bandpass filter?
+  All \NEPph\ values are refferred to power absorbed in the bolometer.
+  The total \NEPph\ is the quadrature sum of the contributions from all components, which is the correct sum to take for contributions from uncorrelated guassian noise sources.
+  The efficiency of the lens accounts for losses due to both reflection from the lens and absrobtion in the lens.
+  ``Beam'' refers to power from the far-field that reaches detectors, while ``Spillover'' refers to power that reaches the detectors due to the portions of the beam that misses the primary mirror.
+  % xxx include this? Listing optical power from each of the lens, beam, and spillover is not strictly neccessary, because I assume that all three sources are at the same temperature; I could equally well calculate optical power from a single \SI{295}{\K} source with emissivity of 1.0 looking into an optical system with efficiency \num{0.65}, the cumulative efficiency at the W1428 filter.
 }
-\label{tab:ch4-opt-eff}
-\begin{tabular}{lc}
-\toprule
-  Component & Efficiency \\
-\midrule
-  Bolometer Absorbtion  & 0.87 \\
-  Feedhorn Insertion Loss  & 0.00 \\
-  Bandpass Filter & 0.885 \\
-  W1269  & 0.98 \\
-  W1266  & 0.94 \\
-  W1428  & 0.96 \\
-  Lens   & 0.876 \\
-  Spillover  & 0.00 \\
-\midrule
-  Total     & 0.00 \\
+\label{tab:ch4-opt-load}
+\begin{tabular}{ccccccc}
+% The content of this table is producted by thesis/calc_optical_loading()
+\toprule 
+  Component  & \specialcell{Temperature \\ (\si{\K})} & Efficiency & Emmisivity & \specialcell{$P_{opt}$ \\ (\si{\pW})} & \specialcell{\NEPph\ \\ (\si[mode=math,per-mode=symbol]{\femto\W\per\sqrt{Hz}})} & \specialcell{Cumulative \\ Efficiency} \\  
+\midrule 
+  Bolometer  &   1 & 0.87 &      &       &      & 0.87 \\ 
+  Feedhorn   &   1 & 0.91 &      &       &      & 0.79 \\ 
+  W1275      &   5 & 0.89 &      &       &      & 0.70 \\ 
+  W1266      &  16 & 0.98 & 0.02 &   0.1 & 0.01 & 0.69 \\ 
+  W1269      &  85 & 0.94 & 0.06 &   2.9 & 0.04 & 0.65 \\ 
+  W1428      & 200 & 0.96 & 0.04 &   4.7 & 0.05 & 0.62 \\ 
+  Lens       & 295 & 0.84 & 0.16 &  27.7 & 0.17 & 0.52 \\ 
+  Beam       & 295 & 0.00 & 1.00 & 144.8 & 0.69 & 0.00 \\ 
+\midrule 
+  Total      &     &      &      & 180.2 & 0.72 & 0.52 \\ 
 \bottomrule
 \end{tabular}
 \end{table*}
+
+
 
 \section{Detector Readout} \label{sec:det-readout}
 
