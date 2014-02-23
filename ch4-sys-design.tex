@@ -693,32 +693,67 @@ This could be part of the explanation for the combination of poor optical effici
 
 The waveguide behind the feedhorns in the \Imager\ causes the detectors to be sensitive to only the two degenerate TE11 waveguide modes over \SI{99}{\percent} of their bandwidth.
 Because some of the light detected by the \Imager\ is reflected, we expect the light to be polarized to some extent.
-But to simplify the analysis, I assume here that the light is unpolarized, so that the detectors are senstive to to uncorrelated waveguide modes.
+But to simplify the analysis, I assume here that the light is unpolarized, so that the detectors are senstive to two uncorrelated waveguide modes.
 
-The optical power per unit optical bandwidth in two uncorrelated modes detected by a detector with efficiency $\eta(\nu)$ is given by \cite{zmuidzinas_thermal_2003,richards_bolometers_1994}
+The optical power from a source of temperature $T$ in a single mode detected by a detector with efficiency $\eta(\nu)$ is given by \cite{zmuidzinas_thermal_2003,richards_bolometers_1994}
 \begin{equation} \label{eqn:ch4-power-per-mode}
-  2 \eta(\nu) h \nu n_0(\nu),
+  \int \eta(\nu) h \nu n(\nu,T) d \nu ,
 \end{equation}
-where $n_0$ is the photon occupation number give by the Bose-Einstein factor
+where $n$ is the photon occupation number give by the Bose-Einstein factor
 \begin{equation} \label{eqn:ch4-photon-n}
-  n_0(\nu) = \frac{1}{e^{\frac{h \nu}{k_B T}} -1}.
+  n(\nu,T) = \frac{1}{e^{\frac{h \nu}{k_B T}} -1}.
 \end{equation}
-For \SI{350}{\GHz} light emitted by a \SI{300}{\K}, $n_0 \approx 17$, so the Raleigh-Jeans limit $h \nu \ll k_B T$ holds, and \eqnref{eqn:ch4-power-per-mode} simplifies to
+For \SI{350}{\GHz} light emitted by a \SI{300}{\K}, $n \approx 17$, so the Raleigh-Jeans limit $h \nu \ll k_B T$ holds, and \eqnref{eqn:ch4-power-per-mode} simplifies to
 \begin{equation} \label{eqn:ch4-power-per-mode-rj}
-  2 \eta(\nu) k_B T.
+  2 k_B T \int \eta(\nu) d \nu = 2 k_B T \eta_{tot} \Delta \nu,
 \end{equation}
+where $\eta_{tot}$ is the total optical efficiency of the system and $\Delta \nu$ is the optical bandwidth.
 My calculations below assume the exact from of \eqnref{eqn:ch4-power-per-mode}, but \eqnref{eqn:ch4:power-per-mode-rj} is very useful for quick calculations and checks.
-The photon NEP per unit bandwidth is given by \cite[Equation~51]{zmuidzinas_thermal_2003}
+Photon NEP is given by \cite[Equation~51]{zmuidzinas_thermal_2003}
 \begin{equation} \label{eqn:ch4-photon-nep}
-  \NEPph = 4 (h \nu)^2 \eta(\nu) n_0(\nu) (1 + \eta(\nu) n_0(\nu)).
+  \NEPph = 4 \int (h \nu)^2 \eta(\nu) n(\nu,T) (1 + \eta(\nu) n(\nu,T)) d \nu.
 \end{equation}
 Here the second term represents ``photon bunching'', which only becomes important when many photons are occupying a spatial mode.
 For millimeter and sub-millimeter astronomy observing cold sources such as the Cosmic Microwave Background Radiation, this second term is often negligible, but it is important for the \Imager\ because we are observing \abt{\SI{300}{\K}} targets.
+
+There are two points worth noting about \eqnref{ch4-photon-nep}.
+First, it is tempting to simplify \eqnref{eqn:ch4-photon-nep} as:
+\begin{equation}
+  \NEPph = 4 (h \nu_0)^2 \eta_{tot} n(\nu_0,T) (1 + \eta_{tot} n(\nu_0,T)) \Delta \nu,
+\end{equation}
+where $\nu_0$ is the central frequency of the band.
+However, this will not give the correct answer unless $\eta_{tot}$ and $\Delta \nu$ have been defined so that $\eta_{tot} = \int \eta^2(\nu) d\nu / \int \eta(\nu) d\nu$ and $\Delta \nu = \int \eta(\nu) d \nu / \eta_{tot}$.
+I have not defined the bandwidth of the \Imager\ in this way, so I always evaluate the integral in \eqnref{eqn:ch4-photon-nep}.
+
+Second, the \Imager\ is not viewing a single temperature $T$ that reaches the detectors with efficiency $\eta$.
+Rather, the \Imager\ is viewing an \abt{\SI{300}{\K}} source that is attenuated by a series of attenuators and other lossy elements, each of which is at non-zero temperature and so emits power itself.
+Because of the photon bunching term, it is not correct to calculate \NEPph\ for each optical component separately and then sum all values; doing so will underestimate the noise due to photon bunching.
+
+The correct generalizations of \eqnref{eqn:ch4-power-per-mode} and \eqnref{ch4-photon-nep} is to treat the term $\eta(\nu) n(\nu,T)$ as an total photon occupation number that includes contributions from all sources.
+I make the simplifying approximation that the frequency-dependence of the efficiency is the same for all source of optical power; i.e., it is set by the bandpass filter.
+The total occupation number absorbed in the detectors is then given by
+\begin{equation} \label{eqn:ch4-tot-n0}
+  \eta(\nu) n(\nu,T) \equiv \tau_{bp}(\nu) \sum_k \eta_k \epsilon_k n_k(\nu,T_k).
+\end{equation}
+Here $\tau_{bp}(\nu)$ is the transmission of the bandpass, $\eta_k$ is the cumulative efficiency for light from source $k$ to be absorbed in the detector, $\epsilon_k$ is the emissivity of source $k$ and $n(\nu,T_k)$ is the Bose-Einstein factor \eqnref{eqn:ch4-photon-n} for source $k$, which is at temperature $T_k$.
+
+Under these assumptions the expression for optical power becomes
+\begin{equation} \label{eqn:ch4-opt-pow-all}
+  2 \int h \nu \tau_{bp}(\nu) \left( \sum_k \eta_k \epsilon_k n(\nu,T_k) \right) d \nu.
+\end{equation}
+Note that in this case the optical powers from each source can be calculated separately and them summed.
+The \NEPph\ is given by
+\begin{equation} \label{eqn:ch4-nep-all}
+  4 \int (h \nu)^2 \tau_{bp}(\nu) \left( \sum_k \eta_k \epsilon_k n(\nu,T_k) \right) 
+       \left( 1 + \tau_{bp}(\nu) \left( \sum_k \eta_k \epsilon_k n(\nu,T_k) \right)  \right) d \nu.
+\end{equation}
+
 
 % \tableref{tab:ch4-opt-eff} lists all components of the \Imager\ and their contribution to optical efficiency.
 \tableref{tab:ch4-opt-load} lists all components of the \Imager\ that contribute to optical loading.
 For each component \eqnref{eqn:ch4-power-per-mode} is integrated over the \Imager's optical band, the emmisivity factor from the table is applied uniformly over the band, and the transmission of all components after the given compoment is accounted for.
 The temperatures listed for the filters inside the cryostat are estimates based on measurements described in \tableref{tab:ch4-filter-stack}.
+Also listed are the photon occupation quantities $\epsilon_k \eta_k n(\nu_0,T_k)$ at the band-center frequency.
 
 \begin{table*}
 \centering
