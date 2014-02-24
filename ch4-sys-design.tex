@@ -432,7 +432,7 @@ The total transmission of the filter stack excluding the bandpass filter is \SI{
 % xxx where do I explain the choice of a square grid? Ans: section 6.3
 % xxx where do I explain the missing 20 detectors?
 
-Millimeter and submillimeter astronomical instruments using \TES\ detectors use many different strategies for coupling light onto detectors: filled arrays of absorbers \cite{swetz_overview_2011,holland_scuba-2:_2013}, antennas with lenslets \cite{keating_ultra_2011}, phased antenna arrays \cite{obrient_antenna-coupled_2012}, corrugated feedhorns \cite{austermann_sptpol:_2012,niemack_actpol:_2010}, and smooth-walled conical feedhorns \cite{schwan_invited_2011,sptxxx}.
+Millimeter and submillimeter astronomical instruments using \TES\ detectors use many different strategies for coupling light onto detectors: filled arrays of absorbers \cite{swetz_overview_2011,holland_scuba-2:_2013}, antennas with lenslets \cite{keating_ultra_2011}, phased antenna arrays \cite{obrient_antenna-coupled_2012}, corrugated feedhorns \cite{austermann_sptpol:_2012,niemack_actpol:_2010}, and smooth-walled conical feedhorns \cite{schwan_invited_2011,carlstrom_10_2011}.
 The \Imager\ uses smooth-walled feedhorns because they are easy to design and easy to machine.
 Smooth-walled feedhorns do not have the low cross-polarization properties of corrugated feedhorns \cite{clarricoats_corrugated_1984}, but this is not a concern here because the \Imager\ is polarization-insensitive.
 
@@ -602,16 +602,17 @@ The characteristic impedance at frequency $f$ for a TE mode in waveguide is \cit
 where $eta_f \approx \SI{377}{\ohm}$ is the impedance of free space and $f_c$ the cuttoff frequency for the mode.
 For our waveguide, the impedance at the band-center freqency of \SI{347}{\GHz} is \SI{700}{\ohm}.
 The highest-resistance material available in the fabrication process for the \Imager's detectors is a \SI{20}{\nm} thick layer of PdAu, which for our fabrication process has a surface impedance of \SI{12}{\ohm}/sq%
-\footnote{H.M.~Cho, Galen O'Neil, personal communication}
+\footnote{H.M.~Cho, Galen O'Neil, personal communication}%
 , far too low to serve as an effective full-width waveguide absorber.
 
 However, the \SI{12}{\ohm}/sq PdAu can still be used to create an absorbing structure with an effective sheet impedance of \abt{\SI{700}{\ohm}} by reducing the filling factor of the material, by, for example, making an absorber that consists of several thin strips.
-The design rule-of-thumb for these absorbing structures is that the effecive sheet impedance of the absorber is given by
+A design rule-of-thumb for these absorbing structures is that the effecive sheet impedance of the absorber is given by 
 \begin{equation} \label{eqn:ch4-imp-fill-factor}
   Z_{eff} = R_s \frac{A_{tot}}{A_{abs}},
 \end{equation}
 where $R_s$ is the impedance of the absorbing material, $A_{abs}$ is the area covered by the absorbing material, and $A_{tot}$ is the total area of the waveguide.
-While no solid theoretical justification of this rule-of-thumb has been published, this approach for designing waveguide absorbers has been used successfully by other millimeter and sub-millimeter wave instruments \cite{xxx}.
+This rule-of-thumb has been justified via semi-empircal means \cite{ulrich_far-infrared_1967,whitbourn_equivalent-circuit_1985} for free-space absorbing grids.
+In waveguide, theoretical and empirical support for it's accuracy for a single strip in waveguide has also been given, provided that an additional factor of 2 is inserted in front of $A_{tot}$ \cite{datesman_analytical_2011}.
 
 For the \Imager, I used this rule-of-thumb as a starting point, but to design the final absorbing structure I ran simulations using \HFSS\footnote{ANSYS, Inc., Canonsburg, PA}.
 The model has the following features:
