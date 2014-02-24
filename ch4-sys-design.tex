@@ -166,7 +166,7 @@ Schematic showing elements of optical system.
 \textbf{C} High-density-polyethylene (\HDPE) window leading into cryostat.
            This window acts as a lens to make the system telecentric.
 \textbf{D} Detector focal plane package.
-           The lid covering the focal plane holds an optical filter which defines the band of observation; see \sectionref{xxx}.
+           The lid covering the focal plane holds an optical filter which defines the band of observation; see \sectionref{sec:ch4-filters}.
 }
 \label{fig:ch4-optical-schematic}
 \end{figure*}
@@ -324,7 +324,7 @@ In all cases, nearly all rays map to within the Airy disk, indicating that the p
 
 The secondary mirror is mounted so that it can be pivoted in order to change where the system is pointing to in the far-field.
 Two \BOSE\ linear motors\footnote{Bose ElectroForce, Framinghamm MA} mounted \ang{90} apart allow the mirror to be moved in arbitrary directions and scanning patterns.
-\figref{fig:ch4-secondary-pic} shows the secondary mirror mounting on it's supporting platform, as well as the \BOSE\ motors.
+\figref{fig:ch4-optics} shows the secondary mirror mounted on it's supporting platform, as well as the \BOSE\ motors.
 
 \begin{figure*}
 \centering
@@ -339,7 +339,7 @@ Two \BOSE\ linear motors\footnote{Bose ElectroForce, Framinghamm MA} mounted \an
   The secnondary mirror itself is located on the right of the photograph, while the right side of the photograph shows the \BOSE.
   A titanium strut connects the \BOSE\ to the mirror.
 }
-\label{fig:ch4-spot-diagrams}
+\label{fig:ch4-optics}
 \end{figure*}
 
 The \HDPE\ window does not have an anti-reflection coating.
@@ -359,7 +359,7 @@ In this thesis I have chosen to described the filter as having a bandwith of \SI
 
 The thermal blocking filters are sheets of \SI{3.3}{\um} polypropylene with metal (capacative) grids printed on each side.
 Because they are so thin, these filters have very little emission even at the infrared wavelengths at which polypropelene is highly absorbtive \cite{tucker_thermal_2006}.
-The cutoff wavelengths of these filters are listed in \tableref{tab:xxx}.
+The cutoff wavelengths of these filters are listed in \tableref{tab:ch4-filter-stack}.
 
 The \Imager\ also contains thicker multi-layer filters that act as low-pass filters at wavelengths closer to our observing band.
 These filters are also made of metal meshes and polypropylene, but many meshes and polypropylene layers are sandwiched together to form filters that are \abt{\SI{1}{\mm}} thick.
@@ -497,7 +497,7 @@ The far-field electric field pattern takes the form
 \end{equation}
 Here $E_{\theta}$ and $E_{\phi}$ are functions depending the horn diameter $D$ and opening half-angle $\alpha_0$, and involving definite integrals of Bessel functions, given in \appendixref{app:feedhorn-eqn}.
 This expression is for the waveguide mode polarized along the $\pi/2$ direction.
-The \Imager's detectors are unpolarized, so detect both waveguide polarizations equally (see \sectionref{xxx} for confirmation of this via simulations).
+The \Imager's detectors are unpolarized, so detect both waveguide polarizations equally (see \sectionref{sec:ch4-coupling} for confirmation of this via simulations).
 The total power beam map is thus given by the incoherant sum
 \begin{equation}
     P(\theta, \phi) = |\vect{E}(\theta, \phi)|^2 + |\vect{E}(\theta, \phi+\pi/2)|^2,
@@ -579,7 +579,7 @@ Using this value, and assuming a surface roughness of \SI{5}{\um}, \HFSS\ simula
 This corresponds to a feedhorn efficiency of \SI{91}{\percent}.
 \HFSS\ simulations indate that the return loss for the feedhorns is \SI{-28}{\dB}, so I ignore return loss.
 
-\section{Optical Coupling to Detectors}
+\section{Optical Coupling to Detectors} \label{sec:ch4-coupling}
 
 The feedhorns described in \sectionref{sec:ch4-feedhorn-design} funnel light coming into the crostat into circular waveguide.
 The waveguide carries the light to the bolometer, where it is absorbed by a Palladium Gold (PdAu) mesh.
