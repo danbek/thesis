@@ -754,15 +754,17 @@ The \NEPph\ is given by
 For each component \eqnref{eqn:ch4-power-per-mode} is integrated over the \Imager's optical band, the emmisivity factor from the table is applied uniformly over the band, and the transmission of all components after the given compoment is accounted for.
 The temperatures listed for the filters inside the cryostat are estimates based on measurements described in \tableref{tab:ch4-filter-stack}.
 Also listed are the photon occupation quantities $\epsilon_k \eta_k n(\nu_0,T_k)$ at the band-center frequency.
+The predicted total optical loading on each detector is \SI{180}{\pW}, and the predicted optical $NEP_{ph} = \Pnoisef{0.85}$.
 
 \begin{table*}
 \centering
 \caption{
   Optical load and photon noise from all components in the \Imager\ that contribute to optical load.
+  $P_{opt}$ for each compoment is calculated according to \eqnref{eqn:ch4-opt-pow-all}.
+  $\epsilon \eta n$ is calculated at the the center frequency of the band (\SI{347}{\GHz}) and also includs the tranmission of the bandpass filter at that frequency.
   xxx what about bandpass filter?
-  All \NEPph\ values are refferred to power absorbed in the bolometer.
-  The total \NEPph\ is the quadrature sum of the contributions from all components, which is the correct sum to take for contributions from uncorrelated guassian noise sources.
-  The efficiency of the lens accounts for losses due to both reflection from the lens and absrobtion in the lens.
+  All powers are the power absorbed in the bolometer, and the \NEPph\ value is refferred to power absorbed in the bolometer.
+  The efficiency of the lens accounts for losses due to both reflection from the lens and absorbtion in the lens.
   ``Beam'' refers to power from the far-field that reaches detectors, while ``Spillover'' refers to power that reaches the detectors due to the portions of the beam that misses the primary mirror.
   % xxx include this? Listing optical power from each of the lens, beam, and spillover is not strictly neccessary, because I assume that all three sources are at the same temperature; I could equally well calculate optical power from a single \SI{295}{\K} source with emissivity of 1.0 looking into an optical system with efficiency \num{0.65}, the cumulative efficiency at the W1428 filter.
 }
@@ -770,24 +772,30 @@ Also listed are the photon occupation quantities $\epsilon_k \eta_k n(\nu_0,T_k)
 \begin{tabular}{ccccccc}
 % The content of this table is producted by thesis/calc_optical_loading()
 \toprule 
-  Component  & \specialcell{Temperature \\ (\si{\K})} & Efficiency & Emmisivity & \specialcell{$P_{opt}$ \\ (\si{\pW})} & \specialcell{\NEPph\ \\ (\si[mode=math,per-mode=symbol]{\femto\W\per\sqrt{Hz}})} & \specialcell{Cumulative \\ Efficiency} \\  
+  Component  & 
+  \specialcell{Temperature \\ (\si{\K})} & 
+  Efficiency & 
+  Emmisivity & 
+  \specialcell{$P_{opt}$ \\ (\si{\pW})} & 
+  $\epsilon \eta n$ & 
+  \specialcell{Cumulative \\ Efficiency} \\  
 \midrule 
   Bolometer  &   1 & 0.87 &      &       &      & 0.87 \\ 
   Feedhorn   &   1 & 0.91 &      &       &      & 0.79 \\ 
   W1275      &   5 & 0.89 &      &       &      & 0.70 \\ 
-  W1266      &  16 & 0.98 & 0.02 &   0.1 & 0.01 & 0.69 \\ 
-  W1269      &  85 & 0.94 & 0.06 &   2.9 & 0.04 & 0.65 \\ 
-  W1428      & 200 & 0.96 & 0.04 &   4.7 & 0.05 & 0.62 \\ 
-  Lens       & 295 & 0.84 & 0.16 &  27.7 & 0.17 & 0.52 \\ 
-  Beam       & 295 & 0.00 & 1.00 & 144.8 & 0.69 & 0.00 \\ 
+  W1266      &  16 & 0.98 & 0.02 &   0.1 &  0.0 & 0.69 \\ 
+  W1269      &  85 & 0.94 & 0.06 &   2.9 &  0.2 & 0.65 \\ 
+  W1428      & 200 & 0.96 & 0.04 &   4.7 &  0.3 & 0.62 \\ 
+  Lens       & 295 & 0.84 & 0.16 &  27.7 &  1.5 & 0.52 \\ 
+  Beam       & 295 & 0.52 & 0.48 &  69.5 &  3.8 & 0.27 \\ 
+  Spillover  & 295 & 0.00 & 1.00 &  75.3 &  4.1 & 0.00 \\ 
 \midrule 
-  Total      &     &      &      & 180.2 & 0.72 & 0.52 \\ 
+  Total      &     &      &      & 180.2 &  9.8 & 0.27 \\ 
+\midrule 
+  Total $\sqrt{\NEPph}$ & \Pnoise{0.85e-15} &   &  & & & \\ 
 \bottomrule
 \end{tabular}
 \end{table*}
-
-
-
 \section{Detector Readout} \label{sec:det-readout}
 
 \section{Acknowledgments}
