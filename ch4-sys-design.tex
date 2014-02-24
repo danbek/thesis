@@ -456,7 +456,7 @@ The fraction of the beam that strikes the primary mirror and proceeds to the tar
 \end{figure*}
 
 The feedhorn opening diameter $D$ is chosen to minimize the total \NETD\ of the system.
-The total \NETD\ was given in \sectionref{xxx} as
+The total \NETD\ was given in \sectionref{sec:ch2-noise} as
 \begin{equation}
     NETD = \frac{NEP_{tot}}{2 k_B \Delta \nu \eta_{tot} \sqrt{2 \tau}}.
 \end{equation}
@@ -486,7 +486,7 @@ This means that narrow beams can have poor $\eta_s$ because a large fraction of 
 Third, the choie of readout system and wiring places a firm upper limit on the number of detectors in the system of 1024.
 
 Fourth, the dependence of the number of detectors $N$ on the feedhorn diameter $D$ is not a smooth function, because it is not possible to have, e.g., 1/3 of a feedhorn.
-As explained in \sectionref{xxx6.3}, the \Imager's detectors are laid out on a square grid.
+As explained in \sectionref{sec:ch5-layout}, the \Imager's detectors are laid out on a square grid.
 So it is more helpful to think of the feedhorn diameter as taking on a discrete set of values that depends on the number of feedhorns per each side of the grid.
 
 A \MATLAB\ program was used to find the optimum feedhorn size.
@@ -508,7 +508,7 @@ which simplifies to
 \end{equation}
 which is independent of $\phi$, as expected for an unpolarized detector.
 
-To calculate the spillover efficiency of an individual feedhorn, the \MATLAB\ program integrates $P$ over the angles $\theta$ that illuminate the primary mirror and reach the target: \SIrange{5.3}{13.6}{\degree}\footnote{see \sectionref{sec:optical-design}}.
+To calculate the spillover efficiency of an individual feedhorn, the \MATLAB\ program integrates $P$ over the angles $\theta$ that illuminate the primary mirror and reach the target: \SIrange{5.3}{13.6}{\degree}\footnote{see \sectionref{sec:ch4-optical-design}}.
 \figref{fig:ch4-feed-spill} shows a contour plot of spillover efficiency for an individual conical feedhorn as a function of $D$ and $\alpha_0$.
 The blue asterisk matches the parameters for the feedhorns chosen for the \Imager.
 This plot shows that $\eta_s$ depends much more strongly on $D$ than on $\alpha_0$.
@@ -626,7 +626,7 @@ The model has the following features:
       The skin depth in this Si are \SI{350}{\GHz} is \SI{5.5}{\um}, justifying this approximation.
       xxx what happens to the conductivity at low temp? Should go up, right? But does it still conduct, or does it start to act like a insulator?
 \item The exact PdAu mesh used in the fabrication was included, using \SI{12}{\ohm}/sq as the surface impedance.
-\item The Au heat-capacity ring (see \sectionref{xxx}) was included as well.
+\item The Au heat-capacity ring (see \sectionref{sec:ch5-det-design}) was included as well.
 \end{itemize}
 \figref{fig:ch4-hfss-model} shows a schematic of the \HFSS\ model, including the fields travelling down the waveguide.
 It also shows a close-up view of the current distribution on a portion of the PdAu mesh.
@@ -646,7 +646,7 @@ It also shows a close-up view of the current distribution on a portion of the Pd
   But close examination shows that the wire perpendicular to the excited polarization have very low current, while those parallel have higher current.
   The current decays towards the edges of the waveguide.
 }
-\label{fig:ch4-ch4-hfss-model}
+\label{fig:ch4-hfss-model}
 \end{figure*}
 
 The results of these simulations are shown in \figref{fig:ch4-coupling}.
@@ -674,7 +674,7 @@ Only \SI{0.9}{\percent} of the bandpass is located above this frequency, so I ha
 For small misaligments (less than $\SI{100}{\um} \approx \SI{4}{\mils}$) the loss in coupling efficiency is small.
 But for large misalignments the loss is efficiency will be large, and one mode will couple much worse than the other.
 Becaues the beam for each individual mode is elliptical, this differential mode-coupling will lead to ellipitcal beams.
-This could be part of the explanation for the combination of poor optical efficiency and elliptical beams desribed in \chapterref{ch:imaging}.
+This could be part of the explanation for the combination of poor optical efficiency and elliptical beams described in \chapterref{c:imaging}.
 
 \begin{figure*}
 \centering
@@ -708,7 +708,7 @@ For \SI{350}{\GHz} light emitted by a \SI{300}{\K}, $n \approx 17$, so the Ralei
   2 k_B T \int \eta(\nu) d \nu = 2 k_B T \eta_{tot} \Delta \nu,
 \end{equation}
 where $\eta_{tot}$ is the total optical efficiency of the system and $\Delta \nu$ is the optical bandwidth.
-My calculations below assume the exact from of \eqnref{eqn:ch4-power-per-mode}, but \eqnref{eqn:ch4:power-per-mode-rj} is very useful for quick calculations and checks.
+My calculations below assume the exact from of \eqnref{eqn:ch4-power-per-mode}, but \eqnref{eqn:ch4-power-per-mode-rj} is very useful for quick calculations and checks.
 Photon NEP is given by \cite[Equation~51]{zmuidzinas_thermal_2003}
 \begin{equation} \label{eqn:ch4-photon-nep}
   \NEPph = 4 \int (h \nu)^2 \eta(\nu) n(\nu,T) (1 + \eta(\nu) n(\nu,T)) d \nu.
@@ -716,7 +716,7 @@ Photon NEP is given by \cite[Equation~51]{zmuidzinas_thermal_2003}
 Here the second term represents ``photon bunching'', which only becomes important when many photons are occupying a spatial mode.
 For millimeter and sub-millimeter astronomy observing cold sources such as the Cosmic Microwave Background Radiation, this second term is often negligible, but it is important for the \Imager\ because we are observing \abt{\SI{300}{\K}} targets.
 
-There are two points worth noting about \eqnref{ch4-photon-nep}.
+There are two points worth noting about \eqnref{eqn:ch4-photon-nep}.
 First, it is tempting to simplify \eqnref{eqn:ch4-photon-nep} as:
 \begin{equation}
   \NEPph = 4 (h \nu_0)^2 \eta_{tot} n(\nu_0,T) (1 + \eta_{tot} n(\nu_0,T)) \Delta \nu,
@@ -729,7 +729,7 @@ Second, the \Imager\ is not viewing a single temperature $T$ that reaches the de
 Rather, the \Imager\ is viewing an \abt{\SI{300}{\K}} source that is attenuated by a series of attenuators and other lossy elements, each of which is at non-zero temperature and so emits power itself.
 Because of the photon bunching term, it is not correct to calculate \NEPph\ for each optical component separately and then sum all values; doing so will underestimate the noise due to photon bunching.
 
-The correct generalizations of \eqnref{eqn:ch4-power-per-mode} and \eqnref{ch4-photon-nep} is to treat the term $\eta(\nu) n(\nu,T)$ as an total photon occupation number that includes contributions from all sources.
+The correct generalizations of \eqnref{eqn:ch4-power-per-mode} and \eqnref{eqn:ch4-photon-nep} is to treat the term $\eta(\nu) n(\nu,T)$ as an total photon occupation number that includes contributions from all sources.
 I make the simplifying approximation that the frequency-dependence of the efficiency is the same for all source of optical power; i.e., it is set by the bandpass filter.
 The total occupation number absorbed in the detectors is then given by
 \begin{equation} \label{eqn:ch4-tot-n0}
@@ -796,8 +796,95 @@ The predicted total optical loading on each detector is \SI{180}{\pW}, and the p
 \bottomrule
 \end{tabular}
 \end{table*}
+
 \section{Detector Readout} \label{sec:det-readout}
 
+As described in \chapterref{c:tes}, the \Imager's detectors are voltage-biased, so that the detector output signal is a changing current.
+To read out the detectors a low-noise current amplifier is required.
+The \Imager uses a multiplexed \SQUID\ readout system to accomplish this.
+
+A \SQUID\ is a Superconducting Quantum Interferance device \cite{clarke_squid_2002}.
+For the purposes of understanding this thesis, and the operation of the \Imager, it suffices to know that a \SQUID\ is a very sensitive magnetometer, and by coupling the magnetic field produced by a current into the \SQUID, the \SQUID\ can also be used to read out a current signal.
+
+An important aspect of the response of a \SQUID\ to a input current is that the response is not linear; it is periodic.
+\figref{fig:tes-bias-ramp-sc} and \figref{fig:tes-bias-ramp-trans} show examples of this behavior for the \SQUID's used in the \Imager.
+This periodic response means that the readout system is not measuring the absolute current passing through the detectors, but rather it measures changes in the current from some offset value, an offset value which is not known and can be different for each detector.
+When processing a set of detector outputs into a video, these detector offsets must be accounted for.
+The algorithm used to do this is described in \sectionref{sec:ch8-algo}.
+
+To reduce the number of wires running into the cryostat, the \Imager\ uses a time-division multiplex (\TDM) readout system \cite{chervenak_superconducting_1999,korte_time-division_2003,reintsema_prototype_2003}.
+\figref{fig:ch4-tdm-schematic} shows a schematic of this readout system.
+The detectors are divided into a number of columns, each column containing 32 rows.
+Each detector output is coupled into the input coil of it's own ``1st-stage'' \SQUID.
+Row address lines bias the 32 rows sequentially, so that at any given time only one detector per column is being read out by the system.
+This sequential addressing means that the current noise power spectral density of the \SQUIDs is increased by a factor of 32 due to aliasing, but the current noise in the \Imager's \SQUIDs is low enough that \SQUID\ noise is not a significant contribution to the total noise of the detectors.
+See, e.g., \figref{fig:rsh-l-plots} and \figref{fig:ch7-trans-noise} for a demonstration that \SQUID\ (\abt{\Inoise{1e-10}}) is noise is below the typical noise level of a detector biased into it's standard operation conditions (\abt{\Inoise{1e-9}}).
+To linearize the \SQUID\ ampifier chain, feedback in the form of magnetic flux is applied to the 1st-stage \SQUIDs.
+
+\begin{figure*}
+\centering
+\includegraphics[width=3in]{images/ch4-tdm-schematic.png}
+\caption{
+  Schematic of the Time-Division Multiplexing (\TDM) readout system used by the \Imager.
+  The detectors are divided into rows and columns (2 each shown here).
+  Each detector is coupled to it's own 1st-stage \SQUID (\SQ1).
+  At any given time, only one row of \SQUIDs is biased, indicated via the ``Row address currents'' on the left.
+}
+\label{fig:ch4-tdm-schematic}
+\end{figure*}
+
+A set of electronics is required to control the multiplexed readout system and provide data to a computer for further analysis.
+The \Imager uses the Multi-Channel Electroncs (\MCE) as the electronics control system \cite{battistelli_functional_2008,battistelli_automated_2008,_mcewiki_2014}.
+The \MCE\ was developed in order to achieve simple, remote operation of \TDM\ readout systems for sub-millimeter nad millimeter astronomy.
+It comes equipped with an software suite for controlling the electronics itself.
+The entire electronics system for reading out 1024 detectors is contained within a single $\SI{15}{\in} \times \SI{14}{\in} \times \SI{14}{\in}$ crate.
+All communication with the controlling data acquisition computer is via fiber optic cable.
+See \figref{fig:ch4-mce-photo}) for a photo of the \MCE.
+
+\begin{figure*}
+\centering
+\includegraphics[width=3in]{images/ch4-mce.jpg}
+\caption{
+  Photograph of the \MCE\ unit used to readout the \Imager's detectors.
+  The \MCE\ is \SI{15}{\in} wide.
+}
+\label{fig:ch4-mce-photo}
+\end{figure*}
+
+The \MCE has many parameters that can be set to control its behavior, almost none of which I will decribed here.
+The exceptions are the parameters that control the readout rate of the system, listed in \tableref{tab:ch4-mce-parms}.
+The table also gives the value of these parameters used by the \Imager when taking videos.
+The rate at which data is reported to the data acquisition computer is given by
+\begin{equation} \label{eqn:ch4-mce-readout-rate}
+  f_{ro} = \frac{ \SI{50}{\MHz} }{\texttt{row\_len} \times \texttt{num\_rows} \times \texttt{data\_rate} }
+\end{equation}
+Using the values in \tableref{tab:ch4-mce-parms} the readout rate is \SI{3125}{\Hz}.
+
+Using any value for \texttt{data\_rate} other than 1 will lead to aliasing of noise.
+As discussed in \sectionref{sec:ch7-aliasing}, this raises the total amount of noise in the \Imager's detectors by \SI{14}{\percent} on average.
+This noise aliasing penalty can be reduced by configuring the \MCE\ to interally apply a digital 4-pole lowpass filter prior to reporting data to the data acquisition computer \cite{mce_team_digital_????}.
+
+\begin{table*}
+\centering
+\caption{
+  A few important configuration parameters for the \MCE.
+}
+\label{tab:ch4-mce-parms}
+\begin{tabular}{lcp{4in}}
+% The content of this table is producted by thesis/calc_optical_loading()
+\toprule 
+  Parameter  & 
+  Typical Value & 
+  Explanation \\  
+\midrule 
+  \texttt{row\_len}  & 100 &
+           Number of \SI{50}{\MHz} clock cycles spent on each row.  \\
+  \texttt{num\_rows} & 32 &
+           Number of rows to cycle over. \\
+  \texttt{data\_rate} & 5 & The \MCE\ only reports every \texttt{data\_rate}-th sample to the data acquisition computer. \\
+\bottomrule
+\end{tabular}
+\end{table*}
 \section{Acknowledgments}
 
 Bob Schwall and William Duncan of NIST designed the cryostat/mirror mount and the \He4 sorption refrigerator.
