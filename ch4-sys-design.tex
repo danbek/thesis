@@ -48,7 +48,7 @@ The Cu tube is broken into two halves, and the condensation plate (see below) of
 
 \begin{table*}
 \centering
-\caption{Temperatures Reached Under Optical Load} % xxx should I add temps when closed optically?
+\caption{Temperatures Reached Under Optical Load} 
 \label{tab:temp-optical-load}
 \begin{tabular}{l r}
 \toprule
@@ -122,10 +122,10 @@ It excludes parasitic load inherent to the sorption refrigerator itself; we have
   Predicted Thermal Load on \SI{1}{\K} Stage.
   These calculations assume that the readout wiring and Ti-6Al-4V spiders are running from \SI{6.4}{\K} to \SI{1.0}{\K}.
   All wires are AWG36 Phosphur Bronze with thermal conductivity taken from the Lakeshore Cryogenics reference tables \cite{lake_shore_cryogenics_inc._cryogenic_????}.
+  Assumed thermal conductivity $k$ of the Ti-6Al-4V alloy used for the spiders is $k(T) = \SI{150}{\uW\per\cm\K} T$ (William Duncan, personal communication).
   ``\BOSE\ readout wires'' refers to the wires running from room temperature used to readout the position of the secondary mirror; see \sectionref{sec:ch8-mirror-readout}.
   The heat load from these wires is very high because they are not currently intercepted anywhere between room temperature and the \SI{1}{\K} stage.
   Intercepting them at the ``\SI{4}{\K}'' Cold Plate would reduce their load to \SI{1.1}{\uW}.
-  xxx source for low-temperature thermal conductivity of Ti-6Al-4V.
   ``Other optical power'' refers to in-band power that reaches the \SI{1}{\K} stage but is not absorbed by the detectors.
   The number quoted assumes that all of this power is absorbed on the \SI{1}{\K} stage; this results in an overestimate because it is likely that most of this power is reflected by the feedhorn array, rathern than being absorbed.
   Out-of-band optical power is assumed to be zero because the only warm object shining directly on the 1K stage --- the W1275 bandpass filter --- is only \SI{16}{\K}, and is not emmissive at the wavelengths at which it would be radiating (see \sectionref{sec:ch4-filters} and \cite{tucker_thermal_2006}).
@@ -157,9 +157,6 @@ It excludes parasitic load inherent to the sorption refrigerator itself; we have
 \bottomrule
 \end{tabular}
 \end{table*}
-
-% xxx - I get 500 uW for the load from the four BOSE wires (300 K -
-% 1K). Need to add them to the table. Can this be correct? I'm sure I did this calculation in the past and got a much smaller number. Did I screw up in the past? Is today's calculation in error? Am I intercepting this load at \SI{50}{\K} or \SI{4}{\K}, and I forgot about that? Did I use a much longer wire than \SI{1}{\m}? This could be a big cryogenic problem!
 
 \section{Optical Design}\label{sec:ch4-optical-design}
 
@@ -390,9 +387,6 @@ This means that unless they are heat-sunk very well, the centers of the filters 
 The outermost multi-layer filter is very warm (\SI{190}{\K}), and this is a significant source of loading on the \SI{4}{\K} stage, which also warms the \SI{4}{\K} multi-layer filters, leading to a level of loading on the \SI{1}{\K} stage that is so high that the stage can not be brought below \SI{1.2}{\K} unless the aperture is stopped down to reduce IR loading.
 This has been accomplished with a \SI{2.875}{\in} by \SI{2.875}{\in} aperture installed between the thermal blocking and multi-layer filters on the \SI{50}{\K} stage.
 With this aperture installed, the bandpass filter center reaches a temperature of \SIrange{4}{8}{\K} (varying based on the size of the aperture stop).
-
-Because there are no filters between the bandpass filters and the detectors (other than the highpass filter of the waveguide), all optical power emitted by the bandpass filters falls on the detectors.
-xxx need to comment on both total power and photon noise once I work this out.
 
 \tableref{tab:ch4-filter-stack} also lists the in-band transmission of each filter.
 The total transmission of the filter stack excluding the bandpass filter is \SI{88.8}{\percent}.
@@ -643,8 +637,8 @@ The model has the following features:
       Rather, the detectors were fabricated on degenerate (Boron P-type) Si wafers with resistivity \SI{4}{\mOhm\cm}.
       The fields inside the Si are not solved for in this model.
       Instead, the Si is treated as (poor) conductor with a surface impedance appropriate for its conductivity.
-      The skin depth in this Si are \SI{350}{\GHz} is \SI{5.5}{\um}, justifying this approximation.
-      xxx what happens to the conductivity at low temp? Should go up, right? But does it still conduct, or does it start to act like a insulator?
+      The skin depth in this Si is \SI{350}{\GHz} is \SI{5.5}{\um}, justifying this approximation.
+      At low temperatures the electrical resistivity of this type of Si is expected to fall slightly \cite{chapman_electrical_1963}, but I have assumed the room-temperature value of \SI{4}{\mOhm\cm} in the simulations.
 \item The exact PdAu mesh used in the fabrication was included, using \SI{12}{\ohm}/sq as the surface impedance.
 \item The Au heat-capacity ring (see \sectionref{sec:ch5-det-design}) was included as well.
 \end{itemize}
@@ -779,10 +773,9 @@ The predicted total optical loading on each detector is \SI{180}{\pW}, and the p
 \begin{table*}
 \centering
 \caption{
-  Optical load and photon noise from all components in the \Imager\ that contribute to optical load.
+  Optical load and photon noise from all components in the \Imager\ that contribute to optical load on the detectors.
   $P_{opt}$ for each component is calculated according to \eqnref{eqn:ch4-opt-pow-all}.
   $\epsilon \eta n$ is calculated at the the center frequency of the band (\SI{347}{\GHz}) and also includes the transmission of the bandpass filter at that frequency.
-  xxx what about bandpass filter?
   All powers are the power absorbed in the bolometer, and the \NEPph\ value is referred to power absorbed in the bolometer.
   The efficiency of the lens accounts for losses due to both reflection from the lens and absorption in the lens.
   ``Beam'' refers to power from the far-field that reaches detectors, while ``Spillover'' refers to power that reaches the detectors due to the portions of the beam that misses the primary mirror.
