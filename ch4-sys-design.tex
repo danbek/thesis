@@ -3,28 +3,26 @@
 \section{Cryostat Design}\label{s-cryo-design}
 
 The cryostat for the \Imager\ was designed with the goals of simplicity, reliability and turn-key automated operation.
-Highly reliable and easy-to-use cryogen-free mechanical cryocoolers are commercially available, but these cryocoolers are seldom capable of reaching temperatures below \SI{2.5}{\K}.
+Reliable and easy-to-use cryogen-free mechanical cryocoolers are commercially available, but these cryocoolers are seldom capable of reaching temperatures below \SI{2.5}{\K}.
 Reaching sub-Kelvin temperatures requires a second refrigeration stage, which in our case is a He-4 adsorption refrigerator.
 The He-4 adsorption refrigerator is based on a proven design and its use can easily be automated.
 Three temperature stages within the cryostat are provided in order to provide intercepts for heat sinking wiring and other objects that are thermal connected to room temperature. 
-The result is a reliable cryogen-free cryogenic system that can be controlled remotely.
-
-xxx next para needs rewriting - need to explain what \PTC\ is early on. maybe next para needs to move here, somewhat rewritten.
+The result is a reliable cryogen-free system that can be controlled remotely.
 
 The cryostat itself was built by Precision Cryogenics\footnote{Precision Cryogenics Systems, Inc. Indianapolis, IN. \url{http://www.precisioncryo.com}} to designs provided by the \Imager\ team.
 \figref{fig:cryo-cutaway} shows a cutaway view of the cryostat, and \tableref{tab:temp-optical-load} lists the temperatures typically reached by different parts of the cryostat during operation when the cryostat is open optically.
-The cryostat has two main parts: a cylinder containing both the \PTC\ and the \He4-adsorption refrigerator, and a box located at the bottom of the cylinder which contains temperature intercept plates and the focal plane.
-There are three temperature stages, the ``\SI{90}{\K}'' Cold Plate, the ``\SI{4}{\K}'' Cold Plate, and the Focal Plane.
-The \PTC\ 1st stage is connected to the ``\SI{90}{\K}'' Cold Plate by a tube of Al 1100 and a set of CDA-101 Cu braids.
-The combination of this long thermal path with the high heat load on the optical filters sunk to the ``\SI{90}{\K}'' stage explains the \SI{45}{\K} temperature differential between the ``\SI{90}{\K}`` cold plate and the \PTC\ 1st stage.
-The \PTC\ 2nd stage is connected to the ``4 K'' Cold Plate by a large (3.0 in diameter by 2.78 in long) cylinder of CDA-110 Cu\footnote{This cryostat was originally designed to work with a different cryocooler. The \PTC\ currently installed had a shorter distance between the 1st and 2nd stages, necessitating the Cu cylinder to take up this extra space}, followed by tube of alloy CDA-101 Cu followed by a set of  CDA-101 copper braids.
-The Cu tube is broken into two halves, and the condensation plate (see below) of the adsorption fridge is clamped between these two halves. The ``90 K'' Cold Plate is stood off from the cryostat vacuum jacket by four ``roll wrapped'' carbon fiber tube standoffs. The ``\SI{4}{\K}'' Cold Plate stands off from the ``\SI{90}{\K}'' Cold Plate by eight supports made of G-10.
-
 The first two temperature intercept stages are provided by a Cryomech PT407 Pulse Tube Cryorefrigerator\footnote{Cryomech, Inc. Syracuse, NY. \url{http://www.cryomech.com}}
 The PT407 has two cooling stages.
 The first stage has \SI{25}{\W} of cooling power at \SI{55}{\K} while the second stage has \SI{0.7}{\W} at \SI{4.2}{\K}.
 Our PT407 uses a remote motor, so that the cold head attached to the cryostat has no moving parts, minimizing vibration of the cryostat.
 Vibration of the cryostat can lead to microphonic pickup either directly in the detectors themselves or in the readout circuitry, leading to much higher detector noise.
+
+The cryostat has two main parts: a cylinder containing both the \PTC\ and the \He4-sorption refrigerator, and a box located at the bottom of the cylinder which contains temperature intercept plates and the focal plane.
+There are three temperature stages, the ``\SI{90}{\K}'' Cold Plate, the ``\SI{4}{\K}'' Cold Plate, and the Focal Plane.
+The \PTC\ 1st stage is connected to the ``\SI{90}{\K}'' Cold Plate by a tube of Al 1100 and a set of CDA-101 Cu braids.
+The combination of this long thermal path with the high heat load on the optical filters sunk to the ``\SI{90}{\K}'' stage explains the \SI{45}{\K} temperature differential between the ``\SI{90}{\K}`` cold plate and the \PTC\ 1st stage.
+The \PTC\ 2nd stage is connected to the ``4 K'' Cold Plate by a large (3.0 in diameter by 2.78 in long) cylinder of CDA-110 Cu\footnote{This cryostat was originally designed to work with a different cryocooler. The \PTC\ currently installed had a shorter distance between the 1st and 2nd stages, necessitating the Cu cylinder to take up this extra space}, followed by tube of alloy CDA-101 Cu followed by a set of  CDA-101 copper braids.
+The Cu tube is broken into two halves, and the condensation plate (see below) of the adsorption fridge is clamped between these two halves. The ``90 K'' Cold Plate is stood off from the cryostat vacuum jacket by four ``roll wrapped'' carbon fiber tube standoffs. The ``\SI{4}{\K}'' Cold Plate stands off from the ``\SI{90}{\K}'' Cold Plate by eight supports made of G-10.
 
 \begin{figure*}
 \centering
@@ -50,7 +48,7 @@ Vibration of the cryostat can lead to microphonic pickup either directly in the 
 
 \begin{table*}
 \centering
-\caption{Temperatures Reached Under Optical Load xxx should I add temps when closed optically?}
+\caption{Temperatures Reached Under Optical Load} % xxx should I add temps when closed optically?
 \label{tab:temp-optical-load}
 \begin{tabular}{l r}
 \toprule
@@ -66,11 +64,12 @@ Focal Plane 						& 0.962 \\
 \end{tabular}
 \end{table*}
 
-Options for reaching temperatures below the \abt{\SI{1.2}{\K}} transition temperature of our \TES\ detectors include: dilution refrigerators, adiabatic magnetization refrigerators, pumped \He4 baths, and \He3- and/or \He4-adsorption refrigerators.
-We chose a \He4-adsorption fridge because of its low cost, ease of operation compared to other solutions, and the fact that the typical base temperatures under no load of \abt{\SI{700}{\mK}} is well-matched to our application. xxx actually the key point is temperature - others are in addition.
-A  \He4-sorption fridge works by using a charcoal adsorber to pump on a bath of liquid \He4, reducing the \He4 boiling point and thus the temperature of the bath.
+Options for reaching temperatures below the \abt{\SI{1.2}{\K}} transition temperature of our \TES\ detectors include: dilution refrigerators, adiabatic magnetization refrigerators, pumped \He4 baths, and \He3- and/or \He4-sorption refrigerators.
+We chose a \He4-sorption fridge because the typical base temperature under no load of \abt{\SI{700}{\mK}} is well-matched to our application.
+\He-sorption fridges are also relatively inexpensive and easy to operate compared to other solutions.
+A \He4-sorption fridge works by using a charcoal adsorber to pump on a bath of liquid \He4, reducing the \He4 boiling point and thus the temperature of the bath.
 The \He4 is contained withing a sealed reservoir so that the refrigerator acts as a closed system requiring no \He4 replenishment. 
-While \He4-sorption fridges are commercially available, our team choose to design and build a custom fridge based on a design that has been proven in astronomical applications\cite{devlin_high_2004}.
+While \He4-sorption fridges are commercially available, our team choose to design and build a custom fridge based on a design that has been proven in astronomical applications \cite{devlin_high_2004}.
 
 \figref{fig:he4sorp} shows a schematic depiction of the \Imager's \He4-sorption refrigerator.
 The entire refrigerator is filled with \SI{2.07}{\mole} of \He4 gas, giving a pressure of \SI{900}{psi} at room temperature.
@@ -92,7 +91,7 @@ In normal operation the heat switch between the charcoal pumping chamber (``pump
 		\draw[thick,<->] (0.9,0.02) -- ++(0,0.21875) node[midway,right] {3 in}; % scale bar
     \end{scope}
 \end{tikzpicture}
-\caption{Cutaway view of the \He4-sorption refrigerator. \textbf{A} Charcoal pumping chamber (``pump''). The charcoal is attached to the concentric copper cylinders. Cylinders are used to maximize the surface area covered by the charcoal. \textbf{B} Condensation plate. This copper plate is kept below the boiling point of \He4 in order to provide a point in the refrigerator for \He4 to condense and drip into the condensation pot. \textbf{C} \He4 gas gap heat switch. This heat switch is used to cool the charcoal in order to pump on the \He4 bath in the condensation pot. \textbf{B} \He4 condensation pot (``pot''). The condensed \He4 accumulates here. The concentric cylinders provide additional surface area for thermal contact to the liquid \He4. Not shown is a small (xxx check size from Bob) constriction in the stainless steel tube connecting the pump and pot, intended to restrict the flow of super-fluid \He4 away from the pot.}
+\caption{Cutaway view of the \He4-sorption refrigerator. \textbf{A} Charcoal pumping chamber (``pump''). The charcoal is attached to the concentric copper cylinders. Cylinders are used to maximize the surface area covered by the charcoal. \textbf{B} Condensation plate. This copper plate is kept below the boiling point of \He4 in order to provide a point in the refrigerator for \He4 to condense and drip into the condensation pot. \textbf{C} \He4 gas gap heat switch. This heat switch is used to cool the charcoal in order to pump on the \He4 bath in the condensation pot. \textbf{B} \He4 condensation pot (``pot''). The condensed \He4 accumulates here. The concentric cylinders provide additional surface area for thermal contact to the liquid \He4. Not shown is a sapphire \SI{1}{\mm} constriction in the stainless steel tube connecting the pump and pot, intended to restrict the flow of super-fluid \He4 away from the pot (Swiss Jewel Company, part A34.00).}
 \label{fig:he4sorp}
 \end{figure*}
 
@@ -112,29 +111,43 @@ When no additional load is applied the hold time is 9 hours.
 When the temperature of the stage is held at the typical operating temperature of \SI{1100}{\mK} the hold time is only 3:45 hours.
 
 \tableref{tab:fp-thermal-load} shows the predicted heat load on the \He4-sorption refrigerator.
-It excludes parasitic load inherent to the sorption refrigerator itself. xxx mention parasitic load here?
+It excludes parasitic load inherent to the sorption refrigerator itself; we have estimated this parasitic load as \abt{\SI{0.5}{\mW}}.
+% See Black n'Red notebook, Feb 3 2010.
 
-xxx - include data on temp vs load for the fridge?
+% xxx - include data on temp vs load for the fridge?
 
 \begin{table*}[ht]
 \centering
-\caption{Predicted Thermal Load on \SI{1}{\K} Stage. These calculations assume that the readout wiring and Ti-6Al-4V spiders are running from \SI{6.4}{\K} to \SI{1.0}{\K}.}
+\caption{
+  Predicted Thermal Load on \SI{1}{\K} Stage.
+  These calculations assume that the readout wiring and Ti-6Al-4V spiders are running from \SI{6.4}{\K} to \SI{1.0}{\K}.
+  All wires are AWG36 Phosphur Bronze with thermal conductivity taken from the Lakeshore Cryogenics reference tables \cite{lake_shore_cryogenics_inc._cryogenic_????}.
+  ``\BOSE\ readout wires'' refers to the wires running from room temperature used to readout the position of the secondary mirror; see \sectionref{sec:ch8-mirror-readout}.
+  The heat load from these wires is very high because they are not currently intercepted anywhere between room temperature and the \SI{1}{\K} stage.
+  Intercepting them at the ``\SI{4}{\K}'' Cold Plate would reduce their load to \SI{1.1}{\uW}.
+  xxx source for low-temperature thermal conductivity of Ti-6Al-4V.
+  ``Other optical power'' refers to in-band power that reaches the \SI{1}{\K} stage but is not absorbed by the detectors.
+  The number quoted assumes that all of this power is absorbed on the \SI{1}{\K} stage; this results in an overestimate because it is likely that most of this power is reflected by the feedhorn array, rathern than being absorbed.
+  Out-of-band optical power is assumed to be zero because the only warm object shining directly on the 1K stage --- the W1275 bandpass filter --- is only \SI{16}{\K}, and is not emmissive at the wavelengths at which it would be radiating (see \sectionref{sec:ch4-filters} and \cite{tucker_thermal_2006}).
+}
 \label{tab:fp-thermal-load}
 \begin{tabular}{@{}lrr@{}}
 \toprule
  & \multicolumn{2}{c}{Predicted Thermal Load} \\
 \cmidrule(r){2-3}
-Heat Load Source & 1004 Detectors (\si{\uW}) &  251 Detectors (\si{\uW}) \\
+  Heat Load Source & 1004 Detectors (\si{\uW}) &  251 Detectors (\si{\uW}) \\
 \midrule
-Readout wiring 								& 50 & 125 \\
-Series array \SQUID\ modules 		& xxx & xxx \\
-\SQUID\ multiplexing chips 				& xxx & xxx \\
-Detectors shunt resistors 			& 5 & 18 \\
-Detectors (Optical + Electrical)		& 0.25 & 1 \\
-Ti-6Al-4V spiders 							& 130 & 130 \\
-Out-of-band optical power 			& xxx & xxx \\
+  Readout wiring                   & 52 & 130 \\
+  Series array \SQUID\ modules     & xxx & xxx \\
+  \SQUID\ multiplexing chips       & xxx & xxx \\
+  Shunt resistors                  & 5 & 18 \\
+  Ti-6Al-4V spiders                & 130 & 130 \\
+  Detectors (Optical + Electrical) & 0.25 & 1 \\
+  Other in-band optical power      & 5.6 &   5.6 \\
+  Out-of-band optical power        &   0 &   0 \\
+  \BOSE readout wires              & 507 & 507 \\
 \midrule
-Total												& 185 + xxx & 274 + xxx \\
+  Total                            & 694 + xxx & 787 + xxx \\
 \bottomrule
 \end{tabular}
 \end{table*}
