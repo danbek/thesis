@@ -138,8 +138,14 @@ It excludes parasitic load inherent to the sorption refrigerator itself; we have
   Heat Load Source & 1004 Detectors (\si{\uW}) &  251 Detectors (\si{\uW}) \\
 \midrule
   Readout wiring                   & 52 & 130 \\
-  Series array \SQUID\ modules     & xxx & xxx \\
-  \SQUID\ multiplexing chips       & xxx & xxx \\
+  Series array \SQUID\ modules     & 0.2 & 0.6 \\ 
+  % These are SA10b "two turn" according to an email from Colin. Per
+  % this page: http://doc.bqemd.nist.gov/qsp/sa10b they should be
+  % about 20 nW of power per chip
+  \SQUID\ multiplexing chips       & 0.4 & 1.6 \\
+  % Use 100 uA Ic (consistent with Colin spreadhseet) and R_dyn = 5
+  % Ohms, which is guess since I don't know whether these chips are
+  % low or hig R_dyn, see http://doc.bqemd.nist.gov/qsp/mux11c
   Shunt resistors                  & 5 & 18 \\
   Ti-6Al-4V spiders                & 130 & 130 \\
   Detectors (Optical + Electrical) & 0.25 & 1 \\
@@ -147,7 +153,7 @@ It excludes parasitic load inherent to the sorption refrigerator itself; we have
   Out-of-band optical power        &   0 &   0 \\
   \BOSE readout wires              & 507 & 507 \\
 \midrule
-  Total                            & 694 + xxx & 787 + xxx \\
+  Total                            & 700 & 794 \\
 \bottomrule
 \end{tabular}
 \end{table*}
