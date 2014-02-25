@@ -111,14 +111,14 @@ Third, the actuators are oriented so that their rotation axes are rotated from h
 This all means that --- as viewed from the cryostat --- positive displacements of the \DISP1 actuator shift beams up and to the right, while positive displacements of the \DISP2 actuator shift beams up and to the left.
 If we consider an $x$-$y$ coordinate system in the far-field, this means that the $x$ and $y$ displacement of the beams due to mirror movements are calculated as
 \begin{equation}
-\Delta x = F_d \frac{\sqrt{2}}{2} \left( I_{\DISP1} \times \frac{\SI{2.93}{\mm}}{\SI{1}{\uA}} -
-                              I_{\DISP2} \times \frac{\SI{3.02}{\mm}}{\SI{1}{\uA}}  \right) \times
+\Delta x = F_d \frac{\sqrt{2}}{2} \left( I_{\text{DISP1}} \times \frac{\SI{2.93}{\mm}}{\SI{1}{\uA}} -
+                              I_{\text{DISP2}} \times \frac{\SI{3.02}{\mm}}{\SI{1}{\uA}}  \right) \times
     \frac{\ang{0.276}} {\SI{1}{\mm}} \times
     \frac{\SI{19.33}{\cm}} {\ang{1}}
 \end{equation}
 \begin{equation}
-\Delta y = F_d \frac{\sqrt{2}}{2} \left( I_{\DISP1} \times \frac{\SI{2.93}{\mm}}{\SI{1}{\uA}} +
-                              I_{\DISP2} \times \frac{\SI{3.03}{\mm}}{\SI{1}{\uA}}  \right) \times
+\Delta y = F_d \frac{\sqrt{2}}{2} \left( I_{\text{DISP1}} \times \frac{\SI{2.93}{\mm}}{\SI{1}{\uA}} +
+                              I_{\text{DISP2}} \times \frac{\SI{3.03}{\mm}}{\SI{1}{\uA}}  \right) \times
     \frac{\ang{0.276}} {\SI{1}{\mm}} \times
     \frac{\SI{19.33}{\cm}} {\ang{1}}
 \end{equation}
@@ -135,9 +135,9 @@ To test this both actuators were moved in a \SI{6}{\Hz} sine-wave pattern over t
 Both actuators were moved at the same time, roughly \SI{135}{\degree} out of phase.
 The level of crosstalk present can be quantified by performing a least-squares fit of each detector timestream $\vect{d}_{rc}$ to the model
 \begin{equation}
-	 \vect{d}_{rc} = A_1 \vect{d}_{\DISP1} + A_2 \vect{d}_{\DISP2}.
+	 \vect{d}_{rc} = A_1 \vect{d}_{\text{DISP1}} + A_2 \vect{d}_{\text{DISP2}}.
 \end{equation}
-Here $\vect{d}_{\DISP1}$ and $\vect{d}_{\DISP2}$ are the measured outputs for each actuator.
+Here $\vect{d}_{\text{DISP1}}$ and $\vect{d}_{\text{DISP2}}$ are the measured outputs for each actuator.
 
 The fit values for $A_1$ and $A_2$ were clustered about 0, and small compared to the noise in the detector timestream.
 To check whether these small values were nevertheless real, I calculated the crosstalk amplitudes $A_1$ and $A_2$ for each detector twice: once of the first half of the data acquisition and once for the second half.
