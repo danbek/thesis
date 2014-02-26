@@ -25,6 +25,9 @@
 		title={NETD vs Number of Detectrrs},
 		xlabel={Number of Detectors Per Array Side}, ylabel={NETD / $\text{NETD}_{16}$} ]
 	  \addplot table[x=N_side,y=NETD_rel]{../data/ch4-netd-vs-nfeeds.dat};
+      \node[anchor=west] (source) at (axis cs: 17,1.15) {\Imager}; 
+      \node (destination) at (axis cs: 16,1) {};
+      \draw[thick,->] (source)--(destination);
 	\end{axis}
   \end{tikzpicture}
 

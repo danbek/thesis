@@ -1,7 +1,5 @@
 \chapter{System Design Overview}\label{c:sys-design}
 
-% xxx be consistent about name of cold plates - 90 vs 80 vs 50 K, 4 vs 6 K
-
 \section{Cryostat Design}\label{s-cryo-design}
 
 The cryostat for the \Imager\ was designed with the goals of simplicity, reliability and turn-key automated operation.
@@ -429,8 +427,6 @@ The total transmission of the filter stack excluding the bandpass filter is \SI{
 
 \section{Feedhorn Design}\label{sec:ch4-feedhorn-design}
 
-% xxx should include a calculation of the phase center? Or reference
-% to some source ...
 % xxx where do I explain the choice of a square grid? Ans: section 6.3
 
 Millimeter and sub-millimeter astronomical instruments using \TES\ detectors use many different strategies for coupling light onto detectors, including filled arrays of absorbers \cite{swetz_overview_2011,holland_scuba-2:_2013}, antennas with lenslets \cite{keating_ultra_2011}, phased antenna arrays \cite{obrient_antenna-coupled_2012}, corrugated feedhorns \cite{austermann_sptpol:_2012,niemack_actpol:_2010}, and smooth-walled conical feedhorns \cite{schwan_invited_2011,carlstrom_10_2011}.
@@ -544,7 +540,6 @@ The loss in \NETD\ from this sub-optimal choice is only \SI{1.7}{\percent}.
   The \NETD\ is plotted relative to the \NETD\ for an array with 16 feedhorns per side, which is the value chosen for this system.
   \NETD\ is minimized with 19 feedhorns per side, giving a total of 1428 feedhorns of diameter \SI{2.25}{\mm} (cold), but the \Imager\ uses 1004 feedhorns of diameter \SI{2.68}{\mm} (cold) because of readout limitations.
   The cost in \NETD\ is only \SI{1.7}{\percent}.
-  % xxx circle/arrow/label 16, the number chosen
 }
 \label{fig:ch4-netd-vs-nfeeds}
 \end{figure*}
@@ -693,6 +688,11 @@ This could be part of the explanation for the combination of poor optical effici
 \label{fig:ch4-coupling-mis}
 \end{figure*}
 
+A final important parameter of the feedhorn is it's phase center, defined as the point along the axis of the horn from which the far-field spherical wavefront appears to emerge.
+In order to achieve optimum performance from a system, the focal plane of the optical system should coincide with the phase centers of the horns.
+The phase center of a conical feedhorn can not be defined in general, because it changes not only with polarization but with the beam angle as well.
+For the \Imager I used published tables to estimate the location of the phase center for our feedhorns, which give a distance of \SI{0.9}{\mm} behind the opening of the feedhorn as the phase center averaged over both polarizations \cite[Page~353]{thomas_a._milligan_modern_2005}.
+
 \section{Predicted Optical Efficiency and Optical Loading on Detectors} \label{sec:ch4-opt-eff}
 
 The waveguide behind the feedhorns in the \Imager\ causes the detectors to be sensitive to only the two degenerate TE11 waveguide modes over \SI{99}{\percent} of their bandwidth.
@@ -770,7 +770,6 @@ The predicted total optical loading on each detector is \SI{180}{\pW}, and the p
   All powers are the power absorbed in the bolometer, and the \NEPph\ value is referred to power absorbed in the bolometer.
   The efficiency of the lens accounts for losses due to both reflection from the lens and absorption in the lens.
   ``Beam'' refers to power from the far-field that reaches detectors, while ``Spillover'' refers to power that reaches the detectors due to the portion of the beam that misses the primary mirror.
-  % xxx include this? Listing optical power from each of the lens, beam, and spillover is not strictly neccessary, because I assume that all three sources are at the same temperature; I could equally well calculate optical power from a single \SI{295}{\K} source with emissivity of 1.0 looking into an optical system with efficiency \num{0.65}, the cumulative efficiency at the W1428 filter.
 }
 \label{tab:ch4-opt-load}
 \begin{tabular}{ccccccc}
