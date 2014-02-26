@@ -110,14 +110,14 @@ It excludes parasitic load inherent to the sorption refrigerator itself; we have
   Predicted Thermal Load on \SI{1}{\K} Stage.
   The ``Ti-6Al-4V spiders'' provide the structural link between the \SI{1}{\K} cold stage and the \SI{6}{\K} cold plate.
   These calculations assume that the readout wiring and Ti-6Al-4V spiders are running from \SI{6.4}{\K} to \SI{1.0}{\K}.
-  All wires are AWG36 Phosphur Bronze with thermal conductivity taken from the Lakeshore Cryogenics reference tables \cite{lake_shore_cryogenics_inc._cryogenic_????}.
+  All wires are AWG36 Phosphor Bronze with thermal conductivity taken from the Lake Shore Cryogenics reference tables \cite{lake_shore_cryogenics_inc._cryogenic_????}.
   Assumed thermal conductivity $k$ of the Ti-6Al-4V alloy used for the spiders is $k(T) = (\SI{150}{\uW\per\cm\K}) T$ (William Duncan, personal communication).
   ``\BOSE\ readout wires'' refers to the wires running from room temperature used to readout the position of the secondary mirror; see \sectionref{sec:ch8-mirror-readout}.
   The heat load from these wires is very high because they are not currently intercepted anywhere between room temperature and the \SI{1}{\K} stage.
   Intercepting them at the \SI{6}{\K} Cold Plate would reduce their load to \SI{1.1}{\uW}.
   ``Other optical power'' refers to in-band power that reaches the \SI{1}{\K} stage but is not absorbed by the detectors.
-  The number quoted assumes that all of this power is absorbed on the \SI{1}{\K} stage; this results in an overestimate because it is likely that most of this power is reflected by the feedhorn array, rathern than being absorbed.
-  ``Out-of-band optical power'' is assumed to be zero because the only warm object shining directly on the 1K stage --- the W1275 bandpass filter --- is only \SI{16}{\K}, and is not emmissive at the wavelengths at which it would be radiating (see \sectionref{sec:ch4-filters} and \cite{tucker_thermal_2006}).
+  The number quoted assumes that all of this power is absorbed on the \SI{1}{\K} stage; this results in an overestimate because it is likely that most of this power is reflected by the feedhorn array, rather than being absorbed.
+  ``Out-of-band optical power'' is assumed to be zero because the only warm object shining directly on the 1K stage --- the W1275 bandpass filter --- is only \SI{16}{\K}, and is not emissive at the wavelengths at which it would be radiating (see \sectionref{sec:ch4-filters} and \cite{tucker_thermal_2006}).
 }
 \label{tab:fp-thermal-load}
 \begin{tabular}{@{}lrr@{}}
@@ -366,7 +366,7 @@ These filters are also made of metal meshes and polypropylene, but many meshes a
 These filters have excellent transmission in-band band as well as good out-of-band rejection \cite{ade_review_2006}, but the thick polypropylene substrates mean that they are also highly absorptive --- and thus also emissive -- in the near-infrared.
 Additionally polypropylene has poor thermal conductivity.
 This means that unless they are heat-sunk very well, the centers of the filters will be much warmer than the stage at which they are anchored, and so they will re-radiate infrared power into the cryostat.
-The filters in the \Imager\ are clamped in place using spiral springs, using a design that is very similar to that used by the Atacama Cosmology Telescope reciever \cite{swetz_overview_2011}.
+The filters in the \Imager\ are clamped in place using spiral springs, using a design that is very similar to that used by the Atacama Cosmology Telescope receiver \cite{swetz_overview_2011}.
 
 \tableref{tab:ch4-filter-stack} lists all filters in the system and gives temperatures for the centers of some of the filters, taken while the cryostat was open optically.
 The outermost multi-layer filter is very warm (\SI{190}{\K}), and this is a significant source of loading on the \SI{6}{\K} stage, which also warms the \SI{6}{\K} multi-layer filters, leading to a level of loading on the \SI{1}{\K} stage that is so high that the stage can not be brought below \SI{1.2}{\K} unless the aperture is stopped down to reduce IR loading.
@@ -590,7 +590,7 @@ The cutoff frequency of this mode is given by \cite[Chapter~5]{harrington_time-h
 \end{equation}
 where $c$ is the speed of light in free space and $a$ is the radius of the waveguide.
 For our waveguide I choose a diameter of \SI{0.6}{\mm}, which gives a cutoff frequency of \SI{292}{\GHz}, well below the lowest frequency in the band.
-This choice was made so that the waveguide impedance was more uniform across the waveguide, which makes designing an efficienct absorbing structure easier.
+This choice was made so that the waveguide impedance was more uniform across the waveguide, which makes designing an efficient absorbing structure easier.
 
 The ideal absorbing structure for unpolarized light would be to cover the entire area of the waveguide with a sheet having a surface impedance equal to the waveguide impedance.
 The characteristic impedance at frequency $f$ for a TE mode in waveguide is \cite[Chapter~2]{harrington_time-harmonic_2001}
@@ -624,7 +624,7 @@ The \HFSS\ model has the following features:
       At low temperatures the electrical resistivity of this type of Si is expected to fall slightly \cite{chapman_electrical_1963}, but I have assumed the room-temperature value of \SI{4}{\mOhm\cm} in the simulations.
 \item The exact PdAu mesh used in the fabrication was included, using \SI{12}{\ohm}/sq as the surface impedance.
 \item The Au heat-capacity ring (see \sectionref{sec:ch5-det-design}) is included as well, treated as a perfectly conducting surface.
-\item The bottom surface of the backshort is assigned a surface impedance appropriate for the \SI{10}{\K} resistivity of invar, \SI{50}{\micro\ohm\cm} \cite{ekin_experimental_2006}.
+\item The bottom surface of the backshort is assigned a surface impedance appropriate for the \SI{10}{\K} resistivity of Invar, \SI{50}{\micro\ohm\cm} \cite{ekin_experimental_2006}.
       % xxx actually used 80 uOhm-cm in the model ... should re-run!
 \end{itemize}
 \figref{fig:ch4-hfss-model} shows a schematic of the \HFSS\ model, including the fields traveling down the waveguide.
