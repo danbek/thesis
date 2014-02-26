@@ -1,28 +1,24 @@
 \chapter{System Design Overview}\label{c:sys-design}
 
+% xxx be consistent about name of cold plates - 90 vs 80 vs 50 K, 4 vs 6 K
+
 \section{Cryostat Design}\label{s-cryo-design}
 
 The cryostat for the \Imager\ was designed with the goals of simplicity, reliability and turn-key automated operation.
-Reliable and easy-to-use cryogen-free mechanical cryocoolers are commercially available, but these cryocoolers are seldom capable of reaching temperatures below \SI{2.5}{\K}.
-Reaching sub-Kelvin temperatures requires a second refrigeration stage, which in our case is a He-4 adsorption refrigerator.
-The He-4 adsorption refrigerator is based on a proven design and its use can easily be automated.
-Three temperature stages within the cryostat are provided in order to provide intercepts for heat sinking wiring and other objects that are thermal connected to room temperature. 
-The result is a reliable cryogen-free system that can be controlled remotely.
-
-The cryostat itself was built by Precision Cryogenics\footnote{Precision Cryogenics Systems, Inc. Indianapolis, IN. \url{http://www.precisioncryo.com}} to designs provided by the \Imager\ team.
-\figref{fig:cryo-cutaway} shows a cutaway view of the cryostat, and \tableref{tab:temp-optical-load} lists the temperatures typically reached by different parts of the cryostat during operation when the cryostat is open optically.
+It was built by Precision Cryogenics\footnote{Precision Cryogenics Systems, Inc. Indianapolis, IN. \url{http://www.precisioncryo.com}} to designs provided by the \Imager\ team.
 The first two temperature intercept stages are provided by a Cryomech PT407 Pulse Tube Cryorefrigerator\footnote{Cryomech, Inc. Syracuse, NY. \url{http://www.cryomech.com}}
 The PT407 has two cooling stages.
 The first stage has \SI{25}{\W} of cooling power at \SI{55}{\K} while the second stage has \SI{0.7}{\W} at \SI{4.2}{\K}.
 Our PT407 uses a remote motor, so that the cold head attached to the cryostat has no moving parts, minimizing vibration of the cryostat.
-Vibration of the cryostat can lead to microphonic pickup either directly in the detectors themselves or in the readout circuitry, leading to much higher detector noise.
+Vibration of the cryostat can lead to microphonic pickup either directly in the detectors themselves or in the readout circuitry, leading to much higher detector noise (see \sectionref{sec:ch7-microphonic-pickup}).
 
+\figref{fig:cryo-cutaway} shows a cutaway view of the cryostat, and \tableref{tab:temp-optical-load} lists the temperatures typically reached by different parts of the cryostat during operation when the cryostat is open optically.
 The cryostat has two main parts: a cylinder containing both the \PTC\ and the \He4-sorption refrigerator, and a box located at the bottom of the cylinder which contains temperature intercept plates and the focal plane.
 There are three temperature stages, the ``\SI{90}{\K}'' Cold Plate, the ``\SI{4}{\K}'' Cold Plate, and the Focal Plane.
 The \PTC\ 1st stage is connected to the ``\SI{90}{\K}'' Cold Plate by a tube of Al 1100 and a set of CDA-101 Cu braids.
 The combination of this long thermal path with the high heat load on the optical filters sunk to the ``\SI{90}{\K}'' stage explains the \SI{45}{\K} temperature differential between the ``\SI{90}{\K}`` cold plate and the \PTC\ 1st stage.
-The \PTC\ 2nd stage is connected to the ``4 K'' Cold Plate by a large (3.0 in diameter by 2.78 in long) cylinder of CDA-110 Cu\footnote{This cryostat was originally designed to work with a different cryocooler. The \PTC\ currently installed had a shorter distance between the 1st and 2nd stages, necessitating the Cu cylinder to take up this extra space}, followed by tube of alloy CDA-101 Cu followed by a set of  CDA-101 copper braids.
-The Cu tube is broken into two halves, and the condensation plate (see below) of the adsorption fridge is clamped between these two halves. The ``90 K'' Cold Plate is stood off from the cryostat vacuum jacket by four ``roll wrapped'' carbon fiber tube standoffs. The ``\SI{4}{\K}'' Cold Plate stands off from the ``\SI{90}{\K}'' Cold Plate by eight supports made of G-10.
+The \PTC\ 2nd stage is connected to the ``4 K'' Cold Plate by a large (3.0 in diameter by 2.78 in long) cylinder of CDA-110 Cu\footnote{This cryostat was originally designed to work with a different cryocooler. The \PTC\ currently installed had a shorter distance between the 1st and 2nd stages; the Cu cylinder takes up this extra space.}, followed by tube of alloy CDA-101 Cu followed by a set of  CDA-101 copper braids.
+The Cu tube is broken into two halves, and the condensation plate (see below) of the sorption fridge is clamped between these two halves. The ``90 K'' Cold Plate is stood off from the cryostat vacuum jacket by four ``roll wrapped'' carbon fiber tube standoffs. The ``\SI{4}{\K}'' Cold Plate stands off from the ``\SI{90}{\K}'' Cold Plate by eight supports made of G-10.
 
 \begin{figure*}
 \centering
@@ -42,7 +38,7 @@ The Cu tube is broken into two halves, and the condensation plate (see below) of
         \draw[thick,<->] (1.05,0.04) -- +(0,0.31) node[midway,right] {18 in}; % scale bar
     \end{scope}
 \end{tikzpicture}
-\caption{Cutaway view of the \Imager. \textbf{A} PT407 1st stage cold head \textbf{B} PT407 2nd stage cold head \textbf{c} Cu cylinder connected PT407 2\textsuperscript{nd} stage cold head to Cu tube, which then connects to \He4-sorption refrigerator condensation plate. \textbf{D} \He4-sorption refrigerator \textbf{E} Focal Plane. Copper ropes connecting focal plane to \SI{1}{\K} cold plate are not visible in this view.}
+\caption{Cutaway view of the \Imager. \textbf{A} PT407 1st stage cold head \textbf{B} PT407 2nd stage cold head \textbf{C} Cu cylinder connecting the PT407 2\textsuperscript{nd} stage cold head to a Cu tube, which then connects to the \He4-sorption refrigerator condensation plate. \textbf{D} \He4-sorption refrigerator \textbf{E} Focal Plane. The Cu ropes that connect the focal plane to the \SI{1}{\K} cold plate are not visible in this view.}
 \label{fig:cryo-cutaway}
 \end{figure*}
 
@@ -58,17 +54,17 @@ Temperature Stage &  Temperature (K)\\
 \PTC\ 2st Stage Cold Head 			& 3.5 \\
 Cryostat ``50 K'' Cold Plate 		& 84 \\
 Cryostat ``4 K'' Cold Plate 			& 5.8 \\
-Adsorption Fridge Condensation Plate 	& 3.7 \\
-Focal Plane 						& 0.962 \\
+Sorption Fridge Condensation Plate 	& 3.7 \\
+Focal Plane 						& 0.970 \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
 Options for reaching temperatures below the \abt{\SI{1.2}{\K}} transition temperature of our \TES\ detectors include: dilution refrigerators, adiabatic magnetization refrigerators, pumped \He4 baths, and \He3- and/or \He4-sorption refrigerators.
 We chose a \He4-sorption fridge because the typical base temperature under no load of \abt{\SI{700}{\mK}} is well-matched to our application.
-\He-sorption fridges are also relatively inexpensive and easy to operate compared to other solutions.
+\He-sorption fridges are also relatively inexpensive and easy to operate compared to these other solutions.
 A \He4-sorption fridge works by using a charcoal adsorber to pump on a bath of liquid \He4, reducing the \He4 boiling point and thus the temperature of the bath.
-The \He4 is contained withing a sealed reservoir so that the refrigerator acts as a closed system requiring no \He4 replenishment. 
+The \He4 is contained within a sealed reservoir so that the refrigerator acts as a closed system requiring no \He4 replenishment. 
 While \He4-sorption fridges are commercially available, our team choose to design and build a custom fridge based on a design that has been proven in astronomical applications \cite{devlin_high_2004}.
 
 \figref{fig:he4sorp} shows a schematic depiction of the \Imager's \He4-sorption refrigerator.
@@ -91,7 +87,7 @@ In normal operation the heat switch between the charcoal pumping chamber (``pump
 		\draw[thick,<->] (0.9,0.02) -- ++(0,0.21875) node[midway,right] {3 in}; % scale bar
     \end{scope}
 \end{tikzpicture}
-\caption{Cutaway view of the \He4-sorption refrigerator. \textbf{A} Charcoal pumping chamber (``pump''). The charcoal is attached to the concentric copper cylinders. Cylinders are used to maximize the surface area covered by the charcoal. \textbf{B} Condensation plate. This copper plate is kept below the boiling point of \He4 in order to provide a point in the refrigerator for \He4 to condense and drip into the condensation pot. \textbf{C} \He4 gas gap heat switch. This heat switch is used to cool the charcoal in order to pump on the \He4 bath in the condensation pot. \textbf{B} \He4 condensation pot (``pot''). The condensed \He4 accumulates here. The concentric cylinders provide additional surface area for thermal contact to the liquid \He4. Not shown is a sapphire \SI{1}{\mm} constriction in the stainless steel tube connecting the pump and pot, intended to restrict the flow of super-fluid \He4 away from the pot (Swiss Jewel Company, part A34.00).}
+\caption{Cutaway view of the \He4-sorption refrigerator. \textbf{A} Charcoal pumping chamber (``pump''). The charcoal is attached to the concentric copper cylinders. Cylinders are used to maximize the surface area covered by the charcoal. \textbf{B} Condensation plate. This copper plate is kept below the boiling point of \He4 in order to provide a point in the refrigerator for \He4 to condense and drip into the condensation pot. \textbf{C} \He4 gas gap heat switch. This heat switch is used to cool the charcoal in order to pump on the \He4 bath in the condensation pot. \textbf{D} \He4 condensation pot (``pot''). The condensed \He4 accumulates here. The concentric cylinders provide additional surface area for thermal contact to the liquid \He4. Not shown is a sapphire \SI{1}{\mm} constriction in the stainless steel tube connecting the pump and pot, intended to restrict the flow of super-fluid \He4 away from the pot (Swiss Jewel Company, part A34.00).}
 \label{fig:he4sorp}
 \end{figure*}
 
@@ -116,19 +112,23 @@ It excludes parasitic load inherent to the sorption refrigerator itself; we have
 
 % xxx - include data on temp vs load for the fridge?
 
+% xxx - should really include a para explaining that the 1-K stage is
+% stood-off from 4K plate by the spiders
+
 \begin{table*}[ht]
 \centering
 \caption{
   Predicted Thermal Load on \SI{1}{\K} Stage.
+  The ``Ti-6Al-4V spiders'' provide the structural link between the \SI{1}{\K} cold stage and the \SI{4}{\K} cold plate.
   These calculations assume that the readout wiring and Ti-6Al-4V spiders are running from \SI{6.4}{\K} to \SI{1.0}{\K}.
   All wires are AWG36 Phosphur Bronze with thermal conductivity taken from the Lakeshore Cryogenics reference tables \cite{lake_shore_cryogenics_inc._cryogenic_????}.
-  Assumed thermal conductivity $k$ of the Ti-6Al-4V alloy used for the spiders is $k(T) = \SI{150}{\uW\per\cm\K} T$ (William Duncan, personal communication).
+  Assumed thermal conductivity $k$ of the Ti-6Al-4V alloy used for the spiders is $k(T) = (\SI{150}{\uW\per\cm\K}) T$ (William Duncan, personal communication).
   ``\BOSE\ readout wires'' refers to the wires running from room temperature used to readout the position of the secondary mirror; see \sectionref{sec:ch8-mirror-readout}.
   The heat load from these wires is very high because they are not currently intercepted anywhere between room temperature and the \SI{1}{\K} stage.
   Intercepting them at the ``\SI{4}{\K}'' Cold Plate would reduce their load to \SI{1.1}{\uW}.
   ``Other optical power'' refers to in-band power that reaches the \SI{1}{\K} stage but is not absorbed by the detectors.
   The number quoted assumes that all of this power is absorbed on the \SI{1}{\K} stage; this results in an overestimate because it is likely that most of this power is reflected by the feedhorn array, rathern than being absorbed.
-  Out-of-band optical power is assumed to be zero because the only warm object shining directly on the 1K stage --- the W1275 bandpass filter --- is only \SI{16}{\K}, and is not emmissive at the wavelengths at which it would be radiating (see \sectionref{sec:ch4-filters} and \cite{tucker_thermal_2006}).
+  ``Out-of-band optical power'' is assumed to be zero because the only warm object shining directly on the 1K stage --- the W1275 bandpass filter --- is only \SI{16}{\K}, and is not emmissive at the wavelengths at which it would be radiating (see \sectionref{sec:ch4-filters} and \cite{tucker_thermal_2006}).
 }
 \label{tab:fp-thermal-load}
 \begin{tabular}{@{}lrr@{}}
@@ -160,12 +160,8 @@ It excludes parasitic load inherent to the sorption refrigerator itself; we have
 
 \section{Optical Design}\label{sec:ch4-optical-design}
 
-Because I did not design the optical system, this section merely summarizes information about the optical system required for understanding the remainder of this thesis.
-Also described are the optical filters located inside the cryostat.
-
 The optical system is a Cassegrain design.
-A Cassegrain design was chosen because circular symmetry makes these systems easy to design for on-axis performance at finite distances%
-\footnote{William Duncan, personal communication}.
+A Cassegrain design was chosen because circular symmetry makes these systems easy to design for on-axis performance at finite distances.
 \figref{fig:ch4-optical-schematic} shows a schematic of the optical system including the focal plane.
 Light enters the system from the left in this schematic, and bounces off the primary mirror onto the secondary mirror.
 From the secondary mirror the light passes through a hole in the center of the primary mirror and through a window into the cryostat.
@@ -187,19 +183,39 @@ Schematic showing elements of optical system.
 \label{fig:ch4-optical-schematic}
 \end{figure*}
 
+The secondary mirror is mounted so that it can be pivoted in order to change where the system is pointing to in the far-field.
+Two \BOSE\ linear motors\footnote{Bose ElectroForce, Framingham MA} mounted \ang{90} apart allow the mirror to be moved in arbitrary directions and scanning patterns.
+\figref{fig:ch4-optics} shows the secondary mirror mounted on it's supporting platform, as well as the \BOSE\ motors.
+
+\begin{figure*}
+\centering
+\includegraphics[width=3in]{images/optics.jpg}
+\includegraphics[width=3in]{images/optics-bose.jpg}
+\caption{
+  Photographs of the optical system.
+  \textbf{Left} The primary and secondary mirrors.
+  The secondary is mounted on the Al platform in the upper left of the photograph.
+  The black cables leading away from the platform go the the control system for the \BOSE\ linear motors.
+  \textbf{Right} Close-up view of one of the \BOSE\ linear motors.
+  The secondary mirror itself is located on the right of the photograph, while the right side of the photograph shows the \BOSE.
+  A titanium strut connects the \BOSE\ to the mirror.
+  % xxx would be nice to label these pictures
+}
+\label{fig:ch4-optics}
+\end{figure*}
+
 \tableref{tab:ch4-optical-specs} lists important properties and parameters for the optical elements of the system.
 The most important parameter is the \SI{1.3}{\m} diameter of the primary mirror; this sets the resolution of the overall system.
 \figref{fig:ch4-spot-diagrams} shows spot diagrams for the optical system generated by a \ZEMAX\ model for the system focused at \SI{16}{\m}.
-They demonstrate the the system's optical performance is diffraction-limited over the entire focal plane for mirror rotations in both directions of up to \ang{1}, the maximum angle the mirror is ever displaced.
+They demonstrate the the system's optical performance is diffraction-limited over the entire focal plane for mirror rotations in both directions of up to \ang{1}, the maximum angle the mirror is displaced in operation.
 \tableref{tab:ch4-zemax-parms} lists important optical properties of the system obtained from the \ZEMAX\ model.
-
 
 \begin{sidewaystable}[ht]
 \centering
 \caption{
   Optical system specifications.
-  Some of the dimensions and parameters are listed to precisions higher than achievable manufacturing tolerances.
-  These dimensions and parameters were chosen by optimization routines in \ZEMAX\, and are kept to full precision here for archival purposes.
+  Some of the dimensions and parameters are listed to precisions higher than achievable manufacturing tolerances;
+  these dimensions and parameters were chosen by optimization routines in \ZEMAX\, and are kept to full precision here for archival purposes.
   The shape of the elliptical and hyperbolic mirrors follows the equation $z(r) = c r^2 / (1 + \sqrt{1 - (1+k) c^2 r^2})$, where $c$ is the inverse of the mirror radius, $k$ is the conic parameter, and $r$ is the radial distance from the center mirrors.
   The lens surfaces follow the equation given in the table.
 }
@@ -248,7 +264,7 @@ Cryostat Window   & \HDPE\ Aspheric Lens & \SI{0.24}{\m}
        $\beta_6 =  (\SI{86.306}{\mm})^{-6}$,
        $\beta_7 = -(\SI{107.763}{\mm})^{-7}$,
        $\beta_8 = -(\SI{124.984}{\mm})^{-8}$ \\
-Detector Focal Plane &                   & N/A           &  \SI{171.541}{\mm} from vertex of back of cryostat window \\
+Detector Focal Plane &                   & N/A           &  \SI{171.541}{\mm} from vertex of inner surface of cryostat window \\
 \bottomrule
 \end{tabular}
 \end{sidewaystable}
@@ -288,12 +304,12 @@ Detector Focal Plane &                   & N/A           &  \SI{171.541}{\mm} fr
 \begin{sidewaystable}[ht]
 \centering
 \caption{
-  Parameters of the optical system extracted \ZEMAX\ simulations.
-  ``Focus Distance'' is the distance from the apex of the primary mirror at which the system is focused.
-  ``Lens Distance'' is the distance from the outer vertex of the lens to the vertex of primary.
+  Parameters of the optical system extracted from \ZEMAX\ simulations.
+  ``Focus Distance'' is the distance from the apex of the primary mirror to the far-field plane at which the system is focused.
+  ``Lens Distance'' is the distance from the outer vertex of the lens to the vertex of the primary.
   ``Plate Scale'' gives the ratio of distances on the far-field focal plane to the detector focal plane.
   ``Mirror Rotation'' give the distance that the on-axis point moves when the mirror is rotated by \ang{1}.
-  ``F-Number'' Gives the ratio of the focal distance to the aperture size as viewed from the detector focal plane; this the ``Working F/\#'' from \ZEMAX.
+  ``F-Number'' gives the ratio of the focal distance to the aperture size as viewed from the detector focal plane; this the ``Working F/\#'' from \ZEMAX.
   ``Marginal Rays'' give the angle away from the optical axis of the inner/outer marginal rays; these are the most extreme rays emerging from the detector focal plane that reach the far-field focal plane.
   ``Primary Range'' give the innermost and outermost radius of the primary that is actually used, e.g., when focused at \SI{16}{\m}, the outer \SI{4}{\cm} of the primary is not used.
 }
@@ -327,40 +343,19 @@ Detector Focal Plane &                   & N/A           &  \SI{171.541}{\mm} fr
 \includegraphics[width=3in]{images/ch4-zemax-spot-1-1.JPG}
 \end{tabular}
 \caption{
-\ZEMAX\ spot diagrams for the \Imager's optical system.
-The system was focused to \SI{16}{\m}.
-This represents the distribution of points that rays trace to on the far-field focal plane.
+\ZEMAX\ spot diagrams for the \Imager's optical system when focused to \SI{16}{\m}.
+This represents the distribution of points that a distribution of rays trace to on the far-field focal plane.
 Each plot shows spot diagrams for nine points in the focal plane covering the area over which detectors in the subarray are located.
 The four plots (moving left to right and top to bottom) are for the secondary mirror with no tilt, \ang{1} tilt about one axis, \ang{1} title about other axis, and \ang{1} tilt about both axes.
-The black circle gives \ZEMAX's estimate of the size of the Airy disk for the optical system, which is defined as the location of the first null is the system's diffraction pattern.
+The black circle gives \ZEMAX's estimate of the size of the Airy disk for the optical system, which is defined as the location of the first null in the system's diffraction pattern.
 In all cases, nearly all rays map to within the Airy disk, indicating that the performance of the optical system is diffraction-limited.
 }
 \label{fig:ch4-spot-diagrams}
 \end{figure*}
 
-The secondary mirror is mounted so that it can be pivoted in order to change where the system is pointing to in the far-field.
-Two \BOSE\ linear motors\footnote{Bose ElectroForce, Framingham MA} mounted \ang{90} apart allow the mirror to be moved in arbitrary directions and scanning patterns.
-\figref{fig:ch4-optics} shows the secondary mirror mounted on it's supporting platform, as well as the \BOSE\ motors.
-
-\begin{figure*}
-\centering
-\includegraphics[width=3in]{images/optics.jpg}
-\includegraphics[width=3in]{images/optics-bose.jpg}
-\caption{
-  Photographs of the optical system.
-  \textbf{Left} The primary and secondary mirrors.
-  The secondary is mounted on the Al platform in the upper left of the photograph.
-  The black cables leading away from the platform go the the control system for the \BOSE\ linear motors.
-  \textbf{Right} Close-up view of one of the \BOSE\ linear motors.
-  The secondary mirror itself is located on the right of the photograph, while the right side of the photograph shows the \BOSE.
-  A titanium strut connects the \BOSE\ to the mirror.
-}
-\label{fig:ch4-optics}
-\end{figure*}
-
 The \HDPE\ window does not have an anti-reflection coating.
-The index of refraction of \HDPE\ is $n=1.525$ \cite{lamb_miscellaneous_1996}, so that expected reflection from the window should be $( (n-1)/(n+1) = \SI{4.3}{\percent}$.
-The absorption coefficient for \HDPE\ at \SI{350}{\GHz} is $\alpha = \SI{0.044}{\cm^{-1}}$ \cite{lamb_miscellaneous_1996}, leading to \SI{8.5}{\percent} absorption in-band, due to the \SI{2}{\cm} thickness of the lens.
+The index of refraction of \HDPE\ is $n=1.525$ with an absorption coefficient at \SI{350}{\GHz} of $\alpha = \SI{0.044}{\cm^{-1}}$ \cite{lamb_miscellaneous_1996}.
+Using the standard formulas for Fabry-Perot fringing when light passes through a lossy \SI{2}{\cm} thick dielectric slab \cite{xxx-orfanidis}, the band-averaged transmission through the window is calculated to be \SI{84}{\percent}, with \SI{7.6}{\percent} reflection due the change in dielectric constant, and \SI{9.1}{\percent} loss.
 
 \section{Optical Filtering} \label{sec:ch4-filters}
 
@@ -677,7 +672,7 @@ Only \SI{0.9}{\percent} of the bandpass is located above this frequency, so I ha
   Plot showing coupling efficiency of the detector absorbing structures.
   The blue line is the transmission of the bandpass filter.
   The red and brown lines show the fractional power absorbed in the grid absorber.
-  Although theses curves have different shapes, their integrated absorption over the band is withing \SI{1}{\percent} of each other.
+  Although theses curves have different shapes, their integrated absorption over the band is within \SI{1}{\percent} of each other.
   The band-averaged absorption for unpolarized light is \SI{87}{\percent}.
   The blue dashed vertical line at \SI{283}{\GHz} indicates the cutoff frequency of the next-highest-order mode, TM01; \SI{0.9}{\percent} of the bandwidth is above this frequency.
 }
