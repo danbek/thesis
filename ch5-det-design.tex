@@ -16,6 +16,10 @@ Some of the factors to consider are:
         The loop gain depends primarily on the detector $\alpha$, but also on the saturation power.
 \end{itemize}
 
+The following subsections outline the choice of $T_b$, $T_c$, $G$ and $C$ for the detectors in the first 251-detector sub-array.
+
+\subsection{Choice of $T_b$ and $T_c$}
+
 The relationship between detector noise and saturation power can be examined in more detail.
 From \eqnref{eqn:ch3-g-fit} we have
 \begin{equation} \label{eqn:ch5-psat}
@@ -37,7 +41,35 @@ Choosing a safety factor of 3 so that $P_{sat} = 3 \times \SI{200}{\pW}$, and ta
         \SI{3.6}{\K}
 \end{equation}
 It would seem that we should be able to run the system off of a Pulse Tube Cooler.
-However, this leaves very little margin for error, so for the \Imager\ we chose to use a \He4-sorption fridge to set the bath temperature.
+However, this leaves very little margin for error in the design and implemenation of the system, so for the \Imager\ we chose to use a \He4-sorption fridge to set the bath temperature.
+
+The \Imager's base bath temperature under optical load is \SI{970} (\see \sectionref{xxx}).
+The initial hopes for performance of the \He4-sorption fridge were that it's base temperature would be ~\SI{650}{\mK}, implying an ideal $T_c$ of \abt{\SI{1.2}{\K}}.
+This is a convenient $T_c$ because it is the critical temperature of elemental Al \cite{xxx}, so Al was chosen as the \TES\ material.
+
+In practice, it was discovered during testing of Al prototype detectors that the base temperature of the system was only \SI{970}{\mK} under optical load, so that a higher $T_c$ could lead to better noise performance.
+However, in order to change as little as possible between the prototype detectors and the first sub-array, I decided to continue using Al.
+
+\subsection{Choice of $G$}
+
+\tableref{tab:ch5-proto-parms} lists the measured properties and parameters of the prototype detectors.
+
+\begin{table*}
+\centering
+\caption{Measured Properties of Prototype Detectors} 
+\label{tab:ch5-proto-parms}
+\begin{tabular}{l r}
+\toprule
+  Detector Property &  Value \\
+\midrule
+  $T_c$             & \SI{1.2}{\K} \\
+  $n$             & xxx \\
+  $G$             & xxx \\
+  $\tau$             & xxx \\
+  $C = G \tau $             & xxx \\
+\bottomrule
+\end{tabular}
+\end{table*}
 
 \section{Detailed Detector Design} \label{sec:ch5-det-design}
 
