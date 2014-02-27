@@ -1,6 +1,43 @@
 \chapter{Detector Design}\label{c:det-design}
 
+This chapter describes the design and choice of parameters for the \TES\ bolometers that are used in the \Imager.
+
 \section{Parameter Choice For Our Bolometers} \label{sec:det-parm-choice}
+
+The primary parameters to be chosen when designing a \TES\ bolometer are the superconducting critical temperature $T_c$, the thermal conductcance $G$, and the \TES\ island heat capactiy $C$.
+These parameters are interrelated, and so cannot be chosen entirely independently of each other.
+Some of the factors to consider are:
+\begin{itemize}
+  \item Detector noise scales with $\sqrt{T_c^2 G}$, so that lower values of $G$ and $T_c$ are better
+  \item The saturation power of the \TES\ detector scales roughly like $G T_c$, so that if $G$ and $T_c$ are too small, the optical power falling on the detector will raise the temperature of the membrane above $T_c$, causing the device to not work.
+    % do i talk about saturation power in ch 3? if not, I should!
+  \item $T_c$ must be chosen to be higher than the acheivable bath temperature, and the bath temperature also affects the saturation power.
+  \item The targetted detector time constant $\tau_{eff}$ depends not only on the detector natural time constant $\tau = G / C$ but also on the values of \Loop and $\beta_I$ at the chosen bias point.
+        The loop gain depends primarily on the detector $\alpha$, but also on the saturation power.
+\end{itemize}
+
+The relationship between detector noise and saturation power can be examined in more detail.
+From \eqnref{eqn:ch3-g-fit} we have
+\begin{equation} \label{eqn:ch5-psat}
+P_{sat} = \frac{G T_c}{n}\left(1 - \left(\frac{T_b}{T_c}\right)^n\right).
+\end{equation}
+This can be solved for $G$ and subsituted into the expression for \TES\ thermal fluctuation noise in \tableref{tab:tes-noise}, leading to
+\begin{equation} \label{eqn:ch5-tes-noise}
+S^2_{TFN} = \frac{n F(T_0, T_b) T_0 / T_b}{1-(T_b/T_c)^n} 4 k_B T_b P_{sat}.
+\end{equation}
+The \TES\ temperature $T_0$ only appears in the prefactor, which depends only on the power-flow index $n$ and the ratio $T_b/T_0$.
+This means that for fixed $P_{sat}$ and $T_b$, the ratio $T_c/T_b$ that gives the lowest detector noise depends only on $n$ and the form of $F$.
+For values of $n$ in the range 3--4, this optimal ratio is $T_c \approx 1.8 T_b$, while the prefactor itself is \abt{3.7}.
+
+As discussed in \sectionref{sec:ch4-opt-eff}, the predicted loading on the \Imager's detectors is \SI{180}{\pW} and the photon noise from this load is \Pnoisef{0.85}.
+Choosing a safety factor of 3 so that $P_{sat} = 3 \times \SI{200}{\pW}$, and targeting detector noise equal to \SI{50}{\percent} of the photon (so that total noise is a factor of $\sqrt{1.5} = 1.22$ higher than photon noise) we find that in order for the detector noise to be below the predicted photon noise we require
+\begin{equation}
+  T_b < \frac{1}{3.7} \frac{\NEPph^2}{4 k_B P_{sat}} =
+        \frac{1}{3.7} \frac{0.5 \times (\num{0.85e-15})^2}{4 \times \SI{1.38e-23}{\J\per\K} \times 3 \times \SI{180}{\pW}} = 
+        \SI{3.6}{\K}
+\end{equation}
+It would seem that we should be able to run the system off of a Pulse Tube Cooler.
+However, this leaves very little margin for error, so for the \Imager\ we chose to use a \He4-sorption fridge to set the bath temperature.
 
 \section{Detailed Detector Design} \label{sec:ch5-det-design}
 
