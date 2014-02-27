@@ -4,7 +4,7 @@ This chapter describes the design and choice of parameters for the \TES\ bolomet
 
 \section{Parameter Choice For Our Bolometers} \label{sec:det-parm-choice}
 
-The primary parameters to be chosen when designing a \TES\ bolometer are the superconducting critical temperature $T_c$, the thermal conductcance $G$, and the \TES\ island heat capactiy $C$.
+The primary parameters to be chosen when designing a \TES\ bolometer are the superconducting critical temperature $T_c$, the thermal conductance $G$, and the \TES\ island heat capactiy $C$.
 These parameters are interrelated, and so cannot be chosen entirely independently of each other.
 Some of the factors to consider are:
 \begin{itemize}
@@ -16,18 +16,24 @@ Some of the factors to consider are:
         The loop gain depends primarily on the detector $\alpha$, but also on the saturation power.
 \end{itemize}
 
+The following subsections outline the choice of $T_b$, $T_c$, $G$ and $C$ for the detectors in the first 251-detector sub-array.
+
+xxx say something about no attempt to shape transition - we get whatever alpha we get. no need to slow down trans, which is what normal metal bars do.
+
+\subsection{Choice of $T_b$ and $T_c$}
+
 The relationship between detector noise and saturation power can be examined in more detail.
 From \eqnref{eqn:ch3-g-fit} we have
 \begin{equation} \label{eqn:ch5-psat}
 P_{sat} = \frac{G T_c}{n}\left(1 - \left(\frac{T_b}{T_c}\right)^n\right).
 \end{equation}
-This can be solved for $G$ and subsituted into the expression for \TES\ thermal fluctuation noise in \tableref{tab:tes-noise}, leading to
+This can be solved for $G$ and substituted into the expression for \TES\ thermal fluctuation noise in \tableref{tab:tes-noise}, leading to
 \begin{equation} \label{eqn:ch5-tes-noise}
 S^2_{TFN} = \frac{n F(T_0, T_b) T_0 / T_b}{1-(T_b/T_c)^n} 4 k_B T_b P_{sat}.
 \end{equation}
-The \TES\ temperature $T_0$ only appears in the prefactor, which depends only on the power-flow index $n$ and the ratio $T_b/T_0$.
+The \TES\ temperature $T_0$ only appears in the pre-factor, which depends only on the power-flow index $n$ and the ratio $T_b/T_0$.
 This means that for fixed $P_{sat}$ and $T_b$, the ratio $T_c/T_b$ that gives the lowest detector noise depends only on $n$ and the form of $F$.
-For values of $n$ in the range 3--4, this optimal ratio is $T_c \approx 1.8 T_b$, while the prefactor itself is \abt{3.7}.
+For values of $n$ in the range 3--4, this optimal ratio is $T_c \approx 1.8 T_b$, while the pre-factor itself is \abt{3.7}.
 
 As discussed in \sectionref{sec:ch4-opt-eff}, the predicted loading on the \Imager's detectors is \SI{180}{\pW} and the photon noise from this load is \Pnoisef{0.85}.
 Choosing a safety factor of 3 so that $P_{sat} = 3 \times \SI{200}{\pW}$, and targeting detector noise equal to \SI{50}{\percent} of the photon (so that total noise is a factor of $\sqrt{1.5} = 1.22$ higher than photon noise) we find that in order for the detector noise to be below the predicted photon noise we require
@@ -37,9 +43,77 @@ Choosing a safety factor of 3 so that $P_{sat} = 3 \times \SI{200}{\pW}$, and ta
         \SI{3.6}{\K}
 \end{equation}
 It would seem that we should be able to run the system off of a Pulse Tube Cooler.
-However, this leaves very little margin for error, so for the \Imager\ we chose to use a \He4-sorption fridge to set the bath temperature.
+However, this leaves very little margin for error in the design and implementation of the system, so for the \Imager\ we chose to use a \He4-sorption fridge to set the bath temperature.
+
+The \Imager's base bath temperature under optical load is \SI{970} (\see \sectionref{xxx}).
+The initial hopes for performance of the \He4-sorption fridge were that it's base temperature would be ~\SI{650}{\mK}, implying an ideal $T_c$ of \abt{\SI{1.2}{\K}}.
+This is a convenient $T_c$ because it is the critical temperature of elemental Al \cite{xxx}, so Al was chosen as the \TES\ material.
+
+In practice, it was discovered during testing of Al prototype detectors that the base temperature of the system was \SI{950}{\mK} under optical load, so that a higher $T_c$ could lead to better noise performance.
+However, in order to change as little as possible between the prototype detectors and the first sub-array, I decided to continue using Al.
+
+\subsection{Choice of $G$}
+
+\tableref{tab:ch5-proto-parms} lists the measured properties and parameters of the prototype detectors.
+These detectors had $P_{sat}$ at $T_b = \SI{970}{\mK}$, 5.1 times higher than the predicted optical load and 6.1 times the measured optical load.
+A safety factor of 5--6 is overly conservative, so for the sub-array I decided to target a $G$ value of \SI{3.7}{\nW\per\K}, for a safety factor of 3.8 -- 4.5.
+
+\begin{table*}
+\centering
+\caption{
+  Measured Properties of Prototype Detectors.
+  The methods and procedures used to measure these properties were the same as described for the sub-array in \chapterref{c:det-array}.
+} 
+\label{tab:ch5-proto-parms}
+\begin{tabular}{l c}
+\toprule
+  Detector Property &  {Value} \\
+\midrule
+  $T_c$                 & \SI{1.2}{\K} \\
+  $R_n$                 & \SI{3.4}{\mOhm} \\
+  $n$                   & 3.9 \\
+  $G$                   & \SI{5}{\nW\per\K} \\
+  $\tau$                & \SI{12}{\ms} \\
+  $\tau_{eff} (typical)$ & \SI{4}{\ms} \\
+  $C = G \tau $         & \SI{60}{\pJ\per\K} \\
+  $P_{opt}$              & \SI{150}{\pW\per\K} \\
+  $\eta_{tot}$           & 0.25 \\
+  $P_{sat,970}$          & \SI{920}{\pW} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Choice of $C$}
+
+The detector's heat capacity $C$ is chosen to target a specific natural time constant $\tau$ once $G$ is chosen.
+$\tau_{eff}$ in the prototype detectors was higher than the desired value of \SI{1}{\ms}.
+To reduce risk of problems such as instability with the sub-array detectors, I decided to reduce $C$ to \SI{30}{\pJ\per\K}, which would give $\tau = \SI{8}{\ms}$.
+As long as \Loop and $\beta_I$ at the operating bias point did not change, this would lead to $\tau_{eff} = \SI{2.7}{\ms}$.
 
 \section{Detailed Detector Design} \label{sec:ch5-det-design}
+
+\begin{table*}
+\centering
+\caption{
+  Dimensions of prototype and sub-array detectors.
+} 
+\label{tab:ch5-proto-parms}
+\begin{tabular}{l c}
+\toprule
+  Detector Dimension &  {Prototype Value} & Sub-Array Value \\
+\midrule
+  \TES\ Size           & $ \SI{64}{\um} \times \SI{70}{\um}$ & \\
+  \TES\ Thickness      & \SI{3.4}{\mOhm} & \\
+  SiN Thickness        & 3.9 & \\
+  I1 Thickness         & \SI{5}{\nW\per\K} & \\
+  I2 Thickness         & \SI{12}{\ms} & \\
+  Number of Legs       & \SI{4}{\ms} & \\
+  Leg Length           & \SI{4}{\ms} & \\
+  Gold Ring Area       & \SI{150}{\pW\per\K} & \\
+  Gold Ring Thickness  & 0.25 & \\
+\bottomrule
+\end{tabular}
+\end{table*}
 
 \section{Detector Wafer Layout} \label{sec:ch5-layout}
 
