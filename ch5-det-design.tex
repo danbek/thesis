@@ -46,7 +46,7 @@ It would seem that we should be able to run the system off of a Pulse Tube Coole
 
 However, this leaves very little margin for error in the design and implementation of the system, so for the \Imager\ we chose to use a \He4-sorption fridge to set the bath temperature.
 
-The \Imager's base bath temperature under optical load is \SI{970} (\see \sectionref{xxx}).
+The \Imager's base bath temperature under optical load is \SI{970} (see \sectionref{xxx}).
 The initial hopes for performance of the \He4-sorption fridge were that it's base temperature would be ~\SI{650}{\mK}, implying an ideal $T_c$ of \abt{\SI{1.2}{\K}}.
 This is a convenient $T_c$ because it is the critical temperature of elemental Al \cite{xxx}, so Al was chosen as the \TES\ material.
 
@@ -57,7 +57,7 @@ However, in order to change as little as possible between the prototype detector
 
 \tableref{tab:ch5-proto-parms} lists the measured properties and parameters of the prototype detectors.
 These detectors had $P_{sat}$ at $T_b = \SI{970}{\mK}$, 5.1 times higher than the predicted optical load and 6.1 times the measured optical load.
-A safety factor of 5--6 is overly conservative, so for the sub-array I decided to target a $G$ value of \SI{3.7}{\nW\per\K}, for a safety factor of 3.8 -- 4.5.
+A safety factor of 5--6 is overly conservative, so for the sub-array I decided to target a $G$ value of \SI{3.8}{\nW\per\K}, for a safety factor of 3.9 -- 4.7.
 
 \begin{table*}
 \centering
@@ -89,34 +89,85 @@ A safety factor of 5--6 is overly conservative, so for the sub-array I decided t
 The detector's heat capacity $C$ is chosen to target a specific natural time constant $\tau$ once $G$ is chosen.
 $\tau_{eff}$ in the prototype detectors was higher than the desired value of \SI{1}{\ms}.
 To reduce risk of problems such as instability with the sub-array detectors, I decided to reduce $C$ to \SI{30}{\pJ\per\K}, which would give $\tau = \SI{8}{\ms}$.
-As long as \Loop and $\beta_I$ at the operating bias point did not change, this would lead to $\tau_{eff} = \SI{2.7}{\ms}$.
+As long as \Loop and $\beta_I$ at the operating bias point did not change, this would lead to $\tau_{eff} = \SI{2.6}{\ms}$.
 
 \section{Detailed Detector Design} \label{sec:ch5-det-design}
+
+\tableref{tab:ch-det-dims} lists dimensions for both the prototype and sub-array detectors.
+The leg geometry of the prototype detectors was based on a set of measurements taken at \NIST\ on SiN membranes at temperature around \SI{1}{\K}.
+the leg geometry for the sub-array detectors was based on simple scaling of the prototype detecctors to the target $G$ of \SI{3.8}{\nW\per\K}.
+This scaling was slightly complicated by the change in thickness of the SiO2 layers, which was made in order to add additional protection to the wiring laayers and better balance stress on the relieved membranes.
+Assuming that $G$ scales linearly with the $A/L$ of the legs, the sub-array $G$ should be
+\begin{align}
+  G_{sub} & = G_{proto} \frac{A_{sub}}{A_{proto}} \frac{l_{proto}}{l_{sub}} \\
+         & = G_{proto} \frac{(500 + 250 + 200)(11)}{(500 + 120 + 120)(11)} \frac{40}{67} \\
+         & = \SI{5.0}{\nW\per\K} \times 1.28 \times 0.597 \\
+         & = \SI{3.8}{\nW\per\K} 
+\end{align}
 
 \begin{table*}
 \centering
 \caption{
   Dimensions of prototype and sub-array detectors.
+  The values shown for the sub-array detectors are those that are different from the prototypes; all other sub-array dimensions are the same as for the prototypes.
 } 
-\label{tab:ch5-proto-parms}
-\begin{tabular}{l c}
+\label{tab:ch5-det-dims}
+\begin{tabular}{l c c}
 \toprule
-  Detector Dimension &  {Prototype Value} & Sub-Array Value \\
+  Detector Dimension &  {Prototype} & Sub-Array \\
 \midrule
-  \TES\ Size           & $ \SI{64}{\um} \times \SI{70}{\um}$ & \\
-  \TES\ Thickness      & \SI{3.4}{\mOhm} & \\
-  SiN Thickness        & 3.9 & \\
-  I1 Thickness         & \SI{5}{\nW\per\K} & \\
-  I2 Thickness         & \SI{12}{\ms} & \\
-  Number of Legs       & \SI{4}{\ms} & \\
-  Leg Length           & \SI{4}{\ms} & \\
-  Gold Ring Area       & \SI{150}{\pW\per\K} & \\
-  Gold Ring Thickness  & 0.25 & \\
+  \TES\ Size           & $\SI{64}{\um} \times \SI{70}{\um}$ & \\
+  \TES\ Thickness      & \SI{250}{\nm}       & \SI{180}{\nm} \\
+  SiN Thickness        & \SI{500}{\nm}       & \\
+  SiO2 Base Thickness  & \SI{120}{\nm}       & \SI{250}{\nm} \\
+  SiO2 Cover Thickness & \SI{120}{\nm}       & \SI{200}{\nm} \\
+  Number of Legs       & 8                   & \\
+  Leg Length           & \SI{40}{\um}        & \SI{67}{\um} \\
+  Leg Width            & \SI{11}{\um}        & \\
+  Gold Ring Area       & $(\SI{393}{\um})^2$ & \\
+  Gold Ring Thickness  & \SI{2000}{\nm}      & \SI{1000}{\nm} \\
+  Nb Lead Width        & \SI{6}{\um}         & \\
+  Nb Lead Thickness    & \SI{200}{\nm}       & \\
+  PdAu Thickness       & \SI{20}{\nm}        & \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
+\tableref{xxx} shows contributions to the heat capactiy from all components of the bolometer.
+The membrane and Al \TES\ alone have insufficient heat capacity, so an Au ring was added to provide the targetted heat capacity.
+The total heat capacity is dominated by the Au ring.
+
+\begin{table*}
+\centering
+\caption{
+  Contributions to total heat capacity of sub-array detectors.
+  Note that the Debye contribution for Au at \SI{1.2}{\K} is still significant, so can not be ignored.
+} 
+\label{tab:ch5-det-dims}
+\begin{tabular}{l S S S l}
+\toprule
+  Component & {Volume ($10^{-9}$\,\si{\cm^3})} & {$C_V$ (\si{\uJ\per\K\per\cm^3})} & {$C_{tot}$ (\si{\uJ\per\K})} & Source \\
+\midrule 
+    SiN & 203.6 &   1.0 &   0.2 & \cite{holmes_measurements_1998} \\ 
+   SiO2 & 183.2 &   3.1 &   0.6 & \cite{zeller_thermal_1971,zink_specific_2004} \\ 
+     Al &   0.8 & 196.8 &   0.2 & \cite{irwin_transition-edge_2005} \\ 
+     Au & 154.4 & 161.3 &  24.9 & \cite{corak_atomic_1955} \\ 
+\midrule 
+  Total &       &       &  25.8 \\ 
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{figure*}
+\centering
+\includegraphics[height=2.5in]{images/ch5-det-layout.png}
+\includegraphics[height=2.5in]{images/ch5-single-pixel-500.jpg}
+\caption{
+  Layout of \Imager\ detectors.
+}
+\label{fig:ch5-det-layout}
+\end{figure*}
+
 \section{Detector Wafer Layout} \label{sec:ch5-layout}
 
 \section{Predicted Noise} \label{sec:ch5-predicted-noise}
-
