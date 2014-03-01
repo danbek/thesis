@@ -93,7 +93,21 @@ As long as \Loop and $\beta_I$ at the operating bias point did not change, this 
 
 \section{Detailed Detector Design} \label{sec:ch5-det-design}
 
-\tableref{tab:ch-det-dims} lists dimensions for both the prototype and sub-array detectors.
+The \Imager's detectors are fabricated using standard lithographic clean-room techniques on Si wafers.
+In order to achieve the targetted $G$ and $C$ values the detectors are located on a suspended SiN membrane which is connected to the rest of the Si wafer by a set of thin ``legs''.
+\figref{xxx} shows a cross-sectional schematic of the detectors, showing that they are suspended with no Si beneath them, as well as a labeled photograph of a prototype detector (the sub-array detectors are identical except for the length of the legs and the thickness of some of the layers; see \tableref{tab:ch5-det-dims}).
+
+xxx photo / cross-section figure
+
+The detectors are fabricated on \SI{275}{\um} thick double-side-polished degenerate (Boron P-type) Si wafers.
+A layer of SiO2 is grown on top of the silion, followed by a layer of SiN, prior to the main fabrication steps.
+During fabrication the \TES\, Nb wiring leads, PdAu absorber, and Au heat-capacity ring are laid down, as well as an additional layer of insulator to allow wiring layers to cross over each other.
+The SiN and SiO2 is removed from the areas between the legs, and then a Deep Reactive Ion Etch process is used to remove all silicon from behind the detector membrane.
+This etch process does not remove SiN or SiO2, so that the legs, which still have SiN, are left in place.
+The result is a susepended membrane connected to the rest of the wafer by a set of ``legs'' which provide the thermal conductance $G$.
+
+\tableref{tab:ch5-det-dims} lists dimensions for both the prototype and sub-array detectors.
+
 The leg geometry of the prototype detectors was based on a set of measurements taken at \NIST\ on SiN membranes at temperature around \SI{1}{\K}.
 the leg geometry for the sub-array detectors was based on simple scaling of the prototype detecctors to the target $G$ of \SI{3.8}{\nW\per\K}.
 This scaling was slightly complicated by the change in thickness of the SiO2 layers, which was made in order to add additional protection to the wiring laayers and better balance stress on the relieved membranes.
@@ -169,5 +183,6 @@ The total heat capacity is dominated by the Au ring.
 \end{figure*}
 
 \section{Detector Wafer Layout} \label{sec:ch5-layout}
+
 
 \section{Predicted Noise} \label{sec:ch5-predicted-noise}
