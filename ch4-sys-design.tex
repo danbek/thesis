@@ -614,6 +614,7 @@ For the \Imager, I used this rule-of-thumb as a starting point, but to design th
 The \HFSS\ model has the following features:
 \begin{itemize}
 \item \SI{0.6}{\mm} diameter circular waveguide leading to the detector.
+      The waveguide walls are treated as lossless; insertion loss of the feedhorn is calculated separately in \sectionref{sec:ch4-feedhorn-design}. 
 \item \SI{135}{\um} ``air gap'' between the bottom of the feedhorn array and the back of the detector wafer.
 \item Proper backshort diameter of \SI{844}{\um} and backshort height of \SI{275}{\um}.
 \item To keep the design simple, the backshort walls are not metalized.
@@ -624,7 +625,7 @@ The \HFSS\ model has the following features:
       At low temperatures the electrical resistivity of this type of Si is expected to fall slightly \cite{chapman_electrical_1963}, but I have assumed the room-temperature value of \SI{4}{\mOhm\cm} in the simulations.
 \item The exact PdAu mesh used in the fabrication was included, using \SI{12}{\ohm}/sq as the surface impedance.
 \item The Au heat-capacity ring (see \sectionref{sec:ch5-det-design}) is included as well, treated as a perfectly conducting surface.
-\item The bottom surface of the backshort is assigned a surface impedance appropriate for the \SI{10}{\K} resistivity of Invar, \SI{50}{\micro\ohm\cm} \cite{ekin_experimental_2006}.
+\item The bottom surface of the backshort is assigned a surface impedance appropriate for gold with RRR = 20, which is typical for thick gold layers fabricated in the \NIST\ cleanroom.
       % xxx actually used 80 uOhm-cm in the model ... should re-run!
 \end{itemize}
 \figref{fig:ch4-hfss-model} shows a schematic of the \HFSS\ model, including the fields traveling down the waveguide.
