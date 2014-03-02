@@ -1,20 +1,22 @@
 % !TEX TS-program = pdflatex
 % !TEX encoding = UTF-8 Unicode
 
-% for proofreading the text
-%\documentclass[10pt,twocolumn,article]{memoir}
-%\captionnamefont{\large}
-%\captiontitlefont{\large}
-
-%% closer to real thesis format
 \documentclass[12pt,letterpaper]{memoir}
 \OnehalfSpacing
 
-% 1in margins everywhere. I do this for proofreading too, so that I can see exactly how the figures will look on their pages in the final document
-\settypeblocksize{9in}{6.5in}{*}
-\setlrmargins{1.0in}{*}{*}
-\setulmargins{1.0in}{*}{*}
+% 1in margins everywhere. The tricky part is that the "upper margin"
+% refers to where the *text* starts, not the header, so you need to
+% give some extra space for the header. Probably some way to
+% explicitly set the distance to the header, but this is simple and
+% close enough.
+
+\setlrmarginsandblock{1.0in}{1.0in}{*}
+\setulmarginsandblock{1.45in}{1.0in}{*}
 \checkandfixthelayout
+
+% See memoir manaul for this stye. It put page numbers in the footer.
+% The header has chapter/section name and a ruled line.
+\pagestyle{ruled}
 
 \usepackage{thesis}
 \usepackage{tikz} % drawing figures right here in this file!
@@ -75,25 +77,25 @@ This thesis describes the design and implementation of this system, as well as i
 %% TSA 700 AIT (advanced imaging technology) systems at 160 airports
 
 
-% \chapter{System Specifications, Challenges and Solutions}\label{c:specs}
+\chapter{System Specifications, Challenges and Solutions}\label{c:specs}
 
-% \section{Specifications} \label{sec:ch2-specifictions}
+\section{Specifications} \label{sec:ch2-specifictions}
 
-% \section{Noise Requirements} \label{sec:ch2-noise}
+\section{Noise Requirements} \label{sec:ch2-noise}
 
-% \include{ch3-tes-theory}
+\include{ch3-tes-theory}
 
-% \include{ch4-sys-design}
+\include{ch4-sys-design}
 
 \include{ch5-det-design}
 
-% \include{ch7-subarray}
+\include{ch7-subarray}
 
-% \include{ch8-imaging}
+\include{ch8-imaging}
 
-% \appendix
+\appendix
 
-% \chapter{Conical Feedhorn Beam Patterns} \label{app:feedhorn-eqn}
+\chapter{Conical Feedhorn Beam Patterns} \label{app:feedhorn-eqn}
 
 \printbibliography
 
