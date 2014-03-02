@@ -26,7 +26,19 @@ drawings/ch4-feed-spill.pdf: drawings/ch4-feed-spill.tex thesis.sty
 drawings/%.pdf: drawings/%.tex thesis.sty
 	cd drawings && $(PDFLATEX) $(notdir $<) && $(PDFCROP) $(notdir $@) $(notdir $@)
 
-clean : .PHONY
+topclean : .PHONY
+	$(RM) -f *.aux
+	$(RM) -f *.bbl
+	$(RM) -f *.blg
+	$(RM) -f *.log
+	$(RM) -f *.bcf
+	$(RM) -f *.toc
+	$(RM) -f *.run.xml
+	$(RM) -f *.lot
+	$(RM) -f *.synctex.gz
+	$(RM) -f *.pdf
+
+clean : topclean
 	find . -regex ".*\(aux\|bbl\|blg\|log\|bcf\|synctex\.gz\|fls\|fdb_latexmk\)" -type f -delete
 	$(RM) -fr -- drawings/*.pdf
 
