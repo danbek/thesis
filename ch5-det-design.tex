@@ -46,7 +46,7 @@ It would seem that we should be able to run the system off of a Pulse Tube Coole
 
 However, this leaves very little margin for error in the design and implementation of the system, so for the \Imager\ we chose to use a \He4-sorption fridge to set the bath temperature.
 
-The \Imager's base bath temperature under optical load is \SI{920}{\pW} (see \sectionref{xxx}).
+The \Imager's base bath temperature under optical load is \SI{920}{\pW} (see \sectionref{sec:ch4-cryo-design}).
 The initial hopes for performance of the \He4-sorption fridge were that it's base temperature would be ~\SI{650}{\mK}, implying an ideal $T_c$ of \abt{\SI{1.2}{\K}}.
 This is a convenient $T_c$ because it is the critical temperature of elemental Al \cite{xxx}, so Al was chosen as the \TES\ material.
 
@@ -61,7 +61,7 @@ A safety factor of 5--6 is overly conservative, so for the sub-array I decided t
 
 \begin{table*}
 \centering
-\caption{
+\caption[Measured properties of prototype detectors]{
   Measured Properties of Prototype Detectors.
   The methods and procedures used to measure these properties were the same as described for the sub-array in \chapterref{c:det-array}.
 } 
@@ -101,7 +101,7 @@ In order to achieve the targetted $G$ and $C$ values the detectors are located o
 \centering
 \includegraphics[width=3.9in]{images/ch5-det-schematic.png}
 \includegraphics[width=2.3in]{images/ch5-proto-pixel-labeled.png}
-\caption{
+\caption[Detector cross-section and photograph]{
   \textbf{Left} Cross-sectional schematic of a \Imager detector.
   The schematic is not to scale.
   \textbf{Right} Photograph of a prototype detector.
@@ -133,7 +133,7 @@ Assuming that $G$ scales linearly with the $A/L$ of the legs, the sub-array $G$ 
 
 \begin{table*}
 \centering
-\caption{
+\caption[Detector dimensions]{
   Dimensions of prototype and sub-array detectors.
   The values shown for the sub-array detectors are those that are different from the prototypes; all other sub-array dimensions are the same as for the prototypes.
 } 
@@ -165,7 +165,7 @@ The total heat capacity is dominated by the Au ring.
 
 \begin{table*}
 \centering
-\caption{
+\caption[Detector heat capacity contributions]{
   Contributions to total heat capacity of sub-array detectors.
   Note that the Debye contribution for Au at \SI{1.2}{\K} is still significant, so must not be ignored.
 } 
@@ -198,7 +198,7 @@ The larger feedhorn size could have improved the spill over effieciency from \nu
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch5-full-wafer.pdf}
-\caption{
+\caption[Photograph of 251-detector sub-array]{
   Photograph of the 251-detector sub-array.
   Bondpads for connecting to the detectors run along the left and bottom sides.
   In the upper left, lower right, and upper right corners are Au pads for connecting Au wirebonds to allow the wafer to be heat-sunk to the rest of the \SI{1}{\K} stage.
@@ -236,7 +236,7 @@ See \figref{fig:ch5-focal-plane-back}.
 \centering
 \includegraphics{drawings/ch5-focal-plane-back.pdf}
 \includegraphics{drawings/ch5-focal-plane-cryostat.pdf}
-\caption{
+\caption[Photograph of focal plane in cryostat]{
   Photographs showing how the focal plane is attached to the \SI{6}{\K} Cold Plate.
   \textbf{Left}
   Back view of the focal plane.
@@ -267,12 +267,12 @@ The dowel pins are inserted into the Al platter, with one matching hole and one 
 Two additional pins align each invar plate feedhorn array to the Al platter.
 Again a matching hole and slot are present in the invar, but in this case the slot is neccesary not only avoid over-contraining the system but also to account for the differential thermal contraction between invar and Al.
 The detector wafer is placed in the proper location on the invar platter using an alignment jig, and while the invar and grease have been warmed to \abt{\SI{30}{\celsius}}, a temperature at which the thermal grease becomes more viscous, making it easier to adjust the position of the wafer.
-See \figref{fig:ch5-aligment-jig}.
+See \figref{fig:ch5-alignment-jig}.
 
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch5-alignment-jig.pdf}
-\caption{
+\caption[Alignment jig]{
   Photograph of the alignment jig used to align the \Imager's sub-array to the invar plate.
   The invar plate and the metal bar are aligned to each other with dowel pins.
   The metal bar has conical cut-outs places so that when detectors are aligned with them, the wafer is aligned properly to the invar.
@@ -294,7 +294,7 @@ On top of each wiring chip are four multiplexing chips as well as four ``interfa
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch5-wiring-chip-schematic.pdf}
-\caption{
+\caption[Wiring chip schematic]{
   Schematic showing close-up view of the wiring chips with multiplexing and interface chips on top.
 }
 \label{fig:ch5-wiring-chip-schematic}
@@ -303,7 +303,7 @@ On top of each wiring chip are four multiplexing chips as well as four ``interfa
 \begin{figure*}
 \centering
 \includegraphics[width=6.00in]{images/ch5-focal-plane-platter.jpg}
-\caption{
+\caption[Focal plane during assembly]{
   Photograph of the focal plane platter while being assembled.
   The platter was machined out of Al-6061 and then Au-plated.
   The green circuit board routes the 500 PhBr wires running from room temperature to the multiplexing and interface chips.
