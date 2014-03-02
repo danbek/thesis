@@ -1,0 +1,26 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=4.0in]{../images/ch5-focal-plane-back.jpg}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+	    % \draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1.0,1);
+		% \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+		% \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+		
+        \draw[black,ultra thick,rounded corners] (0.17,0.70) rectangle (0.05,0.90) node[below right] {\textbf{A}}; % Spider
+        \draw[black,ultra thick,rounded corners] (0.65,0.95) rectangle (0.45,0.85) node[above right] {\textbf{A}}; % Spider
+        \draw[black,ultra thick,rounded corners] (0.83,0.28) rectangle (0.65,0.45) node[below right] {\textbf{B}}; % MDM Connector
+        
+        \draw[black,ultra thick,<->] (.16,0.45) -- (0.70,0.70) node[midway,right] {xxx in}; % scale bar
+    \end{scope}
+\end{tikzpicture}
+
+\end{document}
