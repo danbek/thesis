@@ -259,8 +259,8 @@ Invar was chosen because its thermal contraction upon cooling to \SI{4}{\K} and 
 The wafer stack is attached to the invar plate with a thin layer of Apiezon-N thermal grease.
 Upon cooling to cryogenic temperatures Apiezon N grease solidifies, so that the detector wafer will not slip along the invar, and even at room temperature the grease is very thick so that if the back of the wafer stack is entirely covered with a layer of grease, the wafer will not slip.
 
-The invar plates must be attached to the Al platter in a way that account for the differential thermal contraction between Al and Invar, while ensuring that the detectors are aligned properly to the feedhorns.
-This is accomplished by aligning the invar, feedhorns, and Al platter to each other using stainless steel dowel pins.
+The invar plates must be attached to the Al platter in a way that account for the differential thermal contraction between Al and Invar, while ensuring that the detectors are correctly aligned to the feedhorns.
+This is done by aligning the invar, feedhorns, and Al platter to each other using stainless steel dowel pins.
 Two pins align the feedhorns to the Al platter.
 The dowel pins are inserted into the Al platter, with one matching hole and one matching slot in the feehorn array; a slot is used for one of the holes to avoid over-contraining the mechanical connection.
 Two additional pins align each invar plate feedhorn array to the Al platter.
@@ -272,7 +272,7 @@ See \figref{fig:ch5-aligment-jig}.
 \centering
 \includegraphics[width=5.5in]{images/ch5-alignment-jig.jpg}
 \caption{
-  Photograph of the alignment jig used to properly align the \Imager's sub-array to the invar plate.
+  Photograph of the alignment jig used to align the \Imager's sub-array to the invar plate.
   The invar plate and the metal bar are aligned to each other with dowel pins.
   The metal bar has conical cut-outs places so that when detectors are aligned with them, the wafer is aligned properly to the invar.
   In order to make it easy to move the detector wafer stack to the proper location, the entire assembly is warmed to \SI{30}{\celsius}; at this temperature the thermal grease thins.
@@ -280,20 +280,32 @@ See \figref{fig:ch5-aligment-jig}.
 \label{fig:ch5-alignment-jig}
 \end{figure*}
 
-\begin{figure*}
-\centering
-\includegraphics[width=6.00in]{images/ch5-focal-plane-platter.jpg}
-\caption{
-  xxx add caption
-}
-\label{fig:ch5-focal-plane-platter}
-\end{figure*}
+Four 100-wire woven PhBr wire harness run from \SI{300}{\K} to the focal plane, heat sunk along the way at the \SI{90}{\K} and \SI{6}{\K} stages.
+These wires carry the readout signals to and from the \MCE.
+Once they reach the focal plane a circuit board routes the wires to each sub-array.
+One 100-wire harness caried the row-address wires and the circuit board routes the wires to all mutliplexing chips in series (32 chips for the full array).
+The other four 100-wire harnesses each carry \SQUID bias and feedback wires for a single sub-array.
+
+To aid in routing of the wites, each sub-array has two ``wiring chips'' associated with it, visible in \figref{fig:ch5-focal-plane-platter}, and shown in schematic form in \figref{fig:ch5-wiring-chip-schematic}.
+These chips aid in routing row-address and detector bias wires.
+On top of each wiring chip are four multiplexing chips as well as four ``interface'' chips which contain Nyquist inductors and shunt resistors for the detectors.
 
 \begin{figure*}
 \centering
 \includegraphics[width=5.00in]{images/ch5-wiring-chip-schematic.png}
 \caption{
-  xxx add caption
+  Schematic showing close-up view of the wiring chips with multiplexing and interface chips on top.
+}
+\label{fig:ch5-wiring-chip-schematic}
+\end{figure*}
+
+\begin{figure*}
+\centering
+\includegraphics[width=6.00in]{images/ch5-focal-plane-platter.jpg}
+\caption{
+  Photograph of the focal plane platter while being assembled.
+  The platter was machined out of Al-6061 and then Au-plated.
+  The green circuit board routes the 500 PhBr wires running from room temperature to the multiplexing and interface chips.
 }
 \label{fig:ch5-focal-plane-platter}
 \end{figure*}
