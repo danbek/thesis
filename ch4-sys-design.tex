@@ -21,7 +21,7 @@ The Cu tube is broken into two halves, and the condensation plate (see below) of
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch4-cryo-cutaway.pdf}
-\caption{
+\caption[Cutaway view of the \Imager]{
   Cutaway view of the \Imager.
   \textbf{A} PT407 1st stage cold head
   \textbf{B} PT407 2nd stage cold head
@@ -64,7 +64,7 @@ In normal operation the heat switch between the charcoal pumping chamber (``pump
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch4-he4sorp.pdf}
-\caption{
+\caption[Cutaway view of the \He4-sorption refrigerator]{
   Cutaway view of the \He4-sorption refrigerator.
   \textbf{A} Charcoal pumping chamber (``pump'').
   The charcoal is attached to the concentric copper cylinders.
@@ -106,7 +106,7 @@ It excludes parasitic load inherent to the sorption refrigerator itself; we have
 
 \begin{table*}[ht]
 \centering
-\caption{
+\caption[Predicted Thermal Load on \SI{1}{\K} Stage]{
   Predicted Thermal Load on \SI{1}{\K} Stage.
   The ``Ti-6Al-4V spiders'' provide the structural link between the \SI{1}{\K} cold stage and the \SI{6}{\K} cold plate.
   These calculations assume that the readout wiring and Ti-6Al-4V spiders are running from \SI{6.4}{\K} to \SI{1.0}{\K}.
@@ -160,7 +160,7 @@ On the focal plane itself, light is captured by smooth-walled conical feedhorns 
 \begin{figure*}
 \centering
 \includegraphics[width=4in]{images/optics-labeled-fixed.jpg}
-\caption{
+\caption[Schematic showing elements of optical system]{
 Schematic showing elements of optical system.
 \textbf{A} \SI{1.3}{\m} elliptical primary mirror.
 \textbf{B} Platform on which secondary mirror is mounted.
@@ -180,7 +180,7 @@ Two \BOSE\ linear motors\footnote{Bose ElectroForce, Framingham MA} mounted \ang
 \centering
 \includegraphics[width=3in]{images/optics.jpg}
 \includegraphics[width=3in]{images/optics-bose.jpg}
-\caption{
+\caption[Photographs of the optical system]{
   Photographs of the optical system.
   \textbf{Left} The primary and secondary mirrors.
   The secondary is mounted on the Al platform in the upper left of the photograph.
@@ -201,7 +201,7 @@ They demonstrate the the system's optical performance is diffraction-limited ove
 
 \begin{sidewaystable}[ht]
 \centering
-\caption{
+\caption[Optical system specifications]{
   Optical system specifications.
   Some of the dimensions and parameters are listed to precisions higher than achievable manufacturing tolerances;
   these dimensions and parameters were chosen by optimization routines in \ZEMAX\, and are kept to full precision here for archival purposes.
@@ -292,7 +292,7 @@ Detector Focal Plane &                   & N/A           &  \SI{171.541}{\mm} fr
 
 \begin{sidewaystable}[ht]
 \centering
-\caption{
+\caption[Parameters of the optical system extracted from \ZEMAX\ simulations]{
   Parameters of the optical system extracted from \ZEMAX\ simulations.
   ``Focus Distance'' is the distance from the apex of the primary mirror to the far-field plane at which the system is focused.
   ``Lens Distance'' is the distance from the outer vertex of the lens to the vertex of the primary.
@@ -331,7 +331,7 @@ Detector Focal Plane &                   & N/A           &  \SI{171.541}{\mm} fr
  &
 \includegraphics[width=3in]{images/ch4-zemax-spot-1-1.JPG}
 \end{tabular}
-\caption{
+\caption[\ZEMAX\ spot diagrams]{
 \ZEMAX\ spot diagrams for the \Imager's optical system when focused to \SI{16}{\m}.
 This represents the distribution of points that a distribution of rays trace to on the far-field focal plane.
 Each plot shows spot diagrams for nine points in the focal plane covering the area over which detectors in the subarray are located.
@@ -379,7 +379,7 @@ The total transmission of the filter stack excluding the bandpass filter is \SI{
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch4-filter-stack.pdf}
-\caption{
+\caption[Schematic showing locations of all filters in the \Imager]{
   Schematic showing locations of all filters in the \Imager.
   Everything shown here is internal to the cryostat.
   On the left the nominal temperatures for each stage are listed, and on the right the names and cutoff wavelengths are listed.
@@ -389,7 +389,7 @@ The total transmission of the filter stack excluding the bandpass filter is \SI{
 
 \begin{table*}
 \centering
-\caption{
+\caption[Details of all filters installed in the \Imager]{
   Details of all filters installed in the \Imager.
   Going down the table, the filters are listed in order from the outside of the cryostat to the inside.
   ``Stage'' refers to the cryostat temperature stage at which the filter is located.
@@ -449,7 +449,8 @@ The fraction of the beam that strikes the primary mirror and proceeds to the tar
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch4-feedhorn-parms.pdf}
-\caption{Schematic showing important parameters of a feedhorn and its beam. The beam appears to emerge from the phase center, a distance $l_c$ behind the mouth of the feedhorn in this diagram. The main lobe of the beam is approximated well by a Gaussian, here characterized by a full-width-half-maximum (\FWHM) beam width. The shaded fraction of the Gaussian represents the part of the beam that falls onto the primary mirror and reaches the target.}
+\caption[Schematic showing important parameters of a feedhorn and its beam]{
+  Schematic showing important parameters of a feedhorn and its beam. The beam appears to emerge from the phase center, a distance $l_c$ behind the mouth of the feedhorn in this diagram. The main lobe of the beam is approximated well by a Gaussian, here characterized by a full-width-half-maximum (\FWHM) beam width. The shaded fraction of the Gaussian represents the part of the beam that falls onto the primary mirror and reaches the target.}
 \label{fig:feedhorn-parms}
 \end{figure*}
 
@@ -515,7 +516,7 @@ $\alpha_0 = \SI{9.4}{\degree}$ was chosen as a value that is easy to machine, ke
 \begin{figure*}
 \centering
 \includegraphics{./drawings/ch4-feed-spill.pdf}
-\caption{
+\caption[Feedhorn spillover efficiency]{
   Plot showing feedhorn spillover efficiency $\eta_s$ as a function of horn diameter $D$ and horn flare half-angle $\alpha_0$.
   The blue dotted line is for $\alpha_0 = \ang{9.4}$, the value assumed during optimization.
   The black dot shows the feedhorn parameters used in the \Imager: $D = \SI{2.68}{\mm}$ (cold) and $\alpha_0 = \ang{9.4}$
@@ -534,7 +535,7 @@ The loss in \NETD\ from this sub-optimal choice is only \SI{1.7}{\percent}.
 \begin{figure*}
 \centering
 \includegraphics{./drawings/ch4-netd-vs-nfeeds.pdf}
-\caption{
+\caption[\NETD\ vs number of detectors]{
   Plot showing how \NETD\ depends on the number of feedhorns in each sub-array.
   As discussed in the text, due to the square array the important parameter determining the total number of feedhorns is the number per side of the grid.
   The \NETD\ is plotted relative to the \NETD\ for an array with 16 feedhorns per side, which is the value chosen for this system.
@@ -557,7 +558,7 @@ After convolution with a \SI{0.2}{\in} circle the \FWHM\ is \SI{1.39}{\cm}, and 
 \begin{figure*}
 \centering
 \includegraphics{./drawings/ch4-beams.pdf}
-\caption{
+\caption[Beam patterns]{
   Plots showing expected beam pattern for the design feedhorns.
   \textbf{Left} The unpolarized power pattern for a conical feedhorn with diameter \SI{2.68}{\mm} and opening half-angle $\alpha_0 = \ang{9.4}$, at the center frequency for our band.
   The region between the vertical blue lines indicates the part of the beam that strikes the primary mirror and reaches the far-field focal plane.
@@ -635,7 +636,7 @@ It also shows a close-up view of the current distribution on a portion of the Pd
 \centering
 \includegraphics[width=3in]{images/ch4-hfss-model.png}
 \includegraphics[width=3in]{images/ch4-hfss-grid.png}
-\caption{
+\caption[\HFSS model]{
   Screen-shots taken from the \HFSS\ model used to simulate the absorbing grid.
   \textbf{Left}
   View of the full model, with the magnitude of the electric field plotted on a plane bisecting the model.
@@ -659,7 +660,7 @@ Only \SI{0.9}{\percent} of the bandpass is located above this frequency, so I ha
 \begin{figure*}
 \centering
 \includegraphics{./drawings/ch4-coupling.pdf}
-\caption{
+\caption[Detector coupling efficiency]{
   Plot showing coupling efficiency of the detectors.
   The blue line is the transmission of the bandpass filter.
   The red and brown lines show the fractional power absorbed in the grid absorber.
@@ -679,7 +680,7 @@ This could be part of the explanation for the combination of poor optical effici
 \begin{figure*}
 \centering
 \includegraphics{./drawings/ch4-coupling-mis.pdf}
-\caption{
+\caption[Feedhorn / detector misalignment]{
   Plots showing impact of misalignment between feedhorns and detectors.
   The left plot shows band-averaged coupling efficiency vs misalignment, for misalignment in both $x$ and $y$ directions.
   The right plot shows the ratio of band-averaged coupling efficiency of the $x$-polarized mode to the $y$-polarized mode, again for misalignment in both $x$ and $y$ directions.
@@ -764,7 +765,7 @@ The predicted total optical loading on each detector is \SI{180}{\pW}, and the p
 
 \begin{table*}
 \centering
-\caption{
+\caption[Optical load and photon noise]{
   Optical load and photon noise from all components in the \Imager.
   $P_{opt}$ for each component is calculated according to \eqnref{eqn:ch4-opt-pow-all}.
   $\epsilon \eta n$ is calculated at the the center frequency of the band (\SI{347}{\GHz}) and also includes the transmission of the bandpass filter at that frequency.
@@ -828,7 +829,7 @@ To linearize the \SQUID\ amplifier chain, feedback in the form of magnetic flux 
 \begin{figure*}
 \centering
 \includegraphics[width=3in]{images/ch4-tdm-schematic.png}
-\caption{
+\caption[Time-Division Multiplexing Schematic]{
   Schematic of the Time-Division Multiplexing (\TDM) readout system used by the \Imager.
   The detectors are divided into rows and columns (2 each shown here).
   Each detector is coupled to it's own 1st-stage \SQUID (\SQ1).
@@ -848,7 +849,7 @@ See \figref{fig:ch4-mce-photo} for a photo of the \MCE.
 \begin{figure*}
 \centering
 \includegraphics[width=3in]{images/ch4-mce.jpg}
-\caption{
+\caption[Photograph of the \MCE]{
   Photograph of the \MCE\ unit used to readout the \Imager's detectors.
   The \MCE\ is \SI{15}{\in} wide.
 }
@@ -870,7 +871,7 @@ This noise aliasing penalty can be reduced by configuring the \MCE\ to internall
 
 \begin{table*}
 \centering
-\caption{
+\caption[Configuration parameters for the \MCE]{
   A few important configuration parameters for the \MCE.
 }
 \label{tab:ch4-mce-parms}
