@@ -4,7 +4,7 @@
 
 The cryostat for the \Imager\ was designed with the goals of simplicity, reliability and turn-key automated operation.
 It was built by Precision Cryogenics\footnote{Precision Cryogenics Systems, Inc. Indianapolis, IN. \url{http://www.precisioncryo.com}} to designs provided by the \Imager\ team.
-The first two temperature intercept stages are provided by a Cryomech PT407 Pulse Tube Cryorefrigerator\footnote{Cryomech, Inc. Syracuse, NY. \url{http://www.cryomech.com}}
+The first two temperature intercept stages are provided by a Cryomech PT407 Pulse Tube Cryorefrigerator\footnote{Cryomech, Inc. Syracuse, NY. \url{http://www.cryomech.com}} (\PTC).
 The PT407 has two cooling stages.
 The first stage has \SI{25}{\W} of cooling power at \SI{55}{\K} while the second stage has \SI{0.7}{\W} at \SI{4.2}{\K}.
 Our PT407 uses a remote motor, so that the cold head attached to the cryostat has no moving parts, minimizing vibration of the cryostat.
@@ -23,11 +23,11 @@ The Cu tube is broken into two halves, and the condensation plate (see below) of
 \includegraphics{drawings/ch4-cryo-cutaway.pdf}
 \caption[Cutaway view of the \Imager]{
   Cutaway view of the \Imager.
-  \textbf{A} PT407 1st stage cold head
-  \textbf{B} PT407 2nd stage cold head
-  \textbf{C} Cu cylinder connecting the PT407 2\textsuperscript{nd} stage cold head to a Cu tube, which then connects to the \He4-sorption refrigerator condensation plate.
-  \textbf{D} \He4-sorption refrigerator
-  \textbf{E} Focal Plane.
+  \textbf{A.}\ PT407 1st stage cold head
+  \textbf{B.}\ PT407 2nd stage cold head
+  \textbf{C.}\ Cu cylinder connecting the PT407 2\textsuperscript{nd} stage cold head to a Cu tube, which then connects to the \He4-sorption refrigerator condensation plate.
+  \textbf{D.}\ \He4-sorption refrigerator
+  \textbf{E.}\ Focal Plane.
   The Cu ropes that connect the focal plane to the \SI{1}{\K} cold plate are not visible in this view.}
 \label{fig:cryo-cutaway}
 \end{figure*}
@@ -52,7 +52,7 @@ Focal Plane 						& 0.970 \\
 
 Options for reaching temperatures below the \abt{\SI{1.2}{\K}} transition temperature of our \TES\ detectors include: dilution refrigerators, adiabatic magnetization refrigerators, pumped \He4 baths, and \He3- and/or \He4-sorption refrigerators.
 We chose a \He4-sorption fridge because the typical base temperature under no load of \abt{\SI{700}{\mK}} is well-matched to our application.
-\He-sorption fridges are also relatively inexpensive and easy to operate compared to these other solutions.
+\He-sorption fridges are also inexpensive and easy to operate compared to these other solutions.
 A \He4-sorption fridge works by using a charcoal adsorber to pump on a bath of liquid \He4, reducing the \He4 boiling point and thus the temperature of the bath.
 The \He4 is contained within a sealed reservoir so that the refrigerator acts as a closed system requiring no \He4 replenishment. 
 While \He4-sorption fridges are commercially available, our team choose to design and build a custom fridge based on a design that has been proven in astronomical applications \cite{devlin_high_2004}.
@@ -66,12 +66,11 @@ In normal operation the heat switch between the charcoal pumping chamber (``pump
 \includegraphics{drawings/ch4-he4sorp.pdf}
 \caption[Cutaway view of the \He4-sorption refrigerator]{
   Cutaway view of the \He4-sorption refrigerator.
-  \textbf{A} Charcoal pumping chamber (``pump'').
-  The charcoal is attached to the concentric copper cylinders.
-  Cylinders are used to maximize the surface area covered by the charcoal.
-  \textbf{B} Condensation plate.R
+  \textbf{A.}\ Charcoal pumping chamber (``pump'').
+  The charcoal is attached to the concentric copper cylinders, used to maximize the surface area covered by the charcoal.
+  \textbf{B.}\ Condensation plate.
   This copper plate is kept below the boiling point of \He4 in order to provide a point in the refrigerator for \He4 to condense and drip into the condensation pot.
-  \textbf{C} \He4 gas gap heat switch.
+  \textbf{C.}\ \He4 gas gap heat switch.
   This heat switch is used to cool the charcoal in order to pump on the \He4 bath in the condensation pot. \textbf{D} \He4 condensation pot (``pot'').
   The condensed \He4 accumulates here.
   The concentric cylinders provide additional surface area for thermal contact to the liquid \He4.
@@ -90,6 +89,11 @@ Once the temperature of the condensation plate falls below the boiling point of 
 Fourth, once the temperature of the pot has fallen to \SI{4.0}{\K}, the heat switch is turned back on.
 This cools the pump, allowing \He4 to again adsorb onto the charcoal, which has the effect of pumping strongly on the pot, and cooling the \He4 contained there to the base temperature of \SI{970}{\mK} under optical load.
 This process is easy to automate, and a LabVIEW program cycles the fridge automatically every night while the system is operating.
+
+A Cryo-con Model 44\footnote{%
+}
+temperature controller is used to control the temperature of the stage, using a \SI{6.4}{\kilo\ohm} resistor attached to the focal plane.
+As discussed in \sectionref{sec:ch7-common}, the temperature variations over several-minute timescales are a few parts in $10^4$ when the Cryo-con unit is used to hold the temperature steady.
 
 Under optical load, a full cycle of the \He4-sorption refrigerator takes approximately 4 hours, reaching a base temperature of ~\SI{970}{\mK}.
 When no additional load is applied the hold time is 9 hours.
@@ -111,9 +115,9 @@ It excludes parasitic load inherent to the sorption refrigerator itself; we have
   The ``Ti-6Al-4V spiders'' provide the structural link between the \SI{1}{\K} cold stage and the \SI{6}{\K} cold plate.
   These calculations assume that the readout wiring and Ti-6Al-4V spiders are running from \SI{6.4}{\K} to \SI{1.0}{\K}.
   All wires are AWG36 Phosphor Bronze with thermal conductivity taken from the Lake Shore Cryogenics reference tables \cite{lake_shore_cryogenics_inc._cryogenic_????}.
-  Assumed thermal conductivity $k$ of the Ti-6Al-4V alloy used for the spiders is $k(T) = (\SI{150}{\uW\per\cm\K}) T$ (William Duncan, personal communication).
+  Assumed thermal conductivity $k$ of the Ti-6Al-4V alloy used for the spiders is $k(T) = (\SI{150}{\uW\per\cm\per\K}) T$ (William Duncan, personal communication).
   ``\BOSE\ readout wires'' refers to the wires running from room temperature used to readout the position of the secondary mirror; see \sectionref{sec:ch8-mirror-readout}.
-  The heat load from these wires is very high because they are not currently intercepted anywhere between room temperature and the \SI{1}{\K} stage.
+  The heat load from these wires is high because they are not currently intercepted anywhere between room temperature and the \SI{1}{\K} stage.
   Intercepting them at the \SI{6}{\K} Cold Plate would reduce their load to \SI{1.1}{\uW}.
   ``Other optical power'' refers to in-band power that reaches the \SI{1}{\K} stage but is not absorbed by the detectors.
   The number quoted assumes that all of this power is absorbed on the \SI{1}{\K} stage; this results in an overestimate because it is likely that most of this power is reflected by the feedhorn array, rather than being absorbed.
@@ -174,7 +178,7 @@ Schematic showing elements of optical system.
 
 The secondary mirror is mounted so that it can be pivoted in order to change where the system is pointing to in the far-field.
 Two \BOSE\ linear motors\footnote{Bose ElectroForce, Framingham MA} mounted \ang{90} apart allow the mirror to be moved in arbitrary directions and scanning patterns.
-\figref{fig:ch4-optics} shows the secondary mirror mounted on it's supporting platform, as well as the \BOSE\ motors.
+\figref{fig:ch4-optics} shows the secondary mirror mounted on its supporting platform, as well as the \BOSE\ motors.
 
 \begin{figure*}
 \centering
@@ -184,7 +188,7 @@ Two \BOSE\ linear motors\footnote{Bose ElectroForce, Framingham MA} mounted \ang
   Photographs of the optical system.
   \textbf{Left} The primary and secondary mirrors.
   The secondary is mounted on the Al platform in the upper left of the photograph.
-  The black cables leading away from the platform go the the control system for the \BOSE\ linear motors.
+  The black cables leading away from the platform go to the control system for the \BOSE\ linear motors.
   \textbf{Right} Close-up view of one of the \BOSE\ linear motors.
   The secondary mirror itself is located on the right of the photograph, while the right side of the photograph shows the \BOSE.
   A titanium strut connects the \BOSE\ to the mirror.
@@ -196,7 +200,7 @@ Two \BOSE\ linear motors\footnote{Bose ElectroForce, Framingham MA} mounted \ang
 \tableref{tab:ch4-optical-specs} lists important properties and parameters for the optical elements of the system.
 The most important parameter is the \SI{1.3}{\m} diameter of the primary mirror; this sets the resolution of the overall system.
 \figref{fig:ch4-spot-diagrams} shows spot diagrams for the optical system generated by a \ZEMAX\ model for the system focused at \SI{16}{\m}.
-They demonstrate the the system's optical performance is diffraction-limited over the entire focal plane for mirror rotations in both directions of up to \ang{1}, the maximum angle the mirror is displaced in operation.
+They demonstrate that the system's optical performance is diffraction-limited over the entire focal plane for mirror rotations in both directions of up to \ang{1}, the maximum angle the mirror is displaced in operation.
 \tableref{tab:ch4-zemax-parms} lists important optical properties of the system obtained from the \ZEMAX\ model.
 
 \begin{sidewaystable}[ht]
@@ -205,7 +209,7 @@ They demonstrate the the system's optical performance is diffraction-limited ove
   Optical system specifications.
   Some of the dimensions and parameters are listed to precisions higher than achievable manufacturing tolerances;
   these dimensions and parameters were chosen by optimization routines in \ZEMAX\, and are kept to full precision here for archival purposes.
-  The shape of the elliptical and hyperbolic mirrors follows the equation $z(r) = c r^2 / (1 + \sqrt{1 - (1+k) c^2 r^2})$, where $c$ is the inverse of the mirror radius, $k$ is the conic parameter, and $r$ is the radial distance from the center mirrors.
+  The shape of the elliptical and hyperbolic mirrors follows the equation $z(r) = c r^2 / (1 + \sqrt{1 - (1+k) c^2 r^2})$, where $c$ is the inverse of the mirror radius, $k$ is the conic parameter, and $r$ is the radial distance from the center of the mirrors.
   The lens surfaces follow the equation given in the table.
 }
 \label{tab:ch4-optical-specs}
@@ -350,31 +354,7 @@ Using the standard formulas for Fabry-Perot fringing when light passes through a
 
 Another important component of the system is the series of optical filters located inside the cryostat.
 These filters are shown schematically in \figref{fig:ch4-filter-stack}.
-These filters include a band-defining filter located at \SI{1}{\K}, thin thermal blocking filters located at \SI{300}{\K}, \SI{80}{\K}, and \SI{6}{\K}, and multi-layer low-pass filters at \SI{80}{\K} and \SI{6}{\K}.
-
-The transmission of the bandpass filter is plotted in blue in \figref{fig:ch4-coupling}.
-The integrated bandwidth of the bandpass filter is \SI{31.1}{\GHz}, with a full-width-half-maximum (\FWHM) band of \SI{35.0}{\GHz}.
-There is some ambiguity in defining the bandwidth and efficiency of a bandpass filter that does not have a top-hat shape.
-In this thesis I have chosen to described the filter as having a bandwidth of \SI{35.0}{\GHz} with efficiency $35.0 / 31.1 = \SI{88.5}{\percent}$.
-
-The thermal blocking filters are sheets of \SI{3.3}{\um} polypropylene with capacitive metal grids printed on each side.
-Because they are so thin, these filters have very little emission even at the infrared wavelengths at which polypropylene is highly absorptive \cite{tucker_thermal_2006}.
-The cutoff wavelengths of these filters are listed in \tableref{tab:ch4-filter-stack}.
-
-The \Imager\ also contains thicker multi-layer filters that act as low-pass filters at wavelengths closer to the observing band.
-These filters are also made of metal meshes and polypropylene, but many meshes and polypropylene layers are sandwiched together to form filters that are \abt{\SI{1}{\mm}} thick.
-These filters have excellent transmission in-band band as well as good out-of-band rejection \cite{ade_review_2006}, but the thick polypropylene substrates mean that they are also highly absorptive --- and thus also emissive -- in the near-infrared.
-Additionally polypropylene has poor thermal conductivity.
-This means that unless they are heat-sunk very well, the centers of the filters will be much warmer than the stage at which they are anchored, and so they will re-radiate infrared power into the cryostat.
-The filters in the \Imager\ are clamped in place using spiral springs, using a design that is very similar to that used by the Atacama Cosmology Telescope receiver \cite{swetz_overview_2011}.
-
-\tableref{tab:ch4-filter-stack} lists all filters in the system and gives temperatures for the centers of some of the filters, taken while the cryostat was open optically.
-The outermost multi-layer filter is very warm (\SI{190}{\K}), and this is a significant source of loading on the \SI{6}{\K} stage, which also warms the \SI{6}{\K} multi-layer filters, leading to a level of loading on the \SI{1}{\K} stage that is so high that the stage can not be brought below \SI{1.2}{\K} unless the aperture is stopped down to reduce IR loading.
-This has been accomplished with a \SI{2.875}{\in} by \SI{2.875}{\in} aperture installed between the thermal blocking and multi-layer filters on the \SI{80}{\K} stage.
-With this aperture installed, the bandpass filter center reaches a temperature of \SIrange{4}{8}{\K} (varying based on the size of the aperture stop).
-
-\tableref{tab:ch4-filter-stack} also lists the in-band transmission of each filter.
-The total transmission of the filter stack excluding the bandpass filter is \SI{88.8}{\percent}.
+These filters include thin thermal blocking filters located at \SI{300}{\K}, \SI{80}{\K}, and \SI{6}{\K}; multi-layer low-pass filters at \SI{80}{\K} and \SI{6}{\K}; and a band-defining filter located at \SI{1}{\K}.
 
 \begin{figure*}
 \centering
@@ -386,6 +366,30 @@ The total transmission of the filter stack excluding the bandpass filter is \SI{
 }
 \label{fig:ch4-filter-stack}
 \end{figure*}
+
+The transmission of the bandpass filter is plotted in blue in \figref{fig:ch4-coupling}.
+The integrated bandwidth of the bandpass filter is \SI{31.1}{\GHz}, with a full-width-half-maximum (\FWHM) band of \SI{35.0}{\GHz}.
+There is some ambiguity in defining the bandwidth and efficiency of a bandpass filter that does not have a top-hat shape.
+In this thesis I have chosen to described the filter as having a bandwidth of \SI{35.0}{\GHz} with efficiency $35.0 / 31.1 = \SI{88.5}{\percent}$.
+
+The thermal blocking filters are sheets of \SI{3.3}{\um} polypropylene with capacitive metal grids printed on each side.
+Because they are so thin, these filters have little emission even at the infrared wavelengths at which polypropylene is highly absorptive \cite{tucker_thermal_2006}.
+The cutoff wavelengths of these filters are listed in \tableref{tab:ch4-filter-stack}.
+
+The \Imager\ also contains thicker multi-layer filters that act as low-pass filters at wavelengths closer to the observing band.
+These filters are also made of metal meshes and polypropylene, but many meshes and polypropylene layers are sandwiched together to form filters that are \abt{\SI{1}{\mm}} thick.
+These filters have excellent transmission in-band as well as good out-of-band rejection \cite{ade_review_2006}, but the thick polypropylene substrates mean that they are also highly absorptive --- and thus also emissive -- in the near-infrared.
+Additionally polypropylene has poor thermal conductivity.
+This means that unless they are heat-sunk very well, the centers of the filters will be much warmer than the stage at which they are anchored, and so they will re-radiate infrared power into the cryostat.
+The filters in the \Imager\ are clamped in place using spiral springs, using a design that is similar to that used by the Atacama Cosmology Telescope receiver \cite{swetz_overview_2011}.
+
+\tableref{tab:ch4-filter-stack} lists all filters in the system and gives temperatures for the centers of some of the filters, taken while the cryostat was open optically.
+The outermost multi-layer filter is very warm (\SI{190}{\K}), and this is a significant source of loading on the \SI{6}{\K} stage, which also warms the \SI{6}{\K} multi-layer filters, leading to a level of loading on the \SI{1}{\K} stage that is so high that the stage can not be brought below \SI{1.2}{\K} unless the aperture is stopped down to reduce IR loading.
+This has been accomplished with a \SI{2.875}{\in} by \SI{2.875}{\in} aperture installed between the thermal blocking and multi-layer filters on the \SI{80}{\K} stage.
+With this aperture installed, the bandpass filter center reaches a temperature of \SIrange{4}{8}{\K} (varying based on the size of the aperture stop).
+
+\tableref{tab:ch4-filter-stack} also lists the in-band transmission of each filter.
+The total transmission of the filter stack excluding the bandpass filter is \SI{88.8}{\percent}.
 
 \begin{table*}
 \centering
@@ -442,7 +446,7 @@ If a feedhorn is observing a temperature distribution $T_{target}(\theta,\phi)$,
 \begin{equation}
     T_{eff}(\theta_0,\phi_0) = \int \, d \Omega \, T_{target}(\theta - \theta_0,\phi - \phi_0) P(\theta,\phi).
 \end{equation}
-The function $P$ is called the ``beam'' or ``beam pattern'' of the feedhorn, and describes the pattern of radiation to which the feedhorn is sensitive.
+The function $P$ is called the ``beam'' or ``beam pattern'' of the feedhorn, and describes the angular pattern of radiation to which the feedhorn is sensitive.
 When using this expression one must keep in mind that the fraction of the beam that spills off the primary mirror (e.g.\ the unshaded region in \figref{fig:feedhorn-parms}) will see not the temperature distribution of the target, but a temperature distribution determined by what is beyond the primary mirror\footnote{Because of the presence of the secondary mirror, some of this temperature distribution will be in front of the system, and some will be behind.}.
 The fraction of the beam that strikes the primary mirror and proceeds to the target is called the spillover efficiency $\eta_s$.
 
@@ -450,7 +454,11 @@ The fraction of the beam that strikes the primary mirror and proceeds to the tar
 \centering
 \includegraphics{drawings/ch4-feedhorn-parms.pdf}
 \caption[Schematic showing important parameters of a feedhorn and its beam]{
-  Schematic showing important parameters of a feedhorn and its beam. The beam appears to emerge from the phase center, a distance $l_c$ behind the mouth of the feedhorn in this diagram. The main lobe of the beam is approximated well by a Gaussian, here characterized by a full-width-half-maximum (\FWHM) beam width. The shaded fraction of the Gaussian represents the part of the beam that falls onto the primary mirror and reaches the target.}
+  Schematic showing important parameters of a feedhorn and its beam.
+  The beam appears to emerge from the phase center, a distance $l_c$ behind the mouth of the feedhorn in this diagram.
+  The main lobe of the beam is approximated well by a Gaussian, here characterized by a full-width-half-maximum (\FWHM) beam width.
+  The shaded fraction of the Gaussian represents the part of the beam that falls onto the primary mirror and reaches the target.
+  Note that for the purposes of feedhorn design the secondary mirror can be ignored and the system treated as a system of feedhorns illuminating only a primary mirror with a hole in its center [23].}
 \label{fig:feedhorn-parms}
 \end{figure*}
 
@@ -474,7 +482,7 @@ Choosing an optimal feedhorn size requires trading these two effect off against 
 There are four additional factors to consider.
 First, $NEP_{tot}$ is not necessarily independent of $\eta_s$.
 In a detector-noise limited system it will be, but in a system that is photon-noise-limited, $NEP_{tot}$ may worsen, stay the same, or improve, depending on the temperature seen by the spilled over portion of the beam.
-Indoors all of the beam will see roughly the same temperature as the target, so that total photon noise will stay the same.
+Indoors, all of the beam will see roughly the same temperature as the target, so that total photon noise will stay the same.
 Outdoors the situation is more complicated because the temperature seen by the spilled over beam will depend on the local scenery and weather conditions.
 For simplicity, the analysis of optimum feedhorn size in this chapter makes the assumption that the noise seen by a detector is independent of the beam size.
 
@@ -482,11 +490,11 @@ Second, for a Cassegrain optical system, $\eta_s$ is not a monotonic function of
 The secondary mirror obstructs the central part of the beam, preventing it from reaching the target.
 This means that narrow beams can have poor $\eta_s$ because a large fraction of the main lobe of the beam will be blocked.
 
-Third, the choice of readout system and wiring places a firm upper limit on the number of detectors in the system of 1024.
-
-Fourth, the dependence of the number of detectors $N$ on the feedhorn diameter $D$ is not a smooth function, because it is not possible to have, e.g., 1/3 of a feedhorn.
+Third, the dependence of the number of detectors $N$ on the feedhorn diameter $D$ is not a smooth function, because it is not possible to have, e.g., 1/3 of a feedhorn.
 As explained in \sectionref{sec:ch5-layout}, the \Imager's detectors are laid out on a square grid.
 So it is more helpful to think of the feedhorn diameter as taking on a discrete set of values that depends on the number of feedhorns per each side of the grid.
+
+Finally, the choice of readout system and wiring places a firm upper limit on the number of detectors in the system of 1024.
 
 A \MATLAB\ program was used to find the optimum feedhorn size.
 The program uses an analytic expression for the beam pattern developed in \cite{green_radiation_2006,narasimhan_modes_1971,}.
@@ -494,9 +502,9 @@ The far-field electric field pattern takes the form
 \begin{equation}
     \vect{E}(\theta,\phi) = E_{\theta}(\theta) \sin{\phi} \hat{\theta} + E_{\phi}(\theta) \cos{\phi} \hat{\phi}.
 \end{equation}
-Here $E_{\theta}$ and $E_{\phi}$ are functions depending the horn diameter $D$ and opening half-angle $\alpha_0$, and involving definite integrals of Bessel functions, given in \appendixref{app:feedhorn-eqn}.
+Here $E_{\theta}$ and $E_{\phi}$ are functions depending the horn diameter $D$ and opening half-angle $\alpha_0$, and involving definite integrals of Bessel functions, given in \cite{green_radiation_2006,narasimhan_modes_1971}.
 This expression is for the waveguide mode polarized along the $\pi/2$ direction.
-The \Imager's detectors are unpolarized, so detect both waveguide polarizations equally (see \sectionref{sec:ch4-coupling} for confirmation of this via simulations).
+The \Imager's detectors are unpolarized, so they detect both waveguide polarizations equally; see \sectionref{sec:ch4-coupling} for confirmation of this via simulations.
 The total power beam map is thus given by the incoherent sum
 \begin{equation}
     P(\theta, \phi) = |\vect{E}(\theta, \phi)|^2 + |\vect{E}(\theta, \phi+\pi/2)|^2,
@@ -509,9 +517,9 @@ which is independent of $\phi$, as expected for an unpolarized detector.
 
 To calculate the spillover efficiency of an individual feedhorn, the \MATLAB\ program integrates $P$ over the angles $\theta$ that illuminate the primary mirror and reach the target: \SIrange{5.2}{14.0}{\degree} at \SI{17}{\m}\footnote{see \sectionref{sec:ch4-optical-design}}.
 \figref{fig:ch4-feed-spill} shows a contour plot of spillover efficiency for an individual conical feedhorn as a function of $D$ and $\alpha_0$.
-The black dot matches the parameters for the feedhorns chosen for the \Imager.
+The black dot shows the parameters for the feedhorns chosen for the \Imager.
 This plot shows that $\eta_s$ depends much more strongly on $D$ than on $\alpha_0$.
-$\alpha_0 = \SI{9.4}{\degree}$ was chosen as a value that is easy to machine, keeps the thermal mass of the feedhorn array relatively low (small values of $\alpha_0$ lead to long feedhorns and higher thermal mass), and it not too far from the maximum achievable $\eta_s$ for any fixed feedhorn diameter $D$.
+$\alpha_0 = \SI{9.4}{\degree}$ was chosen as a value that is easy to machine, keeps the thermal mass of the feedhorn array low (small values of $\alpha_0$ lead to long feedhorns and higher thermal mass), and is not too far from the maximum achievable $\eta_s$ for any fixed feedhorn diameter $D$.
 
 \begin{figure*}
 \centering
@@ -524,7 +532,7 @@ $\alpha_0 = \SI{9.4}{\degree}$ was chosen as a value that is easy to machine, ke
 \label{fig:ch4-feed-spill}
 \end{figure*}
 
-To find the number of horns per array size that minimizes \NETD\, the program assumes that the the feedhorns must cover a square \SI{43.9}{\mm} per side.
+To find the number of horns per array size that minimizes \NETD\, the program assumes that the feedhorns must cover a square \SI{43.9}{\mm} per side.
 It allows for \SI{1}{\mil} spacing between the edges of the feedhorns, and also accounts for a thermal contraction factor of 4.14 parts per thousand \cite[Appendix~A6.4]{ekin_experimental_2006}.
 Four horns from each subarray are assumed to be missing in order to accommodate other features on the detector wafer.
 The resulting \NETD\ estimates --- normalized to the \NETD\ for the actual feedhorns chosen --- is shown in \figref{fig:ch4-netd-vs-nfeeds}.
@@ -550,9 +558,9 @@ The loss in \NETD\ from this sub-optimal choice is only \SI{1.7}{\percent}.
 
 \figref{fig:ch4-beams} contains plots of both the beam pattern for the conical feedhorn and the far-field beam pattern of the entire optical system (also called the ``point spread function'').
 The feedhorn beam pattern follows the model described above.
-The far-field beam pattern accounts for the fact that the beam is truncated by the secondary mirror in it's center and by the edge of the primary at its edge; these limits are plotted as vertical blue lines on the left plot.
-The truncation of the center of the beam is responsible for the side-lobe at \abt{\SI{5.7}{\percent}} visible in the far-field beam pattern.
-The far-field beam has a \FWHM\ of \SI{1.38}{\cm}.
+The far-field beam pattern accounts for the fact that the beam is truncated by the secondary mirror in its center and by the edge of the primary at its edge; these limits are plotted as vertical blue lines on the left plot.
+The truncation of the center of the beam is responsible for the side-lobe of magnitude \abt{\SI{5.7}{\percent}} that is visible in the far-field beam pattern.
+The far-field beam has a \FWHM\ of \SI{1.38}{\cm} for a point source.
 After convolution with a \SI{0.2}{\in} circle the \FWHM\ is \SI{1.39}{\cm}, and after convolving with a \SI{1.791}{\cm} circle (same size as a dime) the \FWHM\ is \SI{1.76}{\cm}.
 
 \begin{figure*}
@@ -572,7 +580,7 @@ After convolution with a \SI{0.2}{\in} circle the \FWHM\ is \SI{1.39}{\cm}, and 
 \end{figure*}
 
 The feedhorns were machined out of Al 6061 and then gold plated.
-An estimate of the insertion loss of the feedhorns requires the conductivity of this gold at \SI{1}{\K}. but this quantity is not known.
+An estimate of the insertion loss of the feedhorns requires the conductivity of this plated gold at \SI{1}{\K}, but this quantity is not known.
 I assumed that the gold has the standard value for conductivity at room temperature of \SI{41e6}{S\per\m}, with a residual resistivity ratio of 3.
 Using this value, and assuming a surface roughness of \SI{5}{\um}, \HFSS\ simulations predict an insertion loss of \SI{-10.5}{\dB}, including both the feedhorn and the waveguide.
 This corresponds to a feedhorn efficiency of \SI{91}{\percent}.
@@ -598,25 +606,25 @@ The characteristic impedance at frequency $f$ for a TE mode in waveguide is \cit
 \begin{equation} \label{eqn:ch4-wg-imp}
   Z (f) = \frac{\eta_f}{\sqrt{1 - (f_c/f)^2}},
 \end{equation}
-where $eta_f \approx \SI{377}{\ohm}$ is the impedance of free space and $f_c$ the cutoff frequency for the mode.
+where $\eta_f \approx \SI{377}{\ohm}$ is the impedance of free space and $f_c$ the cutoff frequency for the mode.
 For our waveguide, the impedance at the band-center frequency of \SI{347}{\GHz} is \SI{700}{\ohm}.
 The highest-resistance material available in the fabrication process for the \Imager's detectors is a \SI{20}{\nm} thick layer of PdAu, which for our fabrication process has a surface impedance of \SI{12}{\ohm}/sq, far too low to serve as an effective full-width waveguide absorber.
 
-However, the \SI{12}{\ohm}/sq PdAu can still be used to create an absorbing structure with an effective sheet impedance of \abt{\SI{700}{\ohm}} by reducing the filling factor of the material, by, for example, making an absorber that consists of several thin strips.
+However, the \SI{12}{\ohm}/sq PdAu can still be used to create an absorbing structure with an effective sheet impedance of \abt{\SI{700}{\ohm}} by reducing the filling factor of the material, by, for example, making an absorber that consists of a grid of narrow strips.
 A design rule-of-thumb for grid absorbing structures is that the effective sheet impedance of the absorber is given by 
 \begin{equation} \label{eqn:ch4-imp-fill-factor}
   Z_{eff} = R_s \frac{A_{tot}}{A_{abs}},
 \end{equation}
 where $R_s$ is the impedance of the absorbing material, $A_{abs}$ is the area covered by the absorbing material, and $A_{tot}$ is the total area of the waveguide.
 This rule-of-thumb has been justified via semi-empirical means \cite{ulrich_far-infrared_1967,whitbourn_equivalent-circuit_1985} for free-space absorbing grids.
-In waveguide, theoretical and empirical support for it's accuracy for a single strip in waveguide has also been given, provided that an additional factor of 2 is inserted in front of $A_{tot}$ \cite{datesman_analytical_2011}.
+Theoretical and empirical support for its accuracy for a single strip in waveguide has also been given, provided that an additional factor of 2 is inserted in front of $A_{tot}$ \cite{datesman_analytical_2011}.
 
 For the \Imager, I used this rule-of-thumb as a starting point, but to design the final absorbing structure I ran simulations using \HFSS\footnote{ANSYS, Inc., Canonsburg, PA}.
 The \HFSS\ model has the following features:
 \begin{itemize}
 \item \SI{0.6}{\mm} diameter circular waveguide leading to the detector.
       The waveguide walls are treated as lossless; insertion loss of the feedhorn is calculated separately in \sectionref{sec:ch4-feedhorn-design}. 
-\item \SI{135}{\um} ``air gap'' between the bottom of the feedhorn array and the back of the detector wafer.
+\item \SI{135}{\um} ``air gap'' between the bottom of the feedhorn array and the back of the detector wafer; see \figref{fig:ch5-det-layout}.
 \item Proper backshort diameter of \SI{844}{\um} and backshort height of \SI{275}{\um}.
 \item To keep the design simple, the backshort walls are not metalized.
       Rather, the detectors were fabricated on degenerate (Boron P-type) Si wafers with resistivity \SI{4}{\mOhm\cm}.
@@ -624,13 +632,17 @@ The \HFSS\ model has the following features:
       Instead, the Si is treated as a conductor with a surface impedance appropriate for its conductivity.
       The skin depth in this Si is \SI{350}{\GHz} is \SI{5.5}{\um}, justifying this approximation.
       At low temperatures the electrical resistivity of this type of Si is expected to fall slightly \cite{chapman_electrical_1963}, but I have assumed the room-temperature value of \SI{4}{\mOhm\cm} in the simulations.
-\item The exact PdAu mesh used in the fabrication was included, using \SI{12}{\ohm}/sq as the surface impedance.
+\item The exact PdAu mesh used in the fabrication was included, using \SI{12}{\ohm}/sq as the surface impedance of the PdAu itself.
 \item The Au heat-capacity ring (see \sectionref{sec:ch5-det-design}) is included as well, treated as a perfectly conducting surface.
 \item The bottom surface of the backshort is assigned a surface impedance appropriate for gold with RRR = 20, which is typical for thick gold layers fabricated in the \NIST\ cleanroom.
       % xxx actually used 80 uOhm-cm in the model ... should re-run!
 \end{itemize}
 \figref{fig:ch4-hfss-model} shows a schematic of the \HFSS\ model, including the fields traveling down the waveguide.
 It also shows a close-up view of the current distribution on a portion of the PdAu mesh.
+
+% xxx - need to say somthing about actual surface impedance of mesh!
+% And about how the large air gap means that you aren't really in
+% waveguide ... but aren't really in free space either.
 
 \begin{figure*}
 \centering
@@ -643,9 +655,10 @@ It also shows a close-up view of the current distribution on a portion of the Pd
   \textbf{Right}
   Close-up view of the absorbing grid, with the surface current density plotted.
   The waveguide mode being excited is polarized in the up/down direction.
-  Because the wire are thin compared to the width of the waveguide (\SI{2}{\um} vs \SI{600}{\um}), the current distribution is difficult to see in this plot.
-  But close examination shows that the wire perpendicular to the excited polarization have very low current, while those parallel have higher current.
+  Because the wires are thin compared to the width of the waveguide (\SI{2}{\um} vs \SI{600}{\um}), the current distribution is difficult to see in this plot.
+  But close examination shows that the wire perpendicular to the excited polarization have very current, while those parallel have higher current.
   The current decays towards the edges of the waveguide.
+  This is as expected.
 }
 \label{fig:ch4-hfss-model}
 \end{figure*}
@@ -685,15 +698,15 @@ This could be part of the explanation for the combination of poor optical effici
   The left plot shows band-averaged coupling efficiency vs misalignment, for misalignment in both $x$ and $y$ directions.
   The right plot shows the ratio of band-averaged coupling efficiency of the $x$-polarized mode to the $y$-polarized mode, again for misalignment in both $x$ and $y$ directions.
   For misalignment up to \SI{100}{\um} loss in coupling efficiency is small.
-  But for large misalignment the efficiency drops substantially, and the modes couples very differently, which will lead to an elliptical beam.
+  But for large misalignment the efficiency drops substantially, and the modes couple very differently, which will lead to an elliptical beam.
 }
 \label{fig:ch4-coupling-mis}
 \end{figure*}
 
-A final important parameter of the feedhorn is it's phase center, defined as the point along the axis of the horn from which the far-field spherical wavefront appears to emerge.
+A final important parameter of the feedhorn is its phase center, defined as the point along the axis of the horn from which the far-field spherical wavefront appears to emerge.
 In order to achieve optimum performance from a system, the focal plane of the optical system should coincide with the phase centers of the horns.
 The phase center of a conical feedhorn can not be defined in general, because it changes not only with polarization but with the beam angle as well.
-For the \Imager I used published tables to estimate the location of the phase center for our feedhorns, which give a distance of \SI{0.9}{\mm} behind the opening of the feedhorn as the phase center averaged over both polarizations \cite[Page~353]{thomas_a._milligan_modern_2005}.
+For the \Imager\ I used published tables to estimate the location of the phase center for our feedhorns, which give a distance of \SI{0.9}{\mm} behind the opening of the feedhorn as the phase center averaged over both polarizations \cite[Page~353]{thomas_a._milligan_modern_2005}.
 
 \section{Predicted Optical Efficiency and Optical Loading on Detectors} \label{sec:ch4-opt-eff}
 
@@ -714,7 +727,7 @@ For \SI{350}{\GHz} light emitted by a \SI{300}{\K} source, $n \approx 17$, so th
   2 k_B T \int \eta(\nu) d \nu = 2 k_B T \eta_{tot} \Delta \nu,
 \end{equation}
 where $\eta_{tot}$ is the total optical efficiency of the system and $\Delta \nu$ is the optical bandwidth.
-My calculations below assume the exact from of \eqnref{eqn:ch4-power-per-mode}, but \eqnref{eqn:ch4-power-per-mode-rj} is very useful for quick calculations and checks.
+My calculations below assume the exact from of \eqnref{eqn:ch4-power-per-mode}, but \eqnref{eqn:ch4-power-per-mode-rj} is useful for quick calculations and checks.
 
 Photon \NEP\ is given by \cite[Equation~51]{zmuidzinas_thermal_2003}
 \begin{equation} \label{eqn:ch4-photon-nep}
@@ -755,7 +768,6 @@ The \NEPph\ is given by
        \left( 1 + \tau_{bp}(\nu) \left( \sum_k \eta_k \epsilon_k n(\nu,T_k) \right)  \right) d \nu.
 \end{equation}
 
-
 % \tableref{tab:ch4-opt-eff} lists all components of the \Imager\ and their contribution to optical efficiency.
 \tableref{tab:ch4-opt-load} lists all components of the \Imager\ that contribute to optical loading.
 For each component \eqnref{eqn:ch4-opt-pow-all} is integrated over the \Imager's optical band.
@@ -768,7 +780,7 @@ The predicted total optical loading on each detector is \SI{180}{\pW}, and the p
 \caption[Optical load and photon noise]{
   Optical load and photon noise from all components in the \Imager.
   $P_{opt}$ for each component is calculated according to \eqnref{eqn:ch4-opt-pow-all}.
-  $\epsilon \eta n$ is calculated at the the center frequency of the band (\SI{347}{\GHz}) and also includes the transmission of the bandpass filter at that frequency.
+  $\epsilon \eta n$ is calculated at the center frequency of the band (\SI{347}{\GHz}) and also includes the transmission of the bandpass filter at that frequency.
   All powers are the power absorbed in the bolometer, and the \NEPph\ value is referred to power absorbed in the bolometer.
   The efficiency of the lens accounts for losses due to both reflection from the lens and absorption in the lens.
   ``Beam'' refers to power from the far-field that reaches detectors, while ``Spillover'' refers to power that reaches the detectors due to the portion of the beam that misses the primary mirror.
@@ -806,7 +818,7 @@ The predicted total optical loading on each detector is \SI{180}{\pW}, and the p
 
 As described in \chapterref{c:tes}, the \Imager's detectors are voltage-biased, so that the detector output signal is a changing current.
 To read out the detectors a low-noise current amplifier is required.
-The \Imager uses a multiplexed \SQUID\ readout system to accomplish this.
+The \Imager\ uses a multiplexed \SQUID\ readout system to accomplish this.
 
 A \SQUID\ is a Superconducting Quantum Interference device \cite{clarke_squid_2002}.
 For the purposes of understanding the operation of the \Imager, it suffices to know that a \SQUID\ is a very sensitive magnetometer, and by coupling the magnetic field produced by a current into the \SQUID, the \SQUID\ can also be used to read out a current signal.
@@ -820,10 +832,10 @@ The algorithm used to do this is described in \sectionref{sec:ch8-algo}.
 To reduce the number of wires running into the cryostat, the \Imager\ uses a time-division multiplex (\TDM) readout system \cite{chervenak_superconducting_1999,korte_time-division_2003,reintsema_prototype_2003}.
 \figref{fig:ch4-tdm-schematic} shows a schematic of this readout system.
 The detectors are divided into a number of columns, each column containing 32 rows.
-Each detector output is coupled into the input coil of it's own ``1st-stage'' \SQUID.
+Each detector output is coupled into the input coil of its own ``1st-stage'' \SQUID.
 Row address lines bias the 32 rows sequentially, so that at any given time only one detector per column is being read out by the system.
 This sequential addressing means that the current noise power spectral density of the \SQUIDs\ is increased by a factor of 32 due to aliasing, but the current noise in the \Imager's \SQUIDs\ is low enough that \SQUID\ noise is not a significant contribution to the total noise of the detectors.
-See, e.g., \figref{fig:rsh-l-plots} and \figref{fig:ch7-trans-noise} for a demonstration that \SQUID\ noise (\abt{\Inoise{1e-10}}) is below the typical noise level of a detector biased into it's standard operation conditions (\abt{\Inoise{1e-9}}).
+See, e.g., \figref{fig:rsh-l-plots} and \figref{fig:ch7-trans-noise} for a demonstration that \SQUID\ noise (\abt{\Inoise{1e-10}}) is below the typical noise level of a detector biased into its standard operation conditions (\abt{\Inoise{1e-9}}).
 To linearize the \SQUID\ amplifier chain, feedback in the form of magnetic flux is applied to the 1st-stage \SQUIDs.
 
 \begin{figure*}
@@ -832,7 +844,7 @@ To linearize the \SQUID\ amplifier chain, feedback in the form of magnetic flux 
 \caption[Time-Division Multiplexing Schematic]{
   Schematic of the Time-Division Multiplexing (\TDM) readout system used by the \Imager.
   The detectors are divided into rows and columns (2 each shown here).
-  Each detector is coupled to it's own 1st-stage \SQUID (\SQ1).
+  Each detector is coupled to its own 1st-stage \SQUID (\SQ1).
   At any given time, only one row of \SQUIDs\ is biased, indicated via the ``Row address currents'' on the left.
 }
 \label{fig:ch4-tdm-schematic}
@@ -856,7 +868,7 @@ See \figref{fig:ch4-mce-photo} for a photo of the \MCE.
 \label{fig:ch4-mce-photo}
 \end{figure*}
 
-The \MCE has many parameters that can be set to control its behavior, almost none of which I will describe here.
+The \MCE\ has many parameters that can be set to control its behavior, almost none of which I will describe here.
 The exceptions are the parameters that control the readout rate of the system, listed in \tableref{tab:ch4-mce-parms}.
 The table also gives the value of these parameters used by the \Imager\ when taking videos.
 The rate at which data is reported to the data acquisition computer is given by
@@ -892,9 +904,10 @@ This noise aliasing penalty can be reduced by configuring the \MCE\ to internall
 \end{table*}
 \section{Acknowledgments}
 
+Bob Schwall of \NIST\ designed the cryostat, and provided useful advice and help in the lab during commissioning of the cryostat.
 Bob Schwall and William Duncan of \NIST\ designed the cryostat/mirror mount and the \He4 sorption refrigerator.
 The refrigerator was filled with \He4 by Simon Dicker at the University of Pennsylvania.
-Bob Schwall of \NIST\ designed the cryostat, and provided useful advice and help in the lab during commissioning of the cryostat.
+Bob Schwall, Cale Gentry, and Ilya Smirnov wrote the LabVIEW program used to control the cryogenic system.
 William Duncan designed, procured, and assembled the optical system.
 The optical filters were designed by Peter Ade's group at Cardiff University in collaboration with William Duncan, and manufactured at Cardiff.
 The \MCE\ was provided by Mark Halpern's group at the University of British Columbia.

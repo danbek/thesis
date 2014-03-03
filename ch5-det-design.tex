@@ -47,7 +47,7 @@ It would seem that we should be able to run the system off of a Pulse Tube Coole
 
 However, this leaves little margin for error in the design and implementation of the system, so for the \Imager\ we chose to use a \He4-sorption fridge to set the bath temperature.
 
-The initial hopes for performance of the \He4-sorption fridge were that it's base temperature would be ~\SI{650}{\mK}, implying an ideal $T_c$ of \abt{\SI{1.2}{\K}}.
+The initial hopes for performance of the \He4-sorption fridge were that its base temperature would be ~\SI{650}{\mK}, implying an ideal $T_c$ of \abt{\SI{1.2}{\K}}.
 This is a convenient $T_c$ because it is the critical temperature of elemental Al \cite{matthias_superconductivity_1963}, so Al was chosen as the \TES\ material.
 
 In practice, it was discovered during testing of Al prototype detectors that the base temperature of the system was \SI{950}{\mK} under optical load, so that a higher $T_c$ could lead to better noise performance.
@@ -89,7 +89,7 @@ A safety factor of 5--6 is overly conservative, so for the sub-array I decided t
 The detector's heat capacity $C$ is chosen to target a specific natural time constant $\tau$ once $G$ is chosen.
 $\tau_{eff}$ in the prototype detectors was higher than the desired value of \SI{1}{\ms} (see \sectionref{sec:ch2-specifications}).
 To reduce the risk of problems such as instability with the sub-array detectors, I decided to reduce $C$ to \SI{30}{\pJ\per\K}, which would give $\tau = \SI{8}{\ms}$.
-As long as \Loop and $\beta_I$ at the operating bias point did not change, this would lead to $\tau_{eff} = \SI{2.6}{\ms}$, not as fast as would be ideal, but fast enough for video imaging
+As long as \Loop\ and $\beta_I$ at the operating bias point did not change, this would lead to $\tau_{eff} = \SI{2.6}{\ms}$, not as fast as would be ideal, but fast enough for video imaging
 
 \section{Detailed Detector Design} \label{sec:ch5-det-design}
 
@@ -104,16 +104,16 @@ The sub-array detectors are identical except for the length of the legs and the 
 \includegraphics[width=2.3in]{images/ch5-proto-pixel-labeled.png}
 \caption[Detector cross-section and photograph]{
   \textbf{Left} Cross-sectional schematic of a \Imager\ detector.
-  The schematic is not to scale.
+  Other than the thickness of the \TES, SiN membrane and Au Heat Capacity Ring, the schematic is to scale.
   \textbf{Right} Photograph of a prototype detector.
   The detectors fabricated for the sub-array are identical except for the length of the legs and the thickness of some of the layers; see \tableref{tab:ch5-det-dims}.
-  The labeled parts of the detector are \textbf{A} Al \TES\ \textbf{B} Au heat capactiy ring \textbf{C} SiN leg connecting detector to substrate \textbf{D} PdAu absorbing mesh \textbf{E} PdAu heater resistor.
+  The labeled parts of the detector are \textbf{A} Al \TES\ \textbf{B} Au heat capacity ring \textbf{C} SiN leg connecting detector to substrate \textbf{D} PdAu absorbing mesh \textbf{E} PdAu heater resistor.
 }
 \label{fig:ch5-det-layout}
 \end{figure*}
 
 The detectors are fabricated on \SI{275}{\um} thick double-side-polished degenerate (Boron P-type) Si wafers.
-A layer of SiO2 is grown on top of the silion, followed by a layer of SiN, prior to the main fabrication steps.
+A layer of SiO2 is grown on top of the Si, followed by a layer of SiN, prior to the main fabrication steps.
 During fabrication the Nb wiring leads, PdAu absorber, and Au heat-capacity ring are laid down, as well as an additional layer of insulator to allow wiring layers to cross over each other.
 The SiN and SiO2 is removed from the areas between the legs, and then a Deep Reactive Ion Etch process is used to remove all silicon from behind the detector membrane.
 This etch process does not remove SiN or SiO2, so that the legs, which still have SiN, are left in place.
@@ -123,7 +123,7 @@ The result is a suspended membrane connected to the rest of the wafer by a set o
 
 The leg geometry of the prototype detectors was based on a set of measurements taken at \NIST\ on SiN membranes at temperature around \SI{1}{\K}.
 the leg geometry for the sub-array detectors was based on simple scaling of the prototype detectors to the target $G$ of \SI{3.8}{\nW\per\K}.
-This scaling was slightly complicated by the change in thickness of the SiO2 layers, which was made in order to add additional protection to the wiring laayers and better balance stress on the relieved membranes.
+This scaling was slightly complicated by the change in thickness of the SiO2 layers, which was made in order to add additional protection to the wiring layers and better balance stress on the relieved membranes.
 Assuming that $G$ scales linearly with the $A/L$ of the legs, the sub-array $G$ should be
 \begin{align}
   G_{sub} & = G_{proto} \frac{A_{sub}}{A_{proto}} \frac{l_{proto}}{l_{sub}} \\
@@ -136,7 +136,7 @@ Assuming that $G$ scales linearly with the $A/L$ of the legs, the sub-array $G$ 
 \centering
 \caption[Detector dimensions]{
   Dimensions of prototype and sub-array detectors.
-  For the sub-array, only values differing from the protottypes are shown.
+  For the sub-array, only values differing from the prototypes are shown.
 } 
 \label{tab:ch5-det-dims}
 \begin{tabular}{l c c}
@@ -160,8 +160,8 @@ Assuming that $G$ scales linearly with the $A/L$ of the legs, the sub-array $G$ 
 \end{tabular}
 \end{table*}
 
-\tableref{tab:ch5-det-heat-capacity} shows contributions to the heat capactiy from all components of the bolometer.
-The membrane and Al \TES\ alone have insufficient heat capacity, so an Au ring was added to provide the targetted heat capacity.
+\tableref{tab:ch5-det-heat-capacity} shows contributions to the heat capacity from all components of the bolometer.
+The membrane and Al \TES\ alone have insufficient heat capacity, so an Au ring was added to provide the targeted heat capacity.
 The total heat capacity is dominated by the Au ring.
 
 \begin{table*}
@@ -189,23 +189,23 @@ The total heat capacity is dominated by the Au ring.
 \section{Detector Wafer Layout} \label{sec:ch5-layout}
 
 \figref{fig:ch5-full-wafer} shows a photograph of the entire sub-array; the figure caption contains a detailed description of the features present on the sub-array.
-In addition to the detectors, the wafer includes Au pads for attaching Au heat-sinking wire bonds and holes used for glueing the detector wafer to a Au-covered backshort wafer (see \sectionref{sec:ch5-focal-plane}).
-Note that all detectors have heater resistors on their membranes, but only a subset have the resistors connected to wires that lead to bondpads.
+In addition to the detectors, the wafer includes Au pads for attaching Au heat-sinking wire bonds and holes used for gluing the detector wafer to a Au-covered backshort wafer (see \sectionref{sec:ch5-focal-plane}).
+Note that all detectors have heater resistors on their membranes, but only a subset have the resistors connected to wires that lead to bond pads.
 
 The detectors are laid out on a square grid, chosen over a hexagonal close-packed layout because of the simpler wiring layout.
 This choice does worsen \NETD.
-A hexagonal close-packed array would allow the same number of detetors to be placed on the array, but with feedhorns \SI{7.5}{\percent} larger.
-The larger feedhorn size could have improved the spill over effieciency from \num{0.52} to \num{0.544}, a \SI{4.6}{\percent} increase, leading to a \SI{4.6}{\percent} improvement in \NETD.
+A hexagonal close-packed array would allow the same number of detectors to be placed on the array, but with feedhorns \SI{7.5}{\percent} larger.
+The larger feedhorn size could have improved the spill over efficiency from \num{0.52} to \num{0.544}, a \SI{4.6}{\percent} increase, leading to a \SI{4.6}{\percent} improvement in \NETD.
 
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch5-full-wafer.pdf}
 \caption[Photograph of 251-detector sub-array]{
   Photograph of the 251-detector sub-array.
-  Bondpads for connecting to the detectors run along the left and bottom sides.
-  In the upper left, lower right, and upper right corners are Au pads for connecting Au wirebonds to allow the wafer to be heat-sunk to the rest of the \SI{1}{\K} stage.
-  The upper left and lower right corners also contain small bondpads for connecting to detector heaters.
-  While all detectors have heater resistors on their membrane, only the detectors along the upper and right edges have these resistors wired to bondpads.
+  Bond pads for connecting to the detectors run along the left and bottom sides.
+  In the upper left, lower right, and upper right corners are Au pads for connecting Au wire bonds to allow the wafer to be heat-sunk to the rest of the \SI{1}{\K} stage.
+  The upper left and lower right corners also contain small bond pads for connecting to detector heaters.
+  While all detectors have heater resistors on their membrane, only the detectors along the upper and right edges have these resistors wired to bond pads.
   The 26 small holes spaced throughout the wafer are used to glue the detector wafer to a backshort wafer (see text).
   The three larger holes in the middle of the wafer are detector sites where the membrane was broken during fabrication.
   The large hole in the lower left, as well as the ``bulls-eye'' feature to its immediate upper right, were intended to be used as alignment features, although the alignment procedure actually used did not use these features.
@@ -237,26 +237,26 @@ See \figref{fig:ch5-focal-plane-back}.
   Photograph of the Al frame (\textbf{A}) and focal plane bolted onto the \SI{6}{\K} Cold Plate.
   The copper-colored area is the W1275 bandpass filter.
   This photograph was taken prior to the application of the Berkeley Bock Black.
-  Also visiable in the photograph are the end-points of the Cu ropes that connect the PTC 2nd-stage cold head to the \SI{80}{\K} plate (\textbf{B}).
+  Also visible in the photograph are the end-points of the Cu ropes that connect the \PTC\ 2nd-stage cold head to the \SI{80}{\K} plate (\textbf{B}).
 }
 \label{fig:ch5-focal-plane-back}
 \end{figure*}
 
-Each sub-array is glued to a \SI{275}{\um} thick Si ``backshort'' wafer that has been micromachined to have the same outline as the sub-array and then covered with Au.
+Each sub-array is glued to a \SI{275}{\um} thick Si ``backshort'' wafer that has been micro-machined to have the same outline as the sub-array and then covered with Au.
 The glue was applied to the set of 26 holes in the detector wafer shown in \figref{fig:ch5-full-wafer}.
-This wafer stack is then attached to an \SI{0.125}{\in} thick invar plate.
+This wafer stack is then attached to an \SI{0.125}{\in} thick Invar plate.
 Invar was chosen because its thermal contraction upon cooling to \SI{4}{\K} and below is well-matched to Si \cite{ekin_experimental_2006}; choosing a material that is poorly matched to Si could result in breaking the Si stack upon cooling.
-The wafer stack is attached to the invar plate with a thin layer of Apiezon-N thermal grease.
-Upon cooling to cryogenic temperatures Apiezon N grease solidifies, so that the detector wafer will not slip along the invar.
-Even at room temperature the grease is very thick so that if the back of the wafer stack is entirely covered with a layer of grease, the wafer will not slip under the influence of gravity if, e.g., it is stored facing horizontally in the cryostat while at room temperature.
+The wafer stack is attached to the Invar plate with a thin layer of Apiezon-N thermal grease.
+Upon cooling to cryogenic temperatures Apiezon N grease solidifies, so that the detector wafer will not slip along the Invar.
+Even at room temperature the grease is very viscous, so that if the back of the wafer stack is entirely covered with a layer of grease the wafer will not slip under the influence of gravity if, e.g., it is stored facing horizontally in the cryostat while at room temperature.
 
-The invar plates must be attached to the Al platter in a way that account for the differential thermal contraction between Al and Invar, while ensuring that the detectors are correctly aligned to the feedhorns.
-This is done by aligning the invar, feedhorns, and Al platter to each other using stainless steel dowel pins.
+The Invar plates must be attached to the Al platter in a way that account for the differential thermal contraction between Al and Invar, while ensuring that the detectors are correctly aligned to the feedhorns.
+This is done by aligning the Invar, feedhorns, and Al platter to each other using stainless steel dowel pins.
 Two pins align the feedhorns to the Al platter.
-The dowel pins are inserted into the Al platter, with one matching hole and one matching slot in the feehorn array; a slot is used for one of the holes to avoid over-constraining the mechanical system.
-Two additional pins align each invar plate feedhorn array to the Al platter.
-Again a matching hole and slot are present in the invar, but in this case the slot is neccesary not only to avoid over-constraining the system but also to account for the differential thermal contraction between invar and Al.
-The detector wafer is placed in the proper location on the invar platter using an alignment jig, and while the invar and grease have been warmed to \abt{\SI{30}{\celsius}}, a temperature at which the thermal grease becomes more viscous, making it easier to adjust the position of the wafer.
+The dowel pins are inserted into the Al platter, with one matching hole and one matching slot in the feedhorn array; a slot is used for one of the holes to avoid over-constraining the mechanical system.
+Two additional pins align each Invar plate feedhorn array to the Al platter.
+Again a matching hole and slot are present in the Invar, but in this case the slot is necessary not only to avoid over-constraining the system but also to account for the differential thermal contraction between Invar and Al.
+The detector wafer is placed in the proper location on the Invar platter using an alignment jig, and while the Invar and grease have been warmed to \abt{\SI{30}{\celsius}}, a temperature at which the thermal grease becomes more viscous, making it easier to adjust the position of the wafer.
 See \figref{fig:ch5-alignment-jig}.
 This approach to mounting Si detector wafers on Invar and aligning to a feedhorn has been used by other instruments in the past, e.g. \cite{schwan_invited_2011}.
 
@@ -264,9 +264,9 @@ This approach to mounting Si detector wafers on Invar and aligning to a feedhorn
 \centering
 \includegraphics{drawings/ch5-alignment-jig.pdf}
 \caption[Alignment jig]{
-  Photograph of the alignment jig used to align the \Imager's sub-array to the invar plate.
-  The invar plate and the metal bar are aligned to each other with dowel pins.
-  The metal bar has conical cut-outs placed so that when detectors are aligned with them, the wafer is aligned properly to the invar.
+  Photograph of the alignment jig used to align the \Imager's sub-array to the Invar plate.
+  The Invar plate and the metal bar are aligned to each other with dowel pins.
+  The metal bar has conical cut-outs placed so that when detectors are aligned with them, the wafer is aligned properly to the Invar.
   In order to make it easy to move the detector wafer stack to the proper location, the entire assembly is warmed to \SI{30}{\celsius}; at this temperature the thermal grease thins.
 }
 \label{fig:ch5-alignment-jig}
@@ -275,7 +275,7 @@ This approach to mounting Si detector wafers on Invar and aligning to a feedhorn
 Four 100-wire woven PhBr wire harness run from \SI{300}{\K} to the focal plane, heat sunk along the way at the \SI{80}{\K} and \SI{6}{\K} stages.
 These wires carry the readout signals to and from the \MCE.
 Once they reach the focal plane a circuit board routes the wires to each sub-array.
-One 100-wire harness caried the row-address wires and the circuit board routes the wires to all mutliplexing chips in series (32 chips for the full array).
+One 100-wire harness carried the row-address wires and the circuit board routes the wires to all multiplexing chips in series (32 chips for the full array).
 The other four 100-wire harnesses each carry \SQUID\ bias and feedback wires for a single sub-array.
 
 To aid in routing of the wires, each sub-array has two ``wiring chips'' associated with it, visible in \figref{fig:ch5-focal-plane-platter}, and shown in schematic form in \figref{fig:ch5-wiring-chip-schematic}.
@@ -314,7 +314,7 @@ Using $G = \SI{3.8}{\nW\per\K}$, $T_0 = \SI{1.2}{\K}$, and $F = 0.83$ leads to $
 This is \SI{60}{\percent} of \sectionref{sec:ch4-opt-eff}'s predicted photon noise of \Pnoisef{0.85}.
 Summing the two noise sources in quadrature gives for the total noise (referred to power absorbed in the detector) $S_{tot} = \Pnoisef{1.0}$.
 
-xxx need discussion of NETD, but want to write that section in ch2 first
+xxx need discussion of \NETD\, but want to write that section in ch2 first
 
 \section{Acknowledgments}
 
@@ -322,3 +322,4 @@ Hsiao-Mei (Sherry) Cho fabricated the detectors and wiring chips, as well as pro
 The interface chips were designed --- and spares kindly donated --- by the Atacama B-Mode Search team.
 Jeff Van Lanen fabricated the backshort wafers and the Quantum Sensors Project \SQUID\ fabrication team made the multiplexing chips.
 Colin Fitzgerald performed all wire bonding.
+Lisa Ferreira did the soldering of the 100-pin MDM connectors to the circuit board, as well as a variety of other detail-oriented soldering tasks.
