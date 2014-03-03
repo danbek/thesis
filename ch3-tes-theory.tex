@@ -1,5 +1,7 @@
 \chapter{\textsc{TES} Bolometer Theory}\label{c:tes}
 
+xxx need to explain saturation power for use in ch 5
+
 This chapter summarizes the \TES\ theory used in this thesis.
 I start by describing the \TES\ electrical and thermal circuits, defining relevant parameters, and stating the linearized \TES\ equations.
 For reference, I then summarize the important consequences of these equations, including expressions for detector responsivity, detector response to step functions in applied power and bias current, and detector noise.
@@ -54,7 +56,7 @@ R(T_0+\delta T,I_0+\delta I) = R_0 + \alpha \frac{R_0}{T_0} \delta T + %
 									 \beta_I \frac{R_0}{I_0} \delta I.
 \end{equation}
 The power flowing through the thermal link $G$ is assumed to follow a power law of the form
-\begin{eqnarray}
+\begin{eqnarray} \label{eqn:ch3-p-bath}
 P_{b} = K(T^n - T^n_{b}),
 \end{eqnarray}
 which can also be written in the form
