@@ -74,7 +74,8 @@ This criteria corresponds to \SI{2e-4}{s} for the superconducting state and as f
 
 \begin{figure*}
 \includegraphics{drawings/ch7-servo-tau-est.pdf}
-\caption{Plots summarizing requirements on $\tau_{servo}$ for accurate measurements of detector time constants.
+\caption[Required $\tau_{servo}$]{
+Plots summarizing requirements on $\tau_{servo}$ for accurate measurements of detector time constants.
 \textbf{Left} Plot showing exact response to step function of a detector with $\tau = \SI{4}{ms}$, the response as filtered by a servo with $\tau_{servo} = \SI{1}{ms}$, and the best fit to the filtered response. The estimated $\tau$ is \SI{23}{\percent} too high.
 \textbf{Right} Plot showing fractional overestimate of $\tau$ vs. relative size of $\tau_{servo}$.
 For less than \SI{2}{\percent} error, $\tau_{servo}/\tau < \num{0.05}$ is required.
@@ -107,7 +108,8 @@ Even operating with $I_{FB}$ of 10 puts \SI{95}{\percent} of the $\tau_{servo}$ 
 
 \begin{figure*}
 \includegraphics{drawings/ch7-servo.pdf}
-\caption{Plots summarizing behavior using different servo gains $I_{FB}$.
+\caption[Plots summarizing behavior using different servo gains $I_{FB}$]{
+  Plots summarizing behavior using different servo gains $I_{FB}$.
   Box plot boxes represent the \SIrange{5}{95}{\percent} quantiles, middle line the median, upper and lower whiskers the maximum/minimum values.
 All detectors that respond in the superconducting state are included.
 \textbf{Upper} Plot of \SQUID\ $\tau_{servo}$ vs servo gain $I_{FB}$.
@@ -156,7 +158,8 @@ It is not known whether this correlation is a real physical effect or an artifac
 
 \begin{figure*}
 \includegraphics{drawings/ch7-rsh-l-plots.pdf}
-\caption{Plots summarizing results of measurements of shunts and Nyquist inductors.
+\caption[Measurements of shunt resistors and Nyquist inductors]{
+Plots summarizing results of measurements of shunts and Nyquist inductors.
 \textbf{Upper Left} Histogram of shunt resistance \Rsh.
 \textbf{Upper Right} Histogram of total inductance in circuit, which includes the interface chip Nyquist inductor, the inductance of the SQ1 input coil, and any parasitic inductance.
 \textbf{Lower Left} Scatter plot showing all \Rsh\ and $L$ values. A correlation is apparent, the reason for which is not understood.
@@ -195,7 +198,8 @@ It also shows that this assumption breaks down deeper in the transition.
 
 \begin{figure*}
 \includegraphics{drawings/ch7-heater-r-plots.pdf}
-\caption{Plots related to heater measurements, for the case of \RCm{29}{1}.
+\caption[Plots related to heater measurements]{
+Plots related to heater measurements, for the case of \RCm{29}{1}.
 \textbf{Upper Left} \IV\ curves. The \IV\ curves should turn vertical when the detector becomes fully superconducting at zero voltage, but these curves shown a non-infinite slope. The reason for this is that the readout system as configured for these \IV\ curves was unable keep up with the rapid change of current in the superconducting branch.
 \textbf{Upper Right} Same data as in upper left plot, but represented in terms of \TES\ Joule power and resistance. As the bias current for the heaters is increased, the curves shift to the left.
 \textbf{Lower Left} Measured $P_{J}$ vs heater current at $0.99R_n$, as well as fit to \eqnref{eqn:ch3-rhtr-fit}.
@@ -250,7 +254,7 @@ In this fit, $\tau_{meas}$ is considered the dependent variable, the product $(I
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch7-tau-nat-plots.pdf}
-\caption{
+\caption[Plot showing measurement of natural time constant $\tau$]{
   Plot showing measurement of natural time constant $\tau$ for \RCm{31}{1}. The fit is to \eqnref{eqn:tau-nat-fit}.
   The y-intercept at $I_{bias} \delta I = 0$ gives $\tau = \SI{9.45}{\ms}$.
 } 
@@ -284,7 +288,8 @@ Specifically, a change in $P_{opt}$ from \SI{100}{\pW} to \SI{300}{\pW} increase
 
 \begin{figure*}
 \includegraphics{drawings/ch7-g-plots.pdf}
-\caption{Plots summarizing results of $G$, $T_c$ and $n$ measurements for seven detectors with good heaters.
+\caption[$G$, $T_c$, and $n$ measurements]{
+Plots summarizing results of $G$, $T_c$ and $n$ measurements for seven detectors with good heaters.
 All error bars and ellipses are 95 \% confidence intervals for statistical error; any systematic error is not included.
 \textbf{Left} Plot showing $P_{sat}$ vs $T_b$ for \RCm{31}{2}, assuming $P_{opt} = \SI{150}{\pW}$.
 The red line shows the best fit to \eqnref{eqn:g-fit}.
@@ -297,7 +302,7 @@ The data covers 25 temperatures from \SIrange{995}{1160}{\mK}, and 11 different 
 
 \begin{figure*}
 \includegraphics{drawings/ch7-g-popt-plots.pdf}
-\caption{
+\caption[Impact of different $P_{opt}$ assumptions]{
 Plots showing effect of $P_{opt}$ assumptions on $G$ and $T_c$ measurements.
 \textbf{Left} Plot showing variation of $G$ for \RCm{31}{2} vs assumed value of $P_{opt}$.
 The statistical uncertainty in $G$ for this detector is approximately the same as the systematic uncertainty that results from the estimation of $P_{opt}$.
@@ -330,7 +335,8 @@ The result was fit to \eqnref{eqn:htr-step-resp-high-time}:
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch7-heater-step-trans.pdf}
-\caption{Plot showing response of detector \RCm{30}{1} to step in applied heater power of \SI{1.41}{\pico\watt}.
+\caption[Detector response to heater steps]{
+Plot showing response of detector \RCm{30}{1} to step in applied heater power of \SI{1.41}{\pico\watt}.
 Plots are for \RCm{30}{1} biased into \SOC.
 Data acquired at \SI{3125}{\Hz}.
 The data averaged over 32 steps (16 up and 16 down), along with best fit to \eqnref{eqn:ch7-heater-step-trans}, are plotted.
@@ -382,8 +388,8 @@ The source of this is not understood; two possible explanations are the presence
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch7-bias-step-plots.pdf}
-\caption{%
-  Plots showing results of bias step measurements.
+\caption[Plots showing response of a detector to bias steps]{
+  Plots showing response of a detector to bias steps.
 \textbf{Left}
 Response of \RCm{31}{1} to step in applied bias current, at a range of bias points.
 In all cases there is a fast increase in the \TES\ current followed by a slow decay to the final current, which for these bias points is always less than the initial current.
@@ -400,7 +406,7 @@ At some bias points a damped oscillatory response is present on top of the \eqnr
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch7-bias-step-results.pdf}
-\caption{%
+\caption[Results of bias step fits]{
   Plots showing results of fits for the four detectors tested at varying bias points in this section.
   The circled points are for \SOC.
 }
@@ -416,7 +422,7 @@ This is important because only a few detectors have working heaters, making dire
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch7-heater-step-pred-plots.pdf}
-\caption{%
+\caption[$\tau_{eff}$ and $s_I(0)$ measurements]{
   Plots showing measurements of detector response times $\tau_{eff}$ and responsivity $s_I(0)$ for the four detectors of column 0 with good heaters.
   The circled points are for the \SOC.
 \textbf{Upper Left}
@@ -440,7 +446,7 @@ Bias steps were also taken for all working detectors at \SOC.
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch7-all-loop-plots.pdf}
-\caption{
+\caption[Plots summarizing results of bias step measurements for all working detectors]{
   Plots summarizing results of bias step measurements for all working detectors.
 All data taken at \SOC.
 \textbf{Left Plots}
@@ -455,7 +461,7 @@ Note that $R$ is plotted, not $R/R_n$. This is because $R_n$ is known only for t
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch7-teff-si-pred.pdf}
-\caption{
+\caption[Predictions for $\tau_{eff}$ and $s_I(0)$]{
   Plots showing distribution of predicted $\tau_{eff}$ and $s_I(0)$. The predictions use the values for $R$, \Loop and $\beta_I$ shown in \figref{fig:ch7-all-loop-plots}, and $R_{sh}$ values from \sectionref{sec:shunt-nyquist}. $R_p$ is assumed to be zero in all cases.
 }
 \label{fig:ch7-teff-si-pred}
@@ -497,7 +503,8 @@ For this test the bath temperature was set to \SI{1100}{\mK}, so the implied tem
 
 \begin{figure*}
 \includegraphics{drawings/ch7-cm-plots.pdf}
-\caption{Plots summarizing common mode signal and $1/f$ noise.
+\caption[Plots summarizing common mode signal and $1/f$ noise]{
+Plots summarizing common mode signal and $1/f$ noise.
 \textbf{Upper Left}
 Plot showing raw detector output for 15 detectors over a 10-minute data acquisition.
 The data was acquired at \SI{15625}{\Hz}, but only every 100th data point is plotted.
@@ -538,7 +545,8 @@ The figure also contains a plot of the power spectral density for \RCm{29}{1} wi
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch7-ptc-plots.pdf}
-\caption{%
+\caption[Plots showing impact of \PTC\ on noise]{
+Plots showing impact of \PTC\ on noise.
 \textbf{Left}
 Histogram showing excess noise due to the \PTC, defined as ratio of total noise above \SI{6}{\Hz} (see text for precise definition).
 More detectors have higher noise with the \PTC\ on than off, but the mean excess noise is only \SI{1}{\percent}.
@@ -572,7 +580,8 @@ I have not yet implemented this filter, but plan to do for future operation of t
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch7-noise-aliasing.pdf}
-\caption{%
+\caption[Plots showing impact of noise aliasing]{
+Plots showing impact of noise aliasing.
 \textbf{Left}
 Plot showing fractional excess noise (see text for definition) due to noise aliasing for all rows of column 0.
 The error bars are for \SI{95}{\percent} confidence intervals, and the average excess noise is \SI{14}{\percent}.
@@ -629,7 +638,7 @@ All this points to the conclusion that the high level of detector noise is real,
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch7-trans-noise.pdf}
-\caption{
+\caption[Detector noise measurments]{
 Plots showing detector noise for the four detectors with working heaters on column 0.
 The left column plots the directly measured current noise, after removing a common mode signal, at eight bias points from 25k to 32k.
 The right column shows the same noise spectra, but referred to power absorbed in the bolometer.
@@ -644,7 +653,7 @@ For all four detectors, the measured noise is higher than predicted by the noise
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch7-trans-noise-model-plots.pdf}
-\caption{
+\caption[Measured and modeled noise]{
   Plot showing measured noise for \RCm{31}{1}, referred to power absorbed in bolometer, along with two noise models.
 The red line is the basic detector noise model using measured values for all detector parameters as described in this chapter, including predicted \Pnoise{0.5e-15} of photon noise.
 The black line is for a noise model that include enough excess ``power'' noise to match the measured white noise level at low frequencies.
@@ -664,7 +673,7 @@ The detectors also become more tightly bunched in their noise performance at low
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch7-all-noise.pdf}
-\caption{
+\caption[Total in-band noise]{
 Histograms showing total in-band noise for all working detectors at three different servo gain values.
 The total noise deceases as servo gain is decreased, as a result of the servo loop reducing \SQUID\ and detector noise that is outside the bandwidth of the detector.
 Fewer outlier detectors also appear at low servo gain.

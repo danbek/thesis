@@ -33,7 +33,8 @@ This could be caused by an abnormally high $G$ and/or $T_c$ value, or by a short
 \begin{figure*}
 \centering
 \includegraphics[width=\textwidth]{./images/1377812876_RCs_sq1ramptes_00.png}
-\caption{Plot showing response of SQUID amplifier chain to a ramp in the \TES\ bias current, while \TES\ is superconducting.
+\caption[\SQUID\ response to \TES\ bias ramp (superconducting)]{
+  Plot showing response of SQUID amplifier chain to a ramp in the \TES\ bias current, while \TES\ is superconducting.
   Data is shown for rows 0--4 for all eight columns.
   \RC{0}{2}, \RC{0}{3}, \RC{1}{3}, \RC{1}{7} all show no response, only noise (note the change in vertical scale for these row/columns).
   The vertical axis is in Analog-to-Digital-Converter units for the output of the \SQUID\ amplifier chain.
@@ -45,7 +46,7 @@ This could be caused by an abnormally high $G$ and/or $T_c$ value, or by a short
 \begin{figure*}
 \centering
 \includegraphics[width=\textwidth]{./images/1378756510_RCs_sq1ramptes_00.png}
-\caption{Plot showing response of SQUID amplifier chain to ramp in \TES\ bias current, while \TES\ is biased into transition.
+\caption[\SQUID\ response to \TES\ bias ramp (transition)]{Plot showing response of SQUID amplifier chain to ramp in \TES\ bias current, while \TES\ is biased into transition.
   The total change in applied bias current is the same as in \figref{fig:tes-bias-ramp-sc}.
   Data is shown for rows 0--4 for all eight columns.
   \RC{0}{2}, \RC{0}{3}, \RC{1}{3}, \RC{1}{7} all show no response, only noise (note the change in vertical scale for these row/columns).
@@ -59,8 +60,8 @@ This could be caused by an abnormally high $G$ and/or $T_c$ value, or by a short
 \begin{figure*}
 \centering
 \includegraphics{./drawings/ch8-detector-cuts-wafer.pdf}
-\caption{
-Figure showing detector layout, highlighting which detectors have problems and which are working.
+\caption[Detector layout on wafer]{
+Figure showing detector layout on the wafer, highlighting which detectors have problems and which are working.
 Each detector is labeled (below) with its row/column.
 The x and y positions of the detectors on the wafer are also given in the format X-Y, where X give the x position of the detector (labeled along the bottom) and Y the y position (labeled along the left).
 }
@@ -70,7 +71,7 @@ The x and y positions of the detectors on the wafer are also given in the format
 \begin{figure*}
 \centering
 \includegraphics{./drawings/ch8-detector-cuts-rc.pdf}
-\caption{
+\caption[Detector to multiplexing row/column mapping]{
   Figure showing same information as \figref{fig:detector-cuts-wafer}, but organized in term of readout rows/columns. Each detector is labeled (below) with its position on the detector wafer.
   The row/columns are labeled on the left and top. Unused row/columns as well as the row/columns used to readout the position of the secondary mirror are also indicated. }
 \label{fig:detector-cuts-rc}
@@ -147,7 +148,7 @@ As can be seen in \figref{fig:ch8-bose-cross}, the points are clustered about th
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch8-bose-cross.pdf}
-\caption{
+\caption[Plot showing crosstalk amplitudes]{
 Plot showing crosstalk amplitudes.
 The left plot is for \DISP1, the right for \DISP2.
 Each actuator was moved +/- \SI{3.5}{\mm} at 6 Hz while the detectors were biased at \SOC.
@@ -174,7 +175,7 @@ Possibilities include the cryostat being located too close to the mirror system,
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch8-focus.pdf}
-\caption{
+\caption[Focus distance plots]{
   Plots showing impact of observing objects not located at the far-field focal plane.
   In both cases the \SI{1030}{\celsius} black-body source with aperture diameter set to \SI{0.4}{\in} (\SI{1.0}{\cm}) was observed. The acquisitions were taken 2.5\,minutes apart, and the only thing changed was the distance between the black-body and the primary mirror.
   \textbf{Left} Still image taken with the black-body located \SI{17}{\m} from the primary mirror.
@@ -246,7 +247,7 @@ Although the ellipticity of the beams is disappointing, the resolution is close 
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch8-beam-summary.pdf}
-\caption{
+\caption[Beam fit parameters]{
   Plots summarizing final fit parameters for all beams.
   The histogram in the lower right shows that there is \abt{3} times more scatter in $\sigma_1$ than in $\sigma_2$. 
 }
@@ -256,7 +257,7 @@ Although the ellipticity of the beams is disappointing, the resolution is close 
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch8-all-beam-maps.pdf}
-\caption{
+\caption[Beam maps]{
 Plot showing final beam maps.
 The ellipses represent the full-width-half-maximum (\FWHM) of the best-fit 2-D Gaussian for each beam. The beams are elliptical, with a mean $\sigma_1/\sigma_2$ of 1.6, mean beam angle to the $x$-axis of \ang{70}, and beam \FWHM\ of \SI{1.4}{\cm}.
 The four grid locations in the extreme upper right corner, as well as the extreme lower left grid point, have no detectors and therefore no beams. All other missing beams are for cut detectors, as discussed in \sectionref{sec:ch8-det-cuts}.
@@ -279,7 +280,7 @@ The result of these measurements is that $F_d = 1.098$.
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch8-check-dist.pdf}
-\caption{
+\caption[Distance scale measurements]{
   Plots explaining measurement of distance scale.
   The left plot shows a close-up of the Styrofoam cooler filled with LN2, with an \SI{14.5}{\cm} by \SI{4}{\cm} strip taped to the outside.
   A cut of this image through the middle of strip (identified by the thin black line) is shown on the right.
@@ -302,7 +303,7 @@ This serves as a rough confirmation of the beam size and locations as determined
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch8-dime-map.pdf}
-\caption{
+\caption[Image of LN2 cooler with dime]{
   Plots showing still image of Styrofoam cooler filled with LN2, with a dime (diameter \SI{1.791}{\cm}) taped to it's outside.
   Red is warm, blue cold; the temperature scales are different in the two plots.
   \textbf{Left} The full map of the cooler. The white rectangle shows the area of the detail on the right.
@@ -499,7 +500,7 @@ Given uncertainties in the actual skin temperature of the person in the image, t
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch8-single-frames.pdf}
-\caption{
+\caption[Sample still images from a video taken with the \Imager]{
 Sample still images from a video taken with the \Imager.
 Time proceeds left-to-right and top-to-bottom.
 The stills are 20 frames (\SI{3.33}{\s}) apart.
@@ -516,7 +517,7 @@ See text for discussion.
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch8-beams-on-image.pdf}
-\caption{
+\caption[Plot showing where beams are pointed in far-field]{
   Plot showing where beams are pointed in far-field.
   The background image is frame 25 from the video discussed in \sectionref{sec:ch8-algo}.
   The beam \FWHM\ ellipses are in blue.
@@ -600,7 +601,7 @@ Nevertheless, in areas of the video still where there appear to be few scan arti
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch8-flat-netd.pdf}
-\caption{
+\caption[Plots relating to measurement of \NETD\ in flat frame images]{
   Plots relating to measurement of \NETD\ in flat frame images.
   \textbf{Upper Left} Histogram of \NETD\ for each of 19 frames taken from a ``flat'' video image. This \NETD\ is defined as the standard deviation of the temperatures across all pixels which were visited by at least one detector. 
   \textbf{Upper Right} Histogram showing distribution of temperature offsets within the second video frame, which has an \NETD\ of \SI{100}{\mK}.
@@ -629,7 +630,7 @@ A more careful analysis of these factors would be useful, but has not yet been p
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch8-flat-frame-cnt.pdf}
-\caption{
+\caption[Samples per pixel in image]{
   Distribution of samples per pixel for flat field image shown in \figref{fig:ch8-flat-netd}.
   Different video frames have slightly different distributions, but the overall features are all similar to what is shown here.
   The bins in the histogram on the right are one sample wide, so that it can be seen that a handful of pixels around the outer edge receive only one sample.
