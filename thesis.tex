@@ -19,7 +19,6 @@
 \pagestyle{ruled}
 
 \usepackage{thesis}
-%\usepackage{tikz} % drawing figures right here in this file!
 
 % show labels in printed document. Remove for ``real'' typesetting
 %\usepackage{showkeys}
@@ -36,15 +35,85 @@
     url=false]{biblatex}
 \addbibresource{thesis.bib}
 
-\title{A 350 GHz Video Imaging System}
-\author{Dan Becker}
-
 %%% BEGIN DOCUMENT
 \begin{document}
 
-\maketitle
-
 \frontmatter
+
+% Title page. All this code (and the signature page code) was copied
+% from the "official" CU latex template [1].
+% [1]: http://www.colorado.edu/oit/sites/default/files/thesis.cls
+
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+  \DoubleSpacing
+  A 350\,GHZ VIDEO IMAGING SYSTEM \\
+  by \\
+  DANIEL THOMAS BECKER \\
+  B.S., Rice University, 1994 \\
+  M.S., University of Colorado, 2009
+\end{center}
+\vspace*{1in}
+\begin{center}
+  \DoubleSpacing
+  A thesis submitted to the\\
+  Faculty of the Graduate School of the\\
+  University of Colorado in partial fulfillment\\
+  of the requirements for the degree of\\
+  Doctor of Philosophy \\
+  Department of Physics \\
+  2014
+\end{center}
+\vspace*{\fill}
+\newpage
+
+% Signature page
+
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+  \SingleSpacing
+  This thesis entitled:\\
+  A \SI{350}{\GHz} Video Imaging System \\
+  written by Daniel Thomas Becker \\
+  has been approved for the Department of Physics \\
+\end{center}
+
+\vspace*{2mm}
+
+\begin{center}
+  \normalsize
+  \vspace*{16mm}
+  \vrule width 80mm height 0.2mm\\
+  Nils Halverson
+\end{center}
+
+\begin{center}
+  \normalsize
+  \vspace*{16mm}
+  \vrule width 80mm height 0.2mm\\
+  Kent Irwin
+\end{center}
+
+\vspace*{9mm}
+
+\begin{flushright}
+  Date~{\vrule width 55mm height 0.2mm}
+\end{flushright}
+
+\vspace*{\fill}
+\begin{center}
+  \SingleSpacing
+  \parbox{5.0in}{
+  The final copy of this thesis has been examined by
+  the signatories, and we find that both the content
+  and the form meet acceptable presentation standards
+  of scholarly work in the above mentioned discipline.}
+\end{center}
+\vspace*{\fill}
+\newpage
+
 
 \begin{abstract}
 Passive millimeter-wavelength video imaging systems hold promise for detection of security threats at a distance, such as suicide bomb belts and maritime threats in fog.
@@ -62,10 +131,10 @@ This thesis describes the design and implementation of this system, as well as i
 
 \tableofcontents* % the asterisk means that the contents itself isn't put into the ToC
 
-\clearpage
+\newpage
 \listoftables
 
-\clearpage
+\newpage
 \listoffigures
 
 \mainmatter
