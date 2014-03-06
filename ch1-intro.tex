@@ -1,0 +1,30 @@
+\chapter{Introduction} \label{c:intro}
+
+% http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6005328
+% Instead, the image is dominated by speckle that is characteristic for coherent imaging. Speckle comes from the large variations in the intensity of backscattered radiation coming from the diversity in angles of the beam-target incidence, and it dominates any difference in the intrinsic reﬂectivity of, say, PVC pipe material, clothing, and skin.
+
+%% RFI HSHQDC-14-00015
+%% commercially available standoff - Brijot Gen 2, SET CounterBomber
+%% TSA 700 AIT (advanced imaging technology) systems at 160 airports
+
+For over thirty years the millimeter and submillimeter-wavelength spectrum has been the subject of instense interest for military and security maging applications.
+The reason for this interest is that the spectral region from \SIrange{100}{1000}{\GHz} offers a good compromise between transmission through obscurant materials (favoring lower frequencies) and spatial resolution (favoring higher frequencies) \cite{kruse_why_1981}.
+This interest has driven a long line of technological advancement in sources, detectors, and other technologies at these wavelengths \cite{popovic_thz_2011}.
+This advancement has taken place in both ``active'' imaging, in which an observation target is illuminated by light and the reflections from that target are recorder, and `passive'' imaging, in which ambient thermal emissions are detected.
+
+Over a similar timespan the same time the millimeter and sub-millimeter astronomical community has also been very interested in these wavelengths.
+In particular, the desire to make more and more sensitive maps of the Cosmic Microwave Background (\CMB) radiation have driven this communities need for instruments capable of higher and higher sensitivies.
+During the 1980's and early 1990's cooled bolometric detectors capable of achieving photon-noise-limited --- or near photon-noise-limited --- performance were developed.
+By 1994 it was clear that for many astromonical applications the only way to increase sensitivity was to develop arrays of bolometers, but at that time no technology for the production of monolithic arrays was yet available \cite{richards_bolometers_1994}.
+
+The development of voltage-biased superconducting Transition-Edge-Sensor detectors enabled the development of large-scale detector array.
+These detectors are based on the use of thin superconducing films as the bolometer's themometry element, and can fabricated at large scale using standard lithographic techniques.
+Their operation and advantages for array-scale operation are described in \chapterref{c:tes}.
+To readout these detector arrays, several groups have developed \SQUID-based multiplexed readout systems.
+This technology is now mature and is routinely deployed on both ground and balloon-borne experiements in arrays containing up to 10,000 bolometric detectors \cite{holland_scuba-2:_2013}.
+
+The development of this technology offers new opportunities for passive imaging for security and other applications
+Specifically, it is now possible to develop focal planes capable of video-rate imaging with temperature resolution of \SI{100}{\mK} or below.
+This thesis decribes the design and development of the \NIST\ \Imager, a system developed to perform detection of concealed weapons at distances of \SIrange{26}{28}{\m} by producing video-rate images at \SI{350}{\GHz}.
+This chapter provides an overview of millimeter-wavelength imageing and the problems that our system is intended to solve.
+

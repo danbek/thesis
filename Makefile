@@ -7,7 +7,7 @@ LUALATEX = lualatex -interaction=batchmode
 PDFCROP  = pdfcrop
 RM       = rm
 
-InputTeXFiles = ch3-tes-theory.tex ch4-sys-design.tex ch5-det-design.tex ch7-subarray.tex ch8-imaging.tex
+InputTeXFiles = ch1-intro.tex ch3-tes-theory.tex ch4-sys-design.tex ch5-det-design.tex ch7-subarray.tex ch8-imaging.tex
 SAGFiles = $(wildcard drawings/*.tex)
 PDFSAGFiles = $(SAGFiles:.tex=.pdf) 
 ImageFiles = images/*
