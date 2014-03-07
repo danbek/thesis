@@ -59,6 +59,42 @@ Although the ProVision system only takes still images with a xxx s image acquisi
 But there are other applications and operational screnarios in which portal screening system are not feasiable.
 One example is detection of suicide bomb belts, a scenario in which is it desirable to make a detection while the person being observed is some distance away.
 These applications are generally referred to as ``standoff'' detection because the imaging system ``stands off'' some distance from the target being imaged.
+For these applications the choice of optical frequency is less clear than for portal imaging.
+As shown in \figref{fig:ch1-clothes-atmos-trans}, not only does does tranmission through clothing fall with increasing frequency, but tranmission through the atmosphere does as well, although there are many atmospheric windows and line features present so that the trend is not monotonic.
+Nevertheless, it is clear that lower frequencies are better for transmission through the atmosphere.
 
-In addition, also as shown in \figref{clothes-atmos-trans}, atmospheric transmission also tends to decrease with frequency in this range, although there are many atmosheric and other windows present so that the increase is not monotonic.
-One example is detection of suicide bomb belts.
+However, lower frequencies also imply worse spatial resolution for a fixed optical aperture size.
+The angular resolution achievable by an aperture of diameter $D$ observing at wavelength $\lamba$ is, by the Raleigh criterion,
+\begin{equation} \label{eqn:ch1-raleigh}
+  \Theta \sim 1.2 \lambda / D.
+\end{equation}
+For portal screening this is not prohibitive. xxx how the hell does L3 Provision deal with this at 30 GHz?
+But for standoff distances of \SI{10}{\m} or more, a system operating at \SI{30}{\GHz} would need an aperture of size \abt{\SI{8}{\m}} in order to achieve \SI{1}{\cm} resolution.
+This strongly drives choice of frequency for standoff detection to higher frequencies.
+
+Security imaging systems for standoff applications broadly fall into two categories: ``active'' and ``passive''.
+Active systems actively illuminate the target to be images with light and use the reflected light to obtain an image.
+Passive system detect thermal blackbody emmission that are naturally emitted by all objects.
+Because the temperatures of objects being viewed are so low (\abt{SI{300}{\K}}), active systems would seem to have an inherant signal-to-noise advantage over passive systems.
+But the phenomenology of active imaging suffers from two problems that to-date have allowed passive imaging system to generally exceed the image quality achived with active systems.
+
+Both problems stem from the fact that active imaging systems use single-moded coherant sources of light, somewhat analagous to a laser point operating at visible frequencies (xxx ref Petikie).
+The first problem is generally referred to as ``specular reflections''.
+This refers to the fact that the intensity of light that is reflected off of the target and subsequently detected by the active imaging system is strongly dependent on the angle of the target relative to the illuminating beam.
+This leads to strong highlight areas in active images which can be \SI{30}{\dB} (xxx check) or more higher than neighboring areas, making images very hard to interpret.
+For a concrete example, the reader can imagine the way that sunlight at just the right angle can reflect off of the fender of another car on the road, making it difficult for thier eyes to interpret what they are looking at.
+
+The second problem is known as ``speckle''.
+When a coherant light source is diffusely reflected from a surface which varies on distance scales comparble to or larger than a wavelength, some areas of the surface will randomly be oriented more favorabley than others for reflecting light back to the system.
+This leads to a random distribution of bright spots in the image known as speckle (xxx reference goodman here?).
+This phenoman acts as a kind of noise in active images, and in practice the signal-to-noise ratio of active imaging systems is often limited by speckle rather than noise inherant in the detection system itself.
+
+The active imaging community has long been aware of these issues and is working actively to address them.
+One recent appraoch uses modulated multi-moded illumination to avoid these issues (xxx ref).
+Another approach is to use the active system as a radar system rather than an intensity detector.
+Because the radar system detects phase differences rather than intensity differences, it should in theory be less susceptible to specular reflections and speckle.
+
+xxx need to talk about video rate earlier. how to talk about this and active systems.
+
+
+
