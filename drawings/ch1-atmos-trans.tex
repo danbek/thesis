@@ -1,0 +1,29 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tikzpicture}[trim axis right]
+  \begin{axis}[
+      scale only axis=true,
+      height=1.9in,
+      xmin=0,xmax=1000,ymin=0,ymax=1,
+      title={Example Atmospheric Transmission Spectrum},
+      xlabel={Frequency (\si{\GHz})}, ylabel={Transmission} ]
+    \draw[fill=blue] (axis cs:318,0) rectangle (axis cs:375.9,1);
+    \addplot+[mark=none,color=black,thick] table[x=freq,y=trans]{../data/ch1-atmos-trans.dat};
+      
+    %\draw[fill=blue] (axis cs:318,0) rectangle (axis cs:375.9,1);
+    % \node[anchor=south,align=center,font=\small] at (axis cs:1.2, 400) {Increasing \\ Heater Power};
+
+  \end{axis}
+\end{tikzpicture}
+
+\end{document}
