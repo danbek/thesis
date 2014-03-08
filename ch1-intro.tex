@@ -142,24 +142,16 @@ and so the \NETD\ of each image will be
        & = \frac{NEP}{\eta_{tot} M k_B \Delta \nu} \frac{1}{s} \sqrt{\frac{A\,FPS}{2 N}} .
 \end{align}
 
-Uncooled bolometers can provide excellent images in the near IR
-A typical example is the IR-TCM HD 1024 Thermography Camera Module\footnote{Jenoptik AG, Jena, Germany}.
-This camera uses an $1024 \times 768$ detector uncooled microbolometer focal plane array, acheiving \SI{50}{\mK} NETD at 30 frames per second.
-But uncoooled bolometer arrays will never achieve this level of noise performance operating in the \SI{350}{\GHz} range.
-There are two reasons for this \cite{that-nice-grossman-paper}.
-First, the available optical bandwidth $\Delta \nu$ in the near-IR is much larger than at \SI{350}{\GHz}.
-The IR-TCM HD 1024 detects the \SIrange{7.5}{14}{\um} range, which is an optical bandwidth of \SI{19}{\THz}, a factor of \abt{500} larger than that available to the \Imager.
-Even after reducing the number of pixels in an image to a $100 \times 100$, and the frame rate to 6 frames per second, the \NETD\ from this uncooled microbolometer system would be three times worse at \SI{350}{\GHz} than in the near-IR.
-
-A second factor is the number of modes $M$ available for detection by near-IR cameras.
-The number of (polarized) modes that any detector is senstive to is given by
-\begin{equation}
-  M = \frac{A_{det} \Omega}{lamba^2},
-\end{equation}
-where $A_{det}$ is the area of the detector, $\Omega$ is the solid angle that the detector is sensitive to, and $\lambda$ is the wavelength of light.
-This quantity is an invariant of any optical system \cite{xxx}, so that the equation can equally well be applied for an individual detector or at the aperture of the optical system.
-To achieve resolution of \SI{1}{\cm} at a standoff of \SI{16}{\m} at \SI{350}{\GHz} requires an aperture of diameter
-\begin{equation}
-  D = 
-\end{equation}
-Near-IR microbolometers 
+%% Keepig the following for now, because I don't really believe it,
+%% and it certainly oversimplifies matters. Near-IR bolometers are viewing the peak of the
+%% 300 K blackbody spectrum, so they are not in the RJ limit, so the
+%% equations above don't really apply. In particular, it's not clear
+%% to me whether NETD really scales with the inverser of the optical
+%% bandwidth. Maybe at some point I could think about this more
+%% carefully, but for now I'm removing it from the text.
+% 
+% Uncooled bolometers can provide excellent images in the near IR
+% A typical example is the IR-TCM HD 1024 Thermography Camera Module\footnote{Jenoptik AG, Jena, Germany}, whicih produces $1024 \times 768$ pixel images with an \NETD\ of \SI{50}{\mK} at 30 frames per second using an uncooled microbolometer focal plane array.
+% But uncoooled bolometer arrays can achieve this performance in the near IR because the available optical bandwidth is much larger than what is available in the \SIrange{100}{1000}{\GHz} range.
+% The IR-TCM HD 1024 detects the \SIrange{7.5}{14}{\um} range, which is an optical bandwidth of \SI{19}{\THz}, a factor of \abt{530} larger than that available to the \Imager.
+% Even after reducing the number of pixels in an image to a $100 \times 100$, and the frame rate to 6 frames per second, the \NETD\ from this uncooled microbolometer system would be \abt{27} times worse at \SI{350}{\GHz} than in the near-IR.
