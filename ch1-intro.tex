@@ -56,15 +56,16 @@ Although the ProVision system only takes still images with a xxx s image acquisi
 \label{fig:ch1-clothes-atmos-trans}
 \end{figure*}
 
-But there are other applications and operational screnarios in which portal screening system are not feasiable.
+But there are other applications and operational screnarios in which portal screening systems are not feasiable.
 One example is detection of suicide bomb belts, a scenario in which is it desirable to make a detection while the person being observed is some distance away.
+In these scenarios it is not reasonable to expect observation targets to be stationary, so video-rate imageing is also required.
 These applications are generally referred to as ``standoff'' detection because the imaging system ``stands off'' some distance from the target being imaged.
 For these applications the choice of optical frequency is less clear than for portal imaging.
 As shown in \figref{fig:ch1-clothes-atmos-trans}, not only does does tranmission through clothing fall with increasing frequency, but tranmission through the atmosphere does as well, although there are many atmospheric windows and line features present so that the trend is not monotonic.
 Nevertheless, it is clear that lower frequencies are better for transmission through the atmosphere.
 
 However, lower frequencies also imply worse spatial resolution for a fixed optical aperture size.
-The angular resolution achievable by an aperture of diameter $D$ observing at wavelength $\lamba$ is, by the Raleigh criterion,
+The angular resolution achievable by an aperture of diameter $D$ observing at wavelength $\lambda$ is, by the Raleigh criterion,
 \begin{equation} \label{eqn:ch1-raleigh}
   \Theta \sim 1.2 \lambda / D.
 \end{equation}
@@ -75,8 +76,10 @@ This strongly drives choice of frequency for standoff detection to higher freque
 Security imaging systems for standoff applications broadly fall into two categories: ``active'' and ``passive''.
 Active systems actively illuminate the target to be images with light and use the reflected light to obtain an image.
 Passive system detect thermal blackbody emmission that are naturally emitted by all objects.
-Because the temperatures of objects being viewed are so low (\abt{SI{300}{\K}}), active systems would seem to have an inherant signal-to-noise advantage over passive systems.
+Because the temperatures of objects being viewed are so low (\abt{\SI{300}{\K}}), active systems would seem to have an inherant signal-to-noise advantage over passive systems.
 But the phenomenology of active imaging suffers from two problems that to-date have allowed passive imaging system to generally exceed the image quality achived with active systems.
+
+\subsection{Active Standoff Imaging}
 
 Both problems stem from the fact that active imaging systems use single-moded coherant sources of light, somewhat analagous to a laser point operating at visible frequencies (xxx ref Petikie).
 The first problem is generally referred to as ``specular reflections''.
@@ -94,7 +97,69 @@ One recent appraoch uses modulated multi-moded illumination to avoid these issue
 Another approach is to use the active system as a radar system rather than an intensity detector.
 Because the radar system detects phase differences rather than intensity differences, it should in theory be less susceptible to specular reflections and speckle.
 
-xxx need to talk about video rate earlier. how to talk about this and active systems.
+The active imaging system that at this time is closest to producing video-rate imaging largly free of specular-reflection and speckle artifacts is the 340 GHz radar system developed at JPL \cite{xxx}.
+This system operates at standoff distances of \SI{16}{\m} achieving a spatial resolution of \SI{1}{\cm} at 4 frames per second.
 
+\subsection{Passive Standoff Imaging}
 
+Passive imaging does not suffer from the problems of specular reflection and speckle.
+Rather, the primary challenge for passive imaging is implementing sufficiently sensitive detectors to achieve low-noise images at video frame rates.
+One commonly used figure-of-merit for noise in a passive imaging system is the Noise Equivalent Temperature Difference (\NETD) of the image, defined as the difference in the temperature distribution at the observation target which can not be distinguished from noise in the image.
+It is useful to begin with a discussion of noise in passive imaging from the perspective of bolometric detectors.
 
+A bolometer is an optical power detector; it is senstive to the square of the incident electromagnetic field.
+Bolometoer is characterized by a Noise Equivalent Power (\NEP), defined as the detected signal power equal to standard deviation of the noise in a \SI{1}{\Hz} post-detection bandwidth.
+To convert the \NEP\ of the dectors to an \NETD\ for an image we must first have a conversion between detected optical power and source temperature.
+For a detector sensitive to $M$ spatial modes of the electromagnetic field and with total optical effieciency $\eta_{tot}$, the optical power detected per unit optical frequency is given by the Planck law in the form
+\begin{equation} \label{eqn:ch1-planck}
+  P_{\nu}(\nu,T) \Delta \nu = \eta_{tot} M h \nu \frac{1}{e^{\frac{h \nu}{k_B T}} - 1} \Delta \nu,
+\end{equation}
+where $h$ is Planck's constant and $k_B$ is Boltzmann's constant and $T$ is the temperature of the source.
+For detection of light around \SI{350}{\GHz}, and source temperatures in the range \SIrange{50}{300}{\K}, the Raleigh-Jeans approximation
+\begin{equation}
+  \frac{1}{e^{\frac{h \nu}{k_B T}} - 1} \approx \frac{k_B T}{h \nu}
+\end{equation}
+holds to within \SI{20}{\percent}, so that the total optical power in an optical bandwidth reduces to 
+\begin{equation}
+  P_{\nu} = \eta_{tot} M k_B T \Delta \nu.
+\end{equation}
+This allows us to convert a detector \NEP\ to a Noise Equivelant Temperature (\NET) via
+\begin{equation}
+  NET = \frac{NEP}{\eta_{tot} M k_B \Delta \nu}.
+\end{equation}
+
+To convert this detector \NET\ to an \NETD\ for an image, we make the assumptions that noise for each detector can be modeled as an uncorrelated gaussian noise source, so that the noise in for a given pixel in the image will be given by the \NET\ divided by the square root of twice the integraiton time for that pixel across all detectors\footnote{%
+  xxx something about nyquist mumble mumble
+}. 
+We consider an image covering an area $A$ with square pixels of side length $s$, produced by an imaging system with $N$ detectors and video frame rate of $FPS$.
+The integration time per pixel will then be given by
+\begin{equation}
+  \frac{N / FPS}{A / s^2},
+\end{equation}
+and so the \NETD\ of each image will be
+\begin{align}
+  NETD & = \frac{NET}{\sqrt{ 2 \frac{N / FPS}{A / s^2}}} \\
+       & = \frac{NEP}{\eta_{tot} M k_B \Delta \nu} \frac{1}{s} \sqrt{\frac{A\,FPS}{2 N}} .
+\end{align}
+
+Uncooled bolometers can provide excellent images in the near IR
+A typical example is the IR-TCM HD 1024 Thermography Camera Module\footnote{Jenoptik AG, Jena, Germany}.
+This camera uses an $1024 \times 768$ detector uncooled microbolometer focal plane array, acheiving \SI{50}{\mK} NETD at 30 frames per second.
+But uncoooled bolometer arrays will never achieve this level of noise performance operating in the \SI{350}{\GHz} range.
+There are two reasons for this \cite{that-nice-grossman-paper}.
+First, the available optical bandwidth $\Delta \nu$ in the near-IR is much larger than at \SI{350}{\GHz}.
+The IR-TCM HD 1024 detects the \SIrange{7.5}{14}{\um} range, which is an optical bandwidth of \SI{19}{\THz}, a factor of \abt{500} larger than that available to the \Imager.
+Even after reducing the number of pixels in an image to a $100 \times 100$, and the frame rate to 6 frames per second, the \NETD\ from this uncooled microbolometer system would be three times worse at \SI{350}{\GHz} than in the near-IR.
+
+A second factor is the number of modes $M$ available for detection by near-IR cameras.
+The number of (polarized) modes that any detector is senstive to is given by
+\begin{equation}
+  M = \frac{A_{det} \Omega}{lamba^2},
+\end{equation}
+where $A_{det}$ is the area of the detector, $\Omega$ is the solid angle that the detector is sensitive to, and $\lambda$ is the wavelength of light.
+This quantity is an invariant of any optical system \cite{xxx}, so that the equation can equally well be applied for an individual detector or at the aperture of the optical system.
+To achieve resolution of \SI{1}{\cm} at a standoff of \SI{16}{\m} at \SI{350}{\GHz} requires an aperture of diameter
+\begin{equation}
+  D = 
+\end{equation}
+Near-IR microbolometers 
