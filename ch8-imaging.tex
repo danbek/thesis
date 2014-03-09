@@ -101,16 +101,7 @@ I fitted the resulting output current timestream to sine waves.
 The result are conversion factors of \SI{2.93}{\mm\per\uA} for \DISP1 and \SI{3.02}{\mm\per\uA} for \DISP2.
 % see cooldown39/ana_bose_factor.m
 
-To convert actuator displacement to displacements in the far-field of the system, I used the conversion factors list in \tableref{tab:ch4-zemax-parms}.
-As discussed in \sectionref{sec:ch8-focus-distance}, although the system is configured to focus at \SI{16}{\m}, the actual focal distance is \SI{17}{\m}, so I used values for that distance from \tableref{tab:ch4-zemax-parms}.
-A \SI{1}{\mm} movement of the actuator produces a rotation of the secondary mirror of \ang{0.276}; a \ang{1.0} rotation of the secondary mirror displaces the beam of an on-axis detector by \SI{19.33}{\cm} at the far-field focal plane.
-
-To convert actuator displacements into locations in the far-field, three additional factors should be considered.
-First, the Cassegrain optical system inverts images that it views, so that a beam from a detector in the lower left of the focal plane (as viewed from behind the detector focal plane) is pointed to the upper right on the far-field image (again as viewed from the system).
-Second, tilting the mirror displaces the beams in the same direction as the mirror is tilted; this is easily seen by thinking of the system in transmission, and imagining the way a beam of light is reflected off of a rotated mirror).
-Third, the actuators are oriented so that their rotation axes are rotated from horizontal/vertical by \ang{45}.
-This all means that --- as viewed from the cryostat --- positive displacements of the \DISP1 actuator shift beams up and to the right, while positive displacements of the \DISP2 actuator shift beams up and to the left.
-If we consider an $x$-$y$ coordinate system in the far-field, this means that the $x$ and $y$ displacement of the beams due to mirror movements are calculated as
+To convert actuator displacement to displacements in the far-field of the system, we use \eqnref{eqn:ch5-bose-to-x} and \eqnref{eqn:ch5-bose-to-y}, subsituting $d = I \times \text{conversion factor}$:
 \begin{equation}
 \Delta x = F_d \frac{\sqrt{2}}{2} \left( I_{\text{DISP1}} \times \frac{\SI{2.93}{\mm}}{\SI{1}{\uA}} -
                               I_{\text{DISP2}} \times \frac{\SI{3.02}{\mm}}{\SI{1}{\uA}}  \right) \times
@@ -123,7 +114,6 @@ If we consider an $x$-$y$ coordinate system in the far-field, this means that th
     \frac{\ang{0.276}} {\SI{1}{\mm}} \times
     \frac{\SI{19.33}{\cm}} {\ang{1}}
 \end{equation}
-
 Here I have also introduced a ``fudge factor'' $F_d$, which allows us to account for any error in manufacturing of the optics, errors in the \ZEMAX\ model, or errors in the \BOSE\ actuator control system; e.g., when we tell the \BOSE\ system to move an actuator by \SI{3}{\mm}, does it really move exactly \SI{3}{\mm}?
 If none of these --- or other --- errors are present in the system, then $F_d$ will be equal to 1.0.
 The direct measurements of distances in the far-field described in \sectionref{sec:ch8-dist-scale} show that $F_d = 1.098$, and this value is used in all analysis for the remainder of this chapter.

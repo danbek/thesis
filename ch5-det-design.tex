@@ -308,6 +308,34 @@ On top of each wiring chip are four multiplexing chips as well as four ``interfa
 \label{fig:ch5-focal-plane-platter}
 \end{figure*}
 
+\section{System Field of View} \label{sec:ch5-fov}
+
+We have now have enough information to calculate the total field of view of the \Imager.
+As discussed in \sectionref{sec:ch8-focus-distance}, although the system is configured to focus at \SI{16}{\m}, the actual focal distance is \SI{17}{\m}, so I used values for that distance from \tableref{tab:ch4-zemax-parms}.
+A \SI{1}{\mm} movement of the actuator produces a rotation of the secondary mirror of \ang{0.276}; a \ang{1.0} rotation of the secondary mirror displaces the beam of an on-axis detector by \SI{19.33}{\cm} at the far-field focal plane.
+
+To convert actuator displacements into locations in the far-field, three additional factors should be considered.
+First, the Cassegrain optical system inverts images that it views, so that a beam from a detector in the lower left of the focal plane (as viewed from behind the detector focal plane) is pointed to the upper right on the far-field image (again as viewed from the system).
+Second, tilting the mirror displaces the beams in the same direction as the mirror is tilted; this is easily seen by thinking of the system in transmission, and imagining the way a beam of light is reflected off of a rotated mirror).
+Third, the actuators are oriented so that their rotation axes are rotated from horizontal/vertical by \ang{45}.
+This all means that --- as viewed from the cryostat --- positive displacements of the \DISP1 actuator shift beams up and to the right, while positive displacements of the \DISP2 actuator shift beams up and to the left.
+If we consider an $x$-$y$ coordinate system in the far-field, this means that the $x$ and $y$ displacement of the beams due to mirror movements are calculated as
+\begin{equation} \label{eqn:ch5-bose-to-x}
+\Delta x = \frac{\sqrt{2}}{2} \left( d_{\text{DISP1}} - d_{\text{DISP2}} \right) \times
+    \frac{\ang{0.276}} {\SI{1}{\mm}} \times
+    \frac{\SI{19.33}{\cm}} {\ang{1}}
+\end{equation}
+\begin{equation} \label{eqn:ch5-bose-to-y}
+\Delta y = \frac{\sqrt{2}}{2} \left( d_{\text{DISP1}} + d_{\text{DISP2}} \right) \times
+    \frac{\ang{0.276}} {\SI{1}{\mm}} \times
+    \frac{\SI{19.33}{\cm}} {\ang{1}}
+\end{equation}
+Here $d_{\text{DISP1}}$ and $d_{\text{DISP2}}$ are the displacements of the two actuators in \si{\mm}.
+
+The maximum displacement of the \BOSE\ actuators is \SI{3.5}{\mm}.
+Assuming a circular scan, the maximum far-field displacement of the on-axis point will be $\SI{3.5}{\mm} \times \SI{0.276}{\degree\per\mm} \times \SI{19.33}{\cm\per\degree} = \SI{18.7}{\cm}$.
+When fully populated with 1024 detectors, the four sub-arrays cover an area $\SI{86}{\mm} \times \SI{86}{\mm}$, so the far-field radius of the circle covered by the detectors will be $\sqrt{2} \times (\SI{86}{\mm}/2) \times \SI{6.638}{\mm\per\mm} + \SI{18.7}{\cm} = \SI{55.8}{\cm}$, for a total area covered of \SI{.98}{\m^2}.
+
 \section{Predicted Noise} \label{sec:ch5-predicted-noise}
 
 Using the targeted value of $G$ we can predict the total noise on the detectors as well as the expected \NETD\ in video images.
@@ -319,6 +347,8 @@ Using $G = \SI{3.8}{\nW\per\K}$, $T_0 = \SI{1.2}{\K}$, and $F = 0.83$ leads to $
 This is \SI{60}{\percent} of \sectionref{sec:ch4-opt-eff}'s predicted photon noise of \Pnoisef{0.85}.
 Summing the two noise sources in quadrature gives for the total noise (referred to power absorbed in the detector) $S_{tot} = \Pnoisef{1.0}$.
 
+We now have enough information to estimate the \NETD\ achieved by the \Imager.
+With a fully-populated array 
 xxx need discussion of \NETD\, but want to write that section in ch2 first
 
 \section{Acknowledgments}
