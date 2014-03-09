@@ -140,7 +140,21 @@ and so the \NETD\ of each image will be
 \begin{align}
   NETD & = \frac{NET}{\sqrt{ 2 \frac{N / FPS}{A / s^2}}} \\
        & = \frac{NEP}{\eta_{tot} M k_B \Delta \nu} \frac{1}{s} \sqrt{\frac{A\,FPS}{2 N}} .
+       \label{eqn:ch1-netd-defn}
 \end{align}
+
+Typical \NEP\ values for uncooled microbolometers in the millimeter-wave region are \Pnoisep{10}--\Pnoisep{100} \cite{that military report}.
+In order to turn this \NEP\ into an \NETD\ we must make some assumptions.
+In order to achieve sufficient spatial resoltion detecters at these wavelengths are typically sensitive to 2 modes, one per polarization, so we set $M = 2$.
+We can generouslly assume one detector per image pixel, so that $\sqrt{A/N}/s = 1$.
+A very good optical efficiency would be $\eta_{tot} = 0.5$, and a typical bandwidth at \SI{350}{\GHz} is \SI{35}{\GHz}.
+The minimum frame rate for video imaging around 6 frames per second.
+Plugging these numbers into \eqnref{eqn:ch1-netd-def} leads to an \NETD\ of \SI{50}{\K} for the best-case scenario of \Pnoisep{10} \NEP.
+The maximum allowable \NETD\ for security applications is \SI{6}{\K} \cite{military}; indoors or in poor weather conditions outdoors the maximum allowable value would be smaller.
+It is clear that uncooled bolometer arrays can not achieve the required performance.
+
+A second option for room-temperature passive imaging are coherant (direct) detectors. 
+Several companies have built passive imagers at xxx GHz based on this technology.
 
 %% Keepig the following for now, because I don't really believe it,
 %% and it certainly oversimplifies matters. Near-IR bolometers are viewing the peak of the
