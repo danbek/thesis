@@ -1,7 +1,5 @@
 \chapter{\textsc{TES} Bolometer Theory}\label{c:tes}
 
-xxx need to explain saturation power for use in ch 5
-
 This chapter summarizes the \TES\ theory used in this thesis.
 I start by describing the \TES\ electrical and thermal circuits, defining relevant parameters, and stating the linearized \TES\ equations.
 For reference, I then summarize the important consequences of these equations, including expressions for detector responsivity, detector response to step functions in applied power and bias current, and detector noise.
@@ -334,6 +332,22 @@ The data cover 36 data points including 25 temperatures from \SIrange{995}{1160}
 \textbf{Right} Scatter plot showing covariance between the fitted values of $G$ and $n$, in terms of 95 \% confidence ellipses.} 
 \label{fig:ch3-g-plots}
 \end{figure*}
+
+\section{\textsc{TES} Saturation Power} \label{sec:ch3-psat}
+
+Consider \eqnref{eqn:ch3-tes-ptot}:
+\begin{equation}\label{eqn:ch3-tes-ptot-2}
+P_{tot} = K(T^n - T_b^n) = P_{opt} + P_{htr} + I^2 R(T,I).
+\end{equation}
+The value of $P_{tot}$ when $T = T_c$, is called the ``saturation power'' ($P_{sat}$) of the detector:
+\begin{align}
+  P_{sat} & \equiv K(T_c^2 - T_n^2) \\
+         & = \frac{G T_c}{n} \left( 1 - \left(\frac{T_b}{T_c}\right) \right).
+ \label{eqn:ch3-psat}
+\end{align}
+If the power flowing across $G$ is larger than this value the detector temperature is forced to be higher than $T_c$ so that the detector goes normal and no longer works.
+This is an important parameter of a \TES, and $G$ must be chosen so that $P_{opt} < P_{sat}$. 
+The ratio $P_{sat} / P_{opt}$ is called the ``safety factor''.
 
 \section{\textsc{TES} Bolometer Noise} \label{sec:ch3-tes-noise}
 
