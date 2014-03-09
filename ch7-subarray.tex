@@ -2,7 +2,7 @@
 
 The detectors in the first 251-detector subarray have not all been characterized to the same extent.
 Partly this is due to manpower and time constraints.
-Additionally, as described in \sectionref{sec:g-psat}, the saturation power of the detectors is \abt{2} times higher than expected, which means that only some detectors can be driven normal using bias current alone --- even under optical load --- and then only at bath temperatures very close to $T_c$.
+Additionally, as described in \sectionref{sec:g-psat}, the saturation power of the detectors is \abt{2} times higher than expected, which means that only some detectors can be driven into the normal state using bias current alone --- even under optical load --- and then only at bath temperatures very close to $T_c$.
 In particular, none of the detectors can be driven normal at the operating bath temperature for the array of \SI{1100}{\mK}.
 This means that we do not have current-vs-voltage (\IV) curves for any detectors at standard operating conditions, which limits the characterization than can be performed.
 
@@ -61,7 +61,7 @@ Using only $I_{FB}$, the \MCE\ servo loop acts like a 1-pole filter.
 Higher values of $I_{FB}$ increase the bandwidth of this filter until a ``critical gain'' is reached, at which point the feedback loop becomes unstable and begins to oscillate.
 $I_{FB}$ should be chosen so that the bandwidth of this filter is greater than that of the detectors themselves, but $I_{FB}$ should not approach the critical gain too closely.
 
-The servo $I_{FB}$ parameter was chosen to minimize \SQUID\ noise and allow sufficient bandwidth to readout the full bandwidth of the detectors.
+The servo $I_{FB}$ parameter was chosen to minimize \SQUID\ noise and allow sufficient bandwidth to read out the full bandwidth of the detectors.
 The target servo bandwidth depends on the measurement being made.
 When operating the array in normal conditions, the data readout rate is either \SI{3125}{Hz} or \SI{3030.3}{Hz}, depending on whether the dark \SQUID\ is read out.
 The time constant for the associated Nyquist frequencies are \abt{\SI{0.1}{ms}}, so there is no need to use $I_{FB}$ values with more bandwidth than this\footnote{Doing so is counter-productive, because it will alias \SQUID\ noise into the detector band}.
@@ -100,7 +100,7 @@ When measuring time constants $I=50$ has been used for all columns, to maximize 
 This places most detectors in a region where \SQUID\ noise will be aliased into the measurement band, but because I always average over many measurements, the accuracy of these types of measurements is not affected by this noise aliasing.
 
 For taking video images, the servo does not need to be run as aggressively.
-As shown in \figref{fig:ch7-teff-si-pred}, most detectors have $\tau_{eff}$ right around \SI{1.25}{\ms}, with only a few slower than this.
+As shown in \figref{fig:ch7-teff-si-pred}, most detectors have $\tau_{eff}$ close to \SI{1.25}{\ms}, with only a few slower than this.
 A servo gain $I_{FB}$ of 20 puts $\tau_{servo}$ below \SI{0.6}{\ms} for all detectors, so there is no need to operate at a higher $I_{FB}$ when taking video images.
 Even operating with $I_{FB}$ of 10 puts \SI{95}{\percent} of the $\tau_{servo}$ below \SI{1}{\ms}, so operating at $I_{FB}$ of 10 is also acceptable.
 % xxx - once I write the section that described required $\tau_{eff}$,
@@ -110,7 +110,7 @@ Even operating with $I_{FB}$ of 10 puts \SI{95}{\percent} of the $\tau_{servo}$ 
 \includegraphics{drawings/ch7-servo.pdf}
 \caption[Plots summarizing behavior using different servo gains $I_{FB}$]{
   Plots summarizing behavior using different servo gains $I_{FB}$.
-  Box plot boxes represent the \SIrange{5}{95}{\percent} quantiles, middle line the median, upper and lower whiskers the maximum/minimum values.
+  In the two box plots, the boxes represent the \SIrange{5}{95}{\percent} quantiles, the middle line represents the median, and the upper/lower whiskers represent the maximum/minimum values.
 All detectors that respond in the superconducting state are included.
 \textbf{Upper} Plot of \SQUID\ $\tau_{servo}$ vs servo gain $I_{FB}$.
 Servo bandwidth increases with $I_{FB}$.
@@ -125,11 +125,11 @@ The few high $\tau_{servo}$ values at gains of 80 and 100 are a result of the fi
 \section{Shunt Resistance Measurements}\label{sec:shunt-nyquist}
 
 Our shunt resistors are located on interface chips that contain both shunt resistors and Nyquist inductors.
-The specific chips used were extra chips leftover from the \ABS\ \cite{kusaka_modulation_2013} project.
+The specific chips used were extra chips remaining from the \ABS\ \cite{kusaka_modulation_2013} project.
 The design resistance of the shunts was \SI{180}{\uohm}, and the design inductance was 609~nH\footnote{John Appel, personal communication}.
 Each chips contains 32 shunt resistors and 32 inductors.
 
-To measure $R_{sh}$ and $L$ for these chips I took noise measurements using zero detector bias current at two different bath temperature: 980~mK and 1160~mK.
+To measure $R_{sh}$ and $L$ for these chips I took noise measurements using zero detector bias current at two different bath temperatures: 980~mK and 1160~mK.
 At these bath temperatures and at zero detector bias the detectors are superconducting, so that measured noise is due to the shunt resistor, any parasitic resistance, and SQUID noise in the multiplexed readout system itself.
 Data was collected at 3030.3~Hz, and 20 data acquisitions lasting 33 seconds were taken at each bath temperature.
 

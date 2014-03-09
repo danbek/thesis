@@ -151,7 +151,7 @@ This expression is complicated, but the behavior can be understood as follows.
 Immediately after an increase in bias current the voltage across the \TES\ begins to increase, with a time constant of $\tau_{el}$.
 As the voltage increases, the Joule power in the \TES\ increases, which warms the \TES.
 This warming increases the resistance of the \TES.
-Because the \TES is voltage-biased, this reduces Joule power in the \TES, which tends to cool the detector as well as reduce current through the detector.
+Because the \TES\ is voltage-biased, this reduces Joule power in the \TES, which tends to cool the detector as well as reduce current through the detector.
 This negative electrothermal feedback effect occurs with a time constant of $\tau_{eff}$.
 Whether the final current through the \TES\ is higher or lower than the original currents depends on the loop gain.
 For $\Loop < 1$ the current increases, for $\Loop > 1$ it decreases and for $\Loop = 0$ the current through the \TES\ remains unchanged.
@@ -218,7 +218,7 @@ $\delta P$ & Change in power (optical or heater) falling on \TES\ \\
 \section{Measurement of Natural Time Constant}\label{sec:tau-nat-theory}
 
 Near the top of the superconducting transition, $\Loop < 1$, so that $\tau_{eff} > 0.5 \tau$.
-Detectors circuits are always designed so that $\tau \gg L/R_n$, so that the response to a step in applied heater power is given by \eqnref{eqn:htr-step-resp-high-time}.
+\TES\ detector circuits are always designed so that $\tau \gg L/R_n$, so that the response to a step in applied heater power is given by \eqnref{eqn:htr-step-resp-high-time}.
 
 As the fully normal state is approached, $\tau_{eff}$ approaches $\tau$, so that measuring the $\tau_{eff}$ very high in the transition will give a measurement of $\tau$.
 However, the power-to-current  responsivity becomes smaller and smaller high in the transition, so that signal-to-noise becomes worse and worse.
@@ -229,7 +229,7 @@ The \DC\ response to a step in applied power $\delta $ is given by
 \begin{equation}
 \delta I = \frac{\delta P}{I_0 R_0}\frac{\Loop}{1 + \beta_I + R_L/R_0 + (1 - R_L / R_0)\Loop}.
 \end{equation}
-This equation can solved for \Loop, and then substituted into the expression for $\tau_{eff}$.
+This equation can be solved for \Loop, and then substituted into the expression for $\tau_{eff}$.
 This leads to
 \begin{equation}\label{eqn:teff-from-tau}
 \tau_{eff} = \tau - \tau \mathcal{K} I_{bias} \delta I,
@@ -247,7 +247,7 @@ has also been used.
 The factor $\mathcal{K}$ depends on the bias point, but high in the transition this dependence is weak, so that $\mathcal{K}$ can be treated as a constant.
 
 To use \eqnref{eqn:teff-from-tau} to measure $\tau$, steps in heater power are applied to the \TES\ at a set of bias points close to the normal state.
-At each bias point the \DC\ change in \TES\ current $\delta I$ and $\tau_{eff}$ are measured by fitting the \TES\ response to \eqnref{eqn:htr-step-resp-high}, and the bias current $I_{bias}$ is recorded.
+At each bias point the \DC\ change in \TES\ current $\delta I$ and $\tau_{eff}$ is measured by fitting the \TES\ response to \eqnref{eqn:htr-step-resp-high}, and the bias current $I_{bias}$ is recorded.
 A non-linear curve fit can then be applied to \eqnref{eqn:teff-from-tau} to solve for $\tau$ and $\mathcal{K}$.
 Alternately, $\mathcal{K}$ can be calculated if all factors feeding into it are known, and then \eqnref{eqn:teff-from-tau} can be solved directly for $\tau$.
 
@@ -265,7 +265,7 @@ P_{tot} = K(T^n - T_b^n) = P_{opt} + P_{htr} + I^2 R(T,I).
 \end{equation}
 We can make the assumption that at the start of the superconducting transition, where $R \approx R_n$, $\beta_I = 0$, i.e.\ the resistance of the \TES\ depends only on the \TES\ temperature, and not on the current through the \TES.
 This assumption has been observed to hold empirically for many different types of \TES\ detectors, and there are also theoretical reasons to expect it to be true\cite{bennett_resistance_2013}.
-Under this assumption, each time the \TES\ reaches, e.g.\ $R = 0.99R_n$, the temperature of the \TES\ is the same, and therefore $P_{tot}$ will be the same.
+Under this assumption, each time the \TES\ resistance reaches, e.g.\ $R = 0.99R_n$, the temperature of the \TES\ is the same, and therefore $P_{tot}$ will be the same.
 A relationship of the following form must therefore hold:
 \begin{equation}\label{eqn:ch3-tes-99Rn}
 P_{J} \equiv I^2 R = P_{tot} - P_{opt} - P_{htr}.
@@ -288,7 +288,7 @@ The upper right plot shows the same data, but transformed into \TES\ Joule power
 As applied heater current decreases, the Joule power at the start of the transition decreases.
 In the lower left, the Joule power at $0.99R_{n}$ is plotted vs applied heater current.
 A fit to \eqnref{eqn:ch3-rhtr-fit} is also plotted.
-Finally, the lower right plot show the $R$ vs $P_J$ plots after the heater power has been added to each curve.
+Finally, the lower right plot shows the $R$ vs $P_J$ plots after the heater power has been added to each curve.
 This plots shows that the powers are equalized very high in the transition, where the assumption of Joule power dependent only on \TES\ resistance holds.
 It also shows that this assumption breaks down deeper in the transition.
 
@@ -314,7 +314,7 @@ This demonstrates that $\beta_I = 0$ does not hold below the very top of the tra
 \subsection{Measurement of \textsc{TES} Differential Thermal Conductance $G$}
 
 With knowledge of the heater resistances, \IV\ curves can be taken over a wide range of bath temperatures, which enables a measurement of the \TES\ thermal conductance $G$ and transition temperature $T_c$.
-In this case $P_{tot}$ will different for each \IV\ curve, so that \eqnref{eqn:ch3-tes-ptot} can be used in the form
+In this case $P_{tot}$ will be different for each \IV\ curve, so that \eqnref{eqn:ch3-tes-ptot} can be used in the form
 \begin{equation}\label{eqn:ch3-g-fit}
 P_{htr} + P_J + P_{opt}= \frac{G T_c}{n}\left(1 - \left(\frac{T_b}{T_c}\right)^n\right).
 \end{equation}
@@ -338,7 +338,7 @@ The data cover 36 data points including 25 temperatures from \SIrange{995}{1160}
 \section{\textsc{TES} Bolometer Noise} \label{sec:ch3-tes-noise}
 
 There are three sources of detector noise in \TES\ bolometers: Johnson noise in the \TES\ resistance, Johnson noise in the load resistor $R_L$, and thermal fluctuation noise across the weak thermal link $G$.
-Additionally, intrinsic fluctuations in the number of arriving photons leads to photon noise, which can be significant source of noise for low-temperature \TES\ bolometers.
+Additionally, intrinsic fluctuations in the number of arriving photons leads to photon noise, which can be a significant source of noise for low-temperature \TES\ bolometers.
 Expressions for these sources of noise are shown in \tableref{tab:tes-noise}.
 
 The function $F$ that enters into the thermal fluctuation noise accounts for the temperature gradient between the \TES\ and the bath.

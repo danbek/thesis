@@ -4,14 +4,14 @@ This chapter describes the design of the \Imager's detectors and focal plane.
 It begins with a discussion of the choice of parameters $G$, $C$, $T_c$ and $T_b$ for the detectors, followed by details of the detector design used to achieve these parameters.
 I then briefly describe the design of the focal plane, and end with the predicted detector noise and \NETD\ for the system.
 
-\section{Parameter Choice For Our Bolometers} \label{sec:det-parm-choice}
+\section{Choice of Bolometer Parameters} \label{sec:det-parm-choice}
 
 The primary parameters to be chosen when designing a \TES\ bolometer are the superconducting critical temperature $T_c$, the thermal conductance $G$, and the \TES\ island heat capacity $C$.
 These parameters are interrelated, and so cannot be chosen entirely independently of each other.
 Some of the factors to consider are:
 \begin{itemize}
   \item Detector noise scales with $\sqrt{T_c^2 G}$, so that lower values of $G$ and $T_c$ improve noise
-  \item The saturation power of the \TES\ detector scales roughly like $G T_c$, so that if $G$ and $T_c$ are too small, the optical power falling on the detector will raise the temperature of the membrane above $T_c$, causing the device to not work.
+  \item The saturation power of the \TES\ detector scales roughly like $G T_c$, so that if $G$ and $T_c$ are too small, the optical power falling on the detector will raise the temperature of the membrane above $T_c$, causing the device not to work.
     % do i talk about saturation power in ch 3? if not, I should!
   \item $T_c$ must be chosen to be higher than the achievable bath temperature, and the bath temperature also affects the saturation power through \eqnref{eqn:ch3-p-bath}.
   \item The detector time constant $\tau_{eff}$ is proportional to the detector natural time constant $\tau = C / G$.
@@ -122,7 +122,7 @@ The result is a suspended membrane connected to the rest of the wafer by a set o
 \tableref{tab:ch5-det-dims} lists dimensions for both the prototype and sub-array detectors.
 
 The leg geometry of the prototype detectors was based on a set of measurements taken at \NIST\ on SiN membranes at temperature around \SI{1}{\K}.
-the leg geometry for the sub-array detectors was based on simple scaling of the prototype detectors to the target $G$ of \SI{3.8}{\nW\per\K}.
+The leg geometry for the sub-array detectors was based on simple scaling of the prototype detectors to the target $G$ of \SI{3.8}{\nW\per\K}.
 This scaling was slightly complicated by the change in thickness of the SiO2 layers, which was made in order to add additional protection to the wiring layers and better balance stress on the relieved membranes.
 Assuming that $G$ scales linearly with the $A/L$ of the legs, the sub-array $G$ should be
 \begin{align}
@@ -229,7 +229,7 @@ See \figref{fig:ch5-focal-plane-back}.
   Photographs showing how the focal plane is attached to the \SI{6}{\K} Cold Plate.
   \textbf{Left}
   Back view of the focal plane.
-  At each corner the focal plane is bolted to a Ti-6Al-4V ``spider'', which are clamped into Al blocks (e.g. rectangles \textbf{A}).
+  At each corner the focal plane is bolted to a Ti-6Al-4V ``spider'', which is clamped into an Al block (e.g. rectangles \textbf{A}).
   The blocks are then bolted to an Al frame, on which the blocks and focal plane are resting in the photograph.
   The Al frame has Berkeley Bock Black \cite{persky_review_1999} applied to it in an attempt to provide a surface on which stray infrared light will be absorbed other than the focal plane.
   Also visible are the 100-pin MDM connectors that the wires from the \MCE\ plug into (\textbf{B}).
@@ -250,7 +250,7 @@ The wafer stack is attached to the Invar plate with a thin layer of Apiezon-N th
 Upon cooling to cryogenic temperatures Apiezon N grease solidifies, so that the detector wafer will not slip along the Invar.
 Even at room temperature the grease is very viscous, so that if the back of the wafer stack is entirely covered with a layer of grease the wafer will not slip under the influence of gravity if, e.g., it is stored facing horizontally in the cryostat while at room temperature.
 
-The Invar plates must be attached to the Al platter in a way that account for the differential thermal contraction between Al and Invar, while ensuring that the detectors are correctly aligned to the feedhorns.
+The Invar plates must be attached to the Al platter in a way that accounts for the differential thermal contraction between Al and Invar, while ensuring that the detectors are correctly aligned to the feedhorns.
 This is done by aligning the Invar, feedhorns, and Al platter to each other using stainless steel dowel pins.
 Two pins align the feedhorns to the Al platter.
 The dowel pins are inserted into the Al platter, with one matching hole and one matching slot in the feedhorn array; a slot is used for one of the holes to avoid over-constraining the mechanical system.
@@ -272,7 +272,7 @@ This approach to mounting Si detector wafers on Invar and aligning to a feedhorn
 \label{fig:ch5-alignment-jig}
 \end{figure*}
 
-Four 100-wire woven PhBr wire harness run from \SI{300}{\K} to the focal plane, heat sunk along the way at the \SI{80}{\K} and \SI{6}{\K} stages.
+Four 100-wire woven PhBr wire harnesses run from \SI{300}{\K} to the focal plane, heat sunk along the way at the \SI{80}{\K} and \SI{6}{\K} stages.
 These wires carry the readout signals to and from the \MCE.
 Once they reach the focal plane a circuit board routes the wires to each sub-array.
 One 100-wire harness carried the row-address wires and the circuit board routes the wires to all multiplexing chips in series (32 chips for the full array).
