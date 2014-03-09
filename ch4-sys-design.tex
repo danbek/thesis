@@ -15,8 +15,10 @@ The cryostat has two main parts: a cylinder containing both the \PTC\ and the \H
 There are three temperature stages, the ``\SI{80}{\K}'' Cold Plate, the ``\SI{6}{\K}'' Cold Plate, and the Focal Plane.
 The \PTC\ 1st stage is connected to the \SI{80}{\K} Cold Plate by a tube of Al 1100 and a set of CDA-101 Cu braids.
 The combination of this long thermal path with the high heat load on the optical filters sunk to the \SI{80}{\K} stage explains the \SI{45}{\K} temperature differential between the \SI{80}{\K} cold plate and the \PTC\ 1st stage.
-The \PTC\ 2nd stage is connected to the \SI{6}{K} Cold Plate by a large (3.0 in diameter by 2.78 in long) cylinder of CDA-110 Cu\footnote{This cryostat was originally designed to work with a different cryocooler. The \PTC\ currently installed has a shorter distance between the 1st and 2nd stages; the Cu cylinder takes up this extra space.}, followed by tube of alloy CDA-101 Cu followed by a set of  CDA-101 copper braids.
-The Cu tube is broken into two halves, and the condensation plate (see below) of the sorption fridge is clamped between these two halves. The \SI{80}{\K} Cold Plate is stood off from the cryostat vacuum jacket by four ``roll wrapped'' carbon fiber tube standoffs. The \SI{6}{\K} Cold Plate stands off from the \SI{80}{\K} Cold Plate by eight supports made of G-10.
+The \PTC\ 2nd stage is connected to the \SI{6}{K} Cold Plate by a large (3.0 in diameter by 2.78 in long) cylinder of CDA-110 Cu\footnote{This cryostat was originally designed to work with a different cryocooler. The \PTC\ currently installed has a shorter distance between the 1st and 2nd stages; the Cu cylinder takes up this extra space.}, followed by a tube of alloy CDA-101 Cu, followed by a set of  CDA-101 copper braids.
+The Cu tube is broken into two halves, and the condensation plate (see below) of the sorption fridge is clamped between these two halves.
+The \SI{80}{\K} Cold Plate stands off from the cryostat vacuum jacket by four ``roll wrapped'' carbon fiber tube standoffs.
+The \SI{6}{\K} Cold Plate stands off from the \SI{80}{\K} Cold Plate by eight supports made of G-10.
 
 \begin{figure*}
 \centering
@@ -144,7 +146,7 @@ It excludes parasitic load inherent to the sorption refrigerator itself; we have
   Detectors (Optical + Electrical) & 0.25 & 1 \\
   Other in-band optical power      & 5.6 &   5.6 \\
   Out-of-band optical power        &   0 &   0 \\
-  \BOSE readout wires              & 507 & 507 \\
+  \BOSE\ readout wires              & 507 & 507 \\
 \midrule
   Total                            & 700 & 794 \\
 \bottomrule
@@ -158,7 +160,7 @@ A Cassegrain design was chosen because circular symmetry makes these systems eas
 \figref{fig:ch4-optical-schematic} shows a schematic of the optical system including the focal plane.
 Light enters the system from the left in this schematic, and bounces off the primary mirror onto the secondary mirror.
 From the secondary mirror the light passes through a hole in the center of the primary mirror and through a window into the cryostat.
-The cryostat window is a high-density polyethylene (\HDPE) lens that makes the system telecentric; this means that focal surface of the system inside the cryostat is planar, not curved, and simplifies the design of the detector focal plane.
+The cryostat window is a high-density polyethylene (\HDPE) lens that makes the system telecentric; this means that the focal surface of the system inside the cryostat is planar, not curved, and simplifies the design of the detector focal plane.
 On the focal plane itself, light is captured by smooth-walled conical feedhorns (see \sectionref{sec:ch4-feedhorn-design}) which funnel the light onto the detectors.
 
 \begin{figure*}
@@ -176,8 +178,8 @@ Schematic showing elements of optical system.
 \label{fig:ch4-optical-schematic}
 \end{figure*}
 
-The secondary mirror is mounted so that it can be pivoted in order to change where the system is pointing to in the far-field.
-Two \BOSE\ linear motors\footnote{Bose ElectroForce, Framingham MA} mounted \ang{90} apart allow the mirror to be moved in arbitrary directions and scanning patterns.
+The secondary mirror's mount allows it to pivot in order to change where the system is pointing in the far-field.
+Two \BOSE\ linear motors\footnote{Bose ElectroForce, Framingham MA} mounted \ang{90} apart move the mirror in arbitrary directions and scanning patterns.
 \figref{fig:ch4-optics} shows the secondary mirror mounted on its supporting platform, as well as the \BOSE\ motors.
 
 \begin{figure*}
@@ -301,10 +303,10 @@ Detector Focal Plane &                   & N/A           &  \SI{171.541}{\mm} fr
   ``Focus Distance'' is the distance from the apex of the primary mirror to the far-field plane at which the system is focused.
   ``Lens Distance'' is the distance from the outer vertex of the lens to the vertex of the primary.
   ``Plate Scale'' gives the ratio of distances on the far-field focal plane to the detector focal plane.
-  ``Mirror Rotation'' give the distance that the on-axis point moves when the mirror is rotated by \ang{1}.
+  ``Mirror Rotation'' gives the distance that the on-axis point moves when the mirror is rotated by \ang{1}.
   ``F-Number'' gives the ratio of the focal distance to the aperture size as viewed from the detector focal plane; this the ``Working F/\#'' from \ZEMAX.
-  ``Marginal Rays'' give the angle away from the optical axis of the inner/outer marginal rays; these are the most extreme rays emerging from the detector focal plane that reach the far-field focal plane.
-  ``Primary Range'' give the innermost and outermost radius of the primary that is actually used, e.g., when focused at \SI{16}{\m}, the outer \SI{4}{\cm} of the primary is not used.
+  ``Marginal Rays'' gives the angle away from the optical axis of the inner/outer marginal rays; these are the most extreme rays emerging from the detector focal plane that reach the far-field focal plane.
+  ``Primary Range'' gives the innermost and outermost radius of the primary that is actually used, e.g., when focused at \SI{16}{\m}, the outer \SI{4}{\cm} of the primary is not used.
 }
 \label{tab:ch4-zemax-parms}
 \begin{tabular}{ccccccc}
@@ -348,7 +350,7 @@ In all cases, nearly all rays map to within the Airy disk, indicating that the p
 
 The \HDPE\ window does not have an anti-reflection coating.
 The index of refraction of \HDPE\ is $n=1.525$ with an absorption coefficient at \SI{350}{\GHz} of $\alpha = \SI{0.044}{\cm^{-1}}$ \cite{lamb_miscellaneous_1996}.
-Using the standard formulas for Fabry-Perot fringing when light passes through a lossy \SI{2}{\cm} thick dielectric slab \cite[Chapter~5]{sophocles_j._ordanidis_electromagnetic_2014}, the band-averaged transmission through the window is calculated to be \SI{84}{\percent}, with \SI{7.6}{\percent} reflection due the change in dielectric constant, and \SI{9.1}{\percent} loss.
+Using the standard formulas for Fabry-Perot fringing when light passes through a lossy \SI{2}{\cm} thick dielectric slab \cite[Chapter~5]{sophocles_j._ordanidis_electromagnetic_2014}, the band-averaged transmission through the window is calculated to be \SI{84}{\percent}, with \SI{7.6}{\percent} reflection due to the change in dielectric constant, and \SI{9.1}{\percent} due absorptive loss in the dielectric.
 
 \section{Optical Filtering} \label{sec:ch4-filters}
 
@@ -379,7 +381,7 @@ The cutoff wavelengths of these filters are listed in \tableref{tab:ch4-filter-s
 The \Imager\ also contains thicker multi-layer filters that act as low-pass filters at wavelengths closer to the observing band.
 These filters are also made of metal meshes and polypropylene, but many meshes and polypropylene layers are sandwiched together to form filters that are \abt{\SI{1}{\mm}} thick.
 These filters have excellent transmission in-band as well as good out-of-band rejection \cite{ade_review_2006}, but the thick polypropylene substrates mean that they are also highly absorptive --- and thus also emissive -- in the near-infrared.
-Additionally polypropylene has poor thermal conductivity.
+Additionally, polypropylene has poor thermal conductivity.
 This means that unless they are heat-sunk very well, the centers of the filters will be much warmer than the stage at which they are anchored, and so they will re-radiate infrared power into the cryostat.
 The filters in the \Imager\ are clamped in place using spiral springs, using a design that is similar to that used by the Atacama Cosmology Telescope receiver \cite{swetz_overview_2011}.
 
@@ -400,7 +402,7 @@ The total transmission of the filter stack excluding the bandpass filter is \SI{
   ``Cutoff'' refers to the point at which the filter transmission falls to \abt{-10}\,dB.
   ``Transmission'' gives the band-averaged transmission of the filter.
   ``Temperature'' gives the temperature at the center of a filter as measured by embedding a diode in a blob of Apiezon-N thermal grease placed on top of a layer of Kapton tape (which prevents applying grease to the filter itself).
-  The temperatures of W4128 was measured without the aperture stop in place and while the filter was after THERM3 rather than before.
+  The temperature of W1428 was measured both without the aperture stop in place and while it was located after THERM3 rather than before.
   The temperatures of W1269 and W1275 were measured both with and without a $(\SI{2.25}{\in})^2$ aperture stop, which covers \SI{40}{\percent} less area than the stop used in all other measurements in this thesis.
  Temperature measurements are not available for the other filters. 
 }
@@ -437,7 +439,7 @@ Millimeter and sub-millimeter astronomical instruments using \TES\ detectors use
 The \Imager\ uses smooth-walled conical feedhorns because they are easy to design and easy to machine.
 Smooth-walled feedhorns do not have the low cross-polarization properties of corrugated feedhorns \cite{clarricoats_corrugated_1984}, but this is not a concern here because the \Imager's detectors are polarization-insensitive.
 
-Although the \Imager\ is always receiving radiation, never transmitting, this thesis often writes about the beam pattern as if it were transmitting radiation, e.g.\ in describing the portion of the ``beam'' that strikes the primary mirror.
+Although the \Imager\ is always receiving radiation, never transmitting, this thesis often refers to the beam pattern as if it were transmitting radiation, e.g.\ in describing the portion of the ``beam'' that strikes the primary mirror.
 This is acceptable because the transmitting and receiving beam patterns are exactly the same\footnote{This is a consequence of the reciprocity relationships obeyed by the Maxwell equations. See, e.g.\ \cite{balanis_antenna_2005} for a detailed explanation.}.
 
 \figref{fig:feedhorn-parms} depicts a smooth-walled conical feedhorn and its interaction with the optical system.
@@ -477,7 +479,7 @@ This leads to
 The critical relationship is that as a feedhorn's opening diameter increases, the width of the beam becomes smaller.
 Small beam angles increase $\eta_s$, which improves \NETD.
 However, the diffraction-limited area on the focal plane that can be covered by feedhorns is fixed, so that increases in the horn opening diameter reduce the number of detectors $N$, which worsens \NETD.
-Choosing an optimal feedhorn size requires trading these two effect off against each other to minimize \NETD.
+Choosing an optimal feedhorn size requires trading these two effects off against each other to minimize \NETD.
 
 There are four additional factors to consider.
 First, $NEP_{tot}$ is not necessarily independent of $\eta_s$.
@@ -494,7 +496,7 @@ Third, the dependence of the number of detectors $N$ on the feedhorn diameter $D
 As explained in \sectionref{sec:ch5-layout}, the \Imager's detectors are laid out on a square grid.
 So it is more helpful to think of the feedhorn diameter as taking on a discrete set of values that depends on the number of feedhorns per each side of the grid.
 
-Finally, the choice of readout system and wiring places a firm upper limit on the number of detectors in the system of 1024.
+Finally, the choice of readout system and wiring places a firm upper limit of \num{1024} on the number of detectors in the system.
 
 A \MATLAB\ program was used to find the optimum feedhorn size.
 The program uses an analytic expression for the beam pattern developed in \cite{green_radiation_2006,narasimhan_modes_1971,}.
@@ -573,7 +575,7 @@ After convolution with a \SI{0.2}{\in} circle the \FWHM\ is \SI{1.39}{\cm}, and 
   Also plotted is the best-fit Gaussian within the blue lines.
   The \FWHM\ beam width is \ang{10.6}.
   \textbf{Right} \SI{17}{\m} far-field unpolarized power pattern.
-  This accounts for blockage by the secondary mirror and well as the edge taper of the beam on the primary.
+  The plot includes the effect of blockage by the secondary mirror as well as the edge taper of the beam on the primary.
   The side-lobe is caused by the secondary mirror, and is \SI{5.7}{\percent} high.
 }
 \label{fig:ch4-beams}
@@ -598,13 +600,13 @@ The cutoff frequency of this mode is given by \cite[Chapter~5]{harrington_time-h
   f_c = \frac{1.841 c}{2 \pi a },
 \end{equation}
 where $c$ is the speed of light in free space and $a$ is the radius of the waveguide.
-For our waveguide I choose a diameter of \SI{0.6}{\mm}, which gives a cutoff frequency of \SI{292}{\GHz}, well below the lowest frequency in the band.
+For our waveguide I chose a diameter of \SI{0.6}{\mm}, which gives a cutoff frequency of \SI{292}{\GHz}, well below the lowest frequency in the band.
 This choice was made so that the waveguide impedance was more uniform across the waveguide, which makes designing an efficient absorbing structure easier.
 
 The ideal absorbing structure for unpolarized light would be to cover the entire area of the waveguide with a sheet having a surface impedance equal to the waveguide impedance.
 The characteristic impedance at frequency $f$ for a TE mode in waveguide is \cite[Chapter~2]{harrington_time-harmonic_2001}
 \begin{equation} \label{eqn:ch4-wg-imp}
-  Z (f) = \frac{\eta_f}{\sqrt{1 - (f_c/f)^2}},
+  Z (f) = \frac{\eta_f}{\sqrt{1 - (f_c/f)^2}}\,,
 \end{equation}
 where $\eta_f \approx \SI{377}{\ohm}$ is the impedance of free space and $f_c$ the cutoff frequency for the mode.
 For our waveguide, the impedance at the band-center frequency of \SI{347}{\GHz} is \SI{700}{\ohm}.
@@ -656,9 +658,8 @@ It also shows a close-up view of the current distribution on a portion of the Pd
   Close-up view of the absorbing grid, with the surface current density plotted.
   The waveguide mode being excited is polarized in the up/down direction.
   Because the wires are thin compared to the width of the waveguide (\SI{2}{\um} vs \SI{600}{\um}), the current distribution is difficult to see in this plot.
-  But close examination shows that the wire perpendicular to the excited polarization have very current, while those parallel have higher current.
-  The current decays towards the edges of the waveguide.
-  This is as expected.
+  But close examination shows that the wires perpendicular to the excited polarization have very low current, while those parallel have higher current.
+  The current decays towards the edges of the waveguide as expected.
 }
 \label{fig:ch4-hfss-model}
 \end{figure*}
@@ -679,7 +680,7 @@ Only \SI{0.9}{\percent} of the bandpass is located above this frequency, so I ha
   The red and brown lines show the fractional power absorbed in the grid absorber.
   Although theses curves have different shapes, their integrated absorption over the band is within \SI{1}{\percent} of each other.
   The band-averaged absorption for unpolarized light is \SI{87}{\percent}.
-  The blue dashed vertical line at \SI{283}{\GHz} indicates the cutoff frequency of the next-highest-order mode, TM01; \SI{0.9}{\percent} of the bandwidth is above this frequency.
+  The blue dashed vertical line at \SI{383}{\GHz} indicates the cutoff frequency of the next-highest-order mode, TM01; \SI{0.9}{\percent} of the bandwidth is above this frequency.
 }
 \label{fig:ch4-coupling}
 \end{figure*}
@@ -718,7 +719,7 @@ The optical power from a source of temperature $T$ in a single mode detected by 
 \begin{equation} \label{eqn:ch4-power-per-mode}
   \int \eta(\nu) h \nu n(\nu,T) d \nu ,
 \end{equation}
-where $n$ is the photon occupation number give by the Bose-Einstein factor
+where $n$ is the photon occupation number given by the Bose-Einstein factor
 \begin{equation} \label{eqn:ch4-photon-n}
   n(\nu,T) = \frac{1}{e^{\frac{h \nu}{k_B T}} -1}.
 \end{equation}
@@ -820,10 +821,10 @@ As described in \chapterref{c:tes}, the \Imager's detectors are voltage-biased, 
 To read out the detectors a low-noise current amplifier is required.
 The \Imager\ uses a multiplexed \SQUID\ readout system to accomplish this.
 
-A \SQUID\ is a Superconducting Quantum Interference device \cite{clarke_squid_2002}.
+A \SQUID\ is a Superconducting Quantum Interference Device \cite{clarke_squid_2002}.
 For the purposes of understanding the operation of the \Imager, it suffices to know that a \SQUID\ is a very sensitive magnetometer, and by coupling the magnetic field produced by a current into the \SQUID, the \SQUID\ can also be used to read out a current signal.
 
-An important aspect of the response of a \SQUID\ to a input current is that the response is not linear; it is periodic.
+An important aspect of the response of a \SQUID\ to an input current is that the response is not linear; it is periodic.
 \figref{fig:tes-bias-ramp-sc} and \figref{fig:tes-bias-ramp-trans} show examples of this behavior for the \SQUIDs\ used in the \Imager.
 This periodic response means that the readout system is not measuring the absolute current passing through the detectors, but rather changes in the current from some offset value, an offset value which is not known and can be different for each detector.
 When processing a set of detector outputs into a video, these detector offsets must be accounted for.
@@ -853,7 +854,7 @@ To linearize the \SQUID\ amplifier chain, feedback in the form of magnetic flux 
 A set of electronics is required to control the multiplexed readout system and provide data to a computer for further analysis.
 The \Imager\ uses the Multi-Channel Electronics (\MCE) as the electronics control system \cite{battistelli_functional_2008,battistelli_automated_2008,_mcewiki_2014}.
 The \MCE\ was developed in order to achieve simple, remote operation of \TDM\ readout systems for sub-millimeter and millimeter astronomy.
-It comes equipped with an software suite for controlling the electronics itself.
+It comes equipped with a software suite for controlling the electronics itself.
 The entire electronics system for reading out 1024 detectors is contained within a single $\SI{15}{\in} \times \SI{14}{\in} \times \SI{14}{\in}$ crate drawing \SI{175}{\W}.
 All communication with the controlling data acquisition computer is via a pair of fiber optic cables.
 See \figref{fig:ch4-mce-photo} for a photo of the \MCE.
