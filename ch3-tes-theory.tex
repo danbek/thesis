@@ -86,7 +86,7 @@ These coupled equations can be solved under different initial conditions and app
 Discussion of three cases follows.
 
 \textbf{\TES\ Power-to-Current Responsivity}
-Driving the \TES\ with a sinusoidal $\delta P$ term, holding detector bias constant, leads to the following expression for the detector power-to-current responsivity:
+Driving the \TES\ with a sinusoidal $\delta P$ term and holding detector bias constant, leads to the following expression for the detector power-to-current responsivity:
 \begin{equation}\label{eqn:si-full}
 s_I(\omega) = 
 - \frac{ \frac{1}{V_0} \frac{1}{\gamma} \frac{\Loop}{\Loop + 1} }
@@ -107,7 +107,7 @@ s_I(\omega) = -\frac{1}{V_0} \frac{\Loop}{1+\beta_I + \Loop} \frac{1}{1 + j \ome
 \end{equation}
 The detector response time is given by the natural detector time constant $\tau$, sped up by a factor of $1 + \Loop(1+\beta_I)$; for $\beta_I \ll 1$, this factor is typical of negative feedback, and justifies calling \Loop\ the ``loop gain'' of the detector.
 In the further limit of strong electrothermal feedback ($\Loop \gg 1, \gg \beta_I$), the \DC\ responsivity is simply the inverse of the voltage bias.
-This means that because of the strong electrothermal coupling, an increase in applied optical power is exactly canceled by a decrease in detector Joule heating, so that the \TES\ temperature remains unchanged.
+This means that because of the strong electrothermal coupling, any increase in applied optical (or heater) power is exactly canceled by a decrease in detector Joule heating, so that the \TES\ temperature remains unchanged.
 
 \textbf{\TES\ Response to Step Function in Power}
 As demonstrated in \sectionref{sec:bias-step}, our detectors are always operated in a regime where $\tau_{eff} \gg \tau_{el}$.
@@ -122,7 +122,7 @@ This implies that the time-domain response to step in applied power, for example
                 & = - \frac{\delta P}{V_0 \gamma}\frac{\Loop}{\Loop + 1}
                       (1 - e^{-t/\tau_{eff}}).
 \end{align}
-This can be used to measure $\tau_{eff}$ directly as well as \DC\ responsivity once heater power has been calibrated (\sectionref{sec:teff-resp}).
+This can be used to measure $\tau_{eff}$ directly as well as the \DC\ responsivity once the heater power has been calibrated (\sectionref{sec:teff-resp}).
 As described in \sectionref{sec:tau-nat-theory}, it can also be used to measure the detector natural time constant $\tau$.
 These measurements are described further in \sectionref{sec:tau-nat}.
 
@@ -151,8 +151,8 @@ As the voltage increases, the Joule power in the \TES\ increases, which warms th
 This warming increases the resistance of the \TES.
 Because the \TES\ is voltage-biased, this reduces Joule power in the \TES, which tends to cool the detector as well as reduce current through the detector.
 This negative electrothermal feedback effect occurs with a time constant of $\tau_{eff}$.
-Whether the final current through the \TES\ is higher or lower than the original currents depends on the loop gain.
-For $\Loop < 1$ the current increases, for $\Loop > 1$ it decreases and for $\Loop = 0$ the current through the \TES\ remains unchanged.
+Whether the final current through the \TES\ is higher or lower than the original current depends on the loop gain.
+For $\Loop < 1$ the current increases, for $\Loop > 1$ it decreases and for $\Loop = 1$ the current through the \TES\ remains unchanged.
 
 \eqnref{eqn:bias-step-resp} depends on \Loop\ and $\beta_I$ in a complicated way through $\tau_{eff}$, $\tau_I$, $\tau_{el}$, and the prefactor.
 Nevertheless, if the response of a \TES\ to a bias step can be measured with sufficient bandwidth to track the initial fast electrical response, bias steps can be used to measure \Loop\ and $\beta_I$ by performing non-linear parameter fitting to \eqnref{eqn:bias-step-resp}.
@@ -245,7 +245,7 @@ has also been used.
 The factor $\mathcal{K}$ depends on the bias point, but high in the transition this dependence is weak, so that $\mathcal{K}$ can be treated as a constant.
 
 To use \eqnref{eqn:teff-from-tau} to measure $\tau$, steps in heater power are applied to the \TES\ at a set of bias points close to the normal state.
-At each bias point the \DC\ change in \TES\ current $\delta I$ and $\tau_{eff}$ is measured by fitting the \TES\ response to \eqnref{eqn:htr-step-resp-high}, and the bias current $I_{bias}$ is recorded.
+At each bias point the \DC\ change in \TES\ current $\delta I$ and $\tau_{eff}$ are measured by fitting the \TES\ response to \eqnref{eqn:htr-step-resp-high}, and the bias current $I_{bias}$ is recorded.
 A non-linear curve fit can then be applied to \eqnref{eqn:teff-from-tau} to solve for $\tau$ and $\mathcal{K}$.
 Alternately, $\mathcal{K}$ can be calculated if all factors feeding into it are known, and then \eqnref{eqn:teff-from-tau} can be solved directly for $\tau$.
 
@@ -341,8 +341,8 @@ P_{tot} = K(T^n - T_b^n) = P_{opt} + P_{htr} + I^2 R(T,I).
 \end{equation}
 The value of $P_{tot}$ when $T = T_c$, is called the ``saturation power'' ($P_{sat}$) of the detector:
 \begin{align}
-  P_{sat} & \equiv K(T_c^2 - T_n^2) \\
-         & = \frac{G T_c}{n} \left( 1 - \left(\frac{T_b}{T_c}\right) \right).
+  P_{sat} & \equiv K(T_c^n - T_b^n) \\
+         & = \frac{G T_c}{n} \left( 1 - \left(\frac{T_b}{T_c}\right)^n \right).
  \label{eqn:ch3-psat}
 \end{align}
 If the power flowing across $G$ is larger than this value the detector temperature is forced to be higher than $T_c$ so that the detector goes normal and no longer works.

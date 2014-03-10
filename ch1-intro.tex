@@ -7,14 +7,14 @@
 %% commercially available standoff - Brijot Gen 2, SET CounterBomber
 %% TSA 700 AIT (advanced imaging technology) systems at 160 airports
 
-For over thirty years the millimeter and submillimeter-wavelength spectrum has been the subject of instense interest for military and security maging applications.
+For over thirty years the millimeter and submillimeter-wavelength spectrum has been the subject of instense interest for military and security imaging applications.
 The reason for this interest is that the spectral region from \SIrange{100}{1000}{\GHz} offers a good compromise between transmission through obscurant materials (favoring lower frequencies) and spatial resolution (favoring higher frequencies) \cite{kruse_why_1981}.
 This interest has driven a long line of technological advancement in sources, detectors, and other technologies at these wavelengths \cite{popovic_thz_2011}.
-This advancement has taken place in both ``active'' imaging, in which an observation target is illuminated by light and the reflections from that target are recorder, and `passive'' imaging, in which ambient thermal emissions are detected.
+This advancement has taken place in both ``active'' imaging, in which an observation target is illuminated by light and the reflections from that target are detected, and `passive'' imaging, in which the target's thermal emissions are detected.
 
-Over a similar timespan the same time the millimeter and sub-millimeter astronomical community has also been very interested in these wavelengths.
-In particular, the desire to make more and more sensitive maps of the Cosmic Microwave Background (\CMB) radiation have driven this communities need for instruments capable of higher and higher sensitivies.
-During the 1980's and early 1990's cooled bolometric detectors capable of achieving photon-noise-limited --- or near photon-noise-limited --- performance were developed.
+Over a similar timespan the millimeter and sub-millimeter astronomical community has also been very interested in these wavelengths.
+In particular, the desire to make more and more detailed maps of the Cosmic Microwave Background (\CMB) radiation have driven this community's need for instruments capable of higher and higher sensitivies.
+During the 1980's and early 1990's individual cooled bolometric detectors capable of achieving photon-noise-limited --- or near photon-noise-limited --- performance were developed.
 By 1994 it was clear that for many astromonical applications the only way to increase sensitivity was to develop arrays of bolometers, but at that time no technology for the production of monolithic arrays was yet available \cite{richards_bolometers_1994}.
 
 The development of voltage-biased superconducting Transition-Edge-Sensor detectors enabled the development of large-scale detector array.
@@ -23,14 +23,14 @@ Their operation and advantages for array-scale operation are described in \chapt
 To readout these detector arrays, several groups have developed \SQUID-based multiplexed readout systems.
 This technology is now mature and is routinely deployed on both ground and balloon-borne experiements in arrays containing up to 10,000 bolometric detectors \cite{holland_scuba-2:_2013}.
 
-The development of this technology offers new opportunities for passive imaging for security and other applications
+The development of this technology offers new opportunities for passive imaging for security and other applications.
 Specifically, it is now possible to develop focal planes capable of video-rate imaging with temperature resolution of \SI{100}{\mK} or below.
 This thesis decribes the design and development of the \NIST\ \Imager, a system developed to perform detection of concealed weapons at distances of \SIrange{26}{28}{\m} by producing video-rate images at \SI{350}{\GHz}.
-This chapter provides an overview of millimeter-wavelength imageing and the problems that our system is intended to solve.
+This chapter provides an overview of millimeter-wavelength imaging and the problems that our system is intended to solve.
 
 \section{Security Imaging}
 
-The frequency range \SIrange{100}{1000}{\GHz} is attractive for detection of concealed weapons or contraband because many common clothing materials have hi transmission in this range \cite{bjarnason_millimeter-wave_2004}.
+The frequency range \SIrange{100}{1000}{\GHz} is attractive for detection of concealed weapons or contraband because many common clothing materials have high transmission in this range \cite{bjarnason_millimeter-wave_2004}.
 In general, as shown in \figref{fig:ch1-clothes-atmos-trans}, transmission through clothing steadily decreases as frequency inncreases.
 This trend tends to push systems toward lower frequencies.
 An example likely familiar to readers L3 Provision (correct name?) systems operating at many airports within the USA.
@@ -85,7 +85,7 @@ Both problems stem from the fact that active imaging systems use single-moded co
 The first problem is generally referred to as ``specular reflections''.
 This refers to the fact that the intensity of light that is reflected off of the target and subsequently detected by the active imaging system is strongly dependent on the angle of the target relative to the illuminating beam.
 This leads to strong highlight areas in active images which can be \SI{30}{\dB} (xxx check) or more higher than neighboring areas, making images very hard to interpret.
-For a concrete example, the reader can imagine the way that sunlight at just the right angle can reflect off of the fender of another car on the road, making it difficult for thier eyes to interpret what they are looking at.
+For a concrete example, the reader can imagine the way that sunlight at just the right angle can reflect off of the fender of another car on the road, making it difficult for their eyes to interpret what they are looking at.
 
 The second problem is known as ``speckle''.
 When a coherant light source is diffusely reflected from a surface which varies on distance scales comparble to or larger than a wavelength, some areas of the surface will randomly be oriented more favorabley than others for reflecting light back to the system.
@@ -128,7 +128,7 @@ This allows us to convert a detector \NEP\ to a Noise Equivelant Temperature (\N
   NET = \frac{NEP}{\eta_{tot} M k_B \Delta \nu}.
 \end{equation}
 
-To convert this detector \NET\ to an \NETD\ for an image, we make the assumptions that noise for each detector can be modeled as an uncorrelated gaussian noise source, so that the noise in for a given pixel in the image will be given by the \NET\ divided by the square root of twice the integraiton time for that pixel across all detectors\footnote{%
+To convert this detector \NET\ to an \NETD\ for an image, we make the assumptions that noise for each detector can be modeled as an uncorrelated gaussian noise source, so that the noise in for a given pixel in the image will be given by the \NET\ divided by the square root of twice the integration time for that pixel across all detectors\footnote{%
   xxx something about nyquist mumble mumble
 }. 
 We consider an image covering an area $A$ with square pixels of side length $s$, produced by an imaging system with $N$ detectors and video frame rate of $FPS$.
