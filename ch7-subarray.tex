@@ -606,7 +606,7 @@ where here the \DC\ detector responsivity $s_I(0)$ is calculated using the measu
 Also plotted is the predicted detector noise level for each detector at each bias point, using a ``basic'' noise model.
 This basic noise model uses the values of $\tau_{eff}$ and $s_I$ calculated in \sectionref{sec:bias-step}, and the values of $G$ and $T_c$ measured in \sectionref{sec:g-psat}, assuming \SI{150}{\pW} of optical power.
 All three sources of detector noise from \sectionref{sec:ch3-tes-noise} are included.
-The predicted photon noise level of \Pnoise{0.5e-15} from \sectionref{sec:ch5-predicted-noise} is also included.
+The predicted photon noise level of \Pnoisef{0.85} from \sectionref{sec:ch5-predicted-noise} is also included.
 
 Several important features are visible in these plots.
 First, \RCm{30}{1} shows several noise lines, the origin of which is not understood.
@@ -644,7 +644,7 @@ The left column plots the directly measured current noise, after removing a comm
 The right column shows the same noise spectra, but referred to power absorbed in the bolometer.
 For all four detectors, there is less spread in the low-frequency power noise than in the current noise, suggesting that the dominant source of noise at these frequencies deposits power on the bolometers.
 This behavior is expected of either thermal fluctuation noise or photon noise.
-Also plotted in the right column is the predicted noise spectrum, using parameters taken from \sectionref{sec:bias-step}, including \Pnoise{0.5e-15} of photon noise.
+Also plotted in the right column is the predicted noise spectrum, using parameters taken from \sectionref{sec:bias-step}, including \Pnoisef{0.85} of photon noise.
 For all four detectors, the measured noise is higher than predicted by the noise model.
 }
 \label{fig:ch7-trans-noise}
@@ -655,9 +655,9 @@ For all four detectors, the measured noise is higher than predicted by the noise
 \includegraphics{drawings/ch7-trans-noise-model-plots.pdf}
 \caption[Measured and modeled noise]{
   Plot showing measured noise for \RCm{31}{1}, referred to power absorbed in bolometer, along with two noise models.
-The red line is the basic detector noise model using measured values for all detector parameters as described in this chapter, including predicted \Pnoise{0.5e-15} of photon noise.
+The red line is the basic detector noise model using measured values for all detector parameters as described in this chapter, including predicted \Pnoisef{0.85} of photon noise.
 The black line is for a noise model that include enough excess ``power'' noise to match the measured white noise level at low frequencies.
-This excess ``power'' noise could be due to a high level of photon noise (3.2 times higher than predicted) or a larger-than-measured value of $G$ (5.3 times higher than measured), or some combination of the two.
+This excess ``power'' noise could be due to a high level of photon noise (1.9 times higher than predicted) or a larger-than-measured value of $G$ (4.8 times higher than measured), or some combination of the two.
 }
 \label{fig:ch7-trans-noise-model-plots}
 \end{figure*}
