@@ -33,10 +33,10 @@ This chapter provides an overview of millimeter-wavelength imaging and the probl
 The frequency range \SIrange{100}{1000}{\GHz} is attractive for detection of concealed weapons or contraband because many common clothing materials have high transmission in this range \cite{bjarnason_millimeter-wave_2004}.
 In general, as shown in \figref{fig:ch1-clothes-atmos-trans}, transmission through clothing steadily decreases as frequency inncreases.
 This trend tends to push systems toward lower frequencies.
-An example likely familiar to readers L3 Provision (correct name?) systems operating at many airports within the USA.
-These are radar systems operating at ~\SI{35}{\GHz}, intended for close-range portal screening.
+An example likely familiar to readers are the L3 Provision systems operating at many airports within the USA.
+These are ``holographic radar'' systems operating at ~\SI{30}{\GHz}, intended for close-range portal screening, and based on technology developed at the Pacific Northwest National Lab (PNNL) \cite{sheen_cylindrical_1998,mcmakin_dual-surface_2009}.
 For applications in which is is acceptable to require individuals to pass through and pause at a particular location, these systems have excellent image quality.
-Although the ProVision system only takes still images with a xxx s image acquisition time, similar portal screen systems with video-rate capabilities are also under development (xxx ref system from talk in Dresden).
+Although the ProVision system only takes still images with \abt{\SI{2}{s}} image acquisition time, similar portal screen systems with video-rate capabilities are also under development \cite{lyons_reflect-array_2013}.
 
 \begin{figure*}
 \centering
@@ -69,7 +69,7 @@ The angular resolution achievable by an aperture of diameter $D$ observing at wa
 \begin{equation} \label{eqn:ch1-raleigh}
   \Theta \sim 1.2 \lambda / D.
 \end{equation}
-For portal screening this is not prohibitive. xxx how the hell does L3 Provision deal with this at 30 GHz?
+For portal screening this is not prohibitive; the L3 Provision system has an effective aperture of \SI{1.7}{\m} \cite{mcmakin_dual-surface_2009}.
 But for standoff distances of \SI{10}{\m} or more, a system operating at \SI{30}{\GHz} would need an aperture of size \abt{\SI{8}{\m}} in order to achieve \SI{1}{\cm} resolution.
 This strongly drives choice of frequency for standoff detection to higher frequencies.
 
@@ -81,23 +81,23 @@ But the phenomenology of active imaging suffers from two problems that to-date h
 
 \subsection{Active Standoff Imaging}
 
-Both problems stem from the fact that active imaging systems use single-moded coherant sources of light, somewhat analagous to a laser point operating at visible frequencies (xxx ref Petikie).
+Both problems stem from the fact that active imaging systems use single-moded coherant sources of light, somewhat analagous to a laser point operating at visible frequencies \cite{petkie_active_2008}.
 The first problem is generally referred to as ``specular reflections''.
 This refers to the fact that the intensity of light that is reflected off of the target and subsequently detected by the active imaging system is strongly dependent on the angle of the target relative to the illuminating beam.
-This leads to strong highlight areas in active images which can be \SI{30}{\dB} (xxx check) or more higher than neighboring areas, making images very hard to interpret.
+This leads to strong highlight areas in active images which can be \SI{40}{\dB} or more higher than neighboring areas, making images very hard to interpret.
 For a concrete example, the reader can imagine the way that sunlight at just the right angle can reflect off of the fender of another car on the road, making it difficult for their eyes to interpret what they are looking at.
 
 The second problem is known as ``speckle''.
 When a coherant light source is diffusely reflected from a surface which varies on distance scales comparble to or larger than a wavelength, some areas of the surface will randomly be oriented more favorabley than others for reflecting light back to the system.
-This leads to a random distribution of bright spots in the image known as speckle (xxx reference goodman here?).
+This leads to a random distribution of bright spots in the image known as speckle \cite{goodman_fundamental_1976}.
 This phenoman acts as a kind of noise in active images, and in practice the signal-to-noise ratio of active imaging systems is often limited by speckle rather than noise inherant in the detection system itself.
 
 The active imaging community has long been aware of these issues and is working actively to address them.
-One recent appraoch uses modulated multi-moded illumination to avoid these issues (xxx ref).
+One recent appraoch uses modulated multi-moded illumination to avoid these issues \cite{petkie_multimode_2012,patrick_elimination_2012}.
 Another approach is to use the active system as a radar system rather than an intensity detector.
 Because the radar system detects phase differences rather than intensity differences, it should in theory be less susceptible to specular reflections and speckle.
 
-The active imaging system that at this time is closest to producing video-rate imaging largly free of specular-reflection and speckle artifacts is the 340 GHz radar system developed at JPL \cite{xxx}.
+The active imaging system that at this time is closest to producing video-rate imaging largly free of specular-reflection and speckle artifacts is the 340 GHz radar system developed at JPL \cite{cooper_thz_2011}.
 This system operates at standoff distances of \SI{16}{\m} achieving a spatial resolution of \SI{1}{\cm} at 4 frames per second.
 
 \subsection{Passive Standoff Imaging}
@@ -129,7 +129,7 @@ This allows us to convert a detector \NEP\ to a Noise Equivelant Temperature (\N
 \end{equation}
 
 To convert this detector \NET\ to an \NETD\ for an image, we make the assumptions that noise for each detector can be modeled as an uncorrelated gaussian noise source, so that the noise in for a given pixel in the image will be given by the \NET\ divided by the square root of twice the integration time for that pixel across all detectors\footnote{%
-  xxx something about nyquist mumble mumble
+  The factor of two accounts for the fact that \NEP\ is defined to give the total variance of a signal when integrated to only the Nyquist frequency, whereas the full bandwidth up to the sampling frequency in available for reducing noise.
 }. 
 We consider an image covering an area $A$ with square pixels of side length $s$, produced by an imaging system with $N$ detectors and video frame rate of $FPS$.
 The integration time per pixel will then be given by
@@ -143,14 +143,14 @@ and so the \NETD\ of each image will be
        \label{eqn:ch1-netd-defn}
 \end{align}
 
-Typical \NEP\ values for uncooled microbolometers in the millimeter-wave region are \Pnoisep{10}--\Pnoisep{100} \cite{that military report}.
+Typical \NEP\ values for uncooled microbolometers in the millimeter-wave region are \Pnoisep{10}--\Pnoisep{100} \cite{nemarich_microbolometer_2005}.
 In order to turn this \NEP\ into an \NETD\ we must make some assumptions.
 In order to achieve sufficient spatial resoltion detecters at these wavelengths are typically sensitive to 2 modes, one per polarization, so we set $M = 2$.
 We can generouslly assume one detector per image pixel, so that $\sqrt{A/N}/s = 1$.
 A very good optical efficiency would be $\eta_{tot} = 0.5$, and a typical bandwidth at \SI{350}{\GHz} is \SI{35}{\GHz}.
 The minimum frame rate for video imaging around 6 frames per second.
-Plugging these numbers into \eqnref{eqn:ch1-netd-def} leads to an \NETD\ of \SI{50}{\K} for the best-case scenario of \Pnoisep{10} \NEP.
-The maximum allowable \NETD\ for security applications is \SI{6}{\K} \cite{military}; indoors or in poor weather conditions outdoors the maximum allowable value would be smaller.
+Plugging these numbers into \eqnref{eqn:ch1-netd-defn} leads to an \NETD\ of \SI{50}{\K} for the best-case scenario of \Pnoisep{10} \NEP.
+The maximum allowable \NETD\ for security applications is \SI{6}{\K} \cite{nemarich_microbolometer_2005}; indoors or in poor weather conditions outdoors the maximum allowable value would be smaller.
 It is clear that uncooled bolometer arrays can not achieve the required performance.
 
 A second option for room-temperature passive imaging are coherant (direct) detectors. 
