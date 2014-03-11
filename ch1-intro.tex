@@ -27,6 +27,7 @@ The development of this technology offers new opportunities for passive imaging 
 Specifically, it is now possible to develop focal planes capable of video-rate imaging with temperature resolution of \SI{100}{\mK} or below.
 This thesis decribes the design and development of the \NIST\ \Imager, a system developed to perform detection of concealed weapons at distances of \SIrange{26}{28}{\m} by producing video-rate images at \SI{350}{\GHz}.
 This chapter provides an overview of millimeter-wavelength imaging and the problems that our system is intended to solve.
+xxx need to say sometehing about how this chapter justifies the need for cryogenic detectors.
 
 \section{Security Imaging}
 
@@ -100,11 +101,73 @@ Because the radar system detects phase differences rather than intensity differe
 The active imaging system that at this time is closest to producing video-rate imaging largly free of specular-reflection and speckle artifacts is the 340 GHz radar system developed at JPL \cite{cooper_thz_2011}.
 This system operates at standoff distances of \SI{16}{\m} achieving a spatial resolution of \SI{1}{\cm} at 4 frames per second.
 
-\subsection{Passive Standoff Imaging}
+\section{Required Image Noise for Passive Imaging}
 
 Passive imaging does not suffer from the problems of specular reflection and speckle.
 Rather, the primary challenge for passive imaging is implementing sufficiently sensitive detectors to achieve low-noise images at video frame rates.
 One commonly used figure-of-merit for noise in a passive imaging system is the Noise Equivalent Temperature Difference (\NETD) of the image, defined as the difference in the temperature distribution at the observation target which can not be distinguished from noise in the image.
+To estimate the required \NETD\ for a passive imaging system we must investigate the expected contrast in passive imaging scenarios.
+
+The contrast in a passive images is set by the the temperatures, emmisivities and transmittivities of the objects being imaged, along with the temperature of the ambient light.
+We consider an object at temperature $T_{1}$ with emmissivity $\epsilon_1$, covered by an object at temperature $T_{cov}$ and transmittivity $\tau_{cov}$.
+The entire scene is illuminated by blackbody radiation at temperature $T_{amb}$.
+We assume that the covering objects has no reflection, so that $\epsilon_{cov} = 1 - \tau_{cov}$.
+\figref{fig:ch1-t-tot} depicts this situation schematically. The total temperature seen by an observer looking at the object through the covering will be
+\begin{equation} \label{eqn:ch1-t-tot}
+  T_{tot,1} = (1 - \epsilon_{1}) \tau_{cov}^2 T_{amb} + 
+           (1 + \tau_{cov}(1 - \epsilon_{1}))(1-\tau_{cov}) T_{cov} + 
+           \tau_{cov} \epsilon_{1} T_1
+\end{equation}
+A second object behind the cover with temperature $T_2$ and emissivity $\epsilon_2$ will appear to have a temperature given by \eqnref{eqn:ch1-t-tot} with the subscript 1 replaced by 2 everywhere.
+The contrast seen between these two objects will then be
+\begin{equation} \label{eqn:ch1-delta-t}
+  \Delta T_{1,2} = \tau_{cov} \left[ (\epsilon_2 - \epsilon_1) \tau_{cov} T_{amb} + 
+                                    (\epsilon_2 - \epsilon_1) (1-\tau_{cov}) T_{cov} + 
+                                    (T_1 \epsilon_1 - T_2 \epsilon_2) \right]
+\end{equation}
+This equation shows that in order for contrast to appear in the image, we require difference in temperature or emissivity between the two objects, or both.
+
+One interesting limit is the case where the objects have the same temperature but different emissivities.
+In this case \eqnref{eqn:ch1-delta-t} reduces to
+\begin{equation}
+  \Delta T_{1,2} = \tau_{cov} (\epsilon_1 - \epsilon_2) \left[ (1 - \tau_{cov}) (T - T_{cov}) + \tau_{cov} (T - T_{amb}) \right].
+\end{equation}
+In security screening scenarios we would typically expect $T > T_{cov} > T_{amb}$, so the rightmost factor will be positive.
+If we further assume that $T_{cov}$ is midway between $T$ and $T_{amb}$, then this further simplifies to
+\begin{equation}
+  \Delta T_{1,2} = \frac{1}{2}\tau_{cov}(1+\tau_{cov}) (\epsilon_1 - \epsilon_2) (T - T_{amb}).
+\end{equation}
+The factor of $\frac{1}{2}$ reprsents that fact that at low $\tau$, under these assumptions, the contrast is dominated by the difference in temperature between the cover and the object.
+
+xxx commentary ... sample values .... 
+
+One interesting limit is the case where both objects have the same emissivity, but different temperatures; this scenario could be relevant to countermeasures that attempt to fool the imager.
+In this case the temperature of the ambient light and cover are irrelevant, and the temperature difference difference is
+\begin{equation}
+  \Delta T_{1,2} = \tau_{cov} \epsilon (T_1 - T_2)
+\end{equation}
+If the objects considered have the same temperature as human skin (\abt{\SI{310}{\K}}), and are viewed through a ewool sweather ($\tau = 0.5$ \cite{}), then a system with \NETD\ \SI{1}{\K} would see a temperature difference between the objects of \SI{2.4}{\K} with signal-to-noise of 1.
+
+A system with \NETD\ \SI{1}{\K} would see a
+To maximize the difficulty of the scenario we assume that the knife has come to body temperature as a result of being under the sweater for a long time
+%We have $T_{amb} = \SI{295}{\K} \appox \SI{72}{\fahrenheit}$, $\tau_{cov} = 0.5$ \cite{bjarnason_millimeter-wave_2004}, $T_1 = \SI{310}{\K} = \SI{98.3}{\fahrenheit}$, $\epsilon_1 = 0.825$ (see \sectionref{sec:ch8-temp-scale}), $T_2 = \SI{310}{\K}$.
+
+
+\begin{figure*}
+\centering
+\includegraphics[width=6in]{images/ch1-t-tot.png}
+\caption[xxx]{
+  Schematic showing total temperature seen looking at a object at temperature $T_1$ with emissivity $\epsilon_1$ through a cover at temperature $T_{cov}$ with transmittivity $\tau_{cov}$, all illuminated by ambient temperature $T_{amb}$.
+  The object is assumed to have no transmission and the cover to have no reflection.
+  The black arrows indicate transmission of ambient light through the cover, reflecting off the object, and passing back through the cover to the detecting system.
+  The red arrows show the emission of the cover, which reaches the detector both directly and after reflecting off the object.
+  The blue arrows show the emission of the object itself.
+}
+\label{fig:ch1-t-tot}
+\end{figure*}
+
+\section{Passive Imaging Technology}
+
 It is useful to begin with a discussion of noise in passive imaging from the perspective of bolometric detectors.
 
 A bolometer is an optical power detector; it is senstive to the square of the incident electromagnetic field.
