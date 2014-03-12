@@ -35,6 +35,7 @@ topclean : .PHONY
 	$(RM) -f *.toc
 	$(RM) -f *.run.xml
 	$(RM) -f *.lot
+	$(RM) -f *.lof
 	$(RM) -f *.synctex.gz
 	$(RM) -f *.pdf
 

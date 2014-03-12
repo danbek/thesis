@@ -44,15 +44,21 @@
 % from the "official" CU latex template [1].
 % [1]: http://www.colorado.edu/oit/sites/default/files/thesis.cls
 
+\newcommand{\thesistitle}{Submillimeter Video Imaging with a Superconducting Bolometer Array}
+
 \thispagestyle{empty}
 \vspace*{\fill}
 \begin{center}
-  \DoubleSpacing
-  A 350\,GHZ VIDEO IMAGING SYSTEM \\
-  by \\
-  DANIEL THOMAS BECKER \\
-  B.S., Rice University, 1994 \\
-  M.S., University of Colorado, 2009
+  \parbox{6.0in}{
+    \begin{center}
+      \DoubleSpacing
+      \MakeUppercase{\thesistitle} \\
+      by \\
+      DANIEL THOMAS BECKER \\
+      B.S., Rice University, 1994 \\
+      M.S., University of Colorado, 2009
+    \end{center}
+  }
 \end{center}
 \vspace*{1in}
 \begin{center}
@@ -75,7 +81,7 @@
 \begin{center}
   \SingleSpacing
   This thesis entitled:\\
-  A \SI{350}{\GHz} Video Imaging System \\
+  \thesistitle{} \\
   written by Daniel Thomas Becker \\
   has been approved for the Department of Physics \\
 \end{center}
@@ -141,6 +147,8 @@ This thesis describes the design and implementation of this system, as well as i
 
 %\include{ch1-intro}
 
+\chapter{Introduction}\label{c:specs}
+
 \chapter{System Specifications, Challenges and Solutions}\label{c:specs}
 
 \section{Specifications} \label{sec:ch2-specifications}
@@ -150,13 +158,13 @@ This thesis describes the design and implementation of this system, as well as i
 
 \include{ch3-tes-theory}
 
-%\include{ch4-sys-design}
+\include{ch4-sys-design}
 
 \include{ch5-det-design}
 
-%\include{ch7-subarray}
+\include{ch7-subarray}
 
-%\include{ch8-imaging}
+\include{ch8-imaging}
 
 % Now the bibliography. It should be single-spaced.
 \SingleSpacing

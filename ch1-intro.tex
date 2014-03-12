@@ -7,14 +7,14 @@
 %% commercially available standoff - Brijot Gen 2, SET CounterBomber
 %% TSA 700 AIT (advanced imaging technology) systems at 160 airports
 
-For over thirty years the millimeter and submillimeter-wavelength spectrum has been the subject of instense interest for military and security maging applications.
+For over thirty years the millimeter and submillimeter-wavelength spectrum has been the subject of instense interest for military and security imaging applications.
 The reason for this interest is that the spectral region from \SIrange{100}{1000}{\GHz} offers a good compromise between transmission through obscurant materials (favoring lower frequencies) and spatial resolution (favoring higher frequencies) \cite{kruse_why_1981}.
 This interest has driven a long line of technological advancement in sources, detectors, and other technologies at these wavelengths \cite{popovic_thz_2011}.
-This advancement has taken place in both ``active'' imaging, in which an observation target is illuminated by light and the reflections from that target are recorder, and `passive'' imaging, in which ambient thermal emissions are detected.
+This advancement has taken place in both ``active'' imaging, in which an observation target is illuminated by light and the reflections from that target are detected, and `passive'' imaging, in which the target's thermal emissions are detected.
 
-Over a similar timespan the same time the millimeter and sub-millimeter astronomical community has also been very interested in these wavelengths.
-In particular, the desire to make more and more sensitive maps of the Cosmic Microwave Background (\CMB) radiation have driven this communities need for instruments capable of higher and higher sensitivies.
-During the 1980's and early 1990's cooled bolometric detectors capable of achieving photon-noise-limited --- or near photon-noise-limited --- performance were developed.
+Over a similar timespan the millimeter and sub-millimeter astronomical community has also been very interested in these wavelengths.
+In particular, the desire to make more and more detailed maps of the Cosmic Microwave Background (\CMB) radiation have driven this community's need for instruments capable of higher and higher sensitivies.
+During the 1980's and early 1990's individual cooled bolometric detectors capable of achieving photon-noise-limited --- or near photon-noise-limited --- performance were developed.
 By 1994 it was clear that for many astromonical applications the only way to increase sensitivity was to develop arrays of bolometers, but at that time no technology for the production of monolithic arrays was yet available \cite{richards_bolometers_1994}.
 
 The development of voltage-biased superconducting Transition-Edge-Sensor detectors enabled the development of large-scale detector array.
@@ -23,20 +23,21 @@ Their operation and advantages for array-scale operation are described in \chapt
 To readout these detector arrays, several groups have developed \SQUID-based multiplexed readout systems.
 This technology is now mature and is routinely deployed on both ground and balloon-borne experiements in arrays containing up to 10,000 bolometric detectors \cite{holland_scuba-2:_2013}.
 
-The development of this technology offers new opportunities for passive imaging for security and other applications
+The development of this technology offers new opportunities for passive imaging for security and other applications.
 Specifically, it is now possible to develop focal planes capable of video-rate imaging with temperature resolution of \SI{100}{\mK} or below.
 This thesis decribes the design and development of the \NIST\ \Imager, a system developed to perform detection of concealed weapons at distances of \SIrange{26}{28}{\m} by producing video-rate images at \SI{350}{\GHz}.
-This chapter provides an overview of millimeter-wavelength imageing and the problems that our system is intended to solve.
+This chapter provides an overview of millimeter-wavelength imaging and the problems that our system is intended to solve.
+xxx need to say sometehing about how this chapter justifies the need for cryogenic detectors.
 
 \section{Security Imaging}
 
-The frequency range \SIrange{100}{1000}{\GHz} is attractive for detection of concealed weapons or contraband because many common clothing materials have hi transmission in this range \cite{bjarnason_millimeter-wave_2004}.
+The frequency range \SIrange{100}{1000}{\GHz} is attractive for detection of concealed weapons or contraband because many common clothing materials have high transmission in this range \cite{bjarnason_millimeter-wave_2004}.
 In general, as shown in \figref{fig:ch1-clothes-atmos-trans}, transmission through clothing steadily decreases as frequency inncreases.
 This trend tends to push systems toward lower frequencies.
-An example likely familiar to readers L3 Provision (correct name?) systems operating at many airports within the USA.
-These are radar systems operating at ~\SI{35}{\GHz}, intended for close-range portal screening.
+An example likely familiar to readers are the L3 Provision systems operating at many airports within the USA.
+These are ``holographic radar'' systems operating at ~\SI{30}{\GHz}, intended for close-range portal screening, and based on technology developed at the Pacific Northwest National Lab (PNNL) \cite{sheen_cylindrical_1998,mcmakin_dual-surface_2009}.
 For applications in which is is acceptable to require individuals to pass through and pause at a particular location, these systems have excellent image quality.
-Although the ProVision system only takes still images with a xxx s image acquisition time, similar portal screen systems with video-rate capabilities are also under development (xxx ref system from talk in Dresden).
+Although the ProVision system only takes still images with \abt{\SI{2}{s}} image acquisition time, similar portal screen systems with video-rate capabilities are also under development \cite{lyons_reflect-array_2013}.
 
 \begin{figure*}
 \centering
@@ -69,7 +70,7 @@ The angular resolution achievable by an aperture of diameter $D$ observing at wa
 \begin{equation} \label{eqn:ch1-raleigh}
   \Theta \sim 1.2 \lambda / D.
 \end{equation}
-For portal screening this is not prohibitive. xxx how the hell does L3 Provision deal with this at 30 GHz?
+For portal screening this is not prohibitive; the L3 Provision system has an effective aperture of \SI{1.7}{\m} \cite{mcmakin_dual-surface_2009}.
 But for standoff distances of \SI{10}{\m} or more, a system operating at \SI{30}{\GHz} would need an aperture of size \abt{\SI{8}{\m}} in order to achieve \SI{1}{\cm} resolution.
 This strongly drives choice of frequency for standoff detection to higher frequencies.
 
@@ -81,30 +82,92 @@ But the phenomenology of active imaging suffers from two problems that to-date h
 
 \subsection{Active Standoff Imaging}
 
-Both problems stem from the fact that active imaging systems use single-moded coherant sources of light, somewhat analagous to a laser point operating at visible frequencies (xxx ref Petikie).
+Both problems stem from the fact that active imaging systems use single-moded coherant sources of light, somewhat analagous to a laser point operating at visible frequencies \cite{petkie_active_2008}.
 The first problem is generally referred to as ``specular reflections''.
 This refers to the fact that the intensity of light that is reflected off of the target and subsequently detected by the active imaging system is strongly dependent on the angle of the target relative to the illuminating beam.
-This leads to strong highlight areas in active images which can be \SI{30}{\dB} (xxx check) or more higher than neighboring areas, making images very hard to interpret.
-For a concrete example, the reader can imagine the way that sunlight at just the right angle can reflect off of the fender of another car on the road, making it difficult for thier eyes to interpret what they are looking at.
+This leads to strong highlight areas in active images which can be \SI{40}{\dB} or more higher than neighboring areas, making images very hard to interpret.
+For a concrete example, the reader can imagine the way that sunlight at just the right angle can reflect off of the fender of another car on the road, making it difficult for their eyes to interpret what they are looking at.
 
 The second problem is known as ``speckle''.
 When a coherant light source is diffusely reflected from a surface which varies on distance scales comparble to or larger than a wavelength, some areas of the surface will randomly be oriented more favorabley than others for reflecting light back to the system.
-This leads to a random distribution of bright spots in the image known as speckle (xxx reference goodman here?).
+This leads to a random distribution of bright spots in the image known as speckle \cite{goodman_fundamental_1976}.
 This phenoman acts as a kind of noise in active images, and in practice the signal-to-noise ratio of active imaging systems is often limited by speckle rather than noise inherant in the detection system itself.
 
 The active imaging community has long been aware of these issues and is working actively to address them.
-One recent appraoch uses modulated multi-moded illumination to avoid these issues (xxx ref).
+One recent appraoch uses modulated multi-moded illumination to avoid these issues \cite{petkie_multimode_2012,patrick_elimination_2012}.
 Another approach is to use the active system as a radar system rather than an intensity detector.
 Because the radar system detects phase differences rather than intensity differences, it should in theory be less susceptible to specular reflections and speckle.
 
-The active imaging system that at this time is closest to producing video-rate imaging largly free of specular-reflection and speckle artifacts is the 340 GHz radar system developed at JPL \cite{xxx}.
+The active imaging system that at this time is closest to producing video-rate imaging largly free of specular-reflection and speckle artifacts is the 340 GHz radar system developed at JPL \cite{cooper_thz_2011}.
 This system operates at standoff distances of \SI{16}{\m} achieving a spatial resolution of \SI{1}{\cm} at 4 frames per second.
 
-\subsection{Passive Standoff Imaging}
+\section{Required Image Noise for Passive Imaging}
 
 Passive imaging does not suffer from the problems of specular reflection and speckle.
 Rather, the primary challenge for passive imaging is implementing sufficiently sensitive detectors to achieve low-noise images at video frame rates.
 One commonly used figure-of-merit for noise in a passive imaging system is the Noise Equivalent Temperature Difference (\NETD) of the image, defined as the difference in the temperature distribution at the observation target which can not be distinguished from noise in the image.
+To estimate the required \NETD\ for a passive imaging system we must investigate the expected contrast in passive imaging scenarios.
+
+The contrast in a passive images is set by the the temperatures, emmisivities and transmittivities of the objects being imaged, along with the temperature of the ambient light.
+We consider an object at temperature $T_{1}$ with emmissivity $\epsilon_1$, covered by an object at temperature $T_{cov}$ and transmittivity $\tau_{cov}$.
+The entire scene is illuminated by blackbody radiation at temperature $T_{amb}$.
+We assume that the covering objects has no reflection, so that $\epsilon_{cov} = 1 - \tau_{cov}$.
+\figref{fig:ch1-t-tot} depicts this situation schematically. The total temperature seen by an observer looking at the object through the covering will be
+\begin{equation} \label{eqn:ch1-t-tot}
+  T_{tot,1} = (1 - \epsilon_{1}) \tau_{cov}^2 T_{amb} + 
+           (1 + \tau_{cov}(1 - \epsilon_{1}))(1-\tau_{cov}) T_{cov} + 
+           \tau_{cov} \epsilon_{1} T_1
+\end{equation}
+A second object behind the cover with temperature $T_2$ and emissivity $\epsilon_2$ will appear to have a temperature given by \eqnref{eqn:ch1-t-tot} with the subscript 1 replaced by 2 everywhere.
+The contrast seen between these two objects will then be
+\begin{equation} \label{eqn:ch1-delta-t}
+  \Delta T_{1,2} = \tau_{cov} \left[ (\epsilon_2 - \epsilon_1) \tau_{cov} T_{amb} + 
+                                    (\epsilon_2 - \epsilon_1) (1-\tau_{cov}) T_{cov} + 
+                                    (T_1 \epsilon_1 - T_2 \epsilon_2) \right]
+\end{equation}
+This equation shows that in order for contrast to appear in the image, we require difference in temperature or emissivity between the two objects, or both.
+
+One interesting limit is the case where the objects have the same temperature but different emissivities.
+In this case \eqnref{eqn:ch1-delta-t} reduces to
+\begin{equation}
+  \Delta T_{1,2} = \tau_{cov} (\epsilon_1 - \epsilon_2) \left[ (1 - \tau_{cov}) (T - T_{cov}) + \tau_{cov} (T - T_{amb}) \right].
+\end{equation}
+In security screening scenarios we would typically expect $T > T_{cov} > T_{amb}$, so the rightmost factor will be positive.
+If we further assume that $T_{cov}$ is midway between $T$ and $T_{amb}$, then this further simplifies to
+\begin{equation}
+  \Delta T_{1,2} = \frac{1}{2}\tau_{cov}(1+\tau_{cov}) (\epsilon_1 - \epsilon_2) (T - T_{amb}).
+\end{equation}
+The factor of $\frac{1}{2}$ reprsents that fact that at low $\tau$, under these assumptions, the contrast is dominated by the difference in temperature between the cover and the object.
+
+xxx commentary ... sample values .... 
+
+One interesting limit is the case where both objects have the same emissivity, but different temperatures; this scenario could be relevant to countermeasures that attempt to fool the imager.
+In this case the temperature of the ambient light and cover are irrelevant, and the temperature difference difference is
+\begin{equation}
+  \Delta T_{1,2} = \tau_{cov} \epsilon (T_1 - T_2)
+\end{equation}
+If the objects considered have the same temperature as human skin (\abt{\SI{310}{\K}}), and are viewed through a ewool sweather ($\tau = 0.5$ \cite{}), then a system with \NETD\ \SI{1}{\K} would see a temperature difference between the objects of \SI{2.4}{\K} with signal-to-noise of 1.
+
+A system with \NETD\ \SI{1}{\K} would see a
+To maximize the difficulty of the scenario we assume that the knife has come to body temperature as a result of being under the sweater for a long time
+%We have $T_{amb} = \SI{295}{\K} \appox \SI{72}{\fahrenheit}$, $\tau_{cov} = 0.5$ \cite{bjarnason_millimeter-wave_2004}, $T_1 = \SI{310}{\K} = \SI{98.3}{\fahrenheit}$, $\epsilon_1 = 0.825$ (see \sectionref{sec:ch8-temp-scale}), $T_2 = \SI{310}{\K}$.
+
+
+\begin{figure*}
+\centering
+\includegraphics[width=6in]{images/ch1-t-tot.png}
+\caption[xxx]{
+  Schematic showing total temperature seen looking at a object at temperature $T_1$ with emissivity $\epsilon_1$ through a cover at temperature $T_{cov}$ with transmittivity $\tau_{cov}$, all illuminated by ambient temperature $T_{amb}$.
+  The object is assumed to have no transmission and the cover to have no reflection.
+  The black arrows indicate transmission of ambient light through the cover, reflecting off the object, and passing back through the cover to the detecting system.
+  The red arrows show the emission of the cover, which reaches the detector both directly and after reflecting off the object.
+  The blue arrows show the emission of the object itself.
+}
+\label{fig:ch1-t-tot}
+\end{figure*}
+
+\section{Passive Imaging Technology}
+
 It is useful to begin with a discussion of noise in passive imaging from the perspective of bolometric detectors.
 
 A bolometer is an optical power detector; it is senstive to the square of the incident electromagnetic field.
@@ -128,8 +191,8 @@ This allows us to convert a detector \NEP\ to a Noise Equivelant Temperature (\N
   NET = \frac{NEP}{\eta_{tot} M k_B \Delta \nu}.
 \end{equation}
 
-To convert this detector \NET\ to an \NETD\ for an image, we make the assumptions that noise for each detector can be modeled as an uncorrelated gaussian noise source, so that the noise in for a given pixel in the image will be given by the \NET\ divided by the square root of twice the integraiton time for that pixel across all detectors\footnote{%
-  xxx something about nyquist mumble mumble
+To convert this detector \NET\ to an \NETD\ for an image, we make the assumptions that noise for each detector can be modeled as an uncorrelated gaussian noise source, so that the noise in for a given pixel in the image will be given by the \NET\ divided by the square root of twice the integration time for that pixel across all detectors\footnote{%
+  The factor of two accounts for the fact that \NEP\ is defined to give the total variance of a signal when integrated to only the Nyquist frequency, whereas the full bandwidth up to the sampling frequency in available for reducing noise.
 }. 
 We consider an image covering an area $A$ with square pixels of side length $s$, produced by an imaging system with $N$ detectors and video frame rate of $FPS$.
 The integration time per pixel will then be given by
@@ -143,14 +206,14 @@ and so the \NETD\ of each image will be
        \label{eqn:ch1-netd-defn}
 \end{align}
 
-Typical \NEP\ values for uncooled microbolometers in the millimeter-wave region are \Pnoisep{10}--\Pnoisep{100} \cite{that military report}.
+Typical \NEP\ values for uncooled microbolometers in the millimeter-wave region are \Pnoisep{10}--\Pnoisep{100} \cite{nemarich_microbolometer_2005}.
 In order to turn this \NEP\ into an \NETD\ we must make some assumptions.
 In order to achieve sufficient spatial resoltion detecters at these wavelengths are typically sensitive to 2 modes, one per polarization, so we set $M = 2$.
 We can generouslly assume one detector per image pixel, so that $\sqrt{A/N}/s = 1$.
 A very good optical efficiency would be $\eta_{tot} = 0.5$, and a typical bandwidth at \SI{350}{\GHz} is \SI{35}{\GHz}.
 The minimum frame rate for video imaging around 6 frames per second.
-Plugging these numbers into \eqnref{eqn:ch1-netd-def} leads to an \NETD\ of \SI{50}{\K} for the best-case scenario of \Pnoisep{10} \NEP.
-The maximum allowable \NETD\ for security applications is \SI{6}{\K} \cite{military}; indoors or in poor weather conditions outdoors the maximum allowable value would be smaller.
+Plugging these numbers into \eqnref{eqn:ch1-netd-defn} leads to an \NETD\ of \SI{50}{\K} for the best-case scenario of \Pnoisep{10} \NEP.
+The maximum allowable \NETD\ for security applications is \SI{6}{\K} \cite{nemarich_microbolometer_2005}; indoors or in poor weather conditions outdoors the maximum allowable value would be smaller.
 It is clear that uncooled bolometer arrays can not achieve the required performance.
 
 A second option for room-temperature passive imaging are coherant (direct) detectors. 
