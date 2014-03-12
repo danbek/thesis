@@ -101,20 +101,22 @@ Because the radar system detects phase differences rather than intensity differe
 The active imaging system that at this time is closest to producing video-rate imaging largly free of specular-reflection and speckle artifacts is the 340 GHz radar system developed at JPL \cite{cooper_thz_2011}.
 This system operates at standoff distances of \SI{16}{\m} achieving a spatial resolution of \SI{1}{\cm} at 4 frames per second.
 
-\section{Required Image Noise for Passive Imaging}
+\section{Required Image Noise for Passive Imaging} \label{sec:ch1-netd-reqs}
 
 Passive imaging does not suffer from the problems of specular reflection and speckle.
 Rather, the primary challenge for passive imaging is implementing sufficiently sensitive detectors to achieve low-noise images at video frame rates.
 One commonly used figure-of-merit for noise in a passive imaging system is the Noise Equivalent Temperature Difference (\NETD) of the image, defined as the difference in the temperature distribution at the observation target which can not be distinguished from noise in the image.
-To estimate the required \NETD\ for a passive imaging system we must investigate both the required signal-to-noise for detection and the expected contrast (signal) in passive imaging scenarios.
+I was unable to find a detailed study of the required \NETD\ for detection of concealed weapons or other contraband, but the ``lore'' of the field is that for non-metallic concealed threats in an indoor environment, image signals are \SIrange{0.5}{1.0}{\K}, with \SI{200}{\mK}  better \NETD\ required for detection.
+The remainder of this section justifies this lore quantitatively.
 
-The required signal-to-noise ratio for object detection depends on the size of object \cite{steven_w._smith_scientist_1997}.
+To estimate the required \NETD\ for a passive imaging system we must investigate both the required signal-to-noise for detection and the expected contrast (signal) in passive imaging scenarios.
+The required signal-to-noise ratio for object detection depends on the size of the object \cite{steven_w._smith_scientist_1997}.
 This is explored in a simple way in \figref{fig:ch1-sn}.
-This figure shows a sequence of simulated image with a \SI{22.5}{\cm} (\SI{9}{in}) knife in the middle left, and a $2\times2$ pixel block in the upper right.
+This figure shows a sequence of simulated images with a \SI{22.5}{\cm} (\SI{9}{in}) knife in the middle left if the image, and a $2\times2$ hot pixel block in the upper right.
 At a signal to noise ratio of 1, the knife is barely visible if you know where to look for it.
 At a signal-to-noise ratio of 2 the knife becomes visible but the much smaller block is not.
-The block can barely be made out at \SN\  4, and at \SN\  6 both are clearly visible.
-Based on these simple explorations I assume a required \SN\  of 4 for detection; this means that in order to reliably detect an object with contrast \SI{1}{\K} in an image, the required \NETD\ is \SI{0.25}{\K}.
+The block can barely be made out at \SN\ 4, and at \SN\ 6 both block and knife are clearly visible.
+Based on this I assume a required \SN\  of 4 for detection; this means that in order to reliably detect an object with contrast \SI{1}{\K} in an image, the required \NETD\ is \SI{0.25}{\K}.
 
 \begin{figure*}
 \centering
@@ -132,11 +134,12 @@ Based on these simple explorations I assume a required \SN\  of 4 for detection;
 \label{fig:ch1-sn}
 \end{figure*}
 
-The contrast in a passive images is set by the the temperatures, emmisivities and transmittivities of the objects being imaged, along with the temperature of the ambient light.
+The contrast in a passive image is set by the the temperatures, emmisivities and transmittivities of the objects being imaged, along with the temperature of the ambient light.
+\figref{fig:ch1-t-tot} depicts the situation schematically.
 We consider an object at temperature $T_{1}$ with emmissivity $\epsilon_1$, covered by an object at temperature $T_{cov}$ and transmittivity $\tau_{cov}$.
 The entire scene is illuminated by blackbody radiation at temperature $T_{amb}$.
 We assume that the covering objects has no reflection, so that $\epsilon_{cov} = 1 - \tau_{cov}$.
-\figref{fig:ch1-t-tot} depicts this situation schematically. The total temperature seen by an observer looking at the object through the covering will be
+The total temperature seen by an observer looking at the object through the covering will be
 \begin{equation} \label{eqn:ch1-t-tot}
   T_{tot,1} = (1 - \epsilon_{1}) \tau_{cov}^2 T_{amb} + 
            (1 + \tau_{cov}(1 - \epsilon_{1}))(1-\tau_{cov}) T_{cov} + 
@@ -151,32 +154,6 @@ The contrast seen between these two objects will then be
 \end{equation}
 This equation shows that in order for contrast to appear in the image, we require difference in temperature or emissivity between the two objects, or both.
 
-One interesting limit is the case where the objects have the same temperature but different emissivities.
-In this case \eqnref{eqn:ch1-delta-t} reduces to
-\begin{equation}
-  \Delta T_{1,2} = \tau_{cov} (\epsilon_1 - \epsilon_2) \left[ (1 - \tau_{cov}) (T - T_{cov}) + \tau_{cov} (T - T_{amb}) \right].
-\end{equation}
-In security screening scenarios we would typically expect $T > T_{cov} > T_{amb}$, so the rightmost factor will be positive.
-If we further assume that $T_{cov}$ is midway between $T$ and $T_{amb}$, then this further simplifies to
-\begin{equation}
-  \Delta T_{1,2} = \frac{1}{2}\tau_{cov}(1+\tau_{cov}) (\epsilon_1 - \epsilon_2) (T - T_{amb}).
-\end{equation}
-The factor of $\frac{1}{2}$ reprsents that fact that at low $\tau$, under these assumptions, the contrast is dominated by the difference in temperature between the cover and the object, which is half of the difference between the object and the ambient light.
-
-xxx commentary ... sample values .... 
-
-Another interesting limit is the case where both objects have the same emissivity, but different temperatures; this scenario could be relevant to countermeasures that attempt to fool the imager.
-In this case the temperature of the ambient light and cover are irrelevant, and the temperature difference difference is
-\begin{equation}
-  \Delta T_{1,2} = \tau_{cov} \epsilon (T_1 - T_2)
-\end{equation}
-If the objects considered have the same temperature as human skin (\abt{\SI{310}{\K}}), and are viewed through a ewool sweather ($\tau = 0.5$ \cite{}), then a system with \NETD\ \SI{1}{\K} would see a temperature difference between the objects of \SI{2.4}{\K} with signal-to-noise of 1.
-
-%A system with \NETD\ \SI{1}{\K} would see a
-%To maximize the difficulty of the scenario we assume that the knife has come to body temperature as a result of being under the sweater for a long time
-%We have $T_{amb} = \SI{295}{\K} \appox \SI{72}{\fahrenheit}$, $\tau_{cov} = 0.5$ \cite{bjarnason_millimeter-wave_2004}, $T_1 = \SI{310}{\K} = \SI{98.3}{\fahrenheit}$, $\epsilon_1 = 0.825$ (see \sectionref{sec:ch8-temp-scale}), $T_2 = \SI{310}{\K}$.
-
-
 \begin{figure*}
 \centering
 \includegraphics[width=6in]{images/ch1-t-tot.png}
@@ -190,13 +167,54 @@ If the objects considered have the same temperature as human skin (\abt{\SI{310}
 \label{fig:ch1-t-tot}
 \end{figure*}
 
+We consider the case where the objects have the same temperature but different emissivities.
+This would be the case for objects strapped next to skin, underneath clothing for a period of time so that objects come into thermal equilibrium with the body.
+In this case \eqnref{eqn:ch1-delta-t} reduces to
+\begin{equation}
+  \Delta T_{1,2} = \tau_{cov} (\epsilon_1 - \epsilon_2) \left[ (1 - \tau_{cov}) (T - T_{cov}) + \tau_{cov} (T - T_{amb}) \right].
+\end{equation}
+In security screening scenarios we would typically expect $T > T_{cov} > T_{amb}$, so the rightmost factor will be positive.
+If we further assume that $T_{cov}$ is midway between $T$ and $T_{amb}$, then this further simplifies to
+\begin{equation} \label{eqn:ch1-delta-t-simple}
+  \Delta T_{1,2} = \frac{1}{2}\tau_{cov}(1+\tau_{cov}) (\epsilon_1 - \epsilon_2) (T - T_{amb}).
+\end{equation}
+The factor of $\frac{1}{2}$ reprsents that fact that at low $\tau$, under these assumptions, the contrast is dominated by the difference in temperature between the cover and the object, which is half of the difference between the object and the ambient light.
+
+Outdoors, $T_{amb}$ will have contributions both from the ground (or structures/vegetation at ground level) and from the sky.
+The sky temperature depends strongly on the weather \cite{appleby_standoff_2007}, and at \SI{350}{\GHz} could be as low as \SI{100}{\K} on a clear winter day, or approach \SI{310}{\K} on a hot day with high humidity.
+Depending on the temperative and emission properties of local ground cover, under the worst-case scenario $T_{amb}$ outdoors could be very close to human body temperature.
+This means that requirements on \NETD\ for outdoor imaging is the worst-case scenarios could easily be \SI{200}{\mK} or better, and motivates the search for imaging systems with very low \NETD\ values for outdoor applications. 
+
+Indoors, $T_{amb}$ will be determined by the temperature of the room, typically $\SI{295}{\K} = \SI{72}{\fahrenheit}$.
+We can take as a challenging scenario the detection of plastic explosives hidden beneath a woolen sweater.
+From \cite{bjarnason_millimeter-wave_2004} we use $\tau_{cov} = 0.5$ and from \cite{appleby_standoff_2007} we can take $\epsilon_{explosive} - \epsilon_{skin} = 0.08$, a case where the emissivity of the explosive is higher than that of skin.
+\eqnref{eqn:ch1-delta-t-simple} gives $\Delta T_{1,2} = \SI{0.45}{\K}$, or a required \NETD\ of \SI{112.5}{\mK} assuming a required \SN\ of 4.
+If the explosive material is cooler than body temperature than the requirements on \NETD\ will be eased, but it is the worst-case scenarios that should design system requirements.
+
+From this we conclude that \NETD\ values of \SI{100}{\mK} or lower are required for the most challenging passive imaging scenarios.
+The question remains as to what technology is capable of reaching this level of sensitivity.
+
 \section{Passive Imaging Technology}
 
-It is useful to begin with a discussion of noise in passive imaging from the perspective of bolometric detectors.
+One option for passive imaging is the use of coherant detectors.
+Many such systems have been described in the literature, and several commercial solutions are available.
+However, to-date these systems suffer from an inability to achieve video-rate \NETD\ values low enough to meet the requirements dicussed in \sectionref{sec:ch1-netd-reqs}.
+Due to lack of available components, these systems operate at \SI{90}{\GHz} or below, which makes high-resolution imaging at distances over \SI{5}{\m} impractical due to the large aperture sizes required.
 
+xxx need to list systems here!
+
+Several companies have built passive imagers at 90 GHz based on this technology.
+A typical example is the Microsemi GEN 2\footnote{%
+Microsemi Corporation, Aliso Viejo, CA. This technology was acquired from Brijot systems in 2011.}, which works at \SI{90}{\GHz}.
+This system achieve \SI{5}{\cm} resolution at 4--12 frames per second.
+Standoff distance is a few meters and \NETD\ is not quoted.
+While radiometric systems such at this perform better than micro-bolometer based systems, the \NETD\ is still not low enough forxxx, and the optical frequency is too low for acceptable resolution for standoff imaging at \SI{10}{\m} or greater (xxx need to justify this better).
+Radiometric systems at \SI{350}{\GHz} to-date have poorer performance than at \SI{90}{\GHz}, so moving to higher frequencies in order to improve spatial resolution will lead to worse noise performance.
+
+A second option is the use of bolometric (thermal) detector.
 A bolometer is an optical power detector; it is senstive to the square of the incident electromagnetic field.
-Bolometoer is characterized by a Noise Equivalent Power (\NEP), defined as the detected signal power equal to standard deviation of the noise in a \SI{1}{\Hz} post-detection bandwidth.
-To convert the \NEP\ of the dectors to an \NETD\ for an image we must first have a conversion between detected optical power and source temperature.
+Bolometers are characterized by a Noise Equivalent Power (\NEP), defined as the detected signal power equal to standard deviation of the noise in a \SI{1}{\Hz} post-detection bandwidth.
+To convert the \NEP\ of the detectors to an \NETD\ for an image we must first have a conversion between detected optical power and source temperature.
 For a detector sensitive to $M$ spatial modes of the electromagnetic field and with total optical effieciency $\eta_{tot}$, the optical power detected per unit optical frequency is given by the Planck law in the form
 \begin{equation} \label{eqn:ch1-planck}
   P_{\nu}(\nu,T) \Delta \nu = \eta_{tot} M h \nu \frac{1}{e^{\frac{h \nu}{k_B T}} - 1} \Delta \nu,
@@ -237,17 +255,8 @@ We can generouslly assume one detector per image pixel, so that $\sqrt{A/N}/s = 
 A very good optical efficiency would be $\eta_{tot} = 0.5$, and a typical bandwidth at \SI{350}{\GHz} is \SI{35}{\GHz}.
 The minimum frame rate for video imaging around 6 frames per second.
 Plugging these numbers into \eqnref{eqn:ch1-netd-defn} leads to an \NETD\ of \SI{50}{\K} for the best-case scenario of \Pnoisep{10} \NEP.
-The maximum allowable \NETD\ for security applications is \SI{6}{\K} \cite{nemarich_microbolometer_2005}; indoors or in poor weather conditions outdoors the maximum allowable value would be smaller.
+This is more than two orders of magnitude higher than the requirements discussed in \sectionref{sec:ch1-netd-reqs}.
 It is clear that uncooled bolometer arrays can not achieve the required performance.
-
-A second option for room-temperature passive imaging are coherant (direct) detectors. 
-Several companies have built passive imagers at 90 GHz based on this technology.
-A typical example is the Microsemi GEN 2\footnote{%
-Microsemi Corporation, Aliso Viejo, CA. This technology was acquired from Brijot systems in 2011.}, which works at \SI{90}{\GHz}.
-This system achieve \SI{5}{\cm} resolution at 4--12 frames per second.
-Standoff distance is a few meters and \NETD\ is not quoted.
-While radiometric systems such at this perform better than micro-bolometer based systems, the \NETD\ is still not low enough forxxx, and the optical frequency is too low for acceptable resolution for standoff imaging at \SI{10}{\m} or greater (xxx need to justify this better).
-Radiometric systems at \SI{350}{\GHz} to-date have poorer performance than at \SI{90}{\GHz}, so moving to higher frequencies in order to improve spatial resolution will lead to worse noise performance.
 
 The conclusion is that to achieve sufficient \NETD\ and spatial resolution for passive standoff imaging at distances of \SI{10}{\m} and greater, room temperature detectors to-date do not have ufficient sensitivity.
 For this reason groups working on this problem have turned to cooled bolometer technology.
@@ -266,3 +275,9 @@ The next section provides an overview of the efforts in this direction to-date.
 % But uncoooled bolometer arrays can achieve this performance in the near IR because the available optical bandwidth is much larger than what is available in the \SIrange{100}{1000}{\GHz} range.
 % The IR-TCM HD 1024 detects the \SIrange{7.5}{14}{\um} range, which is an optical bandwidth of \SI{19}{\THz}, a factor of \abt{530} larger than that available to the \Imager.
 % Even after reducing the number of pixels in an image to a $100 \times 100$, and the frame rate to 6 frames per second, the \NETD\ from this uncooled microbolometer system would be \abt{27} times worse at \SI{350}{\GHz} than in the near-IR.
+
+\section{Cooled Bolometer Imagers}
+
+Aside from the work described in this thesis, two groups are also working on cooled bolometer passive imaging systems.
+
+xxx easier at work b/c of references.
