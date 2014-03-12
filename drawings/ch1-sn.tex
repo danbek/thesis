@@ -1,0 +1,85 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    enlargelimits=false,
+    axis equal image,
+    axis on top,
+    width=1.8in,
+    xtick={0,20,...,100},
+    ytick={0,20,...,100},
+    point meta min=-3,
+    point meta max=3,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{lr}
+
+
+\begin{tikzpicture}[trim axis left]
+\begin{axis}[
+    xticklabels={,,},
+    xlabel={},
+    ylabel={Vertical Offset (\si{\cm})},
+    title={$\SN\ = 1$}
+    ]
+  \addplot[point meta min=-3.711679e+00, point meta max=3.823220e+00] graphics [xmin=5.000000e-01,xmax=1.005000e+02,ymin=5.000000e-01,ymax=1.005000e+02] {../images/ch1-sn-1.png} ;
+\end{axis}
+\end{tikzpicture}
+
+&
+
+\begin{tikzpicture}[trim axis right]
+\begin{axis}[
+    xticklabels={,,},
+    yticklabels={,,},
+    xlabel={},
+    ylabel={},
+    title={$\SN\ = 2$}
+    ]
+  \addplot[point meta min=-3.633107e+00, point meta max=4.323435e+00] graphics [xmin=5.000000e-01,xmax=1.005000e+02,ymin=5.000000e-01,ymax=1.005000e+02] {../images/ch1-sn-2.png} ;
+\end{axis}
+\end{tikzpicture}
+
+\\
+
+\begin{tikzpicture}[trim axis left]
+\begin{axis}[
+    xlabel={Horizontal Offset (\si{\cm})},
+    ylabel={Vertical Offset (\si{\cm})},
+    title={$\SN\ = 4$}
+    ]
+  \addplot[point meta min=-3.853345e+00, point meta max=6.730257e+00] graphics [xmin=5.000000e-01,xmax=1.005000e+02,ymin=5.000000e-01,ymax=1.005000e+02] {../images/ch1-sn-4.png} ;
+\end{axis}
+\end{tikzpicture}
+
+&
+
+\begin{tikzpicture}[trim axis right]
+\begin{axis}[
+    yticklabels={,,},
+    xlabel={Horizontal Offset (\si{\cm})},
+    ylabel={},
+    title={$\SN\ = 6$}
+    ]
+  \addplot[point meta min=-3.752210e+00, point meta max=8.434083e+00] graphics [xmin=5.000000e-01,xmax=1.005000e+02,ymin=5.000000e-01,ymax=1.005000e+02] {../images/ch1-sn-6.png} ;
+\end{axis}
+\end{tikzpicture}
+
+\end{tabular}
+
+\end{document}

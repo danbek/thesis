@@ -106,7 +106,31 @@ This system operates at standoff distances of \SI{16}{\m} achieving a spatial re
 Passive imaging does not suffer from the problems of specular reflection and speckle.
 Rather, the primary challenge for passive imaging is implementing sufficiently sensitive detectors to achieve low-noise images at video frame rates.
 One commonly used figure-of-merit for noise in a passive imaging system is the Noise Equivalent Temperature Difference (\NETD) of the image, defined as the difference in the temperature distribution at the observation target which can not be distinguished from noise in the image.
-To estimate the required \NETD\ for a passive imaging system we must investigate the expected contrast in passive imaging scenarios.
+To estimate the required \NETD\ for a passive imaging system we must investigate both the required signal-to-noise for detection and the expected contrast (signal) in passive imaging scenarios.
+
+The required signal-to-noise ratio for object detection depends on the size of object \cite{steven_w._smith_scientist_1997}.
+This is explored in a simple way in \figref{fig:ch1-sn}.
+This figure shows a sequence of simulated image with a \SI{22.5}{\cm} (\SI{9}{in}) knife in the middle left, and a $2\times2$ pixel block in the upper right.
+At a signal to noise ratio of 1, the knife is barely visible if you know where to look for it.
+At a signal-to-noise ratio of 2 the knife becomes visible but the much smaller block is not.
+The block can barely be made out at \SN\  4, and at \SN\  6 both are clearly visible.
+Based on these simple explorations I assume a required \SN\  of 4 for detection; this means that in order to reliably detect an object with contrast \SI{1}{\K} in an image, the required \NETD\ is \SI{0.25}{\K}.
+
+\begin{figure*}
+\centering
+\includegraphics{drawings/ch1-sn.pdf}
+\caption[xxx]{
+  Exploration of signal-to-noise ratio (\SN) required for object detection.
+  Each image contains $100 \times 100$ pixels.
+  In the middle left of each image is a simple \SI{22.5}{\cm} model of a knife.
+  In the upper right a $2\times2$ block of pixels has been set to be ``hot''.
+  Gaussian noise was added to each image with a level approproate for the \SN\ listed in the title.
+  At $\SN\ = 1$ the knife is perhaps visible if you know where to look but the block is not.
+  At $\SN\ = 2$ the knife become visible but the much smaller block in not.
+  The block begins to become visible at $\SN\ = 4$, and is clearly visible at $\SN\ = 6$.
+}
+\label{fig:ch1-sn}
+\end{figure*}
 
 The contrast in a passive images is set by the the temperatures, emmisivities and transmittivities of the objects being imaged, along with the temperature of the ambient light.
 We consider an object at temperature $T_{1}$ with emmissivity $\epsilon_1$, covered by an object at temperature $T_{cov}$ and transmittivity $\tau_{cov}$.
@@ -137,19 +161,19 @@ If we further assume that $T_{cov}$ is midway between $T$ and $T_{amb}$, then th
 \begin{equation}
   \Delta T_{1,2} = \frac{1}{2}\tau_{cov}(1+\tau_{cov}) (\epsilon_1 - \epsilon_2) (T - T_{amb}).
 \end{equation}
-The factor of $\frac{1}{2}$ reprsents that fact that at low $\tau$, under these assumptions, the contrast is dominated by the difference in temperature between the cover and the object.
+The factor of $\frac{1}{2}$ reprsents that fact that at low $\tau$, under these assumptions, the contrast is dominated by the difference in temperature between the cover and the object, which is half of the difference between the object and the ambient light.
 
 xxx commentary ... sample values .... 
 
-One interesting limit is the case where both objects have the same emissivity, but different temperatures; this scenario could be relevant to countermeasures that attempt to fool the imager.
+Another interesting limit is the case where both objects have the same emissivity, but different temperatures; this scenario could be relevant to countermeasures that attempt to fool the imager.
 In this case the temperature of the ambient light and cover are irrelevant, and the temperature difference difference is
 \begin{equation}
   \Delta T_{1,2} = \tau_{cov} \epsilon (T_1 - T_2)
 \end{equation}
 If the objects considered have the same temperature as human skin (\abt{\SI{310}{\K}}), and are viewed through a ewool sweather ($\tau = 0.5$ \cite{}), then a system with \NETD\ \SI{1}{\K} would see a temperature difference between the objects of \SI{2.4}{\K} with signal-to-noise of 1.
 
-A system with \NETD\ \SI{1}{\K} would see a
-To maximize the difficulty of the scenario we assume that the knife has come to body temperature as a result of being under the sweater for a long time
+%A system with \NETD\ \SI{1}{\K} would see a
+%To maximize the difficulty of the scenario we assume that the knife has come to body temperature as a result of being under the sweater for a long time
 %We have $T_{amb} = \SI{295}{\K} \appox \SI{72}{\fahrenheit}$, $\tau_{cov} = 0.5$ \cite{bjarnason_millimeter-wave_2004}, $T_1 = \SI{310}{\K} = \SI{98.3}{\fahrenheit}$, $\epsilon_1 = 0.825$ (see \sectionref{sec:ch8-temp-scale}), $T_2 = \SI{310}{\K}$.
 
 
