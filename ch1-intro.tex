@@ -25,9 +25,15 @@ This technology is now mature and is routinely deployed on both ground and ballo
 
 The development of this technology offers new opportunities for passive imaging for security and other applications.
 Specifically, it is now possible to develop focal planes capable of video-rate imaging with temperature resolution of \SI{100}{\mK} or below.
-This thesis describes the design and development of the \NIST\ \Imager, a system developed to perform detection of concealed weapons at distances of \SIrange{26}{28}{\m} by producing video-rate images at \SI{350}{\GHz}.
-This chapter provides an overview of millimeter-wavelength imaging and the problems that our system is intended to solve.
-xxx need to say something about how this chapter justifies the need for cryogenic detectors.
+This thesis describes the design and development of the \NIST\ \Imager, a system developed to detect concealed weapons at distances of \SIrange{16}{28}{\m} by producing video-rate images at \SI{350}{\GHz}.
+
+An outline of this thesis is as follows.
+This chapter provides an overview of passive millimeter and sub-millimeter wavelength imaging for security applications, and motiviates the need for bolometers operating at cryogenic temperatures.
+\chapterref{c:specs} describes the specification for the \Imager\ and gives an overview of the approach used to meet those specifications.
+The overall design of the system is described in \chapterref{c:sys-design} and the design of the detectors and focal plane is covered in \chapterref{c:det-design}.
+\chapterref{c:det-array} describes measurements taken to characterize the first of four planned 251-detector subarrays.
+The goal of this project is to generate video images at \SI{350}{\GHz}, and \chapterref{c:imaging} describes how the \Imager is used to do this, including quantitative evaluation of image quality.
+\chapterref{c:summary} provides a brief summary of the achievement of this project and gives directions for future work.
 
 \section{Security Imaging}
 
@@ -49,7 +55,7 @@ Although the ProVision system only takes still images with \abt{\SI{2}{s}} image
   Taken from \cite{bjarnason_millimeter-wave_2004}.
   As frequency increases, transmission through all kinds of clothing decreases.
   The \SI{-10}{\dB} observation band of the \Imager\ is highlighted (\SIrange{318}{376}{\GHz}).
-  \textbf{right}
+  \textbf{Right}
   Plot showing a model of zenith atmospheric transmission on the summit of Mauna Kea, assuming \SI{0.5}{\mm} of precipitable water vapor.
   The plot is illustrative only, demonstrating the presence of atmospheric transmission windows and the general trend of worse transmission at higher frequencies.
   The data was obtained using the Caltech Submillimeter Observatory (CSO) Atmospheric Transmission Interactive Plotter \cite{darek_lis_cso_????}, which is based on a published model \cite{pardo_atmospheric_2001}.
