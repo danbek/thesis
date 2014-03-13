@@ -202,24 +202,9 @@ The question remains as to what technology is capable of reaching this level of 
 
 \section{Passive Imaging Technology}
 
-One option for passive imaging is the use of coherent detectors.
-Many such systems have been described in the literature, and several commercial solutions are available.
-However, to-date these systems suffer from an inability to achieve video-rate \NETD\ values low enough to meet the requirements discussed in \sectionref{sec:ch1-netd-reqs}.
-Due to lack of available components, these systems operate at \SI{90}{\GHz} or below, which makes high-resolution imaging at distances over \SI{5}{\m} impractical due to the large aperture sizes required.
-
-xxx need to list systems here!
-
-Several companies have built passive imaging systems at 90 GHz based on this technology.
-A typical example is the Microsemi GEN 2\footnote{%
-Microsemi Corporation, Aliso Viejo, CA. This technology was acquired from Brijot systems in 2011.}, which works at \SI{90}{\GHz}.
-This system achieve \SI{5}{\cm} resolution at 4--12 frames per second.
-Standoff distance is a few meters and \NETD\ is not quoted.
-While radiometric systems such at this perform better than micro-bolometer based systems, the \NETD\ is still not low enough forxxx, and the optical frequency is too low for acceptable resolution for standoff imaging at \SI{10}{\m} or greater (xxx need to justify this better).
-Radiometric systems at \SI{350}{\GHz} to-date have poorer performance than at \SI{90}{\GHz}, so moving to higher frequencies in order to improve spatial resolution will lead to worse noise performance.
-
-A second option is the use of bolometric (thermal) detector.
-A bolometer is an optical power detector; it is sensitive to the square of the incident electromagnetic field.
-Bolometers are characterized by a Noise Equivalent Power (\NEP), defined as the detected signal power equal to standard deviation of the noise in a \SI{1}{\Hz} post-detection bandwidth.
+One option for the detection of light at \SIrange{100}{1000}{\GHz} is the use of incohent direct detectors, including photodiodes and other photon detectors as well as bolometers.
+These devices can all be operated to detector optical power; they are sensitive to the square of the incident electromagnetic field.
+They can be characterized by a Noise Equivalent Power (\NEP), defined as the detected signal power equal to standard deviation of the noise in a \SI{1}{\Hz} post-detection bandwidth.
 To convert the \NEP\ of the detectors to an \NETD\ for an image we must first have a conversion between detected optical power and source temperature.
 For a detector sensitive to $M$ spatial modes of the electromagnetic field and with total optical efficiency $\eta_{tot}$, the optical power detected per unit optical frequency is given by the Planck law in the form
 \begin{equation} \label{eqn:ch1-planck}
@@ -254,18 +239,33 @@ and so the \NETD\ of each image will be
        \label{eqn:ch1-netd-defn}
 \end{align}
 
-Typical \NEP\ values for uncooled micro-bolometers in the millimeter-wave region are \Pnoisep{10}--\Pnoisep{100} \cite{nemarich_microbolometer_2005}.
+Microbolometers have an advantage in that they can fabricated in arrays with relative ease.
+Typical \NEP\ values for uncooled micro-bolometers in the millimeter-wave region are \Pnoisep{10}--\Pnoisep{100} \cite{nemarich_microbolometer_2005,rogalski_terahertz_2011}.
 In order to turn this \NEP\ into an \NETD\ we must make some assumptions.
 In order to achieve sufficient spatial resolution detectors at these wavelengths are typically sensitive to 2 modes, one per polarization, so we set $M = 2$.
-We can generously assume one detector per image pixel, so that $\sqrt{A/N}/s = 1$.
+We can generously assume a staring array with detector per image pixel, so that $\sqrt{A/N}/s = 1$.
 A very good optical efficiency would be $\eta_{tot} = 0.5$, and a typical bandwidth at \SI{350}{\GHz} is \SI{35}{\GHz}.
 The minimum frame rate for video imaging around 6 frames per second.
 Plugging these numbers into \eqnref{eqn:ch1-netd-defn} leads to an \NETD\ of \SI{50}{\K} for the best-case scenario of \Pnoisep{10} \NEP.
 This is more than two orders of magnitude higher than the requirements discussed in \sectionref{sec:ch1-netd-reqs}.
-It is clear that uncooled bolometer arrays can not achieve the required performance.
+
+Perhaps the most promising approach using photodiodes is an approach using backward tunnel diodes for operation at \SI{90}{\GHz}, which has achieved \Pnoisep{0.1} \NEP\ with a 32-channel linear array \cite{schaffner_wideband_2008,wikner_demonstration_2009}.
+Under the same assumptions as in the previous paragraph, a staring array would achieve \SI{5}{\K} \NETD, still insufficient to achieve the \NETD\ requirements of \sectionref{sec:ch1-netd-reqs}.
+
+A second option for passive imaging is the use of coherent heterodyne detectors \cite{rieke_detection_2003,rogalski_terahertz_2011}.
+This technology has advanced sufficiently that commercial systems are available today.
+The most promising option to-date are the ThruVision\footnote{Digital Barriers plc, London, UK. \url{http://www.digitalbarriers.com/products/thruvision}} imagers operating at \SI{250}{\GHz}, described in a corporate white paper \cite{digital_barriers_extra_????}.
+Video frame rates are 6 frames per second and claimed \NETD\ is \SI{1}{\K}, although it is not clear whether this is a true \NETD\ or whether it refers to the minimum resolvable contrast over a wide area of an image (which would imply a higher \NETD\ by the arguments of \sectionref{sec:ch1-netd-reqs}).
+The systems has standoff distances up to \SI{15}{\m}, but with poor spatial resolution due to apertures only \abt{\SI{20}{\cm}} in diameter.
+
+The Microsemi GEN 2 system\footnote{%
+Microsemi Corporation, Aliso Viejo, CA. This technology was acquired from Brijot systems in 2011.}
+is another commercial system operating at \SI{90}{\GHz}.
+This system achieve \SI{5}{\cm} resolution at 4--12 frames per second at standoff distances of a few meters.
+\NETD\ is not quoted, as is presumably not better than \SI{1}{\K}.
 
 The conclusion is that to achieve sufficient \NETD\ and spatial resolution for passive standoff imaging at distances of \SI{10}{\m} and greater, room temperature detectors to-date do not have sufficient sensitivity.
-For this reason groups working on this problem have turned to cooled bolometer technology.
+For this reason several groups working on this problem have turned to cooled detector technology.
 The next section provides an overview of the efforts in this direction to-date.
 
 %% Keepig the following for now, because I don't really believe it,
@@ -282,8 +282,11 @@ The next section provides an overview of the efforts in this direction to-date.
 % The IR-TCM HD 1024 detects the \SIrange{7.5}{14}{\um} range, which is an optical bandwidth of \SI{19}{\THz}, a factor of \abt{530} larger than that available to the \Imager.
 % Even after reducing the number of pixels in an image to a $100 \times 100$, and the frame rate to 6 frames per second, the \NETD\ from this uncooled microbolometer system would be \abt{27} times worse at \SI{350}{\GHz} than in the near-IR.
 
-\section{Cooled Bolometer Imaging Systems}
+\section{Cooled Detector Imaging Systems}
 
 Aside from the work described in this thesis, two groups are also working on cooled bolometer passive imaging systems.
 
 xxx easier at work b/c of references.
+
+Finally, a group based at Cardiff University in Wales is in the early stages of developing a passive imaging system based on Microwave Kinetic Inductance Detectors \cite{day_broadband_2003,wood_kidcam_2011}.
+No images or \NETD\ estimates are publically available for this system.
