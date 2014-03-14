@@ -1,6 +1,44 @@
 \chapter{System Specifications, Challenges and Solutions}\label{c:specs}
 
+The \Imager's specifications are intended to allow the system to serve as a ``gold standard'' for investigating the phenomenology of passive video imaging.
+It is intended to be used to take images of a variety of concealed weapons and other objects, hidden beneath many different types of clothing, in both indoor and outdoor scenarios.
+The goal is to gain a thorough understanding of trade-offs in terms of video frame rate, image resolution, and noise should be made in the design of future systems for use is specific operational scenarios.
+
+To that end, the system has been designed to be able to achieve high resolution images with \NETD\ that is limited by photon noise.
+This chapter describes the specifications for the \Imager, and summarized the technology approach taken to meet those specifications.
+
 \section{Specifications} \label{sec:ch2-specifications}
-% need to say something about reqd det time constants here
+
+The first goal of the \Imager\ is to achieve uncompromised noise performance through the use of a large number of photon-noise-limited detectors.
+As discussed below, this requires the use of detectors at cryogenic temperatures.
+We have chosen to use 1004 Transition Edge Sensor (\TES) bolometers as the detectors.
+As discussed in \chapterref{c:det-design}, the system will include four 251-detector sub-arrays.
+This thesis discusses results using only one these four sub-arrays.
+
+The atmospheric window at \abt{\SI{350}{\GHz}} (\abt{\SI{860}{\um}}) was chosen for the optical band.
+As can be seen from \figref{fig:ch1-clothes-atmos-trans}, this band is a nice trade-off between transmission through the atmosphere and clothing (which favors lower frequencies) and spatial resolution (which favors higher frequencies).
+A \SI{35}{\GHz} full-width-half-maximum (\FWHM) band was chosen to fit within this atmospheric window.
+
+The design standoff distances from the observed target is \SIrange{16}{28}{\m}, configurable by changing the distance between the cryostat containing the detectors and the rest of the optical system.
+This distance was chosen to provide some separation from observation targets such as a suicide bomber, without requiring an unreasonably large optical aperture.
+A very nice spatial resolution at \SI{16}{\m} standoff would be \SI{1}{\cm}.
+At the center wavelength of the observation band of $\lambda_0 = \SI{863}{\um}$ (see \sectionref{sec:ch4-filters}), using the Raleigh criterion \eqnref{eqn:ch1-raleigh} leads to a required aperture size of
+\begin{equation}
+  D = 1.22 \times \SI{863}{\um} \times \frac{\SI{16}{\m}}{\SI{1}{\cm}} = \SI{1.7}{\m}.
+\end{equation}
+It was decided that a mirror of this size would be too expensive and large for this prototype system, so \SI{1.3}{\m} was chosen instead.
+After accounting for the fact that the outer edge of the primary mirror is not illuminated (\sectionref{sec:ch4-optical-desing}), the predicted resolution of the system is \SI{1.4}{\cm} (\sectionref{sec:ch4-feedhorn-design}).
+
+Security applications can require observing a moving target, so that video frame-rates are needed.
+Exactly how fast the frame-rate needs to be in order to support accurate tracking can vary on the scenario.
+The components of the \Imager\ have all been designed to allow frame rates of up to 20 frames per second.
+
+In order to achieve all of these requirement, other aspects of the system design were compromised.
+In particular, the desire for high spatial resolution at longer standoff distances requires a large optical aperture, which increases the size of the system.
+Although the system is mounted on rollers so that it can be moved within the lab or into other labs, the location at which it points can not be steered in real-time.
+Additionally the focus distance can only be changed by reconfiguring the mounting structure that connects the cryostat to the optics.
 
 \section{Noise Requirements} \label{sec:ch2-noise}
+o
+
+\section{Solutions}
