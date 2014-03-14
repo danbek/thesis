@@ -17,7 +17,7 @@
       xmin=0,xmax=1000,ymin=0,ymax=1,
       title={Example Atmospheric Transmission Spectrum},
       xlabel={Frequency (\si{\GHz})}, ylabel={Transmission} ]
-    \draw[fill=blue] (axis cs:318,0) rectangle (axis cs:375.9,1);
+    \draw[fill=blue!50] (axis cs:318,0) rectangle (axis cs:375.9,1);
     \addplot+[mark=none,color=black,thick] table[x=freq,y=trans]{../data/ch1-atmos-trans.dat};
       
     %\draw[fill=blue] (axis cs:318,0) rectangle (axis cs:375.9,1);
