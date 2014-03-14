@@ -285,7 +285,7 @@ The next section provides an overview of the efforts in this direction to-date.
 \section{Cooled Detector Imaging Systems}
 
 Aside from the work described in this thesis, two groups are also working on cooled bolometer passive imaging systems.
-See \figref{fig:ch1-sys-compare} for summary details of these and other security imaging systems.
+See \tableref{tab:ch1-sys-compare} for summary details of these and other security imaging systems.
 
 One system is developed by a group working at the Institute of Photonic Technology (IPHT) in Jena, Germany.
 The first generation of this system \cite{heinz_toward_2011} operates at \SI{350}{\GHz} with a \SI{23}{\percent} optical bandwidth.
@@ -295,7 +295,7 @@ This system upgrades the number of detectors from 20 to 64 and the frame rate fr
 \NETD\ is predicted to be \SI{160}{\mK}.
 
 A second system is under development by a group at MilliLab in Finland, working in collaboration with researchers at \NIST.
-The first generation of this system operated over a wide optical band, \SIrange{200}{1000}{\GHz}, achieving \SI{0.6}{\K} \NETD \cite{grossman_passive_2010}.
+The first generation of this system operated over a wide optical band, \SIrange{200}{1000}{\GHz}, achieving \SI{0.6}{\K} \NETD\ \cite{grossman_passive_2010}.
 A second generation system is currently underway, with most changes intended to reduce the size and power requirements of the system, but also doubling the number of detectors from 64 to 128 \cite{luukanen_applications_2012}.
 The system uses superconducting transition-edge-sensor bolometers with $T_c \approx \SI{9}{\K}$.
 The readout system is entirely different than that used by the Jena system and the system desribed in this thesis.
@@ -305,7 +305,9 @@ As described in \sectionref{sec:ch3-circuits}, voltage-biased operation is necce
 Finally, a group based at Cardiff University in Wales is in the early stages of developing a passive imaging system \cite{day_broadband_2003} based on Microwave Kinetic Inductance Detectors \cite{wood_kidcam_2011}.
 No images or \NETD\ estimates are publically available for this system.
 
+\small{
 \begin{sidewaystable}
+\small
 \centering
 \caption[Table summarizing capabilities of different video imaging systems]{
   Table summarizing capabilities of different security video imaging systems.
@@ -316,9 +318,9 @@ No images or \NETD\ estimates are publically available for this system.
 \toprule
 System &
  \specialcell{Optical Band \\ (\si{\GHz})} &
- \specialcell{Detector Count \\ } &
+ \specialcell{Detector \\ Count } &
  Frame Rate &
- \specialcell{Standoff Distance \\ (\si{\m})} &
+ \specialcell{Standoff \\ Distance (\si{\m})} &
  \specialcell{Field of View \\ ($\si{m} \times \si{\m}$)} &
  \specialcell{Resolution \\ (\si{\cm})} &
  \specialcell{\NETD\ \\ (\si{\mK})} \\
@@ -331,3 +333,4 @@ IPHT Jena II & $350 \pm 40$ & 64 & 25 & 8.5 & $2 \times 1$ & 1.0 & 160 \\
 \bottomrule
 \end{tabular}
 \end{sidewaystable}
+}
