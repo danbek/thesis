@@ -340,7 +340,7 @@ Detector Focal Plane &                   & N/A           &  \SI{171.541}{\mm} fr
 \caption[\ZEMAX\ spot diagrams]{
 \ZEMAX\ spot diagrams for the \Imager's optical system when focused to \SI{16}{\m}.
 This represents the distribution of points that a distribution of rays trace to on the far-field focal plane.
-Each plot shows spot diagrams for nine points in the focal plane covering the area over which detectors in the subarray are located.
+Each plot shows spot diagrams for nine points in the focal plane covering the area over which detectors in the sub-array are located.
 The four plots (moving left to right and top to bottom) are for the secondary mirror with no tilt, \ang{1} tilt about one axis, \ang{1} title about other axis, and \ang{1} tilt about both axes.
 The black circle gives \ZEMAX's estimate of the size of the Airy disk for the optical system, which is defined as the location of the first null in the system's diffraction pattern.
 In all cases, nearly all rays map to within the Airy disk, indicating that the performance of the optical system is diffraction-limited.
@@ -534,7 +534,7 @@ $\alpha_0 = \SI{9.4}{\degree}$ was chosen as a value that is easy to machine, ke
 
 To find the number of horns per array size that minimizes \NETD\, the program assumes that the feedhorns must cover a square \SI{43.9}{\mm} per side.
 It allows for \SI{1}{\mil} spacing between the edges of the feedhorns, and also accounts for a thermal contraction factor of 4.14 parts per thousand \cite[Appendix~A6.4]{ekin_experimental_2006}.
-Four horns from each subarray are assumed to be missing in order to accommodate other features on the detector wafer.
+Four horns from each sub-array are assumed to be missing in order to accommodate other features on the detector wafer.
 The resulting \NETD\ estimates --- normalized to the \NETD\ for the actual feedhorns chosen --- is shown in \figref{fig:ch4-netd-vs-nfeeds}.
 The optimal number of feedhorns per array side is 19, for a total (across all four sub-arrays) of 1428 feedhorns of diameter \SI{2.25}{\mm} cold.
 Because of readout limitations, the actual number of detectors per side is 16, for 1004 feedhorns with diameter \SI{2.68}{\mm} (\SI{108}{\mils} at room temperature).

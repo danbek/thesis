@@ -1,6 +1,6 @@
-\chapter{Subarray Characterization}\label{c:det-array}
+\chapter{Sub-array Characterization}\label{c:det-array}
 
-The detectors in the first 251-detector subarray have not all been characterized to the same extent.
+The detectors in the first 251-detector sub-array have not all been characterized to the same extent.
 Partly this is due to manpower and time constraints.
 Additionally, as described in \sectionref{sec:g-psat}, the saturation power of the detectors is \abt{2} times higher than expected, which means that only some detectors can be driven into the normal state using bias current alone --- even under optical load --- and then only at bath temperatures very close to $T_c$.
 In particular, none of the detectors can be driven normal at the operating bath temperature for the array of \SI{1100}{\mK}.
@@ -20,7 +20,7 @@ These conditions are bath temperature $T_b = \SI{1100}{\mK}$ and detector bias $
 
 \begin{table*}[t]
 \centering
-\caption{Summary of measurements made on first 251-detector subarray}
+\caption{Summary of measurements made on first 251-detector sub-array}
 \label{tab:measurements}
 \begin{tabular}{p{2.5in} l p{2.5in}}
 \toprule
@@ -192,7 +192,7 @@ The upper right plot shows the same data, but transformed into \TES\ Joule power
 As applied heater current decreases, the Joule power at the start of the transition decreases.
 In the lower left, the Joule power at $0.99R_{n}$ is plotted vs applied heater current.
 A fit to \eqnref{eqn:ch3-rhtr-fit} is also plotted.
-Finally, the lower right plot show the $R$ vs $P_J$ plots after the heater power has been added to each curve.
+Finally, the lower right plot shows the $R$ vs $P_J$ plots after the heater power has been added to each curve.
 This plot shows that the powers are equalized very high in the transition, where the assumption of Joule power dependent only on \TES\ resistance holds.
 It also shows that this assumption breaks down deeper in the transition.
 
@@ -247,7 +247,7 @@ A fit was then performed to \eqnref{eqn:teff-from-tau}:
 \begin{equation} \label{eqn:tau-nat-fit}
   \tau_{meas} = \tau - \tau \mathcal{K} (I_{bias} \delta I).
 \end{equation}
-In this fit, $\tau_{meas}$ is considered the dependent variable, the product $(I_{bias} \delta I)$ is the independent variable, and both $\tau$ and $\mathcal{K}$ are fit for.
+In this fit, $\tau_{meas}$ is considered the dependent variable, the product $(I_{bias} \delta I)$ is the independent variable, and the variables that are fit for are $\tau$ and $\mathcal{K}$.
 
 \figref{fig:tau-nat-plots} shows an example of fitting to \eqnref{eqn:tau-nat-fit}, and the measured values of $\tau$ are listed in \tableref{tab:basic-det-props}.
 
@@ -324,7 +324,7 @@ The reason for this discrepancy is not known.
 
 Knowledge of $R_{htr}$ allows a direct measurement of the DC responsivity and $\tau_{eff}$ for the seven detectors with heaters.
 Steps in heater bias current were applied to these detectors under \SOC.
-The step size was made small so as the keep the detector response linear, and the response to many steps was averaged together to reduce noise.
+The step size was made small so as to keep the detector response linear, and the response to many steps was averaged together to reduce noise.
 The result was fit to \eqnref{eqn:htr-step-resp-high-time}:
 \begin{equation} \label{eqn:ch7-heater-step-trans}
   \delta I(t) = - \delta P_{htr} s_I(0) (1 - e^{-t/\tau_{eff}}).
@@ -374,10 +374,10 @@ Detector &  $s_I(0)$ (\si{\per\uV}) & $\tau_{eff}$ (\si{\ms}) & $R$ (\si{\mOhm})
 
 As described in \sectionref{sec:lin-tes-eqn}, steps in the applied bias current can be used to measure \Loop, $\beta_I$ and $R$ for a detector.
 In order to make this measurement, the data acquisition rate must be fast enough to track the fast electrical response of the \TES.
-In addition, the servo roll-off must be either fast enough to not affect the electrical response, or the effect of the servo roll-off must be included in the fit.
+In addition, the servo roll-off must be either fast enough not to affect the electrical response, or the effect of the servo roll-off must be included in the fit.
 
 I took measurements at \SI{15625}{\hertz}, which is fast enough to track the electrical response.
-I found that the servo roll-off too slow to be ignored for many detectors, so the function to be fit to is \eqnref{eqn:bias-step-resp} after being passed through a single pole lowpass filter with time constant $\tau_{servo}$; $\tau_{servo}$ is thus one of the parameter to be fit.
+I found that the servo roll-off was too slow to be ignored for many detectors, so the function to be fit to is \eqnref{eqn:bias-step-resp} after being passed through a single pole lowpass filter with time constant $\tau_{servo}$; $\tau_{servo}$ is thus one of the parameters to be fit.
 The data was taken at bias \DAC\ values of 25000, 26000, 27000, 28000, 29000, 30000, 31000 and 32000.
 
 \figref{fig:ch7-bias-step-plots} and \figref{fig:ch7-bias-step-results} show the results of these measurements for the four detectors on column 0 with good heaters.
@@ -415,7 +415,7 @@ At some bias points a damped oscillatory response is present on top of the \eqnr
 
 Once values for \Loop, $\beta_I$ and $R$ are known, the \DC\ responsivity $s_I(0)$ and $\tau_{eff}$ can be calculated from \eqnref{eqn:si-full} and \eqnref{eqn:teff} respectively.
 To check the accuracy of these calculations, I also measured the response of the detectors to steps in applied heater power at the same bias points for these four detectors.
-The results of these measurements, as well the ratio of the calculated to measured values, are shown in \figref{fig:ch7-heater-step-pred-plots}.
+The results of these measurements, as well as the ratio of the calculated to measured values, are shown in \figref{fig:ch7-heater-step-pred-plots}.
 The agreement between the calculated and measured values is good, indicating that response to detector bias steps can be used to predict $s_I(0)$ and $\tau_{eff}$ with good accuracy.
 This is important because only a few detectors have working heaters, making direct measurements of $s_I(0)$ and $\tau_{eff}$ impossible for most detectors.
 
@@ -440,7 +440,7 @@ Comparison of predicted and measured $s_I(0)$ for the same detectors.
 Bias steps were also taken for all working detectors at \SOC.
 \figref{fig:ch7-all-loop-plots} summarizes these measurements of \Loop, $\beta_I$, and $R$, both in terms of histograms for each parameter as well as scatter plots showing covariance between them.
 \figref{fig:ch7-teff-si-pred} shows histograms of the resulting predictions for $\tau_{eff}$ and $s_I(0)$.
-\SI{78}{\percent} of the working detectors have $\tau_{eff} < \SI{2}{ms}$
+\SI{78}{\percent} of the working detectors have $\tau_{eff} < \SI{2}{ms}$.
 %xxx comment on this speed compared to required.
 
 \begin{figure*}
@@ -479,12 +479,12 @@ The common mode signal is evident in these plots, and is much stronger than the 
 The upper right plot shows the same detector timestreams after removal of the mean of all ``good'' timestreams for columns 0 and 1 (the only columns which were biased for this test).
 The large reduction of $1/f$ noise is evident in this plot.
 The lower left plot shows direct evidence for this via the current noise power spectral density both before and after subtracting the common mode.
-Also plotted is the power spectral density after subtracting first the common mode and then the best-fit 4th order polynomial from the raw detector timestream
+Also plotted is the power spectral density after subtracting first the common mode and then the best-fit 4th order polynomial from the raw detector timestream.
 Subtracting the 4th order polynomial does reduce noise at very low frequencies, but the effect is small.
 
 The power spectral density plot has two important features.
 First, a strong noise peak is located at \SI{1.411}{\Hz}.
-This is caused by the \abt{\SI{1.4}{\Hz}} cycle of the \PTC; the physical mechanism could either by microphonic pickup of the vibrations caused by the \PTC\ cycle, or actual variation in bath temperature induced by the cycle.
+This is caused by the \abt{\SI{1.4}{\Hz}} cycle of the \PTC; the physical mechanism could either be microphonic pickup of the vibrations caused by the \PTC\ cycle, or variation in bath temperature induced by the cycle.
 This signal can be removed either through a common-mode subtraction scheme or a notch filter.
 Second, the detector noise signal is unaffected by the common mode signal at frequencies faster than \SI{2}{\Hz}.
 Because the frame rate of the video system is 6 FPS or faster, this indicates that the only impact of the strong common-mode noise signal on videos is the need to account for a time-varying detector offset.
@@ -525,7 +525,7 @@ Raw timestream for \RCm{29}{1}, after conversion to an equivalent bath temperatu
 
 Some \TES\ detectors have been prone to microphonic pickup.
 The earliest version of the cryostat used for this project used a Gifford-McMahon (\GM) cryocooler, which vibrates the cryostat significantly more than a \PTC\ does.
-Prototype detectors had significantly higher noise levels with the \GM\ cooler running than when it was off; in addition the detector noise could be directly increased by striking the side of the cryostat with a soft mallet while the \GM\ cooler was turned off.
+Prototype detectors had significantly higher noise levels with the \GM\ cooler running than when it was off; in addition, the detector noise could be directly increased by striking the side of the cryostat with a soft mallet while the \GM\ cooler was turned off.
 I interpreted this behavior as evidence for microphonic pickup, and as a result replaced the \GM\ cooler with a \PTC.
 
 To check whether microphonic pickup was present for the production detectors and the \PTC, I took noise data both with the \PTC\ running and turned off.
@@ -575,7 +575,7 @@ The average aliased noise is \SI{14}{\percent}, but some detectors have statisti
 
 The \MCE\ can be configured to apply a 4-pole digital lowpass filter to the \SI{15625}{\Hz} data stream \cite{mce_team_digital_????}.
 An appropriate choice of the cutoff frequency for this filter can greatly reduce aliased noise.
-I have not yet implemented this filter, but plan to do for future operation of the system.
+I have not yet implemented this filter, but plan to do so for future operation of the system.
 
 \begin{figure*}
   \centering
@@ -612,7 +612,8 @@ Several important features are visible in these plots.
 First, \RCm{30}{1} shows several noise lines, the origin of which is not understood.
 Second, for all four detectors the spread of noise levels in the \SIrange{1}{20}{\hertz} is much smaller when referred to power absorbed on the bolometer than in terms of current noise.
 This is the expected behavior for a noise source that adds power directly to the bolometer.
-Such noise will be constant across bias points when expressed in terms of power absorbed in the bolometer, but because of the changing detector responsivity with bias point will be different when expressed in terms of current.
+When expressed in terms of power absorbed in the bolometer, such noise will be the same at all bias points.
+But because detector responsivity changes with bias point, the noise level will be different when expressed in terms of current.
 Third, the shape of the noise curves are roughly as expected, with noise roll-offs happening at approximately the correct frequencies.
 Fourth, the measured noise levels are much higher than the predicted noise levels.
 \RCm{29}{1} is 2.4 times higher, \RCm{30}{1} is 7.4 times higher (dominated by the noise spikes), \RCm{31}{1} is 2.1 times higher and \RCm{32}{1} is 2.0 times higher.
@@ -620,7 +621,7 @@ Fourth, the measured noise levels are much higher than the predicted noise level
 The reason for this high level of noise is not known.
 Two possible culprits are a higher than expected level of photon noise or a much larger value of $G$ than was measured.
 Both of these possibilities would affect the noise spectrum in the same way, so they can not be distinguished.
-\figref{fig:ch7-trans-noise-model-plots} plots the measured noise spectrum for \RCm{31}{1} at \SOC, along with the basic noide model and a noise model that includes enough additional power noise to match the measured white noise level at low frequencies.
+\figref{fig:ch7-trans-noise-model-plots} plots the measured noise spectrum for \RCm{31}{1} at \SOC, along with the basic noise model and a noise model that includes enough additional power noise to match the measured white noise level at low frequencies.
 This could be due to a value of $G$ that in reality is 5.3 times higher than what was measured, or a photon noise level that is 3.2 times higher than predicted.
 
 One problem with explaining the noise spectra this way is that the measured spectrum shows a shelf at \SIrange{100}{1000}{\hertz} which is not present in any of the models.
@@ -628,10 +629,11 @@ A second problem is that it is difficult to understand how the measured value of
 Excess photon noise seems a more likely explanation, and could be due to \IR\ power leaking onto the detectors.
 Even a small amount of \IR\ power can increase noise levels through the $\nu$ factor in \eqnref{eqn:photon-noise}.
 It is also possible that a much higher level in-band optical power is falling on the detector than predicted.
-This would both increase the photon noise directly, as well as increasing the predicted thermal fluctuation noise because of the link between assumed optical power and my measurements of $G$ and $T_c$ as discussed in \sectionref{sec:g-psat}.
+This would both increase the photon noise directly, and increase the predicted thermal fluctuation noise because of the link between assumed optical power and my measurements of $G$ and $T_c$ as discussed in \sectionref{sec:g-psat}.
 
 Another possible explanation is a poor calibration of the readout system, so that the ``real'' current noise is \abt{2} times lower than measured.
-However, this would reduce the measured values of $R_{sh}$ and $L_{ny}$ by a factor of $2^2=4$; as the design values for these were close to the measured values, and these design values have been confirmed by measurements for other interface chips of the same design\footnote{John Appel, personal communication}. 
+However, this would reduce the measured values of $R_{sh}$ and $L_{ny}$ by a factor of $2^2=4$.
+This is unlikely, because the measured values are close to the design values, and these design values have been confirmed by measurements of other interface chips of the same design\footnote{John Appel, personal communication}.
 
 All this points to the conclusion that the high level of detector noise is real, but we do not yet have a full explanation for the high values.
 

@@ -23,8 +23,8 @@
   \begin{tikzpicture}[trim axis left]
 	\begin{loglogaxis}[xmin=1,
         legend pos=south west, 
-		title={Detector Noise Modelling (\RCm{31}{1}, 27k bias)},
-		xlabel={Frequency (\si{\hertz})}, ylabel={Detector Noise (\Pnoise{})} ]
+		title={Detector Noise Modeling (\RCm{31}{1}, 27k bias)},
+		xlabel={Frequency (\si{\hertz})}, ylabel={Detector Noise $\left( \pnoise \right)$} ]
 	  \addplot+[mark=none] table[x=f, y=Pxx_pow27k]{../data/ch7-bias-step-noise-r31.dat};
       \addlegendentry{Data}
 	  \addplot+[mark=none] table[x=f,y=Pxx_pow27k]{../data/ch7-bias-step-noise-model-r31.dat};
