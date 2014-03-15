@@ -1,5 +1,49 @@
 \chapter{Summary and Future Work} \label{c:summary}
 
-\begin{itemize}
-\item better cryostat/mirror alignment
-\end{itemize}
+This thesis has described the motivation for, the design of, and the operation of a \Imager intended for concealed weapons detection.
+The system uses superconducting Transition Edge Sensor (\TES) bolometer to detect the \SI{350}{\GHz} light, and the first of four planned 251-detector sub-arrays has been installed into the system.
+As currently configured the system focuses at \SI{17}{\m}.
+The spatial resolution is close to the deign value of \SI{1.4}{\cm}, but the beams have an elliptical shape rather then the predicted circular.
+Although the optical efficiency is half of the design value, and detector noise is twice (xxx check!) the design value, the system is still works well, and has been used to take video images that reveal the presence of a knife concealed under a cotton shirt.
+At 6 frames per second, observing a $xxx \times xxx$ field of view with \SI{1}{\cm} pixels, the Noise Equivalent Temperature Difference (\NETD) of video frames observing a uniform temperature distribution is \SI{100}{\mK}.
+This meets the requirements on \NETD\ outlined in \sectionref{sec:ch1-netd-reqs} for challenging passive imaging scenarios.
+Video images of realistic scenes have higher \NETD\ due to artifacts of the scanning process, but algorithmic approaches to eliminating these artifacts have been outlined.
+
+Future work on this system should focus on improving image processing algorithms, solving the existing technical problems and using the system to perform studies of passive imaging phenomenology.
+Image processing was addressed in \sectionref{sec:ch8-algo}.
+
+There are three technical problems with the system that should be addressed: the elliptical beams, the low optical efficiency, and the high detector noise.
+It is not known whether the beam ellipticy is caused by a problem inside the cryostat --- such as poor alignment between detectors and feedhorns --- or outside the cryostat (such as poor alignment of the cryostat and beams with primary and secondary mirror.
+One approach for distinguishing between these two possibilities is to means the beam shapes immediately outside the cryostat window.
+Manufacturing errors in one or more of the optical components is also a possibility.
+
+Solving the poor optical efficiency requires understanding where in the optical chain the efficiency loss happens.
+A first step towards understand this would be to measure the optical efficiency at the window of the cryostat by chopping between warm and cold loads placed immediately outside the window.
+This measurement would help to understand whether the optical power is lost as a result of spilling off the optics (in which case the efficiency is expected to be higher than that measured at the far-field focal plane) or whether it is lost inside the cryostat.
+Careful measurement of the far-field optical efficiency of all working detectors might reveal trend across the focal plane, which could be illuminating.
+Finally, a measurement of the optical load on the detectors could also help to understand the poor optical efficiency.
+
+Determining the source of the high detector noise could be more challenging.
+If the noise drops significantly when the cryostat is closed optically, that will be a strong indication that the problem is higher than predicted photon noise.
+But because the optical efficiency is poor, this photon noise would likely be caused by stray light reaching the detectors.
+Eliminating stray light is a good idea in any case, so the \SI{1}{\K} focal plane should be checked carefully for this.
+
+If high noise persists when the cryostat is optically closed, that will be a sign that the noise originates in the detectors.
+Possible problems could be dangling heat capacities or other non-isothermal behavior of the detectors.
+
+A second 251-detector sub-array was fabricated simultaneously with the sub-array that is currently installed in the \Imager.
+This sub-array was designed to have a $G$ value xxx percent lower than the sub-array that is currently installed.
+Installation of this sub-array will allow comparisons between the two sub-arrays, which might lead to insights about the missing optical efficiency and high noise.
+
+Installation of the second sub-array will also allow better performance of the system.
+The additional detectors could be used to reduce image \NETD\, or increase the field of view, or increase the video frame rate, or some combination of these.
+
+Studies of phenomenology will focus on different sizes, shapes, and types of concealed objects, combined with different types of clothing.
+Because the \Imager\ has been built by a team with little prior experience in the area of passive security imaging, we should identify partners among potential users of standoff passive imaging systems.
+This will help us to ensure that the tests that we carry out will lead to results that are applicable to realistic operational scenarios.
+
+The \Imager described in this thesis demonstrates that \SI{100}{\mK} \NETD\ images at \SI{17}{\m} standoff distances are achievable.
+Following resolution of the remaining technical issues, and investigating of imaging phenomenology, we will be ready to design a second-generation system.
+
+xxx need to say something about ways to simplify, make cheapers. MKIDs, fresnel lens, polarization, multi-band. need better organization for this chapter. Also need a good concluding paragraph.
+
