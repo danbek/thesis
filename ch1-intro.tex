@@ -106,7 +106,7 @@ This phenomena acts as a kind of noise in active images, and in practice the sig
 
 The active imaging community has long been aware of these issues and is working actively to address them.
 One recent approach uses modulated multi-moded illumination to avoid these issues \cite{petkie_multimode_2012,patrick_elimination_2012}.
-Another approach is to use the active system as a radar system rather than an intensity detector.
+Another approach is to use active illumination to build a radar system.
 Because the radar system detects phase differences rather than intensity differences, it should in theory be less susceptible to specular reflections and speckle. %xxx check with cooper paper.
 
 The active imaging system that at this time is closest to producing video-rate imaging largely free of specular-reflection and speckle artifacts is the \SI{340}{\GHz} radar system developed at the Jet Propulsion Laboratory \cite{cooper_thz_2011}.
@@ -115,7 +115,7 @@ This system operates at standoff distances of \SI{16}{\m} achieving a spatial re
 \section{Required Image Noise for Passive Imaging} \label{sec:ch1-netd-reqs}
 
 Passive imaging does not suffer from the problems of specular reflection and speckle.
-Rather, the primary challenge for passive imaging is implementing sufficiently sensitive detectors to achieve low-noise images at video frame rates.
+Instead, the primary challenge for passive imaging is implementing sufficiently sensitive detectors to achieve low-noise images at video frame rates.
 One commonly used figure-of-merit for noise in a passive imaging system is the Noise Equivalent Temperature Difference (\NETD) of the image, defined as the difference in the temperature distribution at the observation target which can not be distinguished from noise in the image.
 I was unable to find a detailed study of the required \NETD\ for detection of concealed weapons or other contraband, but the ``lore'' of the field is that for non-metallic concealed threats in an indoor environment, image signals are \SIrange{0.5}{1.0}{\K}, with \SI{200}{\mK} or  better \NETD\ required for detection.
 The remainder of this section justifies this lore quantitatively.
