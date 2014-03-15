@@ -9,21 +9,22 @@
 
 For over thirty years the millimeter and submillimeter-wavelength spectrum has been the subject of intense interest for military and security imaging applications.
 The reason for this interest is that the spectral region from \SIrange{100}{1000}{\GHz} offers a good compromise between transmission through obscuring materials (favoring lower frequencies) and spatial resolution (favoring higher frequencies) \cite{kruse_why_1981}.
-``Obscuring'' here could refer to dust or fog for e.g. helicopter landing assist systems, or clothing for people screening systems.
-This interest has helped to drive a long line of technological advancement in sources, detectors, and other technologies at these wavelengths \cite{popovic_thz_2011,rogalski_terahertz_2011,rieke_detection_2003}.
+``Obscuring'' here could refer to dust or fog for e.g. helicopter landing assist systems, or clothing for concealed weapons detection.
+This interest has helped to drive technological advances in sources, detectors, and other technologies at these wavelengths \cite{popovic_thz_2011,rogalski_terahertz_2011,rieke_detection_2003}.
 This advancement has taken place in both ``active'' imaging, in which an observation target is illuminated by light and the reflections from that target are detected, and ``passive'' imaging, in which the target's thermal emissions are detected.
 
 The millimeter and submillimeter astronomical community has also been interested in these wavelengths.
-In particular, the desire to make more and more detailed maps of the Cosmic Microwave Background (\CMB) radiation has driven this community to build instruments capable of higher and higher sensitivities.
+In particular, the desire to make more and more detailed maps of the Cosmic Microwave Background (\CMB) radiation has motivated this community to build instruments capable of higher and higher sensitivities.
 During the 1980's and early 1990's individual cooled bolometric detectors capable of achieving photon-noise-limited performance were developed.
 By 1994 it was clear that for astronomical applications the only way to increase sensitivity was to develop arrays of detectors, but at that time no technology for the production of monolithic arrays was yet available \cite{richards_bolometers_1994}.
 
 The development of voltage-biased superconducting Transition Edge Sensor (\TES) detectors enabled the development of large-scale cryogenic detector arrays \cite{irwin_application_1995}.
-These detectors are based on the use of thin superconducting films as the bolometer's thermometer element, and can fabricated at large scale using standard lithographic techniques.
-Their operation and advantages for array-scale operation are described in \chapterref{c:tes}.
+These detectors are based on the use of thin superconducting films as the bolometer's thermometer element, and can be fabricated at large scale using standard lithographic techniques.
+The basics of their operation and their advantages for passive imaging are described in \sectionref{sec:ch2-tes-basics} and \sectionref{sec:ch2-tes-passive}.
+\chapterref{c:tes} provides more details on their behavior and operation.
 To readout these detector arrays, several groups have developed \SQUID-based multiplexed readout systems.
 The last few decades have also seen advances in the development of mechanical cryocoolers capable of reaching liquid-helium temperatures, removing the need to transport liquid cryogens to the often remote locations that are used for ground-based millimeter and submillimeter astronomy.
-This entire suite of technology --- detectors, readout, and cryogenics --- is now mature and is routinely deployed on both ground and balloon-borne experiments in arrays containing up to 10,000 bolometric detectors \cite{holland_scuba-2:_2013}.
+This entire suite of technology~---~\TES\ detectors, multiplexed \SQUID\ readout, and cryogenics~---~is now mature and is routinely deployed on both ground and balloon-borne experiments in arrays containing up to 10,000 detectors \cite{holland_scuba-2:_2013}.
 
 The development of this technology offers new opportunities for passive imaging for security and other applications.
 Specifically, it is now possible to develop focal planes capable of video-rate imaging with temperature resolution of \SI{100}{\mK} or below.
@@ -40,12 +41,12 @@ The goal of this project is to generate video images at \SI{350}{\GHz}, and \cha
 \section{Security Imaging}
 
 The frequency range \SIrange{100}{1000}{\GHz} is attractive for detection of concealed weapons or contraband because common clothing materials have high transmission in this range \cite{bjarnason_millimeter-wave_2004}.
-In general, as shown in \figref{fig:ch1-clothes-atmos-trans}, transmission through clothing steadily decreases as frequency increases.
+As shown in \figref{fig:ch1-clothes-atmos-trans}, transmission through clothing steadily decreases as frequency increases.
 This trend tends to push systems toward lower frequencies.
 An example likely familiar to readers are the L3 ProVision systems operating at airports within the USA.
-These are ``holographic radar'' systems operating at ~\SI{30}{\GHz}, intended for close-range portal screening, and based on technology developed at the Pacific Northwest National Lab (PNNL) \cite{sheen_cylindrical_1998,mcmakin_dual-surface_2009}.
+These are ``holographic radar'' systems operating at ~\SI{30}{\GHz}, intended for close-range portal screening, and are based on technology developed at the Pacific Northwest National Lab (PNNL) \cite{sheen_cylindrical_1998,mcmakin_dual-surface_2009}.
 For applications in which it is acceptable to require individuals to pass through and pause at a particular location, these systems have excellent image quality.
-Although the ProVision system only takes still images with \abt{\SI{2}{s}} image acquisition time, similar portal screen systems with video-rate capabilities are also under development \cite{lyons_reflect-array_2013}.
+Although the ProVision system only takes still images with \abt{\SI{2}{s}} image acquisition time, similar portal screening systems with video-rate capabilities are also under development \cite{lyons_reflect-array_2013}.
 
 \begin{figure*}
 \centering
@@ -67,20 +68,21 @@ Although the ProVision system only takes still images with \abt{\SI{2}{s}} image
 
 But there are other applications and operational scenarios in which portal screening systems are not feasible.
 One example is detection of suicide bomb belts, a scenario in which is it desirable to make a detection while the person being observed is some distance away.
-Additionally, in these scenarios it is not reasonable to expect observation targets to be stationary, so video-rate imaging is also required.
+In these scenarios it is not always reasonable to expect observation targets to be stationary, so video-rate imaging is also required.
 These applications are generally referred to as ``standoff'' detection because the imaging system ``stands off'' some distance from the target being imaged.
-For these applications the choice of optical frequency is less clear than for portal imaging.
-As shown in \figref{fig:ch1-clothes-atmos-trans}, not only does transmission through clothing fall with increasing frequency, but transmission through the atmosphere does as well, although due to atmospheric windows and line features the trend is not monotonic.
-Nevertheless, it is clear that lower frequencies are better for transmission through the atmosphere.
 
-However, lower frequencies also imply worse spatial resolution for a fixed optical aperture size.
+For these applications the choice of optical frequency is less clear than for portal imaging, because an additional factor to consider is spatial resolution of the resulting images.
+The lower frequencies favored by clothing transmission also imply worse spatial resolution for a fixed optical aperture size.
 The angular resolution $\theta$ achievable by an aperture of diameter $D$ observing at wavelength $\lambda$ is, by the Raleigh criterion \cite{born_principles_1999},
 \begin{equation} \label{eqn:ch1-raleigh}
   \theta \sim 1.2 \lambda / D.
 \end{equation}
 For portal screening this is not prohibitive; the L3 Provision system has an effective aperture of \SI{1.7}{\m} \cite{mcmakin_dual-surface_2009}.
 But for standoff distances of \SI{10}{\m} or more, a system operating at \SI{30}{\GHz} would need an aperture of size \abt{\SI{8}{\m}} in order to achieve \SI{1}{\cm} resolution.
-This strongly drives the choice of frequency for standoff detection to higher frequencies.
+This strongly drives the choice of frequency for standoff detection to frequencies about \SI{100}{\GHz}.
+
+A final factor to consider in the choice of operating frequency is atmospheric transmission.
+As shown in \figref{fig:ch1-clothes-atmos-trans}, not only does transmission through clothing fall with increasing frequency, but transmission through the atmosphere does as well, although due to atmospheric windows and line features the trend is not monotonic.
 
 Security imaging systems for standoff applications broadly fall into two categories: ``active'' and ``passive'' \cite{appleby_standoff_2007,appleby_passive_2004}.
 Active systems actively illuminate the target to be images with light and use the reflected light to obtain an image.
@@ -206,8 +208,8 @@ The question remains as to what technology is capable of reaching this level of 
 \section{Passive Imaging Technology}
 
 One option for the detection of light at \SIrange{100}{1000}{\GHz} is the use of incoherent direct detectors, including photo-diodes and other photon detectors as well as bolometers.
-These devices can all be operated to detector optical power; they are sensitive to the square of the incident electromagnetic field.
-They can be characterized by a Noise Equivalent Power (\NEP), defined as the detected signal power equal to standard deviation of the noise in a \SI{1}{\Hz} post-detection bandwidth.
+These devices are square-law detectors, sensitive to square of the incident electromagnetic field, i.e. to incident optical power.
+They can be characterized by a Noise Equivalent Power (\NEP), defined as the detected signal power equal to standard deviation of the detector noise in a \SI{1}{\Hz} post-detection bandwidth.
 To convert the \NEP\ of the detectors to an \NETD\ for an image we must first have a conversion between detected optical power and source temperature.
 For a detector sensitive to $M$ spatial modes of the electromagnetic field and with total optical efficiency $\eta_{tot}$, the optical power detected per unit optical frequency is given by the Planck law in the form \cite{richards_bolometers_1994}
 \begin{equation} \label{eqn:ch1-planck}
@@ -268,7 +270,8 @@ Microsemi Corporation, Aliso Viejo, CA. This technology was acquired from Brijot
 is another commercial system operating at \SI{90}{\GHz}.
 This system achieve \SI{5}{\cm} resolution at 4--12 frames per second at standoff distances of a few meters.
 \NETD\ is not quoted, but is presumably not better than \SI{1}{\K}.
+The performance of these two room-temperature imaging systems is listed in \tableref{tab:ch2-sys-compare}, along with other cryogenic passive imaging system and the \Imager\ described in this thesis.
 
 The conclusion is that to achieve sufficient \NETD\ and spatial resolution for passive standoff imaging at distances of \SI{10}{\m} and greater, room temperature detectors to-date do not have sufficient sensitivity.
-For this reason the \Imager uses \TES\ bolometers operating at cryogenic temperatures.
+For this reason the \Imager\ uses \TES\ bolometers operating at cryogenic temperatures.
 The next chapter give the specifications for our system and explains how \TES\ bolometer arrays meet those specifications.
