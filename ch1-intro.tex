@@ -21,7 +21,7 @@ By 1994 it was clear that for astronomical applications the only way to increase
 The development of voltage-biased superconducting Transition-Edge-Sensor detectors enabled the development of large-scale cryogenic detector arrays \cite{irwin_application_1995}.
 These detectors are based on the use of thin superconducting films as the bolometer's thermometer element, and can fabricated at large scale using standard lithographic techniques.
 Their operation and advantages for array-scale operation are described in \chapterref{c:tes}.
-To readout these detector arrays, several groups have developed \SQUID-based multiplexed readout systems \cite{tdm,berkeley fdm, europe}.
+To readout these detector arrays, several groups have developed \SQUID-based multiplexed readout systems.
 The last few decades have also seen advances in the development of mechanical cryocoolers capable of reaching liquid-helium temperatures, removing the need to transport liquid cryogens to the often remote locations that are used for ground-based millimeter and submillimeter astronomy.
 This entire suite of technology --- detectors, readout, and cryogenics --- is now mature and is routinely deployed on both ground and balloon-borne experiments in arrays containing up to 10,000 bolometric detectors \cite{holland_scuba-2:_2013}.
 
@@ -317,7 +317,9 @@ No images or \NETD\ estimates are publicly available for this system.
 \caption[Table summarizing capabilities of different video imaging systems]{
   Table summarizing capabilities of different security video imaging systems.
   The values for the MilliLab II and IPHT Jena II systems are predicted, not measured, as measurements of the performance of these systems have not yet been published.
-  As discussed in \sectionref{sec:ch8-noise-model}, the \NETD\ for the \Imager\ is based on a ``flat field'' video.}
+  As discussed in \sectionref{sec:ch8-noise-model}, the \NETD\ for the \Imager\ is based on a ``flat field'' video.
+  Values labeld ``N/A'' are unavailable.
+}
 \label{tab:ch1-sys-compare}
 \begin{tabular}{lccccccc}
 \toprule
@@ -331,7 +333,7 @@ System &
  \specialcell{\NETD\ \\ (\si{\mK})} \\
 \midrule
 ThruVision & $250 \pm 20$ & 8 & 6 & 5.0 -- 15.0 & $1 \times 1$ (at \SI{10}{\m}) & N/A & 1000 \\
-Microsemi GEN 2 & $90 \pm xxx$ & N/A & 4 -- 12 & \abt{3} & N/A & 5 & N/A \\
+Microsemi GEN 2 & $90 \pm$ N/A & N/A & 4 -- 12 & \abt{3} & N/A & 5 & N/A \\
 MilliLab I & 200 -- 1000 & 64 & 6 & 5.0 & $4 \times 2$ & 4.0 & 600 \\
 MilliLab II & 200 -- 1000 & 128 & 6 & 5.0 & $2 \times 1$ & 2.5 & 400 \\
 IPHT Jena II & $350 \pm 40$ & 20 & 10 & 8.5 & \SI{1}{\m} diam. & 1.7 & 400 \\
