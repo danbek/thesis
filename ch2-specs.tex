@@ -73,11 +73,11 @@ With an appropriately chosen $C$ and absorbing material, a \TES\ sensor can also
 
 The first demonstration of a \TES\ bolometer was in 1941 \cite{andrews_attenuated_1942}, and the first demonstration using Al (the material used for the detectors in this thesis) was in 1977 \cite{clarke_superconductive_1977}.
 But operation of a \TES\ detector requires keeping the temperature of the \TES\ within the narrow transition, which proved challenging.
-An increase in the temperature of the \TES\ (which could be caused be either an increase in absorbed optical power for a bolometer or by the absorption of a partical for a calorimeter) causes a rise in the temperature of the \TES.
+An increase in the temperature of the \TES\ (which could be caused be either an increase in absorbed optical power for a bolometer or by the absorption of a particle for a calorimeter) causes a rise in the temperature of the \TES.
 When current-biased this rise in temperature causes an increase in $I^2 R$ Joule heating, causing the temperature of the detector to rise further, leading to instability.
 Thus, \TES\ bolometers did not come into widespread use until the development of the voltage-biased \TES\ sensors \cite{irwin_application_1995} coupled with Superconducting Quantum Interference Device (\SQUID) readout.
 When voltage-biased, a rise in \TES\ temperature leads to a decrease in Joule heating, which lowers the temperature of the device.
-With a sufficiently steep transition, this electro-thermal feedback process allows any change in incident power to be exactly matched by an opposite change in Joule heating, so that the device self-stabilizes in the normal-to-superconducting transition at a constant temperature.
+With a sufficiently steep transition, this electrothermal feedback process allows any change in incident power to be exactly matched by an opposite change in Joule heating, so that the device self-stabilizes in the normal-to-superconducting transition at a constant temperature.
 Because the device is voltage-biased, a current amplifier is required for readout.
 This is accomplished through the use of \SQUIDs, which are very sensitive magnetometers and so can be used to detect changes in current.
 
@@ -94,11 +94,12 @@ As described in \sectionref{sec:ch5-predicted-noise}, the expected \NETD\ for th
 
 An important aspect of the advantages of \TES\ detector for passive imaging is the ability to put large numbers of then onto focal planes.
 This is due to two factors.
-First, they can be fabricated using standard lithographic cleanroom techniques, which allows development of array-scale focal planes.
+First, they can be fabricated using standard lithographic clean-room techniques, which allows development of array-scale focal planes.
 Second, the self-stabilizing behavior of voltage-biased \TES\ detectors is critical for array-scale operation of \TES\ detectors because it greatly relaxes requirement on uniformity across a wafer in the fabrication process.
 
 Reading out a large number of detectors individually requires an even larger number of wires, which complicates cryogenic designs.
 An important part of the success of \TES\ detector arrays for millimeter and submillimeter astronomy has been the development of multiplexed \SQUID\ readout systems.
+%xx\cite{tdm,berkeley fdm, europe}
 The detailed operation of these systems is not described in this thesis.
 The \Imager\ uses a time-division multiplexed readout system, the basics of which are described in \sectionref{sec:det-readout}.
  
