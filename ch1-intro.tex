@@ -31,7 +31,7 @@ This thesis describes the design and development of the \NIST\ \Imager, a system
 
 An outline of this thesis is as follows.
 This chapter provides an overview of passive millimeter and submillimeter wavelength imaging for security applications, and motivates the need for detectors operating at cryogenic temperatures.
-\chapterref{c:specs} describes the specification for the \Imager\ and gives an overview of the approach used to meet those specifications.
+\chapterref{c:specs} describes the specification for the \Imager\ and gives an overview of the approach used to meet those specifications, as well as a brief summary of other passive imaging systems that use cryogenic detectors.
 The overall design of the system is described in \chapterref{c:sys-design} and the design of the detectors and focal plane is covered in \chapterref{c:det-design}.
 \chapterref{c:det-array} describes measurements taken to characterize the first of four planned 251-detector sub-arrays.
 The goal of this project is to generate video images at \SI{350}{\GHz}, and \chapterref{c:imaging} describes how the \Imager\ is used to do this, including quantitative evaluation of image quality.
@@ -270,5 +270,5 @@ This system achieve \SI{5}{\cm} resolution at 4--12 frames per second at standof
 \NETD\ is not quoted, but is presumably not better than \SI{1}{\K}.
 
 The conclusion is that to achieve sufficient \NETD\ and spatial resolution for passive standoff imaging at distances of \SI{10}{\m} and greater, room temperature detectors to-date do not have sufficient sensitivity.
-For this reason several groups working on this problem have turned to cooled detector technology.
-The next section provides an overview of the efforts in this direction to-date.
+For this reason the \Imager uses \TES\ bolometers operating at cryogenic temperatures.
+The next chapter give the specifications for our system and explains how \TES\ bolometer arrays meet those specifications.
