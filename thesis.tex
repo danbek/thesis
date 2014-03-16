@@ -31,10 +31,14 @@
 \numberwithin{table}{chapter}
 
 % Bibliography
-\usepackage[backend=biber,
+% For more bibliography format stuff, see http://www.khirevich.com/latex/biblatex/
+\usepackage[
+    backend=biber,
     style=numeric-comp,
     sorting=none,
-    url=false]{biblatex}
+    url=false,
+    maxbibnames=100
+    ]{biblatex}
 \addbibresource{thesis.bib}
 
 %%% BEGIN DOCUMENT
