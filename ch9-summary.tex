@@ -1,6 +1,6 @@
 \chapter{Summary and Future Work} \label{c:summary}
 
-This thesis has described the motivation for, the design of, and the operation of a \Imager intended for concealed weapons detection.
+This thesis has described the motivation for, the design of, and the operation of a \Imager\ intended for concealed weapons detection.
 The system uses superconducting Transition Edge Sensor (\TES) bolometer to detect the \SI{350}{\GHz} light, and the first of four planned 251-detector sub-arrays has been installed into the system.
 As currently configured the system focuses at \SI{17}{\m}.
 The spatial resolution is close to the deign value of \SI{1.4}{\cm}, but the beams have an elliptical shape rather then the predicted circular.
@@ -9,11 +9,13 @@ At 6 frames per second, observing a $xxx \times xxx$ field of view with \SI{1}{\
 This meets the requirements on \NETD\ outlined in \sectionref{sec:ch1-netd-reqs} for challenging passive imaging scenarios.
 Video images of realistic scenes have higher \NETD\ due to artifacts of the scanning process, but algorithmic approaches to eliminating these artifacts have been outlined.
 
+\section{Future Work on This System}
+
 Future work on this system should focus on improving image processing algorithms, solving the existing technical problems and using the system to perform studies of passive imaging phenomenology.
 Image processing was addressed in \sectionref{sec:ch8-algo}.
 
 There are three technical problems with the system that should be addressed: the elliptical beams, the low optical efficiency, and the high detector noise.
-It is not known whether the beam ellipticy is caused by a problem inside the cryostat --- such as poor alignment between detectors and feedhorns --- or outside the cryostat (such as poor alignment of the cryostat and beams with primary and secondary mirror.
+It is not known whether the beam ellipticy is caused by a problem inside the cryostat (such as poor alignment between detectors and feedhorns) or outside the cryostat (such as poor alignment of the cryostat and beams with primary and secondary mirror).
 One approach for distinguishing between these two possibilities is to means the beam shapes immediately outside the cryostat window.
 Manufacturing errors in one or more of the optical components is also a possibility.
 
@@ -42,18 +44,39 @@ Studies of phenomenology will focus on different sizes, shapes, and types of con
 Because the \Imager\ has been built by a team with little prior experience in the area of passive security imaging, we should identify partners among potential users of standoff passive imaging systems.
 This will help us to ensure that the tests that we carry out will lead to results that are applicable to realistic operational scenarios.
 
-The \Imager described in this thesis demonstrates that \SI{100}{\mK} \NETD\ images at \SI{17}{\m} standoff distances are achievable.
+The \Imager\ described in this thesis demonstrates that \SI{100}{\mK} \NETD\ images at \SI{17}{\m} standoff distances are achievable.
 Following resolution of the remaining technical issues, and investigating of imaging phenomenology, we will be ready to design a second-generation system.
 
-xxx need to say something about ways to simplify, make cheapers. MKIDs, fresnel lens, polarization, multi-band. need better organization for this chapter. Also need a good concluding paragraph.
+\section{Polarization and Multi-band Imaging}
 
-\section{Next-Generation System}
+Following phenomenology studies using the existing system, there were will be an opportunity to use it's existing infrastructure to test polarization-sensitive detectors as well as detectors that are sensitive to more than one color band.
+\TES\ detector technology already exists that could quickly be deployed into the existing system for testing.
+
+Development of polarization-sensitive \TES\ bolometers has been driven by the desire to measure the polarization of the Cosmic Microwave Background radiaion \cite{decadel?}.
+Polarization-sensitive focal planes have been installed in a number of telescopes and are currently taking data \cite{xxx}.
+\figref{xxx} shows a photograph of a polarization-senstive detector developed by a collaboration that the author of this thesis has taken part in.
+Corrugated feedhorns are use to funnel light onto a pair of orthogonal ``fins'' which couple light onto microsrip, which then carry each polarization signal to its own bolometer.
+Coupling the signal onto the microstrip allow additional microwave processing to be applied to the signal.
+In the case of the detector shown, each polarization signal is split into two paths, one for each of two optical bands.
+This allows a single location of the focal plane to detector not only two polarizations, but also two colors.
+
+It is not clear whether polarization-sensitive detectors, or multi-color detectors, will provide advantages for passive security imaging.
+Reflected light will be polarized to some extent, but since the concealed objects are illuminated from all directions, one would expect the net polarization to be low.
+Nevertheless, there may be scenarios were uneven illumination is expected, and in such cases polariztaion may provide additional information.
+
+The primary advantage of multi-color detectors is that it allows higher optical bandwidth while avoiding atmospheric absorption lines.
+It may be that implementing band-stop filters could achieve the same benefit at lower cost.
+An intruging idea would be to attempt to use color information to identify different materials.
+For example, many explosive materials have absorption features in the \SIrange{0.6}{3}{\THz} region.
+Unfortunately most of these features are above \SI{1}{\THz}, where clothing and the atmosphere are much less transparent than at \SI{350}{\GHz}.
+
+\section{Directions for Future Systems}
 
 Following resolution of the remaining technical issues, and investigating of imaging phenomenology, we will be ready to design a second-generation system.
 Such a system would be designed with a specific operational scenario in mind, which would set requirements for standoff distance, resolution and image \NETD.
-But regardless of the details of the specifications, areas to focus on for such a system include size/portability, cost, and power requirements.
+But regardless of the details of the specifications, areas to focus on for such a system are likely to include size/portability and cost.
 
-The overall system size are set by the standoff distance and desired spatial resolution, which directly determine the size of the optical aperture via \eqnref{eqn:ch1-raleigh}.
+The overall system size is set by the standoff distance and desired spatial resolution, which directly determine the size of the optical aperture via \eqnref{eqn:ch1-raleigh}.
 Moving to higher frequencies can reduce the size of the required optical aperture, but at the cost of lower image contrast due to decreased transmission through clothing and the atmoshpere.
 Neverless, this trade-off may be worth it for some applications.
 There are no technical reasons why \TES\ bolometers could not work well at frequencies of \SI{1}{\THz}.
@@ -61,7 +84,7 @@ There are no technical reasons why \TES\ bolometers could not work well at frequ
 If the targetted application requires the aperture size to remain at \SI{1.3}{\m}, or even become larger, it may be disireable to use some other kind of focussing element than a monolithic mirror machined out of Al.
 Possibilities include segmented mirrors (which have proven very successful for larger apertures \cite{stp, act}) or large-diameter fresnel lenses.
 
-REducing the size of the optical aperture or moving to a fresnel lens will likely reduce the cost of the system.
+Reducing the size of the optical aperture or moving to a fresnel lens will likely reduce the cost of the system.
 Three other ways to potentially reduce cost are to eliminte the need for scanning, operate at a higher bath temperature, or migrate to a detector technology that is easier to fabricate.
 
 Eliminating the need for scanning will reduce cost by simplifying the design of the optical components and removing the need for motors to move those components.
@@ -69,9 +92,9 @@ But in order to maintain the same field of view, as well as ensure a Nyquist-sam
 More detectors directly increases the cost of the system.
 This could require more detector wafers to be manufactured, depending on the desired field of view, optical design, and target wavelength.
 Work on multiplexing techniquest capable of reading out xxx numbers of \TES\ detectors has begun \cite{xxx}, but this technology is not as mature as the \TDM\ readout system used for the \Imager.
-A careful cost analysis of all of thes factors will need to be performed.
+A careful cost analysis of all of these factors will need to be performed.
 
-Operating at higher bath temperatures can reduce cost if the new bath temperature can be achieved without the use of a secondary cooling system such as the \HE4-sorption refridgerator used for the \Imager.
+Operating at higher bath temperatures can reduce cost if the new bath temperature can be achieved without the use of a secondary cooling system such as the \He4-sorption refridgerator used for the \Imager.
 As described in \sectionref{sec:det-parm-choice}, it should be possible to make photon-noise-limited \TES\ bolometer operating at a bath temperature of \SI{3.6}{\K}.
 The ideal $T_c$ for this bath temperature would be \abt{\SI{6.5}{\K}}.
 It is now possible to make superconduting Titanium-Nitride films who's $T_c$ can be tuned to any point in the range xxx \cite{xxx}.
@@ -100,3 +123,7 @@ Developments over the next few years should soon make it clear whether cyogenic 
 xxx need a nice concluding sentence
 
 xxx - do I even mention that scanning is reqd because of need to Nyquist sample the focal plane? 
+
+
+
+
