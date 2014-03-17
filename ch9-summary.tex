@@ -5,7 +5,7 @@ The system uses superconducting Transition Edge Sensor (\TES) bolometer to detec
 As currently configured the system focuses at \SI{17}{\m}.
 The spatial resolution is close to the deign value of \SI{1.4}{\cm}, but the beams have an elliptical shape rather then the predicted circular.
 Although the optical efficiency is half of the design value, and detector noise is twice (xxx check!) the design value, the system still has sufficient sensitivity to take video images that reveal the presence of a knife concealed under a cotton shirt.
-At 6 frames per second, observing a $xxx \times xxx$ field of view with \SI{1}{\cm} pixels, the Noise Equivalent Temperature Difference (\NETD) of video frames observing a uniform temperature distribution is \SI{100}{\mK}.
+At 6 frames per second, observing a $\SI{0.78}{\m} \times \SI{0.55}{\m}$ field of view with \SI{1}{\cm} pixels, the Noise Equivalent Temperature Difference (\NETD) of video frames observing a uniform temperature distribution is \SI{100}{\mK}.
 This meets the requirements on \NETD\ outlined in \sectionref{sec:ch1-netd-reqs} for challenging passive imaging scenarios.
 Video images of realistic scenes have higher \NETD\ due to artifacts of the scanning process, but algorithmic approaches to eliminating these artifacts have been outlined.
 
@@ -15,7 +15,7 @@ Future work on this system should focus on improving image processing algorithms
 Image processing was addressed in \sectionref{sec:ch8-algo}.
 
 There are three technical problems with the system that should be addressed: the elliptical beams, the low optical efficiency, and the high detector noise.
-It is not known whether the beam ellipticy is caused by a problem inside the cryostat (such as poor alignment between detectors and feedhorns) or outside the cryostat (such as poor alignment of the cryostat and beams with primary and secondary mirror).
+It is not known whether the beam ellipticity is caused by a problem inside the cryostat (such as poor alignment between detectors and feedhorns) or outside the cryostat (such as poor alignment of the cryostat and beams with primary and secondary mirror).
 One approach for distinguishing between these two possibilities is to means the beam shapes immediately outside the cryostat window.
 Manufacturing errors in one or more of the optical components is also a possibility.
 
@@ -29,13 +29,14 @@ Determining the source of the high detector noise could be more challenging.
 If the noise drops significantly when the cryostat is closed optically, that will be a strong indication that the problem is caused by higher than predicted photon noise.
 Because the optical efficiency is poor, this photon noise would likely be caused by stray light reaching the detectors.
 Eliminating stray light is a good idea in any case, so the \SI{1}{\K} focal plane should be checked carefully for this.
-
-If high noise persists when the cryostat is optically closed, that will be a sign that the noise originates in the detectors.
-Possible problems could be dangling heat capacities or other non-isothermal behavior of the detectors.
+If high noise persists when the cryostat is optically closed, that will be a sign that the noise originates in the detectors, possibly due to dangling heat capacity.
 
 A second 251-detector sub-array was fabricated simultaneously with the sub-array that is currently installed in the \Imager.
-This sub-array was designed to have a $G$ value xxx percent lower than the sub-array that is currently installed.
+This sub-array was designed to have a $G$ value \SI{16}{\percent} lower than the sub-array that is currently installed.
 Installation of this sub-array will allow comparisons between the two sub-arrays, which might lead to insights about the missing optical efficiency and high noise.
+
+% low g - 80 um legs
+% hi g  - 67 um legs
 
 Installation of the second sub-array will also allow better performance of the system.
 The additional detectors could be used to reduce image \NETD, or increase the field of view, or increase the video frame rate, or some combination of these.
@@ -49,13 +50,31 @@ This will help us to ensure that the tests that we carry out will lead to result
 Following phenomenology studies using the existing system, there were will be an opportunity to use its existing infrastructure to test polarization-sensitive detectors as well as detectors that are sensitive to more than one optical band (i.e., multiple colors).
 Polarization-sensitive and multi-color \TES\ detector technology already exists that could quickly be deployed into the existing system for testing.
 
-Development of polarization-sensitive \TES\ bolometers has been driven by the desire to measure the polarization of the Cosmic Microwave Background radiaion \cite{decadel?}.
-Polarization-sensitive focal planes have been installed in a number of telescopes and are currently taking data \cite{xxx}.
-\figref{xxx} shows a photograph of a polarization-senstive detector developed by a collaboration that the author of this thesis is a part of.
+Development of polarization-sensitive \TES\ bolometers has been driven by the desire to measure the polarization of the Cosmic Microwave Background radiation.
+Polarization-sensitive focal planes have been installed in a number of telescopes and are currently taking data \cite{obrient_antenna-coupled_2012,austermann_sptpol:_2012,keating_ultra_2011,niemack_actpol:_2010,kusaka_modulation_2013}.
+\figref{fig:ch9-multi-chroic} shows a photograph of a polarization-sensitive detector developed by a collaboration that the author of this thesis is a part of \cite{datta_horn_2014}
 Corrugated feedhorns are use to funnel light onto a pair of orthogonal ``fins'' which couple light onto microstrip transmission lines, which then carry each polarization signal to its own bolometer to be detected.
 Coupling the signal onto microstrip allow additional microwave processing to be applied to the signal.
 In the case of the detector shown, each polarization signal is split into two paths, one for each of two optical bands.
 This allows a single feedhorn on the focal plane to detect not only two polarizations, but also two colors.
+
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{images/ch9-multi-chroic.jpg}
+\caption[Multi-color, polarization-sensitive detectors]{
+  A multi-color, polarization-sensitive detector.
+  This detector is sensitive to both polarizations in bands centered at \SI{90}{\GHz} and \SI{150}{\GHz}.
+  Light is captured by ring-loaded feedhorns.
+  On the left is a schematic of the feedhorns, in the middle is a cross-sectional photograph of a prototype feedhorns.
+  The feedhorns are assembled from micro-machined silicon wafers that are then gold-plated.
+  On the right is the detector.
+  Two pairs of fins (``OMT'' couple each polarization onto microstrip.
+  A diplexer separates the \SI{90}{\GHz} and \SI{150}{\GHz} signals from each other.
+  The ``hybrid tee'' rejects unwanted waveguide modes.
+  This figure is taken from \cite{datta_horn_2014}, which contains more details on these detectors.
+}
+\label{fig:ch9-multi-chroic}
+\end{figure*}
 
 It is not clear whether polarization-sensitive detectors, or multi-color detectors, will provide advantages for passive security imaging.
 Reflected light will be polarized to some extent, but since the concealed objects are illuminated from all directions, one would expect the net polarization to be low.
@@ -63,8 +82,8 @@ Nevertheless, there may be scenarios were uneven illumination is expected, and i
 
 The primary advantage of multi-color detectors is that it allows higher optical bandwidth while avoiding atmospheric absorption lines.
 It may be that implementing band-stop filters could achieve the same benefit at lower cost.
-An intruging idea would be to attempt to use color information to identify different materials.
-For example, many explosive materials have absorption features in the \SIrange{0.6}{3}{\THz} region \cite{xxx}.
+An intriguing idea would be to attempt to use color information to identify different materials.
+For example, many explosive materials have absorption features in the \SIrange{0.6}{3}{\THz} region \cite{federici_thz_2005,davies_terahertz_2008}.
 Unfortunately most of these features are above \SI{1}{\THz}, where clothing and the atmosphere are much less transparent than at \SI{350}{\GHz}.
 
 \section{Directions for Future Systems}
@@ -74,49 +93,50 @@ Such a system would be designed with a specific operational scenario in mind, wh
 But regardless of the details of the specifications, areas to focus on for such a system are likely to include size/portability and cost.
 
 The overall system size is set by the standoff distance and desired spatial resolution, which directly determine the size of the optical aperture via the Raleigh criterion (\eqnref{eqn:ch1-raleigh}).
-Moving to higher frequencies can reduce the size of the required optical aperture, but at the cost of lower image contrast due to decreased transmission through clothing and the atmoshpere.
-Neverless, this trade-off may be worth it for some applications.
+Moving to higher frequencies can reduce the size of the required optical aperture, but at the cost of lower image contrast due to decreased transmission through clothing and the atmosphere.
+Nevertheless, this trade-off may be worth it for some applications.
 There are no technical reasons why \TES\ bolometers could not work well at frequencies of \SI{1}{\THz}.
 
-If the target application requires the aperture size to remain at \SI{1.3}{\m}, or even become larger, it may be desirable to use some other kind of focussing element than a monolithic mirror machined out of Al.
-Possibilities include segmented mirrors (which have proven very successful for larger apertures \cite{stp, act}) or large-diameter fresnel lenses.
+If the target application requires the aperture size to remain at \SI{1.3}{\m}, or even become larger, it may be desirable to use some other kind of focusing element than a monolithic mirror machined out of Al.
+Possibilities include segmented mirrors (which have proven very successful for larger apertures \cite{stp, act}) or large-diameter Fresnel lenses.
 
-Reducing the size of the optical aperture or moving to a fresnel lens will likely reduce the cost of the system.
-Three other ways to potentially reduce cost are to eliminte the need for scanning, operate at a higher bath temperature, or migrate to a detector technology that is easier to fabricate.
+Reducing the size of the optical aperture or moving to a Fresnel lens will likely reduce the cost of the system.
+Three other ways to potentially reduce cost are to eliminate the need for scanning, operate at a higher bath temperature, or migrate to a detector technology that is easier to fabricate.
 
 Eliminating the need for scanning will reduce cost by simplifying the design of the optical components and removing the need for motors to move those components.
 But in order to maintain the same field of view, as well as ensure a Nyquist-sampled focal plane, requires many more detectors.
-More detectors directly increases the cost of the system.
 This could require more detector wafers to be manufactured, depending on the desired field of view, optical design, and target wavelength.
-Work on multiplexing techniquest capable of reading out xxx numbers of \TES\ detectors has begun \cite{xxx}, but this technology is not as mature as the \TDM\ readout system used for the \Imager.
+More detector wafers implies higher cost.
+Work on multiplexing techniques capable of reading out \num{10000} or more \TES\ detectors has begun \cite{irwin_advanced_2012}, but this technology is not as mature as the \TDM\ readout system used for the \Imager.
 A careful cost analysis of all of these factors will need to be performed.
 
 Operating at higher bath temperatures can reduce cost if the new bath temperature can be achieved without the use of a secondary cooling system such as the \He4-sorption refrigerator used for the \Imager.
 As described in \sectionref{sec:det-parm-choice}, it should be possible to make photon-noise-limited \TES\ bolometer operating at a bath temperature of \SI{3.6}{\K}.
+This bath temperature can be reached though the use of only a cryocooler.
 The ideal $T_c$ for this bath temperature would be \abt{\SI{6.5}{\K}}.
-It is now possible to make superconduting Titanium-Nitride films who's $T_c$ can be tuned to any point in the range xxx \cite{xxx}.
-However, to-date little work has been done on making voltage-biased \TES\ bolometer work at such (relatively) high temperatures, so it is not clear what problem might appear that would need to be worked around.
+TiNi films can easily be deposited ($T_c = \SI{5.6}{\K}$), or some other superconducting material could be used.
+However, to-date little work has been done on making voltage-biased \TES\ bolometers work at such (relatively) high temperatures, so it is not clear what problems might appear that would need to be worked around.
 Again, a careful cost analysis is required.
 
-Finally, voltage-biased \TES\ bolometers are not the only low-temperature detector that can be fabricated in large quantities, read out with a reasonable amount of wires, and acheive photon-noise-limited peformance.
+Finally, voltage-biased \TES\ bolometers are not the only low-temperature detector that can be fabricated in large quantities, read out with a reasonable amount of wires, and achieve photon-noise-limited performance.
 One very promising detector technology is the Microwave Kinetic Inductance Detector (\MKID).
 As mentioned in \sectionref{sec:ch2-tes-passive}, one group is already working on a passive imaging system that will use these detectors.
 
-Like \TES\ detectors, MKIDs use superconducting materials at low temperatures, but the way that they work is very different.
+Like \TES\ detectors, \MKIDs use superconducting materials at low temperatures, but the way that they work is very different.
 The superconducting material is chosen so that its gap energy is below the energy $h \nu$ of the photons that are to be detected.
-Light is focused directly onto the superconduting film, so that it breaks Cooper pairs.
+Light is focused directly onto the superconducting film, so that it breaks Cooper pairs.
 This induces a change in the inductance of the superconductor.
 By making the superconductor a part of a resonant circuit, this change in inductance can be detected as a change in the resonant frequency of the circuit.
 This approach to detection of light offers a natural way to multiplex many detectors on a single readout line, because the resonant frequency can be place at GHz frequencies where large amounts of readout bandwidth are available.
 
-MKID detectors reduce fabrication cost because fewer material layers and fabrication steps are required.
+\MKID detectors reduce fabrication cost because fewer material layers and fabrication steps are required.
 They also reduce wiring cost because a single coaxial cable and bias and readout many detectors.
 But they also require more complicated room-temperature electronics to perform the readout, as well as low-noise amplifiers inside the cryostat.
 The technology is also not yet as mature as \TES\ detectors with multiplexed SQUID readout.
-Once again, a careful evaluation of the costs and benefits of MKID detectors will need to be performed.
+Once again, a careful evaluation of the costs and benefits of \MKID detectors will need to be performed.
 
 Nevertheless, several promising approach for reducing system portability, cost, and complexity are available.
 The \Imager\ described in this thesis demonstrates that \SI{100}{\mK} \NETD\ video images at \SI{17}{\m} standoff distances are achievable.
 Following resolution of the remaining technical issues, and investigating of imaging phenomenology, we will be ready to design a second-generation system.
-Developments over the next few years will make it clear whether cyogenic passive imaging systems can solve problems for the security community.
+Developments over the next few years will make it clear whether cryogenic passive imaging systems can solve problems for the security community.
 
