@@ -85,7 +85,22 @@ A safety factor of 5--6 is overly conservative, so for the sub-array I decided t
 
 \subsection{Choice of $C$}
 
-The detector's heat capacity $C$ is chosen to target a specific natural time constant $\tau$ once $G$ is chosen.
+The detector's heat capacity $C$ is chosen to target a specific detector time constant $\tau_{eff}$ once $G$ is chosen.
+$G$ and $C$ do not set $\tau_{eff}$ directly, rather they set the natural time constant $\tau$, to which $\tau_{eff}$ is proportional via \eqnref{eqn:teff}.
+$\tau_{eff}$ must be fast enough to avoid blurring of video-rate images, while being far enough from $\tau_{el}$ to avoid detector instability; see  \cite{irwin_transition-edge_2005} for full discussion of requirements for stability in \TES\ detectors.
+
+We can estimate the required value of $\tau_{eff}$ by considering the speed with which detectors move on the far-field focal plane and the size of the far-field beam.
+If $v$ is the speed with which the detector far-field beam moves, and $b_{fwhm}$ is the \FHWM\ far-field beam width, then scanning over a point source will result in a timestream withe a gaussian ``bump'' with \FHWM\ $b_{fwhm} / v$.
+The \TES\ acts like a lowpass filter on this timestream with time constant $\tau_{eff}$.
+The timestream after filter is given by the convolution
+\begin{equation}
+  \int_{-\infty}^{t} \exp{\left[-\frac{2.35^2}{2} \frac{{t^{\prime}}^2}{(b_{fwhm}/v)^2}\right]}
+       \exp{\left[-(t-t^{\prime})/\tau_{eff}\right]} dt^{\prime}
+\end{equation}
+
+As shown in \sectionref{sec:ch5-fov}, when scanned circularly the detectors trace out a circle of radius \SI{18.7}{\cm}.
+ 
+
 $\tau_{eff}$ in the prototype detectors was higher than the desired value of \SI{1}{\ms} (see \sectionref{sec:ch2-specifications}).
 To reduce the risk of problems such as instability with the sub-array detectors, I decided to reduce $C$ to \SI{30}{\pJ\per\K}, which would give $\tau = \SI{8}{\ms}$.
 As long as \Loop\ and $\beta_I$ at the operating bias point did not change, this would lead to $\tau_{eff} = \SI{2.6}{\ms}$, not as fast as would be ideal, but fast enough for video imaging
