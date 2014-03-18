@@ -92,7 +92,7 @@ $\tau_{eff}$ must be fast enough to avoid blurring of video-rate images, while b
 We can estimate the required value of $\tau_{eff}$ by considering the speed with which detectors move on the far-field focal plane and the size of the far-field beam.
 If $v$ is the speed with which the detector far-field beam moves, and $b_{fwhm}$ is the \FWHM\ far-field beam width, then scanning over a point source will result in a timestream withe a Gaussian ``bump'' with \FWHM\ $b_{fwhm} / v$.
 As shown in \sectionref{sec:ch5-fov}, when scanned circularly the detectors trace out a circle of radius \SI{18.7}{\cm}.
-If $FPS$ is the video frame rate, then $v$ will be given by $2 \pi \SI{18.7}{\cm} FPS$.
+If $FPS$ is the video frame rate, then $v$ will be given by $(2 \pi)(\SI{18.7}{\cm}) FPS$.
 From \sectionref{sec:ch4-feedhorn-design}, the predicted beam \FWHM\ is \SI{1.4}{\cm}.
 The \TES\ acts like a lowpass filter on this timestream with time constant $\tau_{eff}$.
 The timestream after filtering is given by the convolution%
@@ -117,9 +117,11 @@ At 6 frames per second the maximum value is \SI{3.0}{\ms}; at 10 frames per seco
 \label{fig:ch5-teff-bump}
 \end{figure*}
 
-$\tau_{eff}$ in the prototype detectors was \abt{xxx ms}, so for unblurred imaging at 20 frames per second, $\tau_{eff}$ should be reduced by a factor of xxx from the prototype detectors.
-As long as \Loop\ and $\beta_I$ at the operating bias point did not change from the prototype detectors, and given the design values of $G$, this would reduced a reduction in the heat capacity $C$ of the detector by a factor of xxx.
-To reduce the risk of problems such as instability with the sub-array detectors, I decided to reduce $C$ to \SI{30}{\pJ\per\K} by cutting the thickness of the Au ring in half, which would give $\tau = \SI{8}{\ms}$, and $\tau_{eff} = xxx$.
+From \tableref{tab:ch5-proto-parms}, $\tau_{eff}$ in the prototype detectors was \abt{\SI{4}{\ms}}, so for unblurred imaging at 20 frames per second, $\tau_{eff}$ should be reduced by a factor of 4 from the prototype detectors.
+However, out of concern for the risk of making $\tau_{eff}$ too small --- risking detector instability --- I decided to reduce $C$ by a factor of only 2, by cutting the thickness of the Au ring in half.
+Given the design $G = \SI{3.8}{\nW\per\K}$, and the prototype value of $C = \SI{60}{\pW\per\K}$, this should give $\tau = \SI{7.9}{\ms}$, assuming the same properties for Au in the prototype detectors and the sub-arrays. 
+As long as \Loop\ and $\beta_I$ at the operating bias point did not change from the prototype detectors, this would reduce $\tau_{eff}$ to $\SI{4}{\ms} \times \frac{7.9}{12} = \SI{2.6}{\ms}$, sufficient for unblurred videos at 6 frames per second.
+$C$ for subsequent sub-array fabrications can be adjusted lower if needed based on measurements of the first fabricated sub-arrays.
 
 \section{Detailed Detector Design} \label{sec:ch5-det-design}
 
