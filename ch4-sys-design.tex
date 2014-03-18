@@ -364,7 +364,7 @@ Using the standard formulas for Fabry-Perot fringing when light passes through a
 
 Another important component of the system is the series of optical filters located inside the cryostat.
 These filters are shown schematically in \figref{fig:ch4-filter-stack}.
-These filters include thin thermal blocking filters located at \SI{300}{\K}, \SI{80}{\K}, and \SI{6}{\K}; multi-layer low-pass filters at \SI{80}{\K} and \SI{6}{\K}; and a band-defining filter located at \SI{1}{\K}.
+These filters include thin thermal blocking filters located at \SI{300}{\K}, \SI{80}{\K}, and \SI{6}{\K}; multi-layer lowpass filters at \SI{80}{\K} and \SI{6}{\K}; and a band-defining filter located at \SI{1}{\K}.
 
 \begin{figure*}
 \centering
@@ -386,7 +386,7 @@ The thermal blocking filters are sheets of \SI{3.3}{\um} polypropylene with capa
 Because they are so thin, these filters have little emission even at the infrared wavelengths at which polypropylene is highly absorptive \cite{tucker_thermal_2006}.
 The cutoff wavelengths of these filters are listed in \tableref{tab:ch4-filter-stack}.
 
-The \Imager\ also contains thicker multi-layer filters that act as low-pass filters at wavelengths closer to the observing band.
+The \Imager\ also contains thicker multi-layer filters that act as lowpass filters at wavelengths closer to the observing band.
 These filters are also made of metal meshes and polypropylene, but many meshes and polypropylene layers are sandwiched together to form filters that are \abt{\SI{1}{\mm}} thick.
 These filters have excellent transmission in-band as well as good out-of-band rejection \cite{ade_review_2006}, but the thick polypropylene substrates mean that they are also highly absorptive --- and thus also emissive -- in the near-infrared.
 Additionally, polypropylene has poor thermal conductivity.
@@ -886,7 +886,7 @@ Using the values in \tableref{tab:ch4-mce-parms} the readout rate is \SI{3125}{\
 
 Using any value for \texttt{data\_rate} other than 1 will lead to aliasing of noise.
 As discussed in \sectionref{sec:ch7-aliasing}, this raises the total amount of noise in the \Imager's detectors by \SI{14}{\percent} on average.
-This noise aliasing penalty can be reduced by configuring the \MCE\ to internally apply a digital 4-pole low-pass filter prior to reporting data to the data acquisition computer \cite{mce_team_digital_????}.
+This noise aliasing penalty can be reduced by configuring the \MCE\ to internally apply a digital 4-pole lowpass filter prior to reporting data to the data acquisition computer \cite{mce_team_digital_????}.
 
 \begin{table*}
 \centering
