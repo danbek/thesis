@@ -587,9 +587,9 @@ After convolution with a \SI{0.2}{\in} circle the \FWHM\ is \SI{1.39}{\cm}, and 
 \label{fig:ch4-beams}
 \end{figure*}
 
-The feedhorns were machined out of Al 6061 and then gold plated.
-An estimate of the insertion loss of the feedhorns requires the conductivity of this plated gold at \SI{1}{\K}, but this quantity is not known.
-I assumed that the gold has the standard value for conductivity at room temperature of \SI{41e6}{S\per\m}, with a residual resistivity ratio of 3.
+The feedhorns were machined out of Al 6061 and then Au-plated.
+An estimate of the insertion loss of the feedhorns requires the conductivity of this plated Au at \SI{1}{\K}, but this quantity is not known.
+I assumed that the Au has the standard value for conductivity at room temperature of \SI{41e6}{S\per\m}, with a residual resistivity ratio of 3.
 Using this value, and assuming a surface roughness of \SI{5}{\um}, \HFSS\ simulations predict an insertion loss of \SI{-10.5}{\dB}, including both the feedhorn and the waveguide.
 This corresponds to a feedhorn efficiency of \SI{91}{\percent}.
 \HFSS\ simulations indicate that the return loss for the feedhorns is \SI{-28}{\dB}, so I ignore return loss.
@@ -642,7 +642,7 @@ The \HFSS\ model has the following features:
       At low temperatures the electrical resistivity of this type of Si is expected to fall slightly \cite{chapman_electrical_1963}, but I have assumed the room-temperature value of \SI{4}{\mOhm\cm} in the simulations.
 \item The exact PdAu mesh used in the fabrication was included, using \SI{12}{\ohm}/sq as the surface impedance of the PdAu itself.
 \item The Au heat-capacity ring (see \sectionref{sec:ch5-det-design}) is included as well, treated as a perfectly conducting surface.
-\item The bottom surface of the backshort is assigned a surface impedance appropriate for gold with RRR = 20, which is typical for thick gold layers fabricated in the \NIST\ cleanroom.
+\item The bottom surface of the backshort is assigned a surface impedance appropriate for Au with RRR = 20, which is typical for thick Au layers fabricated in the \NIST\ cleanroom.
       % xxx actually used 80 uOhm-cm in the model ... should re-run!
 \end{itemize}
 \figref{fig:ch4-hfss-model} shows a schematic of the \HFSS\ model, including the fields traveling down the waveguide.
