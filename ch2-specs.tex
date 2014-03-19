@@ -4,11 +4,11 @@
 
 The \Imager's specifications were chosen to allow the system to serve as a ``gold standard'' for investigating the phenomenology of passive video imaging.
 The intended use of the system is to take images of a variety of concealed weapons and other objects, hidden beneath different types of clothing, in both indoor and outdoor scenarios.
-The goal is to gain a thorough understanding of trade-offs in terms of video frame rate, image resolution, and noise.
+The goal is to gain a thorough understanding of trade-offs between video frame rate, image resolution, and noise.
 This understanding will then aid the design of future systems for use in specific operational scenarios.
 
 To that end, the system has been designed to achieve high resolution images with \NETD\ that is limited by photon noise.
-This chapter describes the specifications for the \Imager, and summarizes the technology approach taken to meet those specifications.
+This chapter describes the specifications for the \Imager, and summarizes the technical approach taken to meet those specifications.
 
 \section{Specifications} \label{sec:ch2-specifications}
 
@@ -16,13 +16,13 @@ The first goal of the \Imager\ is to achieve uncompromised noise performance thr
 As discussed below, this requires the use of detectors at cryogenic temperatures.
 We have chosen to use 1004 Transition Edge Sensor (\TES) bolometers as the detectors.
 The detectors will be installed as four individual 251-detector sub-arrays.
-This thesis discusses results using only one of these four sub-arrays.
+This thesis discusses results using one of these four sub-arrays.
 
 The atmospheric window at \abt{\SI{350}{\GHz}} (\abt{\SI{860}{\um}}) was chosen for the optical band.
-As can be seen from \figref{fig:ch1-clothes-atmos-trans}, this band is a nice trade-off between transmission through the atmosphere and clothing (which favors lower frequencies) and spatial resolution (which favors higher frequencies).
+As can be seen from \figref{fig:ch1-clothes-atmos-trans}, this band is a good trade-off between transmission through the atmosphere and clothing (which favors lower frequencies) and spatial resolution (which favors higher frequencies).
 A \SI{35}{\GHz} full-width-half-maximum (\FWHM) band was chosen to fit within this atmospheric window.
 
-The design standoff distances from the observed target is \SIrange{16}{28}{\m}, configurable by changing the distance between the cryostat containing the detectors and the rest of the optical system.
+The design standoff distances from the observed target are \SIrange{16}{28}{\m}, configurable by changing the distance between the cryostat containing the detectors and the rest of the optical system.
 This range of standoff distances was chosen to provide separation from observation targets such as a suicide bomber, without requiring an unreasonably large optical aperture.
 A desirable spatial resolution at \SI{16}{\m} standoff would be \SI{1}{\cm}.
 However, at the center wavelength of the observation band of $\lambda_0 = \SI{863}{\um}$ (see \sectionref{sec:ch4-filters}), using the Raleigh criterion \eqnref{eqn:ch1-raleigh} leads to a required aperture size of
@@ -45,7 +45,7 @@ Additionally, the focus distance can only be changed by reconfiguring the mounti
 \section{Transition Edge Sensor Bolometer Basics} \label{sec:ch2-tes-basics}
 
 A bolometer detects optical power by measuring the temperature of an isolated object which absorbs the optical power.
-\figref{fig:ch2-bolo-cartoon} shows a cartoon picture of a bolometer.
+\figref{fig:ch2-bolo-cartoon} shows a schematic illustration of a bolometer.
 Optical power $P_{opt}$ falls onto an absorber with heat capacity $C$.
 The optical power is thermalized in the absorber, causing its temperature $T$ to rise.
 The temperature $T$ to which it rises is determined by the thermal conductance $G$ which connects the absorber to a thermal bath at temperature $T_b$.
@@ -54,8 +54,8 @@ See \cite{richards_bolometers_1994} for an excellent overview of bolometric dete
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch2-bolo-cartoon.pdf}
-\caption[Bolometer Schematic]{
-  Schematic of a bolometer.
+\caption[Bolometer schematic]{
+  Schematic illustration of a bolometer.
   The bolometer detects optical power $P_{opt}$ by absorbing it in an absorber with heat capacity $C$.
   The absorbed optical power causes the absorber temperature to rise to a temperature $T$ above a thermal bath held at $T_b$.
   The rise in temperature is determined by the thermal conductance $G$.
@@ -63,8 +63,7 @@ See \cite{richards_bolometers_1994} for an excellent overview of bolometric dete
 \label{fig:ch2-bolo-cartoon}
 \end{figure*}
 
-A thermometer must be used to measure the temperature $T$.
-In a Transition Edge Sensor (\TES) bolometer a thin superconducting film is used as the thermometer.
+In a Transition Edge Sensor (\TES) bolometer a thin superconducting film is used as a thermometer to measure the temperature $T$.
 A superconductor is a material which loses all electrical resistance when its temperature falls below a critical temperature $T_c$ \cite{tinkham_introduction_1996}.
 This phase transition from the ``normal'' to ``superconducting'' state can be very narrow.
 The steepness of the transition is characterized by the logarithmic temperature sensitivity $\alpha$ given by
@@ -74,15 +73,15 @@ The steepness of the transition is characterized by the logarithmic temperature 
 Typical values of $\alpha$ for \TES\ detectors are 100 -- 1000.
 
 The first demonstration of a \TES\ bolometer was in 1941 \cite{andrews_attenuated_1942}, and the first demonstration using Al (the material used for the detectors in this thesis) was in 1977 \cite{clarke_superconductive_1977}.
-But operation of a \TES\ detector requires keeping the temperature of the \TES\ within the narrow transition, which proved challenging.
+But operation of a \TES\ detector requires maintaining the temperature of the \TES\ within the narrow transition, which proved challenging.
 An increase in the temperature of the \TES\ --- caused by an increase in absorbed optical power --- causes a rise in the temperature of the \TES.
 When current-biased this rise in temperature causes an increase in $I^2 R$ Joule heating, causing the temperature of the detector to rise further, leading to instability.
 
 Thus, \TES\ bolometers did not come into widespread use until the development of the voltage-biased \TES\ sensors \cite{irwin_application_1995} coupled with Superconducting Quantum Interference Device (\SQUID) readout systems.
 When voltage-biased, a rise in \TES\ temperature leads to a decrease in Joule heating, which lowers the temperature of the device.
-With a sufficiently steep transition, this electrothermal feedback process allows any change in incident power to be exactly matched by an opposite change in Joule heating, so that the device self-stabilizes at a new current level in the normal-to-superconducting transition while leaving the device temperature the same.
+With a sufficiently steep transition, this electrothermal feedback process allows any change in incident power to be exactly matched by an opposite change in Joule heating, so that the device self-stabilizes at a new current level in the normal-to-superconducting transition while leaving the device temperature unchanged.
 Because the device is voltage-biased, absorbed optical power causes a current change, so that a current amplifier is required for readout.
-This is accomplished through the use of \SQUIDs, which are very sensitive magnetometers and so can be used to detect changes in current.
+This is accomplished through the use of \SQUIDs, which are very sensitive magnetometers and so can be used to detect small changes in current.
 
 \chapterref{c:tes} covers the theory of \TES\ operation required for understanding of this thesis.
 The most detailed and authoritative reference for \TES\ detectors is by Irwin and Hilton \cite{irwin_transition-edge_2005}.
@@ -125,7 +124,6 @@ A second generation system is currently underway, with most changes intended to 
 The system uses superconducting \TES\ bolometers with $T_c \approx \SI{9}{\K}$.
 The readout system is entirely different than that used by the Jena system and the system described in this thesis.
 In order to eliminate the use of \SQUIDs, an approach based on room-temperature amplification was developed that relies on negative feedback to keep the detectors voltage-biased \cite{penttila_low-noise_2006}.
-As described in \sectionref{sec:ch3-circuits}, voltage-biased operation is necessary for stable operation of \TES\ detectors.
 
 Finally, a group based at Cardiff University in Wales is in the early stages of developing a passive imaging system \cite{day_broadband_2003} based on Microwave Kinetic Inductance Detectors \cite{wood_kidcam_2011}.
 No images or \NETD\ estimates have yet been presented publicly for this system.

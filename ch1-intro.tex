@@ -89,7 +89,7 @@ Security imaging systems for standoff applications broadly fall into two categor
 Active systems illuminate the target to be imaged with light and use the reflected light to obtain an image.
 Passive systems detect thermal blackbody emissions that are naturally emitted by all objects.
 Because the temperatures of objects being viewed are so low (\abt{\SI{300}{\K}}), active systems would seem to have an inherent signal-to-noise advantage over passive systems.
-But the phenomenology of active imaging suffers from two problems that to-date have allowed passive imaging systems to generally exceed the image quality achieved with active systems.
+But active imaging suffers from two problems that to-date have allowed passive imaging systems to generally exceed the image quality achieved with active systems.
 
 \subsection{Active Standoff Imaging}
 
@@ -98,7 +98,7 @@ The first problem is generally referred to as ``specular reflections''.
 This refers to the fact that the intensity of light that is reflected off of the target and subsequently detected by the active imaging system is strongly dependent on the angle of the target relative to the illuminating beam.
 This leads to strong highlight areas in active images which can be \SI{40}{\dB} or more higher than neighboring areas, making images difficult to interpret.
 For a concrete example, the reader can imagine the way that sunlight at just the right angle can reflect off of the fender of another car on the road, making it difficult for their eyes to interpret what they are looking at.
-This problem would be even worse if the sun's illumination were single-moded rather than multi-moded.
+This problem would be even worse if the Sun's illumination were single-moded rather than multi-moded.
 
 The second problem is known as ``speckle''.
 When a coherent light source is diffusely reflected from a surface which varies on distance scales comparable to or larger than a wavelength, some areas of the surface will randomly be oriented more favorably than others for reflecting light back to the system.
@@ -120,7 +120,7 @@ This system operates at standoff distances of \SI{16}{\m} achieving a spatial re
 Passive imaging does not suffer from the problems of specular reflection and speckle.
 Instead, the primary challenge for passive imaging is implementing sufficiently sensitive detectors to achieve low-noise images at video frame rates.
 One commonly used figure-of-merit for noise in a passive imaging system is the Noise Equivalent Temperature Difference (\NETD) of the image, defined as the difference in the temperature distribution at the observation target which can not be distinguished from noise in the image.
-Few detailed studies of the \NETD\ required for detection of concealed weapons or other contraband have been published, but the ``lore'' of the field is that for non-metallic concealed threats in an indoor environment, image signals are \SIrange{0.5}{1.0}{\K}, with \SI{200}{\mK} or  better \NETD\ required for detection.
+Few detailed studies of the \NETD\ required for detection of concealed weapons or other contraband have been published, but the ``lore'' of the field is that for non-metallic concealed threats in an indoor environment, image signals are \SIrange{0.5}{1.0}{\K}, with \SI{200}{\mK} or lower \NETD\ required for detection.
 One published estimate gives \SI{100}{\mK} as the required noise level \cite{salmon_scene_2004} under some scenarios.
 The remainder of this section justifies this lore quantitatively.
 
@@ -200,7 +200,7 @@ The factor of $\frac{1}{2}$ represents that fact that at low $\tau$, under these
 Outdoors, $T_{amb}$ will have contributions both from the ground (or structures/vegetation at ground level) and from the sky.
 The sky temperature depends strongly on the weather \cite{appleby_standoff_2007}, and at \SI{350}{\GHz} could be as low as \SI{100}{\K} on a clear winter day, or approach \SI{310}{\K} on a hot day with high humidity.
 Depending on the temperature and emission properties of local ground cover, under the worst-case scenario $T_{amb}$ outdoors could be very close to human body temperature.
-This means that requirements on \NETD\ for outdoor imaging in the worst-case scenarios could easily be \SI{200}{\mK} or better, which motivates the search for imaging systems with \NETD\ at or below \SI{100}{\mK} for outdoor applications. 
+This means that requirements on \NETD\ for outdoor imaging in the worst-case scenarios could easily be \SI{200}{\mK} or lower, which motivates the search for imaging systems with \NETD\ at or below \SI{100}{\mK} for outdoor applications. 
 
 Indoors, $T_{amb}$ will be determined by the temperature of the room, typically $\SI{295}{\K} = \SI{72}{\fahrenheit}$.
 We can take as a challenging scenario the detection of plastic explosives hidden beneath a woolen sweater.
@@ -255,7 +255,7 @@ and so the \NETD\ of each image will be
 
 Micro-bolometers have an advantage in that they can be fabricated in arrays with relative ease.
 Typical \NEP\ values for uncooled micro-bolometers in the millimeter-wave region are \Pnoisep{10}--\Pnoisep{100} \cite{nemarich_microbolometer_2005,rogalski_terahertz_2011}.
-In order to turn this \NEP\ into an \NETD\ we must make some assumptions.
+In order to convert this \NEP\ into an \NETD\ we must make some assumptions.
 In order to achieve sufficient spatial resolution, detectors at these wavelengths are typically sensitive to two modes, one per polarization, so we set $M = 2$.
 We can generously assume a staring array with one detector per image pixel, so that $\sqrt{A/N}/s = 1$.
 A very good optical efficiency would be $\eta_{tot} = 0.5$, and a typical bandwidth at \SI{350}{\GHz} is \SI{35}{\GHz}.
@@ -282,4 +282,4 @@ The performance of these two room-temperature imaging systems is listed in \tabl
 
 The conclusion is that to achieve sufficient \NETD\ and spatial resolution for passive standoff imaging at distances of \SI{10}{\m} and greater, room temperature detectors to-date do not have sufficient noise performance.
 For this reason the \Imager\ uses \TES\ bolometers operating at cryogenic temperatures.
-The next chapter give the specifications for our system and explains how \TES\ bolometer arrays meet those specifications.
+The next chapter gives the specifications for our system and explains how \TES\ bolometer arrays meet those specifications.
