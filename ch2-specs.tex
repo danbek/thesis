@@ -1,7 +1,9 @@
 \chapter{System Specifications and Solutions}\label{c:specs}
 
+% xxx abbrev element names like Al, Au?
+
 The \Imager's specifications were chosen to allow the system to serve as a ``gold standard'' for investigating the phenomenology of passive video imaging.
-The system is intended to be used to take images of a variety of concealed weapons and other objects, hidden beneath different types of clothing, in both indoor and outdoor scenarios.
+The intended use of the system is to take images of a variety of concealed weapons and other objects, hidden beneath different types of clothing, in both indoor and outdoor scenarios.
 The goal is to gain a thorough understanding of trade-offs in terms of video frame rate, image resolution, and noise.
 This understanding will then aid the design of future systems for use in specific operational scenarios.
 
@@ -14,7 +16,7 @@ The first goal of the \Imager\ is to achieve uncompromised noise performance thr
 As discussed below, this requires the use of detectors at cryogenic temperatures.
 We have chosen to use 1004 Transition Edge Sensor (\TES) bolometers as the detectors.
 The detectors will be installed as four individual 251-detector sub-arrays.
-This thesis discusses results using only one these four sub-arrays.
+This thesis discusses results using only one of these four sub-arrays.
 
 The atmospheric window at \abt{\SI{350}{\GHz}} (\abt{\SI{860}{\um}}) was chosen for the optical band.
 As can be seen from \figref{fig:ch1-clothes-atmos-trans}, this band is a nice trade-off between transmission through the atmosphere and clothing (which favors lower frequencies) and spatial resolution (which favors higher frequencies).
@@ -44,7 +46,7 @@ Additionally, the focus distance can only be changed by reconfiguring the mounti
 
 A bolometer detects optical power by measuring the temperature of an isolated object which absorbs the optical power.
 \figref{fig:ch2-bolo-cartoon} shows a cartoon picture of a bolometer.
-Optical power $P_{opt}$ falls onto an absorbed with heat capacity $C$.
+Optical power $P_{opt}$ falls onto an absorber with heat capacity $C$.
 The optical power is thermalized in the absorber, causing its temperature $T$ to rise.
 The temperature $T$ to which it rises is determined by the thermal conductance $G$ which connects the absorber to a thermal bath at temperature $T_b$.
 See \cite{richards_bolometers_1994} for an excellent overview of bolometric detectors.
@@ -53,7 +55,7 @@ See \cite{richards_bolometers_1994} for an excellent overview of bolometric dete
 \centering
 \includegraphics{drawings/ch2-bolo-cartoon.pdf}
 \caption[Bolometer Schematic]{
-  Cartoon schematic of a bolometer.
+  Schematic of a bolometer.
   The bolometer detects optical power $P_{opt}$ by absorbing it in an absorber with heat capacity $C$.
   The absorbed optical power causes the absorber temperature to rise to a temperature $T$ above a thermal bath held at $T_b$.
   The rise in temperature is determined by the thermal conductance $G$.
@@ -64,7 +66,7 @@ See \cite{richards_bolometers_1994} for an excellent overview of bolometric dete
 A thermometer must be used to measure the temperature $T$.
 In a Transition Edge Sensor (\TES) bolometer a thin superconducting film is used as the thermometer.
 A superconductor is a material which loses all electrical resistance when its temperature falls below a critical temperature $T_c$ \cite{tinkham_introduction_1996}.
-This phase transition from the ``normal'' to ``superconducting'' states can be very narrow.
+This phase transition from the ``normal'' to ``superconducting'' state can be very narrow.
 The steepness of the transition is characterized by the logarithmic temperature sensitivity $\alpha$ given by
 \begin{equation}
   \alpha = \frac{T_0}{R_0} \frac{\partial R}{\partial T}.
@@ -96,7 +98,7 @@ As described in \sectionref{sec:ch5-predicted-noise}, the expected \NETD\ for th
 An important aspect of the advantages of \TES\ detectors for passive imaging is the ability to put large numbers of them onto focal planes.
 This is due to two factors.
 First, they can be fabricated using standard lithographic clean-room techniques, which allows development of array-scale focal planes.
-Second, the self-stabilizing behavior of voltage-biased \TES\ detectors enables array-scale operation of \TES\ detectors because it greatly relaxes requirement on uniformity of detector characteristics across a wafer in the fabrication process.
+Second, the self-stabilizing behavior of voltage-biased \TES\ detectors enables array-scale operation because it greatly relaxes requirements on uniformity of detector characteristics across a wafer in the fabrication process.
 
 Reading out a large number of detectors individually requires an even larger number of wires, which complicates cryogenic designs.
 An important part of the success of \TES\ detector arrays for millimeter and submillimeter astronomy has been the development of multiplexed \SQUID\ readout systems.
@@ -107,7 +109,7 @@ The \Imager\ uses a time-division multiplexed readout system, the basics of whic
 
 \section{Other Cooled Detector Imaging Systems}
 
-Aside from the work described in this thesis, three groups are also working on cooled detector passive imaging systems.
+Aside from the work described in this thesis, three other groups are also working on cooled detector passive imaging systems.
 See \tableref{tab:ch2-sys-compare} for a summary of some characteristics of these and other security imaging systems.
 
 One system has been developed by a group working at the Institute of Photonic Technology (IPHT) in Jena, Germany.
@@ -122,7 +124,7 @@ The first generation of this system operated over a wide optical band, \SIrange{
 A second generation system is currently underway, with most changes intended to reduce the size and power requirements of the system, while also doubling the number of detectors from 64 to 128 \cite{luukanen_applications_2012}.
 The system uses superconducting \TES\ bolometers with $T_c \approx \SI{9}{\K}$.
 The readout system is entirely different than that used by the Jena system and the system described in this thesis.
-In order to eliminate the use of \SQUIDs, an approach based on room-temperature amplification was developed that relies on negative feedback to the keep the detectors voltage-biased \cite{penttila_low-noise_2006}.
+In order to eliminate the use of \SQUIDs, an approach based on room-temperature amplification was developed that relies on negative feedback to keep the detectors voltage-biased \cite{penttila_low-noise_2006}.
 As described in \sectionref{sec:ch3-circuits}, voltage-biased operation is necessary for stable operation of \TES\ detectors.
 
 Finally, a group based at Cardiff University in Wales is in the early stages of developing a passive imaging system \cite{day_broadband_2003} based on Microwave Kinetic Inductance Detectors \cite{wood_kidcam_2011}.
@@ -153,7 +155,7 @@ ThruVision & $250 \pm 20$ & 8 & 6 & 5.0 -- 15.0 & $1 \times 1$ (at \SI{10}{\m}) 
 Microsemi GEN 2 & $90 \pm$ N/A & N/A & 4 -- 12 & \abt{3} & N/A & 5 & N/A \\
 MilliLab I & 200 -- 1000 & 64 & 6 & 5.0 & $4 \times 2$ & 4.0 & 600 \\
 MilliLab II & 200 -- 1000 & 128 & 6 & 5.0 & $2 \times 1$ & 2.5 & 400 \\
-IPHT Jena II & $350 \pm 40$ & 20 & 10 & 8.5 & \SI{1}{\m} diam. & 1.7 & 400 \\
+IPHT Jena I & $350 \pm 40$ & 20 & 10 & 8.5 & \SI{1}{\m} diam. & 1.7 & 400 \\
 IPHT Jena II & $350 \pm 40$ & 64 & 25 & 8.5 & $2 \times 1$ & 1.0 & 160 \\
 \NIST\ \Imager\ & $347 \pm 17$ & 251 & 6 & 16 & $0.78 \times 0.55$ & 1.7 & 100 \\
 \bottomrule
