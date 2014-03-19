@@ -1,9 +1,9 @@
 \chapter{Summary and Future Work} \label{c:summary}
 
 This thesis has described the motivation for, the design of, and the operation of a \SI{350}{\GHz} video imaging system intended for concealed weapons detection.
-The system uses superconducting Transition Edge Sensor (\TES) bolometer to detect the \SI{350}{\GHz} light, and the first of four planned 251-detector sub-arrays has been installed into the system.
+The system uses superconducting Transition Edge Sensor (\TES) bolometers to detect the \SI{350}{\GHz} light, and the first of four planned 251-detector sub-arrays has been installed into the system.
 As currently configured the system focuses at \SI{17}{\m}.
-The spatial resolution is close to the deign value of \SI{1.4}{\cm}, but the beams have an elliptical shape rather then the predicted circular.
+The spatial resolution is close to the design value of \SI{1.4}{\cm}, but the beams have an elliptical shape rather then the predicted circular.
 Although the optical efficiency is half of the design value, and detector noise is about twice the design value, the system still has sufficient sensitivity to take video images that reveal the presence of a knife concealed under a cotton shirt.
 At 6 frames per second, observing a $\SI{0.78}{\m} \times \SI{0.55}{\m}$ field of view with \SI{1}{\cm} pixels, the Noise Equivalent Temperature Difference (\NETD) of video frames observing a uniform temperature distribution is \SI{100}{\mK}.
 This meets the requirements on \NETD\ outlined in \sectionref{sec:ch1-netd-reqs} for challenging passive imaging scenarios.
@@ -16,7 +16,7 @@ Image processing was addressed in \sectionref{sec:ch8-algo}.
 
 There are three technical problems with the system that should be addressed: the elliptical beams, the low optical efficiency, and the high detector noise.
 It is not known whether the beam ellipticity is caused by a problem inside the cryostat (such as poor alignment between detectors and feedhorns) or outside the cryostat (such as poor alignment of the cryostat and beams with primary and secondary mirror).
-One approach for distinguishing between these two possibilities is to means the beam shapes immediately outside the cryostat window.
+One approach for distinguishing between these two possibilities is to measure the beam shapes immediately outside the cryostat window.
 Manufacturing errors in one or more of the optical components is also a possibility.
 
 Solving the poor optical efficiency requires understanding where in the optical chain the efficiency loss happens.
@@ -43,7 +43,7 @@ The additional detectors could be used to reduce image \NETD, or increase the fi
 
 Studies of phenomenology will focus on different sizes, shapes, and types of concealed objects, combined with different types of clothing.
 Because the \Imager\ has been built by a team with little prior experience in the area of passive security imaging, we should identify partners among potential users of standoff passive imaging systems.
-This will help us to ensure that the tests that we carry out will lead to results that are applicable to realistic operational scenarios.
+This will help us to ensure that the tests that we carry out will lead to results that are applicable to realistic operational scenarios, and can be compared to results using other imaging techniques.
 
 \section{Polarization and Multi-band Imaging}
 
@@ -123,20 +123,20 @@ Finally, voltage-biased \TES\ bolometers are not the only low-temperature detect
 One very promising detector technology is the Microwave Kinetic Inductance Detector (\MKID).
 As mentioned in \sectionref{sec:ch2-tes-passive}, one group is already working on a passive imaging system that will use these detectors.
 
-Like \TES\ detectors, \MKIDs use superconducting materials at low temperatures, but the way that they work is very different.
+Like \TES\ detectors, \MKIDs\ use superconducting materials at low temperatures, but the way that they work is very different.
 The superconducting material is chosen so that its gap energy is below the energy $h \nu$ of the photons that are to be detected.
 Light is focused directly onto the superconducting film, so that it breaks Cooper pairs.
 This induces a change in the inductance of the superconductor.
 By making the superconductor a part of a resonant circuit, this change in inductance can be detected as a change in the resonant frequency of the circuit.
 This approach to detection of light offers a natural way to multiplex many detectors on a single readout line, because the resonant frequency can be place at \si{\GHz} frequencies where large amounts of readout bandwidth are available.
 
-\MKID detectors reduce fabrication cost because fewer material layers and fabrication steps are required.
-They also reduce wiring cost because a single coaxial cable and bias and readout many detectors.
+\MKID\ detectors reduce fabrication cost because fewer material layers and fabrication steps are required.
+They also reduce wiring cost because a single coaxial cable and bias and read out many detectors.
 But they also require more complicated room-temperature electronics to perform the readout, as well as low-noise amplifiers inside the cryostat.
 The technology is also not yet as mature as \TES\ detectors with multiplexed SQUID readout.
-Once again, a careful evaluation of the costs and benefits of \MKID detectors will need to be performed.
+Once again, a careful evaluation of the costs and benefits of \MKID\ detectors will need to be performed.
 
-Nevertheless, several promising approach for reducing system portability, cost, and complexity are available.
+In summary, several promising approach for reducing system portability, cost, and complexity are available.
 The \Imager\ described in this thesis demonstrates that \SI{100}{\mK} \NETD\ video images at \SI{17}{\m} standoff distances are achievable.
 Following resolution of the remaining technical issues, and investigating of imaging phenomenology, we will be ready to design a second-generation system.
 Developments over the next few years will make it clear whether cryogenic passive imaging systems can solve problems for the security community.
