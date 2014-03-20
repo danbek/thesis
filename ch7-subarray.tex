@@ -84,7 +84,7 @@ For less than \SI{2}{\percent} error, $\tau_{servo}/\tau < \num{0.05}$ is requir
 \end{figure*}
 
 Measuring the bandwidth of the servo loop is challenging because roll-offs due to the $L/R$ filter of the detector circuit itself make it difficult to identify the servo roll-off from power spectra.
-However, if the bath temperature is raised above $T_c$ for the Al wire bonds connecting the \TES\ circuit to the input coils of the 1st stage \SQUIDs, the total resistance of the \TES\ circuit is raised from \SI{150}{\uohm} to \SIrange{20}{50}{\mohm}.
+However, if the bath temperature is raised above $T_c$ for the Al wire bonds connecting the \TES\ circuit to the input coils of the 1st stage \SQUIDs, the total resistance of the \TES\ circuit is raised from \SI{150}{\uOhm} to \SIrange{20}{50}{\mohm}.
 This high resistance drives the Johnson noise of the load resistor below the \SQUID\ noise, and pushes the $L/R$ roll-off of the Johnson noise to \SI{3e-5}{s} or faster (\SI{3}{\dB} frequency of \SI{5}{\kilo\Hz} or higher), making a measurement of the servo bandwidth much easier.
 
 To choose $I_{FB}$ values, I acquired data at the fastest multiplexing rate possible for 33 rows\footnote{This rate is achieved by only reporting one of the eight columns to the readout computer. The limiting factor in how fast the entire array can be multiplexed is packaging and sending the data to the readout computer.}, \SI{15151.5}{Hz} while the system was at a temperature of \SI{1.3}{\K}.
@@ -126,7 +126,7 @@ The few high $\tau_{servo}$ values at gains of 80 and 100 are a result of the fi
 
 Our shunt resistors are located on interface chips that contain both shunt resistors and Nyquist inductors.
 The specific chips used were extra chips remaining from the \ABS\ \cite{kusaka_modulation_2013} project.
-The design resistance of the shunts was \SI{180}{\uohm}, and the design inductance was 609~nH\footnote{John Appel, personal communication}.
+The design resistance of the shunts was \SI{180}{\uOhm}, and the design inductance was \SI{609}{\nH}\footnote{John Appel, personal communication}.
 Each chips contains 32 shunt resistors and 32 inductors.
 
 To measure $R_{sh}$ and $L$ for these chips I took noise measurements using zero detector bias current at two different bath temperatures: 980~mK and 1160~mK.
@@ -142,7 +142,7 @@ where $k_B$ is Boltzmann's constant, $T_b$ is the bath temperature for the measu
 The shunt resistance $R_{sh}$, inductance $L$, and readout chain white noise level $SQ$ are the values extracted from the fit.
 
 \figref{fig:rsh-l-plots} shows histogram plots of the resulting \Rsh\ and $L$ values.
-\Rsh\ has a mean of \SI{149}{\uohm} with standard deviation \SI{6}{\uohm}.
+\Rsh\ has a mean of \SI{149}{\uOhm} with standard deviation \SI{6}{\uOhm}.
 The values for \Rsh\ include any parasitic resistance in the circuit, but no evidence for significant parasitic resistance has ever been seen, so this parasitic resistance is assumed to be zero throughout this thesis.
 
 The value for $L$ includes the Nyquist inductance on the interface chip, the input inductance of the first-stage \SQUID\ of the multiplexed readout system, as well as any parasitic inductance in the circuit.
@@ -163,7 +163,7 @@ Plots summarizing results of measurements of shunts and Nyquist inductors.
 \textbf{Upper Left} Histogram of shunt resistance \Rsh.
 \textbf{Upper Right} Histogram of total inductance in circuit, which includes the interface chip Nyquist inductor, the inductance of the SQ1 input coil, and any parasitic inductance.
 \textbf{Lower Left} Scatter plot showing all \Rsh\ and $L$ values. A correlation is apparent, the reason for which is not understood.
-\textbf{Lower Right} Plot showing current noise power spectrum for a single data acquisition for \RCm{20}{6}, along with predicted power spectrum based on best fit to \eqnref{eqn:scnoise-fit} across all data acquisitions. The best fit values are $\Rsh=\SI{155}{\uohm}$, $L = \SI{616}{nH}$, and \SQUID\ white noise level of \Inoise{1.2e-10}.}
+\textbf{Lower Right} Plot showing current noise power spectrum for a single data acquisition for \RCm{20}{6}, along with predicted power spectrum based on best fit to \eqnref{eqn:scnoise-fit} across all data acquisitions. The best fit values are $\Rsh=\SI{155}{\uOhm}$, $L = \SI{616}{nH}$, and \SQUID\ white noise level of \Inoise{1.2e-10}.}
 \label{fig:rsh-l-plots}
 \end{figure*}
 

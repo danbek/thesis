@@ -26,7 +26,7 @@
 	\begin{axis}[
         ymin=0, 
 		title={Shunt Resistance},
-		xlabel={\Rsh\ (\si{\uohm})}, ylabel={Quantity} ]
+		xlabel={\Rsh\ (\si{\uOhm})}, ylabel={Quantity} ]
 	  \addplot [hist={data min=125,data max=165,bins=20},
 		        fill=blue!75]
 	  table[y=Rsh]{../data/ch7-rsh-L.dat};
@@ -49,7 +49,7 @@
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[
 		title={\Rsh\ vs $L_{ny}$},
-		xlabel={\Rsh\ (\si{\uohm})}, ylabel={$L_{ny}$ (nH)} ]
+		xlabel={\Rsh\ (\si{\uOhm})}, ylabel={$L_{ny}$ (nH)} ]
 	  \addplot+[only marks]
 	    table[x=Rsh,y=L]{../data/ch7-rsh-L.dat};
 	\end{axis}

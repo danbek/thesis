@@ -1,16 +1,16 @@
 \chapter{Detector and Focal Plane Design}\label{c:det-design}
 
 This chapter describes the design of the \Imager's detectors and focal plane.
-Prior to fabrication of the 251-detector sub-array that is discussed in this thesis, a set prototype detecctors were fabricated and characterized.
-Because the measured properties of the prototype detects are relevant to some of the parameter choices made for the sub-array detetors, this chapter begins with a short summary of the measured properties of those detectors.
-I then discuss the choice of parameters $G$, $C$, $T_c$ and $T_b$ for the sub-array detectors, followed by details of the detector design used to achieve these parameters.
+Prior to fabrication of the 251-detector sub-array that is discussed in this thesis, a set prototype detectors were fabricated and characterized.
+Because the measured properties of the prototype detects are relevant to some of the parameter choices made for the sub-array detectors, this chapter begins with a short summary of the measured properties of those detectors.
+I then discuss the choice of parameters $G$, $C$, $T_c$ and $T_b$ for the sub-array detectors, the choice of shunt resistor value $R_{sh}$ and Nyquist inductor $L$, followed by details of the detector design used to achieve these parameters.
 I then briefly describe the design of the focal plane, and end with the predicted detector noise and \NETD\ for the system.
 
 \section{Prototype Detectors} \label{sec:det-parm-choice}
 
 The basic design and layout of the prototype detectors was the same as described in\sectionref{sec:ch5-det-design} for the sub-array detectors.
 Four prototype detectors were tested both in the dark and while open optically, and also used to take still images.
-The techniques used to charaterize the prototype detectors were the same as those use to characterize the sub-array detectors, as described in \chapterref{c:det-array}.
+The techniques used to characterize the prototype detectors were the same as those use to characterize the sub-array detectors, as described in \chapterref{c:det-array}.
 \tableref{tab:ch5-proto-parms} lists parameters of these detectors, and \figref{fig:ch5-proto-plots} contains plots showing \Loop, $\beta_I$, $\tau_{eff}$ and $L_{crit}$ for these detectors, measured at a range of bias points.
 
 \begin{table*}
@@ -41,7 +41,7 @@ The techniques used to charaterize the prototype detectors were the same as thos
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch5-proto-plots.pdf}
-\caption[Plots of \Loop, $\beta_I$, $\tau_{eff}$ and $L_{crit}$ for prototype detetors]{
+\caption[Plots of \Loop, $\beta_I$, $\tau_{eff}$ and $L_{crit}$ for prototype detectors]{
   Plots showing \Loop, $\beta_I$, $\tau_{eff}$ and $L_{crit}$ vs bias point for four prototype detectors.
   \Loop,  $\beta_I$, and $\tau_{eff}$ were measured using the same techniques described in \chapterref{c:det-array}.
   The values of $L_{crit}$ were calculated using \eqnref{eqn:ch3-L-stable}.
@@ -242,6 +242,20 @@ The total heat capacity is dominated by the Au ring.
 \end{tabular}
 \end{table*}
 
+\section{Choice of Shunts and Nyquist Inductors} \label{sec:ch5-shunt}
+
+The \Imager\ uses spare shunt resistors and Nyquist inductors originally made for the \ABS\ project.
+The design value for the shunt resistors was \SI{180}{\uOhm} and for the inductors \SI{609}{\nH}.
+These chips were already fabricated and available, and the values of $R_{sh}$ and $L$ are appropriate for the \Imager's detectors.
+
+The measured normal-state resistance of the prototype detectors was \SI{3.4}{\mOhm}, but the thickness of \TES\ material was reduced for the sub-array by \abt{\SI{30}{\percent}}, for a target sub-array normal-state resistance of \SI{3.9}{\mOhm}.
+This would allow $R_{sh}$ to be more than five times smaller than $R_0$ at bias points as low as $R_0 = 0.25 R_n$, allowing a good voltage bias.
+
+As shown in the lower right plot of \figref{fig:ch5-proto-plots}, the smallest value of $L_{crit}$ for any of the four prototype detectors across all bias points was \SI{2000}{\nH}.
+This value drops to \SI{1300}{\nH} given the faster design value of $\tau$ for the sub-array detectors.
+Therefore, $L = \SI{609}{\nH}$ was low enough to ensure that the sub-array detectors will be stable, with a large safety margin in case the values of \Loop\, $\beta_I$, or $\tau$ changed between the prototype and sub-array.
+Lower values of $L_{crit}$ would work as well, and may be considered if faster detector response times are targeted in a future iteration of this system.
+
 \section{Detector Wafer Layout} \label{sec:ch5-layout}
 
 \figref{fig:ch5-full-wafer} shows a photograph of the entire sub-array; the figure caption contains a detailed description of the features present on the sub-array.
@@ -417,5 +431,5 @@ The interface chips were designed --- and spares kindly donated --- by the Ataca
 Jeff Van Lanen fabricated the backshort wafers and the Quantum Sensors Project \SQUID\ fabrication team made the multiplexing chips.
 Colin Fitzgerald performed all wire bonding.
 Lisa Ferreira did the soldering of the 100-pin MDM connectors to the circuit board, as well as a variety of other detail-oriented soldering tasks.
-Ilya Smirnov carried out a series of simulations to investigate advantages of square vs hexgonal detector grids, as well as required detector time constants to avoid blurring.
+Ilya Smirnov carried out a series of simulations to investigate advantages of square vs hexagonal detector grids, as well as required detector time constants to avoid blurring.
 Although these simulations are not discussed in this thesis, they supported the conclusions of \sectionref{sec:det-parm-choice}.
