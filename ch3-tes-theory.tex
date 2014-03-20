@@ -353,13 +353,13 @@ The ratio $P_{sat} / P_{opt}$ is called the ``safety factor''.
 \section{Stability of \textsc{TES} Bolometers} \label{sec:ch3-tes-stability}
 
 In any physical system in which negative feedback is applied, the system response can become unstable if the feedback is applied with a phase change that approaches \ang{180}.
-This situation can also occur in \TES\ detectors if the inductance in the \TES\ bias circuit is so large that the \TES\ electrical time constant $\tau_{el} = L/(R_0(1+\beta_I) + R_L)$ becomes too close to the \TES\ effective time constant $\tau_{eff}$.
-For a voltage-biased \TES\ with $R_L \ll R_0$, the criteria for stable operation is
+This situation can occur in \TES\ detectors if the inductance in the \TES\ bias circuit is so large that the \TES\ electrical time constant $\tau_{el} = L/(R_0(1+\beta_I) + R_L)$ becomes too close to the \TES\ effective time constant $\tau_{eff}$.
+For a voltage-biased \TES\ with $R_L \ll R_0$, the criteria for stable operation is \cite{irwin_transition-edge_2005}
 \begin{equation}
   \label{eqn:ch3-L-stable}
-  L > \left{ \Loop(3 + \beta_I) + (1 + \beta_I) - 2\sqrt{\Loop(2+\beta_I)(1 + \beta + \Loop)} \right} \frac{R_0 \tau}{(\Loop-1)^2}
+  L > \left[ \Loop(3 + \beta_I) + (1 + \beta_I) - 2\sqrt{\Loop(2+\beta_I)(1 + \beta + \Loop)} \right] \frac{R_0 \tau}{(\Loop-1)^2}
 \end{equation}
-
+% xxx mention that this is used in ch 6?
 
 \section{\textsc{TES} Bolometer Noise} \label{sec:ch3-tes-noise}
 
