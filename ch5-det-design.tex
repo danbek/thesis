@@ -1,8 +1,53 @@
 \chapter{Detector and Focal Plane Design}\label{c:det-design}
 
 This chapter describes the design of the \Imager's detectors and focal plane.
-It begins with a discussion of the choice of parameters $G$, $C$, $T_c$ and $T_b$ for the detectors, followed by details of the detector design used to achieve these parameters.
+Prior to fabrication of the 251-detector sub-array that is discussed in this thesis, a set prototype detecctors were fabricated and characterized.
+Because the measured properties of the prototype detects are relevant to some of the parameter choices made for the sub-array detetors, this chapter begins with a short summary of the measured properties of those detectors.
+I then discuss the choice of parameters $G$, $C$, $T_c$ and $T_b$ for the sub-array detectors, followed by details of the detector design used to achieve these parameters.
 I then briefly describe the design of the focal plane, and end with the predicted detector noise and \NETD\ for the system.
+
+\section{Prototype Detectors} \label{sec:det-parm-choice}
+
+The basic design and layout of the prototype detectors was the same as described in\sectionref{sec:ch5-det-design} for the sub-array detectors.
+Four prototype detectors were tested both in the dark and while open optically, and also used to take still images.
+The techniques used to charaterize the prototype detectors were the same as those use to characterize the sub-array detectors, as described in \chapterref{c:det-array}.
+\tableref{tab:ch5-proto-parms} lists parameters of these detectors, and \figref{fig:ch5-proto-plots} contains plots showing \Loop, $\beta_I$, $\tau_{eff}$ and $L_{crit}$ for these detectors, measured at a range of bias points.
+
+\begin{table*}
+\centering
+\caption[Measured properties of prototype detectors]{
+  Measured Properties of Prototype Detectors.
+  The methods and procedures used to measure these properties were the same as described for the sub-array in \chapterref{c:det-array}.
+} 
+\label{tab:ch5-proto-parms}
+\begin{tabular}{l c}
+\toprule
+  Detector Property &  {Value} \\
+\midrule
+  $T_c$                 & \SI{1.2}{\K} \\
+  $R_n$                 & \SI{3.4}{\mOhm} \\
+  $n$                   & 3.9 \\
+  $G$                   & \SI{5}{\nW\per\K} \\
+  $\tau$                & \SI{12}{\ms} \\
+  $\tau_{eff}$ (typical) & \SI{4}{\ms} \\
+  $C = G \tau $         & \SI{60}{\pJ\per\K} \\
+  $P_{opt}$              & \SI{150}{\pW\per\K} \\
+  $\eta_{tot}$           & 0.25 \\
+  $P_{sat}|_{\SI{970}{\mK}}$          & \SI{920}{\pW} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{figure*}
+\centering
+\includegraphics{drawings/ch5-proto-plots.pdf}
+\caption[Plots of \Loop, $\beta_I$, $\tau_{eff}$ and $L_{crit}$ for prototype detetors]{
+  Plots showing \Loop, $\beta_I$, $\tau_{eff}$ and $L_{crit}$ vs bias point for four prototype detectors.
+  \Loop,  $\beta_I$, and $\tau_{eff}$ were measured using the same techniques described in \chapterref{c:det-array}.
+  The values of $L_{crit}$ were calculated using \eqnref{eqn:ch3-L-stable}.
+}
+\label{fig:ch5-proto-plots}
+\end{figure*}
 
 \section{Choice of Bolometer Parameters} \label{sec:det-parm-choice}
 
@@ -57,31 +102,6 @@ However, in order to change as little as possible between the prototype detector
 \tableref{tab:ch5-proto-parms} lists the measured properties and parameters of the prototype detectors.
 These detectors had $P_{sat}$ at $T_b = \SI{970}{\mK}$, 5.1 times higher than the predicted optical load and 6.1 times the measured optical load.
 A safety factor of 5--6 is overly conservative, so for the sub-array I decided to target a $G$ value of \SI{3.8}{\nW\per\K}, for a safety factor of 3.9 -- 4.7.
-
-\begin{table*}
-\centering
-\caption[Measured properties of prototype detectors]{
-  Measured Properties of Prototype Detectors.
-  The methods and procedures used to measure these properties were the same as described for the sub-array in \chapterref{c:det-array}.
-} 
-\label{tab:ch5-proto-parms}
-\begin{tabular}{l c}
-\toprule
-  Detector Property &  {Value} \\
-\midrule
-  $T_c$                 & \SI{1.2}{\K} \\
-  $R_n$                 & \SI{3.4}{\mOhm} \\
-  $n$                   & 3.9 \\
-  $G$                   & \SI{5}{\nW\per\K} \\
-  $\tau$                & \SI{12}{\ms} \\
-  $\tau_{eff}$ (typical) & \SI{4}{\ms} \\
-  $C = G \tau $         & \SI{60}{\pJ\per\K} \\
-  $P_{opt}$              & \SI{150}{\pW\per\K} \\
-  $\eta_{tot}$           & 0.25 \\
-  $P_{sat}|_{\SI{970}{\mK}}$          & \SI{920}{\pW} \\
-\bottomrule
-\end{tabular}
-\end{table*}
 
 \subsection{Choice of $C$}
 
