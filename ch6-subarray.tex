@@ -275,6 +275,10 @@ In this fit, $\tau_{meas}$ is considered the dependent variable, the product $(I
 
 \section{Measurement of \textsc{TES} $G$} \label{sec:g-psat}
 
+%
+% thesis/ana_g() followed by thesis/genplot_ch6_g
+%
+
 With knowledge of the heater resistances, \IV\ curves can be taken over a wide range of bath temperatures, which enables a measurement of the \TES\ thermal conductance $G$, critical temperature $T_C$ and power-flow index $n$.
 Similarly to \sectionref{sec:heater-r}, I took \IV\ curves at bath temperatures ranging from \SIrange{995}{1160}{\mK}, while adjusting the applied heater power so that each \IV\ curve had a clear normal branch.
 Fits were performed against \eqnref{eqn:ch3-g-fit}:
@@ -333,6 +337,10 @@ The reason for this discrepancy is not known.
 %thz4 proto - 40 um
 
 \section{Direct Measurement of Detector Responsivity and $\tau_{eff}$} \label{sec:teff-resp}
+
+%
+% thesis/ana_heater_step() ... note that the file is created inside fit_heater_step()
+%
 
 Knowledge of $R_{htr}$ allows a direct measurement of the DC responsivity and $\tau_{eff}$ for the seven detectors with heaters.
 Steps in heater bias current were applied to these detectors under \SOC.
