@@ -31,7 +31,7 @@
 		xlabel={$NETD$ (\si{\mK})}, ylabel={Number of Frames} ]
 	  \addplot [hist={data min=75,data max=125,bins=10},
 		        fill=blue!75]
-	    table[y=netd]{../data/ch8-flat-netd.dat};
+	    table[y=netd]{../data/ch7-flat-netd.dat};
 	\end{axis}
   \end{tikzpicture}
   
@@ -45,7 +45,7 @@
 		xlabel={Temperature Offset (\si{\mK})}, ylabel={Number of Pixels} ]
 	  \addplot [hist={data min=-500,data max=500,bins=25},
 		        fill=blue!75]
-	    table[y=temp]{../data/ch8-flat-frame-2.dat};
+	    table[y=temp]{../data/ch7-flat-frame-2.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -65,7 +65,7 @@
       xlabel={Temperature Offest (K)},
     }
     ]
-  \addplot[point meta min=-3.000000e+00, point meta max=3.000000e+00] graphics [xmin=-4.250000e+01,xmax=4.050000e+01,ymin=-2.950000e+01,ymax=2.750000e+01] {../images/ch8-flat-frame-2.png} ;
+  \addplot[point meta min=-3.000000e+00, point meta max=3.000000e+00] graphics [xmin=-4.250000e+01,xmax=4.050000e+01,ymin=-2.950000e+01,ymax=2.750000e+01] {../images/ch7-flat-frame-2.png} ;
 
 \end{axis}
 \end{tikzpicture}
@@ -86,7 +86,7 @@
       xlabel={Temperature Offset (K)},
     }
     ]
-  \addplot[point meta min=-3.000000e+00, point meta max=3.000000e+00] graphics [xmin=-4.050000e+01,xmax=3.750000e+01,ymin=-2.850000e+01,ymax=2.650000e+01] {../images/ch8-still-frame-25.png} ;
+  \addplot[point meta min=-3.000000e+00, point meta max=3.000000e+00] graphics [xmin=-4.050000e+01,xmax=3.750000e+01,ymin=-2.850000e+01,ymax=2.650000e+01] {../images/ch7-still-frame-25.png} ;
 \end{axis}
 \end{tikzpicture}
 

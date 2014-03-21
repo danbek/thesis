@@ -29,7 +29,7 @@
 		xlabel={FWHM (\si{\cm})}, ylabel={Quantity} ]
 	  \addplot [hist={data min=1.2,data max=1.9,bins=20},
 		        fill=blue!75]
-	    table[y=fwhm]{../data/ch8-beam-map-parms.dat};
+	    table[y=fwhm]{../data/ch7-beam-map-parms.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -41,7 +41,7 @@
 		xlabel={$\frac{\sigma_1}{\sigma_2}$}, ylabel={Quantity} ]
 	  \addplot [hist={data min=1,data max=2,bins=20},
 		        fill=blue!75]
-	    table[y=sigma_rat]{../data/ch8-beam-map-parms.dat};
+	    table[y=sigma_rat]{../data/ch7-beam-map-parms.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -53,7 +53,7 @@
 		xlabel={Beam Angle to x-axis (Degrees)}, ylabel={Quantity} ]
 	  \addplot [hist={data min=50,data max=90,bins=20},
 		        fill=blue!75]
-	    table[y=theta]{../data/ch8-beam-map-parms.dat};
+	    table[y=theta]{../data/ch7-beam-map-parms.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -65,7 +65,7 @@
 		title={$\sigma_1$ vs $\sigma_2$},
 		xlabel={$2 \sqrt{2 \ln{2}} \; \sigma_1$ (\si{\cm})}, ylabel={$2 \sqrt{2 \ln{2}} \; \sigma_2$ (\si{\cm})} ]
 	  \addplot+[only marks]
-	    table[x expr=2.3548*\thisrow{sigmax},y expr=2.3548*\thisrow{sigmay}]{../data/ch8-beam-map-parms.dat};
+	    table[x expr=2.3548*\thisrow{sigmax},y expr=2.3548*\thisrow{sigmay}]{../data/ch7-beam-map-parms.dat};
 	\end{axis}
   \end{tikzpicture}
 

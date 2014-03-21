@@ -118,7 +118,7 @@ It excludes parasitic load inherent to the sorption refrigerator itself; we have
   These calculations assume that the readout wiring and Ti-6Al-4V spiders are running from \SI{6.4}{\K} to \SI{1.0}{\K}.
   All wires are AWG36 Phosphor Bronze with thermal conductivity taken from the Lake Shore Cryogenics reference tables \cite{lake_shore_cryogenics_inc._cryogenic_????}.
   Assumed thermal conductivity $k$ of the Ti-6Al-4V alloy used for the spiders is $k(T) = (\SI{150}{\uW\per\cm\per\K}) T$ (William Duncan, personal communication).
-  ``\BOSE\ readout wires'' refers to the wires running from room temperature used to readout the position of the secondary mirror; see \sectionref{sec:ch8-mirror-readout}.
+  ``\BOSE\ readout wires'' refers to the wires running from room temperature used to readout the position of the secondary mirror; see \sectionref{sec:ch7-mirror-readout}.
   The heat load from these wires is high because they are not currently intercepted anywhere between room temperature and the \SI{1}{\K} stage.
   Intercepting them at the \SI{6}{\K} Cold Plate would reduce their load to \SI{1.1}{\uW}.
   ``Other optical power'' refers to in-band power that reaches the \SI{1}{\K} stage but is not absorbed by the detectors.
@@ -845,7 +845,7 @@ An important aspect of the response of a \SQUID\ to an input current is that the
 \figref{fig:tes-bias-ramp-sc} and \figref{fig:tes-bias-ramp-trans} show examples of this behavior for the \SQUIDs\ used in the \Imager.
 This periodic response means that the readout system is not measuring the absolute current passing through the detectors, but rather changes in the current from some offset value, an offset value which is not known and can be different for each detector.
 When processing a set of detector outputs into a video, these detector offsets must be accounted for.
-The algorithm used to do this is described in \sectionref{sec:ch8-algo}.
+The algorithm used to do this is described in \sectionref{sec:ch7-algo}.
 
 To reduce the number of wires running into the cryostat, the \Imager\ uses a time-division multiplexed (\TDM) readout system \cite{chervenak_superconducting_1999,korte_time-division_2003,reintsema_prototype_2003}.
 \figref{fig:ch4-tdm-schematic} shows a schematic of this readout system.

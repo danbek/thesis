@@ -5,12 +5,12 @@
 % xxx should update all plots with latest fudge factor of 1.098
 
 This chapter describes the process of turning detector timestreams into videos, as well as measurements required to support that process.
-I start with a brief description of which detectors are not used due to problems with their performance (\sectionref{sec:ch8-det-cuts}).
-I then describe how we read out the position of the secondary mirror (\sectionref{sec:ch8-mirror-readout}), which controls where detectors are pointed at any time, followed by a description of how we determine the focal distance, determine where each beam is pointing in the far-field, and the distance scale (\sectionref{sec:ch8-focus-distance}--\sectionref{sec:ch8-dist-scale}).
-I also present measurements of the optical efficiency of the system (\sectionref{sec:ch8-opt-eff}) and an estimate of the temperature scale of the images it produces (\sectionref{sec:ch8-temp-scale}).
-The algorithm used to produce video (and still) images is described in \sectionref{sec:ch8-algo}, and a discussion of the \NETD\ in the images is in \sectionref{sec:ch8-noise-model}.
+I start with a brief description of which detectors are not used due to problems with their performance (\sectionref{sec:ch7-det-cuts}).
+I then describe how we read out the position of the secondary mirror (\sectionref{sec:ch7-mirror-readout}), which controls where detectors are pointed at any time, followed by a description of how we determine the focal distance, determine where each beam is pointing in the far-field, and the distance scale (\sectionref{sec:ch7-focus-distance}--\sectionref{sec:ch7-dist-scale}).
+I also present measurements of the optical efficiency of the system (\sectionref{sec:ch7-opt-eff}) and an estimate of the temperature scale of the images it produces (\sectionref{sec:ch7-temp-scale}).
+The algorithm used to produce video (and still) images is described in \sectionref{sec:ch7-algo}, and a discussion of the \NETD\ in the images is in \sectionref{sec:ch7-noise-model}.
 
-\section{Detector Cuts} \label{sec:ch8-det-cuts}
+\section{Detector Cuts} \label{sec:ch7-det-cuts}
 
 Approximately \SI{16}{\percent} of the detectors in the first sub-array can not be used to generate images.
 For some detectors, the membranes are broken.
@@ -58,7 +58,7 @@ This could be caused by an abnormally high $G$ and/or $T_c$ value, or by a short
 
 \begin{figure*}
 \centering
-\includegraphics{./drawings/ch8-detector-cuts-wafer.pdf}
+\includegraphics{./drawings/ch7-detector-cuts-wafer.pdf}
 \caption[Detector layout on wafer]{
 Figure showing detector layout on the wafer, highlighting which detectors have problems and which are working.
 Each detector is labeled (below) with its row/column.
@@ -69,19 +69,19 @@ The x and y positions of the detectors on the wafer are also given in the format
 
 \begin{figure*}
 \centering
-\includegraphics{./drawings/ch8-detector-cuts-rc.pdf}
+\includegraphics{./drawings/ch7-detector-cuts-rc.pdf}
 \caption[Detector to multiplexing row/column mapping]{
   Figure showing same information as \figref{fig:detector-cuts-wafer}, but organized in term of readout rows/columns. Each detector is labeled (below) with its position on the detector wafer.
   The row/column numbers are labeled on the left and top. Unused rows/columns as well as the rows/columns used to read out the position of the secondary mirror are also indicated. }
 \label{fig:detector-cuts-rc}
 \end{figure*}
 
-\section{Readout of Mirror Position}\label{sec:ch8-mirror-readout}
+\section{Readout of Mirror Position}\label{sec:ch7-mirror-readout}
 
 The \Imager\ produces a time-ordered data stream (``timestream'') containing the output of each detector as a function of time.
 In order to turn this data stream into a video, we must know where the optical system is pointing at all times.
 This section describes how this pointing information is placed directly into the timestream by the \Imager.
-It is also necessary to know where each detector is pointed relative to the optical system; this relative detector pointing information is extracted from beam maps, as discussed in \sectionref{sec:ch8-beam-maps}.
+It is also necessary to know where each detector is pointed relative to the optical system; this relative detector pointing information is extracted from beam maps, as discussed in \sectionref{sec:ch7-beam-maps}.
 
 The pointing of the optical system is set by the positions of the two \BOSE\ actuators --- \DISP1 and \DISP2 --- that move the secondary mirror%
 \footnote{See \sectionref{sec:ch4-optical-design}}.
@@ -112,7 +112,7 @@ To convert actuator displacement to displacements in the far-field of the system
 \end{equation}
 Here I have also introduced a ``fudge factor'' $F_d$, which allows us to account for any error in manufacturing of the optics, errors in the \ZEMAX\ model, or errors in the \BOSE\ actuator control system; e.g., when we tell the \BOSE\ system to move an actuator by \SI{3}{\mm}, does it really move exactly \SI{3}{\mm}?
 If none of these --- or other --- errors are present in the system, then $F_d$ will be equal to 1.0.
-The direct measurements of distances in the far-field described in \sectionref{sec:ch8-dist-scale} show that $F_d = 1.098$, and this value is used in all analysis for the remainder of this chapter.
+The direct measurements of distances in the far-field described in \sectionref{sec:ch7-dist-scale} show that $F_d = 1.098$, and this value is used in all analysis for the remainder of this chapter.
 
 % pivot 14.19 mm behind mirror vertex
 % pivot 14mm in front on \BOSE\ attachment point
@@ -129,11 +129,11 @@ Here $\vect{d}_{\text{DISP1}}$ and $\vect{d}_{\text{DISP2}}$ are the measured ou
 The fit values for $A_1$ and $A_2$ were clustered near zero, and were small compared to the noise in the detector timestream.
 To check whether these small values were nevertheless real, I calculated the crosstalk amplitudes $A_1$ and $A_2$ for each detector twice: once for the first half of the data acquisition and once for the second half.
 If crosstalk is present to a statistically significant level, a scatter plot of the crosstalk amplitudes for the two halves of the data acquisition should show signs of correlation.
-As can be seen in \figref{fig:ch8-bose-cross}, the points are clustered about the origin and no correlation is apparent.
+As can be seen in \figref{fig:ch7-bose-cross}, the points are clustered about the origin and no correlation is apparent.
 
 \begin{figure*}
 \centering
-\includegraphics{drawings/ch8-bose-cross.pdf}
+\includegraphics{drawings/ch7-bose-cross.pdf}
 \caption[Plot showing crosstalk amplitudes]{
 Plot showing crosstalk amplitudes.
 The left plot is for \DISP1, the right for \DISP2.
@@ -141,16 +141,16 @@ Each actuator was moved +/- \SI{3.5}{\mm} at 6 Hz while the detectors were biase
 The best-fit crosstalk amplitude for each actuator and detector were calculated for both the first half and the second half of the data acquisition, and these amplitudes are plotted against each other in these plots.
 The lack of correlation in the scatter plots, as well as the clustering around the origin, indicate that any crosstalk present cannot be distinguished from noise in the detectors.
 }
-\label{fig:ch8-bose-cross}
+\label{fig:ch7-bose-cross}
 \end{figure*}
 
-\section{Focus Distance}\label{sec:ch8-focus-distance}
+\section{Focus Distance}\label{sec:ch7-focus-distance}
 
 As described in \sectionref{sec:ch4-optical-design}, the \Imager\ is designed to focus at distances of \SIrange{16}{28}{\m}.
 All results described in this chapter were with the \Imager\ configured to focus at 16~m.
-To check the actual distance to the target focal plane, beam maps as described in \sectionref{sec:ch8-beam-maps} were performed with the black-body source located at different distances from the cryostat.
+To check the actual distance to the target focal plane, beam maps as described in \sectionref{sec:ch7-beam-maps} were performed with the black-body source located at different distances from the cryostat.
 The optimal focus was a distance of \SI{17}{\m} from the apex of the primary mirror.
-\figref{fig:ch8-focus} shows beam maps for the same detector taken at \SI{17}{\m} and at \SI{15.8}{\m}.
+\figref{fig:ch7-focus} shows beam maps for the same detector taken at \SI{17}{\m} and at \SI{15.8}{\m}.
 At \SI{17}{\m} the black-body aperture is well defined and much warmer than its surroundings.
 At \SI{15.8}{\m}, the black-body aperture is visible, but poorly defined with significant side-lobes.
 The temperature of the aperture is much closer to the background than in the \SI{17}{\m} case.
@@ -160,7 +160,7 @@ Possibilities include the cryostat being located too close to the mirror system,
 
 \begin{figure*}
 \centering
-\includegraphics{drawings/ch8-focus.pdf}
+\includegraphics{drawings/ch7-focus.pdf}
 \caption[Focus distance plots]{
   Plots showing impact of observing objects not located at the far-field focal plane.
   In both cases the \SI{1030}{\celsius} black-body source with aperture diameter set to \SI{0.4}{\in} (\SI{1.0}{\cm}) was observed. The acquisitions were taken 2.5\,minutes apart, and the only thing changed was the distance between the black-body and the primary mirror.
@@ -171,10 +171,10 @@ Possibilities include the cryostat being located too close to the mirror system,
   The black-body aperture is poorly defined with prominent side-lobe features.
   The aperture is no more than \SIrange{5}{10}{\K} warmer than the surroundings.
 }
-\label{fig:ch8-focus}
+\label{fig:ch7-focus}
 \end{figure*}
 
-\section{Beam Maps} \label{sec:ch8-beam-maps}
+\section{Beam Maps} \label{sec:ch7-beam-maps}
 
 As discussed in \sectionref{sec:ch4-feedhorn-design}, the \Imager\ feedhorns are predicted to have beams that are circularly symmetric and well-approximated by Gaussians with \FWHM\ of \SI{1.2}{\cm} at the target.
 To verify these predictions beam maps were performed by raster scanning the beams over a stationary \SI{1030}{\celsius} black-body source.
@@ -189,9 +189,9 @@ The \Imager\ beams were raster scanned over the black-body source by moving one 
 Scans were taken with the black-body in two different locations to ensure coverage of the entire sub-array.
 At each black-body position two scans were taken with \DISP1 as the fast actuator and two with \DISP2 as the fast actuator, for a total of eight scans.
 
-For each scan, the data stream for each detector was ``binned'' as described in \sectionref{sec:ch8-algo} to produce a beam map for each detector.
+For each scan, the data stream for each detector was ``binned'' as described in \sectionref{sec:ch7-algo} to produce a beam map for each detector.
 No common mode or polynomial was removed from the timestreams.
-Actuator displacements were converted to distances in the far-field using the conversion factors discussed in \sectionref{sec:ch8-mirror-readout}.
+Actuator displacements were converted to distances in the far-field using the conversion factors discussed in \sectionref{sec:ch7-mirror-readout}.
 The following 2-D Gaussian allowing for ellipticity was then fit to each beam map:
 \begin{multline}
   % Note the use of the null delimiters \left. and \right. to allow
@@ -206,10 +206,10 @@ Only the points within \SI{3}{\cm} of the map peak were included in the fit.
 Beam maps at the edge of the scan were discarded, as were beam maps where the fitting routine performed poorly. % xxx quantify
 The $\theta$, $\sigma_1$, and $\sigma_2$ parameters were all rationalized so that the conditions $\sigma_1 > \sigma_2$ and $0 < \theta < \ang{180}$ hold.
 The beam parameters across the eight scans were then averaged together to produce final beam maps.
-\figref{fig:ch8-beam-summary} summarizes the final fit parameters for all the beams.
+\figref{fig:ch7-beam-summary} summarizes the final fit parameters for all the beams.
 The beam ellipticity and angle offset from the $x$-axis are statistically significant.
 
-\figref{fig:ch8-all-beam-maps} shows the final beam maps.
+\figref{fig:ch7-all-beam-maps} shows the final beam maps.
 The beams are elliptical, with a mean $\sigma_1 / \sigma_2 = 1.6$.
 The mean beam angle is $\ang{70}$ counter-clockwise from the $x$-axis.
 The beam size \FWHM\ is \SI{1.4}{\cm}, and is calculated from
@@ -226,46 +226,46 @@ The best-fit grid spacing between detector beams in the far field is \SI{1.98}{\
 Using the plate scale extracted from \ZEMAX\ in \sectionref{sec:ch4-optical-design}, this is equivalent to a \SI{2.99}{\mm} detector spacing on the focal plane array.
 The design detector spacing, after accounting for predicted thermal contraction of the feed-horn arrays, was \SI{2.730}{\mm}, \SI{8.6}{\percent} smaller than this.
 
-To give a sense of the scale of the area covered directly by the beams relative to the field of view provided in images, \figref{fig:ch8-beams-on-image} shows the locations at which the beams are pointing when the \BOSE\ actuators are set to their zero positions.
+To give a sense of the scale of the area covered directly by the beams relative to the field of view provided in images, \figref{fig:ch7-beams-on-image} shows the locations at which the beams are pointing when the \BOSE\ actuators are set to their zero positions.
 
 Although the ellipticity of the beams is disappointing, the resolution is close to target, and the ellipticity is not a barrier to using the system to take video images.
 
 \begin{figure*}
 \centering
-\includegraphics{drawings/ch8-beam-summary.pdf}
+\includegraphics{drawings/ch7-beam-summary.pdf}
 \caption[Beam fit parameters]{
   Plots summarizing final fit parameters for all beams.
   The histogram in the lower right shows that there is \abt{3} times more scatter in $\sigma_1$ than in $\sigma_2$. 
 }
-\label{fig:ch8-beam-summary}
+\label{fig:ch7-beam-summary}
 \end{figure*}
 
 \begin{figure*}
 \centering
-\includegraphics{drawings/ch8-all-beam-maps.pdf}
+\includegraphics{drawings/ch7-all-beam-maps.pdf}
 \caption[Beam maps]{
 Plot showing final beam maps.
 The ellipses represent the full-width-half-maximum (\FWHM) of the best-fit 2-D Gaussian for each beam. The beams are elliptical, with a mean $\sigma_1/\sigma_2$ of 1.6, mean beam angle to the $x$-axis of \ang{70}, and beam \FWHM\ of \SI{1.4}{\cm}.
-The four grid locations in the extreme upper right corner, as well as the extreme lower left grid point, have no detectors and therefore no beams. All other missing beams are for cut detectors, as discussed in \sectionref{sec:ch8-det-cuts}.
+The four grid locations in the extreme upper right corner, as well as the extreme lower left grid point, have no detectors and therefore no beams. All other missing beams are for cut detectors, as discussed in \sectionref{sec:ch7-det-cuts}.
 The offset is relative to detector \RCm{18}{4}.
 }
-\label{fig:ch8-all-beam-maps}
+\label{fig:ch7-all-beam-maps}
 \end{figure*}
 
-\section{Direct Measurement of Distance Scale and Image Resolution} \label{sec:ch8-dist-scale}
+\section{Direct Measurement of Distance Scale and Image Resolution} \label{sec:ch7-dist-scale}
 
-To measure the factor $F_d$ described in \sectionref{sec:ch8-mirror-readout}, I placed a Styrofoam cooler filled with liquid Nitrogen (LN2) in the far-field of the system and scanned the system over it, using data acquired to create still images.
+To measure the factor $F_d$ described in \sectionref{sec:ch7-mirror-readout}, I placed a Styrofoam cooler filled with liquid Nitrogen (LN2) in the far-field of the system and scanned the system over it, using data acquired to create still images.
 A sheet of \ecco\footnote{Emerson \& Cuming Microwave Products, Inc.} was placed in the cooler to serve as a cold black surface for the system to observe.
 Images were acquired of the cooler itself, as well as the cooler with Al foil strips taped to the outside.
 Each strip was \abt{\SI{4}{\cm}} tall, and the strips were \SI{14.5}{\cm}, \SI{29}{\cm}, and \SI{47.2}{\cm} long.
 The interior of the cooler is \SI{67.7}{\cm} wide.
-For each image the \FWHM\ width of the strip --- or the cold space inside the cooler --- was calculated by taking a cut through the still image centered on the strip or cooler (see \figref{fig:ch8-check-dist}).
+For each image the \FWHM\ width of the strip --- or the cold space inside the cooler --- was calculated by taking a cut through the still image centered on the strip or cooler (see \figref{fig:ch7-check-dist}).
 
 The result of these measurements is that $F_d = 1.098$.
 
 \begin{figure*}
 \centering
-\includegraphics{drawings/ch8-check-dist.pdf}
+\includegraphics{drawings/ch7-check-dist.pdf}
 \caption[Distance scale measurements]{
   Plots explaining measurement of distance scale.
   The left plot shows a close-up of the Styrofoam cooler filled with LN2, with an \SI{14.5}{\cm} by \SI{4}{\cm} strip taped to the outside.
@@ -273,22 +273,22 @@ The result of these measurements is that $F_d = 1.098$.
   The \FWHM\ of this cut is shown as the red line.
   This measurement was repeated for two other Al foil strips, as well as the cooler without any Al foil strips, in order to establish the distance scale.
 }
-\label{fig:ch8-check-dist}
+\label{fig:ch7-check-dist}
 \end{figure*}
 
 % Code: imaging/ana_reso_from_stills.m
 
 Using the same cooler filled with LN2, a dime (diameter \SI{17.91}{\mm}) was taped to the outside of the cooler and a still image was taken.
-\figref{fig:ch8-dime-map} shows the resulting still image, as well as a close-up of the are with the dime.
+\figref{fig:ch7-dime-map} shows the resulting still image, as well as a close-up of the are with the dime.
 A 2-D Gaussian was fit to the resulting map.
 The best-fit Gaussian has ellipticity 1.16 --- smaller than the individual beams --- and the \FWHM\ of the dime map is \SI{2.0}{\cm} --- larger than the beams.
 Both differences are expected from convolution of the beam with the dime, which is not a point source.
 The \FWHM\ of the dime map is \SI{2.0}{\cm}; a bit larger than the dime's width of \SI{1.791}{\cm}, as expected due to convolution with the beam.
-This serves as a rough confirmation of the beam size and locations as determined in \sectionref{sec:ch8-beam-maps}.
+This serves as a rough confirmation of the beam size and locations as determined in \sectionref{sec:ch7-beam-maps}.
 
 \begin{figure*}
 \centering
-\includegraphics{drawings/ch8-dime-map.pdf}
+\includegraphics{drawings/ch7-dime-map.pdf}
 \caption[Image of LN2 cooler with dime]{
   Plots showing still image of Styrofoam cooler filled with LN2, with a dime (diameter \SI{1.791}{\cm}) taped to it's outside.
   Red is warm, blue cold; the temperature scales are different in the two plots.
@@ -296,10 +296,10 @@ This serves as a rough confirmation of the beam size and locations as determined
   \textbf{Right} Detail of area within white rectangle: the dime.
   The black ellipse shows the \FWHM\ of the best-fit ellipse to the map. The ellipticity is \num{1.16}, the \FWHM\ of the principal axes are \SI{1.83}{\cm} and \SI{2.12}{\cm}, for an overall \FWHM\ of $\sqrt{1.83 \times 2.12} = \SI{2.0}{\cm}$.
 }
-\label{fig:ch8-dime-map}
+\label{fig:ch7-dime-map}
 \end{figure*}
 
-\section{Optical Efficiency} \label{sec:ch8-opt-eff}
+\section{Optical Efficiency} \label{sec:ch7-opt-eff}
 
 To measure the total optical efficiency of the system, \IV\ curves can be taken while a detector's beam is pointing at two known temperature distributions.
 As discussed in \sectionref{sec:ch3-iv-curve}, the difference in Joule power at $0.99 R_n$ gives the difference in total power dissipated in the bolometer.
@@ -311,7 +311,7 @@ If the two temperatures are $T_1$ and $T_2$, then the total optical efficiency $
 where $P_{IV}$ is the Joule power in the detector at $0.99 R_n$ and $P_{opt}(T)$ is the optical power in both polarizations emitted by the source in a single spatial mode, given by \eqnref{eqn:ch4-power-per-mode}.
 
 For a good measurement the two temperatures $T_1$ and $T_2$ should be as far apart as possible, and the detector's far-field beam should be filled by the temperature distribution in each case.
-I used the same ``\ecco\ submerged in LN2'' setup as described in \sectionref{sec:ch8-dist-scale} for the cold temperature.
+I used the same ``\ecco\ submerged in LN2'' setup as described in \sectionref{sec:ch7-dist-scale} for the cold temperature.
 For the warm temperature I used a sheet of \ecco\ backed by a thin sheet of Al.
 ``Room Temperature'' here is assumed to be \SI{295}{\kelvin} (\SI{71.3}{\fahrenheit}).
 
@@ -382,13 +382,13 @@ $P_{b,lid-LN2}$ & $ 2.0 \pm  1.0$ \si{\pW} \\
 \end{tabular}
 \end{table*}
  
-\section{Establishment of Temperature Scale} \label{sec:ch8-temp-scale}
+\section{Establishment of Temperature Scale} \label{sec:ch7-temp-scale}
 
 The output of the readout system gives changes in current passing through the detectors.
 In order to convert this current change to a temperature change we must first convert the current changes to changes in power absorbed in the bolometer by dividing by the power-to-current responsivity $s_I$.
 To convert this to temperature changes in the far-field of the system, we must use the total optical efficiency $\eta_{tot}$, as well as the Raleigh-Jeans limit of the optical power per spatial mode from a temperature distribution (see \sectionref{sec:ch4-opt-eff}).
 The result is that the conversion from current to temperature is given by
-\begin{equation} \label{eqn:ch8-I-to-T}
+\begin{equation} \label{eqn:ch7-I-to-T}
   \Delta T = \frac{\Delta I}{s_I(0) 2 k_B \eta_{tot} \Delta \nu}.
 \end{equation}
 
@@ -409,33 +409,33 @@ Changing responsivity would not be a problem if the two temperatures were close 
 Stable, uniform temperature distributions using stirred liquid water are available \cite{dietlein_aqueous_2008} and should be used if a more accurate temperature mapping is desired in the future.
 
 For this thesis, however, I have not made these measurements.
-Instead I have assumed that all detectors have the same optical efficiency as was measured for eight detectors in \sectionref{sec:ch8-opt-eff}, $\eta_{tot} = 0.136$.
+Instead I have assumed that all detectors have the same optical efficiency as was measured for eight detectors in \sectionref{sec:ch7-opt-eff}, $\eta_{tot} = 0.136$.
 For $s_I(0)$ I have used the predicted values at \SOC\ of \sectionref{sec:bias-step}, with the exception of three detectors (\RCm{25}{4}, \RCm{26}{2}, \RCm{26}{4}) for which the predicted $s_I(0)$ was clearly incorrect, as judged from looking at detector timestreams and still images.
 For these three images I have assumed a responsivity equal to the mean of all other predicted responsivities.
 
-As a check on the accuracy of this temperature scale, the still image on the left of \figref{fig:ch8-dime-map} has \abt{\SI{180}{\K}} of contrast between the coldest section at the middle of the cooler and the warm area to the left of the cooler.
+As a check on the accuracy of this temperature scale, the still image on the left of \figref{fig:ch7-dime-map} has \abt{\SI{180}{\K}} of contrast between the coldest section at the middle of the cooler and the warm area to the left of the cooler.
 Using the estimate for transmittance $\tau$ of the cooler walls of \num{0.9}, the expected temperature differential is $0.9(295-77) = \SI{196}{\K}$.
-Given the fact that responsivity will increase with optical loading, which leads to underestimates of temperature difference via \eqnref{eqn:ch8-I-to-T}, these numbers are fairly close.
+Given the fact that responsivity will increase with optical loading, which leads to underestimates of temperature difference via \eqnref{eqn:ch7-I-to-T}, these numbers are fairly close.
 
 From this I conclude that while the calibration temperature scale is likely not correct to within \SI{5}{\percent}, it is probably correct to within \SI{20}{\percent}.
 Note that the uncertainty in this calibration does not affect the noise in images produced by the system; it merely affects the number (\NETD) that we use to describe that noise.
 
-\section{Image Processing Algorithm} \label{sec:ch8-algo}
+\section{Image Processing Algorithm} \label{sec:ch7-algo}
 
 This section describes the algorithm used to turn raw detector timestreams into video images.
 The algorithm currently used is simple, processing each video frame independently.
 
 The algorithm's steps are as follows:
 \begin{enumerate}
-\item The  \MCE\ channels containing the actuator displacement (\RCm{32}{5} for \DISP1 and \RCm{32}{6} for \DISP2) are converted to displacements in the far-field as described in \sectionref{sec:ch8-mirror-readout}.
+\item The  \MCE\ channels containing the actuator displacement (\RCm{32}{5} for \DISP1 and \RCm{32}{6} for \DISP2) are converted to displacements in the far-field as described in \sectionref{sec:ch7-mirror-readout}.
 \item Determine full range of far-field positions pointed to, accounting for all detectors. Define a \SI{1}{\cm} grid that covers this range in both $x$ and $y$ directions.
-\item Each detectors output is multiplied by its ``current-to-temperature'' conversion factor (see \sectionref{sec:ch8-temp-scale}). At this point the units for all detector timestreams should be the same, but each detector timestream will have some unknown offset.
+\item Each detectors output is multiplied by its ``current-to-temperature'' conversion factor (see \sectionref{sec:ch7-temp-scale}). At this point the units for all detector timestreams should be the same, but each detector timestream will have some unknown offset.
 \item Divide detector timestreams into sections for each video frame based on \MCE\ readout rate and frequency at which the secondary mirror is rotating.
   If the mirror frequency is $f_m$ and the readout frequency is $f_{ro}$, then each video frame will cover $\lceil f_{ro} / f_{m} \rceil$ samples.
   \textbf{Example:} If the readout frequency is \SI{3125}{\Hz} and the mirror frequency is \SI{6}{\Hz}, then each video frame will cover $\lceil\frac{3125}{6}\rceil = \lceil 520.83 \rceil = 521$ samples.
 \item For each video frame
   \begin{enumerate}
-  \item Perform the following processing for each detector that is not on the cut list described in \sectionref{sec:ch8-det-cuts}:
+  \item Perform the following processing for each detector that is not on the cut list described in \sectionref{sec:ch7-det-cuts}:
     \begin{enumerate}
     \item If the detector's timestream shows evidence of glitches, do not include that detector's timestream for this video frame. The algorithm used to identify glitches is the following:
       \begin{enumerate}
@@ -447,7 +447,7 @@ The algorithm's steps are as follows:
       \end{enumerate}
     \item Subtract the median value of this detector's timestream for this video frame.
           See the commentary below for a discussion of this approach to removing the detector offsets.
-    \item If the detector does not have a glitch, determine which image pixel the detector is pointing to at each point in time, using both the pointing position from the actuator readout described in \sectionref{sec:ch8-mirror-readout} and the beam pointing information from \sectionref{sec:ch8-beam-maps}.
+    \item If the detector does not have a glitch, determine which image pixel the detector is pointing to at each point in time, using both the pointing position from the actuator readout described in \sectionref{sec:ch7-mirror-readout} and the beam pointing information from \sectionref{sec:ch7-beam-maps}.
     \item Add the detector's value to that pixel for the frame.
     \item Keep track of the total number of samples that have been added to each pixel.
     \end{enumerate}
@@ -460,13 +460,13 @@ The algorithm's steps are as follows:
 
 \subsection{Commentary on Videos Taken With the \Imager}
 
-\figref{fig:ch8-single-frames} shows four still images from a video that was processed according to these rules.
+\figref{fig:ch7-single-frames} shows four still images from a video that was processed according to these rules.
 This video can be viewed online at \url{http://www.youtube.com/watch?v=ul_fd-KWH38}. % fix this use correct URL for this particular video!
 They show the author with a ceramic knife hidden beneath a button-down cotton shirt.
 The ceramic knife is visible as a dark area on the left of the shirt.
 A darker line running down the center of the shirt is due to the extra layer of cotton backing the buttons; this additional cloth produces more attenuation of the warm light from the body, and so appears cooler.
 
-The total temperature contrast in the images of \figref{fig:ch8-single-frames} is \SI{6}{\K}, but as described above higher and low values of temperature have been mapped to \SI{+3}{\K} and \SI{-3}{\K} to improve contrast.
+The total temperature contrast in the images of \figref{fig:ch7-single-frames} is \SI{6}{\K}, but as described above higher and low values of temperature have been mapped to \SI{+3}{\K} and \SI{-3}{\K} to improve contrast.
 In the raw images, the mean total contrast across all frames with the person present is \SI{8.2}{\K}.
 
 To estimate the expected contrast we can take the following into account:
@@ -477,7 +477,7 @@ To estimate the expected contrast we can take the following into account:
   \item The temperature the room in which theses images were taken was \abt{\SI{295}{\K}}.
 \end{itemize}
 If the coldest temperature in the images is given by the room temperature, then the total contrast in the image is predicted as
-\begin{equation} \label{eqn:ch8-pred-contrast}
+\begin{equation} \label{eqn:ch7-pred-contrast}
   0.825 \times \SI{307}{\K} + (1 - 0.825) \times \SI{295}{\K} - \SI{295}{\K} =  \SI{9.9}{\K}.
 \end{equation}
 This is \SI{1.7}{\K} larger than observed.
@@ -485,7 +485,7 @@ Given uncertainties in the actual skin temperature of the person in the image, t
 
 \begin{figure*}
 \centering
-\includegraphics{drawings/ch8-single-frames.pdf}
+\includegraphics{drawings/ch7-single-frames.pdf}
 \caption[Sample still images from a video taken with the \Imager]{
 Sample still images from a video taken with the \Imager.
 Time proceeds left-to-right and top-to-bottom.
@@ -497,18 +497,18 @@ As discussed in the text, the temperature range in these images was clipped to $
 The total contrast in the raw images is \SI{8.2}{\K}, about \SI{1.7}{\K} lower than expected.
 See text for discussion.
 }
-\label{fig:ch8-single-frames}
+\label{fig:ch7-single-frames}
 \end{figure*}
 
 \begin{figure*}
 \centering
-\includegraphics{drawings/ch8-beams-on-image.pdf}
+\includegraphics{drawings/ch7-beams-on-image.pdf}
 \caption[Plot showing where beams are pointed in far-field]{
   Plot showing where beams are pointed in far-field.
-  The background image is frame 25 from the video discussed in \sectionref{sec:ch8-algo}.
+  The background image is frame 25 from the video discussed in \sectionref{sec:ch7-algo}.
   The beam \FWHM\ ellipses are in blue.
 }
-\label{fig:ch8-beams-on-image}
+\label{fig:ch7-beams-on-image}
 \end{figure*}
 
 \subsection{Commentary on Median-Subtraction}
@@ -517,7 +517,7 @@ As discussed in \sectionref{sec:det-readout}, the output of the readout system d
 Instead it gives the change in current relative to some offset, which is not a-priori known.
 My approach for dealing with this offset is, for each video frame, to subtract from each detector's timestream the median of that detector's timestream during that video frame.
 Although crude, this approach does a good job of accounting for the offsets in the detector timestreams, as well as accounting for the common-mode drift described in \sectionref{sec:ch6-common}.
-However, elliptical scanning artifacts are still visible in the images of \figref{fig:ch8-single-frames}.
+However, elliptical scanning artifacts are still visible in the images of \figref{fig:ch7-single-frames}.
 These artifacts arise in part because the median-subtraction scheme will work ``perfectly'' only in the case where the median temperature viewed by each detector during the frame is the same.
 If this is not true for a particular detector, the ellipse traced out by that detector in the image will appear warmer or cooler than its surroundings (depending on whether the distribution that it viewed was cooler or warmer than its surroundings), leading to elliptical scanning artifacts.
 
@@ -542,17 +542,17 @@ This process could be repeated until a self-consistent image is created.
 
 Other algorithmic approaches are certainly possible as well, and should be a focus of future work.
 
-\section{Image Noise Model}\label{sec:ch8-noise-model}
+\section{Image Noise Model}\label{sec:ch7-noise-model}
 
 
-The temperature scale established in \sectionref{sec:ch8-temp-scale} allows us to convert the measured detector white-noise level of \abt{\Pnoise{2.4e-15}} to a temperature noise via
+The temperature scale established in \sectionref{sec:ch7-temp-scale} allows us to convert the measured detector white-noise level of \abt{\Pnoise{2.4e-15}} to a temperature noise via
 \begin{equation}
   S_T = \frac{S_P(0)}{2 k_B \eta_{tot} \Delta \nu}.
 \end{equation}
 This results in a temperature noise level of \abt{\Tnoise{15e-3}}, referred to the temperature viewed in the far-field of the system.
 
 To use this noise level to make a prediction for the \NETD\ in the image we can use the radiometer equation \cite{kraus_radio_1986}:
-\begin{equation} \label{eqn:ch8-radiometer}
+\begin{equation} \label{eqn:ch7-radiometer}
   \text{\NETD} = \frac{S_T}{\sqrt{2 t_{dwell}}},
 \end{equation}
 where $t_{dwell}$ is the total integration time including all detectors for each pixel in the image%
@@ -566,10 +566,10 @@ All images in this chapter contain \abt{4030} pixels, each \SI{1}{\cm^2} in area
 }.
 Each video frame lasts $\frac{1}{6}$\,\si{\s}, and there are \abt{210} good detectors contributing.
 $t_{dwell}$ is thus given by
-\begin{equation} \label{eqn:ch8-t-dwell}
+\begin{equation} \label{eqn:ch7-t-dwell}
   t_{dwell} = \frac{210 \times \frac{1}{6}\,\si{s}}{4030} = \SI{8.7}{\ms}.
 \end{equation}
-Plugging this into \eqnref{eqn:ch8-radiometer} gives an \NETD\ of \abt{\SI{115}{\mK}}.
+Plugging this into \eqnref{eqn:ch7-radiometer} gives an \NETD\ of \abt{\SI{115}{\mK}}.
 
 Verifying this noise level in a video image is difficult because we do not know a-priori whether there are any regions in the image which have a flat temperature distribution.
 However, if we place a sheet of \ecco\ directly in front of the cryostat window, where all detector beams are large and covering similar areas, then all detectors should be viewing close to the same temperature distribution.
@@ -577,16 +577,16 @@ If data is acquired in this state, while the secondary mirror is moving, and the
 
 I carried out this procedure, creating a ``flat'' video with 19 frames.
 The mean \NETD\ across the 19 frames is \SI{101}{\mK}.
-\figref{fig:ch8-flat-netd} shows a histogram of the \NETD\ distribution from all 19 frames, a histogram showing the temperature offset distribution for the second frame (which has $\NETD\ = \SI{100}{\mK}$), the second frame itself, and one of the still images from \figref{fig:ch8-single-frames}.
+\figref{fig:ch7-flat-netd} shows a histogram of the \NETD\ distribution from all 19 frames, a histogram showing the temperature offset distribution for the second frame (which has $\NETD\ = \SI{100}{\mK}$), the second frame itself, and one of the still images from \figref{fig:ch7-single-frames}.
 Both still images use the same temperature-difference-to-gray-scale mapping.
 
 Comparing the two frames visually, it is clear that \NETD\ in the true video frame is dominated not by detector noise, but by artifacts of the scan, visible as elliptical arcs in the image.
-These artifacts are likely caused by the median-subtraction scheme of \sectionref{sec:ch8-algo} not properly accounting for the detector offsets.
+These artifacts are likely caused by the median-subtraction scheme of \sectionref{sec:ch7-algo} not properly accounting for the detector offsets.
 Nevertheless, in areas of the video still where there appear to be few scan artifacts (such as the arm on the lower right), the level of noise in the video still appears comparable to the flat still, indicating that \SI{100}{\mK} is a reasonable estimate of the \NETD\ in the image caused by detector noise.
 
 \begin{figure*}
 \centering
-\includegraphics{drawings/ch8-flat-netd.pdf}
+\includegraphics{drawings/ch7-flat-netd.pdf}
 \caption[Plots relating to measurement of \NETD\ in flat frame images]{
   Plots relating to measurement of \NETD\ in flat frame images.
   \textbf{Upper Left} Histogram of \NETD\ for each of 19 frames taken from a ``flat'' video image. This \NETD\ is defined as the standard deviation of the temperatures across all pixels which were visited by at least one detector. 
@@ -594,10 +594,10 @@ Nevertheless, in areas of the video still where there appear to be few scan arti
                        The far left and far right bins include outliers that extend all the way to \SI{-1}{\K} on the left and \SI{1.5}{\K} on the right.
                        Removing these outliers results in \NETD\ values that are roughly \SI{15}{\percent} smaller.
   \textbf{Lower Left} The second frame of the flat video.
-  \textbf{Lower Right} Frame 25 of the video discussed is \sectionref{sec:ch8-algo}.
+  \textbf{Lower Right} Frame 25 of the video discussed is \sectionref{sec:ch7-algo}.
 These two frames use the same temperature-offset-to-color mapping to aid in visual comparison.
 }
-\label{fig:ch8-flat-netd}
+\label{fig:ch7-flat-netd}
 \end{figure*}
 
 The agreement between the predicted \NETD\ of \SI{115}{\mK} and the observed flat image \NETD\ of \SI{100}{\mK} is an encouraging sign that we understand the behavior of the system.
@@ -605,9 +605,9 @@ However, there are several ways in which the noise modeling used in this section
 \begin{itemize}
 \item The white noise level for each detector is different.
 \item The total integration time per pixel is not uniform.
-      Some pixels end up receiving more detector samples than others, as shown in \figref{fig:ch8-flat-frame-cnt}.
+      Some pixels end up receiving more detector samples than others, as shown in \figref{fig:ch7-flat-frame-cnt}.
 \item The detector noise is not white.
-      \eqnref{eqn:ch8-radiometer} is strictly only true for a noise spectrum that is white, while the detector noise spectrums have roll-offs due to the detector time constant $\tau_{eff}$, \SQUID\ noise, a roll-off due to the \SQUID\ servo loop, and other features.
+      \eqnref{eqn:ch7-radiometer} is strictly only true for a noise spectrum that is white, while the detector noise spectrums have roll-offs due to the detector time constant $\tau_{eff}$, \SQUID\ noise, a roll-off due to the \SQUID\ servo loop, and other features.
       Because the noise roll-offs reduce the variance of the detector timestream, this should tend to reduce noise in the map.
       However, the roll-offs also mean that consecutive samples in a detector timestream are correlated, so that averaging them will not reduce noise by the full ``square-root of the number of samples'' factor that is appropriate for uncorrelated noise.
 \end{itemize}
@@ -615,13 +615,13 @@ A more careful analysis of these factors would be useful, but has not yet been p
 
 \begin{figure*}
 \centering
-\includegraphics{drawings/ch8-flat-frame-cnt.pdf}
+\includegraphics{drawings/ch7-flat-frame-cnt.pdf}
 \caption[Samples per pixel in image]{
-  Distribution of samples per pixel for flat field image shown in \figref{fig:ch8-flat-netd}.
+  Distribution of samples per pixel for flat field image shown in \figref{fig:ch7-flat-netd}.
   Different video frames have slightly different distributions, but the overall features are all similar to what is shown here.
   The bins in the histogram on the right are one sample wide, so that it can be seen that a handful of pixels around the outer edge receive only one sample.
 }
-\label{fig:ch8-flat-frame-cnt}
+\label{fig:ch7-flat-frame-cnt}
 \end{figure*}
 
 % xxx could a partial explanation for optical efficiency be the

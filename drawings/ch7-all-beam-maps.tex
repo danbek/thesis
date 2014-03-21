@@ -18,7 +18,7 @@
 }
 
 \DTLsetseparator{ }
-\DTLloaddb[noheader=false]{coordinates}{../data/ch8-beam-map-parms.dat}
+\DTLloaddb[noheader=false]{coordinates}{../data/ch7-beam-map-parms.dat}
 
 \begin{document}
 
@@ -33,7 +33,7 @@
         axis equal,
         title={Beam Maps},
         xlabel={Horizontal offset (\si{\cm})}, ylabel={Vertical offset (\si{\cm})} ]
-	  \addplot+[only marks,mark=+] table[x=x0,y=y0]{../data/ch8-beam-map-parms.dat};
+	  \addplot+[only marks,mark=+] table[x=x0,y=y0]{../data/ch7-beam-map-parms.dat};
       
       \pgfplotsextra{
         \DTLforeach*{coordinates}{\x=x0, \y=y0, \sx=sigmax, \sy=sigmay, \theta=theta}{

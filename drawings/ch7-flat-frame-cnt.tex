@@ -37,7 +37,7 @@
       xlabel={Samples Per Pixel},
     }
     ]
-  \addplot[point meta min=1.000000e+00, point meta max=8.700000e+01] graphics [xmin=-4.250000e+01,xmax=4.050000e+01,ymin=-2.950000e+01,ymax=2.750000e+01] {../images/ch8-flat-frame-cnt.png} ;
+  \addplot[point meta min=1.000000e+00, point meta max=8.700000e+01] graphics [xmin=-4.250000e+01,xmax=4.050000e+01,ymin=-2.950000e+01,ymax=2.750000e+01] {../images/ch7-flat-frame-cnt.png} ;
 
 \end{axis}
 \end{tikzpicture}
@@ -51,7 +51,7 @@
 		xlabel={Samples Per Pixel}, ylabel={Quantity} ]
 	  \addplot [hist={data min=0,data max=90,bins=90},
 		        fill=blue!75]
-	    table[y=cnt]{../data/ch8-flat-frame-cnt.dat};
+	    table[y=cnt]{../data/ch7-flat-frame-cnt.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -61,7 +61,7 @@
   %   	xlabel={Samples Per Pixel}, ylabel={Cumulative Density} ]
   %     \addplot [hist={cumulative,density,data min=0,data max=90,bins=30},
   %   	        fill=blue!75]
-  %       table[y=cnt]{../data/ch8-flat-frame-cnt.dat};
+  %       table[y=cnt]{../data/ch7-flat-frame-cnt.dat};
   %   \end{axis}
   % \end{tikzpicture}
  
