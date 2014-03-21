@@ -267,6 +267,12 @@ This choice does worsen \NETD.
 A hexagonal close-packed array would allow the same number of detectors to be placed on the array, but with feedhorns \SI{7.5}{\percent} larger.
 The larger feedhorn size could have improved the spill over efficiency from \num{0.52} to \num{0.544}, a \SI{4.6}{\percent} increase, leading to a \SI{4.6}{\percent} improvement in \NETD.
 
+Five locations in the $16 \times 16$ grid are missing detectors.
+The detector in the upper rightmost corner of \figref{fig:ch5-full-wafer} was removed to allow placement of a central post in the focal plane, to which the feedhorn array is bolted.
+This provides an additional thermal link at the center of the feedhorn array for better heat sinking.
+Four detectors in the lower left were removed to allow placement of alignment features on the detector wafer.
+In practice these alignment features were not used, so some or all of these detectors could be recovered in a future design iteration.
+
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch5-full-wafer.pdf}
@@ -431,5 +437,6 @@ The interface chips were designed --- and spares kindly donated --- by the Ataca
 Jeff Van Lanen fabricated the backshort wafers and the Quantum Sensors Project \SQUID\ fabrication team made the multiplexing chips.
 Colin Fitzgerald performed all wire bonding.
 Lisa Ferreira did the soldering of the 100-pin MDM connectors to the circuit board, as well as a variety of other detail-oriented soldering tasks.
+The idea to connect the focal plane the \SI{6}{\K} Cold Plate using the Ti-4Al-4V spiders was William Duncan's.
 Ilya Smirnov carried out a series of simulations to investigate advantages of square vs hexagonal detector grids, as well as required detector time constants to avoid blurring.
 Although these simulations are not discussed in this thesis, they supported the conclusions of \sectionref{sec:det-parm-choice}.
