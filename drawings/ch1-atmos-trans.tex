@@ -10,20 +10,23 @@
 
 \pagestyle{empty}
 
-\begin{tikzpicture}[trim axis right]
-  \begin{axis}[
-      scale only axis=true,
-      height=1.9in,
-      xmin=0,xmax=1000,ymin=0,ymax=1,
-      title={Example Atmospheric Transmission Spectrum},
-      xlabel={Frequency (\si{\GHz})}, ylabel={Transmission} ]
-    \draw[fill=blue!50] (axis cs:318,0) rectangle (axis cs:375.9,1);
-    \addplot+[mark=none,color=black,thick] table[x=freq,y=trans]{../data/ch1-atmos-trans.dat};
-      
-    %\draw[fill=blue] (axis cs:318,0) rectangle (axis cs:375.9,1);
-    % \node[anchor=south,align=center,font=\small] at (axis cs:1.2, 400) {Increasing \\ Heater Power};
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=4in]{../images/ch1-atmos-trans.png}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+	    %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1.0,1);
+		%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+		%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+        
+        % f = 100 GHz at 0.1055, f = 1000 GHz at 0.974.
+        % 10 dB band is 318.0 -- 375.9 GHz
+        % scale is logarithmic
+		
+        \draw[black,fill=blue!50,opacity=0.6] (0.5419, 0.099) rectangle (0.6050, 0.98) node[below right] {};
 
-  \end{axis}
+        %\draw[black] (0.1055,0) -- (0.1055,1.00) node[midway,right] {}; % scale bar
+        %\draw[black] (0.3669,0) -- (0.3669,1.00) node[midway,right] {}; % scale bar
+        %\draw[black] (0.974,0) -- (0.974,1.00) node[midway,right] {}; % scale bar
+    \end{scope}
 \end{tikzpicture}
 
 \end{document}

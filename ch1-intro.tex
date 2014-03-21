@@ -61,7 +61,7 @@ Although the ProVision system takes still images with \abt{\SI{2}{s}} image acqu
 
 \begin{figure*}
 \centering
-\includegraphics{drawings/ch1-clothes-bjarnason.pdf}
+\includegraphics{drawings/ch1-clothes-bjarnason.pdf} \\
 \includegraphics{drawings/ch1-atmos-trans.pdf}
 \caption[Clothing and Atmospheric Transmission vs Frequency]{
   \textbf{Left}
@@ -70,9 +70,10 @@ Although the ProVision system takes still images with \abt{\SI{2}{s}} image acqu
   As frequency increases, transmission through all kinds of clothing decreases.
   The \SI{-10}{\dB} observation band of the \Imager\ is highlighted (\SIrange{318}{376}{\GHz}).
   \textbf{Right}
-  Plot showing a model of zenith atmospheric transmission on the summit of Mauna Kea, assuming \SI{0.5}{\mm} of precipitable water vapor.
-  The plot is illustrative only, demonstrating the presence of atmospheric transmission windows and the general trend of worse transmission at higher frequencies.
-  The data was obtained using the Caltech Submillimeter Observatory (CSO) Atmospheric Transmission Interactive Plotter \cite{darek_lis_cso_????}, which is based on a published model \cite{pardo_atmospheric_2001}.
+  Plot showing attenuation through the atmosphere at sea level pressure for different weather and particulate conditions.
+  Under the worst conditions in the \Imager's band, attenuation would be \abt{\SI{1.2}{\dB}} over \SI{16}{\m}, and a factor of five better under standard conditions.
+  At the \SI{640}{\GHz} band, attenuation under standard conditions is the same as the worst conditions at \SI{350}{\GHz}, and a factor of 6 worse again under the worst conditions.
+  Taken from \cite{appleby_standoff_2007}.
 }
 \label{fig:ch1-clothes-atmos-trans}
 \end{figure*}
@@ -94,6 +95,8 @@ This strongly drives the choice of frequency for standoff detection to frequenci
 
 A final factor to consider in the choice of operating frequency is atmospheric transmission.
 As shown in \figref{fig:ch1-clothes-atmos-trans}, not only does transmission through clothing fall with increasing frequency, but transmission through the atmosphere does as well, although the trend is not monotonic.
+For the \SI{350}{\GHz} band used by the \Imager, under the worst atmospheric conditions (hot and humid weather) transmission over \SI{16}{\m} is \abt{\SI{75}{\percent}}.
+Indoors, in the dry winter climate of Boulder, CO transmission over \SI{16}{\m} will be close to \SI{100}{\percent}.
 
 Security imaging systems for standoff applications broadly fall into two categories: ``active'' and ``passive'' \cite{appleby_standoff_2007,appleby_passive_2004}.
 Active systems illuminate the target to be imaged with light and use the reflected light to obtain an image.
