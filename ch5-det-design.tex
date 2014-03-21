@@ -81,7 +81,7 @@ This means that for fixed $P_{sat}$ and $T_b$, the ratio $T_c/T_b$ that gives th
 For values of $n$ in the range 3--4, this optimal ratio is $T_c \approx 1.8 T_b$, while the pre-factor itself is \abt{3.7}.
 
 As discussed in \sectionref{sec:ch4-opt-eff}, the predicted loading on the \Imager's detectors is \SI{180}{\pW} and the photon noise from this load is \Pnoisef{0.85}.
-Choosing a safety factor of 3 so that $P_{sat} = 3 \times \SI{180}{\pW}$, and targeting detector noise equal to \SI{50}{\percent} of the photon noise (so that total noise is a factor of $\sqrt{1.5} = 1.22$ higher than photon noise), we find that in order for the detector noise to be below the predicted photon noise we require
+Choosing a safety factor of 3 so that $P_{sat} = 3 \times \SI{180}{\pW}$, and targeting detector noise equal to \SI{50}{\percent} of the photon noise (so that total noise is a factor of $\sqrt{1.5} = 1.22$ higher than photon noise), we find the requirement on $T_b$ to be
 \begin{equation}
   T_b < \frac{1}{3.7} \frac{\NEPph^2}{4 k_B P_{sat}} =
         \frac{1}{3.7} \frac{0.5 \times (\num{0.85e-15})^2}{4 \times \SI{1.38e-23}{\J\per\K} \times 3 \times \SI{180}{\pW}} = 
@@ -94,7 +94,7 @@ However, this leaves little margin for error in the design and implementation of
 The initial hopes for performance of the \He4-sorption fridge were that its base temperature would be ~\SI{650}{\mK}, implying an ideal $T_c$ of \abt{\SI{1.2}{\K}}.
 This is a convenient $T_c$ because it is the critical temperature of elemental Al \cite{matthias_superconductivity_1963}, so Al was chosen as the \TES\ material.
 
-In practice, it was discovered during testing of Al prototype detectors that the base temperature of the system was \SI{950}{\mK} under optical load, so that a higher $T_c$ could lead to better noise performance.
+In practice, it was discovered during testing of Al prototype detectors that the base temperature of the system was \SI{950}{\mK} under optical load, so that a higher $T_c$ could lead to better noise performance through a reduced $G$.
 However, in order to change as little as possible between the prototype detectors and the first sub-array, I decided to continue using Al.
 
 \subsection{Choice of $G$}
@@ -107,10 +107,10 @@ A safety factor of 5--6 is overly conservative, so for the sub-array I decided t
 
 The detector's heat capacity $C$ is chosen to target a specific detector time constant $\tau_{eff}$ once $G$ is chosen.
 $G$ and $C$ do not set $\tau_{eff}$ directly, rather they set the natural time constant $\tau$, to which $\tau_{eff}$ is proportional via \eqnref{eqn:teff}.
-$\tau_{eff}$ must be fast enough to avoid blurring of video-rate images, while being far enough from $\tau_{el}$ to avoid detector instability; see  \cite{irwin_transition-edge_2005} for full discussion of requirements for stability in \TES\ detectors.
+$\tau_{eff}$ must be fast enough to avoid blurring of video-rate images, while being far enough from $\tau_{el}$ to avoid detector instability; see \sectionref{sec:ch3-tes-stability}.
 
 We can estimate the required value of $\tau_{eff}$ by considering the speed with which detectors move on the far-field focal plane and the size of the far-field beam.
-If $v$ is the speed with which the detector far-field beam moves, and $b_{fwhm}$ is the \FWHM\ far-field beam width, then scanning over a point source will result in a timestream withe a Gaussian ``bump'' with \FWHM\ $b_{fwhm} / v$.
+If $v$ is the speed with which the detector far-field beam moves, and $b_{fwhm}$ is the \FWHM\ far-field beam width, then scanning over a point source will result in a timestream with a Gaussian ``bump'' with \FWHM\ $b_{fwhm} / v$.
 As shown in \sectionref{sec:ch5-fov}, when scanned circularly the detectors trace out a circle of radius \SI{18.7}{\cm}.
 If $FPS$ is the video frame rate, then $v$ will be given by $(2 \pi)(\SI{18.7}{\cm}) FPS$.
 From \sectionref{sec:ch4-feedhorn-design}, the predicted beam \FWHM\ is \SI{1.4}{\cm}.
@@ -121,6 +121,7 @@ The timestream after filtering is given by the convolution%
   \int_{-\infty}^{t} \exp{\left[-\frac{2.35^2}{2} \frac{{t^{\prime}}^2}{(b_{fwhm}/v)^2}\right]}
        \exp{\left[-(t-t^{\prime})/\tau_{eff}\right]} dt^{\prime}.
 \end{equation}
+
 The definition of an acceptable level of ``blurring'' is somewhat subjective.
 The criterion used here is to require the \FWHM\ of the timestream bump after blurring to be no more than twice that of the unblurred bump.
 \figref{fig:ch5-teff-bump} shows the maximum allowed value of $\tau_{eff}$ as a function of video frame rate.
@@ -132,7 +133,7 @@ At 6 frames per second the maximum value is \SI{3.0}{\ms}; at 10 frames per seco
 \caption[Maximum $\tau_{eff}$ for no blurring]{
   \textbf{Left} Plot of maximum allowed $\tau_{eff}$ as a function of video frame rate, defined as the value of $\tau_{eff}$ that causes a point source to be blurred to twice the width of the design beams.
   At 6 frames per second this is \SI{3.0}{\ms}; at 10 frames per second \SI{1.8}{\ms}, at 20 frames per second \SI{0.9}{\ms}.
-  \textbf{Right} Plot showing how the ``bump'' in a timestream caused be scanning over a point source is delayed and blurred by the $\tau_{eff}$ roll-off of the \TES, assuming the blurring doubles the \FWHM\ of the bump.
+  \textbf{Right} Plot showing how the ``bump'' in a timestream caused be scanning over a point source is delayed and blurred by the $\tau_{eff}$ roll-off of the \TES, in the case where the blurring doubles the \FWHM\ of the bump.
 }
 \label{fig:ch5-teff-bump}
 \end{figure*}
@@ -146,7 +147,7 @@ $C$ for subsequent sub-array fabrications can be adjusted lower if needed based 
 \section{Detailed Detector Design} \label{sec:ch5-det-design}
 
 The \Imager's detectors are fabricated using standard lithographic clean-room techniques on Si wafers.
-In order to achieve the targeted $G$ and $C$ values, the detectors are located on a suspended SiN membrane which is connected to the rest of the Si wafer by a set of thin ``legs''.
+In order to achieve the targeted $G$ and $C$ values, the detectors are located on a suspended SiN membrane which is connected to the rest of the Si wafer by a set of thin SiN ``legs''.
 \figref{fig:ch5-det-layout} shows a cross-sectional schematic of the detectors, showing that they are suspended with no Si beneath them, as well as a labeled photograph of a prototype detector.
 The sub-array detectors are identical except for the length of the legs and the thickness of some of the layers; see \tableref{tab:ch5-det-dims}.
 
@@ -166,7 +167,7 @@ The sub-array detectors are identical except for the length of the legs and the 
 
 The detectors are fabricated on \SI{275}{\um} thick double-side-polished degenerate (Boron P-type) Si wafers.
 A layer of SiO2 is grown on top of the Si, followed by a layer of SiN, prior to the main fabrication steps.
-During fabrication the Nb wiring leads, PdAu absorber, and Au heat-capacity ring are laid down, as well as an additional layer of insulator to allow wiring layers to cross over each other.
+During fabrication the Nb wiring leads, Al \TES\, PdAu absorber, and Au heat-capacity ring are laid down, as well as an additional layer of insulator to allow wiring layers to cross over each other.
 The SiN and SiO2 is removed from the areas between the legs, and then a Deep Reactive Ion Etch process is used to remove all silicon from behind the detector membrane.
 This etch process does not remove SiN or SiO2, so that the legs, which still have SiN, are left in place.
 The result is a suspended membrane connected to the rest of the wafer by a set of ``legs'' which provide the thermal conductance $G$.
@@ -177,7 +178,7 @@ The result is a suspended membrane connected to the rest of the wafer by a set o
 % contribution, but there should still be a lattice contrib, and that
 % might be higher than the disordered SiN and SiO2 ...
 
-The leg geometry of the prototype detectors was based on a set of measurements taken at \NIST\ on SiN membranes at temperatures near \SI{1}{\K}.
+The leg geometry of the prototype detectors was chosen based on a set of measurements taken at \NIST\ on SiN membranes at temperatures near \SI{1}{\K}.
 The leg geometry for the sub-array detectors was based on simple scaling of the prototype detectors to the target $G$ of \SI{3.8}{\nW\per\K}.
 This scaling was slightly complicated by the change in thickness of the SiO2 layers, which was made in order to add additional protection to the wiring layers and better balance stress on the relieved membranes.
 Assuming that $G$ scales linearly with the $A/L$ of the legs, the sub-array $G$ should be
@@ -223,7 +224,7 @@ The total heat capacity is dominated by the Au ring.
 \begin{table*}
 \centering
 \caption[Detector heat capacity contributions]{
-  Contributions to total heat capacity of sub-array detectors.
+  Predicted contributions to total heat capacity of sub-array detectors.
   Note that the Debye $T^3$ contribution for Au is still significant at \SI{1.2}{\K}, so must not be ignored.
   All values listed are at \SI{1.2}{\K}.
 } 
@@ -244,7 +245,7 @@ The total heat capacity is dominated by the Au ring.
 
 \section{Choice of Shunts and Nyquist Inductors} \label{sec:ch5-shunt}
 
-The \Imager\ uses spare shunt resistors and Nyquist inductors originally made for the \ABS\ project.
+The \Imager\ uses spare shunt resistors and Nyquist inductors originally made for the Atacama B-Mode Search (\ABS) project \cite{kusaka_modulation_2013}.
 The design value for the shunt resistors was \SI{180}{\uOhm} and for the inductors \SI{609}{\nH}.
 These chips were already fabricated and available, and the values of $R_{sh}$ and $L$ are appropriate for the \Imager's detectors.
 
@@ -260,12 +261,12 @@ Lower values of $L_{crit}$ would work as well, and may be considered if faster d
 
 \figref{fig:ch5-full-wafer} shows a photograph of the entire sub-array; the figure caption contains a detailed description of the features present on the sub-array.
 In addition to the detectors, the wafer includes Au pads for attaching Au heat-sinking wire bonds and holes used for gluing the detector wafer to a Au-covered backshort wafer (see \sectionref{sec:ch5-focal-plane}).
-Note that all detectors have heater resistors on their membranes, but only a subset have the resistors connected to wires that lead to bond pads.
+Note that all detectors have heater resistors on their membranes, but only a subset have the resistors connected to traces that lead to bond pads.
 
 The detectors are laid out on a square grid, chosen over a hexagonal close-packed layout because of the simpler wiring layout.
 This choice does worsen \NETD.
 A hexagonal close-packed array would allow the same number of detectors to be placed on the array, but with feedhorns \SI{7.5}{\percent} larger.
-The larger feedhorn size could have improved the spill over efficiency from \num{0.52} to \num{0.544}, a \SI{4.6}{\percent} increase, leading to a \SI{4.6}{\percent} improvement in \NETD.
+The larger feedhorn size could have improved the spillover efficiency from \num{0.52} to \num{0.544}, a \SI{4.6}{\percent} increase, leading to a \SI{4.6}{\percent} improvement in \NETD.
 
 Five locations in the $16 \times 16$ grid are missing detectors.
 The detector in the upper rightmost corner of \figref{fig:ch5-full-wafer} was removed to allow placement of a central post in the focal plane, to which the feedhorn array is bolted.
@@ -332,8 +333,9 @@ The Invar plates must be attached to the Al platter in a way that accounts for t
 This is done by aligning the Invar, feedhorns, and Al platter to each other using stainless steel dowel pins.
 Two pins align the feedhorns to the Al platter.
 The dowel pins are inserted into the Al platter, with one matching hole and one matching slot in the feedhorn array; a slot is used for one of the holes to avoid over-constraining the mechanical system.
-Two additional pins align each Invar plate feedhorn array to the Al platter.
+Two additional pins align each Invar plate to the Al platter.
 Again a matching hole and slot are present in the Invar, but in this case the slot is necessary not only to avoid over-constraining the system but also to account for the differential thermal contraction between Invar and Al.
+
 The detector wafer is placed in the proper location on the Invar platter using an alignment jig, and while the Invar and grease have been warmed to \abt{\SI{30}{\celsius}}, a temperature at which the thermal grease becomes less viscous, making it easier to adjust the position of the wafer.
 See \figref{fig:ch5-alignment-jig}.
 This approach to mounting Si detector wafers on Invar and aligning to a feedhorn has been used by other instruments in the past, e.g. \cite{schwan_invited_2011}.
@@ -389,7 +391,7 @@ A \SI{1}{\mm} movement of the actuator produces a rotation of the secondary mirr
 
 To convert actuator displacements into locations in the far-field, three additional factors should be considered.
 First, the Cassegrain optical system inverts images that it views, so that a beam from a detector in the lower left of the focal plane (as viewed from behind the detector focal plane) is pointed to the upper right on the far-field image (again as viewed from the system).
-Second, tilting the mirror displaces the beams in the same direction as the mirror is tilted; this is easily seen by thinking of the system in transmission, and imagining the way a beam of light is reflected off of a rotated mirror).
+Second, tilting the mirror displaces the beams in the same direction as the mirror is tilted; this is easily seen by thinking of the system in transmission, and imagining the way a beam of light is reflected off of a rotated mirror.
 Third, the actuators are oriented so that their rotation axes are rotated from horizontal/vertical by \ang{45}.
 This all means that --- as viewed from the cryostat --- positive displacements of the \DISP1 actuator shift beams up and to the right, while positive displacements of the \DISP2 actuator shift beams up and to the left.
 If we consider an $x$-$y$ coordinate system in the far-field, this means that the $x$ and $y$ displacement of the beams due to mirror movements are calculated as
@@ -408,7 +410,7 @@ Here $d_{\text{DISP1}}$ and $d_{\text{DISP2}}$ are the displacements of the two 
 The maximum displacement of the \BOSE\ actuators is \SI{3.5}{\mm}.
 Assuming a circular scan, the maximum far-field displacement of the on-axis point will be $\SI{3.5}{\mm} \times \SI[per-mode=symbol]{0.276}{\degree\per\mm} \times \SI[per-mode=symbol]{19.33}{\cm\per\degree} = \SI{18.7}{\cm}$.
 When fully populated with 1004 detectors, the four sub-arrays cover an area $\SI{86}{\mm} \times \SI{86}{\mm}$, so the far-field radius of the circle covered by the detectors will be $\sqrt{2} \times (\SI{86}{\mm}/2) \times \SI{6.638}{\mm\per\mm} + \SI{18.7}{\cm} = \SI{55.8}{\cm}$, for a total area covered of \SI{.98}{\m^2}.
-With a single 251-detector sub-array populated, the (circular) field of view will drop to \SI{0.42}{\m}.
+With a single 251-detector sub-array populated, the (circular) field of view will drop to \SI{0.42}{\m^2}.
 If the scan is elliptical the areal field of view will be smaller still, though the elliptical shape may be more useful for some imaging scenarios.
 
 \section{Predicted Noise} \label{sec:ch5-predicted-noise}
@@ -422,8 +424,7 @@ Using $G = \SI{3.8}{\nW\per\K}$, $T_0 = \SI{1.2}{\K}$, and $F = 0.83$ leads to $
 This is \SI{60}{\percent} of \sectionref{sec:ch4-opt-eff}'s predicted photon noise of \Pnoisef{0.85}.
 Summing the two noise sources in quadrature gives for the total noise (referred to power absorbed in the detector) $S_{tot} = \Pnoisef{1.0}$.
 
-We now have enough information to estimate the \NETD\ achieved by the \Imager.
-We use \eqnref{eqn:ch1-netd-defn}:
+To estimate the \NETD\ achieved by the \Imager we use \eqnref{eqn:ch1-netd-defn}:
 \begin{align}
   NETD = \frac{NEP}{\eta_{tot} M k_B \Delta \nu} \frac{1}{s} \sqrt{\frac{A\,FPS}{2 N}} .
 \end{align}
@@ -433,7 +434,7 @@ With a single sub-array populated \NETD\ would increase to \SI{50}{\mK}, with th
 \section{Acknowledgments}
 
 Hsiao-Mei (Sherry) Cho fabricated the detectors and wiring chips, as well as providing much useful advice during the design and layout of both.
-The interface chips were designed --- and spares kindly donated --- by the Atacama B-Mode Search team.
+The interface chips were designed --- and spares kindly donated --- by the \ABS\ team.
 Jeff Van Lanen fabricated the backshort wafers and the Quantum Sensors Project \SQUID\ fabrication team made the multiplexing chips.
 Colin Fitzgerald performed all wire bonding.
 Lisa Ferreira did the soldering of the 100-pin MDM connectors to the circuit board, as well as a variety of other detail-oriented soldering tasks.
