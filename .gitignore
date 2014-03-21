@@ -1,4 +1,5 @@
 *.aux
+*.docx
 *.log
 *.synctex.gz
 *.bbl

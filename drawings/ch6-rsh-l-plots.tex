@@ -18,6 +18,10 @@
 
 \begin{document}
 
+%
+% run thesis/ana_rsh.m to generate the data files
+%
+
 \pagestyle{empty}
 
 \begin{tabular}{rr}
@@ -67,7 +71,7 @@
 	  \addlegendentry{Data}
 
 	  \addplot[mark=none,domain=4e-1:2e3,line width=1pt]
-			  {sqrt(1.38e-23 * 4 * 0.980  / 1.5481e-04 / (1 + (2*3.14159*x*3.9761e-3)^2) + 1.4193e-20)};
+        {sqrt(1.38e-23 * 4 * 0.980  / 1.548137e-04 / (1 + (2*3.14159*x*3.976088e-03)^2) + 1.419311e-20)};
       \addlegendentry{Fit}
 	\end{loglogaxis}
   \end{tikzpicture}
