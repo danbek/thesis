@@ -26,7 +26,7 @@
 		xlabel={$t$ (ms)}, ylabel={$\delta I$ (\si{\uA})},
         legend pos=south east]
 	  \addplot+[only marks]
-	    table[x=time,y=dI]{../data/ch7-heater-step-trans.dat};
+	    table[x=time,y=dI]{../data/ch6-heater-step-trans.dat};
       \addlegendentry {Data}
       \addplot+[mark=none,line width=2,domain=5.642729e-01:25] { 9.743001e-01 * (1 - exp(-(x-5.642729e-01)/2.435975e+00)) }
         node[right,align=left] at (axis cs:5,0.5) 

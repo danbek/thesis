@@ -8,7 +8,7 @@ The first two temperature intercept stages are provided by a Cryomech PT407 Puls
 The PT407 has two cooling stages.
 The first stage has \SI{25}{\W} of cooling power at \SI{55}{\K} while the second stage has \SI{0.7}{\W} at \SI{4.2}{\K}.
 Our PT407 uses a remote motor, so that the cold head attached to the cryostat has no moving parts, minimizing vibration of the cryostat.
-Vibration of the cryostat can lead to microphonic pickup either directly in the detectors themselves or in the readout circuitry, leading to much higher detector noise (see \sectionref{sec:ch7-microphonic-pickup}).
+Vibration of the cryostat can lead to microphonic pickup either directly in the detectors themselves or in the readout circuitry, leading to much higher detector noise (see \sectionref{sec:ch6-microphonic-pickup}).
 
 \figref{fig:cryo-cutaway} shows a cutaway view of the cryostat, and \tableref{tab:temp-optical-load} lists the temperatures typically reached by different parts of the cryostat during operation when the cryostat is open optically.
 The cryostat has two main parts: a cylinder containing both the \PTC\ and the \He4-sorption refrigerator, and a box located at the bottom of the cylinder which contains temperature intercept plates and the focal plane.
@@ -95,7 +95,7 @@ This process is easy to automate, and a LabVIEW program cycles the fridge automa
 A Cryo-con Model 44\footnote{%
   Cryogenic Control Systems, Inc., Rancho Santa Fe, CA}
 temperature controller is used to control the temperature of the stage, using a \SI{6.4}{\kilo\ohm} resistor attached to the focal plane.
-As discussed in \sectionref{sec:ch7-common}, the temperature variations over several-minute timescales are a few parts in $10^4$ when the Cryo-con unit is used to hold the temperature steady.
+As discussed in \sectionref{sec:ch6-common}, the temperature variations over several-minute timescales are a few parts in $10^4$ when the Cryo-con unit is used to hold the temperature steady.
 
 Under optical load, a full cycle of the \He4-sorption refrigerator takes approximately 4 hours, reaching a base temperature of ~\SI{970}{\mK}.
 When no additional load is applied the hold time is 9 hours.
@@ -853,7 +853,7 @@ The detectors are divided into a columns, each column containing 32 rows.
 Each detector output is coupled into the input coil of its own ``1st-stage'' \SQUID.
 Row address lines bias the 32 rows sequentially, so that at any given time only one detector per column is being read out by the system.
 This sequential addressing means that the current noise power spectral density of the \SQUIDs\ is increased by a factor of 32 due to aliasing, but the current noise in the \Imager's \SQUIDs\ is low enough that \SQUID\ noise is not a significant contribution to the total noise of the detectors.
-See, e.g., \figref{fig:rsh-l-plots} and \figref{fig:ch7-trans-noise} for a demonstration that \SQUID\ noise (\abt{\Inoise{1e-10}}) is below the typical noise level of a detector biased into its standard operation conditions (\abt{\Inoise{1e-9}}).
+See, e.g., \figref{fig:rsh-l-plots} and \figref{fig:ch6-trans-noise} for a demonstration that \SQUID\ noise (\abt{\Inoise{1e-10}}) is below the typical noise level of a detector biased into its standard operation conditions (\abt{\Inoise{1e-9}}).
 To linearize the \SQUID\ amplifier chain, feedback in the form of magnetic flux is applied to the 1st-stage \SQUIDs.
 
 \begin{figure*}
@@ -896,7 +896,7 @@ The rate at which data is reported to the data acquisition computer is given by
 Using the values in \tableref{tab:ch4-mce-parms} the readout rate is \SI{3125}{\Hz}.
 
 Using any value for \texttt{data\_rate} other than 1 will lead to aliasing of noise.
-As discussed in \sectionref{sec:ch7-aliasing}, this raises the total amount of noise in the \Imager's detectors by \SI{14}{\percent} on average.
+As discussed in \sectionref{sec:ch6-aliasing}, this raises the total amount of noise in the \Imager's detectors by \SI{14}{\percent} on average.
 This noise aliasing penalty can be reduced by configuring the \MCE\ to internally apply a digital 4-pole lowpass filter prior to reporting data to the data acquisition computer \cite{mce_team_digital_????}.
 
 \begin{table*}

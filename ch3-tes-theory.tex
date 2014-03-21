@@ -277,7 +277,7 @@ In practice, I treat $R = 0.99 R_n$ as sufficiently high in the transition for t
 \subsection{Calibration of Heater Resistors}
 
 If a set of \IV\ curves are taken at the same bath temperature but different heater biases, \eqnref{eqn:ch3-ptot-99Rn} allows measurement of the resistance of the \TES\ heater by fitting for $R_{htr}$ and $(P_{tot} - P_{opt})$.
-\figref{fig:ch7-heater-r-plots} (reproduced in this chapter for convenience as \figref{fig:ch3-heater-r-plots}) shows how this is done using a series of \IV\ curves, all of which were taken for a particular detector labeled \RCm{29}{1}.
+\figref{fig:ch6-heater-r-plots} (reproduced in this chapter for convenience as \figref{fig:ch3-heater-r-plots}) shows how this is done using a series of \IV\ curves, all of which were taken for a particular detector labeled \RCm{29}{1}.
 The upper left plot shows a set of \TES\ \IV\ curves taken at $T_b = 1100$~mK, with only the applied heater bias varying.
 The upper right plot shows the same data, but in terms of \TES\ Joule power and \TES\ resistance.
 As applied heater current decreases, the Joule power at the top of the transition decreases.
@@ -297,7 +297,7 @@ This means that whenever the value $R_{htr}$ is used to calculated a power, the 
 \sectionref{sec:heater-r} uses this approach to calculate $R_{htr}$ for the seven working heaters on columns 0 and 1.
 
 \begin{figure*}
-\includegraphics{drawings/ch7-heater-r-plots.pdf}
+\includegraphics{drawings/ch6-heater-r-plots.pdf}
 \caption[Plots describing heater measurements]{
 Plots describing heater measurements, for the case of \RCm{29}{1}.
 \textbf{Upper Left} \IV\ curves. The \IV\ curves should become vertical when the detector becomes fully superconducting at zero voltage, but these curves shows a non-infinite slope. The reason for this is that the readout system as configured for these \IV\ curves was unable keep up with the rapid change of current in the superconducting branch.
@@ -386,7 +386,7 @@ This can be see by taking the ratio of $S^2_{TES}$ to $S^2_{TFN}$ (ignoring fact
 \frac{S^2_{TES}}{S^2_{TFN}} \approx \frac{1}{\alpha \Loop} (1 + (\omega \tau)^2)
 \end{equation}
 At low frequencies the \TES\ resistor current noise is suppressed below thermal fluctuation noise by a factor of $1/\alpha \Loop$.
-\TES\ detectors are always biased so that $\Loop > 1$, and values for $\alpha$ in the transition for our detectors are 20--400 (see \figref{fig:ch7-bias-step-results} in \sectionref{sec:bias-step}).
+\TES\ detectors are always biased so that $\Loop > 1$, and values for $\alpha$ in the transition for our detectors are 20--400 (see \figref{fig:ch6-bias-step-results} in \sectionref{sec:bias-step}).
 Examination of \tableref{tab:tes-noise} shows that current noise from the load resistor is lower than that from the \TES\ resistor by a factor of $(\Loop-1)^2 (R_0 / R_L) (T_0/T_L)$.
 Therefore, intrinsic detector noise in our \TES\ bolometers is dominated by thermal fluctuation noise.
 

@@ -30,9 +30,9 @@
         legend entries={Exact, Filtered, Fit to Filtered},
         legend pos=south east
         ]
-	  \addplot+[only marks, mark size=1pt] table[x=t,y=exact]{../data/ch7-servo-est-tau-example.dat};
-	  \addplot+[only marks, mark size=1pt] table[x=t,y=filtered]{../data/ch7-servo-est-tau-example.dat};
-	  \addplot+[mark=none, line width=2pt] table[x=t,y=fit]{../data/ch7-servo-est-tau-example.dat};
+	  \addplot+[only marks, mark size=1pt] table[x=t,y=exact]{../data/ch6-servo-est-tau-example.dat};
+	  \addplot+[only marks, mark size=1pt] table[x=t,y=filtered]{../data/ch6-servo-est-tau-example.dat};
+	  \addplot+[mark=none, line width=2pt] table[x=t,y=fit]{../data/ch6-servo-est-tau-example.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -43,7 +43,7 @@
 		title={Error in Estimated $\tau$},
 		xlabel={$\tau_{servo} / \tau$}, ylabel={$(\tau_{est} - \tau) / \tau$},
         ]
-	  \addplot+[mark=none,line width=2pt] table[x=tauratio,y=err]{../data/ch7-servo-est-tau-err.dat};
+	  \addplot+[mark=none,line width=2pt] table[x=tauratio,y=err]{../data/ch6-servo-est-tau-err.dat};
 	\end{loglogaxis}
   \end{tikzpicture}
 

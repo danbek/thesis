@@ -26,23 +26,23 @@
         legend pos=north west,
     	title={Measured $\tau_{eff}$},
     	xlabel={$R$ / $R_n$}, ylabel={$\tau_{eff,meas}$ (\si{ms})} ]
-      \addplot+[only marks] table[x=prn29,y=teff29]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn29,y=teff29]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{29}{1}}
-      \addplot+[only marks] table[x=prn30,y=teff30]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn30,y=teff30]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{30}{1}}
-      \addplot+[only marks] table[x=prn31,y=teff31]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn31,y=teff31]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{31}{1}}
-      \addplot+[only marks] table[x=prn32,y=teff32]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn32,y=teff32]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{32}{1}}
 
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn29,y=teff29]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn29,y=teff29]{../data/ch6-heater-step-pred-parms.dat};
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn30,y=teff30]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn30,y=teff30]{../data/ch6-heater-step-pred-parms.dat};
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn31,y=teff31]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn31,y=teff31]{../data/ch6-heater-step-pred-parms.dat};
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn32,y=teff32]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn32,y=teff32]{../data/ch6-heater-step-pred-parms.dat};
 
     \end{axis}
   \end{tikzpicture}
@@ -53,23 +53,23 @@
     \begin{axis}[ymin=0,ymax=1,
     	title={Measured \TES\ Responsivity},
     	xlabel={$R$ / $R_n$}, ylabel={$s_{I,meas}(0)$ (\si{\per\uV})} ]
-      \addplot+[only marks] table[x=prn29,y=sI_pred29]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn29,y=sI_pred29]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{29}{1}}
-      \addplot+[only marks] table[x=prn30,y=sI_pred30]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn30,y=sI_pred30]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{30}{1}}
-      \addplot+[only marks] table[x=prn31,y=sI_pred31]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn31,y=sI_pred31]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{31}{1}}
-      \addplot+[only marks] table[x=prn32,y=sI_pred32]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn32,y=sI_pred32]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{32}{1}}
 
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn29,y=sI_pred29]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn29,y=sI_pred29]{../data/ch6-heater-step-pred-parms.dat};
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn30,y=sI_pred30]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn30,y=sI_pred30]{../data/ch6-heater-step-pred-parms.dat};
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn31,y=sI_pred31]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn31,y=sI_pred31]{../data/ch6-heater-step-pred-parms.dat};
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn32,y=sI_pred32]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn32,y=sI_pred32]{../data/ch6-heater-step-pred-parms.dat};
 
     \end{axis}
   \end{tikzpicture}
@@ -80,23 +80,23 @@
     \begin{axis}[ymin=0.8,ymax=1.2,
     	title={Accuracy of Predicted $\tau_{eff}$},
     	xlabel={$R$ / $R_n$}, ylabel={$\tau_{eff,pred} / \tau_{eff,meas}$} ]
-      \addplot+[only marks] table[x=prn29,y=teff_rat29]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn29,y=teff_rat29]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{29}{1}}
-      \addplot+[only marks] table[x=prn30,y=teff_rat30]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn30,y=teff_rat30]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{30}{1}}
-      \addplot+[only marks] table[x=prn31,y=teff_rat31]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn31,y=teff_rat31]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{31}{1}}
-      \addplot+[only marks] table[x=prn32,y=teff_rat32]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn32,y=teff_rat32]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{32}{1}}
 
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn29,y=teff_rat29]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn29,y=teff_rat29]{../data/ch6-heater-step-pred-parms.dat};
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn30,y=teff_rat30]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn30,y=teff_rat30]{../data/ch6-heater-step-pred-parms.dat};
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn31,y=teff_rat31]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn31,y=teff_rat31]{../data/ch6-heater-step-pred-parms.dat};
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn32,y=teff_rat32]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn32,y=teff_rat32]{../data/ch6-heater-step-pred-parms.dat};
 
     \end{axis}
   \end{tikzpicture}
@@ -108,23 +108,23 @@
         legend pos=south east,
     	title={Accuracy of Predicted $s_I$},
     	xlabel={$R$ / $R_n$}, ylabel={$s_{I,pred}(0) / s_{I,meas}(0)$} ]
-      \addplot+[only marks] table[x=prn29,y=sI_rat29]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn29,y=sI_rat29]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{29}{1}}
-      \addplot+[only marks] table[x=prn30,y=sI_rat30]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn30,y=sI_rat30]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{30}{1}}
-      \addplot+[only marks] table[x=prn31,y=sI_rat31]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn31,y=sI_rat31]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{31}{1}}
-      \addplot+[only marks] table[x=prn32,y=sI_rat32]{../data/ch7-heater-step-pred-parms.dat};
+      \addplot+[only marks] table[x=prn32,y=sI_rat32]{../data/ch6-heater-step-pred-parms.dat};
       \addlegendentry{\RCm{32}{1}}
 
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn29,y=sI_rat29]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn29,y=sI_rat29]{../data/ch6-heater-step-pred-parms.dat};
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn30,y=sI_rat30]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn30,y=sI_rat30]{../data/ch6-heater-step-pred-parms.dat};
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn31,y=sI_rat31]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn31,y=sI_rat31]{../data/ch6-heater-step-pred-parms.dat};
       \addplot[only marks, mark=o,mark size=5,restrict expr to domain={\thisrow{bias_dac}}{26900:27100}]
-        table[x=prn32,y=sI_rat32]{../data/ch7-heater-step-pred-parms.dat};
+        table[x=prn32,y=sI_rat32]{../data/ch6-heater-step-pred-parms.dat};
 
     \end{axis}
   \end{tikzpicture}

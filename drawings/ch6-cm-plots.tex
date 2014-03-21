@@ -29,7 +29,7 @@
 		title={\TES\ Current},
 		xlabel={Time (s)}, ylabel={Current Through \TES\ (\si{\uA})} ]
       \foreach \yindex in {1,...,15}
-	    \addplot+[mark=none] table[x=t,y index = \yindex]{../data/ch7-cm-fb-orig.dat};
+	    \addplot+[mark=none] table[x=t,y index = \yindex]{../data/ch6-cm-fb-orig.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -40,7 +40,7 @@
 		title={\TES\ Current Without Common Mode},
 		xlabel={Time (s)}, ylabel={Current Through \TES\ (\si{\uA})} ]
       \foreach \yindex in {1,...,15}
-	    \addplot+[mark=none] table[x=t,y index = \yindex]{../data/ch7-cm-fb-nocm.dat};
+	    \addplot+[mark=none] table[x=t,y index = \yindex]{../data/ch6-cm-fb-nocm.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -50,10 +50,10 @@
 	\begin{loglogaxis}[%xmin=2.8,xmax=5,
 		title={Current Noise PSD},
 		xlabel={Frequency (\si{\hertz})}, ylabel={Noise Power (\Inoise{})} ]
-	  \addplot+[mark=none] table[x=freq,y=Pxx_raw]{../data/ch7-cm-pow-spec.dat}; \addlegendentry {Raw}
-	  \addplot+[mark=none] table[x=freq,y=Pxx_nocm]{../data/ch7-cm-pow-spec.dat}; \addlegendentry {No CM}
-	  \addplot+[mark=none] table[x=freq,y=Pxx_nocm_np]{../data/ch7-cm-pow-spec.dat}; \addlegendentry {No CM, Poly}
-	  \addplot+[mark=none] table[x=freq,y=Pxx_cm]{../data/ch7-cm-pow-spec.dat}; \addlegendentry {CM}
+	  \addplot+[mark=none] table[x=freq,y=Pxx_raw]{../data/ch6-cm-pow-spec.dat}; \addlegendentry {Raw}
+	  \addplot+[mark=none] table[x=freq,y=Pxx_nocm]{../data/ch6-cm-pow-spec.dat}; \addlegendentry {No CM}
+	  \addplot+[mark=none] table[x=freq,y=Pxx_nocm_np]{../data/ch6-cm-pow-spec.dat}; \addlegendentry {No CM, Poly}
+	  \addplot+[mark=none] table[x=freq,y=Pxx_cm]{../data/ch6-cm-pow-spec.dat}; \addlegendentry {CM}
 
 	\end{loglogaxis}
   \end{tikzpicture}
@@ -64,7 +64,7 @@
 	\begin{axis}[%ymin=0, 
 		title={Equivalent $\Delta T_b$ (\RCm{29}{1}) },
 		xlabel={Time (s)}, ylabel={$\Delta T_b$ (\si{\mK})} ]
-	  \addplot+[mark=none] table[x=t,y=Tb_tes]{../data/ch7-cm-Tb-equiv.dat};
+	  \addplot+[mark=none] table[x=t,y=Tb_tes]{../data/ch6-cm-Tb-equiv.dat};
 	\end{axis}
   \end{tikzpicture}
   \\

@@ -28,7 +28,7 @@
 		title={$P_{sat}$ vs $T_{b}$ (\RCm{31}{2})},
 		xlabel={$T_b$ (mK)}, ylabel={$P_{sat}$ (pW)} ]
 	  \addplot+[only marks]
-	    table[x=temp,y=Psat]{../data/ch7-g-psat-vs-temp.dat};
+	    table[x=temp,y=Psat]{../data/ch6-g-psat-vs-temp.dat};
       \addlegendentry {Data}
       \addplot+[mark=non,domain=900:1250] { 6.350062e+03 * 1.214539e+00 / 3.410728e+00 * (1 - (x / 1.214539e+03)^3.410728e+00 };
       \addlegendentry {Fit}
@@ -50,7 +50,7 @@
       \draw[rotate around={-3.282592e+01:(axis cs:6.350062e+00,3.410728e+00)}] (axis cs:6.350062e+00,3.410728e+00) ellipse [x radius=2.565867e-02,y radius=3.560103e-01];
       \draw[rotate around={-3.692635e+01:(axis cs:7.411579e+00,3.697532e+00)}] (axis cs:7.411579e+00,3.697532e+00) ellipse [x radius=3.659019e-02,y radius=4.939734e-01];
 
-      \addplot+[only marks] table[x=G,y=n]{../data/ch7-g-parms.dat};
+      \addplot+[only marks] table[x=G,y=n]{../data/ch6-g-parms.dat};
 
 	\end{axis}
   \end{tikzpicture}
@@ -68,7 +68,7 @@
       \draw[rotate around={2.370158e-01:(axis cs:6.350062e+00,1.214539e+03)}] (axis cs:6.350062e+00,1.214539e+03) ellipse [x radius=4.558564e-02,y radius=1.957192e+00];
       \draw[rotate around={2.741834e-01:(axis cs:7.411579e+00,1.215790e+03)}] (axis cs:7.411579e+00,1.215790e+03) ellipse [x radius=6.866226e-02,y radius=2.599048e+00];
 
-      \addplot+[only marks] table[x=G,y=Tc]{../data/ch7-g-parms.dat};
+      \addplot+[only marks] table[x=G,y=Tc]{../data/ch6-g-parms.dat};
 
 	\end{axis}
   \end{tikzpicture}

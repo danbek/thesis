@@ -29,7 +29,7 @@
 		xlabel={\Rsh\ (\si{\uOhm})}, ylabel={Quantity} ]
 	  \addplot [hist={data min=125,data max=165,bins=20},
 		        fill=blue!75]
-	  table[y=Rsh]{../data/ch7-rsh-L.dat};
+	  table[y=Rsh]{../data/ch6-rsh-L.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -41,7 +41,7 @@
 		xlabel={$L_{ny}$ (nH)}, ylabel={Quantity} ]
 	  \addplot [hist={data min=180,data max=640,bins=23},
 		        fill=blue!75]
-	    table[y=L]{../data/ch7-rsh-L.dat};
+	    table[y=L]{../data/ch6-rsh-L.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -51,7 +51,7 @@
 		title={\Rsh\ vs $L_{ny}$},
 		xlabel={\Rsh\ (\si{\uOhm})}, ylabel={$L_{ny}$ (nH)} ]
 	  \addplot+[only marks]
-	    table[x=Rsh,y=L]{../data/ch7-rsh-L.dat};
+	    table[x=Rsh,y=L]{../data/ch6-rsh-L.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -63,7 +63,7 @@
 		xlabel={Frequency (Hz)}, ylabel={Current Noise (\Inoise{})} ]
 
 	  \addplot+[only marks,mark size=1.0pt]
-	    table[x=f,y expr=sqrt(\thisrow{Pxx})]{../data/ch7-rsh-pxx.dat};
+	    table[x=f,y expr=sqrt(\thisrow{Pxx})]{../data/ch6-rsh-pxx.dat};
 	  \addlegendentry{Data}
 
 	  \addplot[mark=none,domain=4e-1:2e3,line width=1pt]

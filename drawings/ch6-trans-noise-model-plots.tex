@@ -25,11 +25,11 @@
         legend pos=south west, 
 		title={Detector Noise Modeling (\RCm{31}{1}, 27k bias)},
 		xlabel={Frequency (\si{\hertz})}, ylabel={Detector Noise $\left( \pnoise \right)$} ]
-	  \addplot+[mark=none] table[x=f, y=Pxx_pow27k]{../data/ch7-bias-step-noise-r31.dat};
+	  \addplot+[mark=none] table[x=f, y=Pxx_pow27k]{../data/ch6-bias-step-noise-r31.dat};
       \addlegendentry{Data}
-	  \addplot+[mark=none] table[x=f,y=Pxx_pow27k]{../data/ch7-bias-step-noise-model-r31.dat};
+	  \addplot+[mark=none] table[x=f,y=Pxx_pow27k]{../data/ch6-bias-step-noise-model-r31.dat};
       \addlegendentry{Basic model}
-	  \addplot+[mark=none] table[x=f_model,y=sPtot_hiG]{../data/ch7-trans-noise-model-all.dat};
+	  \addplot+[mark=none] table[x=f_model,y=sPtot_hiG]{../data/ch6-trans-noise-model-all.dat};
       \addlegendentry{High ``Power'' Noise}
 	\end{loglogaxis}
   \end{tikzpicture}

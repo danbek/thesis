@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.5in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{rr}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[xmin=0,
+		title={Bias Step Response (\RCm{31}{1})},
+		xlabel={Time (\si{\ms})}, ylabel={Current Through \TES\ (\si{\uA})} ]
+	  \addplot+[mark=none] table[x=t,y=ydata32k]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot+[mark=none] table[x=t,y=ydata31k]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot+[mark=none] table[x=t,y=ydata30k]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot+[mark=none] table[x=t,y=ydata29k]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot+[mark=none] table[x=t,y=ydata28k]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot+[mark=none] table[x=t,y=ydata27k]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot+[mark=none] table[x=t,y=ydata26k]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot+[mark=none] table[x=t,y=ydata25k]{../data/ch6-bias-step-resp-r31.dat};
+      
+      \draw[->,very thick] (axis cs:50, 0.05) -- (axis cs:50, -0.2);
+      \node[anchor=east,font=\small] at (axis cs:50, 0.05) {Lower in transition};
+
+	\end{axis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[xmin=0,xmax=6,
+        mark size=1,
+		title={Bias Step Response (\RCm{31}{1})},
+		xlabel={Time (\si{\ms})}, ylabel={Current Through \TES\ (\si{\uA})} ]
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit32k} + 0.0}]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit31k} + 0.1}]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit30k} + 0.2}]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit29k} + 0.3}]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit28k} + 0.4}]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit27k} + 0.5}]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit26k} + 0.6}]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot[mark=none, color=red] table[x=t,y expr={\thisrow{yfit25k} + 0.7}]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata32k} + 0.0}]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata31k} + 0.1}]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata30k} + 0.2}]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata29k} + 0.3}]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata28k} + 0.4}]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata27k} + 0.5}]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata26k} + 0.6}]{../data/ch6-bias-step-resp-r31.dat};
+	  \addplot+[only marks] table[x=t,y expr={\thisrow{ydata25k} + 0.7}]{../data/ch6-bias-step-resp-r31.dat};
+
+      \draw[->,very thick] (axis cs:5.7, 0) -- (axis cs:5.7, 0.8);
+      \node[anchor=east,font=\small] at (axis cs:5.7, 0.8) {Lower in transition};
+      
+	\end{axis}
+  \end{tikzpicture}
+
+  \\
+
+\end{tabular}
+
+\end{document}

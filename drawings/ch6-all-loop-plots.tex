@@ -28,7 +28,7 @@
 		xlabel={\Loop}, ylabel={Quantity} ]
 	  \addplot [hist={data min=0,data max=25,bins=20},
 		        fill=blue!75]
-	    table[y=Loop]{../data/ch7-all-loop.dat};
+	    table[y=Loop]{../data/ch6-all-loop.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -39,7 +39,7 @@
 		title={\Loop\ vs $R$},
 		xlabel={$R$ (\si{\mohm})}, ylabel={\Loop} ]
 	  \addplot+[only marks]
-	    table[x=R0,y=Loop]{../data/ch7-all-loop.dat};
+	    table[x=R0,y=Loop]{../data/ch6-all-loop.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -51,7 +51,7 @@
 		xlabel={$\beta_I$}, ylabel={Quantity} ]
 	  \addplot [hist={data min=0,data max=6,bins=20},
 		        fill=blue!75]
-	    table[y=beta]{../data/ch7-all-loop.dat};
+	    table[y=beta]{../data/ch6-all-loop.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -62,7 +62,7 @@
 		title={$\beta_I$ vs $R$},
 		xlabel={$R$ (\si{\mohm})}, ylabel={$\beta_I$} ]
 	  \addplot+[only marks]
-	    table[x=R0,y=beta]{../data/ch7-all-loop.dat};
+	    table[x=R0,y=beta]{../data/ch6-all-loop.dat};
 	\end{axis}
   \end{tikzpicture}
 
@@ -74,7 +74,7 @@
 		xlabel={R (\si{\mohm})}, ylabel={Quantity} ]
 	  \addplot [hist={data min=0,data max=6,bins=20},
 		        fill=blue!75]
-	  table[y=R0]{../data/ch7-all-loop.dat};
+	  table[y=R0]{../data/ch6-all-loop.dat};
 	\end{axis}
   \end{tikzpicture}
   
@@ -85,7 +85,7 @@
 		title={$\beta_I$ vs \Loop},
 		xlabel={\Loop}, ylabel={$\beta_I$} ]
 	  \addplot+[only marks]
-	    table[x=Loop,y=beta]{../data/ch7-all-loop.dat};
+	    table[x=Loop,y=beta]{../data/ch6-all-loop.dat};
 	\end{axis}
   \end{tikzpicture}
 

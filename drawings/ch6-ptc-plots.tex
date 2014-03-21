@@ -9,12 +9,14 @@
 \pgfplotsset{
   every axis/.append style={
     scale only axis,
-    width=2.4in,
+    width=2.50in,
   },
   /tikz/every picture/.append style={
     baseline
   }
 }
+
+% run thesis/ana_ptc to generate data files.
 
 \begin{document}
 
@@ -24,25 +26,26 @@
 
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[
-		title={Aliased Noise},
-		xlabel={Row}, ylabel={Fractional Excess Noise} ]
-	  \addplot+[only marks, error bars/.cd, y dir=both, y explicit]
-        table[x=row,y=rat,y error=err]{../data/ch7-noise-aliasing.dat};
-
+        ymin=0, 
+		title={Excess Noise with \PTC\ On},
+		xlabel={Fractional Excess Noise}, ylabel={Quantity} ]
+	  \addplot [hist={data min=0.9,data max=1.15,bins=20},
+		        fill=blue!75]
+	  table[y=6up]{../data/ch6-ptc-plots.dat};
 	\end{axis}
   \end{tikzpicture}
-
+  
   &
 
   \begin{tikzpicture}[trim axis right]
-	\begin{loglogaxis}[
-		title={Current Noise PSD \RCm{5}{1}},
+	\begin{loglogaxis}[%xmin=2.8,xmax=5,
+		title={Current Noise PSD \RCm{29}{1}},
 		xlabel={Frequency (\si{\hertz})}, ylabel={Noise Power (\Inoise{})} ]
-	  \addplot+[mark=none] table[x=f,y=Pxx]{../data/ch7-noise-aliasing-5.dat}; \addlegendentry {Data Rate = 5}
-	  \addplot+[mark=none] table[x=f,y=Pxx]{../data/ch7-noise-aliasing-f.dat}; \addlegendentry {Data Rate = 1}
+	  \addplot+[mark=none] table[x=fs,y=Pxxs]{../data/ch6-ptc-ps-plots.dat}; \addlegendentry {\PTC\ On}
+	  \addplot+[mark=none] table[x=fs,y=Pxxnos]{../data/ch6-ptc-ps-plots.dat}; \addlegendentry {\PTC\ Off}
 	\end{loglogaxis}
   \end{tikzpicture}
-  
-\end{tabular}
+
+  \end{tabular}
 
 \end{document}

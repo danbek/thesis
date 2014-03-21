@@ -1,0 +1,123 @@
+\documentclass[12pt]{article}
+
+\usepackage{../thesis}
+
+\usepackage{tikz} 
+\usepackage{pgfplots} % drawing plots right here in this file!
+\pgfplotsset{compat=1.9} % latest stable release
+
+\pgfplotsset{
+  every axis/.append style={
+    scale only axis,
+    width=2.5in,
+  },
+  /tikz/every picture/.append style={
+    baseline
+  }
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tabular}{rr}
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[xmin=-0.05,ymin=0, 
+		title={IV Curves for \RCm{29}{1}},
+		xlabel={Voltage Across \TES\ (\si{\uV})}, ylabel={Current Through \TES\ (\si{\uA})} ]
+	  \addplot+[mark=none] table[x=Vtes01,y=Ites01]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Vtes02,y=Ites02]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Vtes03,y=Ites03]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Vtes04,y=Ites04]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Vtes05,y=Ites05]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Vtes06,y=Ites06]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Vtes07,y=Ites07]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Vtes08,y=Ites08]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Vtes09,y=Ites09]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Vtes10,y=Ites10]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Vtes11,y=Ites11]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Vtes12,y=Ites12]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Vtes13,y=Ites13]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Vtes14,y=Ites14]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Vtes15,y=Ites15]{../data/ch6-heater-r.dat};
+      
+      \draw[->, very thick] (axis cs:1.2, 400) -- (axis cs:0.2, 100);
+      \node[anchor=south,align=center,font=\small] at (axis cs:1.2, 400) {Increasing \\ Heater Power};
+
+	\end{axis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[ymin=0, 
+		title={$R$ vs $P_{J}$ for \RCm{29}{1}},
+		xlabel={Joule Power Dissipated in \TES\ (pW)}, ylabel={\TES\ Resistance (\si{\milli\ohm})} ]
+	  \addplot+[mark=none] table[x=Ptes01,y=Rtes01]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptes02,y=Rtes02]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptes03,y=Rtes03]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptes04,y=Rtes04]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptes05,y=Rtes05]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptes06,y=Rtes06]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptes07,y=Rtes07]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptes08,y=Rtes08]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptes09,y=Rtes09]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptes10,y=Rtes10]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptes11,y=Rtes11]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptes12,y=Rtes12]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptes13,y=Rtes13]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptes14,y=Rtes14]{../data/ch6-heater-r.dat};
+
+      \draw[->, very thick] (axis cs:250, 2) -- (axis cs:10, 2);
+      \node[anchor=west,align=center,font=\small] at (axis cs:250, 2) {Increasing \\ Heater Power};
+
+	\end{axis}
+  \end{tikzpicture}
+
+  \\
+
+  \begin{tikzpicture}[trim axis left]
+	\begin{axis}[xmin=2.8,xmax=5,
+		title={\TES\ $P_{J}$ vs Heater Current},
+		xlabel={$I_{htr}$ (\si{\uA})}, ylabel={$P_{J}$ (pW)} ]
+	  \addplot+[only marks]
+	  table[x=Ihtr,y=Psat]{../data/ch6-heater-r-pows.dat};
+	  \addlegendentry {Data}
+
+	  \addplot+[mark=none,domain=2.8:5] {607.85 - 23.8854*x^2)}
+	  node[right] at (axis cs:3,150) {$R_{htr} = \SI{23.9}{\ohm}$}
+	  node[right] at (axis cs:3,100) {$P_{x} = \SI{608}{\pico\W}$}
+	  ;
+	  \addlegendentry{Fit}
+
+	\end{axis}
+  \end{tikzpicture}
+
+  &
+
+  \begin{tikzpicture}[trim axis right]
+	\begin{axis}[ymin=0, 
+		title={$R$ vs $P_{J} + P_{htr}$ for \RCm{29}{1}},
+		xlabel={Total Power Dissipated in \TES\ (pW)}, ylabel={\TES\ Resistance (\si{\milli\ohm})} ]
+	  \addplot+[mark=none] table[x=Ptot01,y=Rtes01]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptot02,y=Rtes02]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptot03,y=Rtes03]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptot04,y=Rtes04]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptot05,y=Rtes05]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptot06,y=Rtes06]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptot07,y=Rtes07]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptot08,y=Rtes08]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptot09,y=Rtes09]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptot10,y=Rtes10]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptot11,y=Rtes11]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptot12,y=Rtes12]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptot13,y=Rtes13]{../data/ch6-heater-r.dat};
+	  \addplot+[mark=none] table[x=Ptot14,y=Rtes14]{../data/ch6-heater-r.dat};
+
+	\end{axis}
+  \end{tikzpicture}
+  \\
+\end{tabular}
+
+\end{document}

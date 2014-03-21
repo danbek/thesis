@@ -9,7 +9,7 @@
 \pgfplotsset{
   every axis/.append style={
     scale only axis,
-    width=2.4in, height=2.0in,
+    width=2.4in,
   },
   /tikz/every picture/.append style={
     baseline
@@ -24,10 +24,10 @@
 
   \begin{tikzpicture}[trim axis left]
 	\begin{axis}[
-		title={$G$ vs Assumed $P_{opt}$},
-		xlabel={$P_{opt}$ (pW)}, ylabel={$G$ (nW/K)} ]
+		title={Aliased Noise},
+		xlabel={Row}, ylabel={Fractional Excess Noise} ]
 	  \addplot+[only marks, error bars/.cd, y dir=both, y explicit]
-        table[x=Popt,y=G,y error=Gerr]{../data/ch7-g-variation.dat};
+        table[x=row,y=rat,y error=err]{../data/ch6-noise-aliasing.dat};
 
 	\end{axis}
   \end{tikzpicture}
@@ -35,15 +35,14 @@
   &
 
   \begin{tikzpicture}[trim axis right]
-	\begin{axis}[
-		title={$T_c$ vs Assumed $P_{opt}$},
-		xlabel={$P_{opt}$ (pW)}, ylabel={$T_c$ (mK)} ]
-	  \addplot+[only marks, error bars/.cd, y dir=both, y explicit]
-        table[x=Popt,y=Tc,y error=Tcerr]{../data/ch7-g-variation.dat};
-
-	\end{axis}
+	\begin{loglogaxis}[
+		title={Current Noise PSD \RCm{5}{1}},
+		xlabel={Frequency (\si{\hertz})}, ylabel={Noise Power (\Inoise{})} ]
+	  \addplot+[mark=none] table[x=f,y=Pxx]{../data/ch6-noise-aliasing-5.dat}; \addlegendentry {Data Rate = 5}
+	  \addplot+[mark=none] table[x=f,y=Pxx]{../data/ch6-noise-aliasing-f.dat}; \addlegendentry {Data Rate = 1}
+	\end{loglogaxis}
   \end{tikzpicture}
-
+  
 \end{tabular}
 
 \end{document}

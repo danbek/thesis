@@ -516,7 +516,7 @@ See text for discussion.
 As discussed in \sectionref{sec:det-readout}, the output of the readout system does not give the absolute current passing through each detector.
 Instead it gives the change in current relative to some offset, which is not a-priori known.
 My approach for dealing with this offset is, for each video frame, to subtract from each detector's timestream the median of that detector's timestream during that video frame.
-Although crude, this approach does a good job of accounting for the offsets in the detector timestreams, as well as accounting for the common-mode drift described in \sectionref{sec:ch7-common}.
+Although crude, this approach does a good job of accounting for the offsets in the detector timestreams, as well as accounting for the common-mode drift described in \sectionref{sec:ch6-common}.
 However, elliptical scanning artifacts are still visible in the images of \figref{fig:ch8-single-frames}.
 These artifacts arise in part because the median-subtraction scheme will work ``perfectly'' only in the case where the median temperature viewed by each detector during the frame is the same.
 If this is not true for a particular detector, the ellipse traced out by that detector in the image will appear warmer or cooler than its surroundings (depending on whether the distribution that it viewed was cooler or warmer than its surroundings), leading to elliptical scanning artifacts.
