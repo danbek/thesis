@@ -220,12 +220,10 @@ $\delta P$ & Change in power (optical or heater) falling on \TES\ \\
 
 Near the top of the superconducting transition, $\Loop < 1$, so that $\tau_{eff} > 0.5 \tau$.
 The \TES\ detectors used for the \Imager\ have been designed so that $\tau \gg L/R_n$ (see \sectionref{sec:det-parm-choice}), so that the response to a step in applied heater power is given by \eqnref{eqn:htr-step-resp-high-time}.
-
 As the fully normal state is approached, $\tau_{eff}$ approaches $\tau$, so that measuring the $\tau_{eff}$ very high in the transition will give a measurement of $\tau$.
 However, the power-to-current responsivity decreases high in the transition, reducing the signal-to-noise of the measurement.
-If we knew \Loop\ and $\beta_I$ high in the transition we could extract $\tau$ from $\tau_{eff}$, but we do not always know these values.
 
-To avoid these problems, an expression can be obtained linking $\tau$ and $\tau_{eff}$ that holds independent of location in the transition, as long as the assumption $\tau_{eff} \gg L/R_0$ holds.
+To avoid this problem, an expression can be obtained linking $\tau$ and $\tau_{eff}$ that holds independent of location in the transition, as long as the assumption $\tau_{eff} \gg L/R_0$ holds.
 The \DC\ response to a step in applied power $\delta P$ is given by
 \begin{equation}
 \delta I = \frac{\delta P}{I_0 R_0}\frac{\Loop}{1 + \beta_I + R_L/R_0 + (1 - R_L / R_0)\Loop}.
@@ -381,7 +379,8 @@ For the detectors described in this thesis, $n \approx 3.5$, $T_0 \approx 1.2$~K
 Under these conditions, both expressions for $F$ have approximately the same value, 0.83.
 
 For typical operating conditions of \TES\ bolometers, thermal fluctuation noise dominates Johnson noise at low frequencies.
-This can be see by taking the ratio of $S^2_{TES}$ to $S^2_{TFN}$ (ignoring factors of order unity):
+This can be see by taking the ratio of $S^2_{TES}$ to $S^2_{TFN}$.
+After some simplifying algebra the result is (ignoring factors of order unity):
 \begin{equation}
 \frac{S^2_{TES}}{S^2_{TFN}} \approx \frac{1}{\alpha \Loop} (1 + (\omega \tau)^2)
 \end{equation}
