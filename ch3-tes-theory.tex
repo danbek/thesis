@@ -34,7 +34,7 @@ The negative electrothermal feedback speeds up the response time of the detector
 \includegraphics{drawings/ch3-elec-thermal-circuit.pdf}
 \caption[Electrical and thermal \TES\ circuits]{
 Electrical and thermal \TES\ circuits.
-\textbf{Left} Electrical \TES\ circuit.
+\textbf{Left} Schematic of real electrical \TES\ circuit.
 The \TES\ is biased by a stiff current $I_{bias}$ shunted across a resistor $R_{sh}$ that is much smaller than the normal-state resistance of the \TES.
 The \TES\ is represented by a variable resistance $R$, and $R_{par}$ represents any parasitic resistance in the circuit.
 The current through the \TES\ is inductively coupled into a \SQUID\ for readout.
@@ -109,7 +109,7 @@ In this limit the power-to-current responsivity becomes
 s_I(\omega) = -\frac{1}{V_0} \frac{\Loop}{1+\beta_I + \Loop} \frac{1}{1 + j \omega \frac{\tau}{1 +\Loop/(1+\beta_I)}}
 \end{equation}
 The detector response time is given by the natural detector time constant $\tau$, sped up by a factor of $1 + \Loop(1+\beta_I)$; for $\beta_I \ll 1$, this factor is typical of negative feedback, and justifies calling \Loop\ the ``loop gain'' of the detector.
-In the further limit of strong electrothermal feedback ($\Loop \gg 1$, $\Loop \gg \beta_I$), the \DC\ responsivity is simply the inverse of the voltage bias.
+In the further limit of strong electrothermal feedback ($\Loop \gg 1$, $\Loop \gg \beta_I$), the \DC\ responsivity $s_I(0)$ is simply the inverse of the voltage bias.
 This means that because of the strong electrothermal coupling, any increase in applied optical (or heater) power is exactly canceled by a decrease in detector Joule heating, so that the \TES\ temperature remains unchanged.
 
 \textbf{\TES\ Response to Step Function in Power}
@@ -206,8 +206,8 @@ $\tau \equiv \frac{C}{G}$ & \TES\ natural time constant \\
 $\tau_{el} \equiv \frac{L}{R_L + R_0(1 + \beta_I)}$ & \TES\ electrical time constant \\
 $\tau_I \equiv \frac{\tau}{1-\Loop}$ & \TES\ constant-current time constant \\
 $\tau_{eff} \equiv \frac{\tau}{1 + \frac{1 - R_L / R_0}{1 + \beta_I + R_L / R_0}\Loop}$ & \TES\ effective time constant \\
-$\alpha \equiv \frac{T_0}{R_0} \frac{\partial R}{\partial T}$ & \\
-$\beta_I \equiv \frac{I_0}{R_0} \frac{\partial R}{\partial I}$ & \\
+$\alpha \equiv \frac{T_0}{R_0} \frac{\partial R}{\partial T}$ & Logarithmic \TES\ temperature sensitivity \\
+$\beta_I \equiv \frac{I_0}{R_0} \frac{\partial R}{\partial I}$ & Logarithmic \TES\ current sensitivity \\
 $\Loop \equiv \frac{I_0^2 R_0 \alpha}{G T_0}$ & Loop gain \\
 $\delta V = \delta I_{bias} R_{sh}$ & Change in bias voltage applied to \TES\ \\
 $\delta P$ & Change in power (optical or heater) falling on \TES\ \\
@@ -219,14 +219,14 @@ $\delta P$ & Change in power (optical or heater) falling on \TES\ \\
 \section{Measurement of Natural Time Constant}\label{sec:tau-nat-theory}
 
 Near the top of the superconducting transition, $\Loop < 1$, so that $\tau_{eff} > 0.5 \tau$.
-\TES\ detector circuits are always designed so that $\tau \gg L/R_n$, so that the response to a step in applied heater power is given by \eqnref{eqn:htr-step-resp-high-time}.
+The \TES\ detectors used for the \Imager\ have been designed so that $\tau \gg L/R_n$ (see \sectionref{sec:det-parm-choice}), so that the response to a step in applied heater power is given by \eqnref{eqn:htr-step-resp-high-time}.
 
 As the fully normal state is approached, $\tau_{eff}$ approaches $\tau$, so that measuring the $\tau_{eff}$ very high in the transition will give a measurement of $\tau$.
 However, the power-to-current responsivity decreases high in the transition, reducing the signal-to-noise of the measurement.
 If we knew \Loop\ and $\beta_I$ high in the transition we could extract $\tau$ from $\tau_{eff}$, but we do not always know these values.
 
 To avoid these problems, an expression can be obtained linking $\tau$ and $\tau_{eff}$ that holds independent of location in the transition, as long as the assumption $\tau_{eff} \gg L/R_0$ holds.
-The \DC\ response to a step in applied power $\delta $ is given by
+The \DC\ response to a step in applied power $\delta P$ is given by
 \begin{equation}
 \delta I = \frac{\delta P}{I_0 R_0}\frac{\Loop}{1 + \beta_I + R_L/R_0 + (1 - R_L / R_0)\Loop}.
 \end{equation}
@@ -248,7 +248,7 @@ has also been used.
 The factor $\mathcal{K}$ depends on the bias point, but high in the transition this dependence is weak, so that $\mathcal{K}$ can be treated as a constant.
 
 To use \eqnref{eqn:teff-from-tau} to measure $\tau$, steps in heater power are applied to the \TES\ at a set of bias points close to the normal state.
-At each bias point the \DC\ change in \TES\ current $\delta I$ and $\tau_{eff}$ are measured by fitting the \TES\ response to \eqnref{eqn:htr-step-resp-high}, and the bias current $I_{bias}$ is recorded.
+At each bias point the \DC\ change in \TES\ current $\delta I$ and $\tau_{eff}$ are measured by fitting the \TES\ response to \eqnref{eqn:htr-step-resp-high-time}, and the bias current $I_{bias}$ is recorded.
 A non-linear curve fit can then be applied to \eqnref{eqn:teff-from-tau} to solve for $\tau$ and $\mathcal{K}$.
 Alternately, $\mathcal{K}$ can be calculated if all factors feeding into it are known, and then \eqnref{eqn:teff-from-tau} can be solved directly for $\tau$.
 
@@ -397,7 +397,7 @@ This noise is expressed as \cite{zmuidzinas_thermal_2003}
 \end{equation}
 where $\bar{n}$ is the photon occupation number, given by
 \begin{equation}
-  \bar{n} = \frac{k_B T}{h \nu}
+  \bar{n} = \frac{1}{e^{\frac{h \nu}{k_B T}} + 1}
 \end{equation}
 
 \sectionref{sec:ch5-predicted-noise} discusses predicted noise levels for our detectors.

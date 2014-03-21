@@ -88,21 +88,21 @@ The most detailed and authoritative reference for \TES\ detectors is by Irwin an
 
 \section{Transition Edge Sensors for Passive Imaging} \label{sec:ch2-tes-passive}
 
+\TES\ detector have two important advantages for building passive imaging systems: the can be photon-noise-limited, and it is straigtforward to manufacture, operate, and read out arrays containing large numbers of them.
+
 The fundamental noise limit in bolometers is set by random thermal fluctuations of the temperature of the absorbing element, termed ``thermal fluctuation noise''.
 As described in \sectionref{sec:det-parm-choice}, the noise equivalent power (\NEP) of this noise source, expressed in units of \pnoise\ referred to power absorbed in the bolometer, is proportional to $\sqrt{k_B T_b P_{opt}}$.
 In a properly designed \TES, this source of noise will dominate other sources of noise in the system (Johnson noise in the \TES, \SQUID\ noise).
-A sufficiently low bath temperature $T_b$ can reduce thermal fluctuation noise to below the noise level caused by fluctuation in the arrival rate of photons.
+A sufficiently low bath temperature $T_b$ can reduce thermal fluctuation noise to below the noise level caused by fluctuations in the arrival rate of photons.
 As described in \sectionref{sec:ch5-predicted-noise}, the expected \NETD\ for the \Imager\ populated with 1004 detectors is \SI{38}{\mK}, well below the performance benchmark established in \sectionref{sec:ch1-netd-reqs}.
 
-An important aspect of the advantages of \TES\ detectors for passive imaging is the ability to put large numbers of them onto focal planes.
-This is due to two factors.
+The ability to put large numbers of \TES\ detectors onto focal planes is due to two factors.
 First, they can be fabricated using standard lithographic clean-room techniques, which allows development of array-scale focal planes.
 Second, the self-stabilizing behavior of voltage-biased \TES\ detectors enables array-scale operation because it greatly relaxes requirements on uniformity of detector characteristics across a wafer in the fabrication process.
 
 Reading out a large number of detectors individually requires an even larger number of wires, which complicates cryogenic designs.
 An important part of the success of \TES\ detector arrays for millimeter and submillimeter astronomy has been the development of multiplexed \SQUID\ readout systems.
 %xx\cite{tdm,berkeley fdm, europe}
-The detailed operation of these systems is not described in this thesis.
 The \Imager\ uses a time-division multiplexed readout system, the basics of which are described in \sectionref{sec:det-readout}, and the details of which can be found in the references cited there.
  
 

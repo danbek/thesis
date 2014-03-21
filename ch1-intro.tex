@@ -57,7 +57,7 @@ This trend tends to push systems toward lower frequencies.
 An example likely familiar to readers is the L3 ProVision systems operating at airport screening areas within the USA.
 These are ``holographic radar'' systems operating at ~\SI{30}{\GHz}, intended for close-range portal screening, and are based on technology developed at the Pacific Northwest National Lab (PNNL) \cite{sheen_cylindrical_1998,mcmakin_dual-surface_2009}.
 For applications in which it is acceptable to require individuals to pass through and pause at a particular location, these systems have excellent image quality.
-Although the ProVision system only takes still images with \abt{\SI{2}{s}} image acquisition time, similar portal screening systems with video-rate capabilities are also under development \cite{lyons_reflect-array_2013}.
+Although the ProVision system takes still images with \abt{\SI{2}{s}} image acquisition time, similar portal screening systems with video-rate capabilities are also under development \cite{lyons_reflect-array_2013}.
 
 \begin{figure*}
 \centering
@@ -115,7 +115,7 @@ When a coherent light source is diffusely reflected from a surface which varies 
 This leads to a random distribution of bright spots in the image known as speckle \cite{goodman_fundamental_1976}.
 This phenomena acts as a kind of noise in active images, and the signal-to-noise ratio of active imaging systems is often limited by speckle rather than noise inherent in the detection system itself.
 
-The active imaging community has long been aware of these issues and is working actively to address them.
+The active imaging community has long been aware of these issues and is working to address them.
 One recent approach uses modulated multi-moded illumination to avoid these issues \cite{petkie_multimode_2012,patrick_elimination_2012}.
 Another approach is to use active illumination to build a radar system.
 Because the radar system detects phase differences rather than intensity differences, it should be less susceptible to specular reflections and speckle.
@@ -178,7 +178,7 @@ The contrast seen between these two objects will then be
                                     (\epsilon_2 - \epsilon_1) (1-\tau_{cov}) T_{cov} + 
                                     (T_1 \epsilon_1 - T_2 \epsilon_2) \right]
 \end{equation}
-This equation shows that in order for contrast to appear in the image, we require difference in temperature or emissivity between the two objects, or both.
+This equation shows that in order for contrast to appear in the image, we require a difference in temperature or emissivity between the two objects, or both.
 
 \begin{figure*}
 \centering
@@ -208,7 +208,7 @@ If we further assume that $T_{cov}$ is midway between $T$ and $T_{amb}$, then th
 The factor of $\frac{1}{2}$ represents that fact that at low $\tau$, under these assumptions, the contrast is dominated by the difference in temperature between the cover and the object, which is half of the difference between the object and the ambient light.
 
 Outdoors, $T_{amb}$ will have contributions both from the ground (or structures/vegetation at ground level) and from the sky.
-The sky temperature depends strongly on the weather \cite{appleby_standoff_2007}, and at \SI{350}{\GHz} could be as low as \SI{100}{\K} on a clear winter day, or approach \SI{310}{\K} on a hot day with high humidity.
+The sky temperature depends strongly on the weather, and at \SI{350}{\GHz} could be as low as \SI{100}{\K} on a clear winter day, or approach \SI{310}{\K} on a hot day with high humidity \cite{appleby_standoff_2007}.
 Depending on the temperature and emission properties of local ground cover, under the worst-case scenario $T_{amb}$ outdoors could be very close to human body temperature.
 This means that requirements on \NETD\ for outdoor imaging in the worst-case scenarios could easily be \SI{200}{\mK} or lower, which motivates the search for imaging systems with \NETD\ at or below \SI{100}{\mK} for outdoor applications. 
 
@@ -233,7 +233,7 @@ For a detector sensitive to $M$ spatial modes of the electromagnetic field and w
 \begin{equation} \label{eqn:ch1-planck}
   P_{\nu}(\nu,T) d \nu = \eta_{tot} M h \nu \frac{1}{e^{\frac{h \nu}{k_B T}} - 1} d \nu,
 \end{equation}
-where $h$ is Planck's constant and $k_B$ is Boltzmann's constant and $T$ is the temperature of the source.
+where $h$ is Planck's constant, $k_B$ is Boltzmann's constant, and $T$ is the temperature of the source.
 For detection of light around \SI{350}{\GHz}, and source temperatures in the range \SIrange{50}{300}{\K}, the Raleigh-Jeans approximation
 \begin{equation}
   \frac{1}{e^{\frac{h \nu}{k_B T}} - 1} \approx \frac{k_B T}{h \nu}
