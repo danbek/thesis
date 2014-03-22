@@ -11,15 +11,17 @@
 \begin{tikzpicture}
     \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=4.0in]{../images/ch5-focal-plane-back.jpg}};
     \begin{scope}[x={(image.south east)},y={(image.north west)}]
-	    % \draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1.0,1);
-		% \foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-		% \foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+	    %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1.0,1);
+		%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+		%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
 		
-        \draw[black,ultra thick,rounded corners] (0.17,0.70) rectangle (0.05,0.90) node[below right] {\textbf{A}}; % Spider
-        \draw[black,ultra thick,rounded corners] (0.65,0.95) rectangle (0.45,0.85) node[above right] {\textbf{A}}; % Spider
-        \draw[black,ultra thick,rounded corners] (0.83,0.28) rectangle (0.65,0.45) node[below right] {\textbf{B}}; % MDM Connector
+        \draw[white,ultra thick,rounded corners] (0.17,0.70) rectangle (0.05,0.90) node[below right] {\textbf{A}}; % Spider
+        \draw[white,ultra thick,rounded corners] (0.65,0.95) rectangle (0.45,0.85) node[above right] {\textbf{A}}; % Spider
+        \draw[white,ultra thick,rounded corners] (0.83,0.28) rectangle (0.65,0.45) node[below right] {\textbf{B}}; % MDM Connector
+        \draw[white,ultra thick,rounded corners,rotate=0] (0.8,0.1) rectangle (0.7,0.2) node[below right] {\textbf{C}}; % Bock Black
+        \draw[white,ultra thick,rounded corners,rotate=0] (0.15,0.3) rectangle (0.08,0.4) node[below right] {\textbf{C}}; % Bock Black
         
-        \draw[black,ultra thick,<->] (.16,0.45) -- (0.70,0.70) node[midway,right] {\SI{9.5}{\in}}; % scale bar
+        \draw[white,ultra thick,<->] (.16,0.45) -- (0.70,0.70) node[midway,below] {\SI{9.5}{\in}}; % scale bar
     \end{scope}
 \end{tikzpicture}
 
