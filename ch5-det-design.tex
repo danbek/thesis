@@ -49,14 +49,14 @@ The techniques used to characterize the prototype detectors were the same as tho
 \label{fig:ch5-proto-plots}
 \end{figure*}
 
-\section{Choice of Bolometer Parameters} \label{sec:det-parm-choice}
+\section{Bolometer Design Parameters} \label{sec:det-parm-choice}
 
 The primary parameters to be chosen when designing a \TES\ bolometer are the superconducting critical temperature $T_c$, the thermal conductance $G$, and the \TES\ island heat capacity $C$.
-These parameters are interrelated, and so cannot be chosen entirely independently of each other.
+These parameters are interrelated, and so cannot be chosen independently of each other.
 Some of the factors to consider are:
 \begin{itemize}
-  \item Detector noise scales with $\sqrt{T_c^2 G}$, so that lower values of $G$ and $T_c$ improve noise
-  \item As discussed in \sectionref{sec:ch3-psat}, the saturation power of the \TES\ detector scales roughly like $G T_c$, so that if $G$ and $T_c$ are too small, the optical power falling on the detector will raise the temperature of the membrane above $T_c$, causing the device not to work.
+  \item Detector noise scales with $\sqrt{T_c^2 G}$, so that lower values of $G$ and $T_c$ improve noise.
+  \item As discussed in \sectionref{sec:ch3-psat}, the saturation power of the \TES\ detector scales roughly like $G T_c$, so that if $G$ and $T_c$ are too small, the optical power falling on the detector will raise the temperature of the membrane above $T_c$, saturating the device and rendering it inoperable.
   \item $T_c$ must be chosen to be higher than the achievable bath temperature, and the bath temperature also affects the saturation power through \eqnref{eqn:ch3-p-bath}.
   \item The detector time constant $\tau_{eff}$ is proportional to the detector natural time constant $\tau = C / G$.
 \end{itemize}
@@ -87,15 +87,16 @@ Choosing a safety factor of 3 so that $P_{sat} = 3 \times \SI{180}{\pW}$, and ta
         \frac{1}{3.7} \frac{0.5 \times (\num{0.85e-15})^2}{4 \times \SI{1.38e-23}{\J\per\K} \times 3 \times \SI{180}{\pW}} = 
         \SI{3.6}{\K}
 \end{equation}
-It would seem that we should be able to run the system off of a Pulse Tube Cooler.
 
+A \SI{3.6}{\K} bath temperature can be reached through the use of solely a mechanical cryocooler, which would simplify the design of the cryostat.
 However, this leaves little margin for error in the design and implementation of the system, so for the \Imager\ we chose to use a \He4-sorption fridge to allow setting the bath temperature well below \SI{3.6}{\K}.
 
-The initial hopes for performance of the \He4-sorption fridge were that its base temperature would be ~\SI{650}{\mK}, implying an ideal $T_c$ of \abt{\SI{1.2}{\K}}.
+The initial hopes for performance of the \He4-sorption fridge were that its base temperature would be \abt{\SI{650}{\mK}}, implying an ideal $T_c$ of \abt{\SI{1.2}{\K}}.
 This is a convenient $T_c$ because it is the critical temperature of elemental Al \cite{matthias_superconductivity_1963}, so Al was chosen as the \TES\ material.
 
-In practice, it was discovered during testing of Al prototype detectors that the base temperature of the system was \SI{950}{\mK} under optical load, so that a higher $T_c$ could lead to better noise performance through a reduced $G$.
-However, in order to change as little as possible between the prototype detectors and the first sub-array, I decided to continue using Al.
+In practice, it was discovered during testing of the prototype detectors that the base temperature of the system was \SI{950}{\mK} under optical load, not \SI{650}{\mK}.
+With a bath temperature of \SI{950}{\mK}, the optimal choice of $T_c$ would be \abt{\SI{1.7}{\K}}; this higher $T_c$ would allow a lower $G$ to be used so that thermal fluctuation noise of the detectors would decrease.
+However, in order to change as little as possible between the prototype detectors and the first sub-array, I decided to continue using Al as the \TES\ material.
 
 \subsection{Choice of $G$}
 
@@ -107,7 +108,7 @@ A safety factor of 5--6 is overly conservative, so for the sub-array I decided t
 
 The detector's heat capacity $C$ is chosen to target a specific detector time constant $\tau_{eff}$ once $G$ is chosen.
 $G$ and $C$ do not set $\tau_{eff}$ directly, rather they set the natural time constant $\tau$, to which $\tau_{eff}$ is proportional via \eqnref{eqn:teff}.
-$\tau_{eff}$ must be fast enough to avoid blurring of video-rate images, while being far enough from $\tau_{el}$ to avoid detector instability; see \sectionref{sec:ch3-tes-stability}.
+$\tau_{eff}$ must be fast enough to avoid blurring of video-rate images, but should be much larger than $\tau_{el}$ to avoid detector instability; see \sectionref{sec:ch3-tes-stability}.
 
 We can estimate the required value of $\tau_{eff}$ by considering the speed with which detectors move on the far-field focal plane and the size of the far-field beam.
 If $v$ is the speed with which the detector far-field beam moves, and $b_{fwhm}$ is the \FWHM\ far-field beam width, then scanning over a point source will result in a timestream with a Gaussian ``bump'' with \FWHM\ $b_{fwhm} / v$.
@@ -144,7 +145,7 @@ Given the design $G = \SI{3.8}{\nW\per\K}$, and the prototype value of $C = \SI{
 As long as \Loop\ and $\beta_I$ at the operating bias point did not change from the prototype detectors, this would reduce $\tau_{eff}$ to $\SI{4}{\ms} \times \frac{7.9}{12} = \SI{2.6}{\ms}$, sufficient for unblurred videos at 6 frames per second.
 $C$ for subsequent sub-array fabrications can be adjusted lower if needed based on measurements of the first fabricated sub-arrays.
 
-\section{Detailed Detector Design} \label{sec:ch5-det-design}
+\section{Detector Geometry} \label{sec:ch5-det-design}
 
 The \Imager's detectors are fabricated using standard lithographic clean-room techniques on Si wafers.
 In order to achieve the targeted $G$ and $C$ values, the detectors are located on a suspended SiN membrane which is connected to the rest of the Si wafer by a set of thin SiN ``legs''.
@@ -167,7 +168,7 @@ The sub-array detectors are identical except for the length of the legs and the 
 
 The detectors are fabricated on \SI{275}{\um} thick double-side-polished degenerate (Boron P-type) Si wafers.
 A layer of SiO2 is grown on top of the Si, followed by a layer of SiN, prior to the main fabrication steps.
-During fabrication the Nb wiring leads, Al \TES\, PdAu absorber, and Au heat-capacity ring are laid down, as well as an additional layer of insulator to allow wiring layers to cross over each other.
+During fabrication the Nb wiring leads, Al \TES, PdAu absorber, and Au heat-capacity ring are deposited, as well as an additional layer of insulator to allow wiring layers to cross over each other.
 The SiN and SiO2 is removed from the areas between the legs, and then a Deep Reactive Ion Etch process is used to remove all silicon from behind the detector membrane.
 This etch process does not remove SiN or SiO2, so that the legs, which still have SiN, are left in place.
 The result is a suspended membrane connected to the rest of the wafer by a set of ``legs'' which provide the thermal conductance $G$.
@@ -243,30 +244,32 @@ The total heat capacity is dominated by the Au ring.
 \end{tabular}
 \end{table*}
 
-\section{Choice of Shunts and Nyquist Inductors} \label{sec:ch5-shunt}
+\section{Shunts and Nyquist Inductors} \label{sec:ch5-shunt}
 
 The \Imager\ uses spare shunt resistors and Nyquist inductors originally made for the Atacama B-Mode Search (\ABS) project \cite{kusaka_modulation_2013}.
 The design value for the shunt resistors was \SI{180}{\uOhm} and for the inductors \SI{609}{\nH}.
 These chips were already fabricated and available, and the values of $R_{sh}$ and $L$ are appropriate for the \Imager's detectors.
 
 The measured normal-state resistance of the prototype detectors was \SI{3.4}{\mOhm}, but the thickness of \TES\ material was reduced for the sub-array by \abt{\SI{30}{\percent}}, for a target sub-array normal-state resistance of \SI{3.9}{\mOhm}.
-This would allow $R_{sh}$ to be more than five times smaller than $R_0$ at bias points as low as $R_0 = 0.25 R_n$, allowing a good voltage bias.
+This allows $R_{sh}$ to be more than five times smaller than $R_0$ at bias points as low as $R_0 = 0.25 R_n$, allowing a robust voltage bias.
 
 As shown in the lower right plot of \figref{fig:ch5-proto-plots}, the smallest value of $L_{crit}$ for any of the four prototype detectors across all bias points was \SI{2000}{\nH}.
 This value drops to \SI{1300}{\nH} given the faster design value of $\tau$ for the sub-array detectors.
-Therefore, $L = \SI{609}{\nH}$ was low enough to ensure that the sub-array detectors will be stable, with a large safety margin in case the values of \Loop\, $\beta_I$, or $\tau$ changed between the prototype and sub-array.
+Therefore, $L = \SI{609}{\nH}$ is low enough to ensure that the sub-array detectors are stable, with a large safety margin in case the values of \Loop\, $\beta_I$, or $\tau$ changed between the prototype and sub-array.
 Lower values of $L_{crit}$ would work as well, and may be considered if faster detector response times are targeted in a future iteration of this system.
 
 \section{Detector Wafer Layout} \label{sec:ch5-layout}
 
 \figref{fig:ch5-full-wafer} shows a photograph of the entire sub-array; the figure caption contains a detailed description of the features present on the sub-array.
-In addition to the detectors, the wafer includes Au pads for attaching Au heat-sinking wire bonds and holes used for gluing the detector wafer to a Au-covered backshort wafer (see \sectionref{sec:ch5-focal-plane}).
-Note that all detectors have heater resistors on their membranes, but only a subset have the resistors connected to traces that lead to bond pads.
+In addition to the detectors, the wafer includes Au pads for attaching Au heat-sinking wire bonds and holes used for gluing the detector wafer to an Au-covered backshort wafer (see \sectionref{sec:ch5-focal-plane}).
+Note that all detectors have heater resistors on their membranes, but only a subset have the resistors connected to traces that lead to bond pads due to space limitations on the wafer.
 
 The detectors are laid out on a square grid, chosen over a hexagonal close-packed layout because of the simpler wiring layout.
-This choice does worsen \NETD.
-A hexagonal close-packed array would allow the same number of detectors to be placed on the array, but with feedhorns \SI{7.5}{\percent} larger.
-The larger feedhorn size could have improved the spillover efficiency from \num{0.52} to \num{0.544}, a \SI{4.6}{\percent} increase, leading to a \SI{4.6}{\percent} improvement in \NETD.
+The choice of a square grid does slightly compromise the system \NETD\ by \abt{\SI{5}{\percent}}, due to lower packing efficiency compared to a hexagonal array.
+Higher packing efficiency allows larger feedhorns, which for the \Imager\ leads to higher spillover efficiency; see \figref{fig:ch4-feed-spill}.
+
+%A hexagonal close-packed array would allow the same number of detectors to be placed on the array, but with feedhorns \SI{7.5}{\percent} larger.
+%The larger feedhorn size could have improved the spillover efficiency from \num{0.52} to \num{0.544}, a \SI{4.6}{\percent} increase, leading to a \SI{4.6}{\percent} improvement in \NETD.
 
 Five locations in the $16 \times 16$ grid are missing detectors.
 The detector in the upper rightmost corner of \figref{fig:ch5-full-wafer} was removed to allow placement of a central post in the focal plane, to which the feedhorn array is bolted.
