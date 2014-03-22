@@ -43,7 +43,7 @@ Detector noise at a range of bias points & \ref{sec:det-noise} & Four detectors 
 As described in \sectionref{sec:det-readout}, the \MCE\ operates the \SQUID\ multiplexing system.
 It supports extensive configuration options ranging from \SQUID\ bias current values to multiplexing speed, to the order in which rows should be reported to client software \cite{_mcewiki_2014}.
 This thesis does not describe the process of choosing most of these parameters.
-The one exception is the choice of \PID\ parameters for the flux-locked-loop servo that linearizes the output of the \SQUID\ amplifier chain.
+The one exception is the choice of \PID\ parameters for the flux-locked servo loop that linearizes the output of the \SQUID\ amplifier chain.
 This section describes the choice of these parameters for different readout situations.
 
 The feedback applied to an \SQ1 during frame $n+1$ is defined as \cite{mce_team_data_2013}
@@ -115,9 +115,9 @@ All detectors that respond in the superconducting state are included.
 \textbf{Upper} Plot of \SQUID\ $\tau_{servo}$ vs servo gain $I_{FB}$.
 Servo bandwidth increases with $I_{FB}$.
 At $I_{FB} \ge \num{60}$, very small $\tau_{servo}$ begin to appear. This indicates either a roll-off above the bandwidth of the measurement, or an unstable servo loop.
-The few high $\tau_{servo}$ values at gains of 80 and 100 are a result of the fitting routine failing, probably due to an unstable servo loop.
+The few high $\tau_{servo}$ values at gains of 80 and 100 are a result of the fitting routine failing due to an unstable servo loop.
 \textbf{Lower Left} Close-up view of upper plot for gains from 10 to 50.
-\textbf{Lower Right} Plot of median \SQUID\ white noise level vs. servo gain $I_{FB}$. Positive gains consistently give lower dark \SQUID\ noise levels.
+\textbf{Lower Right} Plot of median \SQUID\ white noise level vs. servo gain $I_{FB}$. Positive gains consistently give lower \SQUID\ noise levels.
 }
 \label{fig:ch6-servo}
 \end{figure*}
@@ -173,7 +173,7 @@ Plots summarizing results of measurements of shunts and Nyquist inductors.
 \section{Measurement of Heater Resistors} \label{sec:heater-r}
 
 Thirty-one detectors have heater resistors.
-Twenty-three of these have the heaters wired to the heater bias line.
+Twenty-three of these have the heaters wire bonded to the heater bias line.
 Of these 23, there are nine detectors which show no response to applied heater power.
 Five of these nine are on the cut list (see \sectionref{sec:ch7-det-cuts}), so this is not surprising.
 But four detectors can be biased into the transition and work well, but show no response to applied heater power (\RC{4}{7}, \RC{5}{7}, \RC{6}{6}, \RC{7}{6}).
@@ -280,7 +280,7 @@ In this fit, $\tau_{meas}$ is considered the dependent variable, the product $(I
 %
 
 With knowledge of the heater resistances, \IV\ curves can be taken over a wide range of bath temperatures, which enables a measurement of the \TES\ thermal conductance $G$, critical temperature $T_C$ and power-flow index $n$.
-Similarly to \sectionref{sec:heater-r}, I took \IV\ curves at bath temperatures ranging from \SIrange{995}{1160}{\mK}, while adjusting the applied heater power so that each \IV\ curve had a clear normal branch.
+I took \IV\ curves at bath temperatures ranging from \SIrange{995}{1160}{\mK}, while adjusting the applied heater power so that each \IV\ curve had a clear normal branch.
 Fits were performed against \eqnref{eqn:ch3-g-fit}:
 \begin{equation}\label{eqn:g-fit}
 P_{htr} + P_J + P_{opt}= \frac{G T_c}{n}\left(1 - \left(\frac{T_b}{T_c}\right)^n\right).
@@ -288,7 +288,9 @@ P_{htr} + P_J + P_{opt}= \frac{G T_c}{n}\left(1 - \left(\frac{T_b}{T_c}\right)^n
 The parameters to be fit to are $G$, $T_c$, and $n$.
 
 A problem arises because the data described in this section were taken when the cryostat was open, so that $P_{opt}$ was non-zero, with an unknown value.
-Because $P_{opt}$ is a simple additive constant, it is not possible to fit for this value unless another constraint (such as the value of $T_c$) is known.
+Because $P_{opt}$ is a simple additive constant, it is not possible to fit for this value unless another constraint is known, such as the value of $T_c$.
+Unfortunately, the \TES\ circuit bias loop contains Al wire bonds, which have a $T_c$ close to that of the detectors themselves, making a direct measurement of the detector's $T_c$ difficult.
+
 However, the value of $P_{opt}$ can be estimated in two different ways. 
 First, the predicted optical load of \SI{180}{\pW} from \sectionref{sec:ch4-optical-design} can be used.
 Second, optical load on the prototype detectors was estimated to be in the range \SIrange{135}{165}{\pW}.
@@ -370,7 +372,7 @@ The step in applied power begins at $t \approx \SI{0.6}{\ms}$, not $t = \SI{0}{\
 \caption[Detector properties while biased into transition]{
 Detector properties while biased into transition.
 $P_{opt} = \SI{150}{\pW}$ is assumed everywhere.
-Uncertainties are 95 \% confidence intervals after marginalizing over other fit parameters, and do not include systematic uncertainties due to the unknown value of $P_{opt}$, uncertainty in the value of the shunt resistors, or possible errors in the calibration of the focal plane thermometer.
+%Uncertainties are 95 \% confidence intervals after marginalizing over other fit parameters, and do not include systematic uncertainties due to the unknown value of $P_{opt}$, uncertainty in the value of the shunt resistors, or possible errors in the calibration of the focal plane thermometer.
 Values are for detectors under \SOC.
 ``N/A'' indicates a property that has not been measured for that detector.
 }
@@ -434,7 +436,7 @@ At some bias points a damped oscillatory response is present on top of the \eqnr
 \end{figure*}
 
 Once values for \Loop, $\beta_I$ and $R$ are known, the \DC\ responsivity $s_I(0)$ and $\tau_{eff}$ can be calculated from \eqnref{eqn:si-full} and \eqnref{eqn:teff} respectively.
-To check the accuracy of these calculations, I also measured the response of the detectors to steps in applied heater power at the same bias points for these four detectors.
+To check the accuracy of these calculations, I also measured the response of the detectors to steps in applied heater power at the same bias points for four of the seven detectors.
 The results of these measurements, as well as the ratio of the calculated to measured values, are shown in \figref{fig:ch6-heater-step-pred-plots}.
 The agreement between the calculated and measured values is good, indicating that response to detector bias steps can be used to predict $s_I(0)$ and $\tau_{eff}$ with good accuracy.
 This is important because only a few detectors have working heaters, making direct measurements of $s_I(0)$ and $\tau_{eff}$ impossible for most detectors.
@@ -482,7 +484,7 @@ Note that $R$ is plotted, not $R/R_n$. This is because $R_n$ is known only for t
   \centering
 \includegraphics{drawings/ch6-teff-si-pred.pdf}
 \caption[Predictions for $\tau_{eff}$ and $s_I(0)$]{
-  Plots showing distribution of predicted $\tau_{eff}$ and $s_I(0)$. The predictions use the values for $R$, \Loop and $\beta_I$ shown in \figref{fig:ch6-all-loop-plots}, and $R_{sh}$ values from \sectionref{sec:shunt-nyquist}. $R_p$ is assumed to be zero in all cases.
+  Plots showing distribution of predicted $\tau_{eff}$ and $s_I(0)$. The predictions use \eqnref{eqn:teff} and \eqnref{eqn:si-full}, with the values for $R$, \Loop and $\beta_I$ shown in \figref{fig:ch6-all-loop-plots}, and $R_{sh}$ values from \sectionref{sec:shunt-nyquist}. $R_p$ is assumed to be zero in all cases.
 }
 \label{fig:ch6-teff-si-pred}
 \end{figure*}
@@ -543,9 +545,9 @@ Raw timestream for \RCm{29}{1}, after conversion to an equivalent bath temperatu
 
 % Run thesis/ana_ptc for results
 
-Some \TES\ detectors have been prone to microphonic pickup.
+\TES\ detectors can be prone to microphonic pickup.
 The earliest version of the cryostat used for this project used a Gifford-McMahon (\GM) cryocooler, which vibrates the cryostat significantly more than a \PTC\ does.
-Prototype detectors had significantly higher noise levels with the \GM\ cooler running than when it was off; in addition, the detector noise could be directly increased by striking the side of the cryostat with a soft mallet while the \GM\ cooler was turned off.
+The prototype detectors had significantly higher noise levels with the \GM\ cooler running than when it was off; in addition, the detector noise could be directly increased by striking the side of the cryostat with a soft mallet while the \GM\ cooler was turned off.
 I interpreted this behavior as evidence for microphonic pickup, and as a result replaced the \GM\ cooler with a \PTC.
 
 To check whether microphonic pickup was present for the production detectors and the \PTC, I took noise data both with the \PTC\ running and turned off.
@@ -614,7 +616,7 @@ For this detector the excess noise is \SI{17}{\percent}.
 
 \section{Detector Noise} \label{sec:det-noise}
 
-While taking the \Loop abd $\beta_I$ measurements described in \sectionref{sec:bias-step}, I also took noise data for the four detectors with working heaters on column 0.
+While taking the \Loop and $\beta_I$ measurements described in \sectionref{sec:bias-step}, I also took noise data for the four detectors with working heaters on column 0.
 For each data acquisition the common mode signal was subtracted and the power spectra calculated using \MATLAB's \texttt{pwelch} function.
 \figref{fig:ch6-trans-noise} shows the resulting power spectra, both in terms of the directly measured current noise $S^2_I$, as well as in terms of noise referred to power absorbed in the bolometer, $S^2_{P}$.
 $S^2_{P}$ is calculated via
