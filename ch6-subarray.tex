@@ -553,8 +553,8 @@ In both cases the bath temperature was held steady at \SI{1100}{\mK} using the C
 Common mode noise was removed and power spectra for each detector were calculated.
 Then the excess noise for each detector was calculated as
 \begin{equation}
-  \sqrt{  \frac{ \sum_{f >= \SI{6}{\Hz}} S^2_{I,\textsc{ptc}}(f) }
-               { \sum_{f >= \SI{6}{\Hz}} S^2_{I,\mbox{\tiny{No}}\textsc{ ptc}}(f) }}
+  \sqrt{  \frac{ {\displaystyle \sum_{f \ge 6}} S^2_{I,\textsc{ptc}}(f) }
+               { {\displaystyle \sum_{f \ge 6}} S^2_{I,\mbox{\tiny{No}}\textsc{ ptc}}(f) }}
 \end{equation}
 where $S^2_{I,\textsc{ptc}}$ and $S^2_{I,\mbox{\tiny{No}}\textsc{ ptc}}$ are the measured current noise power spectral densities with the \PTC\ turned on and off, expressed in units of \si{\A^2 \per \Hz}.
 
@@ -582,18 +582,18 @@ The noise below \SI{30}{\Hz} is 1.5--2.5 times higher with the \PTC\ on, but the
 As explained in \sectionref{sec:det-readout}, the \MCE\ takes data at \SI{15625}{\hertz}, but is only capable of sending data for the full array of 251~detectors to the readout computer at \SI{3125}{\hertz}.
 This raises the question of how much noise is aliased from the \SIrange{3125}{15625}{\hertz} band to below \SI{3125}{\hertz}.
 To check this I acquired data under \SOC\ for column 0 at the normal rate of \SI{3125}{\hertz} as well as at \SI{15625}{\hertz}.
-5 data files were acquired for each case. For each row in column 0 for each data file a power spectrum was taken after subtracting the common mode signal, and the excess noise was calculated as
+5 data files were acquired for each case. For each row in column 0 and for each data file a power spectrum was taken after subtracting the common mode signal, and the excess noise was calculated as
 \begin{equation}
-  \sqrt{  \frac{ \sum S^2_{I,\SI{3125}{\Hz}}(f) \Delta f }
-               { \sum S^2_{I,\SI{15625}{\Hz}}(f) \Delta f }}
+  \sqrt{  \frac{ {\displaystyle \sum_{6 \le f \le 1562.5}} S^2_{I,3125}(f) \Delta f }
+               { {\displaystyle \sum_{6 \le f \le 1562.5}} S^2_{I,15625}(f) \Delta f }}
 \end{equation}
-where $S^2_{I,\SI{3125}{\Hz}}$ and $S^2_{I,\SI{15625}{\Hz}}$ are the measured current noise power spectral densities at the two different multiplexing rates, averaged over all 5 data files, expressed in units of \si{\A^2 \per \Hz}.
+where $S^2_{I,3125}$ and $S^2_{I,15625}$ are the measured current noise power spectral densities at the two different multiplexing rates, averaged over all 5 data files, expressed in units of \si{\A^2 \per \Hz}.
 The sums are performed only over those frequency components in the range \SIrange{6}{1562.5}{\Hz}, and note that $\Delta f$ is different for the two sampling rates.
 
 \figref{fig:ch6-noise-aliasing} summarizes the results.
 The average aliased noise is \SI{14}{\percent}, but some detectors have statistically significant higher levels of aliased noise; for example, \RCm{20}{1} has \SI{28}{\percent} excess noise.
 
-The \MCE\ can be configured to apply a 4-pole digital lowpass filter to the \SI{15625}{\Hz} data stream \cite{mce_team_digital_????}.
+The \MCE\ can be configured to apply a 4-pole digital lowpass filter to the \SI{15625}{\Hz} data stream prior to sampling at \texttt{data\_rate} \cite{mce_team_digital_????}.
 An appropriate choice of the cutoff frequency for this filter can greatly reduce aliased noise.
 I have not yet implemented this filter, but plan to do so for future operation of the system.
 
@@ -687,7 +687,7 @@ This excess ``power'' noise could be due to a high level of photon noise (1.9 ti
 Finally, \figref{fig:ch6-all-noise} shows histograms of the total noise in each detector using three different values for the servo gain $I_{FB}$: 50, 20, and 10.
 The total noise is defined as
 \begin{equation} \label{eqn:ch6-tot-noise-defn}
-  \sqrt{ \sum_{f >= \SI{6}{\hertz}} S^2_P(f_j) \Delta f}.
+  \sqrt{ \sum_{f \ge \SI{6}{\hertz}} S^2_P(f_j) \Delta f}.
 \end{equation}
 Lower servo gains reduce the \SQUID\ and other out-of-band noise, so that the total noise decreases with decreasing $I_{FB}$.
 The detectors also become more tightly bunched in their noise performance at lower servo gain.
