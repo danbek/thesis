@@ -1,10 +1,8 @@
 \chapter{System Specifications and Solutions}\label{c:specs}
 
-% xxx abbrev element names like Al, Au?
-
 The \Imager's specifications were chosen to allow the system to serve as a ``gold standard'' for investigating the phenomenology of passive video imaging.
-The intended use of the system is to take images of a variety of concealed weapons and other objects, hidden beneath different types of clothing, in both indoor and outdoor scenarios.
-The goal is to gain a thorough understanding of trade-offs between video frame rate, image resolution, and noise.
+The system will eventually be used to take video images of a variety of concealed weapons and other objects, hidden beneath different types of clothing, in realistic operational scenarios.
+The goal of these studies will be to gain a thorough understanding of trade-offs between video frame rate, image resolution, and noise.
 This understanding will then aid the design of future systems for use in specific operational scenarios.
 
 To that end, the system has been designed to achieve high resolution images with \NETD\ that is limited by photon noise.
@@ -41,6 +39,7 @@ In order to achieve all of these requirements, other aspects of the system desig
 In particular, the desire for high spatial resolution at longer standoff distances requires a large optical aperture, which increases the size of the system, reducing portability.
 Although the system is mounted on rollers so that it can be moved within the lab or into other labs, the location at which it points can not be steered in real-time.
 Additionally, the focus distance can only be changed by reconfiguring the mounting structure that connects the cryostat to the optics.
+In a deployable system the aperture could be made lighter through the use of different materials, and the focus and steering could be changed in real-time by an automatic mount, either at a fixd point or mounted on a vehicle.
 
 \section{Transition Edge Sensor Bolometer Basics} \label{sec:ch2-tes-basics}
 
@@ -80,15 +79,18 @@ When current-biased this rise in temperature causes an increase in $I^2 R$ Joule
 Thus, \TES\ bolometers did not come into widespread use until the development of the voltage-biased \TES\ sensors \cite{irwin_application_1995} coupled with Superconducting Quantum Interference Device (\SQUID) readout systems.
 When voltage-biased, a rise in \TES\ temperature leads to a decrease in Joule heating, which lowers the temperature of the device.
 With a sufficiently steep transition, this electrothermal feedback process allows any change in incident power to be exactly matched by an opposite change in Joule heating, so that the device self-stabilizes at a new current level in the normal-to-superconducting transition while leaving the device temperature unchanged.
+
 Because the device is voltage-biased, absorbed optical power causes a current change, so that a current amplifier is required for readout.
 This is accomplished through the use of \SQUIDs, which are very sensitive magnetometers and so can be used to detect small changes in current.
+The use of \SQUIDs\ for some applications is inconvenient because of the requirement to operate them at cryogenic temperatures.
+But they are ideal for the readout of cryogenic bolometers, because they operate at the same temperature and dissipate much less power than semiconductor amplifiers.
 
 \chapterref{c:tes} covers the theory of \TES\ operation required for understanding of this dissertation.
 The most detailed and authoritative reference for \TES\ detectors is by Irwin and Hilton \cite{irwin_transition-edge_2005}.
 
 \section{Transition Edge Sensors for Passive Imaging} \label{sec:ch2-tes-passive}
 
-\TES\ detector have two important advantages for building passive imaging systems: the can be photon-noise-limited, and it is straigtforward to manufacture, operate, and read out arrays containing large numbers of them.
+\TES\ detectors have two important advantages for building passive imaging systems: they can be photon-noise-limited, and it is straigtforward to manufacture, operate, and read out arrays containing large numbers of them.
 
 The fundamental noise limit in bolometers is set by random thermal fluctuations of the temperature of the absorbing element, termed ``thermal fluctuation noise''.
 As described in \sectionref{sec:det-parm-choice}, the noise equivalent power (\NEP) of this noise source, expressed in units of \pnoise\ referred to power absorbed in the bolometer, is proportional to $\sqrt{k_B T_b P_{opt}}$.
@@ -114,7 +116,8 @@ See \tableref{tab:ch2-sys-compare} for a summary of some characteristics of thes
 One system has been developed by a group working at the Institute of Photonic Technology (IPHT) in Jena, Germany.
 The first generation of this system \cite{heinz_toward_2011} operates at \SI{350}{\GHz} with a \SI{23}{\percent} optical bandwidth.
 \NETD\ is measured at \SI{0.4}{\K} at 10 frames per second over a \SI{1}{\m} diameter field of view.
-Currently under development is a second generation system \cite{heinz_development_2013,may_next_2013}.
+This system operates at much colder temperature than the \Imager using \He3-sorption refrigerator, which would make it more complex and expensive to deploy, without a corresponding improvement in \NETD\ performance.
+A second-generation system is currently under development \cite{heinz_development_2013,may_next_2013}.
 This system increases the number of detectors from 20 to 64 and the frame rate from 10 to 25 frames per second.
 \NETD\ is predicted to be \SI{160}{\mK}.
 
@@ -124,6 +127,7 @@ A second generation system is currently underway, with most changes intended to 
 The system uses superconducting \TES\ bolometers with $T_c \approx \SI{9}{\K}$.
 The readout system is entirely different than that used by the Jena system and the system described in this dissertation.
 In order to eliminate the use of \SQUIDs, an approach based on room-temperature amplification was developed that relies on negative feedback to keep the detectors voltage-biased \cite{penttila_low-noise_2006}.
+While this system may be simpler and less expensive to deploy, it will be much less sensitive.
 
 Finally, a group based at Cardiff University in Wales is in the early stages of developing a passive imaging system \cite{day_broadband_2003} based on Microwave Kinetic Inductance Detectors \cite{wood_kidcam_2011}.
 No images or \NETD\ estimates have yet been presented publicly for this system.
