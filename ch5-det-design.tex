@@ -1,14 +1,14 @@
 \chapter{Detector and Focal Plane Design}\label{c:det-design}
 
 This chapter describes the design of the \Imager's detectors and focal plane.
-Prior to fabrication of the 251-detector sub-array that is discussed in this thesis, a set prototype detectors were fabricated and characterized.
-Because the measured properties of the prototype detects are relevant to some of the parameter choices made for the sub-array detectors, this chapter begins with a short summary of the measured properties of those detectors.
+Prior to fabrication of the 251-detector sub-array that is discussed in this thesis, prototype detectors were fabricated and characterized.
+Because the measured properties of the prototype detectors are relevant to some of the parameter choices made for the sub-array detectors, this chapter begins with a short summary of the measured properties of those detectors.
 I then discuss the choice of parameters $G$, $C$, $T_c$ and $T_b$ for the sub-array detectors, the choice of shunt resistor value $R_{sh}$ and Nyquist inductor $L$, followed by details of the detector design used to achieve these parameters.
 I then briefly describe the design of the focal plane, and end with the predicted detector noise and \NETD\ for the system.
 
 \section{Prototype Detectors} \label{sec:det-parm-choice}
 
-The basic design and layout of the prototype detectors was the same as described in\sectionref{sec:ch5-det-design} for the sub-array detectors.
+The basic design and layout of the prototype detectors was the same as described in \sectionref{sec:ch5-det-design} for the sub-array detectors.
 Four prototype detectors were tested both in the dark and while open optically, and also used to take still images.
 The techniques used to characterize the prototype detectors were the same as those use to characterize the sub-array detectors, as described in \chapterref{c:det-array}.
 \tableref{tab:ch5-proto-parms} lists parameters of these detectors, and \figref{fig:ch5-proto-plots} contains plots showing \Loop, $\beta_I$, $\tau_{eff}$ and $L_{crit}$ for these detectors, measured at a range of bias points.
@@ -161,7 +161,7 @@ The sub-array detectors are identical except for the length of the legs and the 
   Other than the thickness of the \TES, SiN membrane and Au Heat Capacity Ring, the schematic is to scale.
   \textbf{Right} Photograph of a prototype detector.
   The detectors fabricated for the sub-array are identical except for the length of the legs and the thickness of some of the layers; see \tableref{tab:ch5-det-dims}.
-  The labeled parts of the detector are \textbf{A} Al \TES\ \textbf{B} Au heat capacity ring \textbf{C} SiN leg connecting detector to substrate \textbf{D} PdAu absorbing mesh \textbf{E} PdAu heater resistor.
+  The labeled parts of the detector are \textbf{A:} Al \TES\ \textbf{B:} Au heat capacity ring \textbf{C:} SiN leg connecting detector to substrate \textbf{D:} PdAu absorbing mesh \textbf{E:} PdAu heater resistor.
 }
 \label{fig:ch5-det-layout}
 \end{figure*}
@@ -185,8 +185,7 @@ This scaling was slightly complicated by the change in thickness of the SiO2 lay
 Assuming that $G$ scales linearly with the $A/L$ of the legs, the sub-array $G$ should be
 \begin{align}
   G_{sub} & = G_{proto} \frac{A_{sub}}{A_{proto}} \frac{l_{proto}}{l_{sub}} \\
-         & = G_{proto} \frac{(500 + 250 + 200)(11)}{(500 + 120 + 120)(11)} \frac{40}{67} \\
-         & = \SI{5.0}{\nW\per\K} \times 1.28 \times 0.597 \\
+         & = \SI{5.0}{\nW\per\K} \frac{(500 + 250 + 200)(11)}{(500 + 120 + 120)(11)} \frac{40}{67} \\
          & = \SI{3.8}{\nW\per\K} 
 \end{align}
 
@@ -288,7 +287,7 @@ In practice these alignment features were not used, so some or all of these dete
   While all detectors have heater resistors on their membrane, only the detectors along the upper and right edges have these resistors wired to bond pads.
   The 26 small holes spaced throughout the wafer are used to glue the detector wafer to a backshort wafer (see text).
   The three larger holes in the middle of the wafer are detector sites where the membrane was broken during fabrication.
-  The large hole in the lower left, as well as the ``bulls-eye'' feature to its immediate upper right, were intended to be used as alignment features, although the alignment procedure actually used did not use these features.
+  The large hole in the lower left, as well as the ``bulls-eye'' feature to its immediate upper right, are alignment features, although they were not actually used.
   Photograph credit Dan Schmidt; full-resolution version available at \protect\url{http://www.flickr.com/photos/quantumsensors/8592792487}.
 }
 \label{fig:ch5-full-wafer}
@@ -296,7 +295,7 @@ In practice these alignment features were not used, so some or all of these dete
 
 \section{Focal Plane Design} \label{sec:ch5-focal-plane}
 
-The \Imager's detector arrays are mounted on an Al platter that is thermally sunk to the cold head of the \He4-sorption fridge via a set of Cu ropes.
+The \Imager's detector arrays are mounted on an Al platter that is thermally sunk to the cold head of the \He4-sorption fridge via a set of braided CU cables.
 Mechanically the focal plane is attached to an Al frame via four Ti-6Al-4V ``spiders''.
 The frame itself is bolted to the \SI{6}{\K} cold plate.
 See \figref{fig:ch5-focal-plane-back}.
@@ -309,15 +308,18 @@ See \figref{fig:ch5-focal-plane-back}.
   Photographs showing how the focal plane is attached to the \SI{6}{\K} Cold Plate.
   \textbf{Left}
   Back view of the focal plane.
-  At each corner the focal plane is bolted to a Ti-6Al-4V ``spider'', which is clamped into an Al block (e.g. rectangles \textbf{A}).
-  The blocks are then bolted to an Al frame, on which the blocks and focal plane are resting in the photograph.
-  It is better for stray infrared light to be absorbed on the \SI{6}{\K} cold stage rather than the focal plane, so the Al frame has Berkeley Bock Black \cite{persky_review_1999} applied to it in an attempt to provide a surface on which stray infrared light will be absorbed.
-  Also visible are the 100-pin MDM connectors that the wires from the \MCE\ plug into (\textbf{B}).
+  \textbf{A:} Ti-6Al-4V ``spiders'' which provide the thermal and mechanical link between the focal plane and the \SI{6}{\K} Cold Plate.
+  A spider is located at each corner of the focal plane, where it is clamped into an Al block.
+  The Al blocks are then bolted to an Al frame.
+  \textbf{B:} One of the 100-pin MDM connectors that the wires from the \MCE\ plug into.
+  \textbf{C:} It is better for stray infrared light to be absorbed on the \SI{6}{\K} cold stage rather than the focal plane, so the Al frame has Berkeley Bock Black \cite{persky_review_1999} applied to it for \IR\ light absorption.
   \textbf{Right}
-  Photograph of the Al frame (\textbf{C}) and focal plane bolted onto the \SI{6}{\K} Cold Plate.
+  Photograph of the Al frame and focal plane bolted onto the \SI{6}{\K} Cold Plate.
   The copper-colored area is the W1275 bandpass filter.
+  \textbf{D:} Al frame.
   This photograph was taken prior to the application of the Berkeley Bock Black.
-  Also visible in the photograph are the end-points of the Cu ropes that connect the \PTC\ 2nd-stage cold head to the \SI{80}{\K} plate (\textbf{D}).
+  \textbf{E:} The \SI{80}{\K} plate.
+  Visible to the right of the \textbf{E} rectangle are the end-points of the Cu ropes that connect the \PTC\ 2nd-stage cold head to the \SI{80}{\K} plate.
 }
 \label{fig:ch5-focal-plane-back}
 \end{figure*}
@@ -326,8 +328,8 @@ Each sub-array is glued to a \SI{275}{\um} thick Si ``backshort'' wafer that has
 The glue used was Stycast 2850 with the LV 23 catalyst\footnote{Henkel Emerson \& Cuming, Billerica, MA}.
 The glue was applied to the set of 26 holes in the detector wafer shown in \figref{fig:ch5-full-wafer}.
 This wafer stack is then attached to an \SI{0.125}{\in} thick Invar plate.
-Invar was chosen because its thermal contraction upon cooling to \SI{4}{\K} and below is well-matched to Si \cite{ekin_experimental_2006}.
-Choosing a material that is poorly matched to Si could result in breaking the Si stack upon cooling.
+Invar was chosen because its thermal contraction upon cooling is well-matched to Si \cite{ekin_experimental_2006}.
+%Choosing a material that is poorly matched to Si could result in breaking the Si stack upon cooling.
 The wafer stack is attached to the Invar plate with a thin layer of Apiezon-N thermal grease.
 Upon cooling to cryogenic temperatures Apiezon N grease solidifies, so that the detector wafer will not slip along the Invar.
 Even at room temperature the grease is very viscous, so that if the back of the wafer stack is entirely covered with a layer of grease the wafer will not slip under the influence of gravity if, e.g., it is stored facing horizontally in the cryostat while at room temperature.
@@ -394,7 +396,7 @@ A \SI{1}{\mm} movement of the actuator produces a rotation of the secondary mirr
 
 To convert actuator displacements into locations in the far-field, three additional factors should be considered.
 First, the Cassegrain optical system inverts images that it views, so that a beam from a detector in the lower left of the focal plane (as viewed from behind the detector focal plane) is pointed to the upper right on the far-field image (again as viewed from the system).
-Second, tilting the mirror displaces the beams in the same direction as the mirror is tilted; this is easily seen by thinking of the system in transmission, and imagining the way a beam of light is reflected off of a rotated mirror.
+Second, tilting the mirror displaces the beams in the same direction as the mirror is tilted; this is easily seen by thinking of the system in transmission, and imagining the way a ray of light is reflected off of a rotated mirror.
 Third, the actuators are oriented so that their rotation axes are rotated from horizontal/vertical by \ang{45}.
 This all means that --- as viewed from the cryostat --- positive displacements of the \DISP1 actuator shift beams up and to the right, while positive displacements of the \DISP2 actuator shift beams up and to the left.
 If we consider an $x$-$y$ coordinate system in the far-field, this means that the $x$ and $y$ displacement of the beams due to mirror movements are calculated as
