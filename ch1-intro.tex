@@ -85,7 +85,7 @@ These applications are generally referred to as ``standoff'' detection because t
 
 For these applications the choice of optical frequency is less clear than for portal imaging, because an additional factor to consider is spatial resolution of the resulting images.
 The lower frequencies favored by clothing transmission also imply worse spatial resolution for a fixed optical aperture size.
-The angular resolution $\theta$ achievable by an aperture of diameter $D$ observing at wavelength $\lambda$ is, by the Raleigh criterion \cite{born_principles_1999},
+The angular resolution $\theta$ achievable by an aperture of diameter $D$ observing at wavelength $\lambda$ is, by the Rayleigh criterion \cite{born_principles_1999},
 \begin{equation} \label{eqn:ch1-raleigh}
   \theta \sim 1.2 \lambda / D.
 \end{equation}
@@ -163,7 +163,7 @@ Based on this I assume a required \SN\  of 4 for detection; this means that in o
 \end{figure*}
 
 The contrast in a passive image is set by the temperatures, emissivities and transmittivities of the objects being imaged, along with the temperature of the ambient light.
-Although passive imaging systems detect optical power, not the temperature of objects directly, these systems operate in the Raleigh-Jeans limit where the optical power per mode is directly proportional to temperature; see \sectionref{sec:ch1-passive-tech}.
+Although passive imaging systems detect optical power, not the temperature of objects directly, these systems operate in the Rayleigh-Jeans limit where the optical power per mode is directly proportional to temperature; see \sectionref{sec:ch1-passive-tech}.
 \figref{fig:ch1-t-tot} depicts the situation schematically.
 We consider an object at temperature $T_{1}$ with emissivity $\epsilon_1$, covered by an object at temperature $T_{cov}$ and transmittivity $\tau_{cov}$.
 The entire scene is illuminated by blackbody radiation at temperature $T_{amb}$.
@@ -188,7 +188,7 @@ This equation shows that in order for contrast to appear in the image, we requir
 \includegraphics[width=6in]{images/ch1-t-tot.png}
 \caption[Apparent temperature of a covered illuminated object]{
   Schematic showing total temperature seen looking at an object at temperature $T_1$ with emissivity $\epsilon_1$ through a cover at temperature $T_{cov}$ with transmittivity $\tau_{cov}$, all illuminated by ambient temperature $T_{amb}$.
-  The Raleigh-Jeans limit is assumed to hold, so that emitted optical power is directly proportional to the temperatures of the emitting sources.
+  The Rayleigh-Jeans limit is assumed to hold, so that emitted optical power is directly proportional to the temperatures of the emitting sources.
   The object is assumed to have no transmission and the cover to have no reflection.
   The black arrows indicate transmission of ambient light through the cover, reflecting off the object, and passing back through the cover to the detecting system.
   The red arrows show the emission of the cover, which reaches the detector both directly and after reflecting off the object.
@@ -237,7 +237,7 @@ For a detector sensitive to $M$ spatial modes of the electromagnetic field and w
   P_{\nu}(\nu,T) d \nu = \eta_{tot} M h \nu \frac{1}{e^{\frac{h \nu}{k_B T}} - 1} d \nu,
 \end{equation}
 where $h$ is Planck's constant, $k_B$ is Boltzmann's constant, and $T$ is the temperature of the source.
-For detection of light around \SI{350}{\GHz}, and source temperatures in the range \SIrange{50}{300}{\K}, the Raleigh-Jeans approximation
+For detection of light around \SI{350}{\GHz}, and source temperatures in the range \SIrange{50}{300}{\K}, the Rayleigh-Jeans approximation
 \begin{equation}
   \frac{1}{e^{\frac{h \nu}{k_B T}} - 1} \approx \frac{k_B T}{h \nu}
 \end{equation}
