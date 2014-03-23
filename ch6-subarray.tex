@@ -581,10 +581,11 @@ The noise below \SI{30}{\Hz} is 1.5--2.5 times higher with the \PTC\ on, but the
 
 \section{Noise Aliasing} \label{sec:ch6-aliasing}
 
-As explained in \sectionref{sec:det-readout}, the \MCE\ takes data at \SI{15625}{\hertz}, but is only capable of sending data for the full array of 251~detectors to the readout computer at \SI{3125}{\hertz}.
+As explained in \sectionref{sec:det-readout}, the \MCE\ takes data at \SI{15625}{\hertz}, but is only capable of sending data for the 251-detector sub-array to the readout computer at \SI{3125}{\hertz}.
 This raises the question of how much noise is aliased from the \SIrange{3125}{15625}{\hertz} band to below \SI{3125}{\hertz}.
 To check this I acquired data under \SOC\ for column 0 at the normal rate of \SI{3125}{\hertz} as well as at \SI{15625}{\hertz}.
-5 data files were acquired for each case. For each row in column 0 and for each data file a power spectrum was taken after subtracting the common mode signal, and the excess noise was calculated as
+Five data files were acquired for each case.
+For each row in column 0 and for each data file a power spectrum was taken after subtracting the common mode signal, and the excess noise was calculated as
 \begin{equation}
   \sqrt{  \frac{ {\displaystyle \sum_{6 \le f \le 1562.5}} S^2_{I,3125}(f) \Delta f }
                { {\displaystyle \sum_{6 \le f \le 1562.5}} S^2_{I,15625}(f) \Delta f }}
@@ -593,7 +594,10 @@ where $S^2_{I,3125}$ and $S^2_{I,15625}$ are the measured current noise power sp
 The sums are performed only over those frequency components in the range \SIrange{6}{1562.5}{\Hz}, and note that $\Delta f$ is different for the two sampling rates.
 
 \figref{fig:ch6-noise-aliasing} summarizes the results.
-The average aliased noise is \SI{14}{\percent}, but some detectors have statistically significant higher levels of aliased noise; for example, \RCm{20}{1} has \SI{28}{\percent} excess noise.
+The average excess noise due to aliasing is \SI{16}{\percent}, but some detectors have statistically significant higher levels of aliased noise; for example, \RCm{20}{1} has \SI{29}{\percent} excess noise.
+
+The servo feedback parameter for these acquisitions was $I_{FB} = 50$, but when taking vides images $I_{FB}$ is typically set to 10 or 20.
+Because the slower servo feedback will roll off noise above \SI{3125}, the level of aliased noise will be lower under these configurations.
 
 The \MCE\ can be configured to apply a 4-pole digital lowpass filter to the \SI{15625}{\Hz} data stream prior to sampling at \texttt{data\_rate} \cite{mce_team_digital_????}.
 An appropriate choice of the cutoff frequency for this filter can greatly reduce aliased noise.
@@ -606,7 +610,7 @@ I have not yet implemented this filter, but plan to do so for future operation o
 Plots showing impact of noise aliasing.
 \textbf{Left}
 Plot showing fractional excess noise (see text for definition) due to noise aliasing for all rows of column 0.
-The error bars are for \SI{95}{\percent} confidence intervals, and the average excess noise is \SI{14}{\percent}.
+The error bars are for \SI{95}{\percent} confidence intervals, and the median excess noise is \SI{12}{\percent}.
 \textbf{Right}
 Sample power spectra at \SI{3125}{\hertz} and \SI{15625}{\hertz} for \RCm{5}{1}.
 For this detector the excess noise is \SI{17}{\percent}.
@@ -686,7 +690,7 @@ This excess ``power'' noise could be due to a high level of photon noise (1.9 ti
 \label{fig:ch6-trans-noise-model-plots}
 \end{figure*}
 
-Finally, \figref{fig:ch6-all-noise} shows histograms of the total noise in each detector using three different values for the servo gain $I_{FB}$: 50, 20, and 10.
+Finally, \figref{fig:ch6-all-noise} contains a histogram of the total noise in each detector using three different values for the servo gain $I_{FB}$: 50, 20, and 10.
 The total noise is defined as
 \begin{equation} \label{eqn:ch6-tot-noise-defn}
   \sqrt{ \sum_{f \ge \SI{6}{\hertz}} S^2_P(f_j) \Delta f}.
