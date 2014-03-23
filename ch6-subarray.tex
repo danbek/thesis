@@ -690,21 +690,24 @@ This excess ``power'' noise could be due to a high level of photon noise (1.9 ti
 \label{fig:ch6-trans-noise-model-plots}
 \end{figure*}
 
-Finally, \figref{fig:ch6-all-noise} contains a histogram of the total noise in each detector using three different values for the servo gain $I_{FB}$: 50, 20, and 10.
-The total noise is defined as
-\begin{equation} \label{eqn:ch6-tot-noise-defn}
-  \sqrt{ \sum_{f \ge \SI{6}{\hertz}} S^2_P(f_j) \Delta f}.
-\end{equation}
-Lower servo gains reduce the \SQUID\ and other out-of-band noise, so that the total noise decreases with decreasing $I_{FB}$.
-The detectors also become more tightly bunched in their noise performance at lower servo gain.
+% I'm removing this stuff because after thinking about it some more,
+% I'm not sure why point I'm really trying to make here. So drop it.
+%
+% Finally, \figref{fig:ch6-all-noise} contains a histogram of the total noise in each detector using three different values for the servo gain $I_{FB}$: 50, 20, and 10.
+% The total noise is defined as
+% \begin{equation} \label{eqn:ch6-tot-noise-defn}
+%   \sqrt{ \sum_{f \ge \SI{6}{\hertz}} S^2_P(f_j) \Delta f}.
+% \end{equation}
+% Lower servo gains reduce the \SQUID\ and other out-of-band noise, so that the total noise decreases with decreasing $I_{FB}$.
+% The detectors also become more tightly bunched in their noise performance at lower servo gain.
 
-\begin{figure*}
-  \centering
-\includegraphics{drawings/ch6-all-noise.pdf}
-\caption[Total in-band noise]{
-Histograms showing total in-band noise for all working detectors at three different servo gain values.
-The total noise deceases as servo gain is decreased, as a result of the servo loop reducing \SQUID\ and detector noise that is outside the bandwidth of the detector.
-Fewer outlier detectors also appear at low servo gain.
-The rightmost bins include all values great than \SI{100}{\fW}.}
-\label{fig:ch6-all-noise}
-\end{figure*}
+% \begin{figure*}
+%   \centering
+% \includegraphics{drawings/ch6-all-noise.pdf}
+% \caption[Total in-band noise]{
+% Histograms showing total in-band noise for all working detectors at three different servo gain values.
+% The total noise deceases as servo gain is decreased, as a result of the servo loop reducing \SQUID\ and detector noise that is outside the bandwidth of the detector.
+% Fewer outlier detectors also appear at low servo gain.
+% The rightmost bins include all values great than \SI{100}{\fW}.}
+% \label{fig:ch6-all-noise}
+% \end{figure*}
