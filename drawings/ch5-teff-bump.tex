@@ -20,32 +20,20 @@
 
 \pagestyle{empty}
 
-\begin{tabular}{rr}
-
   \begin{tikzpicture}[trim axis left]
-	\begin{axis}[
-        xmin=5, xmax=20,ymin=0,
-		title={Required $\tau_{eff}$ vs Video Frame Rate},
-		xlabel={Video Frame Rate (\si{\s^{-1}})}, ylabel={Required $\tau_{eff}$ (\si{ms})} ]
-	  \addplot+[mark=none] table[x=fps,y=teff_reqd_2] {../data/ch5-teff-reqd.dat};
-	\end{axis}
+	\begin{loglogaxis}[
+        xmin=1e-2, xmax=3,
+        legend pos=south east,
+		title={Required $\tau_{eff}$ vs Blurring Factor},
+		xlabel={$(q_{filt} - q_{raw})/q_{raw}$}, ylabel={Required $\tau_{eff}$ (\si{ms})} ]
+	  \addplot+[mark=none] table[x=fwhm_over,y=teff6] {../data/ch5-teff-reqd.dat};
+      \addlegendentry{6 FPS}
+	  \addplot+[mark=none] table[x=fwhm_over,y=teff10] {../data/ch5-teff-reqd.dat};
+      \addlegendentry{10 FPS}
+	  \addplot+[mark=none] table[x=fwhm_over,y=teff20] {../data/ch5-teff-reqd.dat};
+      \addlegendentry{20 FPS}
+	\end{loglogaxis}
   \end{tikzpicture}
 
-  &
-
-  \begin{tikzpicture}[trim axis right]
-	\begin{axis}[xmin=-2,xmax=10,ymin=0,
-		title={Impact of \TES\ timestream filter},
-		xlabel={Time (arb. units)}, ylabel={Response (arb. units)} ]
-
-	  \addplot+[mark=none] table[x=tp,y=bump] {../data/ch5-bumps.dat};
-	  \addlegendentry{Unfiltered}
-	  \addplot+[mark=none] table[x=tp,y=bump_conv] {../data/ch5-bumps.dat};
-	  \addlegendentry{Filtered}
-
-	\end{axis}
-  \end{tikzpicture}
-  \\
-\end{tabular}
 
 \end{document}
