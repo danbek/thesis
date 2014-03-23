@@ -42,7 +42,7 @@ Detector noise at a range of bias points & \ref{sec:det-noise} & Four detectors 
 
 As described in \sectionref{sec:det-readout}, the \MCE\ operates the \SQUID\ multiplexing system.
 It supports extensive configuration options ranging from \SQUID\ bias current values to multiplexing speed, to the order in which rows should be reported to client software \cite{_mcewiki_2014}.
-This thesis does not describe the process of choosing most of these parameters.
+This dissertation does not describe the process of choosing most of these parameters.
 The one exception is the choice of \PID\ parameters for the flux-locked servo loop that linearizes the output of the \SQUID\ amplifier chain.
 This section describes the choice of these parameters for different readout situations.
 
@@ -146,7 +146,7 @@ The shunt resistance $R_{sh}$, inductance $L$, and readout chain white noise lev
 
 \figref{fig:rsh-l-plots} shows histogram plots of the resulting \Rsh\ and $L$ values.
 \Rsh\ has a mean of \SI{149}{\uOhm} with standard deviation \SI{6}{\uOhm}.
-The values for \Rsh\ include any parasitic resistance in the circuit, but no evidence for significant parasitic resistance has ever been seen, so this parasitic resistance is assumed to be zero throughout this thesis.
+The values for \Rsh\ include any parasitic resistance in the circuit, but no evidence for significant parasitic resistance has ever been seen, so this parasitic resistance is assumed to be zero throughout this dissertation.
 
 The value for $L$ includes the Nyquist inductance on the interface chip, the input inductance of the first-stage \SQUID\ of the multiplexed readout system, as well as any parasitic inductance in the circuit.
 Using this approach it is not possible to extract the inductance of the Nyquist inductor itself, but this is not a problem because the total inductance is the relevant  quantity for understanding the behavior of the detector and its circuit.
