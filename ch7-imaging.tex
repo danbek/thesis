@@ -156,7 +156,7 @@ At \SI{15.8}{\m}, the black-body aperture is visible, but poorly defined with si
 The temperature of the aperture is much closer to the background than in the \SI{17}{\m} case.
 
 The reasons for the difference from \ZEMAX\ predictions are not understood.
-Possibilities include the cryostat being located too close to the mirror system, or errors in the manufacturing or assembly of the optical components.
+Possibilities include the cryostat being located incorrectly relative to the cryostat, or errors in the manufacturing or assembly of the optical components.
 
 \begin{figure*}
 \centering
@@ -176,7 +176,7 @@ Possibilities include the cryostat being located too close to the mirror system,
 
 \section{Beam Maps} \label{sec:ch7-beam-maps}
 
-As discussed in \sectionref{sec:ch4-feedhorn-design}, the \Imager\ feedhorns are predicted to have beams that are circularly symmetric and well-approximated by Gaussians with \FWHM\ of \SI{1.2}{\cm} at the target.
+As discussed in \sectionref{sec:ch4-feedhorn-design}, the \Imager\ feedhorns are predicted to have beams that are circularly symmetric and well-approximated by Gaussians with \FWHM\ of \SI{1.4}{\cm} at the target.
 To verify these predictions beam maps were performed by raster scanning the beams over a stationary \SI{1030}{\celsius} black-body source.
 
 The source used was an IR Labs IR-563/301\footnote{IRLabs, Inc. Tucson, AZ. USA} black-body.
@@ -216,15 +216,15 @@ The beam size \FWHM\ is \SI{1.4}{\cm}, and is calculated from
 \begin{equation}
   2 \sqrt{2 \ln{2}} \sqrt{\sigma_1 \sigma_2}
 \end{equation}
-where the prefactor $2 \sqrt{2 \ln{2}}$ converts from the Gaussian parameters $\sigma_{i,2}$ to the \FWHM\ of the Gaussian.
+where the prefactor $2 \sqrt{2 \ln{2}}$ converts from the Gaussian parameters $\sigma_{1,2}$ to the \FWHM\ of the Gaussian.
 
-In \sectionref{sec:ch4-feedhorn-design}, it was shown that the expected \FWHM\ beam width from this measurement is \SI{1.18}{\cm}, about \SI{19}{\percent} smaller than observed.
-The beams should also be circular rather than strongly elliptical as observed.
-The reasons for the large beams and ellipticity are not known, but three possible explanations are (1) misalignment of the feedhorns with the primary and secondary mirrors (2) diffraction off the aperture stop located in the \SI{50}{\kelvin} radiation shield (3) errors in fabrication of the mirrors or feedhorns.
-
-The best-fit grid spacing between detector beams in the far field is \SI{1.98}{\cm}.
-Using the plate scale extracted from \ZEMAX\ in \sectionref{sec:ch4-optical-design}, this is equivalent to a \SI{2.99}{\mm} detector spacing on the focal plane array.
-The design detector spacing, after accounting for predicted thermal contraction of the feed-horn arrays, was \SI{2.730}{\mm}, \SI{8.6}{\percent} smaller than this.
+%In \sectionref{sec:ch4-feedhorn-design}, it was shown that the expected \FWHM\ beam width from this measurement is \SI{1.4}{\cm}, about \SI{19}{\percent} smaller than observed.
+The close match between the measured and predicted \FWHM\ beam widths is encouraging, but the beams should be circular rather than strongly elliptical as observed.
+Another discrepancy between the measured and predicted beams is the distance between the beams.
+The best-fit grid spacing between detector beams in the far field is \SI{2.0}{\cm}.
+Using the plate scale extracted from \ZEMAX\ in \sectionref{sec:ch4-optical-design}, this is equivalent to a \SI{3.0}{\mm} detector spacing on the focal plane array, which is \SI{8.6}{\percent} larger than the design spacing of \SI{2.73}{\mm}.
+The reasons for these discrepancies are not known, but three possible explanations are (1) misalignment of the feedhorns with the primary and secondary mirrors (2) diffraction off the aperture stop located in the \SI{50}{\kelvin} radiation shield (3) errors in fabrication of the mirrors or feedhorns.
+As discussed in \sectionref{sec:ch4-coupling}, another possible explanation for the elliptical beams could be misalignment between the the detectors and the feedhorns.
 
 To give a sense of the scale of the area covered directly by the beams relative to the field of view provided in images, \figref{fig:ch7-beams-on-image} shows the locations at which the beams are pointing when the \BOSE\ actuators are set to their zero positions.
 
@@ -268,7 +268,7 @@ The result of these measurements is that $F_d = 1.098$.
 \includegraphics{drawings/ch7-check-dist.pdf}
 \caption[Distance scale measurements]{
   Plots explaining measurement of distance scale.
-  The left plot shows a close-up of the Styrofoam cooler filled with LN2, with an \SI{14.5}{\cm} by \SI{4}{\cm} strip taped to the outside.
+  The left plot shows a close-up of the Styrofoam cooler filled with LN2, with a \SI{14.5}{\cm} by \SI{4}{\cm} strip taped to the outside.
   A cut of this image through the middle of strip (identified by the thin black line) is shown on the right.
   The \FWHM\ of this cut is shown as the red line.
   This measurement was repeated for two other Al foil strips, as well as the cooler without any Al foil strips, in order to establish the distance scale.
@@ -281,7 +281,7 @@ The result of these measurements is that $F_d = 1.098$.
 Using the same cooler filled with LN2, a dime (diameter \SI{17.91}{\mm}) was taped to the outside of the cooler and a still image was taken.
 \figref{fig:ch7-dime-map} shows the resulting still image, as well as a close-up of the are with the dime.
 A 2-D Gaussian was fit to the resulting map.
-The best-fit Gaussian has ellipticity 1.16 --- smaller than the individual beams --- and the \FWHM\ of the dime map is \SI{2.0}{\cm} --- larger than the beams.
+The best-fit Gaussian has ellipticity 1.2 --- smaller than the individual beams --- and the \FWHM\ of the dime map is \SI{1.95}{\cm} --- larger than the beams.
 Both differences are expected from convolution of the beam with the dime, which is not a point source.
 The \FWHM\ of the dime map is \SI{2.0}{\cm}; a bit larger than the dime's width of \SI{1.791}{\cm}, as expected due to convolution with the beam.
 This serves as a rough confirmation of the beam size and locations as determined in \sectionref{sec:ch7-beam-maps}.
@@ -294,7 +294,7 @@ This serves as a rough confirmation of the beam size and locations as determined
   Red is warm, blue cold; the temperature scales are different in the two plots.
   \textbf{Left} The full map of the cooler. The white rectangle shows the area of the detail on the right.
   \textbf{Right} Detail of area within white rectangle: the dime.
-  The black ellipse shows the \FWHM\ of the best-fit ellipse to the map. The ellipticity is \num{1.16}, the \FWHM\ of the principal axes are \SI{1.83}{\cm} and \SI{2.12}{\cm}, for an overall \FWHM\ of $\sqrt{1.83 \times 2.12} = \SI{2.0}{\cm}$.
+  The black ellipse shows the \FWHM\ of the best-fit ellipse to the map. The ellipticity is \num{1.2}, the \FWHM\ of the principal axes are \SI{1.8}{\cm} and \SI{2.2}{\cm}, for an overall \FWHM\ of $\sqrt{1.8 \times 2.2} = \SI{2.0}{\cm}$.
 }
 \label{fig:ch7-dime-map}
 \end{figure*}
