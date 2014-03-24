@@ -861,11 +861,11 @@ The algorithm used to do this is described in \sectionref{sec:ch7-algo}.
 To reduce the number of wires running into the cryostat, the \Imager\ uses a time-division multiplexed (\TDM) readout system \cite{chervenak_superconducting_1999,korte_time-division_2003,reintsema_prototype_2003}.
 \figref{fig:ch4-tdm-schematic} shows a schematic of this readout system.
 The detectors are divided into a columns, each column containing 32 rows.
-Each detector output is coupled into the input coil of its own ``1st-stage'' \SQUID.
+Each detector output is coupled into the input coil of its own ``1st-stage'' \SQUID (\SQ1).
 Row address lines bias the 32 rows sequentially, so that at any given time only one detector per column is being read out by the system.
 This sequential addressing means that the current noise power spectral density of the \SQUIDs\ is increased by a factor of 32 due to aliasing, but the current noise in the \Imager's \SQUIDs\ is low enough that \SQUID\ noise is not a significant contribution to the total noise of the detectors.
 See, e.g., \figref{fig:rsh-l-plots} and \figref{fig:ch6-trans-noise} for a demonstration that \SQUID\ noise (\abt{\Inoise{1e-10}}) is below the typical noise level of a detector biased into its standard operation conditions (\abt{\Inoise{1e-9}}).
-To linearize the \SQUID\ amplifier chain, feedback in the form of magnetic flux is applied to the 1st-stage \SQUIDs.
+To linearize the \SQUID\ amplifier chain, feedback in the form of magnetic flux is applied to the \SQ1 \SQUIDs.
 
 \begin{figure*}
 \centering
@@ -897,8 +897,10 @@ See \figref{fig:ch4-mce-photo} for a photo of the \MCE.
 \label{fig:ch4-mce-photo}
 \end{figure*}
 
-The \MCE\ has many parameters that can be set to control its behavior, almost none of which I will describe here.
-The exceptions are the parameters that control the readout rate of the system, listed in \tableref{tab:ch4-mce-parms}.
+
+The \MCE\ supports extensive configuration options ranging from \SQUID\ bias current values to multiplexing speed, to the order in which rows should be reported to client software \cite{_mcewiki_2014}.
+This dissertation does not describe the process of choosing most of these parameters.
+The exceptions are the feedback control parameters, discussed in the next section, and the parameters that control the readout rate of the system, listed in \tableref{tab:ch4-mce-parms}.
 The table also gives the value of these parameters used by the \Imager\ when taking videos.
 The rate at which data is reported to the data acquisition computer is given by
 \begin{equation} \label{eqn:ch4-mce-readout-rate}
@@ -934,10 +936,6 @@ This noise aliasing penalty can be reduced by configuring the \MCE\ to internall
 
 \section{\textsc{MCE} Servo Gain Parameters}\label{sec:mce-servo-gain}
 
-xxx this intro makes no sense given end of last section! Need to fix it.
-The \MCE\ supports extensive configuration options ranging from \SQUID\ bias current values to multiplexing speed, to the order in which rows should be reported to client software \cite{_mcewiki_2014}.
-This dissertation does not describe the process of choosing most of these parameters.
-The exception is the choice of \PID\ parameters for the flux-locked servo loop that linearizes the output of the \SQUID\ amplifier chain, which are described below.
 
 The feedback applied to an \SQ1 during frame $n+1$ is defined as \cite{mce_team_data_2013}
 \begin{equation}
