@@ -58,7 +58,7 @@ The acknowledgments at the end of \chapterref{c:sys-design} and \chapterref{c:de
 The frequency range \SIrange{100}{1000}{\GHz} is attractive for detection of concealed weapons or contraband because common clothing materials have high transmission in this range \cite{bjarnason_millimeter-wave_2004}.
 As shown in \figref{fig:ch1-clothes-atmos-trans}, transmission through clothing steadily decreases as frequency increases.
 This trend tends to push systems toward lower frequencies.
-An example likely familiar to readers is the L3 ProVision systems operating at airport screening areas within the USA.
+A familiar example is the L3 ProVision systems operating at airport screening areas within the USA.
 These are ``holographic radar'' systems operating at ~\SI{30}{\GHz}, intended for close-range portal screening, and are based on technology developed at the Pacific Northwest National Lab (PNNL) \cite{sheen_cylindrical_1998,mcmakin_dual-surface_2009}.
 For applications in which it is acceptable to require individuals to pass through and pause at a particular location, these systems have excellent image quality for concealed items that are thick enough to provide radar contrast.
 Although the ProVision system takes still images with \abt{\SI{2}{s}} image acquisition time, similar portal screening systems with video-rate capabilities are also under development \cite{lyons_reflect-array_2013}.
@@ -68,12 +68,12 @@ Although the ProVision system takes still images with \abt{\SI{2}{s}} image acqu
 \includegraphics{drawings/ch1-clothes-bjarnason.pdf} \\
 \includegraphics{drawings/ch1-atmos-trans.pdf}
 \caption[Clothing and Atmospheric Transmission vs Frequency]{
-  \textbf{Left}
+  \textbf{Top}
   Plot of clothing transmission vs frequency.
   Taken from \cite{bjarnason_millimeter-wave_2004}.
   As frequency increases, transmission through all kinds of clothing decreases.
   The \SI{-10}{\dB} observation band of the \Imager\ is highlighted (\SIrange{318}{376}{\GHz}).
-  \textbf{Right}
+  \textbf{Bottom}
   Plot showing attenuation through the atmosphere at sea level pressure for different weather and particulate conditions.
   Under the worst conditions in the \Imager's band, attenuation would be \abt{\SI{1.2}{\dB}} over \SI{16}{\m}, and a factor of five better under standard conditions.
   At the \SI{640}{\GHz} band, attenuation under standard conditions is the same as the worst conditions at \SI{350}{\GHz}, and a factor of 6 worse again under the worst conditions.
@@ -105,7 +105,7 @@ Indoors, in the dry winter climate of Boulder, CO, transmission over \SI{16}{\m}
 Security imaging systems for standoff applications broadly fall into two categories: ``active'' and ``passive'' \cite{appleby_standoff_2007,appleby_passive_2004}.
 Active systems illuminate the target to be imaged with light and use the reflected light to obtain an image.
 Passive systems detect thermal blackbody emissions that are naturally emitted by all objects.
-Passive system have the advantages that they are inherently covert, and do not suffer from public resistance due to worries about the health effects of illumination by millimeter-wavelength ``radiation''.
+Passive systems have the advantages that they are inherently covert, and do not suffer from public resistance due to worries about the health effects of illumination by millimeter-wavelength ``radiation''.
 Active systems would seem to have an inherent signal-to-noise advantage over passive systems, due to the low temperatures of the objects being observed (\abt{\SI{300}{\K}}).
 But active imaging suffers from two problems that to-date have allowed passive imaging systems to generally exceed the image quality achieved with active systems.
 
@@ -121,7 +121,7 @@ This problem would be even worse if the Sun's illumination were single-moded rat
 The second problem is known as ``speckle''.
 When a coherent light source is diffusely reflected from a surface which varies on distance scales comparable to or larger than a wavelength, some areas of the surface will randomly be oriented more favorably than others for reflecting light back to the system.
 This leads to a random distribution of bright spots in the image known as speckle \cite{goodman_fundamental_1976}.
-This phenomena acts as a kind of noise in active images, and the signal-to-noise ratio of active imaging systems is often limited by speckle rather than noise inherent in the detection system itself.
+This phenomenon acts as a kind of noise in active images, and the signal-to-noise ratio of active imaging systems is often limited by speckle rather than noise inherent in the detection system itself.
 
 The active imaging community has long been aware of these issues and is working to address them.
 One recent approach uses modulated multi-moded illumination to avoid these issues \cite{petkie_multimode_2012,patrick_elimination_2012}.
@@ -184,7 +184,7 @@ The contrast seen between these two objects will then be
                                     (\epsilon_2 - \epsilon_1) (1-\tau_{cov}) T_{cov} + 
                                     (T_1 \epsilon_1 - T_2 \epsilon_2) \right]
 \end{equation}
-This equation shows that in order for contrast to appear in the image, we require a difference in temperature or emissivity between the two objects, or both.
+This equation shows that in order for contrast to appear in the image, we require a difference in temperature or emissivity or both between the two objects.
 
 \begin{figure*}
 \centering
@@ -242,7 +242,7 @@ For a detector sensitive to $M$ spatial modes of the electromagnetic field and w
   P_{\nu}(\nu,T) d \nu = \eta_{tot} M h \nu \frac{1}{e^{\frac{h \nu}{k_B T}} - 1} d \nu,
 \end{equation}
 where $h$ is Planck's constant, $k_B$ is Boltzmann's constant, and $T$ is the temperature of the source.
-If the detector is sensitive to all light incident from all directions, $M = 2 \pi \nu^2 / c^2$, where $c$ is the speed of light, and the result is Planck's law.
+If the detector is sensitive to all light incident from all directions, then $M = 2 \pi \nu^2 / c^2$, where $c$ is the speed of light, and the result is Planck's law.
 The \Imager's detectors are at the back of single-moded waveguide, and sensitive to both polarizations, so $M=2$.
 
 For detection of light around \SI{350}{\GHz}, and source temperatures in the range \SIrange{50}{300}{\K}, the Rayleigh-Jeans approximation
