@@ -1,0 +1,5 @@
+* figure showing why circular fov from circular scan?
+* deal with section 5.1
+* last of Nils ch4 edits
+* nils ch 6 edits
+* extra solidworks screen-shots into ch 5
