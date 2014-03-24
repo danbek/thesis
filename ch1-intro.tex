@@ -87,14 +87,13 @@ These include detection of suicide bomb belts, crowd surveillance or imaging thr
 In these scenarios it is not always reasonable to expect observation targets to be stationary, so video-rate imaging is also required.
 These applications are generally referred to as ``standoff'' detection because the imaging system ``stands off'' some distance from the target being imaged.
 
-For these applications the choice of optical frequency is less clear than for portal imaging, because an additional factor to consider is spatial resolution of the resulting images.
-The lower frequencies favored by clothing transmission also imply worse spatial resolution for a fixed optical aperture size.
-The angular resolution $\theta$ achievable by an aperture of diameter $D$ observing at wavelength $\lambda$ is, by the Rayleigh criterion \cite{born_principles_1999},
+For these applications the choice of optical frequency is less clear than for portal imaging, because the lower frequencies favored by clothing transmission also imply worse spatial resolution for a fixed optical aperture size.
+The angular size $\theta$ of the \FWHM\ beam achievable by an circular aperture of diameter $D$ observing at wavelength $\lambda$ is \cite{born_principles_1999},
 \begin{equation} \label{eqn:ch1-raleigh}
-  \theta \sim 1.2 \lambda / D.
+  \theta \sim 1.0 \lambda / D.
 \end{equation}
 For portal screening this is not prohibitive; the L3 Provision system has an effective aperture of \SI{1.7}{\m} \cite{mcmakin_dual-surface_2009}.
-But for standoff distances of \SI{10}{\m} or more, a system operating at \SI{30}{\GHz} would need an aperture of size \abt{\SI{8}{\m}} in order to achieve \SI{1}{\cm} resolution.
+But for standoff distances of \SI{10}{\m} or more, a system operating at \SI{30}{\GHz} would need an aperture of size \abt{\SI{10}{\m}} in order to achieve \SI{1}{\cm} resolution.
 This strongly drives the choice of frequency for standoff detection to frequencies above \SI{100}{\GHz}.
 
 A final factor to consider in the choice of operating frequency is atmospheric transmission.

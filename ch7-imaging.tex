@@ -120,26 +120,26 @@ The direct measurements of distances in the far-field described in \sectionref{s
 A natural question is whether cross-talk appears between the actuator readout and the other detectors.
 To test this both actuators were moved in a \SI{6}{\Hz} sine-wave pattern over their maximum displacement range of $\pm\SI{3.5}{\mm}$, while the detectors were biased at \SOC.
 Both actuators were moved at the same time, roughly \SI{135}{\degree} out of phase.
-The level of crosstalk present can be quantified by performing a least-squares fit of each detector timestream $\vect{d}_{rc}$ to the model
+The level of cross-talk present can be quantified by performing a least-squares fit of each detector timestream $\vect{d}_{rc}$ to the model
 \begin{equation}
 	 \vect{d}_{rc} = A_1 \vect{d}_{\text{DISP1}} + A_2 \vect{d}_{\text{DISP2}}.
 \end{equation}
 Here $\vect{d}_{\text{DISP1}}$ and $\vect{d}_{\text{DISP2}}$ are the measured outputs for each actuator.
 
 The fit values for $A_1$ and $A_2$ were clustered near zero, and were small compared to the noise in the detector timestream.
-To check whether these small values were nevertheless real, I calculated the crosstalk amplitudes $A_1$ and $A_2$ for each detector twice: once for the first half of the data acquisition and once for the second half.
-If crosstalk is present to a statistically significant level, a scatter plot of the crosstalk amplitudes for the two halves of the data acquisition should show signs of correlation.
+To check whether these small values were nevertheless real, I calculated the cross-talk amplitudes $A_1$ and $A_2$ for each detector twice: once for the first half of the data acquisition and once for the second half.
+If cross-talk is present to a statistically significant level, a scatter plot of the cross-talk amplitudes for the two halves of the data acquisition should show signs of correlation.
 As can be seen in \figref{fig:ch7-bose-cross}, the points are clustered about the origin and no correlation is apparent.
 
 \begin{figure*}
 \centering
 \includegraphics{drawings/ch7-bose-cross.pdf}
-\caption[Plot showing crosstalk amplitudes]{
-Plot showing crosstalk amplitudes.
+\caption[Plot showing cross-talk amplitudes]{
+Plot showing cross-talk amplitudes.
 The left plot is for \DISP1, the right for \DISP2.
 Each actuator was moved +/- \SI{3.5}{\mm} at 6 Hz while the detectors were biased at \SOC.
-The best-fit crosstalk amplitude for each actuator and detector were calculated for both the first half and the second half of the data acquisition, and these amplitudes are plotted against each other in these plots.
-The lack of correlation in the scatter plots, as well as the clustering around the origin, indicate that any crosstalk present cannot be distinguished from noise in the detectors.
+The best-fit cross-talk amplitude for each actuator and detector were calculated for both the first half and the second half of the data acquisition, and these amplitudes are plotted against each other in these plots.
+The lack of correlation in the scatter plots, as well as the clustering around the origin, indicate that any cross-talk present cannot be distinguished from noise in the detectors.
 }
 \label{fig:ch7-bose-cross}
 \end{figure*}
@@ -176,7 +176,7 @@ Possibilities include the cryostat being located incorrectly relative to the cry
 
 \section{Beam Maps} \label{sec:ch7-beam-maps}
 
-As discussed in \sectionref{sec:ch4-feedhorn-design}, the \Imager\ feedhorns are predicted to have beams that are circularly symmetric and well-approximated by Gaussians with \FWHM\ of \SI{1.4}{\cm} at the target.
+As discussed in \sectionref{sec:ch4-feedhorn-design}, the \Imager\ feedhorns are predicted to have beams that are circularly symmetric and well-approximated by Gaussians with \FWHM\ of \SI{1.2}{\cm} at the target.
 To verify these predictions beam maps were performed by raster scanning the beams over a stationary \SI{1030}{\celsius} black-body source.
 
 The source used was an IR Labs IR-563/301\footnote{IRLabs, Inc. Tucson, AZ. USA} black-body.
@@ -218,7 +218,9 @@ The beam size \FWHM\ is \SI{1.4}{\cm}, and is calculated from
 \end{equation}
 where the prefactor $2 \sqrt{2 \ln{2}}$ converts from the Gaussian parameters $\sigma_{1,2}$ to the \FWHM\ of the Gaussian.
 
-%In \sectionref{sec:ch4-feedhorn-design}, it was shown that the expected \FWHM\ beam width from this measurement is \SI{1.4}{\cm}, about \SI{19}{\percent} smaller than observed.
+% xxx would be nice to add blurring as a possible explanation and make
+% that quantitative.
+In \sectionref{sec:ch4-feedhorn-design}, it was shown that the expected \FWHM\ beam width from this measurement is \SI{1.2}{\cm}, about \SI{15}{\percent} smaller than observed.
 The close match between the measured and predicted \FWHM\ beam widths is encouraging, but the beams should be circular rather than strongly elliptical as observed.
 Another discrepancy between the measured and predicted beams is the distance between the beams.
 The best-fit grid spacing between detector beams in the far field is \SI{2.0}{\cm}.
@@ -283,7 +285,7 @@ Using the same cooler filled with LN2, a dime (diameter \SI{17.91}{\mm}) was tap
 A 2-D Gaussian was fit to the resulting map.
 The best-fit Gaussian has ellipticity 1.2 --- smaller than the individual beams --- and the \FWHM\ of the dime map is \SI{1.95}{\cm} --- larger than the beams.
 Both differences are expected from convolution of the beam with the dime, which is not a point source.
-The \FWHM\ of the dime map is \SI{2.0}{\cm}; a bit larger than the dime's width of \SI{1.791}{\cm}, as expected due to convolution with the beam.
+The \FWHM\ of the dime map is \SI{2.0}{\cm}, which is \SI{15}{\percent} larger than the expected value of \SI{1.7}{\cm}. % blurring!
 This serves as a rough confirmation of the beam size and locations as determined in \sectionref{sec:ch7-beam-maps}.
 
 \begin{figure*}

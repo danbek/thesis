@@ -578,11 +578,20 @@ The loss in \NETD\ from this sub-optimal choice is only \SI{1.7}{\percent}.
 % inner angle!!!!
 
 \figref{fig:ch4-beams} contains plots of both the beam pattern for the conical feedhorn and the far-field beam pattern of the entire optical system (also called the ``point spread function'').
-The feedhorn beam pattern follows the model described above.
-The far-field beam pattern accounts for the fact that the beam is truncated by the secondary mirror in its center and by the edge of the primary at its edge; these limits are plotted as vertical blue lines on the left plot.
-The truncation of the center of the beam is responsible for the side-lobe of magnitude \abt{\SI{5.7}{\percent}} that is visible in the far-field beam pattern.
-The far-field beam has a \FWHM\ of \SI{1.38}{\cm} for a point source.
-After convolution with a \SI{0.2}{\in} circle the \FWHM\ is \SI{1.39}{\cm}, and after convolving with a \SI{1.791}{\cm} circle (same size as a dime) the \FWHM\ is \SI{1.76}{\cm}.
+The feedhorn beam pattern follows the model described above, and is well-approximated over the primary mirror by a Gaussian with \FWHM\ of \ang{9}, or \SI{395}{\mm} in terms of radial distance on the primary.
+To calculate a theoretical far-field beam, we can make the simplifying assumption that the primary mirror is illuminated by an electric field with a circularly symmetric Gaussian profile, with a \FWHM\ of $\sqrt{2} \times \SI{464}{\mm} = \SI{560}{\mm}$, where the $\sqrt{2}$ converts from power to electric field.
+This assumption ignores the ellipticity of the feedhorn beam for a single polarization, but since the detectors are sensitive to both polarizations equally, the approximation should be accurate.
+
+The far-field angular power pattern is then given by \cite{born_principles_1999}
+\begin{equation}
+  P(\theta) = \left[ \int_{\rho_{in}}^{\rho_{out}} e^{-\frac{1}{2} \frac{\rho^2}{\SI{560}{\mm}}} J_0(\frac{2 \pi}{\lambda} \rho \sin(\theta)) \rho d\rho \right]^2,
+\end{equation}
+where $J_0$ is a Bessel function of the first kind, $\lambda$ is the central wavelength of the optical band, and $\rho_{in}$ and $\rho_{out}$ are taken from \tableref{tab:ch4-zemax-parms}.
+This formula accounts for the edge taper of the feedhorn pattern, the obstruction caused by the secondary mirror, and the under-illumination of the primary mirror.
+The result is a \FWHM\ of \SI{1.2}{\cm} for a point source when focused at \SI{17}{\m}.
+
+\chapterref{c:imaging} present maps of both a \SI{0.2}{\in} and \SI{1.791}{\cm} sources.
+After convolution with a \SI{0.2}{\in} circle the predicted \FWHM\ is still \SI{1.2}{\cm}, and after convolving with a \SI{1.791}{\cm} circle the predicted \FWHM\ is \SI{1.7}{\cm}.
 
 \begin{figure*}
 \centering
@@ -591,12 +600,11 @@ After convolution with a \SI{0.2}{\in} circle the \FWHM\ is \SI{1.39}{\cm}, and 
   Plots showing theoretical beam pattern for the design feedhorns.
   \textbf{Left} The unpolarized power pattern for a conical feedhorn with diameter \SI{2.68}{\mm} and opening half-angle $\alpha_0 = \ang{9.4}$, at the center frequency for our band.
   The region between the vertical blue lines indicates the part of the beam that strikes the primary mirror and reaches the far-field focal plane.
-  Also plotted is the best-fit Gaussian within the blue lines.
-  The \FWHM\ beam width is \ang{10.6}.
+  Also plotted is the best-fit Gaussian within the blue lines, which has a \FWHM\ beam width of \ang{9}.
   \textbf{Right} \SI{17}{\m} theoretical far-field unpolarized power pattern.
   The plot includes the effect of blockage by the secondary mirror as well as the edge taper of the beam on the primary.
-  The \FWHM\ beam width is \SI{1.38}{\cm}.
-  The side-lobe is caused by the secondary mirror, and is \SI{5.7}{\percent} high.
+  The \FWHM\ beam width is \SI{1.2}{\cm}.
+  The side-lobe is caused by the secondary mirror, and is \abt{\SI{5}{\percent}} high.
 }
 \label{fig:ch4-beams}
 \end{figure*}
