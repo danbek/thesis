@@ -931,6 +931,90 @@ This noise aliasing penalty can be reduced by configuring the \MCE\ to internall
 \bottomrule
 \end{tabular}
 \end{table*}
+
+\section{\textsc{MCE} Servo Gain Parameters}\label{sec:mce-servo-gain}
+
+xxx this intro makes no sense given end of last section! Need to fix it.
+The \MCE\ supports extensive configuration options ranging from \SQUID\ bias current values to multiplexing speed, to the order in which rows should be reported to client software \cite{_mcewiki_2014}.
+This dissertation does not describe the process of choosing most of these parameters.
+The exception is the choice of \PID\ parameters for the flux-locked servo loop that linearizes the output of the \SQUID\ amplifier chain, which are described below.
+
+The feedback applied to an \SQ1 during frame $n+1$ is defined as \cite{mce_team_data_2013}
+\begin{equation}
+  FB_{n+1} = \frac{1}{2^{12}} \left[P_{FB} q_n + I_{FB} \sum_{i=1}^n e_i + D_{FB} (e_n - e_{n-1}) \right].
+\end{equation}
+Here $e_n$ is the error observed during frame $n$, $q_n \equiv e_n + b q_n$ (where $b$ is some number small than 1), and $P_{FB}$, $I_{FB}$, and $D_{FB}$ are the proportional, integral, and derivative terms of the \PID\ loop, respectively.
+The $FB$ values are expressed in terms of \DAC\ counter units applied to the \SQ1 feedback, and the errors $e$ are in terms of \ADC\ values for the output of the readout chain.
+The \Imager\ is operated with $P_{FB} = D_{FB} = 0$, so that the feedback simplifies to
+\begin{equation} \label{eqn:mce-pid-i-only}
+  FB_{n+1} = \frac{I_{FB}}{2^{12}} \sum_{i=1}^n e_i.
+\end{equation}
+
+Using only $I_{FB}$, the \MCE\ servo loop acts like a 1-pole filter.
+Higher values of $I_{FB}$ increase the bandwidth of this filter until a ``critical gain'' is reached, at which point the feedback loop becomes unstable and begins to oscillate.
+$I_{FB}$ should be chosen so that the bandwidth of this filter is greater than that of the detectors themselves, but $I_{FB}$ should not approach the critical gain too closely.
+
+The servo $I_{FB}$ parameter was chosen to minimize \SQUID\ noise and allow sufficient bandwidth to read out the full bandwidth of the detectors.
+The target servo bandwidth depends on the measurement being made.
+When operating the array in normal conditions, the data readout rate is either \SI{3125}{Hz} or \SI{3030.3}{Hz}, depending on whether the dark \SQUID\ is read out.
+The time constant for the associated Nyquist frequencies are \abt{\SI{0.1}{ms}}, so there is no need to use $I_{FB}$ values with more bandwidth than this\footnote{Doing so is counter-productive, because it will alias \SQUID\ noise into the detector band}.
+Electrical detector time constants are \abt{\SI{4}{ms}} in the superconducting state, and \abt{\SI{0.14}{ms}} in the normal state.
+While biased into the transition, $\tau_{eff}$ is in the range \SIrange{1}{4}{ms}.
+
+\figref{fig:ch6-servo-tau-est} shows the impact of the servo roll-off on estimation of time constants from single-pole response functions.
+To reduce the error in the estimated time constant below \SI{2}{\percent}, the servo time constant should be below \SI{5}{\percent} of the time constant to be measured.
+This criteria corresponds to \SI{2e-4}{s} for the superconducting state and as fast as \SI{5e-5}{s} for detectors operating in the transition.
+
+\begin{figure*}
+\includegraphics{drawings/ch6-servo-tau-est.pdf}
+\caption[Required $\tau_{servo}$]{
+Plots summarizing requirements on $\tau_{servo}$ for accurate measurements of detector time constants.
+\textbf{Left} Plot showing exact response to step function of a detector with $\tau = \SI{4}{ms}$, the response as filtered by a servo with $\tau_{servo} = \SI{1}{ms}$, and the best fit to the filtered response. The estimated $\tau$ is \SI{23}{\percent} too high.
+\textbf{Right} Plot showing fractional overestimate of $\tau$ vs. relative size of $\tau_{servo}$.
+For less than \SI{2}{\percent} error, $\tau_{servo}/\tau < \num{0.05}$ is required.
+}
+\label{fig:ch6-servo-tau-est}
+\end{figure*}
+
+Measuring the bandwidth of the servo loop is challenging because roll-offs due to the $L/R$ filter of the detector circuit itself make it difficult to identify the servo roll-off from power spectra.
+However, if the bath temperature is raised above $T_c$ for the Al wire bonds connecting the \TES\ circuit to the input coils of the 1st stage \SQUIDs, the total resistance of the \TES\ circuit is raised from \SI{150}{\uOhm} to \SIrange{20}{50}{\mohm}.
+This high resistance drives the Johnson noise of the load resistor below the \SQUID\ noise, and pushes the $L/R$ roll-off of the Johnson noise to \SI{3e-5}{s} or faster (\SI{3}{\dB} frequency of \SI{5}{\kilo\Hz} or higher), making a measurement of the servo bandwidth much easier.
+
+To choose $I_{FB}$ values, I acquired data at the fastest multiplexing rate possible for 33 rows\footnote{This rate is achieved by only reporting one of the eight columns to the readout computer. The limiting factor in how fast the entire array can be multiplexed is packaging and sending the data to the readout computer.}, \SI{15151.5}{Hz} while the system was at a temperature of \SI{1.3}{\K}.
+For every row and column that has a detector that responds in the superconducting state, I fit the resulting noise power spectrum to an equation of the form
+\begin{equation}
+  \frac{N_{SQ}}{1 + (2 \pi \tau_{servo})^2}
+\end{equation}
+Where $N_{SQ}$ is the white noise level and $\tau_{servo}$ gives the bandwidth of the servo loop.
+
+\figref{fig:ch6-servo} shows the resulting white noise levels and $\tau_{servo}$ values for a range of servo gain values $I_{FB}$.
+The \SQUID\ white noise level is higher when operating with negative $I_{FB}$ values, so we have chosen to use positive $I_{FB}$ values.
+When measuring time constants $I=50$ has been used for all columns, to maximize the number of detectors below $\tau_{servo} = \SI{2e-4}{s}$.
+This places most detectors in a region where \SQUID\ noise will be aliased into the measurement band, but because I always average over many measurements, the accuracy of these types of measurements is not affected by this noise aliasing.
+
+For taking video images, the servo does not need to be run as aggressively.
+As shown in \figref{fig:ch6-teff-si-pred}, most detectors have $\tau_{eff}$ close to \SI{1.25}{\ms}, with only a few slower than this.
+A servo gain $I_{FB}$ of 20 puts $\tau_{servo}$ below \SI{0.6}{\ms} for all detectors, so there is no need to operate at a higher $I_{FB}$ when taking video images.
+Even operating with $I_{FB}$ of 10 puts \SI{95}{\percent} of the $\tau_{servo}$ below \SI{1}{\ms}, so operating at $I_{FB}$ of 10 is also acceptable.
+% xxx - once I write the section that described required $\tau_{eff}$,
+% I may need to add comments here or expand on this.
+
+\begin{figure*}
+\includegraphics{drawings/ch6-servo.pdf}
+\caption[Plots summarizing behavior using different servo gains $I_{FB}$]{
+  Plots summarizing behavior using different servo gains $I_{FB}$.
+  In the two box plots, the boxes represent the \SIrange{5}{95}{\percent} quantiles, the middle line represents the median, and the upper/lower whiskers represent the maximum/minimum values.
+All detectors that respond in the superconducting state are included.
+\textbf{Upper} Plot of \SQUID\ $\tau_{servo}$ vs servo gain $I_{FB}$.
+Servo bandwidth increases with $I_{FB}$.
+At $I_{FB} \ge \num{60}$, very small $\tau_{servo}$ begin to appear. This indicates either a roll-off above the bandwidth of the measurement, or an unstable servo loop.
+The few high $\tau_{servo}$ values at gains of 80 and 100 are a result of the fitting routine failing due to an unstable servo loop.
+\textbf{Lower Left} Close-up view of upper plot for gains from 10 to 50.
+\textbf{Lower Right} Plot of median \SQUID\ white noise level vs. servo gain $I_{FB}$. Positive gains consistently give lower \SQUID\ noise levels.
+}
+\label{fig:ch6-servo}
+\end{figure*}
+
 \section{Acknowledgments}
 
 Bob Schwall of \NIST\ designed the cryostat, assembled the \He4-sorption fridge, and provided useful advice and help in the lab during commissioning of the cryostat.
