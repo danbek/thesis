@@ -234,7 +234,7 @@ As described in \sectionref{sec:ch4-feedhorn-design}, such misalignment leads to
 
 To show the instantaneous field of view of the array compared to the area of the scanned image, \figref{fig:ch7-beams-on-image} shows the locations at which the beams are pointing when the \BOSE\ actuators are set to their zero positions.
 
-Although the ellipticity of the beams is disappointing, the resolution is close to target, and the ellipticity is not a barrier to using the system to take video images.
+Although the ellipticity of the beams is puzzling, the resolution is close to target, and the ellipticity is not a barrier to using the system to take video images.
 
 \begin{figure*}
 \centering
@@ -321,7 +321,7 @@ I used the same ``\ecco\ submerged in LN2'' setup as described in \sectionref{se
 For the warm temperature load I used a sheet of \ecco\ backed by a thin sheet of Al.
 ``Room Temperature'' here is assumed to be \SI{295}{\kelvin} (\SI{71.3}{\fahrenheit}).
 
-Although the temperature of LN2 is well known to be \SI{77}{\kelvin}, this does not mean that the temperature seen by the beams when pointed at the cooler is exactly \SI{77}{\kelvin}.
+The temperature of LN2 is \SI{76}{\kelvin} in Boulder, CO where these measurements were made, but this does not mean that the temperature seen by the beams when pointed at the cooler is exactly \SI{76}{\kelvin}.
 \begin{itemize}
   \item The beams are looking through the \SI{1.625}{\in} thick Styrofoam walls of the cooler, which may have some emission themselves.
   \item Although the \ecco\ sunk in LN2 is opaque at \SI{350}{\GHz}, it may reflect some amount of light from the surrounding room.
@@ -335,7 +335,7 @@ The lid is \SI{2}{\in} thick and the cooler's side is \SI{1.625}{\in} thick.
 I assume that the transmittance takes the form $e^{-d \kappa}$, where $d$ is the thickness of the material and $\kappa$ is some constant which characterizes the attenuation length of \SI{350}{\GHz} light in Styrofoam.
 Given this assumption, if the transmittance through the cooler's wall is $\tau$, then the transmittance through the lid is given by $\tau^{2/1.625} = \tau^{1.23}$.
 
-The optical powers viewed under these three conditions is then given by (with $T_h = \SI{295}{\K}$ and $T_c = \SI{77}{\K}$)
+The optical powers viewed under these three conditions is then given by (with $T_h = \SI{295}{\K}$ and $T_c = \SI{76}{\K}$)
 \begin{align}
   P_{opt,ecco}  & = P_{opt}(T_h) \\
   \begin{split}
@@ -419,8 +419,8 @@ For $s_I(0)$ I have used the predicted values at \SOC\ of \sectionref{sec:bias-s
 For these three detectors I have assumed a responsivity equal to the mean of all other predicted responsivities.
 
 As a check on the accuracy of this temperature scale, the still image on the left of \figref{fig:ch7-dime-map} has \abt{\SI{180}{\K}} of contrast between the coldest section at the middle of the cooler and the warm area to the left of the cooler.
-Using the estimate for transmittance $\tau$ of the cooler walls of \num{0.9}, the expected temperature differential is $0.9(295-77) = \SI{196}{\K}$.
-Given the fact that responsivity will increase with optical loading, which leads to underestimates of temperature difference via \eqnref{eqn:ch7-I-to-T}, these numbers are in reasonable agreement, indicating that the temperature scale is accurate to withing \abt{\SI{20}{\percent}}.
+Using the estimate for transmittance $\tau$ of the cooler walls of \num{0.9}, the expected temperature differential is $0.9(295-76) = \SI{197}{\K}$.
+Given the fact that responsivity will increase with optical loading, which leads to underestimates of temperature difference via \eqnref{eqn:ch7-I-to-T}, these numbers are in reasonable agreement, indicating that the temperature scale is accurate to within \abt{\SI{20}{\percent}}.
 
 \section{Image Processing Algorithm} \label{sec:ch7-algo}
 
