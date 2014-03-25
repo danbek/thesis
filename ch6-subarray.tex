@@ -87,20 +87,20 @@ Each resulting power spectrum was fit to a function of the form
 where $k_B$ is Boltzmann's constant, $T_b$ is the bath temperature for the measurement, and $f$ is the frequency.
 The shunt resistance $R_{sh}$, inductance $L$, and readout chain white noise level $SQ$ are the fit parameters.
 
-\figref{fig:rsh-l-plots} shows histogram plots of the resulting \Rsh\ and $L$ values.
+\figref{fig:rsh-l-plots} shows histogram plots of the resulting \Rsh\ and $L$ values for 210 shunts and inductors.
 \Rsh\ has a mean of \SI{149}{\uOhm} with standard deviation \SI{6}{\uOhm}.
+This uncertainty is equal to the measurement noise, although there are three shunts with values more than three standard deviations from the mean, suggesting that they may have a statistically significant different value than \SI{149}{\uOhm}.
 The values for \Rsh\ include any parasitic resistance in the circuit, but no evidence for significant parasitic resistance has ever been seen, so this parasitic resistance is assumed to be zero throughout this dissertation.
 
 The value for $L$ includes the Nyquist inductance on the interface chip, the input inductance of the first-stage \SQUID\ of the multiplexed readout system, as well as any parasitic inductance in the circuit.
 Using this approach it is not possible to extract the inductance of the Nyquist inductor itself, but this is not a problem because the total inductance is the relevant  quantity for understanding the behavior of the detector and its circuit.
 
-$L$ has a mean of 568~nH with a standard deviation of 86~nH.
-However, this mean includes two sets of clear outliers: all values for multiplexing row 4 are clustered around 200~nH, and all values for multiplexing row 25 are clustered around 440~nH.
-The reason for these low inductances is not understood.
-Excluding rows 4 and 25,  $L$ has a mean of 587~nH with a standard deviation of 44~nH.
-
-The outlier $L$ values are more clearly visible in the lower left plot in \figref{fig:rsh-l-plots}, which also shows a small correlation between \Rsh\ and $L$.
-It is not known whether this correlation is a real physical effect or an artifact of the measurement and curve fitting process.
+$L$ has a mean of \SI{568}{\nH} with a standard deviation of \SI{86}{\nH}.
+However, this mean includes two sets of clear outliers: all values for multiplexing row 4 are clustered around \SI{200}{\nH}, and all values for multiplexing row 25 are clustered around \SI{440}{\nH}.
+The outlier $L$ values are more clearly visible in the lower left plot in \figref{fig:rsh-l-plots}.
+The reason for these low inductances is not understood, but the correlation with rows suggests that a problem with the fabrication mask is a possible explanation.
+Excluding rows 4 and 25,  $L$ has a mean of \SI{587}{\nH} with a standard deviation of \SI{44}{\nH}.
+This uncertainty is three times larger than the typical measurement uncertainty, so much of the remaining scatter indicates real variations in the inductance.
 
 \begin{figure*}
 \includegraphics{drawings/ch6-rsh-l-plots.pdf}
