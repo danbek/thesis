@@ -382,6 +382,7 @@ The transmission of the bandpass filter is plotted in blue in \figref{fig:ch4-ba
 The integrated bandwidth of the bandpass filter is \SI{31.1}{\GHz}, with a full-width-half-maximum (\FWHM) band of \SI{35.0}{\GHz}.
 There is some ambiguity in defining the bandwidth and efficiency of a bandpass filter that does not have a top-hat shape.
 In this dissertation I have chosen to described the filter as having a bandwidth of \SI{35.0}{\GHz} with efficiency $31.1 / 35.0 = \SI{88.5}{\percent}$.
+I chose this definition because the concept of a ``full-width-half-maximum'' bandwidth is familiar and easy to physically interpret, and because the non-unity efficiency emphasizes the fact that the filter does not have perfect transmission at any frequency.
 
 \begin{figure*}
 \centering
@@ -609,6 +610,10 @@ After convolution with a \SI{0.2}{\in} circle the predicted \FWHM\ is still \SI{
 \label{fig:ch4-beams}
 \end{figure*}
 
+A final important parameter of the feedhorn is its phase center, defined as the point along the axis of the horn from which the far-field spherical wavefront appears to emerge.
+In order to achieve optimum performance from a system, the focal plane of the optical system should coincide with the phase centers of the horns.
+For the \Imager\ I used published tables to estimate the location of the phase center for our feedhorns, which give a distance of \SI{0.9}{\mm} behind the opening of the feedhorn as the phase center averaged over both polarizations \cite[Page~353]{thomas_a._milligan_modern_2005}.
+
 The feedhorns were machined out of Al 6061 and then Au-plated.
 An estimate of the insertion loss of the feedhorns requires the conductivity of this plated Au at \SI{1}{\K}, but this quantity is not known.
 I assumed that the Au has the standard value for conductivity at room temperature of \SI{41e6}{S\per\m}, with a residual resistivity ratio of 3.
@@ -732,10 +737,6 @@ This could be part of the explanation for the combination of poor optical effici
 \label{fig:ch4-coupling-mis}
 \end{figure*}
 
-A final important parameter of the feedhorn is its phase center, defined as the point along the axis of the horn from which the far-field spherical wavefront appears to emerge.
-In order to achieve optimum performance from a system, the focal plane of the optical system should coincide with the phase centers of the horns.
-The phase center of a conical feedhorn can not be defined in general, because it changes not only with polarization but with the beam angle as well.
-For the \Imager\ I used published tables to estimate the location of the phase center for our feedhorns, which give a distance of \SI{0.9}{\mm} behind the opening of the feedhorn as the phase center averaged over both polarizations \cite[Page~353]{thomas_a._milligan_modern_2005}.
 
 \section{Predicted Optical Efficiency and Optical Loading on Detectors} \label{sec:ch4-opt-eff}
 
@@ -765,16 +766,19 @@ Photon \NEP\ is given by \cite[Equation~51]{zmuidzinas_thermal_2003}
 Here the second term represents ``photon bunching'', which only becomes important when many photons are occupying a spatial mode.
 For millimeter and submillimeter astronomy observing cold sources such as the Cosmic Microwave Background Radiation, this second term is often negligible, but it is important for the \Imager\ because we are observing \abt{\SI{300}{\K}} targets.
 
-There are two points worth noting about \eqnref{eqn:ch4-photon-nep}.
-First, it is tempting to simplify \eqnref{eqn:ch4-photon-nep} as:
-\begin{equation}
-  \NEPph^2 = 4 (h \nu_0)^2 \eta_{tot} n(\nu_0,T) (1 + \eta_{tot} n(\nu_0,T)) \Delta \nu,
-\end{equation}
-where $\nu_0$ is the central frequency of the band.
-However, this is not correct unless $\eta_{tot}$ and $\Delta \nu$ have been defined so that $\eta_{tot} = \int \eta^2(\nu) d\nu / \int \eta(\nu) d\nu$ and $\Delta \nu = \int \eta(\nu) d \nu / \eta_{tot}$.
-I have not defined the bandwidth of the \Imager\ in this way, so I always evaluate the integral in \eqnref{eqn:ch4-photon-nep}.
+% Removing this because it doesn't add anything to the discussion,
+% although it *is* good to keep in mind
+% 
+%There are two points worth noting about \eqnref{eqn:ch4-photon-nep}.
+%First, it is tempting to simplify \eqnref{eqn:ch4-photon-nep} as:
+%\begin{equation}
+  %\NEPph^2 = 4 (h \nu_0)^2 \eta_{tot} n(\nu_0,T) (1 + \eta_{tot} n(\nu_0,T)) \Delta \nu,
+%\end{equation}
+%where $\nu_0$ is the central frequency of the band.
+%However, this is not correct unless $\eta_{tot}$ and $\Delta \nu$ have been defined so that $\eta_{tot} = \int \eta^2(\nu) d\nu / \int \eta(\nu) d\nu$ and $\Delta \nu = \int \eta(\nu) d \nu / \eta_{tot}$.
+%I have not defined the bandwidth of the \Imager\ in this way, so I always evaluate the integral in \eqnref{eqn:ch4-photon-nep}.
 
-Second, the \Imager\ is not viewing a single temperature $T$ that reaches the detectors with efficiency $\eta$.
+The \Imager\ is not viewing a single temperature $T$ that reaches the detectors with efficiency $\eta$.
 Rather, the \Imager\ is viewing an \abt{\SI{300}{\K}} source that is attenuated by a series of lossy elements, each of which is at non-zero temperature and so emits power itself.
 Because of the photon bunching term, it is not correct to calculate \NEPph\ for each optical component separately and then sum all values; doing so will underestimate the noise due to photon bunching.
 
