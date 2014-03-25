@@ -1,7 +1,8 @@
 \chapter{Sub-array Characterization}\label{c:det-array}
 
-In order to turn detector outputs into an image, we need to know the detector power-to-current responsivity $S_I(0)$ and the total optical efficiency.
-This chapter presents a series of detector measurements culminating in predictions of $S_I(0)$ for all working detectors, while \chapterref{c:imaging} presents measurements of optical efficiency.
+In order to create an image from a set of detector outputs, we must establish a temperature scale that maps \TES\ current to the temperature of the object being observed.
+This requires knowing the detector power-to-current responsivity $S_I(0)$, which allows us to turn detector current into optical power, and the total optical efficiency, which allows us to turn the optical power into the temperature of an emitting object.
+This chapter presents a series of detector measurements culminating in predictions of $S_I(0)$ for all working detectors, while \chapterref{c:imaging} presents measurements of optical efficiency and establishes the temperature scale. 
 This chapter also describes measurements of detector noise, showing that the noise is higher than the design value of \chapterref{c:det-design} by a factor or \abt{2.5}.
 A section discussing measurements of detector $G$, which is relevant to predictions of detector noise, is also included, as are sections discussing common mode noise, microphonic pickup and noise aliasing.
 \tableref{tab:measurements} summarizes all of the measurements described in this chapter.
@@ -211,9 +212,8 @@ A fit was then performed to \eqnref{eqn:teff-from-tau}:
 In this fit, $\tau_{meas}$ is considered the dependent variable, the product $(I_{bias} \delta I)$ is the independent variable, and the variables that are fit for are $\tau$ and $\mathcal{K}$.
 
 \figref{fig:tau-nat-plots} shows an example of fitting to \eqnref{eqn:tau-nat-fit}, and the measured values of $\tau$ are listed in \tableref{tab:basic-det-props}.
-The average value of \SI{9.6}{\ms} is \abt{\SI{20}{\percent}} slower than the design value of \SI{7.9}{\ms}, which would worsen video image blurring as discussed in \sectionref{sec:det-parm-choice}, though not by a large amount.
-xxx discuss how estimation of teff means that in pratice this is not all that bad?
-
+The average value of \SI{9.6}{\ms} is \abt{\SI{20}{\percent}} slower than the design value of \SI{7.9}{\ms}.
+However, as shown in \sectionref{sec:bias-step}, the predicted values of $\tau_{eff}$ across all detectors are somewhat faster than the design value, so that the slower natural time constant does not pose any problems for operation of the array.
 
 \begin{figure*}
   \centering
@@ -416,11 +416,13 @@ Comparison of predicted and measured $s_I(0)$ for the same detectors.
 \label{fig:ch6-heater-step-pred-plots}
 \end{figure*}
 
-``Bias steps'' were also taken for all working detectors at \SOC.
+``Bias step'' measurements were also taken for all working detectors at \SOC.
 \figref{fig:ch6-all-loop-plots} summarizes these measurements of \Loop, $\beta_I$, and $R$, both in terms of histograms for each parameter as well as scatter plots showing covariance between them.
 \figref{fig:ch6-teff-si-pred} shows histograms of the resulting predictions for $\tau_{eff}$ and $s_I(0)$.
+The predicted values of $s_I(0)$ are used in \sectionref{sec:ch7-temp-scale} to establish a temperature scale for imaging.
 \SI{78}{\percent} of the working detectors have $\tau_{eff} < \SI{2}{ms}$.
-%xxx comment on this speed compared to required.
+The detectors are, on average, somewhat faster than the \SI{2.6}{\ms} design value --- due to somewhat higher than anticipated values of \Loop\ at \SOC\ --- but not fast enough to eliminate blurring as a concern.
+The measurements of this chapter will allow more aggressive $\tau_{eff}$ design decisions for future detector fabrications, reducing the problems of blurring.
 
 \begin{figure*}
   \centering
@@ -619,6 +621,7 @@ However, this would reduce the measured values of $R_{sh}$ and $L_{ny}$ by a fac
 This is unlikely, because the measured values are close to the design values, and these design values have been confirmed by measurements of other interface chips of the same design\footnote{John Appel, personal communication}.
 
 I therefore conclude that the high level of detector noise is real, but I do not yet have a full explanation for the high values.
+\sectionref{sec:ch8-future} describes steps that can be taken to understand the source of this excess noise.
 
 \begin{figure*}
   \centering
