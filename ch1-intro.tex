@@ -21,7 +21,7 @@ During the 1980's and early 1990's individual cooled bolometric detectors capabl
 By 1994 it was clear that for astronomical applications the only way to increase sensitivity was to develop arrays of detectors, but at that time no technology for the production of monolithic arrays was yet available \cite{richards_bolometers_1994}.
 
 The development of voltage-biased superconducting Transition Edge Sensor (\TES) detectors enabled the development of large-scale cryogenic detector arrays \cite{irwin_application_1995}.
-These detectors are based on the use of thin superconducting films as the bolometer's thermometer element, and can be fabricated at large scale using standard lithographic techniques.
+These detectors use superconducting films as the bolometer's thermometer element, and can be fabricated in large arrays using standard lithographic techniques.
 The basics of their operation and their advantages for passive imaging are described in \sectionref{sec:ch2-tes-basics} and \sectionref{sec:ch2-tes-passive}.
 \chapterref{c:tes} provides more details on their behavior and operation.
 To read out these detector arrays, multiplexed readout systems based on Superconducting Quantum Interference Devices (\SQUIDs) have been developed \cite{chervenak_superconducting_1999,yoon_single_2001}.
@@ -32,7 +32,7 @@ The development of this technology offers new opportunities for passive imaging 
 Specifically, it is now possible to develop focal planes capable of video-rate imaging with temperature resolution of \SI{100}{\mK} or below.
 This dissertation describes the design and development of the National Institute of Standards and Technology (\NIST) \Imager, a system developed to detect concealed weapons at distances of \SIrange{16}{28}{\m} by producing video-rate images at \SI{350}{\GHz}.
 It will be used as a ``gold standard'' system for investigating the phenomenology of passive video imaging in order to determine the specifications for specific operational scenarios.
-It will also serve as a test-bed for evaluating new capabilities such as polarization and spectroscopy.
+It will also serve as a test-bed for evaluating new capabilities such as using polarization and spectroscopy to improve image contrast.
 
 An outline of this dissertation is as follows.
 This chapter provides an overview of passive millimeter and submillimeter wavelength imaging for security applications, and describes the reasons for using detectors operating at cryogenic temperatures.
@@ -46,9 +46,9 @@ The goal of this project is to generate video images at \SI{350}{\GHz}, and \cha
 The system described in this dissertation is the result of work done by a number of different people both at \NIST\ and at other institutions.
 The project was started by William Duncan, who also designed, procured, and assembled the optics.
 Bob Schwall designed the cryogenic system.
-The author of this dissertation was responsible for commissioning the cryogenic system, designing the feedhorns used to guide light onto the detectors, the design of both the prototype and production detectors (including optical coupling components), layout of the detectors and all focal plane wiring, design and assembly of the focal plane, characterization of both the prototype detectors and first production detector sub-array, and optical testing of the system including the generation of video images.
+The author of this dissertation was responsible for commissioning the cryogenic system, designing the feedhorns used to guide light onto the detectors, the design of both the prototype and production detectors (including optical coupling components), layout of the detectors and the focal plane wiring, design and assembly of the focal plane, characterization of both the prototype detectors and first production detector sub-array, and optical testing of the system including the generation of video images.
 Hsiao-Mei (Sherry) Cho fabricated the detectors.
-The acknowledgments at the end of \chapterref{c:sys-design} and \chapterref{c:det-design} highlight important contributions from other people both at \NIST\ and elsewhere.
+The acknowledgments at the end of \chapterref{c:sys-design} and \chapterref{c:det-design} highlight important contributions from additional people both at \NIST\ and elsewhere.
 
 \section{Security Imaging}
 
@@ -72,8 +72,8 @@ Although the ProVision system takes still images with \abt{\SI{2}{s}} image acqu
   The \SI{-10}{\dB} observation band of the \Imager\ is highlighted (\SIrange{318}{376}{\GHz}).
   \textbf{Bottom}
   Plot showing attenuation through the atmosphere at sea level pressure for different weather and particulate conditions.
-  Under the worst conditions in the \Imager's band, attenuation would be \abt{\SI{1.2}{\dB}} over \SI{16}{\m}, and a factor of five better under standard conditions.
-  At the \SI{640}{\GHz} band, attenuation under standard conditions is the same as the worst conditions at \SI{350}{\GHz}, and a factor of 6 worse again under the worst conditions.
+  Under the worst conditions in the \Imager's band, attenuation would be \abt{\SI{1.2}{\dB}} over \SI{16}{\m}, and a \SI{0.15}{\dB} under standard conditions.
+  In the \SI{640}{\GHz} band, which would allow better spatial resolution, attenuation under standard conditions is already \SI{1.2}{\dB} and under the worst conditions is almost \SI{10}{\dB} at \SI{16}{\m}.
   Taken from \cite{appleby_standoff_2007}.
 }
 \label{fig:ch1-clothes-atmos-trans}
@@ -85,7 +85,7 @@ In these scenarios it is not always reasonable to expect observation targets to 
 These applications are generally referred to as ``standoff'' detection because the imaging system ``stands off'' some distance from the target being imaged.
 
 For these applications the choice of optical frequency is less clear than for portal imaging, because the lower frequencies favored by clothing transmission also imply worse spatial resolution for a fixed optical aperture size.
-The angular size $\theta$ of the \FWHM\ beam achievable by an circular aperture of diameter $D$ observing at wavelength $\lambda$ is \cite{born_principles_1999},
+The angular full-width-half-maximum (\FWHM) $\theta$ of the beam produced by a circular aperture of diameter $D$ observing at wavelength $\lambda$ is \cite{born_principles_1999},
 \begin{equation} \label{eqn:ch1-raleigh}
   \theta \sim 1.0 \lambda / D.
 \end{equation}
@@ -207,7 +207,7 @@ If we further assume that $T_{cov}$ is midway between $T$ and $T_{amb}$, then th
 \begin{equation} \label{eqn:ch1-delta-t-simple}
   \Delta T_{1,2} = \frac{1}{2}\tau_{cov}(1+\tau_{cov}) (\epsilon_1 - \epsilon_2) (T - T_{amb}).
 \end{equation}
-The factor of $\frac{1}{2}$ represents that fact that at low $\tau$, under these assumptions, the contrast is dominated by the difference in temperature between the cover and the object, which is half of the difference between the object and the ambient light.
+The factor of $\frac{1}{2}$ represents the fact that at low $\tau$, under these assumptions, the contrast is dominated by the difference in temperature between the cover and the object, which is half of the difference between the object and the ambient light.
 
 Outdoors, $T_{amb}$ will have contributions both from the ground (or structures/vegetation at ground level) and from the sky.
 The sky temperature depends strongly on the weather, and at \SI{350}{\GHz} could be as low as \SI{100}{\K} on a clear winter day, or approach \SI{310}{\K} on a hot day with high humidity \cite{appleby_standoff_2007}.

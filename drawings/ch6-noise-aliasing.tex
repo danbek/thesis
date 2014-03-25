@@ -36,10 +36,11 @@
 
   \begin{tikzpicture}[trim axis right]
 	\begin{loglogaxis}[
+        legend pos=south west,
 		title={Current Noise PSD \RCm{5}{1}},
 		xlabel={Frequency (\si{\hertz})}, ylabel={Noise Power (\Inoise{})} ]
-	  \addplot+[mark=none] table[x=f,y=Pxx]{../data/ch6-noise-aliasing-5.dat}; \addlegendentry {Data Rate = 5}
-	  \addplot+[mark=none] table[x=f,y=Pxx]{../data/ch6-noise-aliasing-f.dat}; \addlegendentry {Data Rate = 1}
+	  \addplot+[mark=none] table[x=f,y=Pxx]{../data/ch6-noise-aliasing-5.dat}; \addlegendentry {\SI{15625}{\Hz}}
+	  \addplot+[mark=none] table[x=f,y=Pxx]{../data/ch6-noise-aliasing-f.dat}; \addlegendentry {\SI{3125}{\Hz}}
 	\end{loglogaxis}
   \end{tikzpicture}
   

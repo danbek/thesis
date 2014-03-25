@@ -47,7 +47,7 @@ $R_{sh}$ can be measured directly or, as described in this chapter, through John
 If full \IV\ curves for the detectors are available --- including enough of the normal branch to allow calibrating the normal-state resistance --- then $V_0$ and $R_0$ are also known, and \eqnref{eqn:ch6-si0-simple} can be used to predict $S_I(0)$.
 
 Unfortunately, this simple approach to $S_I(0)$ is not available for the \Imager's detectors.
-The reason is that as described in \sectionref{sec:g-psat}, the saturation power of the detectors is \abt{2} times higher than expected, which means that only some detectors can be driven into the normal state using bias current alone --- even under optical load --- and then only at bath temperatures very close to $T_c$.
+The reason is that, as described in \sectionref{sec:g-psat}, the saturation power of the detectors is \abt{2} times higher than expected, which means that only some detectors can be driven into the normal state using bias current alone --- even under optical load --- and then only at bath temperatures very close to $T_c$.
 In particular, none of the detectors can be driven normal at the operating bath temperature of \SI{1100}{\mK}.
 This means that we do not have \IV\ curves for any detectors under \SOC, and thus no simple measurement of $V_0$ and $R_0$.
 
@@ -297,8 +297,8 @@ The reason for this discrepancy is not known.
 % thesis/ana_heater_step() ... note that the file is created inside fit_heater_step()
 %
 
-As discussed in the introduction to this chapter, the detector responsivity $s_I(0)$ is required in order to turn a set of detector timestreams (which area measured in terms of current) into a video image (which is presented in terms of the temperature of the observation target.
-Knowing the value of the effective detector time constant $\tau_{eff}$ can aid in understanding of whether or not blurring is a problem in video images, as well as understanding any problems related to instability of a detector.
+As discussed in the introduction to this chapter, the detector responsivity $s_I(0)$ is required in order to turn a set of detector timestreams (which area measured in terms of current) into a video image (which is presented in terms of the temperature of the observation target).
+Knowing the value of the effective detector time constant $\tau_{eff}$ can aid in understanding whether or not blurring is a problem in video images, as well as understanding any problems related to instability of a detector.
 
 This section gives direct measurements of $s_I(0)$ and $\tau_{eff}$ for the seven detectors with working heaters.
 In addition to their intrinsic interest, these measurements are used in \sectionref{sec:bias-step} as a check on the procedure used to estimate $s_I(0)$ and $\tau_{eff}$ for detectors without heaters.
