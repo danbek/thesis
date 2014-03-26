@@ -36,7 +36,7 @@ The \SI{6}{\K} Cold Plate stands off from the \SI{80}{\K} Cold Plate by eight su
 
 \begin{table*}
 \centering
-\caption{Temperatures Reached Under Optical Load} 
+\caption{Temperatures reached under optical load} 
 \label{tab:temp-optical-load}
 \begin{tabular}{l r}
 \toprule
@@ -112,8 +112,8 @@ It excludes parasitic load inherent to the sorption refrigerator itself; we have
 
 \begin{table*}[ht]
 \centering
-\caption[Predicted Thermal Load on \SI{1}{\K} Stage]{
-  Predicted Thermal Load on \SI{1}{\K} Stage.
+\caption[Predicted thermal load on \SI{1}{\K} stage]{
+  Predicted thermal load on \SI{1}{\K} stage.
   The ``Ti-6Al-4V spiders'' provide the structural link between the \SI{1}{\K} cold stage and the \SI{6}{\K} cold plate; see \sectionref{sec:ch5-focal-plane} and \figref{fig:ch5-focal-plane-back}.
   These calculations assume that the readout wiring and Ti-6Al-4V spiders are running from \SI{6.4}{\K} to \SI{1.0}{\K}.
   All wires are AWG36 Phosphor Bronze with thermal conductivity taken from the Lake Shore Cryogenics reference tables \cite{lake_shore_cryogenics_inc._cryogenic_????}.
@@ -748,7 +748,7 @@ This could be part of the explanation for the combination of poor optical effici
   The left plot shows band-averaged coupling efficiency vs misalignment, for misalignment in both $x$ and $y$ directions.
   The right plot shows the ratio of band-averaged coupling efficiency of the $x$-polarized mode to the $y$-polarized mode, again for misalignment in both $x$ and $y$ directions.
   For misalignment up to \SI{100}{\um} loss in coupling efficiency is small.
-  But for large misalignment the efficiency drops substantially, and the modes couple very differently, which will lead to an elliptical beam.
+  But for large misalignment the efficiency drops substantially, and the modes couple with different strengths, which will lead to an elliptical beam.
 }
 \label{fig:ch4-coupling-mis}
 \end{figure*}
@@ -795,7 +795,7 @@ For millimeter and submillimeter astronomy observing cold sources such as the Co
 %I have not defined the bandwidth of the \Imager\ in this way, so I always evaluate the integral in \eqnref{eqn:ch4-photon-nep}.
 
 The \Imager\ is not viewing a single temperature $T$ that reaches the detectors with efficiency $\eta$.
-Rather, the \Imager\ is viewing an \abt{\SI{300}{\K}} source that is attenuated by a series of lossy elements, each of which is at non-zero temperature and so emits power itself.
+Rather, the \Imager\ is viewing a \abt{\SI{300}{\K}} source that is attenuated by a series of lossy elements, each of which is at non-zero temperature and so emits power itself.
 Because of the photon bunching term, it is not correct to calculate \NEPph\ for each optical component separately and then sum all values; doing so will underestimate the noise due to photon bunching.
 
 The correct generalizations of \eqnref{eqn:ch4-power-per-mode} and \eqnref{eqn:ch4-photon-nep} are to treat the term $\eta(\nu) n(\nu,T)$ as a total photon occupation number that includes contributions from all sources.
@@ -890,7 +890,7 @@ To linearize the \SQUID\ amplifier chain, feedback in the form of magnetic flux 
 \begin{figure*}
 \centering
 \includegraphics[width=3in]{images/ch4-tdm-schematic.png}
-\caption[Time-Division Multiplexing Schematic]{
+\caption[Time-Division Multiplexing schematic]{
   Schematic of the Time-Division Multiplexing (\TDM) readout system used by the \Imager.
   The detectors are divided into rows and columns (2 each shown here).
   Each detector is coupled to its own 1st-stage \SQUID (\SQ1).

@@ -30,7 +30,7 @@ Detector noise at a range of bias values & \ref{sec:det-noise} & Four detectors 
 \end{table*}
 
 Several measurements are taken at ``standard operating conditions'' (\SOC), which are the conditions under which the array is operated while acquiring video images.
-These conditions are bath temperature $T_b = \SI{1100}{\mK}$ and detector bias value $\mbox{\DAC} = \num{27000}$\footnote{The detector bias lines are controlled by digital-to-analog converter (\DAC) units as described in \sectionref{sec:det-readout}. Bias values in this chapter are in terms of \DAC\ units, where $\mbox{\DAC} = 2^{15} = 32768$ is the maximum bias that can be applied, and corresponds to $I_b \approx \SI{10}{\mA}$}, corresponding to $I_b \approx \SI{8}{\mA}$.
+These conditions are bath temperature $T_b = \SI{1100}{\mK}$ and detector bias value $\mbox{\DAC} = \num{27000}$\footnote{The detector bias lines are controlled by digital-to-analog converter (\DAC) units as described in \sectionref{sec:det-readout}. Bias values in this chapter are in terms of \DAC\ units, where $\mbox{\DAC} = 2^{15} = 32768$ is the maximum bias that can be applied, and corresponds to $I_{bias} \approx \SI{10}{\mA}$}, corresponding to $I_{bias} \approx \SI{8}{\mA}$.
 No heater bias is applied to any detectors under \SOC.
 When referring to individual detectors, I use the notation R$n$C$m$.
 This notation refers to the detector read out on row $n$ of column $m$, where the indices are zero-based.
@@ -429,7 +429,7 @@ The measurements of this chapter will allow more aggressive $\tau_{eff}$ design 
 \begin{figure*}
   \centering
 \includegraphics{drawings/ch6-all-loop-plots.pdf}
-\caption[Plots summarizing results of ``bias step'' measurements for all working detectors]{
+\caption[``Bias step'' measurement summary for all working detectors]{
   Plots summarizing results of ``bias step'' measurements for all working detectors.
 All data taken at \SOC.
 \textbf{Left Plots}
