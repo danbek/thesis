@@ -1,5 +1,28 @@
+To Do:
 * figure showing why circular fov from circular scan?
 * deal with section 5.1
-* last of Nils ch4 edits
-* nils ch 6 edits
+* ch4 - scale bars for optics figures?
+* ch4 - carbon fiber tube cryogenic properties and references
+* ch3 - add TES resistor to diagram? You know the one ...
+* ch7 - LN2 temp in Boulder?
+* ch7 - chapter wrap-up "Wrap up the chapter with a summary of what you have done and learned here, and the state of the video imaging."
+* ch7 - quantify extent of misalignment needed to produce this ellipticity
+
+Done:
+* ch3 - explain all terms at point of use rather than waiting for table
+* ch4 - aperture-stop discussion is confusing.
+* ch8 - nils edits
+* ch8 - ken edits
+* ch1 - nick edits
+* ch6 - Dad edits
+* explain what RC notation means prior to use in Ch 3
+* ch1 - dad edits
+* ch1 - rework intro paragraphs
 * extra solidworks screen-shots into ch 5
+* nils ch 6 edits
+
+not a to-do, but Nils idea: You should experiment with alignment errors in the zemax model to see if you can reproduce and better understand the beam ellipticity and plate scale problems that you measure. 
+
+Another Nils comment: Keep in mind that if you are calculating sensitivity to a point source (where resolution matters), then you will lose senstivity as you make the feed larger, since you will illuminated a decreasing portion of the primary, reducing resolution. See Griffin, Bock, & Gear.
+
+
