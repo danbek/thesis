@@ -65,7 +65,7 @@ This allows a single feedhorn on the focal plane to detect not only two polariza
   On the left is a schematic of the feedhorns, in the middle is a cross-sectional photograph of a prototype feedhorn.
   The feedhorns are assembled from micro-machined silicon wafers that are then Au-plated.
   On the right is a prototype pixel.
-  Two pairs of fins (``OMT'' couple each polarization onto microstrip.
+  Two pairs of fins (``OMT'') couple each polarization onto microstrip.
   A diplexer separates the \SI{90}{\GHz} and \SI{150}{\GHz} signals.
   The ``hybrid tee'' rejects unwanted waveguide modes.
   This figure is taken from \cite{datta_horn_2014}, which contains more details on these detectors.
@@ -96,7 +96,7 @@ Nevertheless, this trade-off may be worthwhile for some applications.
 There are no technical reasons why \TES\ bolometers could not work well at frequencies of \SI{1}{\THz}.
 
 If the target application requires the aperture size to remain at \SI{1.3}{\m}, or even become larger, it may be desirable to use a different focusing element than that used in this system.
-Possibilities include segmented mirrors (which have proven very successful for larger apertures \cite{fowler_optical_2007}) or a large-diameter Fresnel lens \cite{black_millimeter-wave_1987}.
+Possibilities include segmented mirrors (which have proven very successful for larger apertures \cite{fowler_optical_2007}), aluminized plastic mirrors, or a large-diameter Fresnel lens \cite{black_millimeter-wave_1987}.
 
 Reducing the size of the optical aperture or moving to a Fresnel lens will likely reduce the cost of the system.
 Three other ways to potentially reduce cost are to eliminate the need for scanning, operate at a higher bath temperature, or migrate to a detector technology that is easier to fabricate.
@@ -111,7 +111,6 @@ Operating at higher bath temperatures can reduce cost if the new bath temperatur
 As described in \sectionref{sec:det-parm-choice}, it should be possible to make photon-noise-limited \TES\ bolometers operating at a bath temperature of \SI{3.6}{\K}.
 This bath temperature can be reached through the use of a cryocooler only, with no other refrigeration stages needed. 
 The ideal $T_c$ for this bath temperature would be \abt{\SI{6.5}{\K}}.
-TiNi films can easily be deposited ($T_c = \SI{5.6}{\K}$), or some other superconducting material could be used.
 However, to-date little work has been done on making voltage-biased \TES\ bolometers work at such (relatively) high temperatures, so it is not clear what problems might appear that would need to be solved.
 Again, a careful cost analysis is required.
 
@@ -120,11 +119,14 @@ One very promising detector technology is the Microwave Kinetic Inductance Detec
 As mentioned in \sectionref{sec:ch2-tes-passive}, one group is already working on a passive imaging system that will use these detectors.
 
 Like \TES\ detectors, \MKIDs\ use superconducting materials at low temperatures, but the principle of operation is very different.
-The superconducting material is chosen so that its gap energy is below the energy $h \nu$ of the photons to be detected.
-Light is focused directly onto the superconducting film, so that it breaks Cooper pairs.
-This induces a change in the inductance of the superconductor.
-By making the superconductor a part of a resonant circuit, this change in inductance can be detected as a change in the resonant frequency of the circuit.
+The superconducting material is chosen so that its gap energy $2 \Delta = 3.5 k_b T_c$ is below the energy $h \nu$ of the photons to be detected.
+Light is focused directly onto the superconducting film, so that it breaks Cooper pairs, which induces a change in the inductance of the superconductor.
+By making the superconductor a part of a resonant circuit, this change in inductance can be detected as a change in the resonant frequency.
+The detector operating temperature is at or below $T_c / 5$ to suppress thermal generation of quasiparticles.
 This approach to detection of light offers a natural way to multiplex many detectors on a single readout line, because the resonant frequency can be placed at \si{\GHz} frequencies where large amounts of readout bandwidth are available.
+
+The \SI{-10}{\dB} lower band edge for the \Imager\ is \SI{318}{\GHz}, so the maximum $T_c$ for an \MKID\ detector is \SI{4.3}{\K}, a value that can be achieved using TiN or Ti-TiN-Ti films \cite{leduc_titanium_2010,vissers_proximity-coupled_2013}.
+The operating temperature would be $\SI{4.3}{\K} / 5 = \SI{0.86}{\K}$, which should be achievable with an improved \SI{1}{\K} cryogenic design.
 
 \MKID\ detectors reduce fabrication cost because fewer material layers and fabrication steps are required.
 They also reduce wiring cost because a single coaxial cable can bias and read out many detectors.
