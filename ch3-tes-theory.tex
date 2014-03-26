@@ -51,9 +51,12 @@ The heat capacity $C$ is connected to a heat bath $T_b$ by a weak thermal link $
 In the limit of small changes in \TES\ current and temperature, the resistance of the \TES\ can be expressed as
 \begin{equation}
 R(T_0+\delta T,I_0+\delta I) = R_0 + \alpha \frac{R_0}{T_0} \delta T + %
-									 \beta_I \frac{R_0}{I_0} \delta I.
+									 \beta_I \frac{R_0}{I_0} \delta I,
 \end{equation}
-The power flowing through the thermal link $G$ is assumed to follow a power law of the form
+where $R_0$, $I_0$ and $T_0$ are the resistance of the \TES, the current flowing through the \TES, and the temperature of the \TES\ at the operating bias point, $\alpha$ is the \TES\ temperature sensitivity, $\beta_I$ is the \TES\ current sensitivity, and $\tau \equiv C / G$ is the ``natural'' detector time constant..
+Note that all terms used in these equations and the rest of this chapter are defined in \tableref{tab:tes-theory-summary}.
+
+The power $P_b$ flowing through the thermal link $G$ is assumed to follow a power law of the form
 \begin{eqnarray} \label{eqn:ch3-p-bath}
 P_{b} = K(T^n - T^n_{b}),
 \end{eqnarray}
@@ -76,11 +79,11 @@ where the matrix $\mathcal{M}$ is
 \begin{equation}
 % For spacing see http://tex.stackexchange.com/questions/14071/how-can-i-increase-the-line-spacing-in-a-matrix
 \mathcal{M} = \begin{pmatrix}
-		\frac{1}{\tau_{el}} & \frac{\Loop G}{I_0 L} \\[0.75em] 
-		-\frac{I_0 R_0(2 + \beta_I)}{C} & \frac{1}{\tau_I}
+		\dfrac{1}{\tau_{el}} & \dfrac{\Loop G}{I_0 L} \\[0.75em] 
+		-\dfrac{I_0 R_0(2 + \beta_I)}{C} & \dfrac{1}{\tau_I}
     \end{pmatrix}.
 \end{equation}
-\tableref{tab:tes-theory-summary} describes all symbols used in these equations and the rest of the chapter.
+Here $\tau_{el} \equiv L / (R_0(1+\beta_I) + R_L)$ is the electrical time constant of the detector, $\Loop \equiv I_0^2 R_0 \alpha / G T_0$ is the detector loop gain, and $\tau_I \equiv \tau / (1 - \Loop)$.
 
 These coupled equations can be solved under different initial conditions and applied forces $\delta V$ and $\delta P$.
 Discussion of three cases follows.
@@ -89,24 +92,21 @@ Discussion of three cases follows.
 Driving the \TES\ with a sinusoidal $\delta P$ term and holding detector bias constant leads to the following expression for the detector power-to-current responsivity:
 \begin{equation}\label{eqn:si-full}
 s_I(\omega) = 
-- \frac{ \frac{1}{V_0} \frac{1}{\gamma} \frac{\Loop}{\Loop + 1} }
-       { 1 + j \omega \left( \tau_{eff} - \frac{1}{\gamma}\frac{\Loop}{\Loop + 1} \frac{L}{R_0}\right) - \omega^2 \frac{L}{R_0}\frac{\tau_{eff}}{1 + \beta_I + R_L / R_0}},
+- \dfrac{ \dfrac{1}{V_0} \dfrac{1}{\gamma} \dfrac{\Loop}{\Loop + 1} }
+       { 1 + j \omega \left( \tau_{eff} - \dfrac{1}{\gamma}\dfrac{\Loop}{\Loop + 1} \dfrac{L}{R_0}\right) - \omega^2 \dfrac{L}{R_0}\dfrac{\tau_{eff}}{1 + \beta_I + R_L / R_0}},
 \end{equation}
 \begin{equation}
-\gamma \equiv 1 + \frac{\beta_I}{1+\Loop} - \frac{\Loop - 1}{\Loop + 1}\frac{R_L}{R_0}.
+\gamma \equiv 1 + \dfrac{\beta_I}{1+\Loop} - \dfrac{\Loop - 1}{\Loop + 1}\dfrac{R_L}{R_0}.
 \end{equation}
-Here $\tau_{eff}$ is given by
+Here $\tau_{eff}$ is the ``effective'' detector time constant and is given by
 \begin{equation} \label{eqn:teff}
-  \tau_{eff} = \frac{\tau}{1 + \frac{1 - R_L / R_0}{1 + \beta_I + R_L / R_0} \Loop}.
+  \tau_{eff} \equiv \dfrac{\tau}{1 + \dfrac{1 - R_L / R_0}{1 + \beta_I + R_L / R_0} \Loop}.
 \end{equation}
-% xxx nils wants a forward-reference to table with variable
-% explanations here, but I already referred to it above, so asking him
-% what he really wants here via email.
 
 While imposing, these expressions are much simpler in the limit which generally hold for operating \TES\ detectors: strong voltage bias ($R_L \ll R_0$), and $\tau \ll L/R$. 
 In this limit the power-to-current responsivity becomes
 \begin{equation}
-s_I(\omega) = -\frac{1}{V_0} \frac{\Loop}{1+\beta_I + \Loop} \frac{1}{1 + j \omega \frac{\tau}{1 +\Loop/(1+\beta_I)}}
+s_I(\omega) = -\dfrac{1}{V_0} \dfrac{\Loop}{1+\beta_I + \Loop} \dfrac{1}{1 + j \omega \frac{\tau}{1 +\Loop/(1+\beta_I)}}
 \end{equation}
 The detector response time is given by the natural detector time constant $\tau$, sped up by a factor of $1 + \Loop(1+\beta_I)$; for $\beta_I \ll 1$, this factor is typical of negative feedback, and justifies calling \Loop\ the ``loop gain'' of the detector.
 In the further limit of strong electrothermal feedback ($\Loop \gg 1$, $\Loop \gg \beta_I$), the \DC\ responsivity $s_I(0)$ is simply the inverse of the voltage bias.
@@ -116,13 +116,13 @@ This means that because of the strong electrothermal coupling, any increase in a
 As demonstrated in \sectionref{sec:bias-step}, our detectors are always operated in a regime where $\tau_{eff} \gg \tau_{el}$.
 Under these conditions, \eqnref{eqn:si-full} simplifies to
 \begin{equation} \label{eqn:htr-step-resp-high}
-s_I(\omega) = - \frac{1}{V_0 \gamma}\frac{\Loop}{\Loop + 1}
+s_I(\omega) = - \dfrac{1}{V_0 \gamma}\dfrac{\Loop}{\Loop + 1}
                        \left(1 + j \omega \tau_{eff}\right)^{-1}.
 \end{equation}
 This implies that the time-domain response to step in applied power, for example from a heater, is
 \begin{align} \label{eqn:htr-step-resp-high-time}
     \delta I(t) & = - \delta P s_I(0) (1 - e^{-t/\tau_{eff}}) \\
-                & = - \frac{\delta P}{V_0 \gamma}\frac{\Loop}{\Loop + 1}
+                & = - \dfrac{\delta P}{V_0 \gamma}\dfrac{\Loop}{\Loop + 1}
                       (1 - e^{-t/\tau_{eff}}).
 \end{align}
 This can be used to measure $\tau_{eff}$ directly as well as the \DC\ responsivity once the heater power has been calibrated (\sectionref{sec:teff-resp}).
@@ -141,10 +141,10 @@ with constant driving force starting at time zero of
 Solving this system leads to the following expression for the \TES\ current as a function of time:\footnote{A Mathematica notebook which verifies this solution, as well as other solutions to the linearized \TES\ equations, can be found at https://gist.github.com/danbek/8591076}
 \begin{equation}\label{eqn:bias-step-resp}
 \delta I (t)
-   = - \frac{\delta I_{bias} R_{sh}}{R_0} 
-       \frac{(\Loop - 1)
-             \left(1 - \frac{\tau_{eff} - \tau_I}{\tau_{eff} - \tau_{el}} e^{-t/\tau_{eff}}
-                 	       + \frac{\tau_{el} - \tau_I}{\tau_{eff} - \tau_{el}} e^{-t/\tau_{el}} \right)}
+   = - \dfrac{\delta I_{bias} R_{sh}}{R_0} 
+       \dfrac{(\Loop - 1)
+             \left(1 - \dfrac{\tau_{eff} - \tau_I}{\tau_{eff} - \tau_{el}} e^{-t/\tau_{eff}}
+                 	       + \dfrac{\tau_{el} - \tau_I}{\tau_{eff} - \tau_{el}} e^{-t/\tau_{el}} \right)}
             {1 + \beta_I + R_L/R_0 + \Loop(1 - R_L/R_0)}
        .
 \end{equation}
@@ -165,13 +165,13 @@ When the \TES\ is superconducting, \eqnref{eqn:bias-step-resp} takes on a much s
 Setting $R_0 = \Loop = \beta_I = 0$, the result is
 \begin{equation}\label{eqn:bias-step-resp-sc}
 \delta I(t)
-   = - \frac{\delta I_{bias} R_{sh}}{R_{L}} 
+   = - \dfrac{\delta I_{bias} R_{sh}}{R_{L}} 
        \left(1 - e^{-t/(L/R_L)} \right).
 \end{equation}
 Similarly, when the detector is fully normal, so that $\Loop = \beta_I = 0$, \eqnref{eqn:bias-step-resp} becomes
 \begin{equation}\label{eqn:bias-step-resp-normal}
 \delta I(t)
-   = - \frac{\delta I_{bias} R_{sh}}{R_n + R_{L}} 
+   = - \dfrac{\delta I_{bias} R_{sh}}{R_n + R_{L}} 
        \left(1 - e^{-t/(L/(R_n+R_L))} \right).
 \end{equation}
 The \TES\ response to bias steps in the superconducting and normal states can thus be used as measurements of $L$ and $R_n$.
