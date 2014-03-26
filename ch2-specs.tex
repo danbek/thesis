@@ -30,7 +30,7 @@ However, at the center wavelength of the observation band of $\lambda_0 = \SI{86
 The chosen diameter for the mirror was somewhat smaller than this at \SI{1.3}{\m}.
 After accounting for the fact that the outer edge of the primary mirror is not illuminated (\sectionref{sec:ch4-optical-design}), the predicted resolution of the system is \SI{1.2}{\cm} (\sectionref{sec:ch4-feedhorn-design}).
 
-Security applications can require observing a moving target, so that video frame-rates are needed.
+Security applications can require observing a moving target, so video frame-rates are needed.
 Exactly how fast the frame-rate needs to be in order to support accurate tracking can vary based on the scenario.
 The components of the \Imager\ have all been designed to allow frame rates of up to 20 frames per second.
 The design field of view at \SI{16}{\m} is $\SI{1}{\m} \times \SI{1}{\m}$.
@@ -39,7 +39,7 @@ In order to achieve all of these requirements, other aspects of the system desig
 In particular, the desire for high spatial resolution at longer standoff distances requires a large optical aperture, which increases the size of the system, reducing portability.
 Although the system is mounted on rollers so that it can be moved within the lab or into other labs, the location at which it points can not be steered in real-time.
 Additionally, the focus distance can only be changed by reconfiguring the mounting structure that connects the cryostat to the optics.
-In a deploy able system the aperture could be made lighter through the use of different materials, and the focus and steering could be changed in real-time by an automatic mount, either at a fixed point or mounted on a vehicle.
+In a deployable system the aperture could be made lighter through the use of different materials, and the focus and steering could be changed in real-time by an automatic mount, either at a fixed point or mounted on a vehicle.
 
 \section{Transition Edge Sensor Bolometer Basics} \label{sec:ch2-tes-basics}
 
@@ -74,7 +74,7 @@ Typical values of $\alpha$ for \TES\ detectors are 100 -- 1000.
 The first demonstration of a \TES\ bolometer was in 1941 \cite{andrews_attenuated_1942}, and the first demonstration using Al (the material used for the detectors in this dissertation) was in 1977 \cite{clarke_superconductive_1977}.
 But operation of a \TES\ detector requires maintaining the temperature of the \TES\ within the narrow transition, which proved challenging.
 An increase in the temperature of the \TES\ --- caused by an increase in absorbed optical power --- causes a rise in the temperature of the \TES.
-When current-biased this rise in temperature causes an increase in $I^2 R$ Joule heating, causing the temperature of the detector to rise further, leading to instability.
+When current-biased, this rise in temperature causes an increase in $I^2 R$ Joule heating, causing the temperature of the detector to rise further, leading to instability.
 
 Thus, \TES\ bolometers did not come into widespread use until the development of the voltage-biased \TES\ sensors \cite{irwin_application_1995} coupled with Superconducting Quantum Interference Device (\SQUID) readout systems.
 When voltage-biased, a rise in \TES\ temperature leads to a decrease in Joule heating, which lowers the temperature of the device.
@@ -116,7 +116,7 @@ See \tableref{tab:ch2-sys-compare} for a summary of some characteristics of thes
 One system has been developed by a group working at the Institute of Photonic Technology (IPHT) in Jena, Germany.
 The first generation of this system \cite{heinz_toward_2011} operates at \SI{350}{\GHz} with a \SI{23}{\percent} optical bandwidth.
 \NETD\ is measured at \SI{0.4}{\K} at 10 frames per second over a \SI{1}{\m} diameter field of view.
-This system operates at much colder temperature than the \Imager using \He3-sorption refrigerator, which would make it more complex and expensive to deploy, without a corresponding improvement in \NETD\ performance.
+This system operates at much colder temperature than the \Imager\ using \He3-sorption refrigerator, which would make it more complex and expensive to deploy, without a corresponding improvement in \NETD\ performance.
 A second-generation system is currently under development \cite{heinz_development_2013,may_next_2013}.
 This system increases the number of detectors from 20 to 64 and the frame rate from 10 to 25 frames per second.
 \NETD\ is predicted to be \SI{160}{\mK}.
