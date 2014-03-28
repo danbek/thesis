@@ -22,7 +22,7 @@
 
   \begin{tikzpicture}[trim axis right]
 	\begin{axis}[xmin=12,xmax=25,ymin=0.95,ymax=1.25,
-		title={NETD vs Number of Detectrrs},
+		title={NETD vs Number of Detectors},
 		xlabel={Number of Detectors Per Array Side}, ylabel={NETD / $\text{NETD}_{16}$} ]
 	  \addplot table[x=N_side,y=NETD_rel]{../data/ch4-netd-vs-nfeeds.dat};
       \node[anchor=west] (source) at (axis cs: 17,1.15) {\Imager}; 
