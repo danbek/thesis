@@ -601,7 +601,7 @@ This assumption ignores the ellipticity of the feedhorn beam for a single polari
 
 The far-field angular power pattern is then given by \cite{born_principles_1999}
 \begin{equation}
-  P(\theta) = \left[ \int_{\rho_{in}}^{\rho_{out}} e^{-\frac{1}{2} \frac{\rho^2}{\SI{560}{\mm}}} J_0(\frac{2 \pi}{\lambda} \rho \sin(\theta)) \rho d\rho \right]^2,
+  P(\theta) = \left[ \int_{\rho_{in}}^{\rho_{out}} e^{-\frac{1}{2} \frac{\rho^2}{(\SI{560}{\mm})^2}} J_0(\frac{2 \pi}{\lambda} \rho \sin(\theta)) \rho d\rho \right]^2,
 \end{equation}
 where $J_0$ is a Bessel function of the first kind, $\lambda$ is the central wavelength of the optical band, and $\rho_{in}$ and $\rho_{out}$ are taken from \tableref{tab:ch4-zemax-parms}.
 This formula accounts for the edge taper of the feedhorn pattern, the obstruction caused by the secondary mirror, and the under-illumination of the primary mirror.
