@@ -278,14 +278,14 @@ Micro-bolometers have an advantage in that they can be fabricated in arrays with
 Typical \NEP\ values for uncooled micro-bolometers in the millimeter-wave region are \Pnoisep{10}--\Pnoisep{100} \cite{nemarich_microbolometer_2005,rogalski_terahertz_2011}.
 To convert this \NEP\ into an \NETD\ we must make some assumptions.
 In order to achieve sufficient spatial resolution, detectors at these wavelengths are typically sensitive to two modes, one per polarization, so we set $M = 2$.
-We can generously assume a staring array with one detector per image pixel, so that $\sqrt{A/N}/s = 1$.
+We can generously assume a non-scanning array with one detector per image pixel, so that $\sqrt{A/N}/s = 1$.
 A very good optical efficiency would be $\eta_{tot} = 0.5$, and a typical bandwidth at \SI{350}{\GHz} is \SI{35}{\GHz}.
 The minimum frame rate for video imaging is approximately 6 frames per second.
 Plugging these numbers into \eqnref{eqn:ch1-netd-defn} leads to an \NETD\ of \SI{50}{\K} for the best-case scenario of \Pnoisep{10} \NEP.
 This is more than two orders of magnitude higher than the requirements discussed in \sectionref{sec:ch1-netd-reqs}.
 
 Perhaps the most promising approach for room-temperature direct detection of millimeter and submillimeter light is an approach using backward tunnel diodes for operation at \SI{90}{\GHz}, which has achieved \Pnoisep{0.1} \NEP\ with a 32-channel linear array \cite{schaffner_wideband_2008,wikner_demonstration_2009}.
-Under the same assumptions as in the previous paragraph, a staring array would achieve \SI{5}{\K} \NETD, still insufficient to achieve the \NETD\ requirements of \sectionref{sec:ch1-netd-reqs}.
+Under the same assumptions as in the previous paragraph, a non-scanning array would achieve \SI{5}{\K} \NETD, still insufficient to achieve the \NETD\ requirements of \sectionref{sec:ch1-netd-reqs}.
 
 A second option for room-temperature passive imaging is the use of coherent heterodyne detectors \cite{rieke_detection_2003,rogalski_terahertz_2011}.
 This technology has advanced sufficiently that commercial systems are available today.
