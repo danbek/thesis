@@ -1,7 +1,16 @@
 % !TEX TS-program = pdflatex
 % !TEX encoding = UTF-8 Unicode
 
-\documentclass[12pt,letterpaper]{memoir}
+\documentclass[12pt,letterpaper,openany]{memoir}
+
+% This is how you get rid of a (possible) blank page between
+% frontmatter and main matter. See [1].
+% [1]: http://tex.stackexchange.com/questions/153650/memoir-class-forces-recto-page-after-mainmatter
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@smemmain}{\cleardoublepage}{\clearpage}{}{}
+\patchcmd{\@smemmain}{\cleardoublepage}{\clearpage}{}{}
+\makeatother
 
 % Not double space, not single, but inbetween
 \OnehalfSpacing
@@ -18,7 +27,12 @@
 
 % See memoir manaul for this stye. It put page numbers in the footer.
 % The header has chapter/section name and a ruled line.
-\pagestyle{ruled}
+\copypagestyle{my-ruled}{ruled}
+  \makeevenfoot{my-ruled}{}{\thepage}{}
+  \makeoddfoot{my-ruled}{}{\thepage}{}
+
+\pagestyle{my-ruled}
+
 
 \usepackage{thesis}
 
