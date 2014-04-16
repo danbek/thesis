@@ -114,9 +114,9 @@ We can estimate the required value of $\tau_{eff}$ by considering the speed with
 If $v$ is the speed with which the detector far-field beam moves, and $b_{fwhm}$ is the \FWHM\ far-field beam width, then scanning over a point source will result in a timestream with a Gaussian ``bump'' with \FWHM\ $q_{raw} \equiv b_{fwhm} / v$.
 The \TES\ acts like a lowpass filter on this timestream with time constant $\tau_{eff}$.
 The timestream after filtering is given by the convolution%
-\footnote{The factor 2.35 converts the \FWHM\ of the timestream bump to the ``standard deviation'' term for the Gaussian.}
+\footnote{The factor $2\sqrt{2\ln{2}}$ converts the \FWHM\ of the timestream bump to the ``standard deviation'' term for the Gaussian.}
 \begin{equation}
-  d_{filt}(t) = \int_{-\infty}^{t} \exp{\left[-\frac{2.35^2}{2} \frac{{t^{\prime}}^2}{(b_{fwhm}/v)^2}\right]}
+  d_{filt}(t) = \int_{-\infty}^{t} \exp{\left[-\frac{(2\sqrt{2\ln{2}})^2}{2} \frac{{t^{\prime}}^2}{(b_{fwhm}/v)^2}\right]}
        \exp{\left[-(t-t^{\prime})/\tau_{eff}\right]} dt^{\prime}.
 \end{equation}
 The \FWHM\ of the bump after filtering will be $q_{filt}$.

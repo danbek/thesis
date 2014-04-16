@@ -243,7 +243,10 @@ The parameters to be fit to are $G$, $T_c$, and $n$.
 
 A problem arises because the data described in this section were taken when the cryostat was open, so that $P_{opt}$ was non-zero, with an unknown value.
 Because $P_{opt}$ is a simple additive constant, it is not possible to fit for this value unless another constraint is known, such as the value of $T_c$.
-Unfortunately, the \TES\ circuit bias loop contains Al wire bonds, which have a $T_c$ close to that of the detectors themselves, making a direct measurement of the detector's $T_c$ difficult.
+Unfortunately, the \TES\ circuit bias loop contains Al wire bonds, which have a $T_c$ close to that of the detectors themselves, making a direct measurement of the detector $T_c$ difficult%
+\footnote{Because the Al wire bond material contains approximately \SI{1}{\percent} Si, their $T_c$ is expected to be higher than that the of the elemental Al \TES\ itself.
+I nevertheless find that the resistance in the \TES\ loop rises to \SIrange{20}{50}{\mOhm} at temperatures above \SI{1175}{\mK}, which is much larger than the normal-state resistance of the \TES\ itself.
+I interpret this as indicating the Al wire bonds go normal at lower temperatures than the \TES.}.
 
 However, the value of $P_{opt}$ can be estimated in two different ways. 
 First, the predicted optical load of \SI{180}{\pW} from \sectionref{sec:ch4-optical-design} can be used.
@@ -543,8 +546,10 @@ The noise below \SI{30}{\Hz} is 1.5--2.5 times higher with the \PTC\ on, but the
 \section{Noise Aliasing} \label{sec:ch6-aliasing}
 
 As explained in \sectionref{sec:det-readout}, the \MCE\ takes data at \SI{15625}{\hertz}, but is only capable of sending data for the 251-detector sub-array to the readout computer at \SI{3125}{\hertz}.
-This raises the question of how much noise is aliased from the \SIrange{3125}{15625}{\hertz} band to below \SI{3125}{\hertz}.
-To check this I acquired data under \SOC\ for column 0 at the normal rate of \SI{3125}{\hertz} as well as at \SI{15625}{\hertz}.
+To reduce noise aliasing, the \MCE\ can be configured to apply a 4-pole digital lowpass filter to the \SI{15625}{\Hz} data stream prior to sampling at \texttt{data\_rate} \cite{mce_team_digital_????}.
+I have not yet implemented this filter, but plan to do so for future operation of the system.
+
+To investigate how much noise is aliased from the \SIrange{3125}{15625}{\hertz} band to below \SI{3125}{\hertz} in the absence of the \MCE's digital lowpass filter, I acquired data under \SOC\ for column 0 at the normal rate of \SI{3125}{\hertz} as well as at \SI{15625}{\hertz}.
 Five data files were acquired for each case.
 For each row in column 0 and for each data file a power spectrum was taken after subtracting the common mode signal, and the excess noise was calculated as
 \begin{equation}
@@ -559,10 +564,6 @@ The average excess noise due to aliasing is \SI{16}{\percent}, but some detector
 
 The servo feedback parameter for these acquisitions was $I_{FB} = 50$, but when taking video images $I_{FB}$ is typically set to 10 or 20.
 Because the slower servo feedback will roll off noise above \SI{3125}, the level of aliased noise will be lower under these configurations.
-
-The \MCE\ can be configured to apply a 4-pole digital lowpass filter to the \SI{15625}{\Hz} data stream prior to sampling at \texttt{data\_rate} \cite{mce_team_digital_????}.
-An appropriate choice of the cutoff frequency for this filter can greatly reduce aliased noise.
-I have not yet implemented this filter, but plan to do so for future operation of the system.
 
 \begin{figure*}
   \centering
@@ -606,14 +607,11 @@ Fourth, the measured noise levels are much higher than the predicted noise level
 \RCm{29}{1} is 1.9 times higher, \RCm{30}{1} is 5.8 times higher (dominated by the noise spikes), \RCm{31}{1} is 1.7 times higher and \RCm{32}{1} is 1.6 times higher.
 
 The reason for this high level of noise is not known.
-Two possible culprits are a higher than expected level of photon noise or a much larger value of $G$ than was measured.
-Both of these possibilities would affect the noise spectrum in the same way, so they can not be distinguished.
-\figref{fig:ch6-trans-noise-model-plots} plots the measured noise spectrum for \RCm{31}{1} at \SOC, along with the basic noise model and a noise model that includes enough additional power noise to match the measured white noise level at low frequencies.
-This could be due to a value of $G$ that in reality is 4.8 times higher than what was measured, or a photon noise level that is 1.9 times higher than predicted.
+One possible culprit is a higher than expected level of photon noise.
+\figref{fig:ch6-trans-noise-model-plots} plots the measured noise spectrum for \RCm{31}{1} at \SOC, along with the basic noise model and a noise model that includes enough additional photon noise to match the measured white noise level at low frequencies (photon noise level that is 1.9 times higher than predicted).
+A problem with explaining the noise spectra this way is that the measured spectrum shows a shelf at \SIrange{100}{1000}{\Hz} which is not present in any of the models.
 
-One problem with explaining the noise spectra this way is that the measured spectrum shows a shelf at \SIrange{100}{1000}{\hertz} which is not present in any of the models.
-A second problem is that it is difficult to understand how the measured value of $G$ could be so far off.
-Excess photon noise seems a more likely explanation, and could be due to \IR\ power leaking onto the detectors.
+Excess photon noise could be due to \IR\ power leaking onto the detectors.
 Even a small amount of \IR\ power can increase noise levels through the $\nu$ factor in \eqnref{eqn:photon-noise}.
 It is also possible that a much higher level in-band optical power is falling on the detector than predicted.
 This would both increase the photon noise directly, and increase the predicted thermal fluctuation noise because of the link between assumed optical power and my measurements of $G$ and $T_c$ as discussed in \sectionref{sec:g-psat}.
@@ -646,8 +644,7 @@ For all four detectors, the measured noise is higher than predicted by the noise
 \caption[Measured and modeled noise]{
   Plot showing measured noise for \RCm{31}{1}, referred to power absorbed in bolometer, along with two noise models.
 The red line is the basic detector noise model using measured values for all detector parameters as described in this chapter, including predicted \Pnoisef{0.85} of photon noise.
-The black line is for a noise model that include enough excess ``power'' noise to match the measured white noise level at low frequencies.
-This excess ``power'' noise could be due to a high level of photon noise (1.9 times higher than predicted) or a larger-than-measured value of $G$ (4.8 times higher than measured), or some combination of the two.
+The black line is for a noise model that include enough excess photon noise to match the measured white noise level at low frequencies (1.9 times higher than predicted).
 }
 \label{fig:ch6-trans-noise-model-plots}
 \end{figure*}

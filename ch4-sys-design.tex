@@ -8,7 +8,8 @@ The first two temperature intercept stages are provided by a Cryomech PT407 Puls
 The PT407 has two cooling stages.
 The first stage has \SI{25}{\W} of cooling power at \SI{55}{\K} while the second stage has \SI{0.7}{\W} at \SI{4.2}{\K}.
 Our PT407 uses a remote motor, so that the cold head attached to the cryostat has no moving parts, minimizing vibration of the cryostat.
-Vibration of the cryostat can lead to microphonic pickup either directly in the detectors themselves or in the readout circuitry, leading to much higher detector noise (see \sectionref{sec:ch6-microphonic-pickup}).
+Vibration of the cryostat can lead to temperature fluctuations of the \SI{1}{\K} cold stage, or to microphonic pickup either directly in the detectors themselves or in the readout circuitry, leading to much higher detector noise (see \sectionref{sec:ch6-microphonic-pickup}).
+
 
 \figref{fig:cryo-cutaway} shows a cutaway view of the cryostat, and \tableref{tab:temp-optical-load} lists the temperatures typically reached by different parts of the cryostat during operation when the cryostat is open optically.
 The cryostat has two main parts: a cylinder containing both the \PTC\ and the \He4-sorption refrigerator, and a box located at the bottom of the cylinder which contains temperature intercept plates and the focal plane.
@@ -100,6 +101,7 @@ As discussed in \sectionref{sec:ch6-common}, the temperature variations over sev
 Under optical load, a full cycle of the \He4-sorption refrigerator takes approximately 4 hours, reaching a base temperature of ~\SI{970}{\mK}.
 When no additional load is applied the hold time is 9 hours.
 When the temperature of the stage is held at the typical operating temperature of \SI{1100}{\mK} the hold time is only 3:45 hours.
+This will need to be lengthened in a future design iteration for practical device operation.
 
 \tableref{tab:fp-thermal-load} lists contributions to the heat load on the \He4-sorption refrigerator.
 It excludes parasitic load inherent to the sorption refrigerator itself; we have estimated this parasitic load as \abt{\SI{0.5}{\mW}}.
@@ -607,7 +609,7 @@ where $J_0$ is a Bessel function of the first kind, $\lambda$ is the central wav
 This formula accounts for the edge taper of the feedhorn pattern, the obstruction caused by the secondary mirror, and the under-illumination of the primary mirror.
 The result is a \FWHM\ of \SI{1.2}{\cm} for a point source when focused at \SI{17}{\m}.
 
-\chapterref{c:imaging} present maps of both a \SI{0.2}{\in} and \SI{1.791}{\cm} sources.
+\chapterref{c:imaging} presents maps of both a \SI{0.2}{\in} and \SI{1.791}{\cm} sources.
 After convolution with a \SI{0.2}{\in} circle the predicted \FWHM\ is still \SI{1.2}{\cm}, and after convolving with a \SI{1.791}{\cm} circle the predicted \FWHM\ is \SI{1.7}{\cm}.
 
 \begin{figure*}

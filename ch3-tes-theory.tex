@@ -53,7 +53,7 @@ In the limit of small changes in \TES\ current and temperature, the resistance o
 R(T_0+\delta T,I_0+\delta I) = R_0 + \alpha \frac{R_0}{T_0} \delta T + %
 									 \beta_I \frac{R_0}{I_0} \delta I,
 \end{equation}
-where $R_0$, $I_0$ and $T_0$ are the resistance of the \TES, the current flowing through the \TES, and the temperature of the \TES\ at the operating bias point, $\alpha$ is the \TES\ temperature sensitivity, $\beta_I$ is the \TES\ current sensitivity, and $\tau \equiv C / G$ is the ``natural'' detector time constant..
+where $R_0$, $I_0$ and $T_0$ are the resistance of the \TES, the current flowing through the \TES, and the temperature of the \TES\ at the operating bias point, $\alpha$ is the \TES\ temperature sensitivity, $\beta_I$ is the \TES\ current sensitivity, and $\tau \equiv C / G$ is the ``natural'' detector time constant.
 Note that all terms used in these equations and the rest of this chapter are defined in \tableref{tab:tes-theory-summary}.
 
 The power $P_b$ flowing through the thermal link $G$ is assumed to follow a power law of the form
@@ -287,7 +287,7 @@ It also shows that this assumption breaks down deeper in the transition.
 
 % xxx this would probably be better if I explained that we set heater
 % current through a DAC value and convert to current via measure bias resistors.
-Note that in order to determine the value of $R_{htr}$ one much know the heater current.
+Note that in order to determine the value of $R_{htr}$ one must know the heater current.
 Any error in the assumed heater current will lead to a corresponding error in the derived $R_{htr}$ value.
 But because $R_{htr}$ is derived from the power dissipated in the resistor, the product $I_{htr}^2 R_{htr}$ will remain unchanged.
 This means that whenever the value $R_{htr}$ is used to calculated a power, the power value will be correct even with an incorrect value for the heater current.
